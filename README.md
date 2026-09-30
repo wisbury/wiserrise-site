@@ -1,6 +1,6 @@
-# akincy-site
+# wiserrise-site
 
-Akincy'nin 3 dilli (EN / TR / DE) pazarlama sitesi. Astro ile statik üretilir, Vercel'de yayınlanır.
+Wiserrise'ın 3 dilli (EN / TR / DE) pazarlama sitesi. Astro ile statik üretilir, Vercel'de yayınlanır.
 
 ## Geliştirme
 
