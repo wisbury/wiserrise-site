@@ -395,7 +395,7 @@ h1 {
   align-items: center;
   gap: 34px;
   width: max-content;
-  animation: logoScroll 28s linear infinite;
+  animation: logoScroll 45s linear infinite;
   will-change: transform;
 }
 
