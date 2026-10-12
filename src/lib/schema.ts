@@ -1,6 +1,6 @@
 import type { Locale } from '../i18n/config';
 import { localeHome } from '../i18n/config';
-import { CONTACT_EMAIL } from '../i18n/ui';
+import { CONTACT_EMAIL, COMPANY_LEGAL_NAME } from '../i18n/ui';
 
 const SITE = 'https://wiserrise.com';
 
@@ -171,6 +171,7 @@ export function organizationNode(locale: Locale) {
     '@type': 'ProfessionalService',
     '@id': ORG_ID,
     name: 'Wiserrise',
+    legalName: COMPANY_LEGAL_NAME,
     alternateName: 'Wiserrise Dijital Pazarlama',
     url: `${SITE}${localeHome(locale)}`,
     logo: {

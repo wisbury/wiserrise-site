@@ -8,7 +8,7 @@ import {
   type Locale,
 } from '../i18n/config';
 import { routePath, routeLocales, type RouteKey } from '../i18n/routes';
-import { t, CONTACT_EMAIL, CONTACT_PHONE } from '../i18n/ui';
+import { t, CONTACT_EMAIL, CONTACT_PHONE, COMPANY_LEGAL_NAME } from '../i18n/ui';
 import Analytics from '../components/Analytics.astro';
 
 interface Props {
@@ -177,7 +177,8 @@ const phone = CONTACT_PHONE[locale];
         </div>
 
         <div style="margin-top:10px; font-size:13px; color:#85827A;">
-          © <span class="js-year">{year}</span> Wiserrise. {strings.footer.rights}
+          © <span class="js-year">{year}</span> {COMPANY_LEGAL_NAME}. {strings.footer.rights}<br />
+          {strings.footer.brandOf}
         </div>
       </div>
 

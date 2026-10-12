@@ -21,6 +21,7 @@ export const ui = {
       tagline: 'Local SEO & Google Maps Growth for ambitious businesses.',
       sub: 'Built for local businesses that want real ranking movement.',
       rights: 'All rights reserved.',
+      brandOf: 'Wiserrise is a brand of Wisbury LLC.',
       claim: 'Own Your City on Google',
     },
     menuLabel: 'Open menu',
@@ -41,6 +42,7 @@ export const ui = {
       tagline: 'Hedefi olan işletmeler için Local SEO & Google Maps büyümesi.',
       sub: 'Gerçek sıralama artışı isteyen yerel işletmeler için.',
       rights: 'Tüm hakları saklıdır.',
+      brandOf: 'Wiserrise, Wisbury LLC’nin bir markasıdır.',
       claim: 'Google’da kendi Şehrinde ilk 3 - Garantili',
     },
     menuLabel: 'Menüyü aç',
@@ -61,6 +63,7 @@ export const ui = {
       tagline: 'Lokale SEO & Google Maps Wachstum für ambitionierte Unternehmen.',
       sub: 'Für lokale Unternehmen, die echte Ranking-Bewegung wollen.',
       rights: 'Alle Rechte vorbehalten.',
+      brandOf: 'Wiserrise ist eine Marke der Wisbury LLC.',
       claim: 'Beherrschen Sie Ihre Stadt bei Google',
     },
     menuLabel: 'Menü öffnen',
@@ -70,6 +73,12 @@ export const ui = {
 export function t(locale: Locale) {
   return ui[locale];
 }
+
+/**
+ * Legal entity behind the Wiserrise brand. Copyright, contracts and invoices
+ * are in this name; the brand itself is not a company.
+ */
+export const COMPANY_LEGAL_NAME = 'Wisbury LLC';
 
 /** Contact address differs per locale on the live site. */
 export const CONTACT_EMAIL: Record<Locale, string> = {
