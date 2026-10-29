@@ -22,7 +22,7 @@ const faq: FaqEntry[] = [
   },
   {
     q: 'Sıralama garantisi veriyor musunuz?',
-    a: 'Evet. Google’da 90 gün içinde ilk 3 garantisi veriyoruz.',
+    a: 'Sıralamayı kimse garanti edemez; Google’ın kendisi de bunu açıkça söylüyor. Bizim garanti ettiğimiz, yapacağımız iş ve ölçüm: her hafta ne yaptığımızı ve sıralamanızın nasıl değiştiğini raporda görürsünüz. Sözleşme olmadığı için memnun kalmazsanız bir sonraki ay devam etmezsiniz.',
   },
   {
     q: 'Süper zekâ (SZ) görünürlüğü nedir?',
@@ -49,7 +49,7 @@ const faq: FaqEntry[] = [
 const locale = 'tr' as const;
 const email = CONTACT_EMAIL[locale];
 const year = new Date().getFullYear();
-const title = 'Wiserrise | Dijital Pazarlama Ajansı: Local SEO, SEO, Google Ads, GEO';
+const title = 'Dijital Pazarlama Ajansı: Local SEO, SEO, Google Ads, GEO | Wiserrise';
 const description =
   'Haritalar, arama sonuçları, reklamlar ve süper zekâ yanıtları. Wiserrise işletmenizi müşterinin aradığı her yerde görünür kılar. Ücretsiz analiz 24 saat içinde.';
 ---
@@ -245,15 +245,6 @@ const description =
 </section>
 
 </div>
-
-<section aria-label="Rakamlarla Wiserrise" style="max-width: 1312px; margin: 0 auto; padding: 40px clamp(16px, 3vw, 32px) 0;">
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0; border-top: 1px solid #dedfda; border-bottom: 1px solid #dedfda;">
-    <div style="display: flex; flex-direction: column; gap: 4px; padding: 28px 24px 28px 0;"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 40px; line-height: 1; font-weight: 500; letter-spacing: -0.02em;">10</span><span style="font-size: 14px; color: #5c5e59;">şehirde işletme</span></div>
-    <div style="display: flex; flex-direction: column; gap: 4px; padding: 28px 24px; border-left: 1px solid #dedfda;"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 40px; line-height: 1; font-weight: 500; letter-spacing: -0.02em;">4</span><span style="font-size: 14px; color: #5c5e59;">sektör</span></div>
-    <div style="display: flex; flex-direction: column; gap: 4px; padding: 28px 24px; border-left: 1px solid #dedfda;"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 40px; line-height: 1; font-weight: 500; letter-spacing: -0.02em;">185+</span><span style="font-size: 14px; color: #5c5e59;">harita taraması</span></div>
-    <div style="display: flex; flex-direction: column; gap: 4px; padding: 28px 0 28px 24px; border-left: 1px solid #dedfda;"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 40px; line-height: 1; font-weight: 500; letter-spacing: -0.02em;">3</span><span style="font-size: 14px; color: #5c5e59;">dilde hizmet · TR, EN, DE</span></div>
-  </div>
-</section>
 
 <span id="difference-section" aria-hidden="true"></span>
 <section id="hizmetler" style="max-width: 1312px; margin: 0 auto; padding: clamp(72px, 10vw, 120px) clamp(16px, 3vw, 32px) 0; display: flex; flex-direction: column; gap: 48px;">
@@ -548,6 +539,23 @@ const description =
 <AnalizDialog email={email} />
 
 <footer style="max-width: 1312px; margin: 0 auto; padding: clamp(64px, 8vw, 96px) clamp(16px, 3vw, 32px) 0;">
+  <div class="v2-news">
+    <div class="v2-news-copy">
+      <span class="v2-eyebrow">BÜLTEN</span>
+      <span class="v2-news-title">Bugün uygulayabileceğiniz üç ücretsiz ipucuyla başlayın.</span>
+    </div>
+    <form id="newsletterForm" class="v2-news-form" action="https://app.kit.com/forms/9696107/subscriptions" method="POST">
+      <div class="v2-news-row">
+        <input type="email" name="email_address" placeholder="ad@isletmeniz.com" required aria-label="E-posta adresi" autocomplete="email" />
+        <button type="submit" class="btn">Abone Ol</button>
+      </div>
+      <label class="v2-news-consent">
+        <input type="checkbox" name="consent" required />
+        <span>Wiserrise'den e-posta almayı ve <a href="/gizlilik">gizlilik koşullarını</a> kabul ediyorum.</span>
+      </label>
+      <p class="newsletter-status v2-news-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 32px; padding-bottom: 48px; border-bottom: 1px solid #dedfda;">
     <div style="display: flex; flex-direction: column; gap: 12px; max-width: 280px;">
       <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.03em;">Wiserrise</span>
