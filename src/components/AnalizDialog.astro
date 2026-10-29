@@ -107,6 +107,7 @@ const { email } = Astro.props;
       if (e.target === dlg) dlg.close();
     });
 
-    if (location.hash === '#analiz-formu') open();
+    // Eski menülerdeki /tr#contact bağlantıları da formu açsın
+    if (location.hash === '#analiz-formu' || location.hash === '#contact') open();
   })();
 </script>
