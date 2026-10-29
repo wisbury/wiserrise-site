@@ -1,0 +1,112 @@
+---
+/**
+ * Ücretsiz analiz formu (yeni tasarım).
+ *
+ * Sayfadaki bütün "Ücretsiz analiz" bağlantıları (`data-analiz`) ve hero'daki
+ * site kutusu bu pencereyi açar. Form, eski ana sayfadaki formla aynı:
+ * `id="applyForm"`, aynı Formspree adresi, aynı alan adları. Gönderim, dönüşüm
+ * olayı (`audit_request`) ve /tr/success yönlendirmesi /js/script.js'te kalıyor.
+ *
+ * JS yoksa: bağlantılar #analiz-formu'na gider, `:target` kuralı pencereyi
+ * sayfa içinde normal blok olarak gösterir.
+ */
+interface Props {
+  email: string;
+}
+const { email } = Astro.props;
+---
+
+<dialog id="analiz-formu" class="v2-dialog" aria-labelledby="analizTitle">
+  <button type="button" class="v2-dialog-close" data-close aria-label="Kapat">×</button>
+  <span class="v2-eyebrow">ÜCRETSİZ ANALİZ</span>
+  <h2 id="analizTitle" class="v2-dialog-title">İşletmenizi tüm kanallarda inceleyelim.</h2>
+  <p class="v2-dialog-lead">
+    Haritada, aramada, reklamda ve süper zekâ yanıtlarında bugün nerede durduğunuzu çıkarırız.
+    Yol haritanız 24 saat içinde e-postanızda. Ücret yok, taahhüt yok.
+  </p>
+
+  <form id="applyForm" class="v2-form" action="https://formspree.io/f/mlgpzokq" method="POST">
+    <div class="v2-field v2-field--wide">
+      <label for="auditMaps">Web siteniz ya da Google Haritalar bağlantınız</label>
+      <input type="text" id="auditMaps" name="maps_url" autocomplete="url" placeholder="isletmeniz.com ya da https://maps.app.goo.gl/..." />
+    </div>
+    <div class="v2-field">
+      <label for="auditName">Ad soyad *</label>
+      <input type="text" id="auditName" name="name" autocomplete="name" required />
+    </div>
+    <div class="v2-field">
+      <label for="auditCompany">İşletme adı *</label>
+      <input type="text" id="auditCompany" name="company" autocomplete="organization" required />
+    </div>
+    <div class="v2-field">
+      <label for="auditEmail">E-posta *</label>
+      <input type="email" id="auditEmail" name="email" autocomplete="email" required />
+    </div>
+    <div class="v2-field">
+      <label for="auditPhone">Telefon *</label>
+      <input type="tel" id="auditPhone" name="phone" autocomplete="tel" required />
+    </div>
+    <div class="v2-field v2-field--wide">
+      <label for="auditCity">Şehir *</label>
+      <input type="text" id="auditCity" name="city" autocomplete="address-level2" required />
+    </div>
+    <fieldset class="v2-field v2-field--wide v2-urgency">
+      <legend>Ne zaman başlamak istersiniz? *</legend>
+      <div class="v2-urgency-options">
+        <input type="radio" id="urgToday" name="urgency" value="Bugün" required />
+        <label for="urgToday">Bugün</label>
+        <input type="radio" id="urgTomorrow" name="urgency" value="Yarın" />
+        <label for="urgTomorrow">Yarın</label>
+        <input type="radio" id="urgWeeks" name="urgency" value="Birkaç hafta içinde" />
+        <label for="urgWeeks">Birkaç hafta</label>
+      </div>
+    </fieldset>
+    <button type="submit" class="btn v2-submit">Ücretsiz Analizimi Al →</button>
+  </form>
+
+  <p class="v2-dialog-note">
+    Her şehir ve sektörde yalnızca bir işletmeyle çalışıyoruz. Sorunuz mu var?
+    <a href={`mailto:${email}`}>{email}</a>
+  </p>
+</dialog>
+
+<script is:inline>
+  (function () {
+    var dlg = document.getElementById('analiz-formu');
+    if (!dlg || typeof dlg.showModal !== 'function') return;
+    var site = document.getElementById('auditMaps');
+
+    function open(prefill) {
+      if (prefill && site) site.value = prefill;
+      if (!dlg.open) dlg.showModal();
+      var first = dlg.querySelector(prefill ? '#auditName' : '#auditMaps');
+      if (first) first.focus();
+    }
+
+    document.querySelectorAll('[data-analiz]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        open();
+      });
+    });
+
+    var hero = document.getElementById('heroForm');
+    if (hero) {
+      hero.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var v = (document.getElementById('heroSite') || {}).value || '';
+        open(v.trim());
+      });
+    }
+
+    dlg.querySelector('[data-close]').addEventListener('click', function () {
+      dlg.close();
+    });
+    // Arka plana tıklayınca kapan
+    dlg.addEventListener('click', function (e) {
+      if (e.target === dlg) dlg.close();
+    });
+
+    if (location.hash === '#analiz-formu') open();
+  })();
+</script>

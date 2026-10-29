@@ -1,0 +1,132 @@
+---
+/**
+ * Yumuşak dil önerisi.
+ *
+ * Tarayıcı dili sayfanın dilinden farklıysa ve sayfanın o dilde karşılığı varsa
+ * altta küçük, kapatılabilir bir şerit çıkar. Asla otomatik yönlendirme yok:
+ * Google, IP'ye ya da tahmin edilen dile göre yönlendirmeyi önermiyor ve
+ * tarayıcısı çoğunlukla ABD'den geldiği için diğer dilleri hiç göremeyebilir.
+ *
+ * Seçim hatırlanır: şeritten ya da menüden bir dil seçilirse ya da şerit
+ * kapatılırsa bir daha gösterilmez. Şerit yalnızca JS ile görünür, yani
+ * tarayıcılar ve arama motorları onu hiç görmez.
+ */
+import type { Locale } from '../i18n/config';
+
+interface Props {
+  locale: Locale;
+  /** Bu sayfanın dillere göre adresleri (yalnızca karşılığı olan diller). */
+  alternates: Partial<Record<Locale, string>>;
+}
+const { locale, alternates } = Astro.props;
+---
+
+<div
+  id="langSuggest"
+  class="lang-suggest"
+  hidden
+  data-page-lang={locale}
+  data-alternates={JSON.stringify(alternates)}
+  role="region"
+  aria-label="Dil önerisi"
+>
+  <span class="lang-suggest__text"></span>
+  <a class="lang-suggest__go" href="#"></a>
+  <button type="button" class="lang-suggest__close" aria-label="Kapat">×</button>
+</div>
+
+<style is:global>
+  .lang-suggest {
+    position: fixed;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: max-content;
+    max-width: calc(100vw - 32px);
+    box-sizing: border-box;
+    padding: 10px 10px 10px 18px;
+    border-radius: 999px;
+    background: #16244d;
+    color: #ffffff;
+    font: 500 14px/1.3 Geist, Inter, system-ui, sans-serif;
+    box-shadow: 0 16px 40px rgba(4, 8, 30, 0.3);
+  }
+  .lang-suggest[hidden] { display: none; }
+  #langSuggest .lang-suggest__go {
+    color: #2bb3a6;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  #langSuggest .lang-suggest__go:hover { color: #7ff0e3; }
+  .lang-suggest__close {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .lang-suggest__close:hover { background: rgba(255, 255, 255, 0.22); }
+</style>
+
+<script is:inline>
+  (function () {
+    var KEY = 'wr-lang';
+    var box = document.getElementById('langSuggest');
+    if (!box) return;
+
+    function get() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function set(v) {
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+    }
+
+    // Menüdeki dil bağlantılarından yapılan seçimi de hatırla
+    document.querySelectorAll('a[hreflang]').forEach(function (a) {
+      a.addEventListener('click', function () { set(a.getAttribute('hreflang')); });
+    });
+
+    if (get()) return;
+
+    var page = box.getAttribute('data-page-lang');
+    var alts = {};
+    try { alts = JSON.parse(box.getAttribute('data-alternates') || '{}'); } catch (e) {}
+
+    var wanted = null;
+    var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+    for (var i = 0; i < langs.length; i++) {
+      var l = String(langs[i]).slice(0, 2).toLowerCase();
+      if (l === 'tr' || l === 'en' || l === 'de') { wanted = l; break; }
+    }
+    if (!wanted || wanted === page || !alts[wanted]) return;
+
+    var copy = {
+      tr: ['Bu sayfanın Türkçesi var.', 'Türkçeye geç →'],
+      en: ['This page is available in English.', 'Switch to English →'],
+      de: ['Diese Seite gibt es auch auf Deutsch.', 'Auf Deutsch lesen →'],
+    }[wanted];
+
+    box.setAttribute('lang', wanted);
+    box.querySelector('.lang-suggest__text').textContent = copy[0];
+    var go = box.querySelector('.lang-suggest__go');
+    go.textContent = copy[1];
+    go.setAttribute('href', alts[wanted]);
+    go.setAttribute('hreflang', wanted);
+    go.addEventListener('click', function () { set(wanted); });
+    box.querySelector('.lang-suggest__close').addEventListener('click', function () {
+      set(page);
+      box.hidden = true;
+    });
+    box.hidden = false;
+  })();
+</script>

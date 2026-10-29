@@ -10,6 +10,7 @@ import {
 import { routePath, routeLocales, type RouteKey } from '../i18n/routes';
 import { t, CONTACT_EMAIL, CONTACT_PHONE, COMPANY_LEGAL_NAME } from '../i18n/ui';
 import Analytics from '../components/Analytics.astro';
+import LangSuggest from '../components/LangSuggest.astro';
 
 interface Props {
   locale: Locale;
@@ -21,6 +22,12 @@ interface Props {
   description: string;
   ogImage?: string;
   noindex?: boolean;
+  /**
+   * 'classic' = eski site (nav + footer burada, /style.css).
+   * 'v2' = 2026 yeniden tasarımı: üst menü, footer ve stiller sayfanın kendisinde;
+   * yalnızca <head>, analitik ve ortak script buradan gelir.
+   */
+  design?: 'classic' | 'v2';
 }
 
 const {
@@ -31,7 +38,9 @@ const {
   description,
   ogImage = '/images/og-image.png',
   noindex = false,
+  design = 'classic',
 } = Astro.props;
+const v2 = design === 'v2';
 
 /** Only locales that actually have this page get an hreflang tag. */
 const availableIn = routeLocales(route);
@@ -67,6 +76,8 @@ const toolHref = routeLocales('tools/gbp-audit').includes(locale)
   : null;
 const year = new Date().getFullYear();
 const phone = CONTACT_PHONE[locale];
+/** Dil önerisi şeridi için bu sayfanın diğer dillerdeki adresleri. */
+const langAlternates = Object.fromEntries(availableIn.map((l) => [l, withSlug(l)]));
 ---
 
 <!DOCTYPE html>
@@ -74,7 +85,7 @@ const phone = CONTACT_PHONE[locale];
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#F0EEE6" />
+  <meta name="theme-color" content={v2 ? '#2bb3a6' : '#F0EEE6'} />
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
@@ -111,22 +122,36 @@ const phone = CONTACT_PHONE[locale];
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-180.png" />
 
   <!-- FONTS — kendi origin'imizden; Google Fonts CDN'ine istek gitmiyor -->
-  <link
-    rel="preload"
-    href="/fonts/inter-400-800-latin.woff2"
-    as="font"
-    type="font/woff2"
-    crossorigin
-  />
-  <link rel="stylesheet" href="/fonts.css" />
-
-  <link rel="stylesheet" href="/style.css" />
+  {v2 ? (
+    <>
+      <link rel="preload" href="/fonts/geist-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+      <link rel="preload" href="/fonts/bricolage-grotesque-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+      <link rel="stylesheet" href="/fonts-v2.css" />
+      <link rel="stylesheet" href="/v2.css" />
+    </>
+  ) : (
+    <>
+      <link
+        rel="preload"
+        href="/fonts/inter-400-800-latin.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin
+      />
+      <link rel="stylesheet" href="/fonts.css" />
+      <link rel="stylesheet" href="/style.css" />
+    </>
+  )}
 
   <Analytics />
   <slot name="head" />
 </head>
 
-<body>
+<body class={v2 ? 'v2' : undefined}>
+  {v2 ? (
+    <slot />
+  ) : (
+  <>
   <header class="nav">
     <div class="container nav-inner">
       <a href={home} class="brand">
@@ -150,7 +175,7 @@ const phone = CONTACT_PHONE[locale];
         <a href={anchor('#contact')}>{strings.nav.audit}</a>
         {/* No translation for this page? Send the switcher to that locale's home. */}
         {otherLocales.map((l) => (
-          <a href={availableIn.includes(l) ? routePath(l, route) : localeHome(l)} class="lang-switch">
+          <a href={availableIn.includes(l) ? routePath(l, route) : localeHome(l)} class="lang-switch" hreflang={HREFLANG[l]}>
             {l.toUpperCase()}
           </a>
         ))}
@@ -200,7 +225,10 @@ const phone = CONTACT_PHONE[locale];
       </div>
     </div>
   </footer>
+  </>
+  )}
 
+  <LangSuggest locale={locale} alternates={langAlternates} />
   <script src="/js/script.js" defer is:inline></script>
 </body>
 </html>

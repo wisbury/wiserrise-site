@@ -87,3 +87,17 @@ Almanca ä/ß latin'de. Inter değişken font olarak alındı (400–800 tek dos
 
 Font eklemek/güncellemek gerekirse `public/fonts.css` elle düzenlenir ve yeni woff2
 dosyası yeni bir adla eklenir — `immutable` cache nedeniyle aynı adın üzerine yazmayın.
+
+## 2026 yeniden tasarımı (design="v2")
+
+Yeni görünüm sayfa sayfa geçiyor. İlk geçen sayfa TR ana sayfa (`src/pages/tr/index.astro`).
+
+- `BaseLayout`'a `design="v2"` verilen sayfada eski nav/footer ve `/style.css` yüklenmez;
+  üst menü ve footer sayfanın kendisindedir. Stiller `public/v2.css`, fontlar
+  `public/fonts-v2.css` (Bricolage Grotesque, Geist, Geist Mono — SIL OFL, kendi origin'imizden).
+- Ücretsiz analiz formu `src/components/AnalizDialog.astro`: eski formla aynı `id="applyForm"`,
+  aynı Formspree adresi ve alan adları; gönderim ve `audit_request` olayı yine `/js/script.js`'te.
+  `data-analiz` taşıyan her bağlantı ve hero'daki site kutusu bu pencereyi açar.
+- Dil önerisi `src/components/LangSuggest.astro` bütün sayfalarda: tarayıcı dili sayfanın
+  dilinden farklıysa altta kapatılabilir bir şerit çıkar. Otomatik yönlendirme yok (Google önermiyor).
+- Tasarım kaynağı: Claude Design'daki "Wiserrise Ana Sayfa" kanvası ve Wiserrise tasarım sistemi.
