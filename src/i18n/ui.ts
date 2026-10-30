@@ -43,7 +43,7 @@ export const ui = {
       sub: 'Gerçek sıralama artışı isteyen yerel işletmeler için.',
       rights: 'Tüm hakları saklıdır.',
       brandOf: 'Wiserrise, Wisbury LLC’nin bir markasıdır.',
-      claim: 'Google’da kendi Şehrinde ilk 3 - Garantili',
+      claim: 'Müşteriniz sizi arıyor. Bulsun.',
     },
     menuLabel: 'Menüyü aç',
   },
