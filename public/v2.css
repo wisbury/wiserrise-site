@@ -186,6 +186,15 @@ details[open] .v2-faq-plus { transform: rotate(45deg); }
   .v2-hl > .semse, .v2-hl > .v2-ray-card { transition: none !important; }
 }
 
+/* ---------- Bölüme gelince oynar (enerjik giriş) ---------- */
+.v2-rv { opacity: 0; transform: translateY(22px); }
+.is-in .v2-rv {
+  opacity: 1; transform: none;
+  transition: opacity 360ms cubic-bezier(.2,.8,.2,1) calc(var(--i, 0) * 70ms), transform 440ms cubic-bezier(.2,.8,.2,1) calc(var(--i, 0) * 70ms);
+}
+.v2-closing .cam.v2-rv { transform: translateY(32px) scale(.985); }
+.v2-closing.is-in .cam.v2-rv { transform: none; }
+
 /* ---------- Bülten (footer) ---------- */
 .v2-news {
   display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px 48px;
