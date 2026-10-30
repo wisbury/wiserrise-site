@@ -101,3 +101,6 @@ Yeni görünüm sayfa sayfa geçiyor. İlk geçen sayfa TR ana sayfa (`src/pages
 - Dil önerisi `src/components/LangSuggest.astro` bütün sayfalarda: tarayıcı dili sayfanın
   dilinden farklıysa altta kapatılabilir bir şerit çıkar. Otomatik yönlendirme yok (Google önermiyor).
 - Tasarım kaynağı: Claude Design'daki "Wiserrise Ana Sayfa" kanvası ve Wiserrise tasarım sistemi.
+- Süper zekâ motorlarının resmî logoları `public/images/ai/` klasörüne `chatgpt.svg`, `gemini.svg`,
+  `perplexity.svg`, `google.svg` adlarıyla konursa TR ana sayfadaki SZ panelinde otomatik görünür; dosya
+  yoksa genel yıldız simgesi çıkar. Logoları şirketlerin kendi marka sayfalarından indirip kurallarına uyun.

@@ -120,6 +120,8 @@ input::placeholder{color:#868982}
   .wz-setB, .wz-lblB, .wz-menu, .wz-cursor3 { opacity: 0 !important; }
 }
 
+.wz-ailogo { flex: 0 0 auto; display: block; object-fit: contain; }
+
 /* ---------- Header ---------- */
 .v2-header { position: relative; z-index: 2; }
 .v2-top { margin-top: -72px; padding-top: 72px; }
