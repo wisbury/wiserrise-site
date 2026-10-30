@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnalizDialog from '../../components/AnalizDialog.astro';
+import Header from '../../components/v2/Header.astro';
+import Footer from '../../components/v2/Footer.astro';
 import { homeSchema, type FaqEntry } from '../../lib/schema';
 import { CONTACT_EMAIL } from '../../i18n/ui';
 
@@ -66,7 +68,6 @@ const ai = {
 
 const locale = 'tr' as const;
 const email = CONTACT_EMAIL[locale];
-const year = new Date().getFullYear();
 const title = 'Dijital Pazarlama Ajansı: Local SEO, SEO, Google Ads, GEO | Wiserrise';
 const description =
   'Haritalar, arama sonuçları, reklamlar ve süper zekâ yanıtları. Wiserrise işletmenizi müşterinin aradığı her yerde görünür kılar. Ücretsiz analiz 24 saat içinde.';
@@ -87,34 +88,7 @@ const description =
     set:html={JSON.stringify(homeSchema({ locale, name: title, description, faq }))}
   />
 
-<div style="background: #2bb3a6; color: #16244d; font-size: 13px; font-weight: 500; text-align: center; padding: 9px 24px; line-height: 1.4;">
-  <a href="#analiz-formu" data-analiz style="color: #16244d; text-decoration: none;"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; margin-right: 10px;">ÜCRETSİZ ANALİZ</span>İşletmenizi tüm kanallarda inceleyelim, yol haritanız 24 saat içinde gelsin →</a>
-</div>
-
-<header class="v2-header" style="max-width: 1312px; margin: 0 auto; padding: 16px clamp(16px, 3vw, 32px); min-height: 72px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
-  <a href="/tr" aria-label="Wiserrise ana sayfa" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1a1b19;">
-    <svg aria-hidden="true" viewBox="0 0 110.25 80" width="44" height="32" style="display: block; flex: 0 0 auto;"><polygon points="0,80 49,0 67.5,30.2 37,80" fill="#16244d"></polygon><polygon points="57.25,60 83.75,16.7 110.25,60" fill="#2bb3a6"></polygon></svg>
-    <span style="display: flex; flex-direction: column; line-height: 1;">
-      <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 26px; font-weight: 700; letter-spacing: -0.03em;">Wiserrise</span>
-      <span style="font-size: 11px; color: #5c5e59; margin-top: 3px; letter-spacing: 0.01em;">Dijital pazarlama ajansı</span>
-    </span>
-  </a>
-  <nav class="v2-nav" aria-label="Ana menü" style="display: flex; flex-wrap: wrap; align-items: center; gap: 32px; font-size: 15px; font-weight: 500;">
-    <a class="navlink" href="#hizmetler" style="color: #1a1b19; text-decoration: none;">Hizmetler</a>
-    <a class="navlink" href="/tr/sektorler" style="color: #1a1b19; text-decoration: none;">Sektörler</a>
-    <a class="navlink" href="/tr/rehber" style="color: #1a1b19; text-decoration: none;">Rehberler</a>
-    <a class="navlink" href="#surec" style="color: #1a1b19; text-decoration: none;">Nasıl çalışır</a>
-    <a class="navlink" href="#sss" style="color: #1a1b19; text-decoration: none;">SSS</a>
-  </nav>
-  <div style="display: flex; align-items: center; gap: 10px;">
-    <div class="v2-lang" aria-label="Dil" style="display: inline-flex; align-items: center; height: 44px; padding: 0 6px; border-radius: 999px; border: 1px solid #868982; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 13px; font-weight: 500; box-sizing: border-box;">
-      <span aria-current="true" style="padding: 0 8px; color: #16244d; font-weight: 700;">TR</span>
-      <a href="/" hreflang="en" lang="en" style="padding: 0 8px; color: #5c5e59; text-decoration: none;">EN</a>
-      <a href="/de" hreflang="de" lang="de" style="padding: 0 8px; color: #5c5e59; text-decoration: none;">DE</a>
-    </div>
-    <a class="btn v2-header-cta" href="#analiz-formu" data-analiz style="display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 22px; border-radius: 999px; background: #16244d; color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; box-sizing: border-box;">Ücretsiz analiz</a>
-  </div>
-</header>
+<Header />
 
 <main id="main">
 <div class="v2-top" style="background: linear-gradient(180deg, rgba(246,246,243,0) 72%, #f6f6f3 100%), linear-gradient(115deg, #dff3ef 0%, #eef1f6 48%, #e2e6f7 100%);">
@@ -272,38 +246,44 @@ const description =
     <a class="card v2-ray-card" href="/tr/araclar/google-isletme-profili-denetimi" style="flex: 1 1 320px; min-width: 0; position: relative; display: flex; flex-direction: column; gap: 18px; padding: 56px 40px 40px; border-radius: 24px; background-color: #ffffff; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='320' viewBox='0 0 420 320'%3E%3Cline x1='440' y1='340' x2='190.2' y2='348.7' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='265' y2='337.8' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='190.5' y2='324.9' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='266' y2='321.2' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='193' y2='301.3' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='268.6' y2='304.7' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='197.8' y2='278' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='272.7' y2='288.6' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='204.8' y2='255.2' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='278.4' y2='272.9' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='213.9' y2='233.3' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='285.5' y2='257.8' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='225.1' y2='212.3' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='294' y2='243.5' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='238.2' y2='192.4' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='303.8' y2='230.1' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='253.2' y2='173.9' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='314.9' y2='217.6' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='269.8' y2='156.9' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='327.1' y2='206.3' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='288' y2='141.5' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='340.3' y2='196.2' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='307.5' y2='128' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='354.4' y2='187.3' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='328.3' y2='116.4' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='369.3' y2='179.9' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='350' y2='106.7' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='384.9' y2='173.9' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='372.6' y2='99.3' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='400.9' y2='169.4' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='395.8' y2='93.9' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='417.3' y2='166.5' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='419.4' y2='90.9' stroke='%2316244d' stroke-opacity='0.9' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='440' y1='340' x2='433.9' y2='165.1' stroke='%2316244d' stroke-opacity='0.45' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right bottom; background-size: 360px auto; border: 1px solid #dedfda; color: #1a1b19; text-decoration: none; box-sizing: border-box;">
       <div class="gp-text">
       <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;">ÜCRETSİZ ARAÇ</span>
-      <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: clamp(30px, 4.2vw, 44px); line-height: 1.02; font-weight: 600; letter-spacing: -0.03em; max-width: 300px;">Google profilinizi şimdi analiz edin.</span>
-      <span style="font-size: 16px; line-height: 1.55; color: #5c5e59; max-width: 320px;">Kategoriler, fotoğraflar, yorumlar ve eksik bilgiler. Profilinizi haritada geri tutan ne varsa tek listede.</span>
-      <span class="btn" style="margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border-radius: 999px; border: 1px solid #1a1b19; background: #ffffff; font-size: 15px; font-weight: 600;">Profil analizini başlat →</span>
+      <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: clamp(30px, 3.6vw, 40px); line-height: 1.04; font-weight: 600; letter-spacing: -0.03em; max-width: 320px;">Google profiliniz kaç puan alıyor?</span>
+      <span style="font-size: 16px; line-height: 1.55; color: #5c5e59; max-width: 320px;">10 soruda profilinizi dört başlıkta puanlayın: kategori, yorumlar, tazelik ve site bağlantısı. Önce neyi düzeltmeniz gerektiği hemen çıkar.</span>
+      <span style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11.5px; font-weight: 500; color: #16244d;"><span style="padding: 4px 10px; border-radius: 999px; background: #eef1f6;">10 soru</span><span style="padding: 4px 10px; border-radius: 999px; background: #eef1f6;">~2 dk</span><span style="padding: 4px 10px; border-radius: 999px; background: #eef1f6;">Kayıt yok</span></span>
+      <span class="btn" style="margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border-radius: 999px; border: 1px solid #1a1b19; background: #ffffff; font-size: 15px; font-weight: 600;">Puanımı hesapla →</span>
       </div>
       <div class="gp-panel" aria-hidden="true">
         <div class="gp-stage">
-          <div class="gp-profile">
-            <span class="gp-scan"></span>
-            <div class="gp-prow">
-              <span class="gp-avatar">İ</span>
-              <span class="gp-id">
-                <b>İşletmeniz</b>
-                <span>Fizyoterapist · Kadıköy</span>
-                <span><i class="gp-stars">★★★★</i><i class="gp-stars gp-stars--off">★</i> 4,6 · 82 yorum</span>
-              </span>
-              <span class="gp-state"><span class="gp-state-scan">Taranıyor…</span><span class="gp-state-done">Tarandı ✓</span></span>
+          <div class="gp-scene">
+            <div class="gp-card gp-q">
+              <div class="gp-qhead"><span class="gp-kicker">Site bağlantısı</span><span class="gp-mono" style="font-size: 11px; color: #5c5e59;">10 / 10</span></div>
+              <div class="gp-prog"><i></i></div>
+              <p class="gp-qtitle"><span class="gp-qnum gp-mono">10</span>Sitenizdeki işletme adı ve telefon, profildekiyle birebir aynı mı?</p>
+              <div class="gp-opts">
+                <span class="gp-opt gp-opt-on">Evet, harfi harfine aynı</span>
+                <span class="gp-opt">Küçük farklılıklar var</span>
+                <span class="gp-opt">Kontrol etmedim</span>
+                <span class="gp-cursor"><svg viewBox="0 0 22 22" width="22" height="22"><path d="M4 2 L4 18 L8.5 13.8 L11.6 20 L14.2 18.8 L11.2 12.6 L17 12.4 Z" fill="#16244d" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"></path></svg></span>
+              </div>
             </div>
-            <span class="gp-skel" style="width: 82%;"></span>
-            <span class="gp-skel" style="width: 64%;"></span>
+            <div class="gp-card gp-live"><span class="gp-kicker">Anlık puan</span><span class="gp-live-n"></span><span class="gp-mono" style="font-size: 11px; color: #5c5e59;">/ 100</span><span class="gp-live-d">+10</span></div>
           </div>
-          <div class="gp-list">
-            <div class="gp-row gp-r1"><i class="gp-ic gp-ok">✓</i><span>Birincil kategori</span><em>Doğru</em></div>
-            <div class="gp-row gp-r2"><i class="gp-ic gp-warn">!</i><span>Fotoğraflar</span><em>6 / önerilen 20+</em></div>
-            <div class="gp-row gp-r3"><i class="gp-ic gp-bad">✕</i><span>Hizmet listesi</span><em>Eksik</em></div>
-            <div class="gp-row gp-r4"><i class="gp-ic gp-warn">!</i><span>Yorum yanıtları</span><em>%40 yanıtlanmış</em></div>
-            <div class="gp-row gp-r5"><i class="gp-ic gp-ok">✓</i><span>Çalışma saatleri</span><em>Güncel</em></div>
-            <div class="gp-row gp-r6"><i class="gp-ic gp-bad">✕</i><span>Gönderiler</span><em>90 gündür yok</em></div>
-          </div>
-          <div class="gp-foot">
-            <span class="gp-ring"><svg viewBox="0 0 48 48" width="48" height="48"><circle cx="24" cy="24" r="19" fill="none" stroke="#ecece7" stroke-width="6"></circle><circle class="gp-ring-val" cx="24" cy="24" r="19" fill="none" stroke="#2bb3a6" stroke-width="6" stroke-linecap="round"></circle></svg><b class="gp-count"></b></span>
-            <span class="gp-sum"><b>Profil skoru</b><span>2 kritik eksik, 2 iyileştirme</span></span>
-            <span class="gp-chip">Rapor hazır →</span>
+          <div class="gp-scene gp-res">
+            <div class="gp-card gp-in1">
+              <div class="gp-top">
+                <span class="gp-ring"><svg viewBox="0 0 64 64" width="64" height="64"><circle cx="32" cy="32" r="26" fill="none" stroke="#ecece7" stroke-width="7"></circle><circle class="gp-ring-val" cx="32" cy="32" r="26" fill="none" stroke="#2bb3a6" stroke-width="7" stroke-linecap="round"></circle></svg><b class="gp-count"></b></span>
+                <span class="gp-toptxt"><span class="gp-kicker">Profil puanı · 100 üzerinden</span><span class="gp-toprow"><b>Belirgin boşluklar var</b><span class="gp-band">2 başlık zayıf</span></span></span>
+              </div>
+              <div class="gp-bars">
+                <div><div class="gp-bar-h"><span>Kategori ve temel bilgiler</span><em>25/30</em></div><div class="gp-track"><i style="--w: 83%;"></i></div></div>
+                <div><div class="gp-bar-h"><span>Değerlendirmeler</span><em>14/30</em></div><div class="gp-track"><i class="gp-weak" style="--w: 47%; --dl: .15s;"></i></div></div>
+                <div><div class="gp-bar-h"><span>İçerik ve tazelik</span><em>5/20</em></div><div class="gp-track"><i class="gp-weak" style="--w: 25%; --dl: .3s;"></i></div></div>
+                <div><div class="gp-bar-h"><span>Site bağlantısı</span><em>16/20</em></div><div class="gp-track"><i style="--w: 80%; --dl: .45s;"></i></div></div>
+              </div>
+            </div>
+            <div class="gp-fixh gp-in2"><span class="gp-kicker">Önce şunları düzeltin</span><span class="gp-mono" style="font-size: 11px; color: #5c5e59;">2 madde</span></div>
+            <div class="gp-fix gp-in2"><span class="gp-fix-ic"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M8 2.2 14.4 13.4H1.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 6.6v3.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="11.6" r=".9" fill="currentColor"/></svg></span><span><b>Rakiplere göre yorum hacmi</b><span>İlk üçteki rakiplerden belirgin şekilde az</span></span><em>→</em></div>
+            <div class="gp-fix gp-in3"><span class="gp-fix-ic"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M8 2.2 14.4 13.4H1.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 6.6v3.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="11.6" r=".9" fill="currentColor"/></svg></span><span><b>Fotoğraf tazeliği</b><span>Son 90 günde yeni fotoğraf yok</span></span><em>→</em></div>
+            <div class="gp-foot gp-in4"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.6" fill="none" stroke="#7ff0e3" stroke-width="1.5"/><path d="M5.5 7V5.2a2.5 2.5 0 0 1 5 0V7" fill="none" stroke="#7ff0e3" stroke-width="1.5"/></svg><span><b>Tarayıcınızda hesaplanır.</b> Hiçbir veri gönderilmez.</span></div>
           </div>
         </div>
       </div>
@@ -501,7 +481,6 @@ const description =
     <p style="margin: 8px 0 0; font-size: 15px; color: #5c5e59;">Burada olmayan bir soru için: <a href={`mailto:${email}`} style="color: #16244d; font-weight: 500;">{email}</a></p>
   </div>
   <div style="flex: 999 1 560px; display: flex; flex-direction: column; border-top: 1px solid #dedfda;">
-  <div style="flex: 999 1 560px; display: flex; flex-direction: column; border-top: 1px solid #dedfda;">
     {faq.map((item, i) => (
       <details open={i === 0} style="border-bottom: 1px solid #dedfda; padding: 24px 0;">
         <summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -0.015em;"><span>{item.q}</span><span aria-hidden="true" class="v2-faq-plus" style="width: 32px; height: 32px; border-radius: 999px; border: 1px solid #868982; display: inline-flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500; color: #16244d; flex: 0 0 auto;">+</span></summary>
@@ -604,68 +583,7 @@ const description =
 
 <AnalizDialog email={email} />
 
-<footer style="max-width: 1312px; margin: 0 auto; padding: clamp(64px, 8vw, 96px) clamp(16px, 3vw, 32px) 0;">
-  <div class="v2-news">
-    <div class="v2-news-copy">
-      <span class="v2-eyebrow">BÜLTEN</span>
-      <span class="v2-news-title">Bugün uygulayabileceğiniz üç ücretsiz ipucuyla başlayın.</span>
-    </div>
-    <form id="newsletterForm" class="v2-news-form" action="https://app.kit.com/forms/9696107/subscriptions" method="POST">
-      <div class="v2-news-row">
-        <input type="email" name="email_address" placeholder="ad@isletmeniz.com" required aria-label="E-posta adresi" autocomplete="email" />
-        <button type="submit" class="btn">Abone Ol</button>
-      </div>
-      <label class="v2-news-consent">
-        <input type="checkbox" name="consent" required />
-        <span>Wiserrise'den e-posta almayı ve <a href="/gizlilik">gizlilik koşullarını</a> kabul ediyorum.</span>
-      </label>
-      <p class="newsletter-status v2-news-status" role="status" aria-live="polite"></p>
-    </form>
-  </div>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 32px; padding-bottom: 48px; border-bottom: 1px solid #dedfda;">
-    <div style="display: flex; flex-direction: column; gap: 12px; max-width: 280px;">
-      <span style="display: flex; align-items: center; gap: 8px;"><svg aria-hidden="true" viewBox="0 0 110.25 80" width="33" height="24" style="display: block; flex: 0 0 auto;"><polygon points="0,80 49,0 67.5,30.2 37,80" fill="#16244d"></polygon><polygon points="57.25,60 83.75,16.7 110.25,60" fill="#2bb3a6"></polygon></svg><span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.03em;">Wiserrise</span></span>
-      <span style="font-size: 14px; line-height: 1.55; color: #5c5e59;">Yerel işletmeler ve markalar için dijital pazarlama. Haritada, aramada, reklamda ve süper zekâ yanıtlarında bulunun.</span>
-      <a href={`mailto:${email}`} style="font-size: 14px; font-weight: 500; color: #16244d;">{email}</a>
-    </div>
-    <nav aria-label="Hizmetler" style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
-      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59; margin-bottom: 4px;">HİZMETLER</span>
-      <a href="/tr/hizmetler/yerel-seo" style="color: #1a1b19; text-decoration: none;">Local SEO</a>
-      <a href="/tr/hizmetler" style="color: #1a1b19; text-decoration: none;">SEO</a>
-      <a href="#analiz-formu" data-analiz style="color: #1a1b19; text-decoration: none;">Google Ads</a>
-      <a href="#analiz-formu" data-analiz style="color: #1a1b19; text-decoration: none;">GEO</a>
-      <a href="#analiz-formu" data-analiz style="color: #1a1b19; text-decoration: none;">Backlink paketleri</a>
-    </nav>
-    <nav aria-label="Şirket" style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
-      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59; margin-bottom: 4px;">ŞİRKET</span>
-      <a href="/tr/sektorler" style="color: #1a1b19; text-decoration: none;">Sektörler</a>
-      <a href="#surec" style="color: #1a1b19; text-decoration: none;">Nasıl çalışır</a>
-      <a href="#sss" style="color: #1a1b19; text-decoration: none;">Sık sorulanlar</a>
-      <a href={`mailto:${email}`} style="color: #1a1b19; text-decoration: none;">İletişim</a>
-    </nav>
-    <nav aria-label="Araçlar" style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
-      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59; margin-bottom: 4px;">ÜCRETSİZ ARAÇLAR</span>
-      <a href="/tr/araclar/google-isletme-profili-denetimi" style="color: #1a1b19; text-decoration: none;">Google profil analizi</a>
-      <a href="#analiz-formu" data-analiz style="color: #1a1b19; text-decoration: none;">Görünürlük analizi</a>
-      <a href="/tr/rehber" style="color: #1a1b19; text-decoration: none;">Rehberler</a>
-    </nav>
-    <nav aria-label="Dil" style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
-      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59; margin-bottom: 4px;">DİL</span>
-      <a href="/tr" style="color: #1a1b19; text-decoration: none;">Türkçe</a>
-      <a href="/" style="color: #1a1b19; text-decoration: none;">English</a>
-      <a href="/de" style="color: #1a1b19; text-decoration: none;">Deutsch</a>
-    </nav>
-  </div>
-  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; padding: 24px 0; font-size: 13px; color: #5c5e59;">
-    <span>© {year} Wisbury LLC. Wiserrise, Wisbury LLC markasıdır.</span>
-    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-      <a href="/gizlilik" style="color: #5c5e59; text-decoration: none;">Gizlilik</a>
-      <a href="/kullanim-kosullari" style="color: #5c5e59; text-decoration: none;">Koşullar</a>
-    </div>
-  </div><div class="semse-foot" aria-hidden="true" style="margin-top: 24px; height: clamp(84px, 15vw, 220px); overflow: hidden; display: flex; align-items: flex-end; justify-content: center">
-  <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: clamp(88px, 17vw, 240px); line-height: 0.78; font-weight: 700; letter-spacing: -0.045em; color: #16244d; white-space: nowrap; transform: translateY(18px);">Wiserrise</span>
-</div>
-</footer>
+<Footer email={email} />
 
 <script is:inline>
   // Bölüme gelince oynar: başlık bloğu, kartlar, adımlar ve SSS sırayla yukarı kayarak gelir.

@@ -1,0 +1,121 @@
+---
+/**
+ * Profil denetim aracı, v2 tasarım. İşleyişi klasik AuditTool ile aynı:
+ * /js/gbp-audit.js aynı id ve sınıfları (auditTool, auditScore, .audit-bar …)
+ * kullanıyor; burada yalnızca görünüm değişiyor.
+ */
+import type { Locale } from '../../i18n/config';
+import { routePath } from '../../i18n/routes';
+import { getAudit } from '../../data/gbp-audit';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const { groups, questions, bands, ui } = getAudit(locale);
+
+const maxScore = questions.reduce((s, q) => s + Math.max(...q.options.map((o) => o.points)), 0);
+
+const payload = {
+  groups,
+  bands,
+  ui,
+  questions: questions.map((q) => ({
+    id: q.id,
+    group: q.group,
+    question: q.question,
+    max: Math.max(...q.options.map((o) => o.points)),
+    advice: q.advice,
+    href: q.link ? routePath(locale, q.link) : null,
+  })),
+};
+
+const lock =
+  '<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 7V5.2a2.5 2.5 0 0 1 5 0V7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>';
+---
+
+<form id="auditTool" class="at" style={`--audit-max: ${maxScore};`}>
+  <div class="at-qs">
+    {groups.map((group, gi) => (
+      <fieldset class="at-group">
+        <legend class="at-legend">
+          <span class="at-gnum">{String(gi + 1).padStart(2, '0')}</span>
+          <span class="at-gname">{group.label}</span>
+          <em>{group.max} puan</em>
+        </legend>
+        {questions
+          .filter((q) => q.group === group.id)
+          .map((q) => (
+            <div class="at-q" data-question={q.id}>
+              <p class="at-q-title">
+                <span class="at-q-num">{questions.indexOf(q) + 1}</span>
+                <span>{q.question}</span>
+              </p>
+              {q.help && <p class="at-q-help">{q.help}</p>}
+              <div class="at-opts">
+                {q.options.map((opt) => (
+                  <label class="at-opt">
+                    <input type="radio" name={q.id} value={opt.points} />
+                    <span class="at-opt-dot" aria-hidden="true"></span>
+                    <span class="at-opt-l">{opt.label}</span>
+                    <span class="at-opt-p">+{opt.points}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          ))}
+      </fieldset>
+    ))}
+  </div>
+
+  <aside class="at-panel" id="auditResult" aria-live="polite">
+    <div class="at-card">
+      <span class="at-kicker">Profil puanınız</span>
+      <div class="at-score">
+        <svg viewBox="0 0 120 120" width="120" height="120" aria-hidden="true">
+          <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"></circle>
+          <circle class="at-ring" cx="60" cy="60" r="52" fill="none" stroke="#2bb3a6" stroke-width="10" stroke-linecap="round"></circle>
+        </svg>
+        <div class="at-score-n"><span id="auditScore">0</span><small>/{maxScore}</small></div>
+      </div>
+      <div class="at-prog">
+        <span><span id="auditAnswered">0</span>/{questions.length} {ui.answered}</span>
+        <div class="at-prog-track"><i></i></div>
+      </div>
+
+      <div class="at-bars">
+        {groups.map((group) => (
+          <div class="audit-bar at-bar" data-group={group.id}>
+            <div class="at-bar-h">
+              <span>{group.label}</span>
+              <strong data-group-score>0/{group.max}</strong>
+            </div>
+            <div class="at-track"><div class="audit-bar-fill" style="width:0%"></div></div>
+          </div>
+        ))}
+      </div>
+
+      <div id="auditVerdict" class="at-verdict" hidden></div>
+
+      <a href="#analiz-formu" data-analiz class="at-cta" id="auditCta" hidden>{ui.ctaLabel}</a>
+      <p class="at-note"><Fragment set:html={lock} /> Hesaplama tarayıcınızda yapılır, yanıtlar kaydedilmez.</p>
+    </div>
+    <button type="reset" class="at-reset">Baştan başla</button>
+  </aside>
+
+  <a class="at-mini" href="#auditResult" aria-hidden="true" tabindex="-1">
+    <span class="at-mini-s"></span><small>/{maxScore}</small>
+    <span class="at-mini-n"></span>
+    <span class="at-mini-go">Sonuç ↓</span>
+  </a>
+</form>
+
+<section id="auditAdvice" class="at-advice" hidden>
+  <span class="at-kicker at-kicker--dark">Öncelik sırası</span>
+  <h2>{ui.adviceHeading}</h2>
+  <div id="auditAdviceList" class="at-advice-list"></div>
+</section>
+
+<script type="application/json" id="auditData" is:inline set:html={JSON.stringify(payload)} />
+<script src="/js/gbp-audit.js" defer is:inline></script>

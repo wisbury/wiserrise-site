@@ -1,12 +1,17 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { routePath } from '../../../i18n/routes';
-import AuditTool from '../../../components/AuditTool.astro';
+import AuditTool from '../../../components/v2/AuditTool.astro';
+import AnalizDialog from '../../../components/AnalizDialog.astro';
+import Header from '../../../components/v2/Header.astro';
+import Footer from '../../../components/v2/Footer.astro';
 import { servicePageSchema } from '../../../lib/schema';
+import { CONTACT_EMAIL } from '../../../i18n/ui';
 
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 const url = routePath(locale, 'tools/gbp-audit');
+const email = CONTACT_EMAIL[locale];
 
 const faq = [
   {
@@ -36,11 +41,20 @@ const schema = servicePageSchema({
   ],
 });
 
+const alternates = {
+  en: routePath('en', 'tools/gbp-audit'),
+  de: routePath('de', 'tools/gbp-audit'),
+};
+
+const mono = "font-family: 'Geist Mono', ui-monospace, monospace;";
+const display = "font-family: 'Bricolage Grotesque', Geist, sans-serif;";
+const chip = `${mono} display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.7); box-shadow: inset 0 0 0 1px rgba(22,36,77,.08); font-size: 12px; font-weight: 500; color: #16244d;`;
 ---
 
 <BaseLayout
   locale={locale}
   route="tools/gbp-audit"
+  design="v2"
   title="Ücretsiz Google İşletme Profili Denetimi | Wiserrise"
   description="Profilinizin yerel sıralama açısından nerede zayıf olduğunu 10 soruda ölçün. Kayıt yok, e-posta yok — sonuç anında tarayıcınızda."
 >
@@ -51,56 +65,71 @@ const schema = servicePageSchema({
     set:html={JSON.stringify(schema)}
   />
 
-  <section class="page-hero">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <ol>
-          <li><a href="/tr">Ana Sayfa</a></li>
-          <li><span aria-current="page">Profil Denetimi</span></li>
-        </ol>
-      </nav>
+<Header base="/tr" alternates={alternates} />
 
-      <span class="eyebrow">Ücretsiz araç</span>
-      <h1>Google İşletme Profili Denetimi</h1>
-      <p class="lede">
-        Profilinizin yerel sıralama açısından nerede güçlü, nerede zayıf olduğunu 10 soruda
-        görün. Kayıt yok, e-posta yok — hesaplama tarayıcınızda yapılıyor, hiçbir veri bize
-        gönderilmiyor.
-      </p>
+<main id="main">
+<div class="v2-top" style="background: linear-gradient(180deg, rgba(246,246,243,0) 60%, #f6f6f3 100%), linear-gradient(115deg, #dff3ef 0%, #eef1f6 48%, #e2e6f7 100%);">
+  <section style="max-width: 1312px; margin: 0 auto; padding: clamp(40px, 6vw, 72px) clamp(16px, 3vw, 32px) clamp(40px, 5vw, 56px); display: flex; flex-direction: column; gap: 20px;">
+    <nav aria-label="Breadcrumb" style={`${mono} font-size: 12px; color: #5c5e59;`}>
+      <ol style="list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0;">
+        <li><a href="/tr" style="color: #5c5e59; text-decoration: none;">Ana sayfa</a></li>
+        <li aria-hidden="true">/</li>
+        <li><span aria-current="page" style="color: #16244d;">Profil denetimi</span></li>
+      </ol>
+    </nav>
+    <span style={`${mono} font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;`}>ÜCRETSİZ ARAÇ</span>
+    <h1 style={`${display} margin: 0; font-size: clamp(40px, 6.4vw, 76px); line-height: 0.98; font-weight: 600; letter-spacing: -0.045em; color: #1a1b19; max-width: 900px;`}>Google profiliniz kaç puan alıyor?</h1>
+    <p style="margin: 0; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.5; color: #4a4c48; max-width: 640px;">10 soruda profilinizi dört başlıkta puanlayın. Puanlama açık: her cevabın kaç puan getirdiğini görürsünüz, zayıf çıkan her madde için ne yapmanız gerektiği altta listelenir.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px;">
+      <span style={chip}>10 soru</span>
+      <span style={chip}>~2 dakika</span>
+      <span style={chip}>Kayıt ve e-posta yok</span>
+      <span style={chip}>Veriler tarayıcınızda kalır</span>
     </div>
   </section>
+</div>
 
-  <section style="padding-top:0;">
-    <div class="container">
-      <AuditTool locale={locale} ctaHref="/tr#contact" />
+<section style="max-width: 1312px; margin: 0 auto; padding: 8px clamp(16px, 3vw, 32px) 0;">
+  <AuditTool locale={locale} />
+</section>
 
-      <div class="prose" style="margin-top:64px;">
-        <h2>Bu araç neyi ölçüyor, neyi ölçmüyor?</h2>
-        <p>
-          Ölçtüğü şey profilinizin <strong>yapısal durumu</strong>: kategori doğruluğu,
-          hizmet yapısı, değerlendirme gücü, tazelik ve site bağlantısı. Bunlar Google’ın
-          yerel sıralamada baktığı alaka ve öne çıkma sinyallerinin büyük bölümünü oluşturuyor.
-        </p>
-        <p>
-          Ölçmediği şey <strong>gerçek sıralamanız</strong>. Yerel sıralama arayanın konumuna
-          göre değişiyor; tek bir puan bunu gösteremez. Şehrinizin hangi bölgesinde kaçıncı
-          olduğunuzu görmek için
-          <a href={p('services/rank-tracking')}>49 noktalık grid ölçümü</a> gerekiyor — onu da
-          ücretsiz analizde çıkarıyoruz.
-        </p>
-
-        <h2 id="sss">Sık sorulanlar</h2>
-        {faq.map((item) => (
-          <details class="faq-item">
-            <summary>
-              <span>{item.q}</span>
-              <div class="faq-icon">+</div>
-            </summary>
-            <p>{item.a}</p>
-          </details>
-        ))}
-      </div>
+<section style="max-width: 1312px; margin: 0 auto; padding: clamp(72px, 10vw, 112px) clamp(16px, 3vw, 32px) 0;">
+  <span style={`${mono} font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;`}>ŞEFFAFLIK</span>
+  <h2 style={`${display} margin: 12px 0 32px; font-size: clamp(30px, 4.2vw, 44px); line-height: 1.02; font-weight: 600; letter-spacing: -0.03em; max-width: 640px;`}>Bu araç neyi ölçüyor, neyi ölçmüyor?</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
+    <div style="display: flex; flex-direction: column; gap: 12px; padding: 32px; border-radius: 24px; background: #ffffff; border: 1px solid #e3e5df;">
+      <span style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 12px; background: #e9f8f6; color: #187a50;"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3.5 8.5 6.5 11.5 12.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <h3 style={`${display} margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; color: #16244d;`}>Ölçtüğü: yapısal durum</h3>
+      <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #5c5e59;">Kategori doğruluğu, hizmet yapısı, değerlendirme gücü, tazelik ve site bağlantısı. Bunlar Google’ın yerel sıralamada baktığı alaka ve öne çıkma sinyallerinin büyük bölümünü oluşturuyor.</p>
     </div>
-  </section>
+    <div style="display: flex; flex-direction: column; gap: 12px; padding: 32px; border-radius: 24px; background: #ffffff; border: 1px solid #e3e5df;">
+      <span style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 12px; background: #fbefd9; color: #8a5a12;"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M4.5 4.5 11.5 11.5M11.5 4.5 4.5 11.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+      <h3 style={`${display} margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; color: #16244d;`}>Ölçmediği: gerçek sıralamanız</h3>
+      <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #5c5e59;">Yerel sıralama arayanın konumuna göre değişiyor; tek bir puan bunu gösteremez. Şehrinizin hangi bölgesinde kaçıncı olduğunuzu görmek için <a href={p('services/rank-tracking')} style="color: #16244d; font-weight: 600;">49 noktalık grid ölçümü</a> gerekiyor. Onu da ücretsiz analizde çıkarıyoruz.</p>
+    </div>
+  </div>
+</section>
+
+<section id="sss" style="max-width: 1312px; margin: 0 auto; padding: clamp(72px, 10vw, 112px) clamp(16px, 3vw, 32px) 0; display: flex; flex-wrap: wrap; gap: 48px;">
+  <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 16px;">
+    <span style={`${mono} font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;`}>SIK SORULANLAR</span>
+    <h2 style={`${display} margin: 0; font-size: clamp(30px, 4.2vw, 44px); line-height: 1.02; font-weight: 600; letter-spacing: -0.03em;`}>Araç hakkında.</h2>
+    <p style="margin: 8px 0 0; font-size: 15px; color: #5c5e59;">Başka bir soru için: <a href={`mailto:${email}`} style="color: #16244d; font-weight: 500;">{email}</a></p>
+  </div>
+  <div style="flex: 999 1 560px; display: flex; flex-direction: column; border-top: 1px solid #dedfda;">
+    {faq.map((item, i) => (
+      <details open={i === 0} style="border-bottom: 1px solid #dedfda; padding: 24px 0;">
+        <summary style={`${display} display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 22px; font-weight: 600; letter-spacing: -0.015em;`}><span>{item.q}</span><span aria-hidden="true" class="v2-faq-plus" style="width: 32px; height: 32px; border-radius: 999px; border: 1px solid #868982; display: inline-flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500; color: #16244d; flex: 0 0 auto;">+</span></summary>
+        <p style="margin: 12px 0 0; font-size: 16px; color: #5c5e59; max-width: 640px;">{item.a}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+</main>
+
+<AnalizDialog email={email} />
+
+<Footer email={email} base="/tr" />
 
 </BaseLayout>

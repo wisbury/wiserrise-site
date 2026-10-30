@@ -1,0 +1,72 @@
+---
+/** v2 alt bilgi: bülten, link ızgarası, telif, şemse kelime işareti. */
+interface Props {
+  email: string;
+  base?: string;
+}
+const { email, base = '' } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer style="max-width: 1312px; margin: 0 auto; padding: clamp(64px, 8vw, 96px) clamp(16px, 3vw, 32px) 0;">
+  <div class="v2-news">
+    <div class="v2-news-copy">
+      <span class="v2-eyebrow">BÜLTEN</span>
+      <span class="v2-news-title">Bugün uygulayabileceğiniz üç ücretsiz ipucuyla başlayın.</span>
+    </div>
+    <form id="newsletterForm" class="v2-news-form" action="https://app.kit.com/forms/9696107/subscriptions" method="POST">
+      <div class="v2-news-row">
+        <input type="email" name="email_address" placeholder="ad@isletmeniz.com" required aria-label="E-posta adresi" autocomplete="email" />
+        <button type="submit" class="btn">Abone Ol</button>
+      </div>
+      <label class="v2-news-consent">
+        <input type="checkbox" name="consent" required />
+        <span>Wiserrise'den e-posta almayı ve <a href="/gizlilik">gizlilik koşullarını</a> kabul ediyorum.</span>
+      </label>
+      <p class="newsletter-status v2-news-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 32px; padding-bottom: 48px; border-bottom: 1px solid #dedfda;">
+    <div style="display: flex; flex-direction: column; gap: 12px; max-width: 280px;">
+      <span style="display: flex; align-items: center; gap: 8px;"><svg aria-hidden="true" viewBox="0 0 110.25 80" width="33" height="24" style="display: block; flex: 0 0 auto;"><polygon points="0,80 49,0 67.5,30.2 37,80" fill="#16244d"></polygon><polygon points="57.25,60 83.75,16.7 110.25,60" fill="#2bb3a6"></polygon></svg><span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.03em;">Wiserrise</span></span>
+      <span style="font-size: 14px; line-height: 1.55; color: #5c5e59;">Yerel işletmeler ve markalar için dijital pazarlama. Haritada, aramada, reklamda ve süper zekâ yanıtlarında bulunun.</span>
+      <a href={`mailto:${email}`} style="font-size: 14px; font-weight: 500; color: #16244d;">{email}</a>
+    </div>
+    <nav aria-label="Hizmetler" style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59; margin-bottom: 4px;">HİZMETLER</span>
+      <a href="/tr/hizmetler/yerel-seo" style="color: #1a1b19; text-decoration: none;">Local SEO</a>
+      <a href="/tr/hizmetler" style="color: #1a1b19; text-decoration: none;">SEO</a>
+      <a href="#analiz-formu" data-analiz style="color: #1a1b19; text-decoration: none;">Google Ads</a>
+      <a href="#analiz-formu" data-analiz style="color: #1a1b19; text-decoration: none;">GEO</a>
+      <a href="#analiz-formu" data-analiz style="color: #1a1b19; text-decoration: none;">Backlink paketleri</a>
+    </nav>
+    <nav aria-label="Şirket" style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59; margin-bottom: 4px;">ŞİRKET</span>
+      <a href="/tr/sektorler" style="color: #1a1b19; text-decoration: none;">Sektörler</a>
+      <a href={`${base}#surec`} style="color: #1a1b19; text-decoration: none;">Nasıl çalışır</a>
+      <a href={`${base}#sss`} style="color: #1a1b19; text-decoration: none;">Sık sorulanlar</a>
+      <a href={`mailto:${email}`} style="color: #1a1b19; text-decoration: none;">İletişim</a>
+    </nav>
+    <nav aria-label="Araçlar" style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59; margin-bottom: 4px;">ÜCRETSİZ ARAÇLAR</span>
+      <a href="/tr/araclar/google-isletme-profili-denetimi" style="color: #1a1b19; text-decoration: none;">Google profil analizi</a>
+      <a href="#analiz-formu" data-analiz style="color: #1a1b19; text-decoration: none;">Görünürlük analizi</a>
+      <a href="/tr/rehber" style="color: #1a1b19; text-decoration: none;">Rehberler</a>
+    </nav>
+    <nav aria-label="Dil" style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59; margin-bottom: 4px;">DİL</span>
+      <a href="/tr" style="color: #1a1b19; text-decoration: none;">Türkçe</a>
+      <a href="/" style="color: #1a1b19; text-decoration: none;">English</a>
+      <a href="/de" style="color: #1a1b19; text-decoration: none;">Deutsch</a>
+    </nav>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; padding: 24px 0; font-size: 13px; color: #5c5e59;">
+    <span>© {year} Wisbury LLC. Wiserrise, Wisbury LLC markasıdır.</span>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+      <a href="/gizlilik" style="color: #5c5e59; text-decoration: none;">Gizlilik</a>
+      <a href="/kullanim-kosullari" style="color: #5c5e59; text-decoration: none;">Koşullar</a>
+    </div>
+  </div><div class="semse-foot" aria-hidden="true" style="margin-top: 24px; height: clamp(84px, 15vw, 220px); overflow: hidden; display: flex; align-items: flex-end; justify-content: center">
+  <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: clamp(88px, 17vw, 240px); line-height: 0.78; font-weight: 700; letter-spacing: -0.045em; color: #16244d; white-space: nowrap; transform: translateY(18px);">Wiserrise</span>
+</div>
+</footer>

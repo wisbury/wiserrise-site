@@ -97,6 +97,10 @@
 
     setScore(scoreEl, Number(scoreEl.textContent) || 0, total);
     answeredEl.textContent = String(answeredIds.length);
+    // Görsel halka ve ilerleme çubuğu için (v2 tasarım); klasik tasarım bunları yok sayar.
+    form.style.setProperty('--audit-score', String(total));
+    form.style.setProperty('--audit-answered', String(answeredIds.length / data.questions.length));
+    form.style.setProperty('--audit-n', String(answeredIds.length));
 
     // Per-group bars
     data.groups.forEach(function (group) {
@@ -180,6 +184,11 @@
 
   form.addEventListener('change', function (event) {
     if (event.target && event.target.type === 'radio') render();
+  });
+
+  // "Baştan başla" gibi bir reset butonu varsa ekranı da sıfırla.
+  form.addEventListener('reset', function () {
+    setTimeout(render, 0);
   });
 
   // Never submit — there is no server side to this tool.
