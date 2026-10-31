@@ -33,11 +33,11 @@ input::placeholder{color:#868982}
 .card{transition:border-color 160ms ease}
 /* Kart oku: kart zıplamaz. Okun üstüne gelince şeffaf hap açılır, içinde eylem yazısı belirir. */
 .v2-arrow{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:36px;padding:0 11px;border-radius:999px;border:1px solid #868982;color:#16244d;box-sizing:border-box;font-size:13px;font-weight:600;white-space:nowrap;transition:padding 280ms cubic-bezier(.2,.8,.2,1),border-color 200ms ease,background-color 200ms ease,color 200ms ease}
-.v2-arrow-t{display:inline-block;max-width:0;opacity:0;overflow:hidden;transition:max-width 300ms cubic-bezier(.2,.8,.2,1),opacity 200ms ease,margin 300ms cubic-bezier(.2,.8,.2,1)}
+.v2-arrow-t{display:inline-block;max-width:0;opacity:0;overflow:hidden;transition:max-width 360ms cubic-bezier(.2,.8,.2,1),opacity 200ms ease,margin 300ms cubic-bezier(.2,.8,.2,1)}
 .v2-arrow i{position:relative;flex:0 0 auto;display:block;width:12px;height:2px;border-radius:2px;background:currentColor;transition:width 280ms cubic-bezier(.2,.8,.2,1)}
 .v2-arrow i::after{content:"";position:absolute;right:0;top:50%;width:8px;height:8px;border-top:2px solid currentColor;border-right:2px solid currentColor;border-radius:1px;transform:translateY(-50%) rotate(45deg);box-sizing:border-box}
 .v2-arrow:hover{padding:0 14px 0 16px;border-color:#16244d;background:transparent}
-.v2-arrow:hover .v2-arrow-t{max-width:140px;opacity:1;margin-right:10px}
+.v2-arrow:hover .v2-arrow-t{max-width:220px;opacity:1;margin-right:10px}
 .v2-arrow:hover i{width:16px}
 .v2-arrow--accent{background:#2bb3a6;border-color:#2bb3a6;color:#16244d}
 .v2-arrow--accent:hover{background:transparent;border-color:#2bb3a6;color:#ffffff}
