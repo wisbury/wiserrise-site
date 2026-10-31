@@ -1,7 +1,7 @@
 ---
 /**
- * Wiserrise yazı logosu: büyük harf, iç içe RR (birinci R lacivert/currentColor,
- * ikinci R firuze). Üstte ikinci R önde, altta birinci R'nin ayağı önde.
+ * Wiserrise yazı logosu: büyük harf, iç içe RR (iki R de currentColor;
+ * istenirse accent ile ikinci R ayrı renk olur). Üstte ikinci R önde, altta birinci R'nin ayağı önde.
  * Aradaki boşluklar maske ile oyulur, her zeminde (gradyan dahil) temiz durur.
  * Birinci R'den yalnızca halka oyulur; dolgusu ikinci R'nin altında kalır, geçiş çizgisinde dikiş oluşmaz.
  * Bricolage Grotesque 700 harf çizgilerinden üretildi (scripts yok; yeniden üretmek için Claude'a sor).
@@ -13,7 +13,7 @@ interface Props {
   accent?: string;
   class?: string;
 }
-const { uid, height = '1em', accent = '#2bb3a6', class: cls } = Astro.props;
+const { uid, height = '1em', accent = 'currentColor', class: cls } = Astro.props;
 const style = `height: ${height}; width: auto; display: block; flex: 0 0 auto;`;
 ---
 
