@@ -5,31 +5,38 @@ import { routePath } from '../../../i18n/routes';
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'ADRES', title: 'Adresi gösterin', text: 'Müşteri kabul ettiğiniz bir yer varsa adres görünsün. Adresi gizleyen profil “yakınımdaki” aramalarında geri düşer.' },
+  { label: 'KATEGORİ', title: 'Rakibe bakarak seçin', text: 'Aramanızda ilk üçe çıkan işletmelerin birincil kategorisine bakın. Birincil kategori hacme, ikinciller uzmanlığa gider.' },
+  { label: 'DOĞRULAMA', title: 'Yayının şartı', text: 'Doğrulanmayan profil aramada görünmez. Video doğrulamada tek çekimde tabelayı ve içeriyi göstermeniz gerekir.' },
+  { label: 'AD', title: 'Tabeladaki ad', text: 'İşletme adına keyword eklemeyin. Kurallara aykırı, bir rakip bildirince düzeltilir, tekrarında profil askıya alınır.' },
+];
+
 const toc = [
-  { id: 'oncesi', label: 'Başlamadan önce hazırlayın' },
-  { id: 'adres-karari', label: 'En kritik karar: adres gösterilecek mi?' },
+  { id: 'hazirlik', label: 'Hazırlık' },
+  { id: 'adres', label: 'Adres kararı' },
   { id: 'adimlar', label: 'Kurulum adımları' },
   { id: 'kategori', label: 'Kategori seçimi' },
-  { id: 'ilk-gun', label: 'Doğrulandıktan sonraki ilk gün' },
-  { id: 'hatalar', label: 'Kurulumda yapılan beş hata' },
+  { id: 'ilk-gun', label: 'Doğrulandığı gün' },
+  { id: 'hatalar', label: 'Sık yapılan hatalar' },
 ];
 
 const faq = [
   {
     q: 'Şirket kaydım yok, profil açabilir miyim?',
-    a: 'Google resmi bir şirket kaydı şartı aramıyor; aradığı şey işletmenin gerçekten var olduğunu doğrulayabilmek. Ancak doğrulama aşamasında fatura, tabela fotoğrafı veya vergi levhası istenebiliyor. Kayıtlı olmayan bir faaliyette doğrulamayı geçmek zorlaşır.',
+    a: 'Açabilirsiniz, Google resmi şirket kaydı şartı aramıyor. Aradığı şey işletmenin gerçekten var olduğunu doğrulamak, bu yüzden doğrulamada fatura, tabela fotoğrafı ya da vergi levhası istenebilir. Kayıtsız bir faaliyette doğrulamayı geçmek zorlaşır.',
   },
   {
     q: 'Ev adresimi kullanabilir miyim?',
-    a: 'Evden çalışıyor ve müşteri kabul etmiyorsanız evet — ama adresi gizleyip hizmet bölgesi tanımlamalısınız. Ev adresini herkese açık göstermek hem gereksiz hem de sonradan değiştirmek doğrulamayı yeniden tetikleyebiliyor.',
+    a: 'Evden çalışıyor ve müşteri kabul etmiyorsanız kullanabilirsiniz, ama adresi gizleyip hizmet bölgesi tanımlayın. Ev adresini herkese açık göstermek gereksiz. Sonradan değiştirmek de doğrulamayı yeniden tetikleyebilir.',
   },
   {
     q: 'Kaç kategori ekleyebilirim?',
-    a: 'Bir birincil ve dokuza kadar ikincil kategori. Ama hepsini doldurmak iyi fikir değil: alakasız ikincil kategoriler, Google’ın sizi hangi sorgu kümesine ait gördüğünü bulanıklaştırıyor ve ana sorgudaki gücünüzü düşürebiliyor.',
+    a: 'Bir birincil ve dokuza kadar ikincil kategori. Biz gerçekten ağırlık verdiğiniz iki-üç ikincil kategoride kalmanızı öneriyoruz, çünkü alakasız kategoriler ana aramadaki gücünüzü düşürür.',
   },
   {
-    q: 'Profili açtım, ne kadar sürede çıkarım?',
-    a: 'Doğrulama tamamlandıktan sonra profil genelde birkaç gün içinde görünmeye başlar, sıralamanın oturması birkaç haftayı bulur. Bu dönemde ad, adres ve kategori gibi temel alanları değiştirmeyin.',
+    q: 'Profili açtım, ne zaman görünürüm?',
+    a: 'Doğrulamadan sonra profil birkaç gün içinde görünmeye başlar, sıranın oturması birkaç haftayı bulur. Bu sürede ad, adres ve kategoriyi değiştirmeyin.',
   },
 ];
 ---
@@ -38,54 +45,60 @@ const faq = [
   locale={locale}
   route="guides/create-profile"
   title="Google İşletme Profili Nasıl Açılır? Adım Adım | Wiserrise"
-  description="Sıfırdan Google İşletme Profili kurulumu: adres gösterme kararı, kategori seçimi, doğrulama ve ilk gün yapılması gerekenler."
-  eyebrow="Rehber"
+  description="Google İşletme Profili adım adım nasıl açılır: adres gösterme kararı, birincil kategori seçimi, doğrulama ve profil yayına girdiği gün yapılacaklar."
+  eyebrow="REHBER · PROFİL AÇMA"
   h1="Google İşletme Profili nasıl açılır?"
-  lede="Kurulumun kendisi on dakika sürüyor. Sonradan düzeltmesi zor olan iki karar var: adres gösterilecek mi ve birincil kategori ne olacak. Bu rehber ağırlığı oraya veriyor."
+  crumb="Profil açma"
+  lede="Google İşletme Profili, google.com/business adresinde işletmenin adını, kategorisini, adresini ve iletişim bilgilerini girip Google’ın sunduğu yöntemle doğrulayarak açılır. Formun kendisi on dakika sürer. Sonradan düzeltmesi zor olan iki karar var: adresi gösterip göstermeyeceğiniz ve birincil kategori."
   schemaType="article"
   datePublished="2026-08-01"
+  dateModified="2026-11-06"
   breadcrumb={[
     { label: 'Ana Sayfa', href: '/tr' },
-    { label: 'Rehber', href: p('guides') },
+    { label: 'Rehberler', href: p('guides') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Profil doğrulama sorunları', href: p('guides/verification') },
-    { label: 'Google Haritalar’da üst sıraya çıkma', href: p('guides/rank-higher') },
-    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp') },
+    { label: 'Profil doğrulama sorunları', href: p('guides/verification'), text: 'Kart gelmediyse ya da video reddedildiyse her durumda ne yapacağınızı anlattık.' },
+    { label: 'Google yorumları nasıl artırılır?', href: p('guides/more-reviews'), text: 'İlk yorumları ne zaman ve nasıl isteyeceğinizi anlatıyor.' },
+    { label: 'Google Haritalar’da üst sıraya çıkma', href: p('guides/rank-higher'), text: 'Yayına giren profili rakiplerin önüne geçirmek için çalışma sırası.' },
+    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp'), text: 'Kategori, hizmet yapısı, yorum ve gönderileri birlikte yönetiriz.' },
   ]}
-  ctaLabel="Profilimi Ücretsiz Denetle →"
+  relatedHeading="İlgili sayfalar"
+  ctaLabel="Profilinizi ücretsiz denetleyin"
   ctaHref={p('tools/gbp-audit')}
 >
-  <h2 id="oncesi">Başlamadan önce hazırlayın</h2>
+  <h2 id="hazirlik">Başlamadan önce ne hazırlamalısınız?</h2>
 
   <p>
-    Kuruluma girmeden bunları hazır etmek, süreci yarıda bırakmanızı önler:
+    Bilgileri önceden hazırlarsanız form yarıda kalmaz. Yarıda kalan kurulum, “profil açtım ama Google’da çıkmıyorum”
+    şikâyetinin en sık sebeplerinden biri.
   </p>
 
   <ul class="checklist">
-    <li>İşletmenin <strong>gerçek adı</strong> — tabelada ve faturada yazan hali</li>
-    <li>İşletmeye ait telefon numarası (kişisel numaradan farklıysa tercih edin)</li>
-    <li>Web sitesi adresi</li>
-    <li>Müşteri kabul ediyorsanız açık adres; etmiyorsanız hizmet verdiğiniz bölgelerin listesi</li>
-    <li>Çalışma saatleri, resmi tatil istisnaları dahil</li>
-    <li>Tesis, ekip ve varsa ürün fotoğrafları — stok görsel değil, gerçek kareler</li>
+    <li>İşletmenin gerçek adı: tabelada ve faturada yazan hali</li>
+    <li>İşletmeye ait bir telefon numarası (kişisel numaranızdan ayrı bir hat varsa onu verin)</li>
+    <li>Web sitenizin adresi</li>
+    <li>Müşteri kabul ediyorsanız açık adres, etmiyorsanız hizmet verdiğiniz bölgelerin listesi</li>
+    <li>Resmi tatiller dahil çalışma saatleri</li>
+    <li>Dış cephe, iç mekân, ekip ve varsa ürünlerden gerçek fotoğraflar</li>
   </ul>
 
   <div class="callout">
     <p>
-      <strong>İşletme adına anahtar kelime eklemeyin.</strong> "Ahmet Diş — Antalya İmplant
-      Uzmanı" gibi bir ad kısa vadede işe yarayabilir ama Google'ın kurallarına aykırı;
-      rakip bildirimiyle kaldırılabilir, tekrarında profil askıya alınır. Ad, gerçek dünyada
-      kullandığınız ad olmalı.
+      <strong>İşletme adına keyword eklemeyin.</strong> “Defne Diş Kliniği Antalya İmplant” gibi bir ad kısa süre işe
+      yarar ama Google’ın kurallarına aykırı: bir rakip bildirince ad düzeltilir, tekrarında profil askıya alınır. Biz
+      müşterilerimizin profilinde bunu yapmıyoruz.
     </p>
   </div>
 
-  <h2 id="adres-karari">En kritik karar: adres gösterilecek mi?</h2>
+  <h2 id="adres">Adresinizi göstermeli misiniz?</h2>
 
   <p>
-    Google iki profil tipi tanıyor ve bu seçim sıralamanızı doğrudan etkiliyor:
+    Müşteri adresinize geliyorsa evet. Google iki profil tipi tanır ve bu seçim haritada nasıl göründüğünüzü doğrudan
+    belirler.
   </p>
 
   <div class="table-scroll">
@@ -106,143 +119,145 @@ const faq = [
         <tr>
           <td><strong>Haritada</strong></td>
           <td>Pin görünür, yol tarifi verilir</td>
-          <td>Pin gösterilmez</td>
+          <td>Pin görünmez</td>
         </tr>
         <tr>
-          <td><strong>"Yakınımdaki" aramaları</strong></td>
+          <td><strong>“Yakınımdaki” aramaları</strong></td>
           <td>Güçlü</td>
-          <td>Zayıflar</td>
+          <td>Zayıf</td>
         </tr>
         <tr>
-          <td><strong>Sıralama nasıl hesaplanır</strong></td>
-          <td>Açık adrese yakınlık</td>
-          <td>Yine adrese yakınlık — ama adres gizli</td>
+          <td><strong>Sıra neye göre hesaplanır</strong></td>
+          <td>Adrese yakınlık</td>
+          <td>Yine adrese yakınlık, adres gizli olsa da</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <p>
-    Son satır en çok yanlış bilinen nokta. Adresi gizlemek sıralama yarıçapınızı
-    genişletmiyor: Google hesabı yine hizmet bölgesine değil, gizli merkez adrese olan
-    yakınlığa göre yapıyor. Yirmi il eklemek, o yirmi ilin haritasında çıkacağınız
-    anlamına gelmiyor. Ayrıntısını
-    <a href={p('services/gbp')}>profil yönetimi sayfasında</a> anlattık.
+    Son satır en çok yanlış bilinen nokta. Adresi gizleyip yirmi il eklemek sizi o yirmi ilin haritasına sokmaz. Google
+    sırayı yine gizli adresinize olan yakınlığa göre hesaplar.
   </p>
 
   <p>
-    <strong>Kural:</strong> müşteri kabul ettiğiniz bir yeriniz varsa adresi gösterin.
-    Kliniği olan bir fizyoterapistin adresi gizlemesi, sık gördüğümüz ve pahalıya patlayan
-    bir hata.
+    Diyelim ki Çankaya’da kliniği olan bir fizyoterapistsiniz ve adresi gizlediniz. Kliniğe gelecek hasta haritada pin
+    göremez, yol tarifi alamaz ve “yakınımdaki fizyoterapist” aramasında geri düşersiniz.
   </p>
 
-  <h2 id="adimlar">Kurulum adımları</h2>
+  <p>
+    Kuralımız basit: müşteri kabul ettiğiniz bir yeriniz varsa adresi gösterin. Adres ve hizmet bölgesi ayarlarını
+    <a href={p('services/gbp')}>Google İşletme Profili yönetimi</a> sayfasında ayrıca anlattık.
+  </p>
+
+  <h2 id="adimlar">Profil adım adım nasıl açılır?</h2>
+
+  <p>Hazırlık tamamsa kurulum on dakika sürer. Sırası şöyle:</p>
 
   <ol>
     <li>
-      <strong>google.com/business</strong> adresine işletme için kullanacağınız Google
-      hesabıyla girin. Kişisel hesap yerine işletmeye ait bir hesap kullanmak, ileride
-      devir gerektiğinde işinizi kolaylaştırır.
+      <strong>google.com/business adresine girin.</strong> İşletme için kullanacağınız Google hesabıyla girin. Kişisel
+      hesabınız yerine işletmeye ait bir hesap kullanırsanız ileride profili devretmek kolaylaşır.
     </li>
     <li>
-      <strong>İşletme adını yazın.</strong> Google mevcut bir kayıt bulursa onu sahiplenme
-      seçeneği sunar — yeni açmak yerine bunu tercih edin, aksi halde kopya profil oluşur.
+      <strong>İşletme adını yazın.</strong> Google mevcut bir kayıt bulursa onu sahiplenmenizi önerir. Yeni kayıt açmak
+      yerine onu sahiplenin, yoksa kopya profil oluşur.
     </li>
     <li>
-      <strong>Birincil kategoriyi seçin.</strong> Aşağıdaki bölümde ayrıntılı anlatılıyor;
-      acele etmeyin.
+      <strong>Birincil kategoriyi seçin.</strong> Nasıl seçeceğinizi aşağıda anlattık. Bu adımda acele etmeyin.
     </li>
     <li>
-      <strong>Adres kararını verin.</strong> Müşteri kabul ediyorsanız adresi girin ve
-      haritadaki pini elle doğru konuma taşıyın. Etmiyorsanız adresi gizleyip hizmet
-      bölgelerinizi tanımlayın.
+      <strong>Adres kararını verin.</strong> Müşteri kabul ediyorsanız adresi girin ve haritadaki pini elle kapınızın
+      önüne taşıyın. Kabul etmiyorsanız adresi gizleyip hizmet bölgelerinizi tanımlayın.
     </li>
     <li>
-      <strong>Telefon ve web sitesini ekleyin.</strong> Web sitesi alanına ana sayfayı verin;
-      hizmet bazlı bağlantıları sonra hizmet kalemlerine ekleyeceksiniz.
+      <strong>Telefonu ve siteyi ekleyin.</strong> Site alanına ana sayfanızı yazın. Hizmet sayfalarının linklerini
+      sonra hizmet kalemlerine eklersiniz.
     </li>
     <li>
-      <strong>Doğrulama yöntemini seçin.</strong> Genelde video doğrulama veya posta kartı
-      sunulur. Video doğrulama daha hızlıdır ama tek çekimde tabela, iç mekân ve yönetim
-      erişimini göstermeniz gerekir — hazırlıksız başlamayın.
+      <strong>Doğrulama yöntemini seçin.</strong> En sık video ya da posta kartı sunulur. Video daha hızlıdır ama tek
+      çekimde tabelayı, içeriyi ve işletmeyi yönettiğinizi göstermeniz gerekir, o yüzden hazırlıksız başlamayın.
     </li>
   </ol>
 
   <p>
-    Doğrulama takılırsa
-    <a href={p('guides/verification')}>doğrulama sorunları rehberinde</a> her senaryo için
-    ne yapılacağı yazıyor.
+    Doğrulama takılırsa <a href={p('guides/verification')}>doğrulama sorunları rehberinde</a> her durumu ayrı ayrı
+    anlattık.
   </p>
 
-  <h2 id="kategori">Kategori seçimi</h2>
+  <h2 id="kategori">Hangi kategoriyi seçmelisiniz?</h2>
 
   <p>
-    Birincil kategori, tek bir alanla yapabileceğiniz en büyük sıralama etkisine sahip.
-    Doğru seçmenin yolu tahmin etmek değil, bakmak:
+    Müşterinizin sizi bulmak için yazdığı aramada ilk üçe çıkan işletmeler hangi kategorideyse onu. Birincil kategori,
+    tek bir alanla yapabileceğiniz en büyük sıralama etkisine sahip. O yüzden tahmin etmeyin, bakın:
   </p>
 
   <ol>
-    <li>Müşterilerinizin sizi bulmak için yazacağı sorguyu Haritalar'da aratın</li>
-    <li>İlk üçe çıkan işletmelerin birincil kategorisine bakın</li>
-    <li>Aynı kategoriyi kendinize birincil olarak verin</li>
-    <li>Gerçekten ağırlık verdiğiniz iki-üç alanı ikincil olarak ekleyin, fazlasını değil</li>
+    <li>Müşterinizin yazacağı aramayı Haritalar’da aratın.</li>
+    <li>İlk üçteki işletmelerin birincil kategorisine bakın.</li>
+    <li>Aynı kategoriyi kendinize birincil olarak verin.</li>
+    <li>Gerçekten ağırlık verdiğiniz iki-üç alanı ikincil kategori olarak ekleyin. Fazlasını eklemeyin.</li>
   </ol>
 
   <p>
-    Sık yapılan hata, dar bir uzmanlığı birincil yapmak. İmplant ağırlıklı çalışan bir
-    diş kliniğinin birincil kategoriyi "Estetik diş hekimi" yapması, dar alanda güç kazanıp
-    ana hacmi kaybetmesi demek. Birincil kategori hacme, ikincil kategoriler uzmanlığa gider.
+    Google bir birincil ve dokuza kadar ikincil kategoriye izin veriyor. Dokuzunu da doldurmayın: alakasız kategoriler,
+    Google’ın sizi hangi aramalara ait gördüğünü bulanıklaştırır.
   </p>
 
-  <h2 id="ilk-gun">Doğrulandıktan sonraki ilk gün</h2>
+  <p>
+    Sık yapılan hata, dar bir uzmanlığı birincil yapmak. İmplant ağırlıklı çalışan bir diş kliniği birincil kategoriyi
+    “Estetik diş hekimi” yaparsa dar alanda güç kazanır, “diş hekimi” aramasının büyük hacmini kaybeder. Birincil
+    kategori hacme, ikinciller uzmanlığa gider.
+  </p>
+
+  <h2 id="ilk-gun">Profil doğrulandığı gün ne yapmalısınız?</h2>
 
   <p>
-    Profil yayına çıktığı gün yapılacaklar — bunlar sonradan değil, hemen yapılmalı çünkü
-    Google profilin tamamlanmışlığını erken değerlendiriyor:
+    Yayına girdiği gün eksikleri kapatın. Google profilin ne kadar dolu olduğuna erkenden bakıyor, bunları sonraya
+    bırakmayın.
   </p>
 
   <ul class="checklist">
-    <li>İşletme açıklamasını yazın — ne yaptığınızı, kimlere hizmet verdiğinizi anlatın</li>
-    <li>Hizmet listesini insanların arattığı ifadelerle doldurun ve her birine açıklama ekleyin</li>
-    <li>En az 10 gerçek fotoğraf yükleyin: dış cephe ve tabela, iç mekân, ekip, iş örnekleri</li>
-    <li>Öznitelikleri işaretleyin (otopark, engelli erişimi, randevu, ödeme yöntemleri)</li>
-    <li>Mesajlaşmayı açın — açıp cevapsız bırakmayacaksanız</li>
-    <li>Soru-cevap bölümüne kendi sık sorulanlarınızı ekleyip yanıtlayın</li>
-    <li>İlk değerlendirmeleri istemeye başlayın</li>
+    <li>İşletme açıklamasını yazın: ne yaptığınızı ve kimlere hizmet verdiğinizi anlatın.</li>
+    <li>Hizmet listesini insanların aradığı ifadelerle doldurun ve her hizmete açıklama ekleyin.</li>
+    <li>En az 10 gerçek fotoğraf yükleyin: dış cephe ve tabela, iç mekân, ekip, yaptığınız işlerden örnekler.</li>
+    <li>Özellikleri işaretleyin: otopark, engelli erişimi, randevu, ödeme yöntemleri.</li>
+    <li>İlk yorumları istemeye başlayın. Nasıl isteyeceğinizi <a href={p('guides/more-reviews')}>yorum rehberinde</a> anlattık.</li>
   </ul>
 
   <p>
-    Hizmet isimlendirmesini sitenizdeki sayfa adlarıyla birebir aynı tutun. Bu tutarlılık,
-    Google'ın profil ile siteyi aynı işletme olarak eşleştirmesini kolaylaştırıyor.
+    Hizmetlerin adını sitenizdeki sayfa adlarıyla birebir aynı tutun. Bu tutarlılık, Google’ın profil ile siteyi aynı
+    işletme olarak eşleştirmesini kolaylaştırır.
   </p>
 
-  <h2 id="hatalar">Kurulumda yapılan beş hata</h2>
+  <h2 id="hatalar">Kurulumda en sık hangi hatalar yapılıyor?</h2>
 
   <ol>
     <li>
-      <strong>Adı süslemek.</strong> Anahtar kelime eklemek askıya alınma sebeplerinin başında.
+      <strong>Adı süslemek.</strong> Ada keyword eklemek askıya alınma sebeplerinin başında gelir.
     </li>
     <li>
-      <strong>Sanal ofis adresi kullanmak.</strong> Gerçekte bulunmadığınız bir adres,
-      doğrulama geçse bile sonradan askıya alınmaya yol açıyor.
+      <strong>Sanal ofis adresi vermek.</strong> Gerçekte bulunmadığınız bir adres doğrulamadan geçse bile profil
+      sonradan askıya alınabilir.
     </li>
     <li>
-      <strong>Kategoriyi doldurmak.</strong> Dokuz ikincil kategorinin hepsini kullanmak
-      alakayı güçlendirmiyor, sulandırıyor.
+      <strong>Kategori listesini doldurmak.</strong> Dokuz ikincil kategorinin hepsini kullanmak alakayı sulandırır.
     </li>
     <li>
-      <strong>Stok fotoğraf yüklemek.</strong> Gerçek tesis fotoğrafıyla arasındaki fark
-      kullanıcı tarafında hemen anlaşılıyor ve güven kaybettiriyor.
+      <strong>Stok fotoğraf yüklemek.</strong> Arayan gerçek mekânla stok görsel arasındaki farkı hemen anlar ve güveni
+      düşer.
     </li>
     <li>
-      <strong>İlk haftalarda temel alanları değiştirmek.</strong> Ad, adres ve kategoriyi
-      üst üste değiştirmek hem sıralamanın oturmasını geciktiriyor hem de inceleme
-      tetikliyor.
+      <strong>İlk haftalarda temel alanlarla oynamak.</strong> Adı, adresi ve kategoriyi üst üste değiştirmek sıranın
+      oturmasını geciktirir, üstüne incelemeyi tetikler.
     </li>
   </ol>
 
   <Fragment slot="cta">
-    <h2>Profiliniz açık ama <span class="highlight">eksik mi</span>?</h2>
-    <p>Ücretsiz denetim aracı 10 soruda hangi alanın eksik kaldığını söylüyor.</p>
+    <h2>Profiliniz açık ama <span class="highlight">eksik</span> mi?</h2>
+    <p>
+      Ücretsiz denetim aracı 10 soruda profilinizin hangi alanda zayıf kaldığını gösterir. Kayıt istemez, sonucu hemen
+      ekranda görürsünüz.
+    </p>
   </Fragment>
 </ContentLayout>

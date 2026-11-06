@@ -1,0 +1,253 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'KATEGORIE', title: 'Die richtige Unternehmensart', text: 'Ein Zentrum für medizinische Ästhetik und ein Kosmetikstudio sind für Google verschiedene Unternehmen. Mit der falschen Kategorie findet Sie kaum, wer nach dem Eingriff sucht.' },
+  { label: 'ENTSCHEIDUNG', title: 'Lange Recherche', text: 'Patienten lesen wochenlang, bevor sie entscheiden. Wir schreiben Seiten von der ersten Suche, mit der sie ihr Problem beschreiben, bis zur letzten, mit der sie eine Klinik wählen.' },
+  { label: 'PREIS', title: 'Fragen zum Preis', text: 'Werbung über den Preis ist eingeschränkt, doch eine Seite ohne Antwort schickt Patienten zur Konkurrenz. Wir erklären, wovon der Preis abhängt.' },
+  { label: 'REGELN', title: 'Grenzen der Werbung', text: 'Vorher-nachher-Bilder, Aktionen und Behauptungen wie „das natürlichste Ergebnis“ schreiben wir nicht. Jeden Text legen wir Ihnen vor der Veröffentlichung zur Freigabe vor.' },
+];
+
+const toc = [
+  { id: 'kategori', label: 'Medizinische Ästhetik oder Studio' },
+  { id: 'karar', label: 'Der lange Entscheidungsweg' },
+  { id: 'fiyat', label: 'Fragen zum Preis' },
+  { id: 'kurallar', label: 'Werberegeln' },
+  { id: 'icerik', label: 'Überzeugen ohne Bilder' },
+  { id: 'reklam', label: 'Anzeigen und organische Suche' },
+];
+
+const faq = [
+  {
+    q: 'Bin ich medizinische Ästhetik oder Kosmetikstudio, wie entscheide ich das?',
+    a: 'Schauen Sie auf Ihre Leistungen. Wenn Sie medizinische Eingriffe unter ärztlicher Verantwortung durchführen, sind medizinische Kategorien richtig, bei reinen Pflegeleistungen die Kategorien für Studios. Mit der falschen Kategorie wird es schwerer, bei Personen zu erscheinen, die nach dem Eingriff suchen.',
+  },
+  {
+    q: 'Wie trete ich ohne Vorher-nachher-Bilder gegen meine Konkurrenz auf Instagram an?',
+    a: 'Indem Sie in der Suche antreten. Wer sucht, will den Eingriff, sein Risiko und die Heilungsdauer kennen; eine Seite, die diese Fragen beantwortet, ist genau für diese Suche geschrieben. Lässt Ihre Konkurrenz, die mit Bildern arbeitet, diese Fragen offen, gehört die Suche Ihnen.',
+  },
+  {
+    q: 'Dürfen wir Patientenbewertungen auf der Website verwenden?',
+    a: 'Verwenden Sie sie nicht als Lobesmaterial. Inhalte, die Patientenerfahrungen zu Werbung machen, sind mit Blick auf die Werberegeln für Gesundheitsleistungen riskant. Lassen Sie die Bewertungen in Ihrem Google-Profil, und nennen Sie in Antworten nicht, welchen Eingriff der Patient hatte.',
+  },
+  {
+    q: 'Ich möchte Patienten aus dem Ausland gewinnen. Reicht dieselbe Website?',
+    a: 'Nein. Gesundheitstourismus setzt eine Genehmigung des türkischen Gesundheitsministeriums (Sağlık Bakanlığı) voraus, und gesucht wird in einer anderen Sprache und landesweit. Wir arbeiten auf Türkisch, Englisch und Deutsch, planen diese Arbeit aber getrennt vom lokalen Programm und von Anfang an.',
+  },
+  {
+    q: 'Wann sehen wir Ergebnisse?',
+    a: 'Die erste Bewegung auf der Karte sehen wir bei den meisten Unternehmen nach 4 bis 8 Wochen, bis Seiten zu Eingriffen in der Suche Fuß fassen, vergehen 3-6 Monate. Ein genaues Datum können wir nicht nennen. Was wir erledigt haben, sehen Sie jede Woche im Bericht und im Kundenportal.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="industries/aesthetics"
+  title="SEO für Ästhetik-Kliniken und medizinische Ästhetik | Wiserrise"
+  description="SEO für Kliniken der medizinischen Ästhetik im Rahmen der Werberegeln: richtige Kategorie, Seiten zu Preis und Risiko, Sichtbarkeit bei langer Entscheidung."
+  eyebrow="BRANCHE · ÄSTHETIK-KLINIKEN"
+  h1="SEO für Ästhetik-Kliniken: Geben Sie recherchierenden Patienten Antworten."
+  crumb="Ästhetik-Kliniken"
+  lede="SEO für Ästhetik-Kliniken heißt, Patienten bei jedem Schritt ihrer wochenlangen Recherche zu begegnen. In einem Bereich, in dem Sie sich nicht auf Vorher-nachher-Fotos stützen können, bauen die richtige Kategorie und Seiten mit Antworten auf die Fragen der Patienten Ihre Sichtbarkeit auf. Wir setzen beides um und halten uns dabei an die türkischen Werberegeln für Gesundheitsleistungen."
+  serviceName="Lokale SEO für Ästhetik-Kliniken"
+  breadcrumb={[
+    { label: 'Startseite', href: '/de' },
+    { label: 'Branchen', href: p('industries') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Content-Erstellung', href: p('services/content'), text: 'Seiten zu Eingriffen schreiben wir entlang der Fragen, die Patienten wirklich stellen.' },
+    { label: 'GEO', href: p('services/geo'), text: 'Wir arbeiten daran, dass Ihre Klinik in KI-Antworten genannt wird.' },
+    { label: 'SEO für Zahnärzte', href: p('industries/dental'), text: 'Wie wir bei Suchen nach akuten Zahnschmerzen und auf Behandlungsseiten arbeiten.' },
+    { label: 'SEO für Physiotherapeuten', href: p('industries/physio'), text: 'Suchen, die von der Nähe im Stadtteil und wiederkehrenden Sitzungen bestimmt werden.' },
+  ]}
+  relatedHeading="Verwandte Seiten"
+  ctaLabel="Kostenlose Analyse anfordern"
+  ctaHref="/de#contact"
+>
+  <h2 id="kategori">Sind Sie medizinische Ästhetik oder Kosmetikstudio?</h2>
+
+  <p>
+    Das entscheiden Ihre Leistungen. Ein Zentrum, das unter ärztlicher Verantwortung medizinische Eingriffe wie Botox oder
+    Filler durchführt, und ein Studio für Hautpflege sind für Google zwei verschiedene Unternehmensarten. Mit der falschen
+    Kategorie haben Sie es schwer, bei Personen zu erscheinen, die nach dem Eingriff suchen.
+  </p>
+
+  <p>
+    Der teuerste Fehler, den wir in diesem Bereich sehen: Ein Zentrum mit medizinischen Eingriffen ordnet sich selbst der
+    Kategorie „Kosmetikstudio“ zu. Auch das Gegenteil kommt vor: Ein Studio, das nur Hautpflege anbietet, wählt eine
+    medizinische Kategorie, bekommt Probleme bei der Verifizierung und sammelt Besucher aus Suchen, die nicht passen.
+  </p>
+
+  <p>
+    Bevor wir die Kategorie wählen, ermitteln wir die Kategorien der Kliniken, die in Ihrer Gegend vorne stehen, und
+    vergleichen, welche bei welcher Suche angezeigt wird. Die Methode beschreiben wir
+    <a href={p('services/gbp')}>auf der Seite zur Profilbetreuung</a>. Auch Ihr Profilname bleibt derselbe wie auf Ihrem
+    Schild, „Botox“ oder „Filler“ an den Namen zu hängen verstößt gegen Googles Richtlinien.
+  </p>
+
+  <h2 id="karar">Wonach sucht ein Patient, bis er sich entscheidet?</h2>
+
+  <p>
+    Wochenlang nach Antworten auf seine Fragen. In der Ästhetik dauert die Entscheidung lange, und was der Patient eintippt,
+    ändert sich in dieser Zeit. Die meisten Kliniken treten nur beim letzten Schritt an, wenn die Klinik gewählt wird.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Schritt</th>
+          <th>Was der Patient tippt</th>
+          <th>Passende Seite</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Problem erkennen</strong></td>
+          <td>„Augenringe Ursache“</td>
+          <td>Informativer Ratgeber</td>
+        </tr>
+        <tr>
+          <td><strong>Lösung recherchieren</strong></td>
+          <td>„Filler oder Laser“, „Wie lange hält Botox“</td>
+          <td>Seite zum Eingriff und Vergleichsbeitrag</td>
+        </tr>
+        <tr>
+          <td><strong>Klinik wählen</strong></td>
+          <td>„ästhetische Medizin Antalya“, „Botox in der Nähe“</td>
+          <td>Google-Unternehmensprofil und Standortseite</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Der letzte Schritt ist der vollste und bei Anzeigen der teuerste. Eine Klinik, die in den ersten beiden Schritten
+    sichtbar ist, erreicht den Patienten zu Beginn seiner Recherche, und wenn er eine Klinik wählt, hat er Ihren Namen
+    schon gelesen.
+  </p>
+
+  <p>
+    Einen Teil dieser Fragen beantworten inzwischen KI-Antworten. Was wir tun, damit Sie dort genannt werden, beschreiben
+    wir <a href={p('services/geo')}>auf der GEO-Seite</a>.
+  </p>
+
+  <h2 id="fiyat">Was antwortet man einem Patienten, der nach dem Preis fragt?</h2>
+
+  <p>
+    Eine Antwort, die erklärt, wovon der Preis abhängt. Im Gesundheitswesen ist Werbung über Preis und Rabatte
+    eingeschränkt, deshalb veröffentlichen wir keine Preisliste auf der Website. Der Patient sucht aber nach „Botox Kosten“.
+  </p>
+
+  <p>
+    Auf jede Seite zu einem Eingriff schreiben wir, wovon der Preis abhängt, etwa von der Zahl der behandelten Zonen oder
+    davon, wie viele Sitzungen nötig sind. Wir sagen klar, dass der genaue Betrag nach der Untersuchung in Ihrer Klinik
+    feststeht. Der Patient ruft dann an und weiß, was ihn erwartet.
+  </p>
+
+  <p>
+    Eine Seite zu einem Eingriff, die die Preisfrage gar nicht berührt, ist eine halbe Seite. Der Patient verlässt die
+    Seite, auf der er keine Antwort findet, und sucht dieselbe Frage auf der Website der nächsten Klinik.
+  </p>
+
+  <h2 id="kurallar">Welche Werbung ist in der Ästhetik verboten?</h2>
+
+  <p>
+    Die Werberegeln für Gesundheitsleistungen werden in der Ästhetik am strengsten angewendet. Viele Beiträge, die Sie in
+    sozialen Medien sehen, verstoßen gegen diese Regeln. Auf keiner unserer Seiten steht:
+  </p>
+
+  <ul>
+    <li>Werbung mit Vorher-nachher-Fotos</li>
+    <li>Ein Ergebnisversprechen, „garantierter Erfolg“ oder eine Zufriedenheitsgarantie</li>
+    <li>Ankündigungen von Aktionen, Paketangeboten und Rabatten</li>
+    <li>Patientenbewertungen oder Patientengeschichten als Lobesmaterial</li>
+    <li>Überlegenheitsbehauptungen wie „die Besten“ oder „das natürlichste Ergebnis“</li>
+  </ul>
+
+  <p>
+    Bei Bildern gilt dieselbe Vorsicht. Ein Foto, das das Wunschergebnis in den Vordergrund stellt, liest sich wie ein
+    Versprechen, auch wenn im Text keines steht. Fotos aus der Klinik und vom Team tragen dieses Risiko nicht.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Diese Seite ist keine Rechtsberatung.</strong> Maßgeblich für die aktuelle Auslegung der Regeln ist die
+      Gesundheitsdirektion Ihrer Provinz. Formulierungen, bei denen wir unsicher sind, verwenden wir nicht, und jeden Text
+      legen wir Ihnen vor der Veröffentlichung zur Freigabe vor.
+    </p>
+  </div>
+
+  <p>
+    Wie dieselben Regeln für <a href={p('industries/dental')}>Zahnarztpraxen</a> und
+    <a href={p('industries/physio')}>Physiotherapeuten</a> gelten, beschreiben wir auf eigenen Seiten.
+  </p>
+
+  <h2 id="icerik">Wie überzeugen Sie ohne Vorher-nachher-Fotos?</h2>
+
+  <p>
+    Indem Sie die Fragen der Patienten ehrlich beantworten. Wer sucht, will den Eingriff kennenlernen und sein Risiko
+    verstehen. Ein Patient in der Entscheidungsphase fragt:
+  </p>
+
+  <ul class="checklist">
+    <li>Wie wird der Eingriff durchgeführt, wie lange dauert er</li>
+    <li>Tut es weh, ist eine Betäubung nötig</li>
+    <li>Wann kann ich wieder arbeiten und unter Leute gehen</li>
+    <li>Wie lange hält die Wirkung, ist eine Wiederholung nötig</li>
+    <li>Welche Risiken und Nebenwirkungen gibt es, für wen ist es nicht geeignet</li>
+    <li>Wovon hängt der Preis ab</li>
+  </ul>
+
+  <p>
+    Keine dieser Fragen braucht ein Bild. Wir schreiben keine Seite zu einem Eingriff ohne einen Abschnitt zu Risiken und
+    Nebenwirkungen. Ein Patient, dessen Erwartungen von Anfang an richtig gesetzt sind, kommt entschlossener zum Termin.
+  </p>
+
+  <p>
+    Bei Gesundheitsseiten schaut Google genauer hin, wer den Text geschrieben hat. Deshalb empfehlen wir, Namen und Titel
+    des Arztes, der den Inhalt prüft, auf die Seite zu schreiben. Die Seiten schreiben wir im Rahmen der
+    <a href={p('services/content')}>Content-Erstellung</a> und richten jede mit
+    <a href={p('services/on-page-seo')} style="white-space: nowrap;">Onpage-SEO</a> auf eine einzige Suche aus.
+  </p>
+
+  <h2 id="reklam">Sollten Sie Anzeigen stoppen und auf SEO umsteigen?</h2>
+
+  <p>
+    Stoppen Sie sie nicht sofort. Anzeigen bringen ab der ersten Woche Besucher, die erste Bewegung in der Suche dauert
+    dagegen 3-6 Monate. Gesünder ist es, das Budget schrittweise zu verlagern, während sich die organischen Plätze festigen.
+  </p>
+
+  <p>
+    Bei Anzeigen zahlen Sie für jeden Klick. Die Informationssuchen von Patienten, die lange recherchieren, sollten Sie
+    deshalb der organischen Suche überlassen, die Anzeigen gehören zu den Entscheidungssuchen.
+  </p>
+
+  <p>
+    Das haben wir bei Google Ads auf die harte Tour gelernt. Ohne dass wir es merkten, gingen rund 800 TL für
+    Informationssuchen ohne Kaufabsicht drauf, und wir sind knapp davongekommen. Zahlen Sie nicht pro Klick für jemanden,
+    der „Was ist Botox“ tippt.
+  </p>
+
+  <p>
+    Bei welchen Suchen Sie organisch schwach sind, zeigen die <a href={p('services/rank-tracking')}>Messung in Ihrem
+    Umkreis</a> und die Search Console zusammen. Bei diesen Suchen ist es sinnvoll, die Anzeigen zu behalten. Was wir
+    erledigt haben, sehen Sie jede Woche im Bericht.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Sind Sie in der richtigen <span class="highlight">Kategorie</span>?</h2>
+    <p>
+      In der kostenlosen Analyse prüfen wir Ihre Kategorieeinstellung und die konkurrierenden Kliniken in Ihrer Gegend. Das
+      Ergebnis liegt innerhalb von 24 Stunden in Ihrem <span style="white-space: nowrap;">E-Mail-Postfach</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

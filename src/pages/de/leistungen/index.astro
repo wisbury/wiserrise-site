@@ -1,66 +1,77 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
-import CardGrid from '../../../components/CardGrid.astro';
+import HubCards from '../../../components/v2/HubCards.astro';
 import { routePath } from '../../../i18n/routes';
 
 const locale = 'de' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+// Hauptleistungen. Unterleistungen (Profilbetreuung, Ranking-Tracking, technisches SEO, Onpage-SEO, Content) stehen
+// nicht hier, sondern werden von ihrer Hauptleistung aus verlinkt. Leistungen ohne eigene Seite öffnen das Analysefenster.
 const services = [
   {
-    icon: 'profile',
-    href: p('services/gbp'),
-    title: 'Google Unternehmensprofil',
-    text: 'Kategorien, Leistungen, Fotos, Beiträge und Bewertungen. Das meiste, was über Ihr Maps-Ranking entscheidet, steckt im Profil — nicht auf der Website.',
+    href: p('services/seo'),
+    label: 'SUCHE',
+    title: 'SEO',
+    text: 'Die Suchergebnisse unter der Karte. Mit technischer Grundlage, Seitenaufbau und Inhalten richten wir Ihre Website auf die Fragen Ihrer Kunden aus.',
+    cta: 'Leistung ansehen',
   },
   {
-    icon: 'map',
     href: p('services/local-seo'),
+    label: 'KARTE',
     title: 'Lokale SEO',
-    text: 'Das Gesamtprogramm, das Profil, Website und externe Vertrauenssignale auf dasselbe Ziel ausrichtet.',
+    text: 'Profil und Website zusammen. Unsere Arbeit, damit Sie unter die ersten drei Unternehmen kommen, die Kunden in Ihrer Nähe zuerst sehen.',
+    cta: 'Leistung ansehen',
   },
   {
-    icon: 'grid',
-    href: p('services/rank-tracking'),
-    title: 'Maps-Ranking-Tracking',
-    text: 'Keine einzelne Durchschnittszahl, sondern ein 7×7-Raster über Ihrer Stadt — Position für Position gemessen.',
+    href: '#analiz-formu',
+    analiz: 'gads',
+    label: 'ANZEIGEN',
+    title: 'Google Ads',
+    text: 'Suchanzeigen, die Ihr Budget nur für Menschen ausgeben, die suchen, fragen und kaufbereit sind.',
+    cta: 'Anzeigen-Analyse anfordern',
   },
   {
-    icon: 'wrench',
-    href: p('services/technical-seo'),
-    title: 'Technisches SEO',
-    text: 'Crawlbarkeit, Indexierung, Ladezeit und strukturierte Daten. Ohne diese Basis rankt auch der beste Inhalt nicht.',
+    href: '#analiz-formu',
+    analiz: 'meta',
+    label: 'SOCIAL',
+    title: 'Meta Ads',
+    text: 'Anzeigen auf Instagram und Facebook für Menschen in Ihrer Umgebung. Sie lernen Sie kennen, bevor sie suchen.',
+    cta: 'Anzeigen-Analyse anfordern',
   },
   {
-    icon: 'document',
-    href: p('services/on-page-seo'),
-    title: 'OnPage-SEO',
-    text: 'Titel, inhaltliche Tiefe, interne Verlinkung und Suchintention. Macht eindeutig, welche Suchanfrage eine Seite beantwortet.',
+    href: '#analiz-formu',
+    analiz: 'backlink',
+    label: 'AUTORITÄT',
+    title: 'Linkaufbau',
+    text: 'Links von themennahen Websites mit echtem Traffic. White-Label für Agenturen.',
+    cta: 'Pakete ansehen',
   },
   {
-    icon: 'pen',
-    href: p('services/content'),
-    title: 'Content-Erstellung',
-    text: 'Leistungs-, Branchen- und Standortseiten, die die Suchanfrage wirklich beantworten — recherchiert, geprüft, veröffentlichungsreif.',
+    href: p('services/geo'),
+    label: 'KI',
+    title: 'GEO',
+    text: 'Wir messen, bei welchen Fragen ChatGPT, Gemini und Googles KI-Antworten Sie nennen, und arbeiten an den Fragen, bei denen Sie fehlen.',
+    cta: 'Leistung ansehen',
   },
 ];
 
 const faq = [
   {
-    q: 'Muss ich die Leistungen einzeln buchen?',
-    a: 'Nein. Die meisten Unternehmen fahren ein gemeinsames Programm unter lokaler SEO; einzelne Leistungen sind sinnvoll, wenn es einen konkreten Engpass gibt. Die kostenlose Analyse zeigt, was auf Sie zutrifft.',
+    q: 'Kann ich die Leistungen einzeln buchen?',
+    a: 'Ja, aber den meisten Unternehmen reicht eine einzelne Leistung nicht. Liegt das Problem an einer Stelle, etwa weil Ihre Website bei Google gar nicht erscheint, fangen wir nur mit SEO an. Was Sie brauchen, sagen wir Ihnen in der kostenlosen Analyse.',
   },
   {
-    q: 'Arbeiten Sie auch mit Unternehmen außerhalb der Türkei?',
-    a: 'Ja. Lokale SEO wird remote umgesetzt — wir müssen nicht vor Ort sein. Unser Sitz ist Antalya, Türkei, und wir arbeiten auf Deutsch, Englisch und Türkisch.',
+    q: 'Arbeiten Sie mit Unternehmen in der ganzen Türkei?',
+    a: 'Ja. Die gesamte Arbeit läuft aus der Ferne, wir müssen nicht in Ihre Stadt kommen. Unser Sitz ist Antalya, und wir arbeiten auf Türkisch, Englisch und Deutsch.',
   },
   {
-    q: 'Arbeiten Sie auch mit meinem Wettbewerber?',
-    a: 'Nein. Wir arbeiten pro Stadt und Branche nur mit einem Unternehmen. Zwei direkte Wettbewerber gleichzeitig nach oben zu bringen ist rechnerisch nicht möglich.',
+    q: 'Arbeiten Sie auch mit meinem Konkurrenten in derselben Stadt?',
+    a: 'Nein. Pro Stadt und Branche arbeiten wir mit einem einzigen Unternehmen. Zwei Konkurrenten gleichzeitig auf derselben Karte nach oben bringen zu wollen, wäre beiden gegenüber unfair.',
   },
   {
-    q: 'Wie messen Sie Ergebnisse?',
-    a: 'Rasterbasierte Maps-Rankings, Interaktionen im Unternehmensprofil (Suchanfragen, Routenanfragen, Anrufe) und Search-Console-Daten. Alle drei werden gemeinsam berichtet — Ranking-Screenshots allein verschicken wir nicht.',
+    q: 'Wie messen Sie SEO-Ergebnisse?',
+    a: 'Wir lesen die Messung in Ihrem Umkreis, die Interaktionen mit Ihrem Profil und die Daten aus der Search Console zusammen. Einen einzelnen Ranking-Screenshot schicken wir nicht, denn der Platz auf der Karte hängt davon ab, wo die suchende Person steht. Unsere Arbeit sehen Sie jede Woche im Bericht.',
   },
 ];
 ---
@@ -68,93 +79,133 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="services"
-  title="Lokale SEO Leistungen | Wiserrise"
-  description="Google Unternehmensprofil, lokale SEO, Maps-Ranking-Tracking, technisches SEO, OnPage-SEO und Content-Erstellung für lokale Unternehmen."
-  eyebrow="Leistungen"
-  h1="Lokale SEO Leistungen"
-  lede="Drei Dinge entscheiden über Ihr Maps-Ranking: die Stärke Ihres Profils, die Stärke Ihrer Website und die Vertrauenssignale von außen. Jede Leistung unten adressiert eines davon."
-  serviceName="Lokale SEO und Google Maps Optimierung"
+  title="Digitale Marketing-Leistungen | Wiserrise"
+  description="SEO, lokale SEO, Google Ads, Meta Ads, Linkaufbau und GEO. Was Sie brauchen, zeigt die kostenlose Analyse."
+  eyebrow="LEISTUNGEN"
+  h1="Digitale Marketing-Leistungen: Welche brauchen Sie?"
+  crumb="Leistungen"
+  lede="Ihre Kunden finden Sie vielleicht bei Google, auf der Karte, auf Instagram oder in ChatGPT. Jeder Kanal ist eine eigene Aufgabe, aber Sie brauchen nicht alle gleichzeitig. Unten steht, welche Leistung auf welchen Kanal zielt."
+  serviceName="Digitale Marketing-Leistungen"
   breadcrumb={[{ label: 'Startseite', href: '/de' }]}
   faq={faq}
   wideFirst
-  ctaLabel="Kostenlose Analyse anfordern →"
+  related={[
+    { label: 'Lokale SEO nach Branche', href: p('industries'), text: 'Wie sich die Arbeit bei Anwälten, Zahnärzten, Kliniken und Kfz-Gutachtern unterscheidet.' },
+    { label: 'Ratgeber', href: p('guides'), text: 'Vom Anlegen des Profils bis zu mehr Bewertungen: Schritte, die Sie selbst umsetzen können.' },
+    { label: 'Kostenlose Profilprüfung', href: p('tools/gbp-audit'), text: 'In 10 Fragen sehen Sie sofort, wo Ihr Google-Profil schwach ist.' },
+  ]}
+  relatedHeading="Verwandte Seiten"
+  ctaLabel="Kostenlose Analyse anfordern"
   ctaHref="/de#contact"
 >
-  <p>
-    Der lokale Wettbewerb spielt sich in einem viel engeren Raum ab, als die meisten Unternehmen
-    annehmen. Wenn jemand das Handy zückt und <strong>"Rechtsanwalt in der Nähe"</strong> oder
-    <strong>"Zahnarzt Köln"</strong> eingibt, durchsucht Google einen Radius von wenigen
-    Kilometern und zeigt drei Unternehmen. Das vierte Ergebnis steht technisch "auf Seite eins"
-    und ist praktisch unsichtbar.
-  </p>
+  <h2 id="kanallar">Wo finden Ihre Kunden Sie?</h2>
 
   <p>
-    In diese drei Plätze zu kommen gelingt nicht mit einer einzelnen Maßnahme. Die Signale, die
-    Google im lokalen Ranking gewichtet, lassen sich grob in drei Gruppen einteilen — und unsere
-    Leistungen bilden genau diese Gruppen ab.
+    Fünf der sechs Leistungen zielen auf je einen Kanal. Die sechste, der Linkaufbau, stärkt Sie in der Suche.
   </p>
-
-  <h2 id="drei-ebenen">Die drei Ebenen, die über das Ranking entscheiden</h2>
 
   <div class="table-scroll">
     <table>
       <thead>
         <tr>
-          <th>Ebene</th>
-          <th>Worauf Google schaut</th>
-          <th>Passende Leistung</th>
+          <th>Wo?</th>
+          <th>Was sieht man?</th>
+          <th>Welche Leistung</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>Profil</strong></td>
-          <td>Kategoriegenauigkeit, Leistungsliste, Aktualität von Fotos und Beiträgen, Bewertungsvolumen und -inhalt</td>
-          <td><a href={p('services/gbp')}>Google Unternehmensprofil</a></td>
+          <td><strong>Google-Suche</strong></td>
+          <td>Die Ergebnisse unter der Karte</td>
+          <td><a href={p('services/seo')}>SEO</a></td>
         </tr>
         <tr>
-          <td><strong>Website</strong></td>
-          <td>Crawlbarkeit, Ladezeit, strukturierte Daten, Übereinstimmung von Seite und Suchanfrage, inhaltliche Tiefe</td>
-          <td>
-            <a href={p('services/technical-seo')}>Technisches SEO</a>,
-            <a href={p('services/on-page-seo')}>OnPage-SEO</a>,
-            <a href={p('services/content')}>Content-Erstellung</a>
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Externe Signale</strong></td>
-          <td>Konsistenz von Name und Telefonnummer in Verzeichnissen, Erwähnungen, Verlinkungen</td>
+          <td><strong>Google Maps</strong></td>
+          <td>Die ersten drei Unternehmen auf der Karte</td>
           <td><a href={p('services/local-seo')}>Lokale SEO</a></td>
+        </tr>
+        <tr>
+          <td><strong>Googles Anzeigenplätze</strong></td>
+          <td>Die „Gesponsert“-Zeilen über den Ergebnissen</td>
+          <td>Google Ads</td>
+        </tr>
+        <tr>
+          <td><strong>Instagram und Facebook</strong></td>
+          <td>Eine Anzeige im Feed</td>
+          <td>Meta Ads</td>
+        </tr>
+        <tr>
+          <td><strong>ChatGPT, Gemini</strong></td>
+          <td>Die Unternehmen, die der Assistent empfiehlt</td>
+          <td><a href={p('services/geo')}>GEO</a></td>
+        </tr>
+        <tr>
+          <td><strong>Andere Websites</strong></td>
+          <td>Seiten, die Sie erwähnen oder auf Sie verlinken</td>
+          <td>Linkaufbau</td>
         </tr>
       </tbody>
     </table>
   </div>
 
+  <h2 id="reklam-seo">Anzeigen oder SEO?</h2>
+
   <p>
-    In eine Ebene zu investieren, während eine andere defekt ist, ist der häufigste Weg,
-    Budget zu verbrennen. Ein Unternehmen mit schneller Website und gutem Inhalt bleibt
-    monatelang unsichtbar, weil im Profil die falsche Kategorie gesetzt ist. Umgekehrt gilt
-    dasselbe: ein perfektes Profil an einer Website, die Google nicht indexieren kann, erreicht
-    in umkämpften Städten die Top 3 nicht.
+    Anzeigen starten sofort und hören an dem Tag auf, an dem das Budget aufgebraucht ist. SEO und lokale SEO starten
+    langsamer, erlöschen aber nicht an dem Tag, an dem Sie aufhören.
+  </p>
+
+  <p>
+    Google Ads erreicht Menschen, die suchen, Meta Ads Menschen, die nicht suchen. Wer Ihre Anzeige auf Instagram sieht,
+    hat in dem Moment keinen Physiotherapeuten gesucht. Die Anzeige ist dafür da, dass er sich an Ihren Namen erinnert,
+    wenn der Rücken schmerzt.
+  </p>
+
+  <h2 id="baslangic">Womit sollten Sie anfangen?</h2>
+
+  <p>
+    Kommen Ihre Kunden aus der Umgebung, mit der Karte, also mit lokaler SEO. Verkaufen Sie an die ganze Stadt oder das
+    ganze Land, mit SEO. Wenn Sie nicht warten können, starten Sie mit Anzeigen, und wir bauen die dauerhafte Seite
+    dahinter auf.
+  </p>
+
+  <p>
+    Fangen Sie nicht mit einer Vermutung an. In der kostenlosen Analyse prüfen wir Ihr Profil, Ihre Website und Ihre
+    Wettbewerber und sagen Ihnen, was Sie zurückhält. Aufträge, bei denen wir die Website nicht komplett betreuen können,
+    nehmen wir nicht an: Auf einer halb betreuten Website hält SEO nicht, und die Besucher aus den Anzeigen gehen
+    verloren.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Raten Sie nicht, wo Sie anfangen sollen.</strong> In der kostenlosen Analyse
-      messen wir alle drei Ebenen und zeigen, welche Sie zurückhält. Danach besteht keine
-      Verpflichtung zur Zusammenarbeit.
+      <strong>Nach der Analyse müssen Sie nicht mit uns arbeiten.</strong> Einen Vertrag gibt es auch nicht. Wenn wir
+      zusammenarbeiten und Sie nicht zufrieden sind, machen Sie im nächsten Monat einfach nicht weiter.
     </p>
   </div>
 
   <Fragment slot="wide">
-    <h2 id="leistungen" class="section-lead">Leistungen</h2>
-    <p class="section-lead-sub">
-      Jede adressiert eine der drei Ebenen, die über das lokale Ranking entscheiden.
-    </p>
-    <CardGrid items={services} cta="Mehr erfahren" />
+    <HubCards
+      id="hizmet-listesi"
+      eyebrow="LEISTUNGEN"
+      heading="Wir arbeiten dort, wo Ihre Kunden suchen."
+      sub="SEO und lokale SEO verschaffen Ihnen einen dauerhaften Platz in der Suche und auf der Karte. Google Ads und Meta Ads machen Sie sichtbar, solange die Anzeigen laufen. GEO überträgt dieselbe Grundlage auf KI-Antworten."
+      items={services}
+      son={{
+        label: 'NOCH UNSICHER?',
+        title: 'Wir schauen gemeinsam, was zu Ihnen passt.',
+        text: 'In der kostenlosen Analyse prüfen wir Ihr Profil, Ihre Website und Ihre Wettbewerber und sagen Ihnen, wo Sie anfangen sollten.',
+        cta: 'Kostenlose Analyse',
+        alt: 'Kostenlose Analyse anfordern →',
+      }}
+    />
   </Fragment>
 
   <Fragment slot="cta">
-    <h2>Unsicher, was Sie <span class="highlight">brauchen</span>?</h2>
-    <p>Die kostenlose Analyse prüft Profil, Website und Wettbewerber — und sagt es Ihnen.</p>
+    <h2>Was brauchen Sie <span class="highlight">zuerst</span>?</h2>
+    <p>
+      In der kostenlosen Analyse prüfen wir Ihr Profil, Ihre Website und Ihre Wettbewerber und sagen Ihnen, was Sie
+      zurückhält. Das Ergebnis liegt innerhalb von 24 Stunden in Ihrem
+      <span style="white-space: nowrap;">E-Mail-Postfach</span>.
+    </p>
   </Fragment>
 </ContentLayout>

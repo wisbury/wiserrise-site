@@ -1,0 +1,223 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+/**
+ * Metin blog-yazimi kurallarıyla, Melih'in sesiyle yazıldı ("biz", günlük Türkçe, hikaye
+ * yalnız hikaye bankasından). Yayından önce: arac/blog_kontrol.py --sektor wiserrise.
+ */
+const locale = 'tr' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'ERİŞİM', title: 'Botlara açık kapı', text: 'Sitenizin ChatGPT, Gemini ve Google botlarına açık olduğuna bakarız. Taranmayan sayfayı süper zeka okuyamaz.' },
+  { label: 'İÇERİK', title: 'Soruya cevap veren sayfa', text: 'Müşterinin sorduğu sorunun sitede net bir cevabı olmalı. Alıntılayacak bir şey yoksa asistan sizi anmaz.' },
+  { label: 'KAYNAK', title: 'Sizden bahseden yerler', text: 'İşletme profili, dizinler ve sizi anan sayfalar. Adınız her yerde aynı yazılırsa asistan aynı işletmeyi görür.' },
+  { label: 'ÖLÇÜM', title: 'Hangi soruda anılıyorsunuz', text: 'Sektörünüzle ilgili soruları asistanlara sorar, cevapta sizin ve rakiplerinizin adı geçiyor mu, kaydederiz.' },
+];
+
+const toc = [
+  { id: 'nedir', label: 'GEO ne demek, SEO’dan farkı ne?' },
+  { id: 'kaynak', label: 'Süper zeka bir işletmeyi nereden biliyor?' },
+  { id: 'yerel', label: 'Yerel işletmenin GEO ile işi ne?' },
+  { id: 'isler', label: 'Neyi düzeltiyoruz?' },
+  { id: 'site', label: 'Siteye neden dokunmamız gerekiyor?' },
+  { id: 'olcum', label: 'Neyi ölçüyoruz?' },
+];
+
+const faq = [
+  {
+    q: 'ChatGPT’de çıkmayı garanti ediyor musunuz?',
+    a: 'Hayır, bunu kimse garanti edemez. Cevabı asistan yazıyor ve aynı soruya farklı zamanda farklı cevap verebiliyor. Bizim sözümüz yapacağımız iş ve ölçüm: neyi değiştirdiğimizi ve nerede anıldığınızı raporda görürsünüz.',
+  },
+  {
+    q: 'Ne zaman sonuç alırım?',
+    a: 'Süre vermiyoruz. Asistanlar sürekli değişiyor ve elimizde “şu kadar haftada çıkarsınız” dedirtecek kadar veri yok. İlk ölçümle bugün nerede durduğunuzu görürsünüz, gerisini raporda birlikte takip ederiz.',
+  },
+  {
+    q: 'llms.txt dosyası gerekli mi?',
+    a: 'Google için gerekmiyor, kendi dokümanında özel dosyaya ihtiyaç olmadığını yazıyor. Biz de önceliği oraya vermiyoruz. Önce site taranıyor mu, soruya cevap veriyor mu, ona bakıyoruz.',
+  },
+  {
+    q: 'Local SEO varken ayrıca GEO gerekir mi?',
+    a: 'Müşteriniz çevreden geliyorsa önce local SEO. Profil ve site düzelmeden GEO’ya para harcamayın. Hangisinin sizi geride tuttuğunu ücretsiz analizde söylüyoruz.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/geo"
+  title="GEO Hizmeti: ChatGPT ve Gemini Yanıtlarında Görünmek | Wiserrise"
+  description="ChatGPT, Gemini ve Google’ın süper zeka yanıtlarında anılıp anılmadığınızı ölçüyor, anılmadığınız sorular için sitenizi ve profilinizi düzeltiyoruz."
+  eyebrow="HİZMET · GEO"
+  h1="GEO ile süper zeka yanıtlarında görünün."
+  crumb="GEO"
+  lede="GEO, ChatGPT, Gemini, Perplexity ve Google’ın süper zeka yanıtlarına sorulan sorularda işletmenizin anılması için yaptığımız iş. Hangi soruda anıldığınızı ölçüyoruz, anılmadığınız sorular için sitenizi, profilinizi ve sizden bahseden kaynakları düzeltiyoruz."
+  serviceName="GEO (Generative Engine Optimization)"
+  breadcrumb={[
+    { label: 'Ana Sayfa', href: '/tr' },
+    { label: 'Hizmetler', href: p('services') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'Profilinizi ve sitenizi birlikte düzelterek çevrenizdeki müşteriye görünmeniz için çalışırız.' },
+    { label: 'Teknik SEO', href: p('services/technical-seo'), text: 'Sitenizin Google’a düzgün açılması için tarama ve indeksleme hatalarını kapatırız.' },
+    { label: 'İçerik Üretimi', href: p('services/content'), text: 'Müşterinin sorduğu soruya cevap veren hizmet sayfalarını yazarız.' },
+    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp'), text: 'Asistanların da okuduğu profilinizi kurallara uygun ve güncel tutarız.' },
+  ]}
+  ctaLabel="Ücretsiz analiz al"
+  ctaHref="/tr#contact"
+>
+  <p>
+    Birisi ChatGPT’ye “Kadıköy’de iyi bir fizyoterapist önerir misin?” yazıyor. Karşısına birkaç
+    isim ve kısa bir gerekçe çıkıyor. O isimlerin arasında yoksanız, o müşteri sizi hiç görmüyor.
+  </p>
+
+  <h2 id="nedir">GEO ne demek, SEO’dan farkı ne?</h2>
+
+  <p>
+    GEO, Generative Engine Optimization’ın kısası. Yapay zeka araması, AI SEO diye duyduğunuz şey
+    de bu; biz süper zeka diyoruz. SEO’da listede sıraya giriyorsunuz, GEO’da asistanın yazdığı
+    cevabın içine giriyorsunuz.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>SEO</th>
+          <th>GEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Nerede görünüyorsunuz</strong></td>
+          <td>Arama sonuçları listesinde</td>
+          <td>Asistanın yazdığı cevabın içinde</td>
+        </tr>
+        <tr>
+          <td><strong>Kim seçiyor</strong></td>
+          <td>Google’ın sıralaması</td>
+          <td>Asistan, okuduğu kaynaklara bakarak</td>
+        </tr>
+        <tr>
+          <td><strong>Ne ölçüyoruz</strong></td>
+          <td>Kaçıncı sırada olduğunuz</td>
+          <td>Hangi soruda anıldığınız, hangi sayfanızın kaynak gösterildiği</td>
+        </tr>
+        <tr>
+          <td><strong>Aynı soru tekrar sorulunca</strong></td>
+          <td>Sonuç benzer kalır</td>
+          <td>Cevap değişebilir</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="kaynak">Süper zeka bir işletmeyi nereden biliyor?</h2>
+
+  <p>
+    Okuduğu kaynaklardan: siteniz, işletme profiliniz, dizinler, sizden bahseden sayfalar. Kapalı
+    kapıdan geçemiyor. Sayfanız taranmıyorsa süper zekanın sizi okumasını beklemeyin.
+  </p>
+
+  <p>
+    Google bunu <a href="https://developers.google.com/search/docs/appearance/ai-features" rel="noopener noreferrer" target="_blank">kendi dokümanında</a> açık
+    yazıyor: AI Overviews ve AI Mode için ek bir şart yok, özel schema ya da özel bir dosya da
+    gerekmiyor. Şart, sayfanın indekslenmiş ve snippet gösterilebilir olması; çıkmanın garantisi de
+    yok. <a href={p('services/technical-seo')}>Teknik SEO</a> bu yüzden GEO’nun ilk adımı.
+  </p>
+
+  <p>
+    ChatGPT tarafında kapı <a href="https://developers.openai.com/api/docs/bots" rel="noopener noreferrer" target="_blank">OAI-SearchBot</a>.
+    Bu botu engelleyen site, ChatGPT’nin arama cevaplarında gösterilmiyor. Cloudflare’de AI bot
+    engeli açıksa, robots.txt’e siz hiçbir şey yazmasanız da bazı süper zeka botları sitenize
+    giremiyor.
+  </p>
+
+  <h2 id="yerel">Yerel işletmenin GEO ile işi ne?</h2>
+
+  <p>
+    Müşteriniz artık şehir adıyla soruyor, asistan da isim veriyor. Türkiye’de GEO yazılarının çoğu
+    büyük markalara yazılıyor; biz çevresinden müşteri alan avukata, kliniğe, fizyoterapiste, oto
+    ekspertize bakıyoruz.
+  </p>
+
+  <p>
+    <a href={p('services/local-seo')}>Local SEO</a> için yaptığımız profil ve site işi GEO’nun da
+    temeli. Müşterisi çevreden gelen işletmede biz önce haritaya bakarız, çünkü telefon bugün oradan
+    çalıyor. GEO’yu onun üstüne kuruyoruz.
+  </p>
+
+  <h2 id="isler">Neyi düzeltiyoruz?</h2>
+
+  <p>Önce kapıyı açıyoruz, sonra asistanın okuyacağı şeyi veriyoruz. Sıra hep bu, ağırlığı ölçüm belirliyor.</p>
+
+  <ul class="checklist">
+    <li>
+      <strong>Bot erişimi.</strong> robots.txt’i ve Cloudflare ayarını kontrol ediyoruz. GPTBot,
+      OAI-SearchBot, ClaudeBot gibi botları bütün müşterilerimizde açık tutuyoruz.
+    </li>
+    <li>
+      <strong>Soruya cevap veren sayfalar.</strong> Müşterinin sorduğu sorunun sitede net bir cevabı
+      yoksa asistanın alıntılayacağı bir şey de yok. <a href={p('services/on-page-seo')}>On-page SEO</a> ve
+      <a href={p('services/content')}>içerik üretimi</a> burada devreye giriyor.
+    </li>
+    <li>
+      <strong>İşletme profili.</strong> Kategori ve hizmet listesi doğru, yorumlar canlı olmalı.
+      Bu kısmı <a href={p('services/gbp')}>Google İşletme Profili yönetimiyle</a> yürütüyoruz.
+    </li>
+    <li>
+      <strong>Sizden bahseden kaynaklar.</strong> Adınız ve telefonunuz dizinlerde her yerde aynı
+      yazılırsa, asistan hangi kaynağı okursa okusun aynı işletmeyi görür.
+    </li>
+  </ul>
+
+  <h2 id="site">Siteye neden dokunmamız gerekiyor?</h2>
+
+  <p>Çünkü GEO’nun büyük kısmı sitede yapılıyor. Başkasının elinden geçen her değişiklik yavaşlıyor, bazen de bozuluyor.</p>
+
+  <p>
+    Bu yüzden kuralımız net: siteyi komple yönetemeyeceksek işe başlamıyoruz. Bunu acı yoldan öğrendik, hikayesini
+    <a href={p('services/local-seo')}>local SEO sayfasında</a> anlattık.
+  </p>
+
+  <h2 id="olcum">Neyi ölçüyoruz?</h2>
+
+  <p>
+    Hangi soruda anıldığınızı ve yanınızda kimin anıldığını. Sektörünüz ve şehrinizle ilgili soruları
+    ChatGPT, Gemini, Perplexity ve Google’ın süper zeka yanıtlarına soruyoruz, cevapları kayda alıyoruz.
+  </p>
+
+  <p>
+    “Önerdi mi?” kararını modele bırakmıyoruz. Cevapta geçen adı kendi işletme kaydınızla
+    eşleştiriyoruz, benzer isimli başka bir işletme size yazılmıyor.
+  </p>
+
+  <ul class="checklist">
+    <li>SZ görünürlük puanı: önerilme ve kaynak gösterilme oranlarınızdan çıkan 0-100 arası tek puan</li>
+    <li>Anılma payı: aynı sorularda rakiplerinize göre durumunuz</li>
+    <li>Sizi kaynak gösteren sayfalar: asistanın hangi sayfanıza link verdiği, soru soru</li>
+    <li>
+      Search Console: Google’ın süper zeka yanıtlarından gelen trafik ayrı görünmüyor, Web aramasının
+      içinde sayılıyor. O yüzden tek başına ona bakmıyoruz.
+    </li>
+  </ul>
+
+  <p>
+    Yaptığımız işleri her hafta raporda görürsünüz. Aynı soruya her seferinde aynı cevap gelmiyor, bu yüzden tek ekran
+    görüntüsü göndermiyoruz; değişimi zaman içinde okuyoruz.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Süper zeka sizi <span class="highlight">tanıyor</span> mu?</h2>
+    <p>
+      Ücretsiz analizde süper zekada bugün nerede durduğunuzu ve rakiplerinizi çıkarıyoruz. Sonuç 24 saat içinde
+      <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

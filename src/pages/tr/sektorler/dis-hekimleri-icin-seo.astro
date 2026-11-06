@@ -5,31 +5,39 @@ import { routePath } from '../../../i18n/routes';
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'ACİL', title: 'Ağrıyla arayan hasta', text: 'Gece dişi zonklayan hasta haritaya bakar ve doğrudan arar. Saatleriniz ve telefonunuz o anda doğru olmalı.' },
+  { label: 'TEDAVİ', title: 'Tedavi sayfaları', text: 'İmplant ya da şeffaf plak düşünen hasta haftalarca okur. Her ağırlıklı tedaviye onun sorularını cevaplayan sayfa yazarız.' },
+  { label: 'YORUM', title: 'Mahremiyete uygun yorum', text: 'Yorum isteriz ama karşılığında hiçbir şey vermeyiz. Yanıtlarda hastanın hangi tedaviyi aldığını hiç anmayız.' },
+  { label: 'KURAL', title: 'Tanıtım sınırları', text: 'Önce/sonra görseli, kampanya ve “en iyi” iddiası yazmayız. Yazdığımız her metni yayından önce size onaylatırız.' },
+];
+
 const toc = [
-  { id: 'mevzuat', label: 'Sağlık tanıtım mevzuatı ne diyor?' },
-  { id: 'kategori', label: 'Kategori ve hizmet kurulumu' },
-  { id: 'tedavi', label: 'Tedavi sayfaları' },
-  { id: 'yorum', label: 'Yorum yönetimi' },
-  { id: 'turizm', label: 'Sağlık turizmi ayrı bir dünya' },
+  { id: 'acil', label: 'Acil diş ağrısı aramaları' },
+  { id: 'tedavi', label: 'Tedavi araştıran hasta' },
+  { id: 'kurallar', label: 'Sağlık tanıtım kuralları' },
+  { id: 'kategori', label: 'Kategori ve profil adı' },
+  { id: 'yorum', label: 'Yorumlar ve mahremiyet' },
+  { id: 'sube', label: 'Şubeler ve sağlık turizmi' },
   { id: 'olcum', label: 'Neyi ölçüyoruz' },
 ];
 
 const faq = [
   {
-    q: 'Öncesi/sonrası fotoğrafı paylaşamıyorsak nasıl ikna edeceğiz?',
-    a: 'Tedavi sürecini anlatan bilgilendirici içerikle. Hasta, sonucu gösteren bir fotoğraftan çok "kaç seans sürer, acır mı, ne kadar dayanır, ne zaman çalışmaya dönerim" sorularının cevabını arıyor. Bu soruları gerçekten cevaplayan sayfalar hem mevzuata uygun hem de dönüşümü yüksek.',
+    q: 'Önce/sonra fotoğrafı paylaşamıyorsak hastayı nasıl ikna edeceğiz?',
+    a: 'Tedaviyi dürüstçe anlatan sayfalarla. Hasta karar vermeden önce “kaç seans sürer” ya da “ne zaman işe dönerim” gibi soruların cevabını arar. Bu soruları açık açık cevaplayan sayfa kurallara da uyar.',
   },
   {
-    q: 'Fiyat yazmak yasak mı?',
-    a: 'Sağlık hizmetlerinde fiyat ve indirim üzerinden tanıtım yapmak kısıtlı. Bu yüzden fiyat sayfası yerine, maliyeti neyin belirlediğini açıklayan bilgilendirici içerik kuruyoruz — hasta zaten bunu arıyor ve bu içerik sıralanabiliyor.',
+    q: 'Sitede fiyat yazabilir miyiz?',
+    a: 'Fiyat listesi yayınlamıyoruz, çünkü sağlıkta fiyat ve indirim üzerinden tanıtım kısıtlı. Onun yerine fiyatı neyin belirlediğini anlatıyoruz, örneğin implant sayısı ya da kemik durumu. Kesin rakamı hasta muayeneden sonra kliniğinizden öğrenir.',
   },
   {
-    q: 'Birden fazla şubem var, tek profil mi açayım?',
-    a: 'Her fiziksel şube için ayrı profil açılmalı ve her birinin kendi değerlendirme havuzu, kendi lokasyon sayfası olmalı. En sık yapılan hata, şube sayfalarının birbirinin kopyası olması — bu hem sıralamayı düşürüyor hem de şubeler birbirini yiyor.',
+    q: 'Gece hasta kabul etmiyoruz, acil aramalarda görünmemiz gerekir mi?',
+    a: 'Gerekmez, saatlerinizin doğru olması yeter. Kapalı olduğunuz saatleri profil açıkça göstermeli, ertesi sabah arayacak hasta da buna bakar. “Acil” kelimesini yalnız gerçekten acil hasta kabul ediyorsanız kullanın.',
   },
   {
-    q: 'Ne kadar sürede sonuç alırım?',
-    a: 'Diş hekimliği yerel SEO\'nun en rekabetçi dikeylerinden biri, özellikle büyük şehir merkezlerinde. Profil tarafında kök hata varsa 4–8 haftada belirgin hareket görülüyor; doygun bölgelerde ilk üçe yerleşmek 4–6 ayı bulabiliyor.',
+    q: 'Ne zaman sonuç görürüz?',
+    a: 'Haritada ilk hareketi çoğu işletmede 4 ile 8 hafta arasında görüyoruz, tedavi sayfalarının aramada yer bulması 3-6 ay sürer. Diş kliniklerinin sıkıştığı büyük şehir merkezlerinde bu süre uzar. Kesin tarih veremeyiz, ama yaptığımız işleri her hafta raporda görürsünüz.',
   },
 ];
 ---
@@ -38,154 +46,213 @@ const faq = [
   locale={locale}
   route="industries/dental"
   title="Diş Hekimleri ve Diş Klinikleri İçin SEO | Wiserrise"
-  description="Diş klinikleri için sağlık tanıtım mevzuatına uygun yerel SEO. Kategori kurulumu, tedavi sayfaları, yorum yönetimi ve çok şubeli yapılar."
-  eyebrow="Sektör"
-  h1="Diş Hekimleri İçin SEO"
-  lede="Diş hekimliği, yerel aramada en doygun dikeylerden biri. Aynı ilçede onlarca klinik aynı sorguya oynuyor ve hepsinin profili benzer görünüyor. Ayrışma, mevzuatın izin verdiği dar alanda kuruluyor."
+  description="Diş klinikleri için sağlık tanıtım kurallarına uygun local SEO: acil aramalar, tedavi sayfaları, yorumlar ve şubeler. Bölgenizden ölçüm, sözleşme yok."
+  eyebrow="SEKTÖR · DİŞ HEKİMLERİ"
+  h1="Diş hekimleri için SEO: hasta aradığı an orada olun."
+  crumb="Diş Hekimleri"
+  lede="Diş hekimleri için SEO, iki farklı hastaya aynı anda görünmek demek: gece ağrıyla “açık diş hekimi” yazan ve haftalardır implant araştıran. Birincisi haritaya ve telefona bakar, ikincisi tedavi sayfalarınızı okur. Biz ikisini sağlık tanıtım kurallarının içinde kalarak kuruyoruz."
   serviceName="Diş Klinikleri İçin Yerel SEO"
   breadcrumb={[
     { label: 'Ana Sayfa', href: '/tr' },
     { label: 'Sektörler', href: p('industries') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp') },
-    { label: 'Harita Sıralama Takibi', href: p('services/rank-tracking') },
-    { label: 'İçerik Üretimi', href: p('services/content') },
+    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp'), text: 'Saatleri, kategoriyi, hizmet listesini ve yorum yanıtlarını birlikte yönetiriz.' },
+    { label: 'İçerik Üretimi', href: p('services/content'), text: 'Tedavi sayfalarını hastanın gerçekten sorduğu sorulara göre yazarız.' },
+    { label: 'Estetik Klinikleri İçin SEO', href: p('industries/aesthetics'), text: 'Kararın uzun sürdüğü ve fiyatın sık sorulduğu bir alanda nasıl çalıştığımız.' },
+    { label: 'Fizyoterapistler İçin SEO', href: p('industries/physio'), text: 'Semt yakınlığının ve tekrar eden seansların belirlediği aramalar.' },
   ]}
-  ctaLabel="Kliniğimi Ücretsiz Analiz Et →"
+  relatedHeading="İlgili sayfalar"
+  ctaLabel="Ücretsiz analiz al"
   ctaHref="/tr#contact"
 >
-  <h2 id="mevzuat">Sağlık tanıtım mevzuatı ne diyor?</h2>
+  <h2 id="acil">Ağrıyla arayan hasta sizi nasıl bulur?</h2>
 
   <p>
-    Sağlık hizmeti sunucularının tanıtımı, Sağlık Bakanlığı düzenlemeleriyle sınırlandırılmış
-    durumda. Diğer sektörlerde standart olan pek çok pazarlama hamlesi burada kullanılamıyor:
+    Haritadan bulur ve siteyi açmadan arar. Gece 23’te dişi zonklayan biri “açık diş hekimi” ya da “nöbetçi dişçi”
+    yazar, haritada çıkan ilk birkaç kliniğe bakar ve telefon tuşuna basar. Karar saniyeler içinde verilir.
   </p>
 
-  <ul>
-    <li>Talep yaratmaya yönelik, sonuç vaat eden ifadeler</li>
-    <li>Öncesi/sonrası görselleriyle yapılan tanıtım</li>
-    <li>İndirim, kampanya, paket fiyat gibi teşvikler</li>
-    <li>Hasta deneyimini övgü aracı olarak kullanan içerik</li>
-    <li>Karşılaştırmalı üstünlük iddiaları</li>
+  <p>
+    Bu aramada önce saatlerinize bakılır. Profilde saat eksikse ya da bayram için özel saat girilmemişse, haritada yalnız
+    açık yerleri süzen kişi sizi listede görmez.
+  </p>
+
+  <p>
+    Bir de profil adı tuzağı var. “Acil Diş Kliniği Kadıköy İmplant” gibi adlar kısa vadede işe yarıyor gibi görünür,
+    ama Google’ın kurallarına aykırıdır ve profilin askıya alınmasına kadar gider. Profil adınız tabelanızdaki adla aynı
+    olmalı.
+  </p>
+
+  <p>
+    Gece gerçekten hasta kabul etmiyorsanız “acil” kelimesini hiçbir yerde kullanmayın. Gece arayıp size ulaşamayan
+    hasta, “acil” yazan profilinize bir daha güvenmez.
+  </p>
+
+  <p>
+    Kabul ediyorsanız asıl iş telefonu açmak. Geç dönmenin bedelini biz de ödedik: henüz yeniyken bir Meta reklamından
+    gelen tek lead’i 5 gün sonra fark ettik, müşteriye iletmek için çok geçti ve binlerce lira boşa yandı. Ağrıyla yazan
+    hasta 5 gün beklemez, 5 dakika bile beklemez.
+  </p>
+
+  <p>
+    Saatleri, özel günleri, telefon ve mesaj ayarlarını <a href={p('services/gbp')}>Google İşletme Profili yönetimi</a>
+    kapsamında takip ederiz.
+  </p>
+
+  <h2 id="tedavi">İmplant araştıran hasta neyi okur?</h2>
+
+  <p>
+    Sorularının cevabını okur. İmplant ya da ortodonti düşünen hasta karar vermeden önce haftalarca
+    araştırır ve “kaç seans sürer”, “ağrı olur mu”, “ne kadar dayanır”, “fiyatı neye göre değişir” diye yazar.
+  </p>
+
+  <p>
+    Diş kliniği sitelerinin çoğunda tedaviler tek bir “Hizmetlerimiz” sayfasında, ikişer paragrafla geçer. Bu sayfa hiçbir
+    tedavi aramasında öne çıkmaz. Her ağırlıklı tedavi kendi sayfasını ister.
+  </p>
+
+  <p>Bir implant sayfasına şunları yazıyoruz:</p>
+
+  <ul class="checklist">
+    <li>İşlemin kaç aşamada yapıldığı, toplam süre ve iyileşme dönemi</li>
+    <li>Ağrı ve uyuşturma konusunda gerçekçi bir anlatım</li>
+    <li>Kimlere uygun olmadığı ve hangi ön koşulların arandığı</li>
+    <li>Fiyatı belirleyen etkenler, örneğin implant sayısı ve kemik durumu</li>
+    <li>Köprü gibi alternatiflerle karşılaştırma, üstünlük iddiası olmadan</li>
+    <li>Hastaların gerçekten sorduğu sorular ve kısa cevapları</li>
   </ul>
 
   <p>
-    Serbest olan alan ise <strong>bilgilendirme</strong>: tedavinin ne olduğu, nasıl
-    uygulandığı, hangi durumlarda gerektiği, ne kadar sürdüğü ve hastanın neyle
-    karşılaşacağı. Sıralama açısından iyi haber şu — hastanın gerçekten aradığı da tam
-    olarak bu bilgi.
+    Sayfadaki tedavi adlarını profildeki hizmet listesiyle birebir aynı tutuyoruz. Hasta “20 yaş dişi çekimi” yazıyorsa
+    ikisinde de o yazar.
+  </p>
+
+  <p>
+    Bu sayfaları <a href={p('services/content')}>içerik üretimi</a> işinde yazar, her birini
+    <a href={p('services/on-page-seo')} style="white-space: nowrap;">on-page SEO</a> ile tek bir aramaya oturturuz.
+    Sağlık sayfalarında Google metni kimin yazdığına daha sıkı bakar. Bu yüzden içeriği kontrol eden hekimin adını ve
+    unvanını sayfaya yazmanızı öneririz.
+  </p>
+
+  <h2 id="kurallar">Sağlık tanıtım kuralları neyi yasaklıyor?</h2>
+
+  <p>
+    Sağlık hizmetlerinin tanıtımı Sağlık Bakanlığı düzenlemeleriyle sınırlı. Başka sektörde sıradan sayılan birçok hamle
+    diş kliniğinde başınızı ağrıtır. Bizim yazdığımız hiçbir metinde şunlar yer almaz:
+  </p>
+
+  <ul>
+    <li>Sonuç vaadi, “kesin sonuç” ya da tedavi garantisi</li>
+    <li>Önce/sonra fotoğraflarıyla yapılan tanıtım</li>
+    <li>İndirim, kampanya ve paket fiyat duyurusu</li>
+    <li>Hasta yorumlarını övgü malzemesi olarak sitede ya da reklamda kullanmak</li>
+    <li>“En iyi”, “en uygun” gibi karşılaştırmalı üstünlük iddiaları</li>
+  </ul>
+
+  <p>
+    Serbest olan alan bilgilendirme: tedavinin ne olduğu, nasıl yapıldığı, ne kadar sürdüğü ve hastanın neyle
+    karşılaşacağı. Hastanın aradığı da tam olarak bu. Kurallar sizi zaten hastanın okumak istediği içeriğe iter.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Bu sayfa hukuki görüş değildir.</strong> Mevzuatın yorumu ve güncel hali
-      için bağlı olduğunuz il sağlık müdürlüğü ve oda düzenlemeleri esastır. Ürettiğimiz
-      metinleri yayına almadan önce onayınıza sunuyoruz.
+      <strong>Bu sayfa hukuki görüş değildir.</strong> Kuralların güncel yorumu için bağlı olduğunuz il sağlık müdürlüğü
+      ve meslek odanız esastır. Yazdığımız her metni yayına almadan önce onayınıza sunarız.
     </p>
   </div>
 
-  <h2 id="kategori">Kategori ve hizmet kurulumu</h2>
+  <p>
+    Aynı kurallar <a href={p('industries/aesthetics')}>estetik klinikleri</a> ve
+    <a href={p('industries/physio')}>fizyoterapistler</a> için de geçerli. Onların arama davranışı farklı, bu yüzden
+    ayrı sayfalarda anlattık.
+  </p>
+
+  <h2 id="kategori">Hangi kategoriyi seçmelisiniz?</h2>
 
   <p>
-    Google'ın kategori listesinde "Diş hekimi", "Diş kliniği", "Ortodontist", "Ağız ve çene
-    cerrahı", "Estetik diş hekimi" gibi ayrımlar var ve bunlar farklı sorgu kümelerine
-    karşılık geliyor.
+    Birincil kategoriyi ana aramaya verin: “Diş hekimi” ya da “Diş kliniği”. Gerçekten ağırlık verdiğiniz alanları ek
+    kategori olarak ekleyin. Her kategori farklı bir arama kümesine karşılık gelir.
   </p>
 
   <p>
-    Doğru kurulum, birincil kategoriyi ana hacme ("Diş hekimi" ya da "Diş kliniği") vermek
-    ve gerçekten ağırlık verdiğiniz uzmanlıkları ikincil olarak eklemek. Sık gördüğümüz
-    hata, implant ya da ortodonti ağırlıklı çalışan bir kliniğin birincil kategoriyi bu dar
-    alana vermesi — dar alanda güç kazanıp ana hacmi kaybetmek anlamına geliyor.
+    Sık gördüğümüz hata, implant ya da ortodonti ağırlıklı çalışan kliniğin birincil kategoriyi bu dar alana vermesi. Dar
+    alanda görünürlük kazanır, “diş hekimi” aramasının büyük hacmini kaybeder.
   </p>
 
   <p>
-    Hizmet listesini de tedavi adlarıyla, hastanın kullandığı dille yazıyoruz: "20 yaş dişi
-    çekimi", "zirkonyum kaplama", "şeffaf plak tedavisi". Bu isimlendirmeyi sitedeki tedavi
-    sayfalarıyla birebir aynı tutuyoruz.
+    Bir de unvan meselesi var. Kadronuzda ortodonti uzmanı yoksa “Ortodontist” kategorisini seçmeyin, hastaya uzmanlık
+    izlenimi verir. Kategori seçimini bölgenizde öne çıkan kliniklerin kategorileriyle karşılaştırarak yaparız; yöntemi
+    <a href={p('services/gbp')}>profil yönetimi sayfasında</a> anlattık.
   </p>
 
-  <h2 id="tedavi">Tedavi sayfaları</h2>
+  <h2 id="yorum">Hastadan yorum istemek sorun olur mu?</h2>
 
   <p>
-    Diş kliniği sitelerinin çoğunda tedaviler tek bir "hizmetlerimiz" sayfasında, her biri
-    iki paragrafla anlatılıyor. Bu yapı hiçbir tedavi sorgusunda sıralanmıyor.
+    Yorum isteyebilirsiniz. Karşılığında indirim ya da hediye teklif etmek ise Google’ın kurallarına aykırı, sağlıkta bir
+    de tanıtım kuralları devreye girer. Hastaya ne yazacağını dikte etmek de aynı riski taşır.
   </p>
 
   <p>
-    Her ağırlıklı tedavi kendi sayfasını hak ediyor ve o sayfanın hastanın sorduğu soruları
-    kapsaması gerekiyor. İmplant sayfası örneği üzerinden kapsanması gerekenler:
+    Asıl ince nokta yanıtlarda. Bir yoruma “implant tedavinizden memnun kalmanıza sevindik” diye cevap verdiğinizde, o
+    kişinin hangi tedaviyi aldığını herkese duyurmuş olursunuz. Yanıtlarımızı bu yüzden tedavi adı geçmeden, kısa ve sakin
+    yazıyoruz.
+  </p>
+
+  <p>
+    Olumsuz yorumda önce hastaya telefonla ulaşılır, sonra savunmaya geçmeyen kısa bir yanıt yazılır. Gelen yorumları
+    sitede “hastalarımız ne diyor” başlığıyla reklam gibi sergilemeyin. Yorum isteme akışını
+    <a href={p('guides/more-reviews')}>Google yorumlarını artırma rehberinde</a> adım adım anlattık.
+  </p>
+
+  <h2 id="sube">Birden fazla şubeniz ya da yabancı hastanız varsa?</h2>
+
+  <p>
+    Her fiziksel şube ayrı bir profil ve sitede ayrı bir sayfa ister. Şube sayfalarının birbirinin kopyası olması en
+    pahalıya patlayan hatalardan biri, şubeler aynı aramada birbirini yer. Her sayfaya o şubenin ekibini ve orada yapılan
+    tedavileri yazarız.
+  </p>
+
+  <p>
+    Yurt dışından hasta kabul ediyorsanız iş bambaşka bir yere gider. Bu alan Sağlık Bakanlığı’ndan alınan sağlık turizmi
+    yetki belgesine tabi ve tanıtım kuralları da farklı işler. Arama başka dilde ve ülke çapında yapılır, yakınlığın etkisi
+    kalmaz.
+  </p>
+
+  <p>
+    Türkçe, İngilizce ve Almanca çalışıyoruz ama sağlık turizmini yerel programın içine sıkıştırmıyoruz. Birlikte
+    planlıyorsak baştan ayrı kurarız.
+  </p>
+
+  <h2 id="olcum">Neyi ölçüyoruz?</h2>
+
+  <p>
+    Diş kliniğinde en yanıltıcı rakam site trafiği. Haritadan gelen hastanın bir kısmı siteye hiç uğramadan arar, sadece
+    site istatistiğine bakan klinik bu hastaları görmez. Bu yüzden dört kaynağı birlikte okuyoruz:
   </p>
 
   <ul class="checklist">
-    <li>İşlem nasıl uygulanıyor, kaç aşamada tamamlanıyor</li>
-    <li>Toplam süre ve iyileşme dönemi</li>
-    <li>Ağrı ve anestezi konusunda gerçekçi beklenti</li>
-    <li>Kimlere uygun değil, hangi ön koşullar aranıyor</li>
-    <li>Maliyeti neyin belirlediği (fiyat değil, değişkenler)</li>
-    <li>Alternatif tedavilerle karşılaştırma — iddiasız, bilgilendirici</li>
-    <li>Sık sorulanlar ve <code>FAQPage</code> yapılandırılmış verisi</li>
+    <li>
+      <a href={p('services/rank-tracking')}>Bölgenizden ölçüm</a>: çevrenizin farklı noktalarında kaçıncı çıktığınız
+    </li>
+    <li>Profil etkileşimleri: kaç kişinin sizi aradığı, yol tarifi aldığı, mesaj attığı ya da sitenize geçtiği</li>
+    <li>Tedavi sayfalarının Search Console verisi: hangi aramada göründüğü ve kaç tıklama aldığı</li>
+    <li>Yaptığımız işler: profilde ve sitede neyi değiştirdiğimiz</li>
   </ul>
 
   <p>
-    Bu derinlik hem sıralamayı hem de randevu dönüşümünü artırıyor: soruları cevaplanmış
-    hasta, telefonu daha kararlı açıyor.
-  </p>
-
-  <h2 id="yorum">Yorum yönetimi</h2>
-
-  <p>
-    Doygun bir ilçede profiller birbirine çok benzediğinde, sıralamayı ve tıklamayı ayıran
-    şey büyük ölçüde yorumlar oluyor. Ama sağlıkta yorum yönetimi iki nedenle hassas.
-  </p>
-
-  <p>
-    Birincisi, yorumların tanıtım aracına dönüşmemesi gerekiyor — hasta deneyimini övgü
-    malzemesi yapan kurgular mevzuat açısından riskli. İkincisi, yanıtlarda hasta mahremiyeti:
-    bir yoruma "implant tedavinizden memnun kalmanıza sevindik" diye cevap vermek, o kişinin
-    aldığı tedaviyi kamuya açıklamak demek.
-  </p>
-
-  <p>
-    Yanıtlarımızı bu yüzden tedavi detayına girmeden, kısa ve nötr kuruyoruz. Olumsuz
-    yorumlarda ise önce telefonla telafi, sonra kamuya açık ve savunmacı olmayan kısa bir
-    yanıt izliyoruz.
-  </p>
-
-  <h2 id="turizm">Sağlık turizmi ayrı bir dünya</h2>
-
-  <p>
-    Yurt dışından hasta kabul eden klinikler için oyun tamamen değişiyor. Bu alanda
-    faaliyet, Sağlık Bakanlığı'ndan alınan <strong>sağlık turizmi yetki belgesine</strong>
-    tabi ve tanıtım kuralları da farklı işliyor.
-  </p>
-
-  <p>
-    SEO açısından da ayrı bir yapı gerekiyor: farklı dilde içerik, farklı arama davranışı
-    (fiyat ve paket odaklı), farklı rekabet (ülke geneli, yakınlık sinyali yok) ve genelde
-    ayrı bir alan adı ya da alt dizin. Yerel SEO programının içine sıkıştırılamayacak kadar
-    farklı bir iş — birlikte planlıyorsak baştan ayrı kurguluyoruz.
-  </p>
-
-  <h2 id="olcum">Neyi ölçüyoruz</h2>
-
-  <p>
-    Diş kliniklerinde en yanıltıcı metrik site trafiği. Randevuların büyük bölümü profilden
-    doğrudan telefonla geliyor ve siteye hiç uğramıyor. Bu yüzden raporlamayı üç kaynak
-    üzerinden kuruyoruz: <a href={p('services/rank-tracking')}>grid sıralaması</a>, profil
-    üzerinden gelen arama ve yol tarifi sayısı, ve tedavi sayfalarının Search Console verisi.
-  </p>
-
-  <p>
-    Üçünü birlikte okumak, "sıralama yükseldi ama randevu artmadı" durumunu erken yakalamayı
-    sağlıyor — genelde sebep, sıralamanın hacmi düşük bir tedavi sorgusunda yükselmiş olması.
+    Yaptığımız işleri her hafta raporda ve müşteri portalında görürsünüz. Dördünü birlikte okumak “sıra yükseldi ama
+    telefon çalmıyor” durumunu erken yakalar. Sebep bazen sıranın hacmi düşük bir tedavi aramasında yükselmiş olmasıdır.
   </p>
 
   <Fragment slot="cta">
-    <h2>İlçenizde kaç klinik <span class="highlight">sizden önde</span>?</h2>
-    <p>Ücretsiz analizde grid sıralamanızı, rakip yorum farkını ve eksik tedavi sayfalarını çıkarıyoruz.</p>
+    <h2>İlçenizde kaç klinik <span class="highlight">önünüzde</span>?</h2>
+    <p>
+      Ücretsiz analizde bölgenizden ölçüm alır, rakip kliniklerle aranızdaki farkı çıkarırız. Sonuç 24 saat içinde
+      <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
   </Fragment>
 </ContentLayout>

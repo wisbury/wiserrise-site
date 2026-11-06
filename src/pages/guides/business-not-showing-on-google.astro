@@ -1,0 +1,253 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'TEST', title: 'Search your name first', text: 'Search your name in quotes. If no profile card appears on the right, your profile isn’t live, and it’s too early to look at rankings.' },
+  { label: 'VERIFICATION', title: 'Unverified means invisible', text: 'If the dashboard says “Verification required” or “Under review”, the profile won’t appear in search, however complete it is.' },
+  { label: 'CATEGORY', title: 'The first suspect: category', text: 'If you show up for your name and not in a service search, check your primary category. Compare it with your competitors in the top three.' },
+  { label: 'DISTANCE', title: 'Where the searcher stands', text: 'Map rankings change with where the searcher is standing. Checking from inside your business on your own phone misleads you.' },
+];
+
+const toc = [
+  { id: 'iki-durum', label: 'Two different problems' },
+  { id: 'yayinda', label: 'Is the profile live?' },
+  { id: 'askiya', label: 'Suspension' },
+  { id: 'kopya', label: 'Duplicate profile' },
+  { id: 'kategori', label: 'Wrong category' },
+  { id: 'ilk-uc', label: 'Behind the top three' },
+  { id: 'site', label: 'Regular results' },
+];
+
+const faq = [
+  {
+    q: 'I can see my profile, so why can’t my customers?',
+    a: 'Because Google shows you your own business more readily, and results change with the searcher’s location. To see the real picture, check in an incognito tab, signed out, from a point far from your business. To see your whole area, you need measurement from different points around you.',
+  },
+  {
+    q: 'I just created my profile. How long should I wait?',
+    a: 'After verification, a profile takes anywhere from a few days to a few weeks to settle, and rankings fluctuate during that time. Don’t touch your name, address or category in the first weeks. Disturbing a profile while it settles delays the recovery.',
+  },
+  {
+    q: 'If I hide my address, will I show up across a wider area?',
+    a: 'No. A profile without an address falls behind in “near me” searches, and Google still calculates rankings from proximity to your hidden address. If you have a place where you receive customers, show the address.',
+  },
+  {
+    q: 'Will I show up if I add a keyword to my business name?',
+    a: 'You might for a short while, but it breaks Google’s rules: the name must be the one you use in the real world. When a competitor reports it, the name gets corrected, and a repeat can get the profile suspended. We don’t do this on our clients’ profiles.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="guides/not-showing"
+  title="Business Not Showing on Google: 8 Causes and Fixes | Wiserrise"
+  description="If your business isn’t showing on Google Maps or in search, the cause is one of eight. Here are the checks to run and the order to run them in."
+  eyebrow="GUIDE · VISIBILITY"
+  h1="Why isn’t your business showing up on Google?"
+  crumb="Not showing on Google"
+  lede="If your business isn’t showing up on Google, there are two possibilities: either your profile isn’t live, or it’s live and stuck behind the top three. You can tell which one in a minute by searching your name. Below, we rule out eight causes one by one, starting with the quickest to check."
+  schemaType="article"
+  datePublished="2026-08-01"
+  dateModified="2026-11-06"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Guides', href: p('guides') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Profile verification problems', href: p('guides/verification'), text: 'If the postcard didn’t arrive or the video was rejected, we cover what to do in each case.' },
+    { label: 'Ranking higher on Google Maps', href: p('guides/rank-higher'), text: 'The order in which to close the gap with your competitors.' },
+    { label: 'How do you create a Google Business Profile?', href: p('guides/create-profile'), text: 'If you have no profile at all, the setup steps from the address decision to day one.' },
+    { label: 'Google Business Profile Management', href: p('services/gbp'), text: 'We manage your category, service structure, reviews and posts together.' },
+  ]}
+  relatedHeading="Related pages"
+  ctaLabel="Audit your profile for free"
+  ctaHref={p('tools/gbp-audit')}
+>
+  <h2 id="iki-durum">Missing entirely, or just ranking lower?</h2>
+
+  <p>
+    “I’m not showing up on Google” describes two separate problems, and their fixes look nothing alike. First, find out
+    which one you have.
+  </p>
+
+  <p>
+    Say you run a business called Ege Yıldız Oto Ekspertiz in Bornova. When you type “Ege Yıldız Oto Ekspertiz”, your
+    profile appears on the right. When you type “vehicle inspection Bornova”, you’re missing from the three businesses on
+    the map.
+  </p>
+
+  <p>
+    That’s a ranking problem. Your profile is in place; it’s just falling behind your competitors.
+  </p>
+
+  <ul>
+    <li>
+      <strong>You don’t show up even for your name.</strong> The profile either doesn’t exist, isn’t verified, has been
+      suspended or has a duplicate. The first three sections below are for you.
+    </li>
+    <li>
+      <strong>You show up for your name and are missing from service searches.</strong> Go to the sections on category,
+      distance and the gap with your competitors.
+    </li>
+  </ul>
+
+  <div class="callout">
+    <p>
+      <strong>Don’t test on your own phone.</strong> Google shows the account linked to a profile its own business more
+      readily, and the result changes with where you are. Check in an incognito tab, signed out, from somewhere far from
+      your business.
+    </p>
+  </div>
+
+  <h2 id="yayinda">Is your profile actually live?</h2>
+
+  <p>
+    For the quickest check, search your business name on Google in quotes, exactly as it appears on your sign. If no
+    profile card appears on the right, the profile was either never created or never went live.
+  </p>
+
+  <p>
+    This happens more than you’d think: the owner believes the profile is set up, and the process actually stopped
+    halfway. If you have no profile at all, go to the <a href={p('guides/create-profile')}>profile creation guide</a>.
+  </p>
+
+  <p>
+    If the profile exists, open the dashboard. If you see a “Verification required” or “Under review” warning, the
+    profile won’t appear in search, however carefully it was filled in. If the postcard didn’t arrive or the video was
+    rejected, we cover each case separately in the <a href={p('guides/verification')}>verification problems guide</a>.
+  </p>
+
+  <h2 id="askiya">Could your profile be suspended?</h2>
+
+  <p>
+    It could, and most owners notice late, because they never see a notification. A suspended profile disappears from
+    search entirely, and the dashboard says “Suspended”.
+  </p>
+
+  <p>The most common causes of suspension:</p>
+
+  <ul class="checklist">
+    <li>Adding keywords to the business name (like “Ege Yıldız Oto Ekspertiz Bornova Damage Assessment”)</li>
+    <li>Using a virtual office or a mailbox address</li>
+    <li>Changing the name, address and category several times in a short period</li>
+    <li>Opening more than one profile at the same address</li>
+    <li>Operating in a field, or with a service description, that goes against Google’s rules</li>
+  </ul>
+
+  <p>
+    The order of work is clear: fix the cause first, then submit a review request. A request submitted before the fix
+    only drags the process out.
+  </p>
+
+  <p>
+    Opening a new profile is the worst move. The new listing gets flagged as a duplicate and suspended too, and you end up
+    with two problem profiles. We cover the appeal steps in the <a href={p('guides/verification')}>verification
+    guide</a>.
+  </p>
+
+  <h2 id="kopya">Does the same business have two profiles?</h2>
+
+  <p>
+    If there are two profiles for the same business, Google can’t decide which one to show and weakens both. Hardly anyone
+    creates a duplicate on purpose: a former owner, an employee or a directory’s automatic listing made it.
+  </p>
+
+  <p>
+    To check, search Google Maps for your name and then, separately, for your phone number. If a duplicate turns up,
+    report it from the correct profile and ask for the two to be merged. Merging is safer than deleting, because the
+    merged profile carries its reviews over.
+  </p>
+
+  <h2 id="kategori">Does your category match the service being searched?</h2>
+
+  <p>
+    If you show up for your name and are missing from service searches, the first place we look is the primary category.
+    This is where Google gets most of its answer to “what does this business do?”. If the category is wrong, you never
+    enter the race for that service’s searches.
+  </p>
+
+  <p>
+    Say you’re a lawyer who also works as a mediator, and you chose “Mediator” as your primary category. That choice pushes
+    you back in “lawyer” searches, which carry the real volume. Physiotherapists make the same mistake with “Massage
+    therapist”, and medical aesthetics practices with “Beauty salon”.
+  </p>
+
+  <p>
+    The check is simple: search your target query on Google Maps and look at the categories of the businesses in the top
+    three. If yours is different, you’ve most likely found the cause. We explain how we set up category and service
+    structure on the <a href={p('services/gbp')}>Google Business Profile management</a> page.
+  </p>
+
+  <h2 id="ilk-uc">Showing up, just outside the top three?</h2>
+
+  <p>
+    If you’re fourth on the map, in practice you’re invisible, because the map box shows three businesses. Here we look
+    at two things: how far the searcher is from you and the gap between you and your competitors.
+  </p>
+
+  <h3>How far is the searcher from you?</h3>
+
+  <p>
+    In local rankings, distance is decisive. It’s normal to be missing when someone searches from the other side of the
+    city: at that point, there are businesses closer to them.
+  </p>
+
+  <p>
+    The real question is where you rank in the area your customers can actually come from. A vehicle inspection business
+    can rank first outside its own door and miss the top twenty 4 km away, and you can’t see that by checking from a single
+    point. We see where you rank from different points around you with
+    <a href={p('services/rank-tracking')}>measurement across your area</a>.
+  </p>
+
+  <h3>Where are you behind your competitors?</h3>
+
+  <p>
+    Put your profile side by side with the businesses in the top three. Compare these: review count and average rating,
+    profile age, how fresh the photos and posts are, how broad the service list is, and which searches the website shows
+    up for.
+  </p>
+
+  <p>
+    In the profiles we look at, the gap shows up most in review count. We explain the order for closing the gap in the
+    <a href={p('guides/rank-higher')}>guide to ranking higher on Google Maps</a>, and the review side in the
+    <a href={p('guides/more-reviews')}>reviews guide</a>.
+  </p>
+
+  <h2 id="site">Missing from the results below the map too?</h2>
+
+  <p>
+    The causes so far were about the map. If you’re also missing from the regular results below the map, look for the
+    problem on your website: the pages may not be indexed, they may be blocked by mistake, or the site may not be
+    crawlable.
+  </p>
+
+  <p>
+    For the quickest check, type “site:yourdomain.com” into Google. If no results appear, your site isn’t in the index.
+    We cover the causes and the order of fixes on the <a href={p('services/technical-seo')}>technical SEO</a> page.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Don’t change everything on the same day.</strong> Changing the name, address and category several times in a
+      short period is one of the causes of suspension. After each fix, wait a few days and measure the result, and only
+      then move on to the next one.
+    </p>
+  </div>
+
+  <Fragment slot="cta">
+    <h2><span class="highlight">Where</span> is your profile falling short?</h2>
+    <p>
+      The free audit tool scores your profile in 10 questions across category, reviews, freshness and the website link.
+      You see the result on screen right away, and we don’t ask for your
+      <span style="white-space: nowrap;">email address</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

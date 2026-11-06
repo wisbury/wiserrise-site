@@ -1,0 +1,308 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'ZIEL', title: 'Die Zahl hängt vom Wettbewerb ab', text: 'Eine Bewertungszahl, die für alle gilt, gibt es nicht. Ihr Maßstab ist die Menge bei den Unternehmen, die bei Ihrem Zielbegriff auf der Karte unter den ersten drei stehen.' },
+  { label: 'MOMENT', title: 'Wenn die Arbeit fertig ist', text: 'Bitten Sie im Moment der Übergabe, solange die Zufriedenheit frisch ist. Auf eine Erinnerung Tage später reagieren nur wenige Kunden.' },
+  { label: 'LINK', title: 'Kurzer Bewertungslink', text: 'Der Link aus der Verwaltung Ihres Profils führt Kunden direkt zum Bewertungsfenster. Niemand muss Sie erst auf der Karte suchen.' },
+  { label: 'REGEL', title: 'Anreize sind verboten', text: 'Bewertungen gegen Rabatt, Geschenk oder Gewinnspiel zu erbitten, verstößt gegen die Regeln von Google. Erkannte Bewertungen werden gelöscht.' },
+];
+
+const toc = [
+  { id: 'hedef', label: 'Wie viele reichen?' },
+  { id: 'an', label: 'Wann bitten?' },
+  { id: 'nasil', label: 'Wie bitten?' },
+  { id: 'kurallar', label: 'Was Google verbietet' },
+  { id: 'filtre', label: 'Warum Bewertungen verschwinden' },
+  { id: 'yanit', label: 'Wie antworten?' },
+  { id: 'olumsuz', label: 'Bei negativen Bewertungen' },
+];
+
+const faq = [
+  {
+    q: 'Darf ich für eine Bewertung einen Rabatt geben?',
+    a: 'Nein. Rabatt, Geschenk oder Gewinnspiel als Gegenleistung für eine Bewertung verstoßen gegen die Regeln von Google. Erkannte Bewertungen werden gelöscht, im Wiederholungsfall kann das Profil gesperrt werden.',
+  },
+  {
+    q: 'Lohnt es sich, Bewertungen zu kaufen?',
+    a: 'Nein, Sie setzen damit Ihr Profil aufs Spiel. Eine gekaufte Bewertung ist für Google eine gefälschte Bewertung und wird gelöscht, sobald der Filter sie erkennt. Stecken Sie dasselbe Geld und dieselbe Mühe in einen Ablauf, mit dem Sie Ihre eigenen Kunden um Bewertungen bitten.',
+  },
+  {
+    q: 'Darf ich Kunden sagen, was sie schreiben sollen?',
+    a: 'Geben Sie keinen fertigen Text vor. Ähnliche Bewertungen bleiben im Filter hängen, und wer sie liest, merkt, dass sie gefälscht sind. Es genügt zu sagen: „Wir würden uns freuen, wenn Sie schreiben, welche Leistung Sie in Anspruch genommen haben.“',
+  },
+  {
+    q: 'Darf ich frühere Kunden gesammelt um Bewertungen bitten?',
+    a: 'Ja, aber nicht alle am selben Tag. Ein Stapel Bewertungen innerhalb weniger Tage ist genau das typische Muster, auf das der Filter achtet. Verteilen Sie die Liste über Wochen.',
+  },
+  {
+    q: 'Kann ich eine gefälschte negative Bewertung löschen lassen?',
+    a: 'Bei einem Regelverstoß können Sie die Bewertung an Google melden. Beleidigungen, Inhalte ohne Bezug oder erkennbar von einem Wettbewerber stammende Bewertungen können entfernt werden, aber das Verfahren führt nicht sicher zum Erfolg und kann Wochen dauern. Ihre eigentliche Verteidigung ist die Zahl Ihrer echten Bewertungen.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="guides/more-reviews"
+  title="Mehr Google-Bewertungen bekommen: So geht es | Wiserrise"
+  description="Regelkonform mehr Google-Bewertungen: der richtige Moment, der kurze Link, die passende Antwort. Und warum Kauf und Anreize verboten sind."
+  eyebrow="RATGEBER · BEWERTUNGEN"
+  h1="Wie bekommt man mehr Google-Bewertungen?"
+  crumb="Mehr Bewertungen"
+  lede="Mehr Google-Bewertungen bekommen Sie, wenn Sie jeden zufriedenen Kunden in dem Moment, in dem die Arbeit fertig ist, um eine Bewertung bitten, mit einem Link, der sich mit einem Tipp öffnet. Bewertungen kaufen, Bewertungen gegen Rabatt sammeln und nur zufriedene Kunden zu Google schicken verstößt gegen die Regeln. Setzen Sie Ihr Ziel anhand Ihrer Wettbewerber und verteilen Sie die Anfragen über Wochen."
+  schemaType="article"
+  datePublished="2026-08-01"
+  dateModified="2026-11-06"
+  breadcrumb={[
+    { label: 'Startseite', href: '/de' },
+    { label: 'Ratgeber', href: p('guides') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Bei Google Maps höher ranken', href: p('guides/rank-higher'), text: 'Welche Rolle Bewertungen im Ranking spielen und in welcher Reihenfolge Sie arbeiten sollten.' },
+    { label: 'Unternehmen nicht bei Google sichtbar', href: p('guides/not-showing'), text: 'Genug Bewertungen, aber nicht auf der Karte? Schließen Sie die Ursachen nacheinander aus.' },
+    { label: 'Google-Unternehmensprofil-Betreuung', href: p('services/gbp'), text: 'Kategorie, Leistungsstruktur, Bewertungen und Beiträge betreuen wir als Ganzes.' },
+    { label: 'SEO für Anwälte', href: p('industries/law'), text: 'Was unter dem Werbeverbot bei Profil und Bewertungen möglich ist.' },
+  ]}
+  relatedHeading="Verwandte Seiten"
+  ctaLabel="Profil kostenlos prüfen"
+  ctaHref={p('tools/gbp-audit')}
+>
+  <h2 id="hedef">Wie viele Bewertungen reichen?</h2>
+
+  <p>
+    Eine Zahl, die für alle gilt, gibt es nicht. Ihr Maßstab ist die Bewertungsmenge der Unternehmen, die bei Ihrem
+    Zielbegriff auf der Karte unter den ersten drei stehen. In manchen Branchen heißt das 20 Bewertungen, in anderen 200.
+  </p>
+
+  <p>
+    Das lässt sich leicht prüfen. Geben Sie Ihren Suchbegriff in Google Maps ein und notieren Sie Bewertungszahl und
+    Durchschnitt der ersten drei. Liegen Sie deutlich darunter, haben Bewertungen Vorrang.
+  </p>
+
+  <p>
+    Sind Sie auf dem Niveau Ihrer Wettbewerber und trotzdem nicht sichtbar, liegt das Problem woanders, sehr
+    wahrscheinlich bei der Kategorie. Beginnen Sie dann mit den Prüfungen im Ratgeber
+    <a href={p('guides/not-showing')}>Unternehmen nicht bei Google sichtbar</a>.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Die Menge kommt vor dem Durchschnitt.</strong> 80 Bewertungen mit 4,7 Sternen sind ein stärkeres Profil als
+      6 Bewertungen mit 5,0. Jagen Sie keinem perfekten Schnitt hinterher, ein paar Bewertungen mit 4 Sternen machen Ihr
+      Profil glaubwürdiger.
+    </p>
+  </div>
+
+  <h2 id="an">Wann sollten Sie um eine Bewertung bitten?</h2>
+
+  <p>
+    Solange die Zufriedenheit am frischesten ist. Wie viele Kunden eine Bewertung schreiben, hängt stärker vom Zeitpunkt
+    ab als vom Text.
+  </p>
+
+  <p>
+    Angenommen, Sie betreiben in Bornova einen Kfz-Gutachter-Betrieb. Der Kunde hält den Bericht in der Hand, hat gerade
+    erfahren, dass das Auto, das er kaufen will, in Ordnung ist, und ist erleichtert. Genau jetzt bitten Sie um die
+    Bewertung, bevor er Ihren Betrieb verlässt.
+  </p>
+
+  <p>Der richtige Moment hängt von der Branche ab:</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Branche</th>
+          <th>Der richtige Moment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Kfz-Gutachter</td>
+          <td>Bei der Übergabe des Berichts, solange der Kunde noch vor Ort ist</td>
+        </tr>
+        <tr>
+          <td>Zahnklinik</td>
+          <td>Wenn die Behandlung abgeschlossen und auch der Kontrolltermin vorbei ist</td>
+        </tr>
+        <tr>
+          <td>Physiotherapie</td>
+          <td>Wenn die Behandlungsserie abgeschlossen ist und der Patient die Besserung spürt</td>
+        </tr>
+        <tr>
+          <td>Anwaltskanzlei</td>
+          <td>Wenn das Mandat abgeschlossen ist, aber lesen Sie vorher den Hinweis zu den Vorschriften weiter unten</td>
+        </tr>
+        <tr>
+          <td>Friseur, Service, Einzelhandel</td>
+          <td>In den ersten Stunden nach der Leistung oder Lieferung</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Auf Erinnerungen, die Tage später kommen, reagieren nur wenige Kunden. Sie erinnern sich an ihre Zufriedenheit, aber
+    der Moment ist vorbei, also werden sie nicht aktiv.
+  </p>
+
+  <h2 id="nasil">Wie bitten Sie um eine Bewertung?</h2>
+
+  <p>Machen Sie es Kunden so leicht wie möglich, eine Bewertung zu schreiben. Wir richten diese Reihenfolge ein:</p>
+
+  <ol>
+    <li>
+      <strong>Holen Sie sich den kurzen Bewertungslink.</strong> In der Verwaltung Ihres Unternehmensprofils gibt es einen
+      Link zum Bewerten. Er führt Kunden direkt zum Bewertungsfenster, sie müssen Sie nicht erst auf der Karte suchen.
+    </li>
+    <li>
+      <strong>Bitten Sie persönlich und schicken Sie den Link sofort.</strong> Sagen Sie es bei der Übergabe in einem
+      Satz und schicken Sie den Link im selben Moment per WhatsApp. Eine Nachricht allein bringt weniger Rückmeldungen.
+    </li>
+    <li>
+      <strong>Halten Sie vor Ort einen QR-Code bereit.</strong> An der Kasse, im Wartezimmer oder am Übergabetisch sollte
+      der QR-Code des Links liegen.
+    </li>
+    <li>
+      <strong>Bitten Sie einmal.</strong> Hartnäckige Erinnerungen verderben zufriedenen Kunden die Laune.
+    </li>
+  </ol>
+
+  <p>
+    Zwischen einer Richtung vorgeben und einen Text vorgeben verläuft eine klare Grenze. „Wir würden uns freuen, wenn Sie
+    schreiben, welche Leistung Sie bekommen haben und aus welchem Stadtteil Sie kommen“ ist unproblematisch, die Sätze
+    formuliert der Kunde selbst. Sobald Sie einen fertigen Text vorgeben, ähneln sich die Bewertungen und bleiben im
+    Filter hängen.
+  </p>
+
+  <h2 id="kurallar">Welche Bewertungstaktiken verbietet Google?</h2>
+
+  <p>
+    Hier sagen wir es klar: Machen Sie nichts von dem Folgenden, auch wenn Ihr Wettbewerber es tut. Kurzfristig steigt
+    die Zahl, danach gefährden Sie Ihr Profil.
+  </p>
+
+  <ul>
+    <li>
+      <strong>Bewertungen kaufen.</strong> Eine bezahlte Bewertung ist eine gefälschte Bewertung und verstößt gegen die
+      Regeln von Google. Erkennt der Filter sie, werden die Bewertungen gelöscht, und das Profil riskiert eine Sperrung.
+    </li>
+    <li>
+      <strong>Bewertungen mit Anreizen sammeln.</strong> Rabatt, Geschenk, Gewinnspiel oder „Kaffee aufs Haus für jede
+      Bewertung“ laufen alle auf dasselbe hinaus. Erkannte Bewertungen werden gelöscht, im Wiederholungsfall kann das
+      Profil gesperrt werden.
+    </li>
+    <li>
+      <strong>Den Link nur an zufriedene Kunden schicken.</strong> Erst „Sind Sie zufrieden?“ zu fragen und nur die, die
+      Ja sagen, zu Google zu schicken, ist ausdrücklich verboten. Auf Englisch heißt das review gating.
+    </li>
+  </ul>
+
+  <p>
+    Liegt Ihr Wettbewerber mit gekauften Bewertungen vorn, melden Sie den Regelverstoß an Google und bauen Sie Ihren
+    eigenen echten Fluss auf. Seine Bewertungen können jederzeit gelöscht werden, Ihre echten Bewertungen sammeln sich
+    weiter an.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Hinweis für Anwälte und Gesundheitsbetriebe:</strong> In der Anwaltschaft macht die Werbeverbotsverordnung
+      der türkischen Anwaltskammer (TBB Reklam Yasağı Yönetmeliği) es riskant, wenn eine Bitte um Bewertung zum Anreiz
+      wird; im Gesundheitswesen verbieten die türkischen Vorschriften, Erfahrungen von Patienten zum Werbemittel zu
+      machen. Bitten Sie in diesen Bereichen ohne Anreiz und mit einem einzigen Satz um eine Bewertung, Details stehen auf
+      unseren Seiten für <a href={p('industries/law')}>Anwälte</a> und <a href={p('industries/dental')}>Zahnärzte</a>.
+    </p>
+  </div>
+
+  <h2 id="filtre">Warum verschwinden Ihre Bewertungen?</h2>
+
+  <p>
+    Der Filter von Google entfernt Bewertungen, die er für verdächtig hält, ohne Ankündigung. Es kommt keine
+    Benachrichtigung, nur die Zahl sinkt. Typische Muster, die im Filter hängen bleiben:
+  </p>
+
+  <ul>
+    <li><strong>Plötzlicher Stapel.</strong> Viele Bewertungen innerhalb weniger Tage bei einem neuen Profil.</li>
+    <li><strong>Bewertungen aus demselben Netz.</strong> Kunden alle auf einmal Bewertungen schreiben lassen, während sie im WLAN des Unternehmens sind.</li>
+    <li><strong>Konten ohne Vorgeschichte.</strong> Konten, die noch nie eine Bewertung geschrieben haben und nur diese eine enthalten.</li>
+    <li><strong>Ähnliche Texte.</strong> Dieselbe Vorlage, mit kleinen Änderungen wiederholt.</li>
+  </ul>
+
+  <p>
+    Die bekannteste Falle ist die Sammelanfrage. Der alten Kundenliste am selben Tag eine Nachricht zu schicken, ist
+    technisch erlaubt, aber ein Stapel Bewertungen innerhalb weniger Tage ist genau das Muster, nach dem der Filter sucht.
+  </p>
+
+  <p>
+    Verteilen Sie die Liste über Wochen. Zwei, drei echte Bewertungen pro Woche sind ein sichererer Fluss als zwanzig
+    Bewertungen in einer einzigen Woche.
+  </p>
+
+  <h2 id="yanit">Wie sollten Sie auf Bewertungen antworten?</h2>
+
+  <p>
+    Kurz und menschlich, bei guten wie bei schlechten. Auch in den Empfehlungen von Google zum lokalen Ranking steht,
+    dass Sie auf Bewertungen antworten sollen. Die Antwort zeigt dem nächsten Kunden, der sich über Sie informiert, dass
+    das Unternehmen lebt.
+  </p>
+
+  <p>
+    Vorlagenantworten wie „Ihre wunderbare Bewertung hat unseren Tag erhellt, unsere Marke auf der digitalen Bühne
+    glänzen zu sehen, ist ein unbeschreibliches Glück“ erkennt man im ersten Satz. Wer das liest, merkt, dass Sie sich die
+    Bewertungen nicht wirklich ansehen.
+  </p>
+
+  <p>
+    Nennen Sie schlicht die Leistung, die der Kunde bekommen hat, und bedanken Sie sich, mehr braucht es nicht. Zwei
+    Zeilen wie „Danke, Frau Ayşe, schön, dass Sie mit dem Bericht zufrieden sind, und gute Fahrt mit dem neuen Auto“
+    genügen.
+  </p>
+
+  <p>
+    Im Gesundheitswesen und im Rechtsbereich gibt es eine Ausnahme: Nennen Sie in der Antwort nicht die Leistung. Die
+    Antwort „Schön, dass Sie mit Ihrer Implantatbehandlung zufrieden sind“ macht öffentlich, welche Behandlung diese
+    Person bekommen hat.
+  </p>
+
+  <h2 id="olumsuz">Was tun Sie bei einer negativen Bewertung?</h2>
+
+  <p>Gehen Sie der Reihe nach vor:</p>
+
+  <ol>
+    <li>
+      <strong>Nehmen Sie zuerst privat Kontakt auf.</strong> Lösen Sie das Problem im Gespräch. Ist es gelöst, kann der
+      Kunde seine Bewertung selbst aktualisieren.
+    </li>
+    <li>
+      <strong>Schreiben Sie dann eine kurze Antwort, ohne sich zu verteidigen.</strong> Lesen wird diese Antwort vor
+      allem der nächste Kunde, der sich über Sie informiert. Widersprechen Sie dem Kunden nicht und gehen Sie nicht ins
+      Detail.
+    </li>
+    <li>
+      <strong>Melden Sie Regelverstöße.</strong> Beleidigungen, Inhalte ohne Bezug oder erkennbar von einem Wettbewerber
+      stammende Bewertungen können entfernt werden. Das Verfahren führt nicht sicher zum Erfolg und kann Wochen dauern.
+    </li>
+  </ol>
+
+  <p>
+    Die stärkste Verteidigung gegen eine einzelne negative Bewertung ist die Zahl Ihrer echten Bewertungen. In einem
+    Profil mit 120 Bewertungen geht eine schlechte unter, in einem Profil mit 8 Bewertungen fällt sie als Erstes auf.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Liegen Ihre Bewertungen <span class="highlight">hinter</span> denen Ihrer Wettbewerber?</h2>
+    <p>
+      Unser kostenloser Profil-Check bewertet Ihr Profil in 10 Fragen und lässt Sie Ihre Bewertungszahl mit den
+      Wettbewerbern unter den ersten drei vergleichen. Für jeden schwachen Punkt sehen Sie sofort, was zu tun ist, ohne
+      Registrierung oder <span style="white-space: nowrap;">E-Mail</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

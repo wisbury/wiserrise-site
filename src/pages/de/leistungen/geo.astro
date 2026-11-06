@@ -1,0 +1,221 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'ZUGANG', title: 'Offene Tür für Bots', text: 'Wir prüfen, ob Ihre Website für die Bots von ChatGPT, Gemini und Google offen ist. Eine Seite, die nicht gecrawlt wird, kann keine KI lesen.' },
+  { label: 'INHALT', title: 'Seiten mit Antworten', text: 'Die Frage des Kunden braucht auf der Website eine klare Antwort. Gibt es nichts zu zitieren, nennt der Assistent Sie nicht.' },
+  { label: 'QUELLEN', title: 'Wo Sie erwähnt werden', text: 'Unternehmensprofil, Verzeichnisse und Seiten, die Sie nennen. Steht Ihr Name überall gleich, sieht der Assistent dasselbe Unternehmen.' },
+  { label: 'MESSUNG', title: 'Bei welcher Frage Sie genannt werden', text: 'Wir stellen den Assistenten Fragen zu Ihrer Branche und halten fest, ob Ihr Name und die Namen Ihrer Wettbewerber in der Antwort vorkommen.' },
+];
+
+const toc = [
+  { id: 'nedir', label: 'Was ist GEO, was unterscheidet es von SEO?' },
+  { id: 'kaynak', label: 'Woher kennt die KI ein Unternehmen?' },
+  { id: 'yerel', label: 'GEO für lokale Unternehmen' },
+  { id: 'isler', label: 'Was wir korrigieren' },
+  { id: 'site', label: 'Warum wir an die Website müssen' },
+  { id: 'olcum', label: 'Was wir messen' },
+];
+
+const faq = [
+  {
+    q: 'Garantieren Sie, dass ich in ChatGPT erscheine?',
+    a: 'Nein, das kann niemand garantieren. Die Antwort schreibt der Assistent, und auf dieselbe Frage antwortet er zu verschiedenen Zeiten verschieden. Was wir zusagen, sind unsere Arbeit und die Messung: Was wir geändert haben und wo Sie genannt werden, sehen Sie im Bericht.',
+  },
+  {
+    q: 'Wann sehe ich Ergebnisse?',
+    a: 'Einen Zeitraum nennen wir nicht. Die Assistenten verändern sich ständig, und wir haben nicht genug Daten für eine Aussage wie „In so vielen Wochen erscheinen Sie“. Mit der ersten Messung sehen Sie, wo Sie heute stehen, den Rest verfolgen wir gemeinsam im Bericht.',
+  },
+  {
+    q: 'Brauche ich eine llms.txt-Datei?',
+    a: 'Für Google nicht, in der eigenen Dokumentation steht, dass keine spezielle Datei nötig ist. Auch wir setzen dort keine Priorität. Zuerst schauen wir, ob die Website gecrawlt wird und ob sie die Frage beantwortet.',
+  },
+  {
+    q: 'Brauche ich neben lokaler SEO auch noch GEO?',
+    a: 'Wenn Ihre Kunden aus der Umgebung kommen, zuerst lokale SEO. Geben Sie kein Geld für GEO aus, bevor Profil und Website in Ordnung sind. Was Sie zurückhält, sagen wir Ihnen in der kostenlosen Analyse.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/geo"
+  title="GEO: Sichtbar in Antworten von ChatGPT und Gemini | Wiserrise"
+  description="Wir messen, ob ChatGPT, Gemini und Googles KI-Antworten Sie nennen, und verbessern Website und Profil für die Fragen, bei denen Sie fehlen."
+  eyebrow="LEISTUNG · GEO"
+  h1="Mit GEO in KI-Antworten sichtbar werden."
+  crumb="GEO"
+  lede="GEO ist die Arbeit, mit der wir dafür sorgen, dass Ihr Unternehmen genannt wird, wenn jemand ChatGPT, Gemini, Perplexity oder Googles KI-Antworten eine Frage stellt. Wir messen, bei welchen Fragen Sie genannt werden, und verbessern für die übrigen Fragen Ihre Website, Ihr Profil und die Quellen, die über Sie sprechen."
+  serviceName="GEO (Generative Engine Optimization)"
+  breadcrumb={[
+    { label: 'Startseite', href: '/de' },
+    { label: 'Leistungen', href: p('services') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Wir bringen Profil und Website zusammen in Ordnung, damit Kunden in Ihrer Nähe Sie sehen.' },
+    { label: 'Technisches SEO', href: p('services/technical-seo'), text: 'Wir beheben Crawling- und Indexierungsfehler, damit sich Ihre Website für Google sauber öffnet.' },
+    { label: 'Content-Erstellung', href: p('services/content'), text: 'Wir schreiben Leistungsseiten, die die Fragen Ihrer Kunden beantworten.' },
+    { label: 'Google-Unternehmensprofil', href: p('services/gbp'), text: 'Wir halten Ihr Profil, das auch die Assistenten lesen, regelkonform und aktuell.' },
+  ]}
+  ctaLabel="Kostenlose Analyse anfordern"
+  ctaHref="/de#contact"
+>
+  <p>
+    Jemand schreibt ChatGPT: „Kannst du mir einen guten Physiotherapeuten in Kadıköy empfehlen?“ Er bekommt ein paar
+    Namen und eine kurze Begründung. Wenn Sie nicht unter diesen Namen sind, sieht dieser Kunde Sie gar nicht.
+  </p>
+
+  <h2 id="nedir">Was ist GEO, und was unterscheidet es von SEO?</h2>
+
+  <p>
+    GEO steht für Generative Engine Optimization. Was Sie als KI-Suche oder AI SEO kennen, ist dasselbe. Bei SEO kommen
+    Sie in eine Ergebnisliste, bei GEO in die Antwort, die der Assistent schreibt.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>SEO</th>
+          <th>GEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Wo Sie erscheinen</strong></td>
+          <td>In der Liste der Suchergebnisse</td>
+          <td>In der Antwort, die der Assistent schreibt</td>
+        </tr>
+        <tr>
+          <td><strong>Wer auswählt</strong></td>
+          <td>Das Ranking von Google</td>
+          <td>Der Assistent, anhand der Quellen, die er liest</td>
+        </tr>
+        <tr>
+          <td><strong>Was wir messen</strong></td>
+          <td>Auf welchem Platz Sie stehen</td>
+          <td>Bei welcher Frage Sie genannt werden und welche Ihrer Seiten als Quelle erscheint</td>
+        </tr>
+        <tr>
+          <td><strong>Wenn dieselbe Frage erneut kommt</strong></td>
+          <td>Das Ergebnis bleibt ähnlich</td>
+          <td>Die Antwort kann sich ändern</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="kaynak">Woher kennt die KI ein Unternehmen?</h2>
+
+  <p>
+    Aus den Quellen, die sie liest: Ihre Website, Ihr Unternehmensprofil, Verzeichnisse, Seiten, die Sie erwähnen. Durch
+    eine verschlossene Tür kommt sie nicht. Wenn Ihre Seite nicht gecrawlt wird, erwarten Sie nicht, dass die KI Sie
+    liest.
+  </p>
+
+  <p>
+    Google schreibt das in <a href="https://developers.google.com/search/docs/appearance/ai-features" rel="noopener noreferrer" target="_blank">seiner eigenen Dokumentation</a>
+    deutlich: Für AI Overviews und AI Mode gibt es keine zusätzliche Voraussetzung, weder spezielles Schema noch eine
+    besondere Datei. Voraussetzung ist, dass die Seite indexiert ist und mit Snippet angezeigt werden darf; eine
+    Garantie, dort zu erscheinen, gibt es nicht. Deshalb ist <a href={p('services/technical-seo')}>technisches SEO</a>
+    der erste Schritt bei GEO.
+  </p>
+
+  <p>
+    Bei ChatGPT ist die Tür der <a href="https://developers.openai.com/api/docs/bots" rel="noopener noreferrer" target="_blank">OAI-SearchBot</a>.
+    Eine Website, die diesen Bot sperrt, erscheint nicht in den Suchantworten von ChatGPT. Ist bei Cloudflare die Sperre
+    für KI-Bots aktiv, kommen manche KI-Bots nicht auf Ihre Website, auch wenn Sie selbst nichts in die robots.txt
+    geschrieben haben.
+  </p>
+
+  <h2 id="yerel">Was hat ein lokales Unternehmen mit GEO zu tun?</h2>
+
+  <p>
+    Ihre Kunden fragen inzwischen mit dem Namen der Stadt, und der Assistent nennt Namen. Die meisten GEO-Artikel in der
+    Türkei richten sich an große Marken; wir schauen auf Anwälte, Kliniken, Physiotherapeuten und Kfz-Gutachter, deren
+    Kunden aus der Umgebung kommen.
+  </p>
+
+  <p>
+    Die Arbeit an Profil und Website, die wir für die <a href={p('services/local-seo')}>lokale SEO</a> machen, ist auch
+    die Grundlage von GEO. Bei einem Unternehmen, dessen Kunden aus der Umgebung kommen, schauen wir zuerst auf die
+    Karte, denn von dort klingelt heute das Telefon. GEO bauen wir darauf auf.
+  </p>
+
+  <h2 id="isler">Was korrigieren wir?</h2>
+
+  <p>Zuerst öffnen wir die Tür, dann geben wir dem Assistenten etwas zu lesen. Die Reihenfolge ist immer dieselbe, die Gewichtung bestimmt die Messung.</p>
+
+  <ul class="checklist">
+    <li>
+      <strong>Zugang für Bots.</strong> Wir prüfen die robots.txt und die Einstellungen bei Cloudflare. Bots wie
+      GPTBot, OAI-SearchBot und ClaudeBot lassen wir bei allen unseren Kunden zu.
+    </li>
+    <li>
+      <strong>Seiten, die Fragen beantworten.</strong> Hat die Frage des Kunden auf der Website keine klare Antwort, hat
+      der Assistent auch nichts zu zitieren. Hier kommen <a href={p('services/on-page-seo')}>Onpage-SEO</a> und
+      <a href={p('services/content')}>Content-Erstellung</a> ins Spiel.
+    </li>
+    <li>
+      <strong>Unternehmensprofil.</strong> Kategorie und Leistungsliste müssen stimmen, und es müssen laufend neue
+      Bewertungen kommen. Diesen Teil übernehmen wir mit der
+      <a href={p('services/gbp')}>Betreuung des Google-Unternehmensprofils</a>.
+    </li>
+    <li>
+      <strong>Quellen, die Sie erwähnen.</strong> Stehen Ihr Name und Ihre Telefonnummer in allen Verzeichnissen gleich,
+      sieht der Assistent dasselbe Unternehmen, egal welche Quelle er liest.
+    </li>
+  </ul>
+
+  <h2 id="site">Warum müssen wir an die Website?</h2>
+
+  <p>Weil der Großteil von GEO auf der Website passiert. Jede Änderung, die durch fremde Hände geht, wird langsamer, manchmal geht sie dabei kaputt.</p>
+
+  <p>
+    Deshalb ist unsere Regel klar: Wenn wir die Website nicht komplett betreuen können, fangen wir nicht an. Das haben wir
+    auf die harte Tour gelernt, die Geschichte steht auf der <a href={p('services/local-seo')}>Seite zur lokalen SEO</a>.
+  </p>
+
+  <h2 id="olcum">Was messen wir?</h2>
+
+  <p>
+    Bei welcher Frage Sie genannt werden und wer neben Ihnen genannt wird. Wir stellen ChatGPT, Gemini, Perplexity und
+    Googles KI-Antworten Fragen zu Ihrer Branche und Ihrer Stadt und zeichnen die Antworten auf.
+  </p>
+
+  <p>
+    Die Entscheidung „Wurde empfohlen?“ überlassen wir nicht dem Modell. Wir gleichen den Namen in der Antwort mit Ihrem
+    eigenen Unternehmenseintrag ab, damit ein anderes Unternehmen mit ähnlichem Namen nicht Ihnen zugerechnet wird.
+  </p>
+
+  <ul class="checklist">
+    <li>KI-Sichtbarkeitswert: ein einziger Wert von 0-100, berechnet aus Ihren Empfehlungs- und Quellenquoten</li>
+    <li>Nennungsanteil: wo Sie bei denselben Fragen im Vergleich zu Ihren Wettbewerbern stehen</li>
+    <li>Ihre Seiten als Quelle: auf welche Ihrer Seiten der Assistent verlinkt, Frage für Frage</li>
+    <li>
+      Search Console: Traffic aus Googles KI-Antworten wird nicht getrennt ausgewiesen, er zählt zur Websuche. Deshalb
+      schauen wir nicht allein darauf.
+    </li>
+  </ul>
+
+  <p>
+    Was wir getan haben, sehen Sie jede Woche im Bericht. Auf dieselbe Frage kommt nicht jedes Mal dieselbe Antwort,
+    deshalb schicken wir keinen einzelnen Screenshot und lesen die Veränderung über die Zeit.
+  </p>
+
+  <Fragment slot="cta">
+    <h2><span class="highlight">Kennt</span> die KI Sie?</h2>
+    <p>
+      In der kostenlosen Analyse ermitteln wir, wo Sie heute in KI-Antworten stehen und wo Ihre Wettbewerber stehen. Das
+      Ergebnis liegt innerhalb von 24 Stunden in Ihrem <span style="white-space: nowrap;">E-Mail-Postfach</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

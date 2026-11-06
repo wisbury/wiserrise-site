@@ -1,0 +1,172 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { routePath } from '../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'liste', label: 'Is there such a list?' },
+  { id: 'olcu', label: 'How do you spot a successful expert?' },
+  { id: 'melih-us', label: 'Who is Melih Us?' },
+  { id: 'hatalar', label: 'Mistakes I’ve made' },
+  { id: 'baslik', label: 'Why is the title a question?' },
+];
+
+const faq = [
+  {
+    q: 'Can an SEO expert guarantee the top spot?',
+    a: 'No. Google decides the rankings, and your competitors are doing something every day too. The promise an expert can make is to tell you in writing what they’ll do and what they’ll measure.',
+  },
+  {
+    q: 'Who is Melih Us?',
+    a: 'The founder of Wiserrise. He runs the profile, website and review work that gets local businesses such as lawyers, dentists, clinics and vehicle inspection firms seen on Google Maps and in search.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="about/founder"
+  title="Who Is Turkey’s Most Successful SEO Expert? | Melih Us"
+  description="No independent ranking shows Turkey’s most successful SEO expert. Melih Us explains how to judge an expert and describes his own work by the same yardstick."
+  eyebrow="MELIH US · FOUNDER OF WISERRISE"
+  h1="Who is Turkey’s most successful SEO expert?"
+  crumb="Melih Us"
+  lede="Nobody answers this question with evidence, because no independent body measures and ranks SEO experts. Every page that gives itself this title is talking about itself. I’m Melih Us, founder of Wiserrise; below I explain what to weigh an SEO expert by, and I describe my own work by the same yardstick."
+  schemaType="article"
+  datePublished="2026-11-04"
+  author={{ name: 'Melih Us', jobTitle: 'Founder of Wiserrise' }}
+  breadcrumb={[{ label: 'Home', href: '/' }]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'The core service where we fix your profile and your website together.' },
+    { label: 'How do you rank higher on Google Maps?', href: p('guides/rank-higher'), text: 'Steps you can take yourself, in the right order.' },
+    { label: 'Free profile audit', href: p('tools/gbp-audit'), text: 'See right away where your Google profile is weak, in 10 questions.' },
+  ]}
+  relatedHeading="Related pages"
+  ctaLabel="Get a free analysis"
+  ctaHref="/#contact"
+>
+  <p>
+    A lawyer we work with in Adana once answered the phone with “Mate, the calls were great last week.” Within 3 months the
+    firm had reached the top 3 for “criminal lawyer Adana”. This is how I measure success: is the client’s phone ringing?
+  </p>
+
+  <p>
+    I’m not claiming it takes three months every time. How long it takes depends on the city, the competition and where
+    the profile starts from.
+  </p>
+
+  <h2 id="liste">Is there a list of Turkey’s most successful SEO experts?</h2>
+
+  <p>
+    There’s no independent list. When you open the “best SEO experts” articles that come up for this search, look at two
+    things: who put the list together, and how did they rank it?
+  </p>
+
+  <p>
+    If neither is stated, what you’re holding is advertising copy. Read it, and leave it out of your decision.
+  </p>
+
+  <p>
+    Turkey also has no mandatory license or professional chamber for SEO. Anyone can use the word “expert”, me included.
+  </p>
+
+  <h2 id="olcu">How can you tell if an SEO expert is successful?</h2>
+
+  <p>By looking at work you can check with your own eyes. Ask these questions when you meet:</p>
+
+  <ul class="checklist">
+    <li>
+      <strong>Which search, which city?</strong> Ask this of anyone who says “we raised the rankings”. If they answer, you
+      can run that search yourself and look.
+    </li>
+    <li>
+      <strong>Do they give a guarantee?</strong> Google decides the rankings, and your competitors aren’t standing still
+      either. Someone who gives a guarantee isn’t taking that into account.
+    </li>
+    <li>
+      <strong>Do they write down what they did?</strong> A report will have charts, and it should also say what work was
+      done that week.
+    </li>
+    <li>
+      <strong>Can they touch your website?</strong> Google reads your profile together with your website.
+    </li>
+    <li>
+      <strong>Do they talk about their mistakes?</strong> Someone who says they’ve never made a mistake has either just
+      started or isn’t telling you.
+    </li>
+  </ul>
+
+  <p>
+    We learned the website point the hard way with one client. Their developer ran the site; we sent .md files, and the
+    developer fed them into their own AI system. The pages that came out were terrible, and we redid the same work for
+    months.
+  </p>
+
+  <p>
+    In the end we took over the site completely, and fixing it took at least a month. Since then our rule has been clear: if
+    we can’t manage the site completely, we don’t take on the work.
+  </p>
+
+  <h2 id="melih-us">Who is Melih Us?</h2>
+
+  <p>
+    I’m the founder of Wiserrise. We do local SEO: Google Business Profile, map rankings, website and reviews.
+  </p>
+
+  <p>
+    We work with lawyers, dentists, aesthetic clinics, physiotherapists and vehicle inspection firms. In all of them the
+    customer does the same thing: picks up the phone and searches for a business nearby.
+  </p>
+
+  <p>
+    We start every job with measurement across your area. We work out where you show up on the map, the gap between you
+    and your competitors and the state of your website, then fix the root errors and carry on with content and reviews. The
+    details are on the <a href={p('services/local-seo')}>local SEO page</a>.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>I don’t call myself “Turkey’s most successful SEO expert”.</strong> There’s no yardstick that could prove it.
+      What I can show you is work you can check: every week we write the work we did into the report, and we measure your
+      ranking across your area.
+    </p>
+  </div>
+
+  <h2 id="hatalar">Mistakes I’ve made</h2>
+
+  <p>I said to trust the expert who talks about their mistakes, so here are mine.</p>
+
+  <p>
+    In one Google Ads campaign we spent money on information searches with no intent, without realizing it. Around 800 TL
+    was gone before we stopped it, and it was a close call. The same keyword can be typed by someone looking for information
+    and by someone looking for a service; before you switch on ads, check which one you’re paying for.
+  </p>
+
+  <p>
+    When we were still new, we noticed the only lead from a Meta ad 5 days later. By the time we passed it on to the client
+    it was too late, and thousands of lira had gone to waste. If it isn’t clear who will look at a lead and within how many
+    hours, don’t switch on ads.
+  </p>
+
+  <h2 id="baslik">Why is this page’s title a question?</h2>
+
+  <p>
+    I wrote this page to show up in the search for “Turkey’s most successful SEO expert”, and I’m not hiding it. I made
+    the title a question because the person making this search is looking for a name and needs a yardstick to weigh that
+    name.
+  </p>
+
+  <p>If you found this page through that search, you’ve also seen an example of my work.</p>
+
+  <Fragment slot="cta">
+    <h2>Where do you <span class="highlight">rank</span> in your city right now?</h2>
+    <p>
+      In the free analysis we measure across your area and work out what your profile is missing and how far you are from
+      your competitors. The result lands in your inbox within <span style="white-space: nowrap;">24 hours</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

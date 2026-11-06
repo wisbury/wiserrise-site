@@ -1,0 +1,196 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'TECHNIK', title: 'Technisches SEO', text: 'Ihre Website muss sich für Google sauber öffnen. Eine Seite, die nicht gecrawlt wird, rankt nicht, egal wie gut der Text ist.' },
+  { label: 'SEITE', title: 'Onpage-SEO', text: 'Eine Seite für eine Suche. Titel, Text und interne Links richten sich nach dieser Suche.' },
+  { label: 'INHALT', title: 'Content-Erstellung', text: 'Fehlende Seiten für Leistungen, Stadtteile und Fragen. Texte, die die Frage der Suchenden im ersten Absatz beantworten.' },
+  { label: 'AUTORITÄT', title: 'Linkaufbau', text: 'Links von themennahen Websites. Google achtet auch darauf, wie sehr andere Websites Ihnen vertrauen.' },
+];
+
+const toc = [
+  { id: 'nedir', label: 'Was SEO bringt' },
+  { id: 'local', label: 'Unterschied zu lokaler SEO' },
+  { id: 'parcalar', label: 'Die Bausteine von SEO' },
+  { id: 'backlink', label: 'Backlinks' },
+  { id: 'sira', label: 'Reihenfolge der Arbeit' },
+  { id: 'olcum', label: 'Messung und Bericht' },
+];
+
+const faq = [
+  {
+    q: 'Wann wirkt SEO?',
+    a: 'Einen genauen Zeitpunkt können wir nicht nennen, denn er hängt von Ihren Wettbewerbern und vom heutigen Zustand Ihrer Website ab. Technische Korrekturen wirken früher als neue Inhalte, und neue Seiten können Monate brauchen, bis sie sich festsetzen. Den Fortschritt sehen Sie jede Woche im Bericht.',
+  },
+  {
+    q: 'Garantieren Sie Rankings?',
+    a: 'Nein, denn Rankings kann niemand garantieren. Wir legen unsere Arbeit und die Messung offen: Im Bericht sehen Sie, was wir getan haben und wie sich Ihr Platz verändert hat. Einen Vertrag gibt es nicht: Wenn Sie nicht zufrieden sind, machen Sie im nächsten Monat einfach nicht weiter.',
+  },
+  {
+    q: 'Können Sie mit meiner bestehenden Website arbeiten?',
+    a: 'Ja, aber wir müssen die Website komplett betreuen. Bei Aufträgen, in denen wir Aufgaben an andere weitergegeben und auf die Umsetzung gewartet haben, haben wir monatelang dieselben Fehler korrigiert.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/seo"
+  title="SEO-Leistungen | Wiserrise"
+  description="Wir richten Ihre Website auf die Fragen aus, die Ihre Kunden bei Google suchen: technische Grundlage, Seitenaufbau, Inhalte und Links. Wöchentlicher Bericht, kein Vertrag."
+  eyebrow="LEISTUNG · SEO"
+  h1="Mit SEO in der Suche nach vorn."
+  crumb="SEO"
+  lede="Wenn jemand bei Google „was umfasst ein Kfz-Gutachten“ eingibt, bestimmt SEO die Reihenfolge der Seiten, die er sieht. Wir bereiten Ihre Website an vier Stellen auf diese Suchen vor: Grundlage, Seitenaufbau, Inhalte und Links von anderen Websites. Zuerst crawlen wir Ihre Website, dann schließen wir die Lücken der Reihe nach."
+  serviceName="SEO"
+  breadcrumb={[
+    { label: 'Startseite', href: '/de' },
+    { label: 'Leistungen', href: p('services') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Technisches SEO', href: p('services/technical-seo'), text: 'Wir beheben Crawling- und Indexierungsfehler, damit sich Ihre Website für Google sauber öffnet.' },
+    { label: 'Onpage-SEO', href: p('services/on-page-seo'), text: 'Wir richten jede Seite auf eine einzige Suche aus und korrigieren Titel und interne Links.' },
+    { label: 'Content-Erstellung', href: p('services/content'), text: 'Wir schreiben die Seiten für Leistungen, Stadtteile und Fragen, die Ihrer Website fehlen.' },
+    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Wir bringen Profil und Website gemeinsam in Ordnung, damit Sie auf der Karte vorn stehen.' },
+  ]}
+  ctaLabel="Kostenlose Analyse anfordern"
+  ctaHref="/de#contact"
+>
+  <h2 id="nedir">Was bringt SEO?</h2>
+
+  <p>
+    Es bringt Kunden auf Ihre Website, die Sie noch nicht kennen. Man gibt bei Google ein, was man braucht, und Google
+    sortiert die Seiten, die seiner Meinung nach am besten antworten. Eine Website unterhalb der ersten Seite klickt kaum
+    jemand an.
+  </p>
+
+  <p>
+    Der Unterschied zu Anzeigen: SEO bleibt. Anzeigen hören auf, wenn das Budget aufgebraucht ist, eine gut rankende Seite
+    bringt Monat für Monat weiter Besucher. Dafür startet SEO langsamer.
+  </p>
+
+  <h2 id="local">Was ist der Unterschied zu lokaler SEO?</h2>
+
+  <p>
+    <a href={p('services/local-seo')}>Lokale SEO</a> zielt auf die Karte und auf Kunden in Ihrer Nähe. SEO zielt auf die
+    Ergebnisse unter der Karte und auf Suchen, die nicht vom Standort abhängen.
+  </p>
+
+  <p>
+    Kommen Ihre Kunden aus der Umgebung, kommt lokale SEO zuerst. Verkaufen Sie an die ganze Stadt oder das ganze Land,
+    oder lesen Ihre Kunden lange, bevor sie sich entscheiden, wiegt SEO schwerer. Beides speist dieselbe Website, deshalb
+    betreiben wir es gemeinsam.
+  </p>
+
+  <h2 id="parcalar">Aus welchen Bausteinen besteht SEO?</h2>
+
+  <p>Aus vier, und die Reihenfolge zählt. Ist die Grundlage kaputt, rankt selbst der beste Text nicht.</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Worauf achten wir?</th>
+          <th>Mehr dazu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Grundlage</strong></td>
+          <td>Crawling, Indexierung, Geschwindigkeit, strukturierte Daten</td>
+          <td><a href={p('services/technical-seo')}>Technisches SEO</a></td>
+        </tr>
+        <tr>
+          <td><strong>Seite</strong></td>
+          <td>Jede Seite beantwortet eine einzige Suche, Überschriften und interne Links</td>
+          <td><a href={p('services/on-page-seo')} style="white-space: nowrap;">Onpage-SEO</a></td>
+        </tr>
+        <tr>
+          <td><strong>Inhalt</strong></td>
+          <td>Seiten für Leistungen, Stadtteile und Fragen, nach denen gesucht wird, die Ihre Website aber nicht hat</td>
+          <td><a href={p('services/content')}>Content-Erstellung</a></td>
+        </tr>
+        <tr>
+          <td><strong>Außen</strong></td>
+          <td>Links von themennahen Websites</td>
+          <td>Linkaufbau</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    In dieser Reihenfolge arbeiten wir. Texte für eine Seite zu schreiben, die nicht gecrawlt wird, oder Links auf eine
+    schwache Seite zu setzen, ist verlorenes Geld.
+  </p>
+
+  <h2 id="backlink">Warum braucht man Backlinks?</h2>
+
+  <p>
+    Wie sehr Google einer Seite vertraut, entscheidet es auch danach, ob andere Websites auf sie verlinken. Sind die
+    Seiten Ihrer Wettbewerber so gut wie Ihre, machen die Links von außen den Unterschied.
+  </p>
+
+  <p>
+    Links, die massenhaft von themenfremden Websites kommen, bringen nichts, und Google kann sie als Spam werten. Wir
+    holen Links nur von themennahen Websites mit echtem Traffic.
+  </p>
+
+  <h2 id="sira">In welcher Reihenfolge arbeiten wir?</h2>
+
+  <p>Bei jeder Website in derselben. Bevor wir messen, fassen wir nichts an.</p>
+
+  <ol>
+    <li>
+      <strong>Crawling und Messung.</strong> Wir crawlen Ihre gesamte Website. Wir ermitteln, welche Seiten im Index sind,
+      bei welchen Suchen Sie erscheinen und wo Ihre Wettbewerber vorn liegen.
+    </li>
+    <li>
+      <strong>Grundlage.</strong> Wir beheben die Fehler, die Crawling und Indexierung verhindern.
+    </li>
+    <li>
+      <strong>Seitenaufbau.</strong> Wir richten jede Seite auf eine einzige Suche aus und bauen Überschriften und interne
+      Links danach auf.
+    </li>
+    <li>
+      <strong>Fehlende Seiten und Links.</strong> Wir schreiben die Themen, nach denen gesucht wird, die Ihre Website aber
+      nicht abdeckt, und holen bei Bedarf Links von themennahen Websites.
+    </li>
+  </ol>
+
+  <p>
+    Das haben wir bei einem Kunden auf die harte Tour gelernt. Wir haben die Aufgaben an seinen Entwickler geschickt, die
+    Seiten, die zurückkamen, waren furchtbar, und wir haben monatelang dieselbe Arbeit wiederholt.
+  </p>
+
+  <p>Seitdem gilt bei uns: Wenn wir die Website nicht komplett betreuen können, nehmen wir den Auftrag nicht an.</p>
+
+  <h2 id="olcum">Was messen und berichten wir?</h2>
+
+  <p>
+    Ein erster Platz, auf den niemand klickt, bringt Ihnen nichts. Deshalb sehen wir uns den Platz immer zusammen mit den
+    Klicks an.
+  </p>
+
+  <p>
+    Aus der Search Console lesen wir, bei welchen Suchen Ihre Website erscheint, wie viele Klicks sie bekommt und welchen
+    durchschnittlichen Platz sie hat. Daneben legen wir das Ergebnis des technischen Crawls. Unsere Arbeit sehen Sie jede
+    Woche im Bericht.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Wo steht Ihre Website bei <span class="highlight">Google</span>?</h2>
+    <p>
+      In der kostenlosen Analyse prüfen wir Ihre Website und Ihre Wettbewerber und sagen Ihnen, was Sie zurückhält. Das
+      Ergebnis liegt innerhalb von 24 Stunden in Ihrem <span style="white-space: nowrap;">E-Mail-Postfach</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

@@ -1,0 +1,234 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'ADRESSE', title: 'Praxis und Hausbesuch', text: 'Wenn Sie eine Praxis haben, bleibt die Adresse sichtbar, Hausbesuche kommen zusätzlich als Einzugsgebiet dazu. Eine falsche Einrichtung kostet Sichtbarkeit auf der Karte.' },
+  { label: 'NÄHE', title: 'Maßstab Stadtteil', text: 'Patienten kommen während der Behandlung immer wieder und suchen deshalb etwas in der Nähe. Wir messen, auf welchem Platz Sie an verschiedenen Punkten in Ihrem Stadtteil stehen.' },
+  { label: 'BESCHWERDE', title: 'Die Sprache der Patienten', text: 'Patienten tippen „steifer Nacken“ oder „kann Schulter nicht heben“. Die Seiten Ihrer Website bauen wir entlang dieser Beschwerden auf.' },
+  { label: 'TITEL', title: 'Der richtige Titel', text: '„Facharzt für Physikalische Medizin“ ist ein ärztlicher Titel. Wir schreiben den Titel korrekt und verwenden keine Formulierung, die nach Diagnose oder sicherer Heilung klingt.' },
+];
+
+const toc = [
+  { id: 'adres', label: 'Praxis oder Hausbesuch' },
+  { id: 'yakinlik', label: 'Nähe im Stadtteil und Folgetermine' },
+  { id: 'sikayet', label: 'Suchen nach Beschwerden' },
+  { id: 'kategori', label: 'Kategorie und Titel' },
+  { id: 'sayfa', label: 'Seiten, die auf die Website gehören' },
+  { id: 'yorum', label: 'Wann um eine Bewertung bitten' },
+  { id: 'sinir', label: 'Was wir nicht schreiben' },
+];
+
+const faq = [
+  {
+    q: 'Ich behandle in der Praxis und bei Hausbesuchen. Wie richte ich das Profil ein?',
+    a: 'Richten Sie es mit Adresse ein und fügen Sie Hausbesuche zusätzlich als Einzugsgebiet hinzu. Eine Adresse zu verbergen, zu der Patienten kommen, kostet Sichtbarkeit bei Suchen mit „in der Nähe“. Legen Sie auch auf der Website getrennte Seiten für Praxis und Hausbesuch an.',
+  },
+  {
+    q: 'Darf ich auf meiner Website das Wort „Behandlung“ verwenden?',
+    a: 'Wenn Sie die Methode beschreiben, die Sie anwenden, ja. Der Tätigkeitsbereich von Physiotherapeuten ist durch das türkische Berufsrecht festgelegt, Diagnosen und Medikamentenempfehlungen gehören nicht dazu. Wir schreiben die Texte so, dass sie weder nach Diagnose noch nach Heilungsversprechen klingen, und legen sie Ihnen vor der Veröffentlichung zur Freigabe vor.',
+  },
+  {
+    q: 'Beeinflusst ein Online-Terminsystem das Ranking?',
+    a: 'Es gibt keine Information, dass es das Ranking direkt beeinflusst. Der Nutzen liegt bei den Terminen: Ein Patient, der Sie telefonisch nicht erreicht, bucht über den Link im Profil. Für Physiotherapeuten, die während der Sprechzeiten nicht ans Telefon gehen können, ist das richtig praktisch.',
+  },
+  {
+    q: 'Ich bin in einer kleinen Stadt mit wenig Konkurrenz. Brauche ich SEO?',
+    a: 'Ja, aber die Arbeit fällt kleiner aus. Wo es wenig Konkurrenz gibt, kommen zuerst die Profileinrichtung und ein paar gute Seiten, ein langes Content-Programm ist womöglich nicht nötig. In der kostenlosen Analyse sagen wir Ihnen das anhand der Daten aus Ihrer Gegend.',
+  },
+  {
+    q: 'Wann sehe ich Ergebnisse?',
+    a: 'Die erste Bewegung auf der Karte sehen wir bei den meisten Unternehmen nach 4 bis 8 Wochen, bis Beschwerdeseiten in der Suche Fuß fassen, vergehen 3-6 Monate. Ein genaues Datum können wir nicht nennen. Was wir erledigt haben, sehen Sie jede Woche im Bericht und im Kundenportal.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="industries/physio"
+  title="SEO für Physiotherapeuten und Google Maps | Wiserrise"
+  description="Lokale SEO für Physiotherapiepraxen und Hausbesuche: Adresse und Einzugsgebiet, Beschwerdeseiten, Messung in Ihrem Stadtteil. Kein Vertrag."
+  eyebrow="BRANCHE · PHYSIOTHERAPEUTEN"
+  h1="SEO für Physiotherapeuten: sichtbar für Patienten in Ihrem Stadtteil."
+  crumb="Physiotherapeuten"
+  lede="SEO für Physiotherapeuten heißt, den Patienten zu erreichen, der in Ihrer Nähe wohnt und seine Beschwerden eintippt. Er schreibt „Schmerzen Bandscheibenvorfall“ oder „Physiotherapeut in der Nähe“ und sucht einen Ort, zu dem er während der Behandlung immer wieder kommen kann. Wir bringen zuerst die Adresseinstellung Ihres Profils in Ordnung, dann die Sprache der Beschwerden auf Ihrer Website."
+  serviceName="Lokale SEO für Physiotherapeuten"
+  breadcrumb={[
+    { label: 'Startseite', href: '/de' },
+    { label: 'Branchen', href: p('industries') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Profil und Website bringen wir gemeinsam für den Platz auf der Karte in Ordnung.' },
+    { label: 'Content-Erstellung', href: p('services/content'), text: 'Beschwerde- und Leistungsseiten schreiben wir in den Worten Ihrer Patienten.' },
+    { label: 'SEO für Zahnärzte', href: p('industries/dental'), text: 'Wie wir bei Suchen nach akuten Zahnschmerzen und auf Behandlungsseiten arbeiten.' },
+    { label: 'SEO für Ästhetik-Kliniken', href: p('industries/aesthetics'), text: 'Wie wir in einem Bereich arbeiten, in dem die Entscheidung lange dauert und häufig nach dem Preis gefragt wird.' },
+  ]}
+  relatedHeading="Verwandte Seiten"
+  ctaLabel="Kostenlose Analyse anfordern"
+  ctaHref="/de#contact"
+>
+  <h2 id="adres">Sollten Sie Ihre Adresse zeigen?</h2>
+
+  <p>
+    Ja, wenn Sie eine Praxis haben, in die Patienten kommen. Google kennt zwei Arten von Profilen: Unternehmen mit einer
+    Adresse, die Kunden aufsuchen, und Unternehmen, die ohne Adresse nur ein Einzugsgebiet angeben. Ein Physiotherapeut,
+    der trotz Praxis die Adresse verbirgt, verliert bei der Suche „Physiotherapeut in der Nähe“ einen Teil seiner
+    Sichtbarkeit.
+  </p>
+
+  <p>
+    Das ist die wichtigste Entscheidung bei der Profileinrichtung, und sie später zu korrigieren ist mühsam. Gibt es eine
+    Praxis, bleibt die Adresse sichtbar, und Hausbesuche kommen zusätzlich als Einzugsgebiet dazu. Auf der Website bekommen
+    beide eine eigene Seite.
+  </p>
+
+  <p>
+    Wenn Sie nur Hausbesuche anbieten, ist ein Profil ohne Adresse richtig. Auch bei verborgener Adresse berücksichtigt
+    Google die hinterlegte Adresse des Profils beim Ranking; Details dazu <a href={p('services/gbp')}>auf der Seite zur
+    Profilbetreuung</a>. Wie Ihr Profil gerade eingerichtet ist, können Sie mit unserer
+    <a href={p('tools/gbp-audit')}>kostenlosen Profilprüfung</a> kontrollieren.
+  </p>
+
+  <h2 id="yakinlik">Warum wählen Patienten einen Physiotherapeuten in ihrer Nähe?</h2>
+
+  <p>
+    Weil sie nicht nur einmal kommen. Physiotherapie ist bei den meisten Patienten nicht mit einer Sitzung erledigt, sie
+    suchen einen Ort, zu dem sie wochenlang pendeln. Mit schmerzendem Rücken will niemand ans andere Ende der Stadt.
+  </p>
+
+  <p>
+    Deshalb dreht sich der Wettbewerb in der Physiotherapie im Maßstab des Stadtteils. Wer „Physiotherapeut Ataşehir“ oder
+    nur „Physiotherapeut“ tippt, sieht Sie in derselben Liste wie die Praxis ein paar Straßen weiter, und wo die suchende
+    Person steht, verändert die Reihenfolge. Eine einzelne Messung vor Ihrer Praxistür zeigt Ihnen dieses Bild nicht.
+  </p>
+
+  <p>
+    Wir nehmen eine <a href={p('services/rank-tracking')}>Messung in Ihrem Umkreis</a> vor: auf welchem Platz Sie an
+    verschiedenen Punkten in Ihrem Stadtteil stehen. Arbeit, die die Viertel nicht kennt, in denen Sie zurückliegen, läuft
+    blind. Was wir erledigt haben, sehen Sie jede Woche im Bericht.
+  </p>
+
+  <h2 id="sikayet">Was tippen Patienten in die Suche?</h2>
+
+  <p>
+    Ihre Beschwerden. Die meisten Physiotherapie-Websites beschreiben die Methoden, die sie anwenden, etwa Manuelle
+    Therapie oder Dry Needling. Patienten schreiben dagegen:
+  </p>
+
+  <ul>
+    <li>„Bandscheibenvorfall Schmerzen gehen nicht weg“</li>
+    <li>„steifer Nacken was tun“</li>
+    <li>„kann Schulter nicht heben“</li>
+    <li>„Knie Übungen nach OP“</li>
+    <li>„Fersensporn Behandlung“</li>
+  </ul>
+
+  <p>
+    Die Lücke zwischen diesen beiden Sprachen ist die größte Inhaltslücke der Branche. Eine Seite, die erklärt, woher die
+    Beschwerde kommt und wie sie in der Physiotherapie behandelt wird, antwortet auf den Satz des Patienten.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Eine Beschwerdeseite wirkt landesweit, eine Leistungsseite im Stadtteil.</strong> Bei der Suche „Übungen bei
+      Bandscheibenvorfall“ spielt die Nähe kaum eine Rolle, Sie können in der ganzen Türkei ranken. Bei „Physiotherapeut
+      Kadıköy“ entscheidet die Nähe, deshalb beantworten wir beide Suchen mit getrennten Seiten.
+    </p>
+  </div>
+
+  <h2 id="kategori">Welche Kategorie und welcher Titel sind richtig?</h2>
+
+  <p>
+    Die Hauptkategorie sollte „Physiotherapeut“ sein oder, je nach Art Ihrer Einrichtung, „Physiotherapiezentrum“. In der
+    Liste gibt es auch ähnlich wirkende Optionen wie „Masseur“ und „Rehabilitationszentrum“, doch jede entspricht einer
+    anderen Gruppe von Suchen. Mit der Kategorie Masseur wird es schwer, bei Patienten zu erscheinen, die Physiotherapie
+    suchen.
+  </p>
+
+  <p>
+    Der Titel braucht dieselbe Sorgfalt. „Fizik tedavi uzmanı“ (Facharzt für Physikalische Medizin) ist in der Türkei ein
+    ärztlicher Titel; wenn ein Physiotherapeut ihn verwendet, ist das falsch und auch mit Blick auf die türkischen
+    Werberegeln für Gesundheitsleistungen problematisch. Wir schreiben den Titel im Profil und auf der Website korrekt, das
+    macht es Google auch leichter, Sie der richtigen Kategorie zuzuordnen.
+  </p>
+
+  <h2 id="sayfa">Welche Seiten sollte Ihre Website haben?</h2>
+
+  <p>Diese Grundstruktur bauen wir auf:</p>
+
+  <ul class="checklist">
+    <li>Beschwerdeseiten: Rücken, Nacken, Schulter, Knie und Sportverletzungen</li>
+    <li>Leistungsseiten: Physiotherapie in der Praxis, Physiotherapie als Hausbesuch, Reha nach Operationen</li>
+    <li>Berufsangaben der Physiotherapeuten: Ausbildung und Zertifikate</li>
+    <li>Eine Seite, die erklärt, was beim ersten Termin passiert</li>
+    <li>Strukturierte Daten vom Typ Physiotherapy (Schema)</li>
+  </ul>
+
+  <p>
+    Die Seite zum ersten Termin wirkt klein, gehört aber zu den nützlichsten. Die größte Unsicherheit eines Patienten, der
+    zum ersten Mal zur Physiotherapie kommt, ist das Unbekannte: was er anziehen soll oder was in der ersten Sitzung
+    passiert. Eine Praxis, die diese Fragen vorab beantwortet, nimmt die Unsicherheit am Telefon.
+  </p>
+
+  <p>
+    Damit wir diese Seiten schreiben und veröffentlichen können, muss die Website bei uns liegen; wenn wir die Website
+    nicht komplett verwalten können, fangen wir nicht an. Wie wir schreiben, steht auf der Seite zur
+    <a href={p('services/content')}>Content-Erstellung</a>, wie wir jede Seite auf eine einzige Suche ausrichten, auf der
+    Seite zu <a href={p('services/on-page-seo')} style="white-space: nowrap;">Onpage-SEO</a>.
+  </p>
+
+  <h2 id="yorum">Wann sollten Sie um eine Bewertung bitten?</h2>
+
+  <p>
+    Gegen Ende der Behandlung, wenn der Patient den Fortschritt selbst spürt. Wiederkehrende Sitzungen geben Ihnen diese
+    Gelegenheit: Sie sehen den Patienten wochenlang und wissen, wann er zufrieden ist. Eine Bitte in der ersten Sitzung
+    kommt zu früh und wirkt erzwungen.
+  </p>
+
+  <p>
+    Bieten Sie für eine Bewertung keinen Rabatt und keine kostenlose Sitzung an, das verstößt gegen Googles Richtlinien.
+    Erwähnen Sie in Ihrer Antwort weder die Beschwerde noch die Behandlung des Patienten, denn die Antwort ist öffentlich.
+    Den Ablauf zum Einholen von Bewertungen beschreiben wir im
+    <a href={p('guides/more-reviews')}>Ratgeber für mehr Google-Bewertungen</a>.
+  </p>
+
+  <h2 id="sinir">Was schreiben wir nicht?</h2>
+
+  <p>
+    Der Tätigkeitsbereich von Physiotherapeuten ist durch das türkische Berufsrecht festgelegt; Diagnosen und
+    Medikamentenempfehlungen gehören nicht dazu. Dazu kommen die Werberegeln für Gesundheitsleistungen. Deshalb hat
+    Folgendes in unseren Inhalten keinen Platz:
+  </p>
+
+  <ul>
+    <li>Formulierungen, die nach einer Diagnose klingen</li>
+    <li>Sichere Heilung, „garantierter Erfolg“ oder eine Behandlungsgarantie</li>
+    <li>Anreize wie Vorher-nachher-Bilder und Rabatte auf Sitzungspakete</li>
+    <li>Patientenbewertungen und Patientengeschichten als Werbung</li>
+    <li>Überlegenheitsbehauptungen wie „der beste Physiotherapeut“</li>
+  </ul>
+
+  <p>
+    Methoden zu erklären ist erlaubt: wie Manuelle Therapie angewendet wird, wie eine Sitzung abläuft. Eine Seite, die die
+    Frage des Patienten klar beantwortet, lässt sich innerhalb dieser Grenzen gut schreiben.
+  </p>
+
+  <p>
+    Wie dieselben Regeln für <a href={p('industries/dental')}>Zahnarztpraxen</a> und
+    <a href={p('industries/aesthetics')}>Ästhetik-Kliniken</a> gelten, beschreiben wir auf eigenen Seiten.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Auf welchem Platz <span class="highlight">erscheinen</span> Sie in Ihrem Stadtteil?</h2>
+    <p>
+      In der kostenlosen Analyse messen wir in Ihrem Umkreis und ermitteln die Lücken in Ihrer Profileinrichtung. Das
+      Ergebnis liegt innerhalb von 24 Stunden in Ihrem <span style="white-space: nowrap;">E-Mail-Postfach</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

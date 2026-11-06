@@ -5,31 +5,38 @@ import { routePath } from '../../../i18n/routes';
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'HİZMET', title: 'Hizmet sayfaları', text: 'Verdiğiniz her hizmete ayrı bir sayfa. Arayanın sorularını cevaplar, onu telefona ve randevuya götürür.' },
+  { label: 'SEMT', title: 'Semt ve şehir', text: 'Yalnız o bölge için söyleyecek gerçek bir şey varsa açılır. Şehir adı değişmiş kopya sayfa yazmayız.' },
+  { label: 'REHBER', title: 'Rehber yazılar', text: 'Bilgi arayan kişiyi erken yakalar ve hizmet sayfasına yollar. Hizmet sayfaları bitmeden rehbere geçmeyiz.' },
+  { label: 'ONAY', title: 'Uzman onayı', text: 'Taslak bizden, doğruluk onayı sizden. Avukat ve sağlık sitelerinde metni o mesleğin reklam kurallarına göre yazarız.' },
+];
+
 const toc = [
-  { id: 'ne-uretiyoruz', label: 'Ne üretiyoruz' },
-  { id: 'sektor', label: 'Sektör sayfaları' },
-  { id: 'sehir', label: 'Şehir sayfaları ve doorway sınırı' },
-  { id: 'regule', label: 'Regülasyonlu sektörler' },
-  { id: 'sureç', label: 'Üretim süreci' },
-  { id: 'yapay-zeka', label: 'Yapay zekâ kullanımı' },
+  { id: 'nedir', label: 'İçerik üretimi neyi kapsıyor?' },
+  { id: 'sira', label: 'Neden önce hizmet sayfaları?' },
+  { id: 'sehir', label: 'Semt ve şehir sayfaları' },
+  { id: 'kurallar', label: 'Avukat ve sağlık siteleri' },
+  { id: 'surec', label: 'Bir sayfa nasıl yazılıyor?' },
+  { id: 'yapay-zeka', label: 'Yapay zeka kullanımı' },
 ];
 
 const faq = [
   {
     q: 'İçerikleri kim yazıyor?',
-    a: 'Taslak ve araştırma bizde, teknik doğruluk kontrolü sizde. Hukuk, sağlık gibi alanlarda yayına almadan önce ilgili uzmanın onayını alıyoruz — hem doğruluk hem de sorumluluk açısından bu adım atlanmıyor.',
+    a: 'Araştırmayı ve taslağı biz yapıyoruz, meslek bilgisinin doğruluğunu siz onaylıyorsunuz. Hukuk ve sağlık sitelerinde uzman onayı olmadan hiçbir sayfa yayına çıkmıyor.',
   },
   {
     q: 'Ayda kaç içerik gerekiyor?',
-    a: 'Sabit bir sayı vermiyoruz. Çoğu yerel işletmede önce eksik hizmet ve sektör sayfalarının tamamlanması gerekiyor; bu bitmeden blog üretmeye başlamak yaygın bir sıra hatası. Temel sayfalar tamamlandıktan sonra ayda 2–4 içerik çoğu sektör için yeterli ritim.',
+    a: 'Sabit bir sayı vermiyoruz. Önce eksik hizmet sayfaları tamamlanır, sayıyı o eksik listesi belirler. Sonrasında yazılacak her sayfayı aramalardaki gerçek talebe göre seçeriz.',
   },
   {
-    q: 'Blog yazmak yerel işletmeye gerçekten katkı sağlıyor mu?',
-    a: 'Doğrudan harita sıralamasına katkısı sınırlı. Katkısı, hizmet sayfalarına iç link taşıması, bilgi arayan kullanıcıyı erken yakalaması ve alanda uzmanlık sinyali üretmesi. Yani blog tek başına değil, hizmet sayfalarını destekleyen bir katman olarak anlamlı.',
+    q: 'Blog yazmak haritadaki sıramı etkiler mi?',
+    a: 'Doğrudan etkisi sınırlı. Blog, bilgi arayan kişiyi siteye getirir ve linkle hizmet sayfanıza taşır. Haritadaki sıra için Google İşletme Profiliniz ve hizmet sayfalarınız daha belirleyici.',
   },
   {
-    q: 'Mevcut içeriklerim ne olacak?',
-    a: 'Önce onları değerlendiriyoruz. Gösterim alan ama tıklanmayan ya da ikinci sayfada takılmış içerikler genelde yeniden yazmaya değer; en hızlı kazanç alanı da burası. Yeni üretim bu boşluklar kapandıktan sonra başlıyor.',
+    q: 'Mevcut yazılarım ne olacak?',
+    a: 'Önce onlara bakıyoruz. Gösterim alıp tıklanmayan ya da başka bir sayfanızla aynı aramada yarışan yazıları yeniden yazar ya da birleştiririz. Hiç gösterim almayan ve işinizle ilgisi zayıf yazıları kaldırmayı öneririz.',
   },
 ];
 ---
@@ -38,177 +45,189 @@ const faq = [
   locale={locale}
   route="services/content"
   title="SEO İçerik Üretimi | Wiserrise"
-  description="Hizmet, sektör ve şehir sayfaları. Arama niyetinin karşılığını veren, iç link yapısına oturan ve yayına hazır içerik üretimi."
-  eyebrow="Hizmet"
-  h1="İçerik Üretimi"
-  lede="Sıralanmak için aramanın karşılığını veren sayfalara ihtiyaç var. Hangi sayfaların eksik olduğunu veriyle çıkarıyor, üretiyor ve iç link yapısına oturtuyoruz."
+  description="Yerel işletme siteleri için SEO içerik üretimi: önce hizmet sayfaları, sonra gerçek bilgiye dayanan semt sayfaları ve rehberler. Uzman onayıyla yayın."
+  eyebrow="HİZMET · İÇERİK ÜRETİMİ"
+  h1="SEO içerik üretimi ile eksik sayfalarınızı tamamlayın."
+  crumb="İçerik üretimi"
+  lede="İçerik üretimi, sitenizde eksik kalan sayfaları yazdığımız iş. Önce müşteriyi telefona getiren hizmet sayfalarını tamamlarız, blog en sona kalır. Hangi sayfanın eksik olduğunu arama verisinden ve Google profilinizdeki hizmetlerden çıkarırız."
   serviceName="SEO İçerik Üretimi"
   breadcrumb={[
     { label: 'Ana Sayfa', href: '/tr' },
     { label: 'Hizmetler', href: p('services') },
+    { label: 'SEO', href: p('services/seo') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'On-Page SEO', href: p('services/on-page-seo') },
-    { label: 'Yerel SEO', href: p('services/local-seo') },
-    { label: 'Teknik SEO', href: p('services/technical-seo') },
+    { label: 'SEO', href: p('services/seo'), text: 'Altyapı, sayfa düzeni, içerik ve backlink: bu hizmetin bağlı olduğu ana iş.' },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'Profilinizi ve sitenizi birlikte düzeltip haritada öne çıkmanız için çalışırız.' },
+    { label: 'On-Page SEO', href: p('services/on-page-seo'), text: 'Her sayfayı tek bir aramaya oturtur, title ve iç linkleri düzeltiriz.' },
+    { label: 'Teknik SEO', href: p('services/technical-seo'), text: 'Yazdığımız sayfaların Google’a ulaşması için tarama ve indeksleme hatalarını kapatırız.' },
   ]}
-  ctaLabel="İçerik Boşluğumu Çıkar →"
+  ctaLabel="Ücretsiz analiz al"
   ctaHref="/tr#contact"
 >
-  <h2 id="ne-uretiyoruz">Ne üretiyoruz</h2>
+  <h2 id="nedir">İçerik üretimi neyi kapsıyor?</h2>
 
   <p>
-    İçerik üretimini blog yazısıyla eş anlamlı kullanmıyoruz. Yerel bir işletmenin sıralanması
-    için gereken içerik çoğunlukla blog değil, eksik kalmış <strong>hizmet</strong>,
-    <strong>sektör</strong> ve <strong>lokasyon</strong> sayfaları.
+    Sitenizde olması gerekip olmayan her sayfayı. Yerel işletmede listenin başında hizmet sayfaları var, blog yazısı en sona
+    kalıyor.
+  </p>
+
+  <p>
+    Biri İzmir’de “Bornova oto ekspertiz” aradığında Google o hizmeti o bölgede anlatan bir sayfa arar. Sitenizde yalnız ana
+    sayfa ve bir iletişim sayfası varsa Google’ın gösterecek bir şeyi yoktur.
   </p>
 
   <div class="table-scroll">
     <table>
       <thead>
         <tr>
-          <th>Sayfa tipi</th>
-          <th>Hedeflediği arama</th>
-          <th>İşlevi</th>
+          <th>Sayfa</th>
+          <th>Örnek arama</th>
+          <th>Ne işe yarar</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Hizmet sayfası</td>
-          <td>"boşanma avukatı", "oto ekspertiz"</td>
-          <td>Doğrudan talep — dönüşümün ana kaynağı</td>
+          <td><strong>Hizmet sayfası</strong></td>
+          <td>“kanal tedavisi”, “boşanma avukatı”</td>
+          <td>Hizmet almaya hazır kişiyi karşılar. Telefona en yakın sayfa.</td>
         </tr>
         <tr>
-          <td>Sektör sayfası</td>
-          <td>"avukatlar için seo"</td>
-          <td>Ulusal görünürlük; yakınlık sinyali gerektirmez</td>
+          <td><strong>Semt ya da şehir sayfası</strong></td>
+          <td>“Bornova oto ekspertiz”</td>
+          <td>Hizmet verdiğiniz bölgede görünmenizi sağlar. Gerçek yerel bilgi şart.</td>
         </tr>
         <tr>
-          <td>Şehir sayfası</td>
-          <td>"antalya yerel seo"</td>
-          <td>Bölgesel görünürlük — gerçek yerel veri şartıyla</td>
-        </tr>
-        <tr>
-          <td>Vaka çalışması</td>
-          <td>Marka ve karşılaştırma aramaları</td>
-          <td>Güven ve uzmanlık kanıtı</td>
-        </tr>
-        <tr>
-          <td>Rehber içerik</td>
-          <td>"boşanma davası ne kadar sürer"</td>
-          <td>Erken aşama kullanıcı; hizmet sayfalarına iç link taşır</td>
+          <td><strong>Rehber yazı</strong></td>
+          <td>“kanal tedavisi kaç seans sürer”</td>
+          <td>Bilgi arayanı erken yakalar, linkle hizmet sayfasına taşır.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <p>
-    Sıra önemli. Hizmet sayfaları tamamlanmadan rehber içerik üretmek, ziyaretçiyi getirip
-    gidecek yer bulamadığı bir siteye bırakmak anlamına geliyor.
-  </p>
-
-  <h2 id="sektor">Sektör sayfaları</h2>
+  <h2 id="sira">Neden önce hizmet sayfaları?</h2>
 
   <p>
-    Yerel hizmet veren bir işletme için en değerli ama en çok atlanan sayfa tipi bu. Sebebi
-    şu: sektör sorgularında yakınlık sinyali devreye girmiyor. "Avukatlar için SEO" arayan
-    kişi bir konuma bağlı olmadığı için, bu sorguda Türkiye genelinde sıralanmak mümkün.
+    Çünkü müşteriyi onlar getiriyor. Hizmet sayfası olmayan bir siteye rehber yazısıyla ziyaretçi çekerseniz, ziyaretçi
+    gidecek yer bulamaz ve çıkar.
   </p>
 
   <p>
-    Bu yüzden coğrafi olarak sınırlı bir profile sahip işletmeler için sektör sayfaları,
-    ulusal görünürlüğün asıl kapısı. Sayfanın işe yaraması için o sektörün diline hâkim
-    olması gerekiyor — genel SEO tavsiyelerinin sektör adı eklenmiş hali değil, o sektörün
-    kendine özgü kısıtlarını ve müşteri davranışını bilen bir metin.
-  </p>
-
-  <h2 id="sehir">Şehir sayfaları ve doorway sınırı</h2>
-
-  <p>
-    Şehir sayfaları iki ucu keskin. Doğru yapıldığında bölgesel görünürlük açıyor; yanlış
-    yapıldığında site geneline zarar veriyor.
+    Bu yüzden hizmet sayfaları bitmeden blog yazmıyoruz. Blog isteyen işletmeye de önce eksik hizmet listesini gösteriyoruz.
   </p>
 
   <p>
-    Google’ın "doorway page" tanımı, kullanıcıya gerçek bir değer sunmadan yalnızca farklı
-    aramalarda görünmek için üretilmiş sayfalar. Şehir adı değiştirilmiş şablon sayfalar bu
-    tanıma tam olarak uyuyor ve tespit edilmesi de zor değil.
+    Listeyi Search Console’da gösterim alıp karşılığı olmayan aramalardan ve rakiplerde olup sizde olmayan sayfalardan
+    çıkarıyoruz. En hızlı kaynak ise <a href={p('services/gbp')}>Google İşletme Profiliniz</a>: profilde yazan ama sitede
+    sayfası olmayan her hizmet listeye girer.
   </p>
 
-  <div class="callout">
-    <p>
-      <strong>Uyguladığımız eşik:</strong> bir şehir sayfası ancak o şehre özgü gerçek veri
-      taşıyorsa açılır — o bölgedeki
-      <a href={p('services/rank-tracking')}>rekabet yoğunluğu grid’i</a>, o şehirden bir vaka
-      ya da yerel rakip analizi. Veri üretemediğimiz şehir için sayfa açmıyoruz. On sağlam
-      şehir sayfası, elli şablon sayfadan iyi sonuç veriyor.
-    </p>
-  </div>
-
-  <h2 id="regule">Regülasyonlu sektörler</h2>
+  <h2 id="sehir">Semt ve şehir sayfası ne zaman açılır?</h2>
 
   <p>
-    Avukatlık, sağlık ve finans gibi alanlarda içerik üretimi yalnızca SEO meselesi değil.
-    Türkiye’de avukatlar için <strong>TBB Reklam Yasağı Yönetmeliği</strong>, hangi ifadelerin
-    kullanılabileceğini net biçimde sınırlıyor: başarı vaadi, müvekkil sayısı, karşılaştırmalı
-    üstünlük iddiası ve teşvik edici ifadeler kullanılamıyor.
+    O bölge için söyleyecek gerçek bir şeyiniz olduğunda. Şehir adı değiştirilmiş kopya sayfaları Google “doorway” sayar ve
+    bütün siteye zarar verir. Şubeler ve hizmet verilen şehirler için kuralları
+    <a href={`${p('services/local-seo')}#coklu`}>local SEO sayfasında</a> anlattık.
   </p>
 
   <p>
-    Bu sektörlerde ürettiğimiz her metin, yayına çıkmadan önce ilgili mevzuat süzgecinden
-    geçiyor. Kısıt gibi görünse de pratikte avantaja dönüşüyor: kurallara uygun, bilgilendirici
-    ve iddiasız yazılmış metinler hem yaptırım riski taşımıyor hem de Google’ın uzmanlık
-    değerlendirmesinde iyi durabiliyor.
+    Gerçek bir şey ne demek? Diyelim ki Kadıköy’de bir fizyoterapi merkeziniz var ve Ataşehir’e ev ziyaretine de
+    gidiyorsunuz. Ataşehir sayfası şunları anlatabilir:
   </p>
 
-  <h2 id="sureç">Üretim süreci</h2>
+  <ul class="checklist">
+    <li>Ataşehir’de hangi mahallelere gittiğiniz</li>
+    <li>Ev ziyaretinde hangi tedavilerin yapılabildiği</li>
+    <li>Ev ziyaretinin nasıl planlandığı, merkeze gelmek isteyen için ulaşım</li>
+    <li>O bölgeden gelen hastaların telefonda en çok sorduğu sorular</li>
+  </ul>
+
+  <p>
+    Bu bilgiler yoksa sayfayı açmıyoruz. Şablona semt adı yazıp çoğaltmak hızlı görünür, ama siteyi Google’ın gözünde
+    zayıflatır.
+  </p>
+
+  <p>
+    Hangi semte önce sayfa açacağımıza bölgenizden aldığımız <a href={p('services/rank-tracking')}>ölçüm</a> karar verir.
+    Gerçekten iş aldığınız ama aramada geride kaldığınız semtler sıranın başına geçer.
+  </p>
+
+  <h2 id="kurallar">Avukat ve sağlık sitelerinde neye dikkat ediyoruz?</h2>
+
+  <p>
+    Meslek kurallarına. Avukat sitelerinde Türkiye Barolar Birliği’nin reklam yasağı geçerli. Kazanma vaadi, başarı oranı,
+    “en iyi” gibi üstünlük iddiası ve müvekkil yorumu yazılmaz.
+  </p>
+
+  <p>
+    Sağlıkta da benzer sınırlar var. Tedavi garantisi ya da önce/sonra vaadi yazmıyoruz. Her metin yayından
+    önce bu süzgeçten geçer ve avukatın ya da hekimin onayını alır.
+  </p>
+
+  <p>
+    Bilgilendirici, iddiasız yazılmış metin bu sektörlerde okura da daha güvenilir gelir. Sektöre özel ayrıntılar
+    <a href={p('industries/law')}>avukatlar için SEO</a> ve <a href={p('industries/dental')}>diş hekimleri için SEO</a>
+    sayfalarında.
+  </p>
+
+  <h2 id="surec">Bir sayfa nasıl yazılıyor?</h2>
+
+  <p>Her sayfa aynı adımlardan geçer:</p>
 
   <ol>
     <li>
-      <strong>Boşluk analizi.</strong> Search Console’da gösterim alan ama karşılığı olmayan
-      sorgular, rakiplerde olup sizde olmayan sayfalar ve mevcut sayfaların hangi niyeti
-      karşıladığı çıkarılır.
+      <strong>Eksik listesi.</strong> Yukarıdaki kaynaklardan sitenizde olmayan sayfaları çıkarırız.
     </li>
     <li>
-      <strong>Önceliklendirme.</strong> Sayfalar talep hacmi ve dönüşüm yakınlığına göre
-      sıralanır. Hizmet sayfaları rehber içeriğin önüne geçer.
+      <strong>Sıra.</strong> Telefona en yakın sayfa öne geçer, rehber yazıları en sona kalır.
     </li>
     <li>
-      <strong>Brief.</strong> Her sayfa için hedef sorgu, kapsanacak alt başlıklar, iç link
-      planı ve şema tipi belirlenir.
+      <strong>Plan.</strong> Her sayfa için hedef arama, cevaplanacak sorular, verilecek iç linkler ve şema tipi belirlenir.
+      Bu kısım <a href={p('services/on-page-seo')} style="white-space: nowrap;">on-page SEO</a> işinin parçası.
     </li>
     <li>
-      <strong>Yazım ve uzman kontrolü.</strong> Taslak üretilir, teknik doğruluk için sizin
-      onayınıza sunulur, regülasyonlu alanlarda mevzuat kontrolü yapılır.
+      <strong>Yazım ve onay.</strong> Taslağı biz yazarız, işinize dair bilgilerin doğruluğunu siz onaylarsınız.
     </li>
     <li>
-      <strong>Yayın ve bağlama.</strong> Sayfa yayınlanır, iç link yapısına oturtulur,
-      yapılandırılmış verisi eklenir ve sitemap’e girer.
+      <strong>Yayın.</strong> Sayfayı siteye biz koyarız, iç linklere bağlar ve sitemap’e ekleriz. Siteyi komple
+      yönetemeyeceksek işe başlamıyoruz, yayın da bu yüzden bizde.
     </li>
     <li>
-      <strong>Takip.</strong> 4–8 hafta sonra gösterim ve pozisyon verisi okunur; gerekirse
-      sayfa derinleştirilir. Yayınlanan içerik bitmiş sayılmıyor.
+      <strong>Takip.</strong> Sayfanın hangi aramalarda göründüğünü Search Console’dan izler, eksik kalan soruları ekleriz.
     </li>
   </ol>
 
-  <h2 id="yapay-zeka">Yapay zekâ kullanımı</h2>
+  <p>
+    Yaptığımız işleri her hafta raporda görürsünüz. Aramada ilk hareketi çoğu işletmede 3 ile 6 ay arasında
+    görüyoruz; sayfanın Google’a ulaşabilmesi için önce <a href={p('services/technical-seo')}>teknik SEO</a>
+    tarafının temiz olması gerekiyor.
+  </p>
+
+  <h2 id="yapay-zeka">Yapay zeka kullanıyor musunuz?</h2>
 
   <p>
-    Bu konuda açık olalım: araştırma, taslaklama ve veri işleme aşamalarında yapay zekâ
-    kullanıyoruz. Kullanmadığımız yer, metni olduğu gibi yayına almak.
+    Kullanıyoruz, araştırmada ve ilk taslakta. Ham çıktıyı olduğu gibi yayına almıyoruz.
   </p>
 
   <p>
-    Sebebi ideolojik değil pratik: üretilen ham metin, sektörün gerçek kısıtlarını
-    (TBB yönetmeliği gibi), işletmenin gerçek süreçlerini ve o şehirdeki rekabetin gerçek
-    halini bilmiyor. Bu bilgiler eklenmeden çıkan içerik, aynı sorguyu hedefleyen yüzlerce
-    benzer sayfadan ayrışmıyor. Ayrışmayan içerik de sıralanmıyor.
+    Yapay zeka sizin işinizi bilmiyor. Hangi semtlere gittiğinizi ve müşterinin telefonda ne sorduğunu bilmeden yazılan metin,
+    aynı aramayı hedefleyen benzer sayfalardan ayrışmaz. Ayrışmayan sayfa da sıralanmaz.
+  </p>
+
+  <p>
+    Süper zeka yanıtlarında anılmak da aynı şeye bağlı. ChatGPT ve Gemini soruyu net cevaplayan, işletmeyi her yerde tutarlı
+    anlatan kaynaklara yaslanıyor; bu tarafı <a href={p('services/geo')}>GEO</a> hizmetinde ölçüyoruz.
   </p>
 
   <Fragment slot="cta">
-    <h2>Hangi sayfalar <span class="highlight">eksik</span>?</h2>
-    <p>Ücretsiz analizde gösterim alıp karşılığı olmayan sorguları ve rakiplerdeki içerik farkını çıkarıyoruz.</p>
+    <h2>Sitenizde hangi sayfalar <span class="highlight">eksik</span>?</h2>
+    <p>
+      Ücretsiz analizde sitenize ve profilinize bakar, ilk yazılması gereken sayfaları sırayla çıkarırız. Sonuç 24 saat
+      içinde <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
   </Fragment>
 </ContentLayout>

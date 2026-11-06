@@ -1,0 +1,271 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'CATEGORY', title: 'The right primary category', text: 'Your primary profile category is Lawyer. Mediation and case types stay secondary, otherwise you drop back in the main search.' },
+  { label: 'PAGES', title: 'Case type pages', text: 'A separate page for every area you focus on: process, duration, documents. A three-paragraph list of areas doesn’t show up in search.' },
+  { label: 'CONTENT', title: 'Informative articles', text: 'Clear answers to questions like “How long does a divorce case take?”. The regulation allows this, and most competitors leave it empty.' },
+  { label: 'LANGUAGE', title: 'Language that respects the ban', text: 'We don’t write superiority claims, success rates, promises of winning or special offers. We build every sentence to the limits of the regulation.' },
+];
+
+const toc = [
+  { id: 'yasak', label: 'The advertising ban and SEO' },
+  { id: 'kategori', label: 'Choosing the profile category' },
+  { id: 'arama', label: 'How do clients search?' },
+  { id: 'sayfa', label: 'Which pages on the website?' },
+  { id: 'yorum', label: 'Google reviews' },
+  { id: 'ilerleme', label: 'How do you see progress?' },
+  { id: 'sehir', label: 'Work from outside your city' },
+];
+
+const faq = [
+  {
+    q: 'Does SEO work violate the advertising ban?',
+    a: 'On its own, it doesn’t. The ban covers advertising and solicitation aimed at getting work; informative content that describes your firm and your practice areas falls outside it. The risk comes from the wording, and we never use that wording.',
+  },
+  {
+    q: 'Should I ask clients for Google reviews?',
+    a: 'We don’t recommend it. Asking for reviews, especially with a gift or a ready-made text, comes very close to an inducement aimed at getting work. When a review comes in unprompted, we write a short reply without going into the case.',
+  },
+  {
+    q: 'Can I list my practice areas on the website?',
+    a: 'You can, listing your areas counts as information. Watch out for words that present an area like a title or imply superiority. We write the area names in plain language that makes no claims.',
+  },
+  {
+    q: 'When will I see results?',
+    a: 'For most businesses we see the first movement on the map within 4-8 weeks and in search within 3-6 months; in busy city centers with heavy competition it takes longer. We can’t give an exact date, but you see the work we do every week in the report.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="industries/law"
+  title="SEO for Lawyers and Google Maps | Wiserrise"
+  description="SEO for law firms that respects Turkey’s advertising ban: the right profile category, case type pages and informative content. Weekly report, no contract."
+  eyebrow="INDUSTRY · LAWYERS"
+  h1="SEO for lawyers: become visible without advertising."
+  crumb="Lawyers"
+  lede="SEO for lawyers means building your profile and website with informative content so your firm shows up on the map and in the results for searches like “divorce lawyer Mersin”. Turkey’s advertising ban for lawyers rules out superiority claims and promises, and it allows information. We run the whole job inside that line."
+  serviceName="SEO for Lawyers"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Industries', href: p('industries') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Google Business Profile Management', href: p('services/gbp'), text: 'We set up the category and service structure in language that fits the regulation.' },
+    { label: 'Content Production', href: p('services/content'), text: 'We write case type pages and informative articles around your firm’s practice areas.' },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'We fix your profile and your website together for the race on the map.' },
+  ]}
+  ctaLabel="Get a free analysis"
+  ctaHref="/#contact"
+>
+  <h2 id="yasak">Can you do SEO under an advertising ban?</h2>
+
+  <p>
+    Yes. Article 55 of Turkey’s Attorneys’ Act (Avukatlık Kanunu, Law No. 1136) bans any attempt by a lawyer to get work
+    that could count as advertising, and the details are set by the Turkish Bar Association’s advertising regulation (TBB
+    Reklam Yasağı Yönetmeliği).
+  </p>
+
+  <p>
+    What’s banned is praise and solicitation. Describing who your firm is and which areas it works in counts as
+    information, and the work we call SEO makes sure that information can be found on Google. The risk comes from the
+    sentences written on the page.
+  </p>
+
+  <p>This is where we draw the line:</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>We don’t write</th>
+          <th>We write</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>“90% success rate”, number of cases won</td>
+          <td>How the case works and how long it takes</td>
+        </tr>
+        <tr>
+          <td>“The best criminal lawyer in the city”</td>
+          <td>A plain list of your practice areas</td>
+        </tr>
+        <tr>
+          <td>Client reviews, thank-you letters</td>
+          <td>Bar association, registration number and professional background</td>
+        </tr>
+        <tr>
+          <td>Discounts, special offers, free consultation offers</td>
+          <td>Contact details and opening hours</td>
+        </tr>
+        <tr>
+          <td>Comparisons with rival firms</td>
+          <td>Your publications and articles</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Law is the most restricted of the <a href={p('industries')}>industries we work in</a>. If you ask us, this restriction
+    works in favor of the firm that does its job properly. Some rival firms write risky copy without ever reading the
+    regulation, and others write nothing at all out of fear.
+  </p>
+
+  <p>
+    Pages that follow the rules and actually inform are rare in this industry. That gap is open to the firm that wants to
+    do its work by the rules.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Nothing on this page is legal advice.</strong> Your bar association has the final word on interpreting the
+      regulation. Ask your bar before publishing any wording you’re unsure about.
+    </p>
+  </div>
+
+  <h2 id="kategori">Which category should you choose on your Google profile?</h2>
+
+  <p>
+    The primary category should be Lawyer. It’s the field law firms set up wrong most, and we see the mistake most with
+    lawyers who also work as mediators: the primary category is set to Mediator.
+  </p>
+
+  <p>
+    This choice pushes you down in searches made with the word “lawyer”. The right setup is Lawyer as the primary category
+    and mediation as a secondary one. A separate page on the website then handles the demand for mediation.
+  </p>
+
+  <p>
+    The second common mistake is filling the secondary categories with every case type. Google’s list has specific lawyer
+    categories for areas such as criminal and divorce law, and adding all of them blurs the profile. We limit it to the two
+    or three areas you really focus on; we explain the details on the
+    <a href={p('services/gbp')}>Google Business Profile management</a> page.
+  </p>
+
+  <h2 id="arama">How do clients search on Google?</h2>
+
+  <p>They search in two ways. Mixing these two up is the content mistake that costs law firms the most.</p>
+
+  <ul>
+    <li>
+      <strong>Looking for information.</strong> “How long does a divorce case take”, “how is severance pay calculated”.
+      They’re trying to understand their situation and haven’t started looking for a lawyer yet. These searches rank
+      independently of the city.
+    </li>
+    <li>
+      <strong>Looking for a lawyer.</strong> “Divorce lawyer Mersin”, “criminal lawyer near me”. They’re about to decide.
+      In these searches the map comes first, and proximity to the searcher decides.
+    </li>
+  </ul>
+
+  <p>
+    You meet the person looking for a lawyer on the map, and the person looking for information with the articles on your
+    website. A firm that only writes blog posts and leaves the profile empty gets traffic, and the phone stays silent. It’s
+    the picture we see most in this industry.
+  </p>
+
+  <h2 id="sayfa">Which pages should your firm’s website have?</h2>
+
+  <p>
+    A separate page for each area you focus on. Most law firm websites follow the same template: a home page, an about page
+    and a practice areas page that gives each area three paragraphs. This structure shows up in none of the case type
+    searches, because it never really explains any area.
+  </p>
+
+  <p>This is the structure we build:</p>
+
+  <ul class="checklist">
+    <li>A separate page for each main practice area: process, duration, required documents, frequently asked questions</li>
+    <li>A practice areas page that brings these pages together</li>
+    <li>Informative articles that link to the relevant area page</li>
+    <li>Lawyer credentials: bar association, registration number, professional background</li>
+    <li>LegalService structured data that matches the details on your Google profile exactly</li>
+  </ul>
+
+  <p>
+    The credentials page does two jobs. It gathers the information the regulation allows in one place, and it shows Google
+    that a real, registered lawyer stands behind the site. We write these pages around your firm’s areas as part of
+    <a href={p('services/content')}>content production</a>.
+  </p>
+
+  <h2 id="yorum">What about Google reviews?</h2>
+
+  <p>
+    Reviews are a strong signal for the map ranking. In law, they’re also the topic that clashes most with the rules.
+  </p>
+
+  <p>
+    There are two problems. Asking for reviews, especially with a gift or a ready-made text, comes very close to an
+    inducement aimed at getting work. In criminal and family law, clients don’t want to write about the service they
+    received where everyone can see it, and that’s a line to respect.
+  </p>
+
+  <p>
+    So we don’t set up a review request flow for law firms, and we don’t publish client reviews on the website. We make up
+    for the missing signal with a complete profile and in-depth area pages. When a review arrives unprompted, we write a
+    short reply without going into the case at all.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Client information never becomes content.</strong> In no article do we use case details, information about
+      the parties or any detail that could identify a client. We don’t mention the case even when replying to a negative
+      review.
+    </p>
+  </div>
+
+  <h2 id="ilerleme">How do you see progress?</h2>
+
+  <p>
+    First we measure where you rank from different points around your firm for searches like “criminal lawyer”. For most
+    businesses we see the first movement on the map within 4-8 weeks and in search within 3-6 months. You see the work we
+    do every week in the report and in the client portal.
+  </p>
+
+  <p>
+    We work with a criminal lawyer in Adana who reached the top 3 for “criminal lawyer Adana” within 3 months. One day the
+    lawyer told us: “Mate, the calls were great last week.”
+  </p>
+
+  <p>
+    The client is happy, and is the one feeding us the industry’s insider tips. We’re not telling you this as a promise:
+    competition is different in every city and for every case type.
+  </p>
+
+  <h2 id="sehir">Does work come in from outside your city?</h2>
+
+  <p>
+    It can, and the way in is the informative articles on your website. The map shows firms close to the searcher, and
+    opening a second profile for another city is against Google’s rules.
+  </p>
+
+  <p>
+    Information searches, on the other hand, rank independently of the city. For consultancy and commercial disputes that
+    can be handled remotely, these articles are the most realistic way for a client in another city to find you.
+  </p>
+
+  <p>
+    We’re careful with city pages. Opening a page for a city where you don’t actually take cases runs into Google’s rule on
+    duplicate pages, and it’s risky under the regulation too. So we open them only for places you really work in, with
+    content specific to that place.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Which search is your firm <span class="highlight">missing</span> from?</h2>
+    <p>
+      In the free analysis we look at your profile’s category setup and the gap between you and rival firms. The result
+      lands in your inbox within <span style="white-space: nowrap;">24 hours</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

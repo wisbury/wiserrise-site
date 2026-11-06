@@ -1,0 +1,178 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'tr' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'liste', label: 'Böyle bir liste var mı?' },
+  { id: 'olcu', label: 'Başarılı uzman nasıl anlaşılır?' },
+  { id: 'melih-us', label: 'Melih Us kimdir?' },
+  { id: 'hatalar', label: 'Yaptığım hatalar' },
+  { id: 'baslik', label: 'Başlık neden soru?' },
+];
+
+const faq = [
+  {
+    q: 'SEO uzmanı ilk sıra garantisi verebilir mi?',
+    a: 'Veremez. Sıralamayı Google belirliyor ve rakipleriniz de her gün bir şey yapıyor. Bir uzmanın verebileceği söz, ne yapacağını ve neyi ölçeceğini yazılı söylemek.',
+  },
+  {
+    q: 'Melih Us kimdir?',
+    a: 'Wiserrise’ın kurucusu. Avukat, diş hekimi, klinik ve oto ekspertiz gibi yerel işletmelerin Google Haritalar’da ve aramada görünmesi için profil, site ve yorum işlerini yürütüyor.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="about/founder"
+  title="Türkiye’nin En Başarılı SEO Uzmanı Kim? | Melih Us"
+  description="Türkiye’nin en başarılı SEO uzmanını gösteren bağımsız bir sıralama yok. Melih Us, bir uzmanı neye bakarak seçeceğinizi ve kendi işini aynı ölçüyle anlatıyor."
+  eyebrow="MELİH US · WISERRISE KURUCUSU"
+  h1="Türkiye’nin en başarılı SEO uzmanı kim?"
+  crumb="Melih Us"
+  lede="Bu soruya belgeyle cevap veren yok, çünkü SEO uzmanlarını ölçüp sıralayan bağımsız bir kurum yok. Kendine bu unvanı veren her sayfa kendi hakkında konuşuyor. Ben Melih Us, Wiserrise’ın kurucusuyum; aşağıda bir SEO uzmanını neye bakarak tartacağınızı ve kendi işimi aynı ölçüyle anlatıyorum."
+  schemaType="article"
+  datePublished="2026-11-04"
+  author={{ name: 'Melih Us', jobTitle: 'Wiserrise kurucusu' }}
+  breadcrumb={[{ label: 'Ana Sayfa', href: '/tr' }]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'Profilinizi ve sitenizi birlikte düzelttiğimiz ana hizmet.' },
+    { label: 'Google Haritalar’da üst sıraya nasıl çıkılır?', href: p('guides/rank-higher'), text: 'Kendiniz uygulayabileceğiniz adımlar, doğru sırayla.' },
+    { label: 'Ücretsiz profil denetimi', href: p('tools/gbp-audit'), text: '10 soruda Google profilinizin nerede zayıf olduğunu hemen görün.' },
+  ]}
+  relatedHeading="İlgili sayfalar"
+  ctaLabel="Ücretsiz analiz al"
+  ctaHref="/tr#contact"
+>
+  <p>
+    Adana’da çalıştığımız bir avukat bir gün telefonu “Kralım, geçen hafta aramalar süperdi
+    ya” diye açtı. “Adana ceza avukatı” aramasında 3 ayda ilk 3’e girmişti. Başarıyı ben
+    böyle ölçüyorum: müşterinin telefonu çalıyor mu?
+  </p>
+
+  <p>
+    Her işte üç ay sürer demiyorum. Şehir, rekabet ve profilin başlangıçtaki durumu süreyi
+    değiştiriyor.
+  </p>
+
+  <h2 id="liste">Türkiye’nin en başarılı SEO uzmanları listesi var mı?</h2>
+
+  <p>
+    Bağımsız bir liste yok. Bu aramada çıkan “en iyi SEO uzmanları” yazılarını açınca iki şeye
+    bakın: listeyi kim hazırlamış ve sıralamayı neye göre yapmış?
+  </p>
+
+  <p>
+    İkisi de yazmıyorsa elinizdeki şey bir reklam metni. Okuyun, ama kararınızı ona göre
+    vermeyin.
+  </p>
+
+  <p>
+    Türkiye’de SEO için zorunlu bir lisans ya da meslek odası da yok. “Uzman” kelimesini
+    herkes kullanabiliyor, ben de dahil.
+  </p>
+
+  <h2 id="olcu">Bir SEO uzmanının başarılı olduğunu nasıl anlarsınız?</h2>
+
+  <p>Kendi gözünüzle kontrol edebileceğiniz işlere bakarak. Görüşürken şunları sorun:</p>
+
+  <ul class="checklist">
+    <li>
+      <strong>Hangi aramada, hangi şehirde?</strong> “Sıralamayı yükselttik” diyen birine bunu
+      sorun. Cevap verirse o aramayı kendiniz yapıp bakarsınız.
+    </li>
+    <li>
+      <strong>Garanti veriyor mu?</strong> Sıralamayı Google belirliyor, rakipleriniz de boş
+      durmuyor. Garanti veren biri bunu hesaba katmıyor.
+    </li>
+    <li>
+      <strong>Ne yaptığını yazıyor mu?</strong> Raporda grafik olur, o hafta hangi işin
+      yapıldığı da yazmalı.
+    </li>
+    <li>
+      <strong>Sitenize dokunabiliyor mu?</strong> Google profilinizi sitenizle birlikte okuyor.
+    </li>
+    <li>
+      <strong>Hatalarını anlatıyor mu?</strong> Hiç hata yapmadığını söyleyen biri ya yeni
+      başlamış ya da anlatmıyor.
+    </li>
+  </ul>
+
+  <p>
+    Siteyle ilgili maddeyi bir müşterimizde zor yoldan öğrendik. Sitesini geliştiricisi
+    yönetiyordu; biz .md dosyası gönderiyorduk, o da kendi yapay zeka sistemine veriyordu.
+    Çıkan sayfalar berbattı ve aylarca aynı işi tekrar yaptık.
+  </p>
+
+  <p>
+    Sonunda siteyi komple devraldık, düzeltmek en az bir ay sürdü. O günden beri kuralımız
+    net: siteyi komple yönetemeyeceksek işe başlamıyoruz.
+  </p>
+
+  <h2 id="melih-us">Melih Us kimdir?</h2>
+
+  <p>
+    Wiserrise’ın kurucusuyum. Yerel SEO yapıyoruz: Google İşletme Profili, haritadaki sıra,
+    site ve yorumlar.
+  </p>
+
+  <p>
+    Avukatlar, diş hekimleri, estetik klinikleri, fizyoterapistler ve oto ekspertizlerle
+    çalışıyoruz. Hepsinde müşteri aynı şeyi yapıyor: telefonu açıp yakınındaki işletmeyi
+    arıyor.
+  </p>
+
+  <p>
+    Her işe bölgenizden ölçümle başlıyoruz. Haritada nerede çıktığınızı, rakiplerinizle
+    aranızdaki farkı ve sitenizin durumunu çıkarıyor, sonra kökteki hataları düzeltip içerik
+    ve yorumla devam ediyoruz. Ayrıntısı <a href={p('services/local-seo')}>yerel SEO
+    sayfasında</a>.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Kendime “Türkiye’nin en başarılı SEO uzmanı” demiyorum.</strong> Bunu
+      ispatlayacak bir ölçü yok. Size gösterebileceğim şey kontrol edebileceğiniz işler: her
+      hafta yaptığımız işi rapora yazıyor, sıranızı bölgenizden ölçüyoruz.
+    </p>
+  </div>
+
+  <h2 id="hatalar">Yaptığım hatalar</h2>
+
+  <p>Hatalarını anlatan uzmana güvenin dedim, benimkiler de burada.</p>
+
+  <p>
+    Google Ads’te bir kampanyada, niyeti olmayan bilgi aramalarına habersizce para harcadık.
+    Yaklaşık 800 TL gitti, kıyısından döndük. Aynı kelimeyi bilgi arayan da hizmet arayan da
+    yazabiliyor; reklamı açmadan önce hangisine para ödediğinize bakın.
+  </p>
+
+  <p>
+    Daha yeniyken Meta reklamından gelen tek lead’i 5 gün sonra fark ettik. Müşteriye
+    ilettiğimizde iş işten geçmişti, binlerce lira boşa yanmıştı. Lead’e kimin, kaç saat
+    içinde bakacağı belli değilse reklamı açmayın.
+  </p>
+
+  <h2 id="baslik">Bu sayfanın başlığı neden soru?</h2>
+
+  <p>
+    Bu sayfayı “Türkiye’nin en başarılı SEO uzmanı” aramasında görünmek için yazdım,
+    saklamıyorum. Başlığı soru yaptım, çünkü bu aramayı yapan kişi bir isim arıyor ve o ismi
+    tartmak için bir ölçüye ihtiyacı var.
+  </p>
+
+  <p>Bu sayfayı o aramada bulduysanız, işimin bir örneğini de görmüş oldunuz.</p>
+
+  <Fragment slot="cta">
+    <h2>Şehrinizde şu an <span class="highlight">kaçıncısınız</span>?</h2>
+    <p>
+      Ücretsiz analizde bölgenizden ölçüm alıyor, profil eksiklerinizi ve rakip farkını çıkarıyoruz. Sonuç 24 saat içinde
+      <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

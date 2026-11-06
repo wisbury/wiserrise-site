@@ -1,0 +1,81 @@
+---
+import LegalPage from '../../components/v2/LegalPage.astro';
+import { routePath } from '../../i18n/routes';
+import { KVKK_EMAIL } from '../../data/legal';
+
+/**
+ * Deutsche Übersetzung der Cookie-Richtlinie. Quelle ist /tr/cerez-politikasi (Tabelle beruht auf der Messung vom
+ * 2026-11-01); ändert sich der türkische Text, etwa weil GA4 oder ein Pixel dazukommt, wird diese Seite nachgezogen.
+ */
+---
+
+<LegalPage
+  locale="de"
+  route="legal/cookies"
+  title="Cookie-Richtlinie | Wiserrise"
+  description="Was wiserrise.com in Ihrem Browser speichert, welche Cookies die Website verwendet und wie Sie diese löschen können."
+  heading="Cookie-Richtlinie"
+>
+  <p class="v2-legal-lead">
+    Diese Seite erklärt, was wiserrise.com in Ihrem Browser speichert. Kurz gesagt: Die Website verwendet keine Werbe-,
+    Marketing- oder Tracking-Cookies; deshalb zeigen wir auch kein Cookie-Banner.
+  </p>
+
+  <h2>1. Was ist ein Cookie</h2>
+  <p>
+    Ein Cookie ist eine kleine Textdatei, die eine Website in Ihrem Browser speichert. Der lokale Speicher (localStorage)
+    ist eine ähnliche Technik; diese Seite behandelt beide gemeinsam.
+  </p>
+
+  <h2>2. Was die Website verwendet</h2>
+  <div class="v2-legal-table" tabindex="0" role="region" aria-label="Auf der Website verwendete Cookies und ähnliche Techniken">
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Art</th><th>Zweck</th><th>Dauer</th><th>Gesetzt von</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>wr-lang</code></td>
+          <td>Lokaler Speicher</td>
+          <td>Merkt sich die gewählte Sprache und blendet die Leiste mit dem Sprachvorschlag nicht erneut ein. Wird nur geschrieben, wenn Sie eine Sprache wählen oder die Leiste schließen, und nicht an den Server gesendet.</td>
+          <td>Bis Sie den Eintrag löschen</td>
+          <td>Wiserrise</td>
+        </tr>
+        <tr>
+          <td><code>cf_clearance</code></td>
+          <td>Notwendiges Cookie</td>
+          <td>Wird bei einem normalen Besuch nicht gesetzt. Verlangt unser Hosting-Anbieter eine Sicherheitsprüfung und bestehen Sie diese, wird es gespeichert, damit die Prüfung nicht erneut erscheint.</td>
+          <td>Je nach Sicherheitseinstellung des Anbieters</td>
+          <td>Cloudflare</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>3. Was nicht verwendet wird</h2>
+  <ul>
+    <li>Werbe- und Retargeting-Cookies, Meta-Pixel, Google-Ads-Tag</li>
+    <li>Google Analytics</li>
+    <li>Cookies zur Personalisierung oder Tracking-Cookies von Drittanbietern</li>
+  </ul>
+  <p>Wenn wir eines davon einführen, holen wir vorher Ihre Einwilligung ein und aktualisieren diese Seite.</p>
+
+  <h2>4. Website-Statistiken</h2>
+  <p>
+    Wie viele Aufrufe jede Seite hat und wie schnell die Seiten laden, sehen wir mit Cloudflare Web Analytics. Dieser
+    Dienst setzt keine Cookies und speichert nichts in Ihrem Browser.
+  </p>
+
+  <h2>5. Wie Sie sie löschen können</h2>
+  <p>
+    In den Einstellungen Ihres Browsers können Sie im Bereich für Cookies und Websitedaten alles löschen oder blockieren.
+    Die Website funktioniert auch ohne diese Daten; nur die Leiste mit dem Sprachvorschlag kann wieder erscheinen.
+  </p>
+
+  <h2>6. Ihre Fragen</h2>
+  <p>
+    Wie Ihre personenbezogenen Daten verarbeitet werden, erfahren Sie im
+    <a href={routePath('de', 'legal/kvkk')}>Datenschutzhinweis</a>. Für Fragen:
+    <a href={`mailto:${KVKK_EMAIL}`}>{KVKK_EMAIL}</a>.
+  </p>
+</LegalPage>

@@ -1,66 +1,77 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
-import CardGrid from '../../../components/CardGrid.astro';
+import HubCards from '../../../components/v2/HubCards.astro';
 import { routePath } from '../../../i18n/routes';
 
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+// Ana hizmetler. Alt hizmetler (profil yönetimi, harita takibi, teknik SEO, on-page SEO, içerik) burada değil,
+// bağlı oldukları ana hizmetin sayfasından linklenir. Sayfası henüz olmayanlar analiz penceresini açar.
 const services = [
   {
-    href: p('services/gbp'),
-    icon: 'profile',
-    title: 'Google İşletme Profili Yönetimi',
-    text: 'Kategori, hizmet, foto, post ve değerlendirme yönetimi. Haritalarda sıralamanızı belirleyen sinyallerin çoğu profilin içinde.',
+    href: p('services/seo'),
+    label: 'ARAMA',
+    title: 'SEO',
+    text: 'Haritanın altındaki arama sonuçları. Teknik altyapı, sayfa düzeni ve içerikle sitenizi müşterinin aradığı sorulara oturturuz.',
+    cta: 'Hizmeti incele',
   },
   {
     href: p('services/local-seo'),
-    icon: 'map',
-    title: 'Yerel SEO',
-    text: 'Profil, site ve dış kaynakları tek bir yerel görünürlük stratejisi altında birleştiren ana hizmet.',
+    label: 'HARİTALAR',
+    title: 'Local SEO',
+    text: 'Profiliniz ve siteniz birlikte. Çevrenizdeki müşterinin ilk gördüğü üç işletmenin arasına girmek için yürüttüğümüz iş.',
+    cta: 'Hizmeti incele',
   },
   {
-    href: p('services/rank-tracking'),
-    icon: 'grid',
-    title: 'Harita Sıralama Takibi',
-    text: 'Tek bir ortalama değil, şehir üstüne serilmiş 7×7 grid. Hangi mahallede kaçıncı olduğunuzu nokta nokta görürsünüz.',
+    href: '#analiz-formu',
+    analiz: 'gads',
+    label: 'REKLAM',
+    title: 'Google Ads',
+    text: 'Bütçenizi arayan, soran ve satın almaya hazır kişilere harcayan arama reklamları.',
+    cta: 'Reklam analizi iste',
   },
   {
-    href: p('services/technical-seo'),
-    icon: 'wrench',
-    title: 'Teknik SEO',
-    text: 'Taranabilirlik, indeksleme, hız ve yapılandırılmış veri. İçerik ne kadar iyi olursa olsun bunlar bozuksa sıralama gelmez.',
+    href: '#analiz-formu',
+    analiz: 'meta',
+    label: 'SOSYAL',
+    title: 'Meta Ads',
+    text: 'Instagram ve Facebook’ta bölgenizdeki insanların karşısına çıkan reklamlar. Sizi aramadan önce tanırlar.',
+    cta: 'Reklam analizi iste',
   },
   {
-    href: p('services/on-page-seo'),
-    icon: 'document',
-    title: 'On-Page SEO',
-    text: 'Başlık, içerik derinliği, iç link ve arama niyeti eşleşmesi. Sayfanın hangi sorguya cevap verdiğini netleştirir.',
+    href: '#analiz-formu',
+    analiz: 'backlink',
+    label: 'OTORİTE',
+    title: 'Backlink inşası',
+    text: 'Konunuzla ilgili, gerçek trafiği olan sitelerden bağlantılar. Ajanslar için white-label.',
+    cta: 'Paketleri gör',
   },
   {
-    href: p('services/content'),
-    icon: 'pen',
-    title: 'İçerik Üretimi',
-    text: 'Hizmet, sektör ve şehir sayfaları. Aramanın karşılığını veren, ölçülebilir ve yayına hazır içerik.',
+    href: p('services/geo'),
+    label: 'SÜPER ZEKA',
+    title: 'GEO',
+    text: 'ChatGPT, Gemini ve Google’ın süper zeka yanıtlarında hangi soruda anıldığınızı ölçer, anılmadığınız sorular için çalışırız.',
+    cta: 'Hizmeti incele',
   },
 ];
 
 const faq = [
   {
-    q: 'Hizmetleri tek tek mi almak gerekiyor?',
-    a: 'Hayır. Çoğu işletme yerel SEO altında birleşik bir program yürütür; tekil hizmetler ise belirli bir darboğaz varsa anlamlıdır. Ücretsiz analiz, hangisinin gerektiğini söyler.',
+    q: 'Hizmetleri tek tek alabilir miyim?',
+    a: 'Alabilirsiniz, ama çoğu işletmede tek hizmet yetmiyor. Sorun tek bir yerdeyse, mesela siteniz Google’da hiç görünmüyorsa, yalnız SEO ile başlarız. Hangisinin gerektiğini ücretsiz analizde söyleriz.',
   },
   {
-    q: 'Türkiye’nin her yerinden işletmeyle çalışıyor musunuz?',
-    a: 'Evet. Yerel SEO çalışması uzaktan yürütülür; sizin bulunduğunuz şehirde fiziksel olarak bulunmamız gerekmez. Merkezimiz Antalya, müşterilerimiz Mersin’den Bursa’ya kadar farklı şehirlerde.',
+    q: 'Türkiye’nin her yerindeki işletmelerle çalışıyor musunuz?',
+    a: 'Evet. İşin tamamı uzaktan yürüyor, şehrinize gelmemiz gerekmiyor. Merkezimiz Antalya; Türkçe, İngilizce ve Almanca hizmet veriyoruz.',
   },
   {
     q: 'Aynı şehirde rakibimle de çalışır mısınız?',
-    a: 'Hayır. Her şehir ve sektörde tek bir işletmeyle çalışıyoruz. İki rakibi aynı anda yukarı taşımak matematiksel olarak mümkün değil.',
+    a: 'Hayır. Bir şehirde, bir sektörde tek işletmeyle çalışıyoruz. İki rakibi aynı haritada aynı anda yukarı taşımaya çalışmak ikisine de haksızlık olur.',
   },
   {
-    q: 'Sonuçları nasıl ölçüyorsunuz?',
-    a: 'Grid tabanlı harita sıralaması, Google İşletme Profili etkileşimleri (arama, yol tarifi, telefon) ve Search Console verisi. Üçü birlikte raporlanır; tek başına sıralama ekran görüntüsü göndermiyoruz.',
+    q: 'SEO sonuçlarını nasıl ölçüyorsunuz?',
+    a: 'Bölgenizden ölçümü, profil etkileşimlerini ve Search Console verisini birlikte okuyoruz. Tek bir sıralama ekran görüntüsü göndermiyoruz, çünkü haritadaki sıra arayanın nerede durduğuna göre değişir. Yaptığımız işleri her hafta raporda görürsünüz.',
   },
 ];
 ---
@@ -68,96 +79,129 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="services"
-  title="Yerel SEO Hizmetleri | Wiserrise"
-  description="Google İşletme Profili yönetimi, yerel SEO, harita sıralama takibi, teknik SEO, on-page SEO ve içerik üretimi. Türkiye genelinde yerel işletmeler için."
-  eyebrow="Hizmetler"
-  h1="Yerel SEO Hizmetleri"
-  lede="Haritalarda sıralamayı belirleyen üç şey var: profilin gücü, sitenin gücü ve dışarıdan gelen güven sinyalleri. Aşağıdaki hizmetler bu üçünü ayrı ayrı ele alıyor."
-  serviceName="Yerel SEO ve Google Haritalar Optimizasyonu"
+  title="Dijital Pazarlama Hizmetleri | Wiserrise"
+  description="SEO, Local SEO, Google Ads, Meta Ads, backlink inşası ve GEO. Hangisinin size lazım olduğunu ücretsiz analizde söyleriz."
+  eyebrow="HİZMETLER"
+  h1="Dijital pazarlama hizmetleri: hangisi size lazım?"
+  crumb="Hizmetler"
+  lede="Müşteriniz sizi Google’da, haritada, Instagram’da ya da ChatGPT’de bulabilir. Her kanal ayrı bir iş, ama hepsine aynı anda ihtiyacınız yok. Aşağıda hangi hizmetin hangi kanala çalıştığını anlattık."
+  serviceName="Dijital Pazarlama Hizmetleri"
   breadcrumb={[{ label: 'Ana Sayfa', href: '/tr' }]}
   faq={faq}
   wideFirst
   related={[
-    { label: 'Sektörlere göre yerel SEO', href: p('industries') },
-    { label: 'Avukatlar için SEO', href: p('industries/law') },
-    { label: 'Oto ekspertiz için SEO', href: p('industries/vehicle-inspection') },
+    { label: 'Sektörlere göre yerel SEO', href: p('industries'), text: 'Avukat, diş hekimi, klinik ve oto ekspertizde işin nasıl değiştiğini anlattık.' },
+    { label: 'Rehberler', href: p('guides'), text: 'Profil açmaktan yorum artırmaya, kendiniz uygulayabileceğiniz adımlar.' },
+    { label: 'Ücretsiz profil denetimi', href: p('tools/gbp-audit'), text: '10 soruda Google profilinizin nerede zayıf olduğunu hemen görün.' },
   ]}
-  ctaLabel="Ücretsiz Analizimi Al →"
+  relatedHeading="İlgili sayfalar"
+  ctaLabel="Ücretsiz analiz al"
   ctaHref="/tr#contact"
 >
-  <p>
-    Yerel aramada rekabet, çoğu işletmenin sandığından dar bir alanda geçiyor. Bir kullanıcı
-    telefonunu açıp <strong>"yakınımdaki avukat"</strong> ya da <strong>"oto ekspertiz Bursa"</strong>
-    yazdığında Google, o kişinin bulunduğu noktadan itibaren birkaç kilometrelik bir alanı tarar ve
-    üç işletme gösterir. Dördüncü sıradaki işletme, teknik olarak "birinci sayfada" olsa bile
-    pratikte görünmez.
-  </p>
+  <h2 id="kanallar">Müşteriniz sizi nerede buluyor?</h2>
 
   <p>
-    Bu üç sıraya girmek tek bir müdahaleyle olmuyor. Google’ın yerel sıralamada baktığı sinyaller
-    kabaca üç grupta toplanıyor ve hizmetlerimiz de bu üç gruba karşılık geliyor.
+    Altı hizmetin beşi bir kanala çalışıyor. Altıncısı, backlink inşası, aramadaki gücünüzü artırır.
   </p>
-
-  <h2 id="uc-katman">Sıralamayı belirleyen üç katman</h2>
 
   <div class="table-scroll">
     <table>
       <thead>
         <tr>
-          <th>Katman</th>
-          <th>Google neye bakıyor?</th>
-          <th>İlgili hizmet</th>
+          <th>Nerede?</th>
+          <th>Ne görüyor?</th>
+          <th>Hangi hizmet</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>Profil</strong></td>
-          <td>Kategori doğruluğu, hizmet listesi, foto/post tazeliği, değerlendirme hacmi ve içeriği</td>
-          <td><a href={p('services/gbp')}>Google İşletme Profili Yönetimi</a></td>
+          <td><strong>Google arama</strong></td>
+          <td>Haritanın altındaki sonuçlar</td>
+          <td><a href={p('services/seo')}>SEO</a></td>
         </tr>
         <tr>
-          <td><strong>Site</strong></td>
-          <td>Taranabilirlik, sayfa hızı, yapılandırılmış veri, sayfa–sorgu eşleşmesi, içerik derinliği</td>
-          <td>
-            <a href={p('services/technical-seo')}>Teknik SEO</a>,
-            <a href={p('services/on-page-seo')}>On-Page SEO</a>,
-            <a href={p('services/content')}>İçerik Üretimi</a>
-          </td>
+          <td><strong>Google Haritalar</strong></td>
+          <td>Haritada ilk üç işletme</td>
+          <td><a href={p('services/local-seo')}>Local SEO</a></td>
         </tr>
         <tr>
-          <td><strong>Dış sinyaller</strong></td>
-          <td>Dizin kayıtlarındaki isim/telefon tutarlılığı, bahsedilmeler, bağlantılar</td>
-          <td><a href={p('services/local-seo')}>Yerel SEO</a></td>
+          <td><strong>Google’ın reklam alanı</strong></td>
+          <td>Sonuçların üstündeki “Sponsorlu” satırlar</td>
+          <td>Google Ads</td>
+        </tr>
+        <tr>
+          <td><strong>Instagram ve Facebook</strong></td>
+          <td>Akışta karşısına çıkan reklam</td>
+          <td>Meta Ads</td>
+        </tr>
+        <tr>
+          <td><strong>ChatGPT, Gemini</strong></td>
+          <td>Asistanın önerdiği işletmeler</td>
+          <td><a href={p('services/geo')}>GEO</a></td>
+        </tr>
+        <tr>
+          <td><strong>Başka siteler</strong></td>
+          <td>Sizden bahseden, size link veren sayfalar</td>
+          <td>Backlink inşası</td>
         </tr>
       </tbody>
     </table>
   </div>
 
+  <h2 id="reklam-seo">Reklam mı, SEO mu?</h2>
+
   <p>
-    Bu katmanlardan biri bozukken diğerine yatırım yapmak, en sık gördüğümüz para kaybı.
-    Sitesi hızlı ve içeriği iyi olan bir işletme, profilinde yanlış kategori seçtiği için
-    aylarca sıralanamayabiliyor. Tersi de doğru: profili kusursuz ama sitesi indekslenmeyen
-    bir işletme, rekabetin yüksek olduğu şehirlerde üç sıraya giremiyor.
+    Reklam hemen başlar ve bütçe bittiği gün durur. SEO ile Local SEO geç başlar, ama çalışmayı bıraktığınız gün
+    sönmez.
+  </p>
+
+  <p>
+    Google Ads arayana çıkar, Meta Ads aramayana. Instagram’da reklamınızı gören kişi o an fizyoterapist aramıyordu.
+    Reklam, beli ağrıdığı gün adınızı hatırlasın diye orada.
+  </p>
+
+  <h2 id="baslangic">Nereden başlamalısınız?</h2>
+
+  <p>
+    Müşteriniz çevreden geliyorsa haritadan, yani Local SEO’dan. Bütün şehre ya da Türkiye’ye satıyorsanız SEO’dan.
+    Beklemeye vaktiniz yoksa reklamla başlarsınız, kalıcı tarafı arkasından kurarız.
+  </p>
+
+  <p>
+    Tahminle başlamayın. Ücretsiz analizde profilinize, sitenize ve rakiplerinize bakar, sizi neyin geride tuttuğunu
+    söyleriz. Siteyi komple yönetemeyeceğimiz bir işe de başlamıyoruz, çünkü yarım yönetilen sitede SEO tutmaz,
+    reklamdan gelen ziyaretçi de boşa gider.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Nereden başlanacağını tahmin etmeyin.</strong> Ücretsiz analizde üç katmanı da
-      ölçüyoruz ve hangisinin sizi geride tuttuğunu gösteriyoruz. Analiz sonrası bizimle
-      çalışma zorunluluğu yok.
+      <strong>Analizden sonra bizimle çalışmak zorunda değilsiniz.</strong> Sözleşme de yok. Birlikte çalışırsak ve memnun
+      kalmazsanız bir sonraki ay devam etmezsiniz.
     </p>
   </div>
 
   <Fragment slot="wide">
-    <h2 id="hizmetler" class="section-lead">Hizmetler</h2>
-    <p class="section-lead-sub">
-      Her biri sıralamayı belirleyen üç katmandan birine karşılık geliyor.
-    </p>
-    <CardGrid items={services} cta="İncele" />
+    <HubCards
+      id="hizmet-listesi"
+      eyebrow="HİZMETLER"
+      heading="Müşteriniz nerede arıyorsa orada çalışıyoruz."
+      sub="SEO ve Local SEO aramada ve haritada kalıcı yer açar. Google Ads ve Meta Ads reklam yayındayken görünür kılar. GEO aynı temeli süper zeka yanıtlarına taşır."
+      items={services}
+      son={{
+        label: 'KARARSIZ MISINIZ?',
+        title: 'Hangisi size uygun, birlikte bakalım.',
+        text: 'Ücretsiz analizde profilinize, sitenize ve rakiplerinize bakar, nereden başlamanız gerektiğini söyleriz.',
+        cta: 'Ücretsiz analiz',
+        alt: 'Ücretsiz analiz al →',
+      }}
+    />
   </Fragment>
 
   <Fragment slot="cta">
-    <h2>Hangisine ihtiyacınız olduğunu <span class="highlight">bilmiyorsanız</span></h2>
-    <p>Ücretsiz analizde profilinizi, sitenizi ve rakiplerinizi inceleyip size söyleriz.</p>
+    <h2>Önce hangisi <span class="highlight">lazım</span>?</h2>
+    <p>
+      Ücretsiz analizde profilinize, sitenize ve rakiplerinize bakar, sizi geride tutan şeyi söyleriz. Sonuç 24 saat içinde
+      <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
   </Fragment>
 </ContentLayout>

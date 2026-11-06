@@ -1,0 +1,83 @@
+---
+import LegalPage from '../../components/v2/LegalPage.astro';
+import { routePath } from '../../i18n/routes';
+import { KVKK_EMAIL } from '../../data/legal';
+
+/**
+ * Çerez politikası. Tablo ölçüme dayanır (2026-11-01; canlı /, /tr, /de, /tr/hizmetler
+ * ile yerel /tr: ilk ziyarette çerez ve tarayıcı deposu boş).
+ *
+ * GA4, reklam etiketi ya da piksel eklenirse onay penceresi gerekir (bkz. Analytics.astro);
+ * bu sayfa ve "çerez onay penceresi göstermiyoruz" cümlesi de o gün değişir.
+ */
+---
+
+<LegalPage
+  locale="tr"
+  route="legal/cookies"
+  title="Çerez Politikası | Wiserrise"
+  description="wiserrise.com’un tarayıcınızda neler sakladığı, hangi çerezleri kullandığı ve bunları nasıl silebileceğiniz."
+  heading="Çerez Politikası"
+>
+  <p class="v2-legal-lead">
+    Bu sayfa, wiserrise.com’un tarayıcınızda neler sakladığını açıklar. Kısaca: site reklam, pazarlama ya da takip çerezi
+    kullanmıyor; bu yüzden çerez onay penceresi de göstermiyoruz.
+  </p>
+
+  <h2>1. Çerez nedir</h2>
+  <p>
+    Çerez, bir sitenin tarayıcınıza kaydettiği küçük bir metin dosyasıdır. Yerel depolama (localStorage) da benzer bir
+    teknolojidir; bu sayfa ikisini birlikte anlatır.
+  </p>
+
+  <h2>2. Sitede neler kullanılıyor</h2>
+  <div class="v2-legal-table" tabindex="0" role="region" aria-label="Sitede kullanılan çerezler ve benzer teknolojiler">
+    <table>
+      <thead>
+        <tr><th>Ad</th><th>Tür</th><th>Ne için</th><th>Süre</th><th>Yazan</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>wr-lang</code></td>
+          <td>Yerel depolama</td>
+          <td>Seçtiğiniz dili hatırlar, dil önerisi şeridini tekrar göstermez. Yalnız dil seçtiğinizde ya da şeridi kapattığınızda yazılır, sunucuya gönderilmez.</td>
+          <td>Siz silene kadar</td>
+          <td>Wiserrise</td>
+        </tr>
+        <tr>
+          <td><code>cf_clearance</code></td>
+          <td>Zorunlu çerez</td>
+          <td>Normal ziyarette yazılmaz. Barındırma sağlayıcımız bir güvenlik doğrulaması ister ve siz bunu geçerseniz, tekrar sorulmasın diye kaydedilir.</td>
+          <td>Sağlayıcının güvenlik ayarına göre</td>
+          <td>Cloudflare</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>3. Neler kullanılmıyor</h2>
+  <ul>
+    <li>Reklam ve yeniden pazarlama çerezleri, Meta pikseli, Google Ads etiketi</li>
+    <li>Google Analytics</li>
+    <li>Kişiselleştirme ya da üçüncü taraf takip çerezleri</li>
+  </ul>
+  <p>Bunlardan birini eklersek önce onayınızı isteriz ve bu sayfayı güncelleriz.</p>
+
+  <h2>4. Site istatistikleri</h2>
+  <p>
+    Hangi sayfanın kaç kez açıldığını ve sayfaların ne kadar hızlı yüklendiğini Cloudflare Web Analytics ile görürüz. Bu
+    servis çerez yazmaz ve tarayıcınızda kayıt tutmaz.
+  </p>
+
+  <h2>5. Nasıl silebilirsiniz</h2>
+  <p>
+    Tarayıcınızın ayarlarındaki çerezler ve site verileri bölümünden hepsini silebilir ya da engelleyebilirsiniz. Site bunlar
+    olmadan da çalışır; yalnız dil önerisi şeridi yeniden görünebilir.
+  </p>
+
+  <h2>6. Sorularınız</h2>
+  <p>
+    Kişisel verilerinizin nasıl işlendiği için: <a href={routePath('tr', 'legal/kvkk')}>KVKK Aydınlatma Metni</a>. Sorularınız için:
+    <a href={`mailto:${KVKK_EMAIL}`}>{KVKK_EMAIL}</a>.
+  </p>
+</LegalPage>

@@ -1,56 +1,24 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
-import CardGrid from '../../../components/CardGrid.astro';
+import HubCards from '../../../components/v2/HubCards.astro';
 import { routePath } from '../../../i18n/routes';
+import { guides } from '../../../data/guides';
 
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
-const guides = [
-  {
-    href: p('guides/not-showing'),
-    icon: 'profile',
-    title: 'İşletmem Google’da çıkmıyor',
-    text: 'Sekiz olası sebebi sırayla eleyen bir teşhis akışı. Hangi kontrolü hangi sırayla yapacağınızı gösteriyor.',
-  },
-  {
-    href: p('guides/create-profile'),
-    icon: 'document',
-    title: 'Google İşletme Profili nasıl açılır?',
-    text: 'Sıfırdan kurulum. Adres gösterme kararı, kategori seçimi ve ilk gün yapılması gerekenler dahil.',
-  },
-  {
-    href: p('guides/rank-higher'),
-    icon: 'map',
-    title: 'Google Haritalar’da üst sıraya çıkma',
-    text: 'Sıralamayı belirleyen üç girdi, hangisini değiştirebileceğiniz ve hangi sırayla çalışmanız gerektiği.',
-  },
-  {
-    href: p('guides/more-reviews'),
-    icon: 'sparkle',
-    title: 'Google yorumları nasıl artırılır?',
-    text: 'Yorum istemenin doğru anı, filtreye takılmadan hacim büyütmek ve olumsuz yorumu yönetmek.',
-  },
-  {
-    href: p('guides/verification'),
-    icon: 'wrench',
-    title: 'Profil doğrulama sorunları',
-    text: 'Kart gelmedi, video doğrulama reddedildi, profil askıya alındı — her biri için ne yapılacağı.',
-  },
-];
-
 const faq = [
   {
-    q: 'Bu rehberleri okuyup kendim yapabilir miyim?',
-    a: 'Evet, öyle olsun diye yazıldılar. Adımları saklamıyoruz. Zorlaşan kısım bilgi değil süreklilik: yorum akışını canlı tutmak, grid üzerinde ne olduğunu görmek ve rakip hareketlerine tepki vermek. Çoğu işletmenin takıldığı yer strateji değil, ritim.',
+    q: 'Bu rehberlerle işi kendim yapabilir miyim?',
+    a: 'Evet, öyle olsun diye yazdık. Zorlaşan kısım süreklilik: yorum akışını canlı tutmak ve bölgenizde neyin değiştiğini düzenli görmek. Takıldığınız yerde ücretsiz analiz isteyebilirsiniz.',
   },
   {
-    q: 'İçerikler ne sıklıkla güncelleniyor?',
-    a: 'Google’ın arayüzü ve politikaları değiştikçe. Her sayfada yayın ve güncelleme tarihi yazıyor; eskimiş bir adım görürseniz yazın, düzeltelim.',
+    q: 'Rehberler ne sıklıkla güncelleniyor?',
+    a: 'Google’ın ekranı ya da kuralları değiştikçe. Son güncelleme tarihi her rehberin başında yazıyor. Eskimiş bir adım görürseniz yazın, düzeltelim.',
   },
   {
     q: 'Neden hepsi Türkçe?',
-    a: 'Bu rehberler Türkiye’deki işletmelerin karşılaştığı durumlara göre yazıldı — doğrulama süreçleri, kategori isimleri ve destek akışları ülkeye göre değişiyor. Birebir çevrilmiş bir metin yanlış bilgi verirdi.',
+    a: 'Bu rehberleri Türkiye’deki işletmelerin karşılaştığı durumlara göre yazdık. Doğrulama adımları, kategori adları ve destek akışı ülkeye göre değişiyor; birebir çeviri yanlış bilgi verirdi.',
   },
 ];
 ---
@@ -59,57 +27,80 @@ const faq = [
   locale={locale}
   route="guides"
   title="Yerel SEO Rehberleri | Wiserrise"
-  description="Google İşletme Profili ve Haritalar sıralaması üzerine uygulamalı rehberler. Profil açma, doğrulama sorunları, yorum artırma ve sıralama yükseltme."
-  eyebrow="Rehber"
-  h1="Yerel SEO Rehberleri"
-  lede="Google İşletme Profili ve Haritalar sıralaması üzerine uygulamalı rehberler. Adımları saklamıyoruz — bu sayfalar kendiniz yapabilesiniz diye yazıldı."
+  description="Google İşletme Profili açma, doğrulama sorunları, yorum artırma ve haritada üst sıraya çıkma üzerine kendiniz uygulayabileceğiniz rehberler."
+  eyebrow="REHBERLER"
+  h1="Yerel SEO rehberleri, adım adım."
+  crumb="Rehberler"
+  lede="Google İşletme Profilinizi açmaktan haritada üst sıraya çıkmaya kadar, kendiniz uygulayabileceğiniz rehberler. Adımları saklamıyoruz. Yerel SEO’da asıl zor olan, bu adımları aylarca aksatmadan sürdürmek."
   schemaType="article"
   datePublished="2026-08-01"
+  dateModified="2026-11-06"
   breadcrumb={[{ label: 'Ana Sayfa', href: '/tr' }]}
   faq={faq}
   wideFirst
   related={[
-    { label: 'Ücretsiz profil denetimi', href: p('tools/gbp-audit') },
-    { label: 'Tüm hizmetler', href: p('services') },
-    { label: 'Sektörlere göre yerel SEO', href: p('industries') },
+    { label: 'Tüm hizmetler', href: p('services'), text: 'Hangi hizmetin neyi çözdüğünü tek sayfada gördüğünüz liste.' },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'Profilinizi ve sitenizi birlikte düzelttiğimiz ana hizmet.' },
+    { label: 'Sektörlere göre yerel SEO', href: p('industries'), text: 'Avukat, diş hekimi, klinik ve oto ekspertizde işin nasıl değiştiği.' },
   ]}
-  ctaLabel="Ücretsiz Analizimi Al →"
+  relatedHeading="İlgili sayfalar"
+  ctaLabel="Ücretsiz analiz al"
   ctaHref="/tr#contact"
 >
   <h2 id="neden">Neden adımları saklamıyoruz?</h2>
 
   <p>
-    Ajans içeriklerinin çoğu sorunu anlatır, çözümü anlatmaz — çözüm için arayın der. Biz
-    tersini yapıyoruz: bu sayfalar kendiniz uygulayabilesiniz diye yazıldı ve gerçekten
-    yeterli bilgiyi içeriyorlar.
+    Çünkü bilgi zaten herkese açık. Google kendi kurallarını da haritada neye baktığını da yazıyor.
   </p>
 
   <p>
-    Sebebi cömertlik değil, gerçekçilik. Yerel SEO'da bilgi zaten gizli değil; Google'ın
-    kendi dokümantasyonu herkese açık. Zorlaşan kısım <strong>süreklilik ve ölçüm</strong>:
-    yorum akışını aylarca canlı tutmak, şehrin hangi bölgesinde geride kaldığınızı görmek,
-    rakip hareketlerine zamanında tepki vermek. İşletmelerin takıldığı yer neredeyse hiçbir
-    zaman "ne yapılacağını bilmemek" olmuyor.
+    İşletmelerin takıldığı yer ritim. Yorum akışını haftalarca canlı tutmak ve bölgenizin hangi köşesinde geride kaldığınızı
+    görmek, bir kez okuyup bitirilecek işler değil. Vaktiniz varsa rehberlerle kendiniz yapın, yoksa bu işi biz yürütüyoruz.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Profilinizin durumunu hemen görmek isterseniz:</strong> okumadan önce
-      <a href={p('tools/gbp-audit')}>ücretsiz denetim aracımızı</a> doldurun. 10 soruda hangi
-      alanda zayıf olduğunuzu söylüyor, sonra doğrudan ilgili rehbere geçebilirsiniz.
+      <strong>Profilinizin durumunu hemen görmek isterseniz</strong> önce <a href={p('tools/gbp-audit')}>ücretsiz denetim
+      aracını</a> doldurun. 10 soruda hangi başlıkta zayıf olduğunuzu söyler, sonra ilgili rehbere geçersiniz.
     </p>
   </div>
 
+  <h2 id="baslangic">Hangi rehberden başlamalısınız?</h2>
+
+  <p>
+    Adınızı aratınca profiliniz hiç çıkmıyorsa <a href={p('guides/not-showing')}>görünmeme rehberiyle</a> başlayın. Henüz
+    profiliniz yoksa <a href={p('guides/create-profile')}>profil açma rehberine</a>, doğrulamada takıldıysanız
+    <a href={p('guides/verification')}>doğrulama rehberine</a> geçin.
+  </p>
+
+  <p>
+    Profiliniz çıkıyor ama haritada geride kalıyorsanız <a href={p('guides/rank-higher')}>üst sıra rehberi</a> sizin için.
+    Yorum sayınız rakiplerinizin gerisindeyse işe <a href={p('guides/more-reviews')}>yorum rehberinden</a> başlayın, çünkü
+    baktığımız profillerde fark en sık orada çıkıyor.
+  </p>
+
   <Fragment slot="wide">
-    <h2 id="rehberler" class="section-lead">Rehberler</h2>
-    <p class="section-lead-sub">
-      En sık karşılaştığımız sorunlardan başlayarak.
-    </p>
-    <CardGrid items={guides} cta="Rehberi oku" />
+    <HubCards
+      id="rehber-listesi"
+      eyebrow="REHBERLER"
+      heading="En sık takılınan yerlerden başlayarak."
+      items={guides.map((g) => ({ ...g, cta: 'Rehberi oku' }))}
+      son={{
+        href: p('tools/gbp-audit'),
+        label: 'ÜCRETSİZ ARAÇ',
+        title: 'Google profiliniz kaç puan alıyor?',
+        text: '10 soruda profilinizi puanlayın. Kayıt ve e-posta yok, sonuç hemen ekranda.',
+        cta: 'Aracı aç',
+        alt: 'Profilinizi denetleyin →',
+      }}
+    />
   </Fragment>
 
   <Fragment slot="cta">
-    <h2>Kendiniz yapmak <span class="highlight">istemiyorsanız</span></h2>
-    <p>Ücretsiz analizde profilinizi, sitenizi ve grid sıralamanızı çıkarıp teşhisi yapıyoruz.</p>
+    <h2>Kendiniz uğraşmak <span class="highlight">istemiyor musunuz</span>?</h2>
+    <p>
+      Ücretsiz analizde profilinize, sitenize ve bölgenizden ölçüme bakar, nereden başlanacağını söyleriz. Sonuç 24 saat
+      içinde <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
   </Fragment>
 </ContentLayout>

@@ -1,0 +1,146 @@
+---
+import LegalPage from '../../components/v2/LegalPage.astro';
+import { routePath } from '../../i18n/routes';
+import { COMPANY_LEGAL_NAME } from '../../i18n/ui';
+import { COMPANY_ADDRESS, KVKK_EMAIL } from '../../data/legal';
+
+/**
+ * KVKK m.10 aydınlatma metni: site ziyareti, analiz formu, bülten ve yazışmalar.
+ * Müşteri portalının metni ayrıdır: app.wiserrise.com/gizlilik.
+ *
+ * Metin siteye bağlıdır: yeni form alanı, servis ya da takip kodu eklenirse buradaki
+ * tablolar ve /tr/cerez-politikasi da güncellenir.
+ */
+const mail = `mailto:${KVKK_EMAIL}`;
+---
+
+<LegalPage
+  locale="tr"
+  route="legal/kvkk"
+  title="KVKK Aydınlatma Metni | Wiserrise"
+  description="wiserrise.com üzerinden hangi kişisel verileri hangi amaçla işlediğimiz, kimlerle paylaştığımız ve KVKK kapsamındaki haklarınız."
+  heading="KVKK Aydınlatma Metni"
+>
+  <p class="v2-legal-lead">
+    Bu metin, wiserrise.com sitesini ziyaret ettiğinizde, ücretsiz analiz formunu doldurduğunuzda, bültene abone olduğunuzda
+    ya da bize yazdığınızda kişisel verilerinizin nasıl işlendiğini 6698 sayılı Kişisel Verilerin Korunması Kanunu’nun (KVKK)
+    10. maddesi uyarınca açıklar. Müşteri portalı için <a href="https://app.wiserrise.com/gizlilik">portal gizlilik metni</a> geçerlidir.
+  </p>
+
+  <h2>1. Veri sorumlusu</h2>
+  <p>
+    Veri sorumlusu, Wiserrise markasının sahibi {COMPANY_LEGAL_NAME}’dir. Adres: {COMPANY_ADDRESS}.
+    KVKK ile ilgili soru ve başvurularınız için: <a href={mail}>{KVKK_EMAIL}</a>.
+  </p>
+
+  <h2>2. Hangi verileri neden işliyoruz</h2>
+  <div class="v2-legal-table" tabindex="0" role="region" aria-label="İşlenen veriler, amaçlar ve hukuki sebepler">
+    <table>
+      <thead>
+        <tr><th>Ne zaman</th><th>Hangi veriler</th><th>Amaç</th><th>Hukuki sebep (KVKK m.5)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ücretsiz analiz formunu doldurduğunuzda</td>
+          <td>Ad soyad, işletme adı, e-posta, telefon, web sitesi, Google Haritalar ya da Instagram bağlantısı, ilgilendiğiniz hizmetler, ne zaman başlamak istediğiniz</td>
+          <td>Talebinizi değerlendirmek, analizi hazırlayıp size iletmek, hizmet hakkında görüşmek</td>
+          <td>Sözleşmenin kurulmasıyla doğrudan ilgili olması (m.5/2-c); talebin kaydını tutmada meşru menfaat (m.5/2-f)</td>
+        </tr>
+        <tr>
+          <td>Bültene abone olduğunuzda</td>
+          <td>E-posta adresi, abonelik onayı</td>
+          <td>İpucu ve duyuru e-postaları göndermek</td>
+          <td>Açık rıza (m.5/1)</td>
+        </tr>
+        <tr>
+          <td>Bize yazdığınızda ya da bizi aradığınızda</td>
+          <td>İletişim bilgileriniz, yazışmanın içeriği</td>
+          <td>Sorunuzu yanıtlamak, talebinizi takip etmek</td>
+          <td>Sözleşmenin kurulmasıyla doğrudan ilgili olması (m.5/2-c); meşru menfaat (m.5/2-f)</td>
+        </tr>
+        <tr>
+          <td>Siteyi ziyaret ettiğinizde</td>
+          <td>IP adresi, tarayıcı ve cihaz bilgisi, açılan sayfa, istek zamanı</td>
+          <td>Siteyi sunmak, güvenliğini sağlamak, sayfa görüntüleme istatistiği tutmak</td>
+          <td>Meşru menfaat (m.5/2-f)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    <a href={routePath('tr', 'tools/gbp-audit')}>Google profil analizi aracındaki</a> cevaplarınız tarayıcınızda hesaplanır; bize ya da başka bir
+    servise gönderilmez. Formlarda sağlık, din gibi özel nitelikli kişisel veri istemeyiz; lütfen bu tür bilgi yazmayın.
+  </p>
+
+  <h2>3. Verileri nasıl topluyoruz</h2>
+  <p>
+    Sitedeki formlardan, e-posta ve telefon görüşmelerinden ve site altyapısının tuttuğu teknik kayıtlardan, otomatik ya da
+    kısmen otomatik yollarla. Analiz hazırlarken işletmenizin Google İşletme Profili, web sitesi ve arama sonuçları gibi
+    herkese açık bilgilerine de bakarız.
+  </p>
+
+  <h2>4. Kimlerle paylaşıyoruz</h2>
+  <p>Verilerinizi satmayız ve reklam amacıyla paylaşmayız. Bu işleri yürütmek için şu taraflarla paylaşırız:</p>
+  <ul>
+    <li><b>Formspree (ABD):</b> analiz formunun bize iletilmesi.</li>
+    <li><b>Kit (ABD):</b> bülten abone listesi ve e-posta gönderimi.</li>
+    <li><b>Google LLC (ABD):</b> e-posta kutumuz (Google Workspace) ve çalışma dosyalarımız.</li>
+    <li><b>Supabase, Inc. (ABD):</b> müşteri adayı ve müşteri kayıtlarımızın tutulduğu veritabanı.</li>
+    <li><b>Meta Platforms (WhatsApp):</b> telefon numaranızı verdiyseniz sizinle yazışmamız.</li>
+    <li><b>Cloudflare, Inc. (ABD):</b> sitenin barındırılması, güvenliği ve sayfa görüntüleme istatistiği.</li>
+    <li>Yasal zorunluluk hâlinde yetkili kamu kurum ve kuruluşları, mahkemeler.</li>
+  </ul>
+  <p>
+    Veri sorumlusu ve bu sağlayıcıların çoğu yurt dışında olduğu için verileriniz yurt dışına aktarılır. Bu aktarımlar
+    KVKK’nın 9. maddesindeki kurallara tabidir.
+  </p>
+
+  <h2>5. Ne kadar süre saklıyoruz</h2>
+  <div class="v2-legal-table" tabindex="0" role="region" aria-label="Saklama süreleri">
+    <table>
+      <thead>
+        <tr><th>Veri</th><th>Süre</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Analiz talebi, müşteri olmadıysanız</td><td>Son görüşmeden itibaren en fazla 2 yıl</td></tr>
+        <tr><td>Müşteri olduysanız sözleşme ve fatura kayıtları</td><td>Hizmet ilişkisi boyunca; sonrasında yasal süreler boyunca, en fazla 10 yıl</td></tr>
+        <tr><td>Bülten e-postanız</td><td>Aboneliğiniz sürdüğü sürece; çıktıktan sonra silinir ya da yalnız size tekrar e-posta göndermemek için tutulur</td></tr>
+        <tr><td>Sunucu kayıtları (IP, tarayıcı)</td><td>Sağlayıcının standart, kısa süreli saklama politikasıyla sınırlı</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Süre dolunca veriler silinir ya da anonim hâle getirilir.</p>
+
+  <h2>6. Haklarınız</h2>
+  <p>KVKK’nın 11. maddesi uyarınca şunları yapabilirsiniz:</p>
+  <ul>
+    <li>kişisel verinizin işlenip işlenmediğini öğrenmek, işlenmişse bilgi istemek;</li>
+    <li>işlenme amacını ve amaca uygun kullanılıp kullanılmadığını öğrenmek;</li>
+    <li>yurt içinde ya da yurt dışında aktarıldığı üçüncü kişileri bilmek;</li>
+    <li>eksik ya da yanlış işlenmişse düzeltilmesini istemek;</li>
+    <li>KVKK’nın 7. maddesindeki şartlar çerçevesinde silinmesini ya da yok edilmesini istemek;</li>
+    <li>düzeltme ve silme işlemlerinin aktarıldığı üçüncü kişilere bildirilmesini istemek;</li>
+    <li>yalnız otomatik sistemlerle analiz edilmesi sonucu aleyhinize bir sonuç doğmasına itiraz etmek;</li>
+    <li>kanuna aykırı işleme yüzünden zarara uğradıysanız zararın giderilmesini talep etmek.</li>
+  </ul>
+
+  <h2>7. Nasıl başvurursunuz</h2>
+  <p>
+    Başvurunuzu bize daha önce bildirdiğiniz e-posta adresinizden <a href={mail}>{KVKK_EMAIL}</a> adresine ya da yazılı olarak
+    1. bölümdeki adrese iletebilirsiniz. Adınızı, soyadınızı, iletişim bilginizi ve talebinizi yazın; kimliğinizi doğrulamak
+    için ek bilgi isteyebiliriz. Başvurunuzu en geç 30 gün içinde sonuçlandırırız; işlem ayrı bir maliyet gerektirmiyorsa ücret
+    almayız. Başvurunuz reddedilir ya da yanıtsız kalırsa Kişisel Verileri Koruma Kurulu’na şikâyet hakkınız saklıdır.
+  </p>
+
+  <h2>8. Bülten iznini geri alma</h2>
+  <p>
+    Bülten iznini dilediğiniz an geri alabilirsiniz: e-postaların altındaki abonelikten çıkma bağlantısını kullanın ya da
+    <a href={mail}>{KVKK_EMAIL}</a> adresine yazın.
+  </p>
+
+  <h2>9. Değişiklikler</h2>
+  <p>
+    Bu metni gerektiğinde güncelleriz; güncel sürüm bu sayfada, tarihiyle yayımlanır. Tarayıcınızda neler saklandığı için:
+    <a href={routePath('tr', 'legal/cookies')}>Çerez Politikası</a>.
+  </p>
+</LegalPage>

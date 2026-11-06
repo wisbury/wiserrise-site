@@ -1,0 +1,287 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'FACTORS', title: 'Google’s three factors', text: 'Google ranks the map by relevance, distance and prominence. You can’t touch distance, so all the work is in the other two.' },
+  { label: 'CATEGORY', title: 'Primary category first', text: 'The first field that tells Google what you do. If it’s wrong, the effort you put into reviews and posts doesn’t pay off.' },
+  { label: 'MEASUREMENT', title: 'Your phone misleads you', text: 'The ranking you see from your office is your best spot. The real picture emerges when you measure from different points across your area.' },
+  { label: 'TIMING', title: '4 to 8 weeks', text: 'This is the range in which we see the first movement on the map for most businesses. In competitive city centers it takes longer.' },
+];
+
+const toc = [
+  { id: 'etkenler', label: 'What decides rankings?' },
+  { id: 'olcum', label: 'Where do you really rank?' },
+  { id: 'sira', label: 'What order to work in' },
+  { id: 'alaka', label: 'How relevance grows' },
+  { id: 'bilinirlik', label: 'How prominence grows' },
+  { id: 'yaramayanlar', label: 'Tactics that don’t work' },
+  { id: 'sure', label: 'How long does it take?' },
+];
+
+const faq = [
+  {
+    q: 'Can you buy a ranking on Google Maps?',
+    a: 'No. The positions of the three businesses on the map aren’t for sale; the only place you can pay for is the ad space marked “Sponsored”. Anyone selling a ranking guarantee isn’t relying on any agreement with Google.',
+  },
+  {
+    q: 'Will posting updates raise my ranking?',
+    a: 'Not on its own. Posts show that the profile is active, and they don’t make up for a wrong category or missing reviews. Once the basics are in place, they take their place as part of a regular rhythm.',
+  },
+  {
+    q: 'My competitor added keywords to their business name. What can I do?',
+    a: 'You can report it to Google. Open that business’s listing on the map, suggest an edit and enter its real name. Google decides whether to accept it.',
+  },
+  {
+    q: 'My competitor is ahead with fake reviews. What should I do?',
+    a: 'Report the reviews that break the rules to Google, and keep working while you wait for the outcome. The reporting process isn’t guaranteed and can take weeks. The lasting defense is growing your own flow of real reviews.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="guides/rank-higher"
+  title="How to Rank Higher on Google Maps | Wiserrise"
+  description="How to rank higher on Google Maps: the factors that decide rankings, why your own phone misleads you and the order in which to work."
+  eyebrow="GUIDE · MAP RANKINGS"
+  h1="How do you rank higher on Google Maps?"
+  crumb="Ranking higher"
+  lede="You rank higher on the map by telling Google clearly what you do and becoming more prominent than your competitors. Google ranks by relevance, distance and prominence; you can’t change distance, so the work is in the other two. Start with measurement across your area, then work through category, profile, reviews and website in that order."
+  schemaType="article"
+  datePublished="2026-08-01"
+  dateModified="2026-11-06"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Guides', href: p('guides') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'How do you get more Google reviews?', href: p('guides/more-reviews'), text: 'How to grow your review volume without running into the rules.' },
+    { label: 'Business not showing on Google', href: p('guides/not-showing'), text: 'If you don’t appear on the map at all, rule out the causes one by one.' },
+    { label: 'Map Rank Tracking', href: p('services/rank-tracking'), text: 'We measure where you rank from different points around you.' },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'The service where we fix your Google Business Profile and your website together.' },
+  ]}
+  relatedHeading="Related pages"
+  ctaLabel="Get a free analysis"
+  ctaHref="/#contact"
+>
+  <h2 id="etkenler">What decides rankings on Google Maps?</h2>
+
+  <p>
+    Google explains this itself: local results are ranked by relevance, distance and prominence. These are the terms Google
+    uses in its own help pages. It weighs all three together and doesn’t disclose the weights.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Factor</th>
+          <th>What it means</th>
+          <th>In your hands?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Relevance</strong></td>
+          <td>Whether your business does what the searcher is looking for</td>
+          <td>Yes. Category, service list, the pages on your website.</td>
+        </tr>
+        <tr>
+          <td><strong>Distance</strong></td>
+          <td>How close you are to the searcher or to the neighborhood being searched</td>
+          <td>No. Google calculates it from the searcher’s location.</td>
+        </tr>
+        <tr>
+          <td><strong>Prominence</strong></td>
+          <td>How well known your business is</td>
+          <td>Yes. Reviews, mentions on other websites, the strength of your website.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    You can’t touch distance. All the work is in getting ahead of your competitors on relevance and prominence.
+  </p>
+
+  <p>
+    The most common mistake we see is pushing on only one of the two. The business with the wrong category keeps
+    collecting reviews, and the business with a quarter of its competitors’ reviews posts updates every day.
+  </p>
+
+  <h2 id="olcum">Where do you really rank right now?</h2>
+
+  <p>
+    A single search won’t tell you. There’s no single ranking on the map, because Google calculates it from where the
+    searcher is standing.
+  </p>
+
+  <p>
+    Say you run Kordon Oto Ekspertiz in Bornova. When you type “vehicle inspection” outside your shop, you rank first on
+    the map. When someone living in Karşıyaka runs the same search, you’re missing from the top three, and that person
+    calls your competitor without ever seeing you.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>A search from your own phone doesn’t count as measurement.</strong> Google personalizes results by your
+      location and search history, which makes it easier for you to see your own business. With businesses that rank
+      first from the office while the phone stays quiet, this is the first place we look.
+    </p>
+  </div>
+
+  <p>
+    We start with <a href={p('services/rank-tracking')}>measurement across your area</a>. Once you see where you rank from
+    different points around you, it becomes clear where you’re strong and where you’re weak. Work done without measuring
+    has no clear direction.
+  </p>
+
+  <h2 id="sira">In what order should you work?</h2>
+
+  <p>
+    Order matters. The lower steps don’t pay off until the ones above them are fixed. We work through every profile in
+    this order:
+  </p>
+
+  <ol>
+    <li>
+      <strong>Primary category.</strong> Check the category of the businesses in the top three for your target search. If
+      yours is different, this is the first thing to fix.
+    </li>
+    <li>
+      <strong>A complete profile.</strong> Service list and descriptions, photos, opening hours, phone number and website
+      link.
+    </li>
+    <li>
+      <strong>Review volume.</strong> If you’re clearly below the competitors in the top three, this is the priority.
+    </li>
+    <li>
+      <strong>A website that supports the profile.</strong> Does every service have its own page, and does the site open
+      properly on Google?
+    </li>
+    <li>
+      <strong>Consistency.</strong> Posts, photos and review replies. A rhythm spread over weeks.
+    </li>
+  </ol>
+
+  <p>
+    If you want to check the first two steps yourself, our <a href={p('tools/gbp-audit')}>free profile audit tool</a>
+    scores your profile in 10 questions and lists the items that come out weak.
+  </p>
+
+  <h2 id="alaka">How do you tell Google what you do?</h2>
+
+  <p>
+    Relevance is Google’s decision that “this business does what’s being searched for”. We feed that decision from four
+    places, starting with the one with the biggest effect:
+  </p>
+
+  <ul class="checklist">
+    <li>
+      <strong>Primary category.</strong> The strongest relevance signal we see in the field. Add secondary categories only
+      for services you really provide.
+    </li>
+    <li>
+      <strong>Service list.</strong> Write your services in the words customers search with, and add a short description
+      to each. A list left the way Google suggests it is identical to your competitors’.
+    </li>
+    <li>
+      <strong>A separate page for each service on your website.</strong> A service mentioned in three paragraphs on a single
+      “our services” page struggles in that service’s searches. We write these pages as part of our
+      <a href={p('services/content')}>content production</a> work.
+    </li>
+    <li>
+      <strong>The same naming.</strong> If the profile says “root canal treatment” and the website says “endodontics”, the
+      match weakens. Use the customer’s word for the service in both places.
+    </li>
+  </ul>
+
+  <h2 id="bilinirlik">What increases your prominence?</h2>
+
+  <p>
+    Prominence is how well known your business is. Google reads it from everything it finds about you online: links,
+    news, directory listings and reviews. Your website’s position in the regular search results counts too.
+  </p>
+
+  <p>
+    Its most measurable part is reviews. Google openly says that review count and rating affect local rankings. The
+    service and neighborhood a customer mentions in a review also tell everyone reading your profile what you do.
+  </p>
+
+  <p>
+    Besides reviews, there are two more sources. Your name, address and phone number should be written the same way
+    everywhere they appear; we explain why on our <a href={p('services/local-seo')}>local SEO page</a>. Mentions on
+    industry websites, in local news or in association listings also make it easier for Google to recognize you, because
+    prominence is read from exactly these traces.
+  </p>
+
+  <p>
+    We explain step by step how to grow the review side in our <a href={p('guides/more-reviews')}>reviews guide</a>.
+  </p>
+
+  <h2 id="yaramayanlar">Which tactics don’t work?</h2>
+
+  <p>Tactics that get tried a lot and don’t pay off, some of which also put your profile at risk:</p>
+
+  <ul>
+    <li>
+      <strong>Adding keywords to the business name.</strong> Writing “Kordon Oto Ekspertiz Bornova Cheapest Inspection”
+      instead of “Kordon Oto Ekspertiz” breaks Google’s rules. If a competitor reports it, the name gets corrected, and a
+      repeat can get the profile suspended.
+    </li>
+    <li>
+      <strong>Buying fake reviews.</strong> Google’s filters catch them, and when they don’t, the customers reading them
+      notice. It puts the profile at risk of suspension.
+    </li>
+    <li>
+      <strong>Opening a second profile.</strong> A second profile for a business without a branch breaks the rules. It gets
+      flagged as a duplicate, and both get weaker.
+    </li>
+    <li>
+      <strong>Adding unrelated secondary categories.</strong> A category for a service you don’t provide blurs your
+      relevance.
+    </li>
+    <li>
+      <strong>Only posting updates.</strong> Posting every day while the basics are missing won’t move your ranking.
+    </li>
+  </ul>
+
+  <p>
+    We know that adding a neighborhood or service to the business name works in the short term. We still don’t do it,
+    because no ranking is worth the risk of getting your profile suspended.
+  </p>
+
+  <h2 id="sure">How long does it take to rank higher?</h2>
+
+  <p>
+    For most businesses, we see the first movement on the map within 4 to 8 weeks. We can’t give an exact date, because
+    your starting point determines the timeline.
+  </p>
+
+  <p>
+    If the problem comes from a single root mistake like a wrong category, the fix itself is quick. If your profile is in
+    good shape and your reviews lag behind your competitors’, the timeline depends directly on how fast you collect
+    reviews; in competitive city centers every stage takes a little longer.
+  </p>
+
+  <p>
+    In the regular search results below the map, meaning your website’s ranking, movement takes 3 to 6 months. You see
+    what we do during that time in your weekly report. Since there’s no contract, if you’re not happy, you don’t continue
+    the following month.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Where in your area are you <span class="highlight">falling behind</span>?</h2>
+    <p>
+      In the free analysis we take measurement across your area and identify what your profile is missing and the gap
+      between you and the top three. The result is in your inbox within <span style="white-space: nowrap;">24 hours</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

@@ -1,0 +1,273 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'ADRESSE', title: 'Zeigen Sie die Adresse', text: 'Wenn Sie an einem Ort Kunden empfangen, sollte die Adresse sichtbar sein. Ein Profil mit ausgeblendeter Adresse fällt bei Suchen mit „in meiner Nähe“ zurück.' },
+  { label: 'KATEGORIE', title: 'Am Wettbewerb orientieren', text: 'Sehen Sie sich die Hauptkategorie der Unternehmen an, die bei Ihrer Suche unter den ersten drei stehen. Die Hauptkategorie bringt Volumen, die zusätzlichen Kategorien bringen Spezialisierung.' },
+  { label: 'VERIFIZIERUNG', title: 'Voraussetzung fürs Erscheinen', text: 'Ein nicht verifiziertes Profil ist in der Suche unsichtbar. Bei der Video-Verifizierung müssen Sie Schild und Innenraum in einer einzigen Aufnahme zeigen.' },
+  { label: 'NAME', title: 'Der Name vom Schild', text: 'Schreiben Sie keine Keywords in den Firmennamen. Das verstößt gegen die Regeln: Meldet ein Wettbewerber den Namen, wird er korrigiert, im Wiederholungsfall wird das Profil gesperrt.' },
+];
+
+const toc = [
+  { id: 'hazirlik', label: 'Vorbereitung' },
+  { id: 'adres', label: 'Die Adressentscheidung' },
+  { id: 'adimlar', label: 'Schritte der Einrichtung' },
+  { id: 'kategori', label: 'Kategorie wählen' },
+  { id: 'ilk-gun', label: 'Am Tag der Verifizierung' },
+  { id: 'hatalar', label: 'Häufige Fehler' },
+];
+
+const faq = [
+  {
+    q: 'Ich habe keine Firmeneintragung, kann ich trotzdem ein Profil erstellen?',
+    a: 'Ja, Google verlangt keine offizielle Firmeneintragung. Google will prüfen, ob das Unternehmen wirklich existiert, deshalb kann bei der Verifizierung eine Rechnung, ein Foto des Schildes oder eine Steuerbescheinigung verlangt werden. Bei einer nicht angemeldeten Tätigkeit wird die Verifizierung schwieriger.',
+  },
+  {
+    q: 'Kann ich meine Privatadresse verwenden?',
+    a: 'Wenn Sie von zu Hause arbeiten und keine Kunden empfangen, ja, aber blenden Sie die Adresse aus und legen Sie ein Einzugsgebiet fest. Ihre Privatadresse öffentlich zu zeigen, ist unnötig. Eine spätere Änderung kann außerdem eine neue Verifizierung auslösen.',
+  },
+  {
+    q: 'Wie viele Kategorien kann ich hinzufügen?',
+    a: 'Eine Hauptkategorie und bis zu neun zusätzliche Kategorien. Wir empfehlen, bei zwei bis drei zusätzlichen Kategorien zu bleiben, auf die Sie wirklich Gewicht legen, weil unpassende Kategorien Ihre Stärke bei der Hauptsuche verringern.',
+  },
+  {
+    q: 'Ich habe das Profil erstellt, wann werde ich sichtbar?',
+    a: 'Nach der Verifizierung erscheint das Profil innerhalb weniger Tage, bis sich der Platz einpendelt, vergehen einige Wochen. Ändern Sie in dieser Zeit weder Namen noch Adresse noch Kategorie.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="guides/create-profile"
+  title="Google-Unternehmensprofil erstellen: Schritt für Schritt | Wiserrise"
+  description="So erstellen Sie ein Google-Unternehmensprofil: Entscheidung über die Adresse, Wahl der Hauptkategorie, Verifizierung und was am ersten Tag zu tun ist."
+  eyebrow="RATGEBER · PROFIL ERSTELLEN"
+  h1="Wie erstellt man ein Google-Unternehmensprofil?"
+  crumb="Profil erstellen"
+  lede="Ein Google-Unternehmensprofil erstellen Sie unter google.com/business: Sie geben Namen, Kategorie, Adresse und Kontaktdaten des Unternehmens ein und verifizieren es mit der Methode, die Google anbietet. Das Formular selbst dauert zehn Minuten. Zwei Entscheidungen lassen sich später nur schwer korrigieren: ob Sie die Adresse anzeigen und welche Hauptkategorie Sie wählen."
+  schemaType="article"
+  datePublished="2026-08-01"
+  dateModified="2026-11-06"
+  breadcrumb={[
+    { label: 'Startseite', href: '/de' },
+    { label: 'Ratgeber', href: p('guides') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Probleme bei der Profilverifizierung', href: p('guides/verification'), text: 'Was Sie in jedem Fall tun, wenn die Postkarte nicht ankam oder das Video abgelehnt wurde.' },
+    { label: 'Wie bekommt man mehr Google-Bewertungen?', href: p('guides/more-reviews'), text: 'Wann und wie Sie um die ersten Bewertungen bitten.' },
+    { label: 'Bei Google Maps höher ranken', href: p('guides/rank-higher'), text: 'Die Arbeitsreihenfolge, mit der Sie ein neues Profil vor die Wettbewerber bringen.' },
+    { label: 'Google-Unternehmensprofil-Betreuung', href: p('services/gbp'), text: 'Kategorie, Leistungsstruktur, Bewertungen und Beiträge betreuen wir als Ganzes.' },
+  ]}
+  relatedHeading="Verwandte Seiten"
+  ctaLabel="Profil kostenlos prüfen"
+  ctaHref={p('tools/gbp-audit')}
+>
+  <h2 id="hazirlik">Was sollten Sie vorbereiten, bevor Sie anfangen?</h2>
+
+  <p>
+    Wenn Sie die Angaben vorher bereitlegen, bleibt das Formular nicht auf halbem Weg liegen. Eine abgebrochene
+    Einrichtung ist einer der häufigsten Gründe für die Beschwerde „Ich habe ein Profil erstellt, erscheine aber nicht
+    bei Google“.
+  </p>
+
+  <ul class="checklist">
+    <li>Der echte Name des Unternehmens: so, wie er auf dem Schild und auf der Rechnung steht</li>
+    <li>Eine Telefonnummer des Unternehmens (wenn Sie eine eigene Leitung neben Ihrer privaten Nummer haben, nehmen Sie diese)</li>
+    <li>Die Adresse Ihrer Website</li>
+    <li>Die vollständige Adresse, wenn Sie Kunden empfangen, sonst eine Liste der Gebiete, die Sie bedienen</li>
+    <li>Öffnungszeiten einschließlich Feiertagen</li>
+    <li>Echte Fotos von Außenansicht, Innenraum, Team und, falls vorhanden, Produkten</li>
+  </ul>
+
+  <div class="callout">
+    <p>
+      <strong>Schreiben Sie keine Keywords in den Firmennamen.</strong> Ein Name wie „Defne Diş Kliniği Antalya
+      Implantate“ funktioniert kurze Zeit, verstößt aber gegen die Regeln von Google: Meldet ein Wettbewerber ihn, wird der
+      Name korrigiert, im Wiederholungsfall wird das Profil gesperrt. Wir machen das bei den Profilen unserer Kunden nicht.
+    </p>
+  </div>
+
+  <h2 id="adres">Sollten Sie Ihre Adresse anzeigen?</h2>
+
+  <p>
+    Ja, wenn Kunden zu Ihrer Adresse kommen. Google unterscheidet zwei Profiltypen, und diese Wahl bestimmt direkt, wie
+    Sie auf der Karte erscheinen.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Profil mit Adresse</th>
+          <th>Ohne Adresse (mit Einzugsgebiet)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Für wen</strong></td>
+          <td>Kunden kommen zur Adresse</td>
+          <td>Sie fahren zu den Kunden</td>
+        </tr>
+        <tr>
+          <td><strong>Auf der Karte</strong></td>
+          <td>Pin sichtbar, Routenplanung möglich</td>
+          <td>Kein Pin</td>
+        </tr>
+        <tr>
+          <td><strong>Suchen mit „in meiner Nähe“</strong></td>
+          <td>Stark</td>
+          <td>Schwach</td>
+        </tr>
+        <tr>
+          <td><strong>Wonach der Platz berechnet wird</strong></td>
+          <td>Nähe zur Adresse</td>
+          <td>Ebenfalls Nähe zur Adresse, auch wenn sie ausgeblendet ist</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Über die letzte Zeile wissen die meisten falsch Bescheid. Wer die Adresse ausblendet und zwanzig Provinzen einträgt,
+    kommt dadurch nicht auf die Karte dieser zwanzig Provinzen. Google berechnet den Platz weiterhin nach der Nähe zu
+    Ihrer ausgeblendeten Adresse.
+  </p>
+
+  <p>
+    Angenommen, Sie sind Physiotherapeut mit einer Praxis in Çankaya und haben die Adresse ausgeblendet. Patienten, die
+    in die Praxis kommen wollen, sehen keinen Pin auf der Karte und bekommen keine Route, und bei der Suche nach
+    „Physiotherapeut in meiner Nähe“ fallen Sie zurück.
+  </p>
+
+  <p>
+    Unsere Regel ist einfach: Wenn Sie einen Ort haben, an dem Sie Kunden empfangen, zeigen Sie die Adresse. Die
+    Einstellungen für Adresse und Einzugsgebiet erklären wir zusätzlich auf der Seite
+    <a href={p('services/gbp')}>Google-Unternehmensprofil-Betreuung</a>.
+  </p>
+
+  <h2 id="adimlar">Wie erstellen Sie das Profil Schritt für Schritt?</h2>
+
+  <p>Wenn die Vorbereitung steht, dauert die Einrichtung zehn Minuten. Die Reihenfolge:</p>
+
+  <ol>
+    <li>
+      <strong>Öffnen Sie google.com/business.</strong> Melden Sie sich mit dem Google-Konto an, das Sie für das
+      Unternehmen nutzen wollen. Mit einem Konto, das dem Unternehmen gehört, lässt sich das Profil später leichter
+      übergeben als mit Ihrem privaten.
+    </li>
+    <li>
+      <strong>Geben Sie den Firmennamen ein.</strong> Findet Google einen bestehenden Eintrag, schlägt es vor, ihn zu
+      beanspruchen. Beanspruchen Sie diesen Eintrag und legen Sie keinen neuen an, sonst entsteht ein doppeltes Profil.
+    </li>
+    <li>
+      <strong>Wählen Sie die Hauptkategorie.</strong> Wie Sie sie auswählen, steht weiter unten. Lassen Sie sich bei
+      diesem Schritt Zeit.
+    </li>
+    <li>
+      <strong>Treffen Sie die Adressentscheidung.</strong> Wenn Sie Kunden empfangen, geben Sie die Adresse ein und
+      ziehen Sie den Pin auf der Karte von Hand direkt vor Ihre Tür. Wenn nicht, blenden Sie die Adresse aus und legen
+      Sie Ihre Einzugsgebiete fest.
+    </li>
+    <li>
+      <strong>Fügen Sie Telefonnummer und Website hinzu.</strong> In das Website-Feld gehört Ihre Startseite. Die Links
+      zu den Leistungsseiten tragen Sie später bei den einzelnen Leistungen ein.
+    </li>
+    <li>
+      <strong>Wählen Sie die Verifizierungsmethode.</strong> Am häufigsten werden Video oder Postkarte angeboten. Video
+      geht schneller, aber Sie müssen in einer einzigen Aufnahme Schild und Innenraum zeigen und dass Sie das
+      Unternehmen führen, fangen Sie also nicht unvorbereitet an.
+    </li>
+  </ol>
+
+  <p>
+    Wenn es bei der Verifizierung hakt, finden Sie jeden Fall einzeln im
+    <a href={p('guides/verification')}>Ratgeber zu Verifizierungsproblemen</a>.
+  </p>
+
+  <h2 id="kategori">Welche Kategorie sollten Sie wählen?</h2>
+
+  <p>
+    Die Kategorie der Unternehmen, die bei der Suche Ihrer Kunden unter den ersten drei stehen. Die Hauptkategorie hat
+    von allen einzelnen Feldern den größten Einfluss auf das Ranking. Raten Sie deshalb nicht, sehen Sie nach:
+  </p>
+
+  <ol>
+    <li>Suchen Sie in Google Maps nach dem Begriff, den Ihre Kunden eingeben würden.</li>
+    <li>Sehen Sie sich die Hauptkategorie der Unternehmen unter den ersten drei an.</li>
+    <li>Wählen Sie dieselbe Kategorie als Ihre Hauptkategorie.</li>
+    <li>Fügen Sie zwei bis drei Bereiche, auf die Sie wirklich Gewicht legen, als zusätzliche Kategorien hinzu. Mehr nicht.</li>
+  </ol>
+
+  <p>
+    Google erlaubt eine Hauptkategorie und bis zu neun zusätzliche Kategorien. Füllen Sie nicht alle neun aus:
+    Unpassende Kategorien verwischen das Bild, zu welchen Suchen Sie aus Sicht von Google gehören.
+  </p>
+
+  <p>
+    Ein häufiger Fehler ist, eine enge Spezialisierung zur Hauptkategorie zu machen. Eine Zahnklinik mit Schwerpunkt
+    Implantate, die „Ästhetische Zahnheilkunde“ als Hauptkategorie wählt, gewinnt in der Nische an Stärke und verliert
+    das große Volumen der Suche nach „Zahnarzt“. Die Hauptkategorie bringt Volumen, die zusätzlichen Kategorien bringen
+    Spezialisierung.
+  </p>
+
+  <h2 id="ilk-gun">Was tun Sie an dem Tag, an dem das Profil verifiziert ist?</h2>
+
+  <p>
+    Schließen Sie am ersten Tag die Lücken. Google achtet früh darauf, wie vollständig ein Profil ist, schieben Sie das
+    also nicht auf.
+  </p>
+
+  <ul class="checklist">
+    <li>Schreiben Sie die Unternehmensbeschreibung: was Sie tun und für wen.</li>
+    <li>Füllen Sie die Leistungsliste mit den Begriffen, nach denen Menschen suchen, und ergänzen Sie zu jeder Leistung eine Beschreibung.</li>
+    <li>Laden Sie mindestens 10 echte Fotos hoch: Außenansicht und Schild, Innenraum, Team, Beispiele Ihrer Arbeit.</li>
+    <li>Markieren Sie die Merkmale: Parkplatz, Barrierefreiheit, Termine, Zahlungsarten.</li>
+    <li>Bitten Sie um die ersten Bewertungen. Wie Sie darum bitten, steht im <a href={p('guides/more-reviews')}>Ratgeber zu Bewertungen</a>.</li>
+  </ul>
+
+  <p>
+    Halten Sie die Namen der Leistungen exakt gleich wie die Seitennamen auf Ihrer Website. Diese Einheitlichkeit macht
+    es Google leichter, Profil und Website demselben Unternehmen zuzuordnen.
+  </p>
+
+  <h2 id="hatalar">Welche Fehler passieren bei der Einrichtung am häufigsten?</h2>
+
+  <ol>
+    <li>
+      <strong>Den Namen ausschmücken.</strong> Keywords im Namen gehören zu den häufigsten Gründen für eine Sperrung.
+    </li>
+    <li>
+      <strong>Eine virtuelle Büroadresse angeben.</strong> Eine Adresse, an der Sie nicht wirklich sind, kann auch nach
+      bestandener Verifizierung später zur Sperrung führen.
+    </li>
+    <li>
+      <strong>Die Kategorieliste vollmachen.</strong> Alle neun zusätzlichen Kategorien zu nutzen, verwässert die
+      Relevanz.
+    </li>
+    <li>
+      <strong>Stockfotos hochladen.</strong> Suchende erkennen den Unterschied zwischen dem echten Ort und einem Stockbild
+      sofort, und das Vertrauen sinkt.
+    </li>
+    <li>
+      <strong>In den ersten Wochen an den Grundfeldern herumspielen.</strong> Name, Adresse und Kategorie mehrmals
+      hintereinander zu ändern, verzögert das Einpendeln des Rankings und löst obendrein eine Prüfung aus.
+    </li>
+  </ol>
+
+  <Fragment slot="cta">
+    <h2>Ihr Profil ist online, aber <span class="highlight">unvollständig</span>?</h2>
+    <p>
+      Der kostenlose Profil-Check zeigt in 10 Fragen, in welchem Bereich Ihr Profil schwach ist. Er verlangt keine
+      Registrierung, das Ergebnis sehen Sie sofort.
+    </p>
+  </Fragment>
+</ContentLayout>

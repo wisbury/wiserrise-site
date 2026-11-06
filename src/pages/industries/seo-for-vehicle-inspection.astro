@@ -1,0 +1,239 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'PROXIMITY', title: 'Tight service area', text: 'Customers won’t travel more than a few kilometers for an inspection. So we spend the effort on the area they can really come from.' },
+  { label: 'PHONE', title: 'Call in one tap', text: 'The decision takes minutes. If your opening hours or your number are wrong, even a good ranking won’t keep the customer.' },
+  { label: 'REVIEWS', title: 'A steady flow of reviews', text: 'The services look alike, and reviews are what set you apart. The most natural moment to ask for a review is when you hand over the report.' },
+  { label: 'PHOTOS', title: 'Real photos of your premises', text: 'Customers want to see where they’re leaving their car. Your sign, lift, equipment and waiting area should be visible on the profile.' },
+];
+
+const toc = [
+  { id: 'yakinlik', label: 'How far will customers travel?' },
+  { id: 'olcum', label: 'How do we measure your ranking?' },
+  { id: 'arama', label: 'What do customers type?' },
+  { id: 'profil', label: 'What should the profile have?' },
+  { id: 'yorum', label: 'Collecting reviews' },
+  { id: 'site', label: 'Which pages on the website?' },
+];
+
+const faq = [
+  {
+    q: 'I offer the same service as my competitors. How do I stand out?',
+    a: 'Standing out on service is hard, standing out on trust is easy. A firm that shows a sample report and real photos of its premises gives customers confidence at first glance. Reviews are the most visible part of that trust.',
+  },
+  {
+    q: 'How many reviews do I need?',
+    a: 'There’s no fixed number. The yardstick is the review count of the competitors in the top three on the map; if you’re clearly below them, closing that gap comes first. In the free analysis we put a number on that gap.',
+  },
+  {
+    q: 'Isn’t the profile enough? Do I need a website too?',
+    a: 'Most of the demand comes from the profile, and Google also looks at the website the profile links to. In a district with heavy competition, the profile alone isn’t enough. We manage the website too; if we can’t manage the site completely, we don’t take on the work.',
+  },
+  {
+    q: 'When will I see results?',
+    a: 'For most businesses we see the first movement on the map within 4-8 weeks. In district centers with heavy competition it takes longer. We can’t give an exact date, but you see the work we do every week in the report.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="industries/vehicle-inspection"
+  title="SEO for Vehicle Inspection and Google Maps | Wiserrise"
+  description="Local SEO for vehicle inspection firms: showing up on the map in a tight service area, customers who call, reviews and premises photos. No contract."
+  eyebrow="INDUSTRY · VEHICLE INSPECTION"
+  h1="SEO for vehicle inspection: the race is decided within a few kilometers."
+  crumb="Vehicle inspection"
+  lede="SEO for vehicle inspection means showing up on the map among the first few firms near the car or the buyer. Customers won’t cross the city, and they decide within a few minutes. That’s why the weight of the work sits on your Google Business Profile, where customers call you from, and on your reviews."
+  serviceName="SEO for Vehicle Inspection"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Industries', href: p('industries') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Google Business Profile Management', href: p('services/gbp'), text: 'We manage hours, photos, posts and review replies together.' },
+    { label: 'Map Rank Tracking', href: p('services/rank-tracking'), text: 'We measure where you rank from different points around your premises.' },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'We fix your profile and your website together for the race on the map.' },
+    { label: 'Content Production', href: p('services/content'), text: 'We write sample report and process pages around how your premises work.' },
+  ]}
+  ctaLabel="Get a free analysis"
+  ctaHref="/#contact"
+>
+  <h2 id="yakinlik">How far will customers travel for an inspection?</h2>
+
+  <p>
+    Not far. Someone buying a used car picks one of the few firms closest to where the car is or to where they are, and
+    won’t cross the city for an inspection.
+  </p>
+
+  <p>
+    This means your ranking can change completely within a few kilometers. Say you rank first right outside your premises;
+    on the phone of a buyer 4 km away you might not even be in the top twenty.
+  </p>
+
+  <p>
+    Vehicle inspection is one of the <a href={p('industries')}>industries we work in</a> where proximity matters most. So
+    we spend the effort on the few kilometers around you that customers can really come from. Ranking first on the other
+    side of the city does nothing for you.
+  </p>
+
+  <h2 id="olcum">How do we measure your ranking?</h2>
+
+  <p>
+    From different points around your premises, by checking where you show up on the phone of someone searching at each
+    point. A ranking taken from a single point won’t show you the truth, because the order changes as soon as the searcher
+    moves two streets away.
+  </p>
+
+  <p>
+    For inspection, we keep these points close to your premises. A measurement spread across the whole city collects data
+    from places customers will never come from and blurs the picture. We explain how the measurement works on the
+    <a href={p('services/rank-tracking')}>map rank tracking</a> page.
+  </p>
+
+  <h2 id="arama">What do customers type into Google?</h2>
+
+  <p>
+    The research phase barely exists. Customers open their phone on the way to see the car or while haggling, and decide
+    within a few minutes. What they type falls into four groups:
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Search type</th>
+          <th>Example</th>
+          <th>What gets checked</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Proximity</strong></td>
+          <td>“car inspection near me”</td>
+          <td>Your location and profile</td>
+        </tr>
+        <tr>
+          <td><strong>District</strong></td>
+          <td>“car inspection Nilüfer”</td>
+          <td>Your profile and the district page on your website</td>
+        </tr>
+        <tr>
+          <td><strong>Price</strong></td>
+          <td>“car inspection cost”</td>
+          <td>Price information on your website</td>
+        </tr>
+        <tr>
+          <td><strong>Process</strong></td>
+          <td>“how long does a car inspection take”</td>
+          <td>The informative page on your website</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    The first two are won on the map, the last two on the website. Process searches rank independently of the city, yet in
+    this industry it’s the map that brings customers to your door.
+  </p>
+
+  <h2 id="profil">If the decision takes minutes, what should the profile have?</h2>
+
+  <p>
+    Above all, customers should be able to call you in one tap. In this industry they skip the website and call or get
+    directions straight from the profile.
+  </p>
+
+  <ul class="checklist">
+    <li>Correct opening hours, including special days</li>
+    <li>A correctly written phone number that calls in one tap</li>
+    <li>The right location and directions that bring customers to your sign</li>
+    <li>Your packages and the items you check, in the services section</li>
+    <li>Real photos of your premises: exterior and sign, lift, equipment, waiting area</li>
+  </ul>
+
+  <p>
+    A profile that looks closed or shows the wrong number loses that customer even with a good ranking. If you want to see
+    what your own profile is missing, our <a href={p('tools/gbp-audit')}>free profile audit tool</a> gives you the list.
+  </p>
+
+  <p>
+    Photos do more work in this industry than in others. Customers want to see where they’re leaving their car, and they
+    spot the difference between stock images and real premises straight away. Don’t upload thirty photos at once and leave
+    it there; add them at regular intervals.
+  </p>
+
+  <h2 id="yorum">When and how should you collect reviews?</h2>
+
+  <p>
+    When you hand over the report, while the customer is still on site. In inspection the services look very much alike:
+    the same checklist items, similar prices. Customers have no technical knowledge to tell firms apart, so what’s left is
+    how many people went and what they said.
+  </p>
+
+  <p>
+    The good news is that collecting reviews is easy in this industry. The service is short, and the customer is standing
+    right in front of you when it’s done. This is the flow we set up:
+  </p>
+
+  <ul class="checklist">
+    <li>A QR code on the counter that links to the review page when the report is handed over</li>
+    <li>Asking customers to write in their own words, without dictating a text</li>
+    <li>A short, personal reply to every review, never a template</li>
+    <li>With a negative review, first calling the customer to solve the problem, then writing a calm public reply</li>
+  </ul>
+
+  <div class="callout">
+    <p>
+      <strong>Don’t collect reviews all at once.</strong> A pile of reviews arriving on a new profile within a few days is
+      the classic pattern Google’s filters catch. Asking for reviews in exchange for a discount also breaks Google’s rules.
+    </p>
+  </div>
+
+  <h2 id="site">Which pages on the website are worth having?</h2>
+
+  <p>
+    A few pages are enough. Most of the demand comes from the profile, and Google also looks at the website the profile
+    links to. The website also serves customers looking for price or process.
+  </p>
+
+  <ul class="checklist">
+    <li>
+      <strong>Sample report page.</strong> The list of items you check and a sample report with personal details removed.
+      This page builds the most trust.
+    </li>
+    <li>
+      <strong>Process page.</strong> Booking, how long the inspection takes and how the report is delivered. The answer to
+      “how long does it take” lives here.
+    </li>
+    <li>
+      <strong>Price page.</strong> Even if you don’t write an exact figure, explain what determines the price.
+    </li>
+    <li>
+      <strong>District page.</strong> Only for districts you really serve and have something to say about.
+    </li>
+  </ul>
+
+  <p>
+    Our line on district pages is clear: we don’t open template pages for every district in the city. Google counts copies
+    with only the district name changed as “doorway” pages, and they harm the site. We write real district pages around
+    your premises as part of <a href={p('services/content')}>content production</a>.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Are customers calling you or the <span class="highlight">one next door</span>?</h2>
+    <p>
+      In the free analysis we measure where you rank around your premises, and lay out your profile gaps and the review gap
+      between you and your competitors. The result lands in your inbox within
+      <span style="white-space: nowrap;">24 hours</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

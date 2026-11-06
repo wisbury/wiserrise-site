@@ -1,0 +1,260 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'TEST', title: 'Erst den eigenen Namen suchen', text: 'Suchen Sie Ihren Namen in Anführungszeichen. Erscheint rechts keine Profilkarte, ist Ihr Profil nicht online, und für die Frage nach dem Ranking ist es zu früh.' },
+  { label: 'VERIFIZIERUNG', title: 'Unverifiziert heißt unsichtbar', text: 'Steht im Dashboard „Verifizierung erforderlich“ oder „Wird überprüft“, erscheint das Profil nicht in der Suche, egal wie vollständig es ist.' },
+  { label: 'KATEGORIE', title: 'Erster Verdacht: die Kategorie', text: 'Finden Sie sich unter Ihrem Namen, aber nicht bei der Suche nach Ihrer Leistung, prüfen Sie die Hauptkategorie. Vergleichen Sie sie mit der Ihrer Wettbewerber unter den ersten drei.' },
+  { label: 'ENTFERNUNG', title: 'Der Standort der Suchenden', text: 'Die Reihenfolge auf der Karte hängt davon ab, wo die suchende Person steht. Wer im eigenen Geschäft mit dem eigenen Handy nachsieht, bekommt ein falsches Bild.' },
+];
+
+const toc = [
+  { id: 'iki-durum', label: 'Zwei verschiedene Probleme' },
+  { id: 'yayinda', label: 'Ist das Profil online?' },
+  { id: 'askiya', label: 'Sperrung' },
+  { id: 'kopya', label: 'Doppeltes Profil' },
+  { id: 'kategori', label: 'Falsche Kategorie' },
+  { id: 'ilk-uc', label: 'Hinter den ersten drei' },
+  { id: 'site', label: 'Normale Suchergebnisse' },
+];
+
+const faq = [
+  {
+    q: 'Ich sehe mein Profil, warum sehen meine Kunden es nicht?',
+    a: 'Weil Google Ihnen Ihr eigenes Unternehmen bevorzugt anzeigt und das Ergebnis vom Standort der suchenden Person abhängt. Für ein echtes Bild suchen Sie im privaten Fenster, abgemeldet und an einem Ort weit weg von Ihrem Unternehmen. Für die ganze Gegend brauchen Sie eine Messung an verschiedenen Punkten in Ihrem Umkreis.',
+  },
+  {
+    q: 'Ich habe das Profil gerade erstellt, wie lange muss ich warten?',
+    a: 'Nach der Verifizierung dauert es einige Tage bis einige Wochen, bis sich das Profil einpendelt, und in dieser Zeit schwankt der Platz. Lassen Sie Namen, Adresse und Kategorie in den ersten Wochen unverändert. Wer ein Profil stört, das sich gerade einpendelt, verzögert die Besserung.',
+  },
+  {
+    q: 'Erscheine ich in einem größeren Gebiet, wenn ich meine Adresse ausblende?',
+    a: 'Nein. Ein Profil ohne Adresse fällt bei Suchen mit „in meiner Nähe“ zurück, und Google berechnet den Platz trotzdem nach der Nähe zu Ihrer ausgeblendeten Adresse. Wenn Sie einen Ort haben, an dem Sie Kunden empfangen, zeigen Sie die Adresse.',
+  },
+  {
+    q: 'Erscheine ich, wenn ich Keywords in meinen Firmennamen schreibe?',
+    a: 'Kurzfristig ja, aber es verstößt gegen die Regeln von Google: Der Name muss der sein, den Sie auch in der realen Welt verwenden. Meldet ein Wettbewerber das, wird der Name korrigiert, im Wiederholungsfall kann das Profil gesperrt werden. Wir machen das bei den Profilen unserer Kunden nicht.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="guides/not-showing"
+  title="Unternehmen nicht bei Google sichtbar: 8 Ursachen und Lösungen | Wiserrise"
+  description="Erscheint Ihr Unternehmen nicht in Google Maps oder in der Suche, liegt es an einer von acht Ursachen. Welche Prüfung Sie in welcher Reihenfolge machen."
+  eyebrow="RATGEBER · SICHTBARKEIT"
+  h1="Warum erscheint Ihr Unternehmen nicht bei Google?"
+  crumb="Nicht bei Google sichtbar"
+  lede="Wenn Ihr Unternehmen bei Google nicht erscheint, gibt es zwei Möglichkeiten: Entweder ist Ihr Profil nicht online, oder es ist online und landet hinter den ersten drei. Welcher Fall vorliegt, sehen Sie in einer Minute, wenn Sie nach Ihrem Namen suchen. Unten schließen wir acht Ursachen nacheinander aus, beginnend mit der schnellsten Prüfung."
+  schemaType="article"
+  datePublished="2026-08-01"
+  dateModified="2026-11-06"
+  breadcrumb={[
+    { label: 'Startseite', href: '/de' },
+    { label: 'Ratgeber', href: p('guides') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Probleme bei der Profilverifizierung', href: p('guides/verification'), text: 'Was Sie in jedem Fall tun, wenn die Postkarte nicht ankam oder das Video abgelehnt wurde.' },
+    { label: 'Bei Google Maps höher ranken', href: p('guides/rank-higher'), text: 'In welcher Reihenfolge Sie den Abstand zu Ihren Wettbewerbern schließen.' },
+    { label: 'Wie erstellt man ein Google-Unternehmensprofil?', href: p('guides/create-profile'), text: 'Wenn Sie noch gar kein Profil haben: die Einrichtung von der Adressentscheidung bis zum ersten Tag.' },
+    { label: 'Google-Unternehmensprofil-Betreuung', href: p('services/gbp'), text: 'Kategorie, Leistungsstruktur, Bewertungen und Beiträge betreuen wir als Ganzes.' },
+  ]}
+  relatedHeading="Verwandte Seiten"
+  ctaLabel="Profil kostenlos prüfen"
+  ctaHref={p('tools/gbp-audit')}
+>
+  <h2 id="iki-durum">Erscheinen Sie gar nicht oder nur weiter unten?</h2>
+
+  <p>
+    Der Satz „Ich erscheine nicht bei Google“ beschreibt zwei verschiedene Probleme, und ihre Lösungen haben wenig
+    gemeinsam. Finden Sie zuerst heraus, welches Sie haben.
+  </p>
+
+  <p>
+    Angenommen, Sie haben in Bornova ein Unternehmen namens Ege Yıldız Oto Ekspertiz. Bei der Suche nach „Ege Yıldız
+    Oto Ekspertiz“ erscheint Ihr Profil rechts, bei „Kfz-Gutachter Bornova“ sind Sie nicht unter den drei Unternehmen auf
+    der Karte.
+  </p>
+
+  <p>
+    Das ist ein Ranking-Problem. Ihr Profil ist da, es liegt nur hinter den Wettbewerbern.
+  </p>
+
+  <ul>
+    <li>
+      <strong>Sie erscheinen nicht einmal unter Ihrem Namen.</strong> Das Profil fehlt, ist nicht verifiziert, ist
+      gesperrt oder hat ein Duplikat. Die ersten drei Abschnitte unten sind für Sie.
+    </li>
+    <li>
+      <strong>Sie erscheinen unter Ihrem Namen, aber nicht bei der Suche nach Ihrer Leistung.</strong> Gehen Sie zu den
+      Abschnitten über Kategorie, Entfernung und den Abstand zu den Wettbewerbern.
+    </li>
+  </ul>
+
+  <div class="callout">
+    <p>
+      <strong>Testen Sie nicht mit Ihrem eigenen Handy.</strong> Google zeigt dem Konto, das mit dem Profil verbunden ist,
+      das eigene Unternehmen bevorzugt an, und das Ergebnis hängt davon ab, wo Sie gerade sind. Suchen Sie im privaten
+      Fenster, abgemeldet und an einem Ort weit weg von Ihrem Unternehmen.
+    </p>
+  </div>
+
+  <h2 id="yayinda">Ist Ihr Profil wirklich online?</h2>
+
+  <p>
+    Für die schnellste Prüfung suchen Sie bei Google nach Ihrem Firmennamen in Anführungszeichen, so wie er auf Ihrem
+    Schild steht. Erscheint rechts keine Profilkarte, wurde das Profil nie angelegt oder ist nicht online gegangen.
+  </p>
+
+  <p>
+    Das kommt erstaunlich häufig vor: Der Inhaber glaubt, er habe das Profil angelegt, aber der Vorgang ist auf halbem Weg
+    stehen geblieben. Haben Sie noch gar kein Profil, gehen Sie zum
+    <a href={p('guides/create-profile')}>Ratgeber zum Erstellen eines Profils</a>.
+  </p>
+
+  <p>
+    Gibt es ein Profil, melden Sie sich im Dashboard an. Sehen Sie den Hinweis „Verifizierung erforderlich“ oder „Wird
+    überprüft“, erscheint das Profil nicht in der Suche, egal wie sorgfältig es ausgefüllt ist. Wenn die Postkarte nicht
+    ankam oder das Video abgelehnt wurde, finden Sie jeden Fall einzeln im
+    <a href={p('guides/verification')}>Ratgeber zu Verifizierungsproblemen</a>.
+  </p>
+
+  <h2 id="askiya">Könnte Ihr Profil gesperrt sein?</h2>
+
+  <p>
+    Das ist möglich, und die meisten Inhaber merken es spät, weil sie keine Benachrichtigung sehen. Ein gesperrtes Profil
+    verschwindet komplett aus der Suche, im Dashboard steht „Gesperrt“.
+  </p>
+
+  <p>Die häufigsten Gründe für eine Sperrung:</p>
+
+  <ul class="checklist">
+    <li>Keywords im Firmennamen (etwa „Ege Yıldız Oto Ekspertiz Bornova Schadensgutachten“)</li>
+    <li>Die Adresse eines virtuellen Büros oder eines Postfachs</li>
+    <li>Name, Adresse und Kategorie kurz hintereinander mehrmals ändern</li>
+    <li>Mehrere Profile an derselben Adresse</li>
+    <li>Eine Tätigkeit in einem Bereich oder mit einer Leistungsbeschreibung, die gegen die Regeln von Google verstößt</li>
+  </ul>
+
+  <p>
+    Die Reihenfolge ist klar: Beheben Sie zuerst die Ursache, danach stellen Sie einen Antrag auf erneute Prüfung. Ein
+    Antrag ohne vorherige Korrektur verlängert das Verfahren.
+  </p>
+
+  <p>
+    Ein neues Profil anzulegen ist der schlechteste Zug. Der neue Eintrag wird als Duplikat markiert und ebenfalls
+    gesperrt, am Ende haben Sie zwei Profile mit Problemen. Die Schritte für den Einspruch stehen im
+    <a href={p('guides/verification')}>Ratgeber zur Verifizierung</a>.
+  </p>
+
+  <h2 id="kopya">Gibt es zwei Profile für dasselbe Unternehmen?</h2>
+
+  <p>
+    Gibt es für dasselbe Unternehmen zwei Profile, kann Google nicht entscheiden, welches es zeigen soll, und schwächt
+    beide. Die meisten Duplikate hat niemand absichtlich angelegt: Ein früherer Inhaber, ein Mitarbeiter oder der
+    automatische Eintrag eines Verzeichnisses hat sie erzeugt.
+  </p>
+
+  <p>
+    Zur Prüfung suchen Sie in Google Maps zuerst nach Ihrem Namen, dann separat nach Ihrer Telefonnummer. Taucht ein
+    Duplikat auf, melden Sie den doppelten Eintrag über das richtige Profil und beantragen die Zusammenführung.
+    Zusammenführen ist sicherer als Löschen, weil das zusammengeführte Profil auch seine Bewertungen mitnimmt.
+  </p>
+
+  <h2 id="kategori">Passt Ihre Kategorie zu der Leistung, nach der gesucht wird?</h2>
+
+  <p>
+    Wenn Sie unter Ihrem Namen erscheinen, bei der Suche nach Ihrer Leistung aber nicht, schauen wir zuerst auf die
+    Hauptkategorie. Die Information, was dieses Unternehmen macht, bezieht Google vor allem von dort. Ist die Kategorie
+    falsch, nehmen Sie an den Suchen nach dieser Leistung gar nicht erst teil.
+  </p>
+
+  <p>
+    Angenommen, Sie sind Anwalt, arbeiten auch als Mediator und haben „Mediator“ als Hauptkategorie gewählt. Diese Wahl
+    drängt Sie bei den Suchen nach „Anwalt“ zurück, die das eigentliche Suchvolumen tragen. Denselben Fehler sehen wir bei
+    Physiotherapeuten mit „Massagetherapeut“ und in der medizinischen Ästhetik mit „Kosmetikstudio“.
+  </p>
+
+  <p>
+    Die Prüfung ist einfach: Suchen Sie Ihren Zielbegriff in Google Maps und sehen Sie sich die Kategorie der
+    Unternehmen unter den ersten drei an. Weicht Ihre ab, haben Sie die Ursache sehr wahrscheinlich gefunden. Wie wir
+    Kategorie und Leistungsstruktur aufbauen, erklären wir auf der Seite
+    <a href={p('services/gbp')}>Google-Unternehmensprofil-Betreuung</a>.
+  </p>
+
+  <h2 id="ilk-uc">Sie erscheinen, aber nicht unter den ersten drei?</h2>
+
+  <p>
+    Stehen Sie auf der Karte auf Platz vier, sind Sie praktisch unsichtbar, weil der Kartenblock drei Unternehmen zeigt.
+    Hier prüfen wir zwei Dinge: wie weit die suchende Person von Ihnen entfernt ist und wie groß der Abstand zu Ihren
+    Wettbewerbern ist.
+  </p>
+
+  <h3>Wie weit ist die suchende Person von Ihnen entfernt?</h3>
+
+  <p>
+    Im lokalen Ranking ist die Entfernung entscheidend. Dass Sie bei einer Suche vom anderen Ende der Stadt nicht
+    erscheinen, ist normal: An diesem Punkt gibt es Unternehmen, die näher liegen.
+  </p>
+
+  <p>
+    Die eigentliche Frage ist, auf welchem Platz Sie in dem Gebiet stehen, aus dem Kunden wirklich zu Ihnen kommen
+    können. Ein Kfz-Gutachter kann direkt vor seiner Tür auf Platz eins stehen und 4 km weiter nicht unter die ersten
+    zwanzig kommen, und von einem einzigen Punkt aus sehen Sie das nicht. Auf welchem Platz Sie an verschiedenen Punkten
+    in Ihrem Umkreis stehen, zeigt uns die <a href={p('services/rank-tracking')}>Messung in Ihrem Umkreis</a>.
+  </p>
+
+  <h3>Wo liegen Sie hinter Ihren Wettbewerbern?</h3>
+
+  <p>
+    Legen Sie Ihr Profil neben die Profile der Unternehmen unter den ersten drei. Vergleichen Sie diese Punkte: Anzahl und
+    Durchschnitt der Bewertungen, Alter des Profils, wie aktuell Fotos und Beiträge sind, wie breit die Leistungsliste ist
+    und bei welchen Suchen die Website erscheint.
+  </p>
+
+  <p>
+    Bei den Profilen, die wir uns ansehen, liegt der Unterschied am häufigsten bei der Anzahl der Bewertungen. In welcher
+    Reihenfolge Sie den Abstand schließen, steht im <a href={p('guides/rank-higher')}>Ratgeber für bessere Plätze in
+    Google Maps</a>, den Teil zu Bewertungen behandelt der <a href={p('guides/more-reviews')}>Ratgeber zu
+    Bewertungen</a>.
+  </p>
+
+  <h2 id="site">Fehlen Sie auch in den Ergebnissen unter der Karte?</h2>
+
+  <p>
+    Die Ursachen bis hierhin betrafen die Karte. Fehlen Sie auch in den normalen Ergebnissen unter der Karte komplett,
+    suchen Sie das Problem auf Ihrer Website: Möglicherweise sind die Seiten nicht indexiert oder versehentlich gesperrt,
+    oder Google kann die Website nicht crawlen.
+  </p>
+
+  <p>
+    Für die schnellste Prüfung geben Sie bei Google „site:ihredomain.de“ ein. Erscheint kein einziges Ergebnis, ist Ihre
+    Website nicht im Index. Die Ursachen und die Reihenfolge der Korrektur erklären wir auf der Seite
+    <a href={p('services/technical-seo')}>Technisches SEO</a>.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Ändern Sie nicht alles am selben Tag.</strong> Name, Adresse und Kategorie kurz hintereinander zu ändern,
+      ist einer der Gründe für eine Sperrung. Warten Sie nach jeder Korrektur einige Tage, messen Sie das Ergebnis und
+      gehen Sie erst dann zum nächsten Punkt.
+    </p>
+  </div>
+
+  <Fragment slot="cta">
+    <h2>An welcher Stelle hakt <span class="highlight">Ihr Profil</span>?</h2>
+    <p>
+      Der kostenlose Profil-Check bewertet Ihr Profil in 10 Fragen nach Kategorie, Bewertungen, Aktualität und
+      Verbindung zur Website. Das Ergebnis sehen Sie sofort, eine
+      <span style="white-space: nowrap;">E-Mail-Adresse</span> verlangen wir nicht.
+    </p>
+  </Fragment>
+</ContentLayout>

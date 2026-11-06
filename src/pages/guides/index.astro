@@ -1,0 +1,108 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import HubCards from '../../components/v2/HubCards.astro';
+import { routePath } from '../../i18n/routes';
+import { guidesFor } from '../../data/guides';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const faq = [
+  {
+    q: 'Can I do the work myself with these guides?',
+    a: 'Yes, that’s why we wrote them. The hard part is consistency: keeping the review flow alive and seeing what changes in your area on a regular basis. If you get stuck, you can ask for a free analysis.',
+  },
+  {
+    q: 'When are the guides updated?',
+    a: 'Whenever Google’s screens or rules change. The last update date is at the top of every guide. If you spot an outdated step, write to us and we’ll fix it.',
+  },
+  {
+    q: 'Why are the guides written for Turkey?',
+    a: 'We wrote these guides around the situations businesses in Turkey run into. Verification steps, category names and the support flow differ from country to country, so outside Turkey some details on your screen will look different.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="guides"
+  title="Local SEO Guides | Wiserrise"
+  description="Guides you can apply yourself: creating a Google Business Profile, verification problems, getting more reviews and ranking higher on the map."
+  eyebrow="GUIDES"
+  h1="Local SEO guides, step by step."
+  crumb="Guides"
+  lede="Guides you can apply yourself, from creating your Google Business Profile to ranking higher on the map. We don’t hide the steps. The hard part of local SEO is keeping those steps going for months without letting them slip."
+  schemaType="article"
+  datePublished="2026-08-01"
+  dateModified="2026-11-06"
+  breadcrumb={[{ label: 'Home', href: '/' }]}
+  faq={faq}
+  wideFirst
+  related={[
+    { label: 'All services', href: p('services'), text: 'The list that shows which service solves what, on a single page.' },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'The core service where we fix your profile and your website together.' },
+    { label: 'Local SEO by industry', href: p('industries'), text: 'How the work changes for lawyers, dentists, clinics and vehicle inspection.' },
+  ]}
+  relatedHeading="Related pages"
+  ctaLabel="Get a free analysis"
+  ctaHref="/#contact"
+>
+  <h2 id="neden">Why don’t we hide the steps?</h2>
+
+  <p>
+    Because the information is already public. Google publishes its own rules and what it looks at on the map.
+  </p>
+
+  <p>
+    Where businesses get stuck is rhythm. Keeping the review flow alive for weeks and seeing which corner of your area
+    you’re falling behind in are jobs you can’t read about once and be done with. If you have the time, do it yourself
+    with the guides; if you don’t, this is the work we run.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>If you want to see where your profile stands right now,</strong> fill in the <a href={p('tools/gbp-audit')}>free
+      audit tool</a> first. In 10 questions it tells you which area is weak, then you move on to the matching guide.
+    </p>
+  </div>
+
+  <h2 id="baslangic">Which guide should you start with?</h2>
+
+  <p>
+    If your profile doesn’t show up at all when you search your name, start with the
+    <a href={p('guides/not-showing')}>visibility guide</a>. If you don’t have a profile yet, go to the
+    <a href={p('guides/create-profile')}>profile creation guide</a>; if verification is stuck, go to the
+    <a href={p('guides/verification')}>verification guide</a>.
+  </p>
+
+  <p>
+    If your profile shows up but falls behind on the map, the <a href={p('guides/rank-higher')}>ranking guide</a> is for
+    you. If you have fewer reviews than your competitors, start with the <a href={p('guides/more-reviews')}>reviews
+    guide</a>, because in the profiles we look at, that’s where the gap shows up most.
+  </p>
+
+  <Fragment slot="wide">
+    <HubCards
+      id="rehber-listesi"
+      eyebrow="GUIDES"
+      heading="Starting with where people get stuck most."
+      items={guidesFor('en').map((g) => ({ ...g, cta: 'Read the guide' }))}
+      son={{
+        href: p('tools/gbp-audit'),
+        label: 'FREE TOOL',
+        title: 'What score does your Google profile get?',
+        text: 'Score your profile in 10 questions. No sign-up and no email, the result appears on screen right away.',
+        cta: 'Open the tool',
+        alt: 'Audit your profile →',
+      }}
+    />
+  </Fragment>
+
+  <Fragment slot="cta">
+    <h2>Don’t want to <span class="highlight">handle it yourself</span>?</h2>
+    <p>
+      In the free analysis we look at your profile, your website and measurement across your area, and tell you where to
+      start. The result is in your inbox within <span style="white-space: nowrap;">24 hours</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

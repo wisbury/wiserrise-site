@@ -1,0 +1,176 @@
+---
+/**
+ * İçerik sayfası iskeleti (hizmet, sektör, rehber ve liste sayfaları), üç dilde. ContentLayout bunu çizer.
+ * Sıra: yumuşak renkli, ortalı ilk ekran (başlık, kısa cevap, analiz düğmesi, istenirse özet kartları), solda içindekiler ile metin,
+ * geniş blok, SSS, ilgili sayfalar, siyah vurgu ekranı (ana sayfadakinden kısa), alt bilgi. Kavis yalnız vurgu ekranında ve alt bilgide.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnalizDialog from '../AnalizDialog.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { CONTACT_EMAIL } from '../../i18n/ui';
+import type { Locale } from '../../i18n/config';
+import type { RouteKey } from '../../i18n/routes';
+import { v2ui } from '../../i18n/v2';
+import type { FaqEntry } from '../../lib/schema';
+
+interface Props {
+  locale: Locale;
+  route: RouteKey;
+  slug?: string;
+  title: string;
+  description: string;
+  eyebrow?: string;
+  /** Rehberlerde görünen son güncelleme tarihi, okunur biçimde ("6 Kasım 2026", "6 November 2026"). */
+  updated?: string;
+  h1: string;
+  lede: string;
+  schema: object;
+  features?: { label: string; title: string; text: string }[];
+  toc?: { id: string; label: string }[];
+  wideFirst?: boolean;
+  hasWide: boolean;
+  faq?: FaqEntry[];
+  related?: { label: string; href: string; text?: string }[];
+  relatedHeading: string;
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+const {
+  locale, route, slug, title, description, eyebrow, updated, h1, lede, schema,
+  features = [], toc = [], wideFirst = false, hasWide, faq = [], related = [], relatedHeading, ctaLabel, ctaHref,
+} = Astro.props;
+
+const email = CONTACT_EMAIL[locale];
+const s = v2ui[locale].page;
+// "#contact" ile biten hedef (/tr#contact, /#contact, /de#contact) analiz penceresini açar; başka hedef (ör. profil aracı) olduğu gibi kalır.
+const analiz = ctaHref.endsWith('#contact');
+const cta = analiz ? { href: '#analiz-formu', 'data-analiz': true } : { href: ctaHref };
+// Hizmet ve sektör sayfalarında ilk ekranda düğme yok; analiz çağrısı üst şeritte ve sayfa sonunda kalıyor.
+const heroCta = !/^(services|industries)(\/|$)/.test(route);
+---
+
+<BaseLayout locale={locale} route={route} slug={slug} title={title} description={description} design="v2">
+  <script slot="schema" type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+<Header locale={locale} route={route} slug={slug} />
+
+<main id="main" class="v2-page">
+  <div class="v2-top v2-top-renk">
+    <section class="v2-page-hero">
+      {(eyebrow || updated) && (
+        <div class="v2-page-meta">
+          {eyebrow && <span class="v2-eyebrow">{eyebrow}</span>}
+          {updated && <span class="v2-page-date">{s.updated} {updated}</span>}
+        </div>
+      )}
+      <h1>{h1}</h1>
+      <p class="v2-page-lede">{lede}</p>
+      {heroCta && (
+        <div class="v2-page-actions">
+          <a class="btn v2-btn-firuze" {...cta}>{ctaLabel}</a>
+          {analiz && <span class="v2-page-note">{s.note}</span>}
+        </div>
+      )}
+    </section>
+
+    {features.length > 0 && (
+      <section class="v2-page-feats" aria-label={s.featsAria}>
+        {features.map((f) => (
+          <div class="v2-feat">
+            <span class="v2-eyebrow">{f.label}</span>
+            <span class="v2-feat-t">{f.title}</span>
+            <span class="v2-feat-p">{f.text}</span>
+          </div>
+        ))}
+      </section>
+    )}
+  </div>
+
+  {wideFirst && hasWide && <div class="v2-page-wide"><slot name="wide" /></div>}
+
+  <div class:list={['v2-page-body', toc.length > 0 && 'has-toc']}>
+    {toc.length > 0 && (
+      <nav class="v2-toc" aria-label={s.tocAria}>
+        <span class="v2-eyebrow">{s.toc}</span>
+        <ol>
+          {toc.map((t) => <li><a href={`#${t.id}`}>{t.label}</a></li>)}
+        </ol>
+      </nav>
+    )}
+    <article class="v2-prose">
+      <slot />
+    </article>
+  </div>
+
+  {!wideFirst && hasWide && <div class="v2-page-wide"><slot name="wide" /></div>}
+
+  {faq.length > 0 && (
+    <section id="sss" class="v2-page-sec v2-page-faq">
+      <div class="v2-page-faq-h">
+        <span class="v2-eyebrow">{s.faqEyebrow}</span>
+        <h2>{s.faqTitle}</h2>
+        <p>{s.faqMail} <a href={`mailto:${email}`}>{email}</a></p>
+      </div>
+      <div class="v2-page-faq-l">
+        {faq.map((item, i) => (
+          <details open={i === 0}>
+            <summary><span>{item.q}</span><span aria-hidden="true" class="v2-faq-plus">+</span></summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {related.length > 0 && (
+    <section class="v2-page-sec" aria-labelledby="ilgili">
+      <h2 id="ilgili" class="v2-page-sec-h">{relatedHeading}</h2>
+      <div class="v2-rel">
+        {related.map((r) => (
+          <a class="card v2-rel-card" href={r.href}>
+            <span class="v2-rel-t">{r.label}</span>
+            {r.text && <span class="v2-rel-p">{r.text}</span>}
+            <span class="v2-arrow" aria-hidden="true"><span class="v2-arrow-t">{s.more}</span><i></i></span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="v2-closing" style="padding-top: clamp(72px, 10vw, 120px);">
+    <div class="cam cam--kisa" data-kavis="kapanis">
+      <div class="cam-in v2-page-cta">
+        <div class="v2-page-cta-in">
+          <slot name="cta" />
+          <a class="btn v2-btn-cizgi" {...cta}>{ctaLabel}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<AnalizDialog locale={locale} email={email} />
+
+<Footer locale={locale} email={email} />
+
+<script is:inline>
+  // İçindekilerde okunan bölüm işaretlenir
+  (function () {
+    var linkler = document.querySelectorAll('.v2-toc a');
+    if (!linkler.length || !('IntersectionObserver' in window)) return;
+    var bul = function (id) { return document.querySelector('.v2-toc a[href="#' + id + '"]'); };
+    var io = new IntersectionObserver(function (girdiler) {
+      girdiler.forEach(function (g) {
+        if (!g.isIntersecting) return;
+        linkler.forEach(function (a) { a.removeAttribute('aria-current'); });
+        var a = bul(g.target.id);
+        if (a) a.setAttribute('aria-current', 'true');
+      });
+    }, { rootMargin: '0px 0px -70% 0px' });
+    linkler.forEach(function (a) { var h = document.getElementById(a.getAttribute('href').slice(1)); if (h) io.observe(h); });
+  })();
+</script>
+
+</BaseLayout>

@@ -5,34 +5,39 @@ import { routePath } from '../../../i18n/routes';
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'TEST', title: 'Önce adınızı aratın', text: 'Adınızı tırnak içinde aratın. Sağda profil kartı çıkmıyorsa profiliniz yayında yok, sıralamaya bakmak için erken.' },
+  { label: 'DOĞRULAMA', title: 'Doğrulanmayan görünmez', text: 'Panelde “Doğrulama gerekiyor” ya da “İnceleniyor” yazıyorsa profil, ne kadar dolu olursa olsun aramada çıkmaz.' },
+  { label: 'KATEGORİ', title: 'İlk şüpheli kategori', text: 'Adınızla çıkıp hizmet aramasında yoksanız birincil kategoriye bakın. İlk üçteki rakiplerinizinkiyle karşılaştırın.' },
+  { label: 'MESAFE', title: 'Arayanın konumu', text: 'Harita sırası arayanın nerede durduğuna göre değişir. İşletmenizin içinden, kendi telefonunuzla bakmak yanıltır.' },
+];
+
 const toc = [
-  { id: 'once', label: 'Önce doğru soruyu sorun' },
-  { id: 'var-mi', label: '1. Profil gerçekten var mı?' },
-  { id: 'dogrulama', label: '2. Doğrulama tamamlandı mı?' },
-  { id: 'askiya', label: '3. Profil askıya alınmış olabilir' },
-  { id: 'kategori', label: '4. Yanlış kategoridesiniz' },
-  { id: 'yakinlik', label: '5. Aradığınız yerden uzaktasınız' },
-  { id: 'rekabet', label: '6. Çıkıyorsunuz ama aşağıdasınız' },
-  { id: 'kopya', label: '7. Kopya profil var' },
-  { id: 'site', label: '8. Organik sonuçlarda da yoksanız' },
+  { id: 'iki-durum', label: 'İki farklı sorun' },
+  { id: 'yayinda', label: 'Profil yayında mı?' },
+  { id: 'askiya', label: 'Askıya alınma' },
+  { id: 'kopya', label: 'Kopya profil' },
+  { id: 'kategori', label: 'Yanlış kategori' },
+  { id: 'ilk-uc', label: 'İlk üçün gerisinde' },
+  { id: 'site', label: 'Normal sonuçlar' },
 ];
 
 const faq = [
   {
-    q: 'Profilimi ben görüyorum ama müşterilerim göremiyor, neden?',
-    a: 'Google, kendi işletmenizi size gösterme eğilimindedir: hesabınız profille ilişkili ve arama geçmişiniz sizi tanır. Ayrıca sonuçlar arayanın konumuna göre değişir. Gerçek durumu görmek için gizli sekmede, oturum kapalıyken ve farklı bir konumdan arama yapın — ya da şehre yayılmış grid ölçümü kullanın.',
+    q: 'Profilimi ben görüyorum, müşterilerim neden göremiyor?',
+    a: 'Çünkü Google size kendi işletmenizi daha kolay gösterir ve sonuç arayanın konumuna göre değişir. Gerçek durumu görmek için gizli sekmede, oturum kapalıyken ve işletmenizden uzak bir noktadan bakın. Bölgenin tamamını görmek içinse çevrenizin farklı noktalarından ölçüm gerekir.',
   },
   {
-    q: 'Yeni açtım, ne kadar beklemeliyim?',
-    a: 'Doğrulama tamamlandıktan sonra profilin oturması genelde birkaç gün ile birkaç hafta sürer. Bu dönemde sıralama dalgalanır. İlk haftalarda büyük değişiklikler yapmayın; oturmakta olan bir tabloyu bozmak, düzelmesini geciktiriyor.',
+    q: 'Profili yeni açtım, ne kadar beklemeliyim?',
+    a: 'Doğrulamadan sonra profilin oturması birkaç gün ile birkaç hafta arası sürer ve bu sürede sıra dalgalanır. İlk haftalarda ad, adres ve kategoriye dokunmayın. Oturmakta olan profili bozmak düzelmeyi geciktirir.',
   },
   {
-    q: 'Adresimi gizlersem görünürlüğüm artar mı?',
-    a: 'Hayır, azalır. Müşteri kabul ettiğiniz bir adresiniz varsa adresi göstermek doğru olan. Adressiz profiller "yakınımdaki" aramalarında ve harita üzerinde gösterim açısından dezavantajlı. Adresi yalnızca gerçekten müşteri kabul etmiyorsanız gizleyin.',
+    q: 'Adresimi gizlersem daha geniş alanda çıkar mıyım?',
+    a: 'Hayır. Adressiz profil “yakınımdaki” aramalarında geri düşer ve Google sırayı yine gizli adresinize olan yakınlığa göre hesaplar. Müşteri kabul ettiğiniz bir yer varsa adresi gösterin.',
   },
   {
-    q: 'İşletme adıma anahtar kelime eklesem çıkar mıyım?',
-    a: 'Kısa vadede işe yarayabilir ama Google’ın kurallarına aykırı: ad, gerçek dünyadaki işletme adı olmalı. Rakip bildirimiyle kaldırılabilir ve tekrarında profil askıya alınabilir. Kalıcı görünürlüğü buna dayandırmayın.',
+    q: 'İşletme adıma keyword eklesem çıkar mıyım?',
+    a: 'Kısa süre çıkabilirsiniz ama Google’ın kurallarına aykırı: ad, gerçek dünyada kullandığınız ad olmalı. Bir rakip bildirince ad düzeltilir, tekrarında profil askıya alınabilir. Biz müşterilerimizin profilinde bunu yapmıyoruz.',
   },
 ];
 ---
@@ -41,196 +46,200 @@ const faq = [
   locale={locale}
   route="guides/not-showing"
   title="İşletmem Google’da Çıkmıyor: 8 Sebep ve Çözümü | Wiserrise"
-  description="Google Haritalar ve aramada işletmeniz görünmüyorsa sebebi sekiz başlıktan biri. Hangi kontrolü hangi sırayla yapacağınızı gösteren teşhis akışı."
-  eyebrow="Rehber"
-  h1="İşletmem Google’da çıkmıyor"
-  lede="Bu şikâyetin arkasında genelde sekiz sebepten biri var. Aşağıdaki sırayla ilerleyin — üstteki maddeler hem daha yaygın hem de doğrulaması daha hızlı."
+  description="İşletmeniz Google Haritalar’da ya da aramada çıkmıyorsa sebep sekiz başlıktan biri. Hangi kontrolü hangi sırayla yapacağınızı anlattık."
+  eyebrow="REHBER · GÖRÜNÜRLÜK"
+  h1="İşletmeniz Google’da neden çıkmıyor?"
+  crumb="Google’da çıkmıyor"
+  lede="İşletmeniz Google’da çıkmıyorsa iki ihtimal var: ya profiliniz yayında yok ya da yayında ama ilk üçün gerisinde kalıyor. Hangisi olduğunu adınızı aratarak bir dakikada anlarsınız. Aşağıda sekiz sebebi, en hızlı kontrol edilenden başlayarak sırayla eliyoruz."
   schemaType="article"
   datePublished="2026-08-01"
+  dateModified="2026-11-06"
   breadcrumb={[
     { label: 'Ana Sayfa', href: '/tr' },
-    { label: 'Rehber', href: p('guides') },
+    { label: 'Rehberler', href: p('guides') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Profil doğrulama sorunları', href: p('guides/verification') },
-    { label: 'Google Haritalar’da üst sıraya çıkma', href: p('guides/rank-higher') },
-    { label: 'Ücretsiz profil denetimi', href: p('tools/gbp-audit') },
+    { label: 'Profil doğrulama sorunları', href: p('guides/verification'), text: 'Kart gelmediyse ya da video reddedildiyse her durumda ne yapacağınızı anlattık.' },
+    { label: 'Google Haritalar’da üst sıraya çıkma', href: p('guides/rank-higher'), text: 'Rakiplerinizle aradaki farkı hangi sırayla kapatacağınızı anlatıyor.' },
+    { label: 'Google İşletme Profili nasıl açılır?', href: p('guides/create-profile'), text: 'Profiliniz hiç yoksa adres kararından ilk güne kadar kurulum adımları.' },
+    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp'), text: 'Kategori, hizmet yapısı, yorum ve gönderileri birlikte yönetiriz.' },
   ]}
-  ctaLabel="Profilimi Ücretsiz Denetle →"
+  relatedHeading="İlgili sayfalar"
+  ctaLabel="Profilinizi ücretsiz denetleyin"
   ctaHref={p('tools/gbp-audit')}
 >
-  <h2 id="once">Önce doğru soruyu sorun</h2>
+  <h2 id="iki-durum">Hiç mi çıkmıyorsunuz, aşağıda mı kalıyorsunuz?</h2>
 
   <p>
-    "Çıkmıyorum" iki tamamen farklı durumu anlatabilir ve karıştırılması boşa efora yol
-    açar:
+    “Google’da çıkmıyorum” cümlesi iki ayrı sorunu anlatır ve ikisinin çözümü birbirine benzemez. Önce hangisini
+    yaşadığınızı bulun.
+  </p>
+
+  <p>
+    Diyelim ki Bornova’da Ege Yıldız Oto Ekspertiz adında bir işletmeniz var. “Ege Yıldız Oto Ekspertiz” yazınca
+    profiliniz sağda çıkıyor, “oto ekspertiz Bornova” yazınca haritadaki üç işletmenin arasında yoksunuz.
+  </p>
+
+  <p>
+    Bu bir sıralama sorunu. Profiliniz yerinde duruyor, sadece rakiplerin gerisinde kalıyor.
   </p>
 
   <ul>
     <li>
-      <strong>Hiç çıkmıyorum.</strong> Adınızı birebir arattığınızda bile profil görünmüyor.
-      Bu bir varlık veya doğrulama sorunudur — 1'den 4'e kadar olan maddelere bakın.
+      <strong>Adınızla da çıkmıyorsunuz.</strong> Profil ya yok, ya doğrulanmamış, ya askıya alınmış ya da kopyası var.
+      Aşağıdaki ilk üç başlık sizin için.
     </li>
     <li>
-      <strong>Adımla çıkıyorum ama hizmet aramasında yokum.</strong> "Ahmet Oto Ekspertiz"
-      yazınca çıkıyorsunuz, "oto ekspertiz" yazınca yoksunuz. Bu bir sıralama sorunudur —
-      4'ten 6'ya kadar olan maddeler.
+      <strong>Adınızla çıkıyorsunuz, hizmet aramasında yoksunuz.</strong> Kategori, mesafe ve rakiplerle aradaki fark
+      başlıklarına geçin.
     </li>
   </ul>
 
   <div class="callout">
     <p>
-      <strong>Test ederken kendi telefonunuzu kullanmayın.</strong> Google kendi işletmenizi
-      size gösterme eğilimindedir ve sonuçlar bulunduğunuz noktaya göre değişir. Gizli
-      sekmede, oturum kapalıyken bakın.
+      <strong>Kendi telefonunuzla test etmeyin.</strong> Google, profile bağlı hesaba kendi işletmesini daha kolay
+      gösterir ve sonuç bulunduğunuz noktaya göre değişir. Gizli sekmede, oturum kapalıyken ve işletmenizden uzak bir
+      yerden bakın.
     </p>
   </div>
 
-  <h2 id="var-mi">1. Profil gerçekten var mı?</h2>
+  <h2 id="yayinda">Profiliniz gerçekten yayında mı?</h2>
 
   <p>
-    Şaşırtıcı biçimde sık: işletme sahibi profili "açtığını" sanıyor ama süreç yarıda
-    kalmış. Kontrol etmenin en hızlı yolu, Google'da işletme adınızı tırnak içinde tam
-    olarak aratmak. Sağda bilgi paneli çıkmıyorsa profil ya yok ya da yayında değil.
+    En hızlı kontrol için Google’da işletme adınızı tırnak içinde, tabelada yazdığı gibi aratın. Sağda profil kartı
+    çıkmıyorsa profil ya hiç açılmamış ya da yayına girmemiş.
   </p>
 
   <p>
-    Yoksa: <a href={p('guides/create-profile')}>profil açma rehberine</a> geçin. Açarken
-    en kritik karar adres gösterip göstermeyeceğiniz — o rehberde ayrıntısıyla anlatılıyor.
-  </p>
-
-  <h2 id="dogrulama">2. Doğrulama tamamlandı mı?</h2>
-
-  <p>
-    Doğrulanmamış profil yayına çıkmaz. Yönetim panelinde "Doğrulama gerekiyor" veya
-    "İnceleniyor" uyarısı varsa profil arama sonuçlarında görünmez, ne kadar iyi
-    doldurulmuş olursa olsun.
+    Bu şaşırtıcı derecede sık oluyor: işletme sahibi profili açtığını düşünüyor ama süreç yarıda kalmış. Hiç
+    profiliniz yoksa <a href={p('guides/create-profile')}>profil açma rehberine</a> geçin.
   </p>
 
   <p>
-    Doğrulama kartı gelmediyse, video doğrulaması reddedildiyse veya süreç takıldıysa
-    <a href={p('guides/verification')}>doğrulama sorunları rehberinde</a> her senaryo için
-    ne yapılacağı yazıyor.
+    Profil varsa yönetim paneline girin. “Doğrulama gerekiyor” ya da “İnceleniyor” uyarısı görüyorsanız profil aramada
+    çıkmaz, ne kadar özenle doldurulmuş olursa olsun. Kart gelmediyse ya da video reddedildiyse
+    <a href={p('guides/verification')}>doğrulama sorunları rehberinde</a> her durumu ayrı ayrı anlattık.
   </p>
 
-  <h2 id="askiya">3. Profil askıya alınmış olabilir</h2>
+  <h2 id="askiya">Profiliniz askıya alınmış olabilir mi?</h2>
 
   <p>
-    Askıya alınan profil aramadan tamamen kaybolur ve çoğu işletme sahibi bunu bildirim
-    gelmediği için fark etmez. Panelde "Askıya alındı" ibaresi görünür.
+    Olabilir ve bunu çoğu işletme sahibi geç fark eder, çünkü ortada bir bildirim görmez. Askıya alınan profil aramadan
+    tamamen kaybolur, panelde “Askıya alındı” yazar.
   </p>
 
-  <p>En sık sebepler:</p>
+  <p>Askıya alınmanın en sık sebepleri:</p>
 
   <ul class="checklist">
-    <li>İşletme adına anahtar kelime eklenmesi ("Ahmet Diş — Antalya İmplant Uzmanı")</li>
-    <li>Sanal ofis veya kargo kutusu adresi kullanılması</li>
-    <li>Adres, kategori ve ad alanlarının kısa sürede üst üste değiştirilmesi</li>
-    <li>Aynı adreste birden fazla profil açılması</li>
-    <li>Politikaya aykırı sektörlerde veya hizmet tanımlarında faaliyet</li>
+    <li>İşletme adına keyword eklemek (“Ege Yıldız Oto Ekspertiz Bornova Hasar Tespiti” gibi)</li>
+    <li>Sanal ofis ya da kargo kutusu adresi kullanmak</li>
+    <li>Ad, adres ve kategoriyi kısa sürede üst üste değiştirmek</li>
+    <li>Aynı adreste birden fazla profil açmak</li>
+    <li>Google’ın kurallarına aykırı bir alanda ya da hizmet tanımıyla faaliyet göstermek</li>
   </ul>
 
   <p>
-    Askıya alınmışsa yapılacak şey, ihlal sebebini düzeltip yeniden inceleme talebi
-    açmak. Düzeltmeden talep açmak süreci uzatıyor. Yeni profil açmak ise en kötü hamle:
-    kopya profil olarak işaretlenip o da askıya alınıyor.
-  </p>
-
-  <h2 id="kategori">4. Yanlış kategoridesiniz</h2>
-
-  <p>
-    Bu, "adımla çıkıyorum ama hizmet aramasında yokum" durumunun bir numaralı sebebi.
-    Birincil kategori, Google'ın "bu işletme şu işi yapar" bilgisini aldığı en güçlü
-    sinyal. Yanlışsa, hizmet sorgularının değerlendirme havuzuna hiç girmiyorsunuz.
+    Yapılacak iş sırayla belli: önce sebebi düzeltin, sonra yeniden inceleme talebi açın. Düzeltmeden açılan talep
+    süreci uzatır.
   </p>
 
   <p>
-    En sık gördüğümüz örnek: arabuluculuk da yapan bir avukatın birincil kategoriyi
-    "Arabulucu" seçmesi. Bu seçim, hacmin ezici çoğunluğunu oluşturan "avukat"
-    sorgularındaki görünürlüğü baskılıyor. Aynı hata fizyoterapistlerde "Masaj terapisti",
-    medikal estetikte "Güzellik salonu" seçilerek yapılıyor.
+    Yeni profil açmak en kötü hamle. Yeni kayıt kopya olarak işaretlenir, o da askıya alınır ve elinizde iki sorunlu
+    profil kalır. İtiraz adımlarını <a href={p('guides/verification')}>doğrulama rehberinde</a> anlattık.
+  </p>
+
+  <h2 id="kopya">Aynı işletmenin iki profili mi var?</h2>
+
+  <p>
+    Aynı işletme için iki profil varsa Google hangisini göstereceğine karar veremez ve ikisini de zayıflatır. Kopyaların
+    çoğunu kimse bilerek açmamıştır: eski bir sahip, bir çalışan ya da bir dizinin otomatik kaydı yaratmıştır.
   </p>
 
   <p>
-    Kontrol yöntemi basit: hedef sorgunuzu aratıp ilk üçe çıkan işletmelerin kategorisine
-    bakın. Sizinkinden farklıysa sebep büyük olasılıkla bu. Ayrıntısı
-    <a href={p('services/gbp')}>profil yönetimi sayfasında</a>.
+    Kontrol için Haritalar’da önce adınızı, sonra telefon numaranızı ayrı ayrı aratın. Kopya çıkarsa doğru profil
+    üzerinden yinelenen kaydı bildirin ve birleştirilmesini isteyin. Birleştirmek silmekten daha güvenli, çünkü birleşen
+    profil yorumlarını da taşır.
   </p>
 
-  <h2 id="yakinlik">5. Aradığınız yerden uzaktasınız</h2>
+  <h2 id="kategori">Kategoriniz aradığınız hizmetle eşleşiyor mu?</h2>
 
   <p>
-    Yerel sıralamada mesafe belirleyici bir girdi. Şehrin bir ucundan arattığınızda
-    çıkmıyor olmanız, sorun olduğu anlamına gelmeyebilir — o noktada size daha yakın
-    işletmeler var demektir.
-  </p>
-
-  <p>
-    Burada asıl mesele, gerçekten müşteri gelebilecek yarıçapta ne durumda olduğunuz.
-    Tesisinizin bulunduğu noktada birinci olup 4 km ötede ilk yirmide olmamak, oto
-    ekspertiz gibi mahalle ölçeğinde çalışan işletmelerde sık görülen ve ölçmeden fark
-    edilemeyen bir tablo. Şehre yayılmış
-    <a href={p('services/rank-tracking')}>grid ölçümü</a> tam olarak bunu gösteriyor.
-  </p>
-
-  <h2 id="rekabet">6. Çıkıyorsunuz ama aşağıdasınız</h2>
-
-  <p>
-    Dördüncü sıradaki işletme, teknik olarak "birinci sayfada" olsa bile pratikte
-    görünmez — çünkü harita paketi üç işletme gösteriyor. Bu durumdaysanız sorun varlık
-    değil, güç.
+    Adınızla çıkıp hizmet aramasında yoksanız ilk bakacağımız yer birincil kategori. Google “bu işletme ne iş yapar”
+    bilgisini en çok buradan alır. Kategori yanlışsa o hizmetin aramalarında yarışa hiç girmezsiniz.
   </p>
 
   <p>
-    Bakılacak yer, ilk üçtekilerle aranızdaki fark: değerlendirme sayısı ve ortalaması,
-    profil yaşı, foto ve post tazeliği, hizmet listesinin genişliği, sitenin hangi
-    sorgularda sıralandığı. Çoğu vakada fark tahmin edilenden basit çıkıyor — genelde
-    yorum hacmi.
-    <a href={p('guides/rank-higher')}>Üst sıraya çıkma rehberi</a> bu farkı kapatmanın
-    sırasını anlatıyor.
-  </p>
-
-  <h2 id="kopya">7. Kopya profil var</h2>
-
-  <p>
-    Aynı işletme için birden fazla profil varsa Google hangisini göstereceğine karar
-    veremez ve genelde ikisini de zayıflatır. Kopyalar çoğu zaman kasıtlı açılmaz:
-    eski bir sahip, bir çalışan ya da otomatik bir dizin kaydı yaratmış olur.
+    Diyelim ki arabuluculuk da yapan bir avukatsınız ve birincil kategoriyi “Arabulucu” seçtiniz. Bu seçim, aramaların
+    asıl hacmini taşıyan “avukat” aramalarında sizi geri iter. Aynı hata fizyoterapistlerde “Masaj terapisti”, medikal
+    estetikte “Güzellik salonu” seçilerek yapılıyor.
   </p>
 
   <p>
-    Kontrol için işletme adınızı ve telefon numaranızı ayrı ayrı Haritalar'da aratın.
-    Kopya bulursanız, doğru profil üzerinden "yinelenen içerik" bildirimi yapıp
-    birleştirilmesini isteyin. Kopyayı silmeye çalışmak yerine birleştirmek daha
-    güvenli — birleşen profil değerlendirmelerini de taşıyor.
+    Kontrolü basit: hedef aramanızı Haritalar’da aratın ve ilk üçteki işletmelerin kategorisine bakın. Sizinki
+    farklıysa sebebi büyük ihtimalle buldunuz. Kategori ve hizmet yapısını nasıl kurduğumuzu
+    <a href={p('services/gbp')}>Google İşletme Profili yönetimi</a> sayfasında anlattık.
   </p>
 
-  <h2 id="site">8. Organik sonuçlarda da yoksanız</h2>
+  <h2 id="ilk-uc">Çıkıyorsunuz ama ilk üçte yok musunuz?</h2>
 
   <p>
-    Buraya kadarki maddeler harita paketiyle ilgiliydi. Haritanın altındaki klasik
-    sonuçlarda da hiç görünmüyorsanız, sorun profilde değil sitede olabilir: sayfa
-    indekslenmemiş, yanlışlıkla engellenmiş ya da site hiç taranamıyor olabilir.
+    Haritada dördüncü sıradaysanız pratikte görünmüyorsunuz, çünkü harita kutusu üç işletme gösterir. Burada iki şeye
+    bakarız: arayanın size uzaklığı ve rakiplerinizle aranızdaki fark.
+  </p>
+
+  <h3>Arayan size ne kadar uzak?</h3>
+
+  <p>
+    Yerel sıralamada mesafe belirleyici. Şehrin öbür ucundan aratınca çıkmamanız normal: o noktada size daha yakın
+    işletmeler var.
   </p>
 
   <p>
-    En hızlı kontrol: Google'da <code>site:alanadiniz.com</code> aratın. Hiç sonuç
-    dönmüyorsa siteniz indeks dışı. Sebeplerini ve düzeltme sırasını
-    <a href={p('services/technical-seo')}>teknik SEO sayfasında</a> anlattık.
+    Asıl soru, müşterinin gerçekten gelebileceği alanda kaçıncı olduğunuz. Bir oto ekspertiz işletmesi kapısının önünde
+    birinci çıkıp 4 km ötede ilk yirmiye giremeyebilir ve bunu tek noktadan bakarak göremezsiniz. Çevrenizin farklı
+    noktalarında kaçıncı çıktığınızı <a href={p('services/rank-tracking')}>bölgenizden ölçüm</a> ile görürüz.
+  </p>
+
+  <h3>Rakiplerinizden nerede geridesiniz?</h3>
+
+  <p>
+    İlk üçteki işletmelerle profilinizi yan yana koyun. Karşılaştıracağınız yerler: yorum sayısı ve ortalaması, profilin
+    yaşı, fotoğraf ve gönderi tazeliği, hizmet listesinin genişliği, sitenin hangi aramalarda çıktığı.
+  </p>
+
+  <p>
+    Baktığımız profillerde fark en sık yorum sayısında çıkıyor. Farkı hangi sırayla kapatacağınızı
+    <a href={p('guides/rank-higher')}>Haritalar’da üst sıraya çıkma rehberinde</a>, yorum tarafını
+    <a href={p('guides/more-reviews')}>yorum rehberinde</a> anlattık.
+  </p>
+
+  <h2 id="site">Haritanın altındaki sonuçlarda da yok musunuz?</h2>
+
+  <p>
+    Buraya kadarki sebepler haritayla ilgiliydi. Haritanın altındaki normal sonuçlarda da hiç yoksanız sorunu sitenizde
+    arayın: sayfalar indekslenmemiş, yanlışlıkla engellenmiş ya da site taranamıyor olabilir.
+  </p>
+
+  <p>
+    En hızlı kontrol için Google’a “site:alanadiniz.com” yazın. Hiç sonuç çıkmıyorsa siteniz indekste yok. Sebeplerini
+    ve düzeltme sırasını <a href={p('services/technical-seo')}>teknik SEO</a> sayfasında anlattık.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Sırayla ilerleyin, hepsini birden değiştirmeyin.</strong> Kategori, ad ve
-      adres alanlarını kısa sürede üst üste değiştirmek profilin askıya alınma sebeplerinden
-      biri. Bir düzeltme yapın, birkaç gün bekleyin, sonucu ölçün, sonra bir sonrakine geçin.
+      <strong>Hepsini aynı gün değiştirmeyin.</strong> Ad, adres ve kategoriyi kısa sürede üst üste değiştirmek askıya
+      alınma sebeplerinden biri. Her düzeltmeden sonra birkaç gün bekleyip sonucu ölçün, sıradakine ondan sonra geçin.
     </p>
   </div>
 
   <Fragment slot="cta">
-    <h2>Hangi maddede takıldığınızı <span class="highlight">bilmiyorsanız</span></h2>
-    <p>Ücretsiz denetim aracı 10 soruda profilinizin hangi alanda zayıf olduğunu söylüyor.</p>
+    <h2>Sorun profilinizin <span class="highlight">neresinde</span>?</h2>
+    <p>
+      Ücretsiz denetim aracı 10 soruda profilinizi kategori, yorumlar, tazelik ve site bağlantısı başlıklarında puanlar.
+      Sonucu hemen ekranda görürsünüz, <span style="white-space: nowrap;">e-posta</span> istemiyoruz.
+    </p>
   </Fragment>
 </ContentLayout>

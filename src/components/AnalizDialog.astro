@@ -5,68 +5,86 @@
  * Sayfadaki bütün "Ücretsiz analiz" bağlantıları (`data-analiz`) ve hero'daki
  * site kutusu bu pencereyi açar. Form, eski ana sayfadaki formla aynı:
  * `id="applyForm"`, aynı Formspree adresi, aynı alan adları. Gönderim, dönüşüm
- * olayı (`audit_request`) ve /tr/success yönlendirmesi /js/script.js'te kalıyor.
+ * olayı (`audit_request`) ve dile göre /success yönlendirmesi /js/script.js'te kalıyor.
  *
  * JS yoksa: bağlantılar #analiz-formu'na gider, `:target` kuralı pencereyi
  * sayfa içinde normal blok olarak gösterir.
+ *
+ * Hizmet seçimi: kutuların adı yok, seçilenler virgülle birleşip tek `services`
+ * alanıyla gider; gelen e-postada tek satır olarak okunur.
+ * `data-hizmet="gads"` taşıyan bağlantı pencereyi o hizmet seçili açar.
  */
+import { legalLinksFor } from '../data/legal';
+import type { Locale } from '../i18n/config';
+import { v2ui } from '../i18n/v2';
+
 interface Props {
+  locale: Locale;
   email: string;
 }
-const { email } = Astro.props;
+const { locale, email } = Astro.props;
+const d = v2ui[locale].dialog;
+const legal = legalLinksFor(locale)[0];
 ---
 
 <dialog id="analiz-formu" class="v2-dialog" aria-labelledby="analizTitle">
-  <button type="button" class="v2-dialog-close" data-close aria-label="Kapat">×</button>
-  <span class="v2-eyebrow">ÜCRETSİZ ANALİZ</span>
-  <h2 id="analizTitle" class="v2-dialog-title">İşletmenizi tüm kanallarda inceleyelim.</h2>
-  <p class="v2-dialog-lead">
-    Haritada, aramada, reklamda ve süper zekâ yanıtlarında bugün nerede durduğunuzu çıkarırız.
-    Yol haritanız 24 saat içinde e-postanızda. Ücret yok, taahhüt yok.
-  </p>
+  <button type="button" class="v2-dialog-close" data-close aria-label={d.close}>×</button>
+  <span class="v2-eyebrow">{d.eyebrow}</span>
+  <h2 id="analizTitle" class="v2-dialog-title">{d.title}</h2>
+  <p class="v2-dialog-lead">{d.lead}</p>
 
   <form id="applyForm" class="v2-form" action="https://formspree.io/f/mlgpzokq" method="POST">
+    <fieldset class="v2-field v2-field--wide v2-urgency">
+      <legend>{d.services} <span class="v2-field-hint">{d.servicesHint}</span></legend>
+      <div class="v2-urgency-options">
+        {d.serviceOptions.map((o) => (
+          <>
+            <input type="checkbox" id={`hz-${o.key}`} value={o.label} data-hizmet={o.key} />
+            <label for={`hz-${o.key}`}>{o.label}</label>
+          </>
+        ))}
+      </div>
+      <input type="hidden" id="auditServices" name="services" />
+    </fieldset>
     <div class="v2-field v2-field--wide">
-      <label for="auditMaps">Web siteniz ya da Google Haritalar bağlantınız</label>
-      <input type="text" id="auditMaps" name="maps_url" autocomplete="url" placeholder="isletmeniz.com ya da https://maps.app.goo.gl/..." />
+      <label for="auditMaps">{d.site}</label>
+      <input type="text" id="auditMaps" name="maps_url" autocomplete="url" placeholder={d.sitePh} />
     </div>
     <div class="v2-field">
-      <label for="auditName">Ad soyad *</label>
+      <label for="auditName">{d.name}</label>
       <input type="text" id="auditName" name="name" autocomplete="name" required />
     </div>
     <div class="v2-field">
-      <label for="auditCompany">İşletme adı *</label>
+      <label for="auditCompany">{d.company}</label>
       <input type="text" id="auditCompany" name="company" autocomplete="organization" required />
     </div>
     <div class="v2-field">
-      <label for="auditEmail">E-posta *</label>
+      <label for="auditEmail">{d.email}</label>
       <input type="email" id="auditEmail" name="email" autocomplete="email" required />
     </div>
     <div class="v2-field">
-      <label for="auditPhone">Telefon *</label>
+      <label for="auditPhone">{d.phone}</label>
       <input type="tel" id="auditPhone" name="phone" autocomplete="tel" required />
     </div>
-    <div class="v2-field v2-field--wide">
-      <label for="auditCity">Şehir *</label>
-      <input type="text" id="auditCity" name="city" autocomplete="address-level2" required />
-    </div>
     <fieldset class="v2-field v2-field--wide v2-urgency">
-      <legend>Ne zaman başlamak istersiniz? *</legend>
+      <legend>{d.when}</legend>
       <div class="v2-urgency-options">
-        <input type="radio" id="urgToday" name="urgency" value="Bugün" required />
-        <label for="urgToday">Bugün</label>
-        <input type="radio" id="urgTomorrow" name="urgency" value="Yarın" />
-        <label for="urgTomorrow">Yarın</label>
-        <input type="radio" id="urgWeeks" name="urgency" value="Birkaç hafta içinde" />
-        <label for="urgWeeks">Birkaç hafta</label>
+        {d.urgency.map((u, i) => (
+          <>
+            <input type="radio" id={`urg${i}`} name="urgency" value={u.value} required={i === 0} />
+            <label for={`urg${i}`}>{u.label}</label>
+          </>
+        ))}
       </div>
     </fieldset>
-    <button type="submit" class="btn v2-submit">Ücretsiz Analizimi Al →</button>
+    <button type="submit" class="btn v2-submit">{d.submit}</button>
   </form>
 
   <p class="v2-dialog-note">
-    Her şehir ve sektörde yalnızca bir işletmeyle çalışıyoruz. Sorunuz mu var?
-    <a href={`mailto:${email}`}>{email}</a>
+    {d.one} <a href={`mailto:${email}`}>{email}</a>
+  </p>
+  <p class="v2-dialog-note">
+    {d.data} <a href={legal.href}>{legal.label}</a>.
   </p>
 </dialog>
 
@@ -75,9 +93,29 @@ const { email } = Astro.props;
     var dlg = document.getElementById('analiz-formu');
     if (!dlg || typeof dlg.showModal !== 'function') return;
     var site = document.getElementById('auditMaps');
+    var kutular = Array.prototype.slice.call(dlg.querySelectorAll('input[data-hizmet]'));
+    var secilen = document.getElementById('auditServices');
 
-    function open(prefill) {
+    function birlestir() {
+      secilen.value = kutular.filter(function (k) { return k.checked; }).map(function (k) { return k.value; }).join(', ');
+    }
+    // "Emin değilim" ile diğer hizmetler birlikte seçilmez
+    kutular.forEach(function (k) {
+      k.addEventListener('change', function () {
+        if (k.checked) kutular.forEach(function (o) {
+          if (o !== k && (k.dataset.hizmet === 'unsure' || o.dataset.hizmet === 'unsure')) o.checked = false;
+        });
+        birlestir();
+      });
+    });
+
+    function open(prefill, hizmet) {
       if (prefill && site) site.value = prefill;
+      var kutu = hizmet && dlg.querySelector('input[data-hizmet="' + hizmet + '"]');
+      if (kutu && !kutu.checked) {
+        kutu.checked = true;
+        kutu.dispatchEvent(new Event('change'));
+      }
       if (!dlg.open) dlg.showModal();
       var first = dlg.querySelector(prefill ? '#auditName' : '#auditMaps');
       if (first) first.focus();
@@ -86,7 +124,7 @@ const { email } = Astro.props;
     document.querySelectorAll('[data-analiz]').forEach(function (a) {
       a.addEventListener('click', function (e) {
         e.preventDefault();
-        open();
+        open(null, a.getAttribute('data-hizmet'));
       });
     });
 

@@ -1,0 +1,111 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import HubCards from '../../../components/v2/HubCards.astro';
+import { routePath } from '../../../i18n/routes';
+import { guidesFor } from '../../../data/guides';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const faq = [
+  {
+    q: 'Kann ich die Arbeit mit diesen Ratgebern selbst erledigen?',
+    a: 'Ja, dafür haben wir sie geschrieben. Schwierig wird es bei der Ausdauer: den Fluss an Bewertungen am Laufen halten und regelmäßig sehen, was sich in Ihrer Gegend verändert. Wenn Sie irgendwo hängen bleiben, können Sie eine kostenlose Analyse anfordern.',
+  },
+  {
+    q: 'Wann werden die Ratgeber aktualisiert?',
+    a: 'Sobald Google seine Oberfläche oder seine Regeln ändert. Das Datum der letzten Aktualisierung steht am Anfang jedes Ratgebers. Wenn Sie einen veralteten Schritt entdecken, schreiben Sie uns, wir korrigieren ihn.',
+  },
+  {
+    q: 'Warum beziehen sich die Ratgeber auf die Türkei?',
+    a: 'Wir haben sie für die Situationen geschrieben, mit denen Unternehmen in der Türkei zu tun haben. Verifizierungsschritte, Kategorienamen und der Ablauf beim Support ändern sich von Land zu Land. Eine Anleitung, die das übergeht, würde falsche Angaben machen.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="guides"
+  title="Lokale SEO: Ratgeber Schritt für Schritt | Wiserrise"
+  description="Ratgeber zum Selbermachen: Google-Unternehmensprofil erstellen, Verifizierungsprobleme lösen, mehr Bewertungen bekommen, auf der Karte höher ranken."
+  eyebrow="RATGEBER"
+  h1="Ratgeber für lokale SEO, Schritt für Schritt."
+  crumb="Ratgeber"
+  lede="Vom Erstellen Ihres Google-Unternehmensprofils bis zu einem besseren Platz auf der Karte: Ratgeber, die Sie selbst umsetzen können. Wir halten keinen Schritt zurück. Das eigentlich Schwierige an lokaler SEO ist, diese Schritte monatelang ohne Pause durchzuhalten."
+  schemaType="article"
+  datePublished="2026-08-01"
+  dateModified="2026-11-06"
+  breadcrumb={[{ label: 'Startseite', href: '/de' }]}
+  faq={faq}
+  wideFirst
+  related={[
+    { label: 'Alle Leistungen', href: p('services'), text: 'Die Liste, in der Sie auf einer Seite sehen, welche Leistung welches Problem löst.' },
+    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Die Hauptleistung, bei der wir Ihr Profil und Ihre Website gemeinsam in Ordnung bringen.' },
+    { label: 'Lokale SEO nach Branchen', href: p('industries'), text: 'Wie sich die Arbeit bei Anwälten, Zahnärzten, Kliniken und Kfz-Gutachtern unterscheidet.' },
+  ]}
+  relatedHeading="Verwandte Seiten"
+  ctaLabel="Kostenlose Analyse anfordern"
+  ctaHref="/de#contact"
+>
+  <h2 id="neden">Warum halten wir keinen Schritt zurück?</h2>
+
+  <p>
+    Weil das Wissen ohnehin öffentlich ist. Google schreibt seine Regeln selbst auf und auch, worauf es auf der Karte
+    achtet.
+  </p>
+
+  <p>
+    Woran Unternehmen scheitern, ist der Rhythmus. Den Fluss an Bewertungen wochenlang am Leben zu halten und zu sehen, in
+    welchem Teil Ihrer Gegend Sie zurückliegen, erledigt sich nicht mit einmal Lesen. Wenn Sie Zeit haben, setzen Sie die
+    Ratgeber selbst um, wenn nicht, übernehmen wir diese Arbeit.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Wenn Sie den Stand Ihres Profils sofort sehen möchten,</strong> füllen Sie zuerst den <a href={p('tools/gbp-audit')}>kostenlosen
+      Profil-Check</a> aus. Er zeigt Ihnen in 10 Fragen, wo Sie schwach sind, danach wechseln Sie zum passenden Ratgeber.
+    </p>
+  </div>
+
+  <h2 id="baslangic">Mit welchem Ratgeber sollten Sie anfangen?</h2>
+
+  <p>
+    Wenn Ihr Profil bei der Suche nach Ihrem Namen gar nicht erscheint, beginnen Sie mit dem
+    <a href={p('guides/not-showing')}>Ratgeber zur fehlenden Sichtbarkeit</a>. Haben Sie noch kein Profil, gehen Sie zum
+    <a href={p('guides/create-profile')}>Ratgeber zum Erstellen</a>, hängen Sie bei der Verifizierung fest, zum
+    <a href={p('guides/verification')}>Ratgeber zur Verifizierung</a>.
+  </p>
+
+  <p>
+    Erscheint Ihr Profil, liegt auf der Karte aber hinten, ist der <a href={p('guides/rank-higher')}>Ratgeber für bessere
+    Plätze</a> der richtige. Haben Sie weniger Bewertungen als Ihre Wettbewerber, starten Sie mit dem
+    <a href={p('guides/more-reviews')}>Ratgeber zu Bewertungen</a>, denn bei den Profilen, die wir uns ansehen, liegt der
+    Unterschied am häufigsten dort.
+  </p>
+
+  <Fragment slot="wide">
+    <HubCards
+      id="rehber-listesi"
+      eyebrow="RATGEBER"
+      heading="Beginnend mit den Stellen, an denen es am häufigsten hakt."
+      items={guidesFor('de').map((g) => ({ ...g, cta: 'Ratgeber lesen' }))}
+      son={{
+        href: p('tools/gbp-audit'),
+        label: 'KOSTENLOSES TOOL',
+        title: 'Wie viele Punkte erreicht Ihr Google-Profil?',
+        text: 'Bewerten Sie Ihr Profil in 10 Fragen. Ohne Registrierung und ohne E-Mail, das Ergebnis erscheint sofort.',
+        cta: 'Tool öffnen',
+        alt: 'Profil prüfen →',
+      }}
+    />
+  </Fragment>
+
+  <Fragment slot="cta">
+    <h2>Sie wollen das <span class="highlight">nicht selbst</span> erledigen?</h2>
+    <p>
+      In der kostenlosen Analyse sehen wir uns Ihr Profil, Ihre Website und die Messung in Ihrem Umkreis an und sagen
+      Ihnen, wo Sie anfangen sollten. Das Ergebnis ist innerhalb von 24 Stunden in Ihrem
+      <span style="white-space: nowrap;">E-Mail-Postfach</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

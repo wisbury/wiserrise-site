@@ -1,0 +1,225 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'VIDEO', title: 'One take, three proofs', text: 'In a single uninterrupted take, show the location, that you do the work and that you run the business. Proof of management is the one people forget most.' },
+  { label: 'POSTCARD', title: 'Request it once', text: 'The postcard arrives within 1-3 weeks. If you request a new one while the first is on its way, the first card’s code becomes invalid and the wait gets longer.' },
+  { label: 'APPEAL', title: 'Fix the cause first', text: 'Don’t submit a review request for a suspended profile before fixing the cause. In the request, write what you fixed and attach documents.' },
+  { label: 'DUPLICATE', title: 'Don’t open a new profile', text: 'A second listing for the same business counts as a duplicate and gets suspended too. In every case, work through the existing profile.' },
+];
+
+const toc = [
+  { id: 'yontemler', label: 'Verification methods' },
+  { id: 'video', label: 'Video rejected' },
+  { id: 'kart', label: 'Postcard didn’t arrive' },
+  { id: 'askiya', label: 'Profile suspended' },
+  { id: 'sahiplik', label: 'Someone else owns the profile' },
+  { id: 'beklerken', label: 'What not to do while waiting' },
+];
+
+const faq = [
+  {
+    q: 'How long does verification take?',
+    a: 'Video verification is decided within a few days, sometimes within a few hours. A postcard can take 1-3 weeks in Turkey. If a video review has gone past two weeks, write to Google support.',
+  },
+  {
+    q: 'Is my profile visible while verification is in progress?',
+    a: 'No. An unverified profile isn’t published in search or on Maps, however complete it is.',
+  },
+  {
+    q: 'If it’s rejected, can I try again?',
+    a: 'You can, once you’ve fixed the reason for the rejection. Failed attempts in a row slow the process down.',
+  },
+  {
+    q: 'Wouldn’t it be faster to open a new profile?',
+    a: 'No, that’s the worst move. A second listing for the same business gets flagged as a duplicate and suspended too, and both listings end up in trouble. Work through the existing profile.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="guides/verification"
+  title="Google Business Profile Verification Problems | Wiserrise"
+  description="Video verification rejected, postcard never arrived, profile suspended or in someone else’s hands: what to do in each case, step by step."
+  eyebrow="GUIDE · VERIFICATION"
+  h1="How do you fix Google Business Profile verification problems?"
+  crumb="Verification problems"
+  lede="When verification gets stuck, the fix is to complete the missing requirement on the same profile. If the video was rejected, show the location, the work and the management in a single take; if the postcard didn’t arrive, check the address line and request it again once. Whatever your situation, don’t open a new profile."
+  schemaType="article"
+  datePublished="2026-08-01"
+  dateModified="2026-11-06"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Guides', href: p('guides') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'How do you create a Google Business Profile?', href: p('guides/create-profile'), text: 'The setup before verification and what to do the day the profile goes live.' },
+    { label: 'Business not showing on Google', href: p('guides/not-showing'), text: 'If the profile is verified and still not showing, rule out the eight causes one by one.' },
+    { label: 'Ranking higher on Google Maps', href: p('guides/rank-higher'), text: 'The order of work for getting a newly live profile ahead of your competitors.' },
+    { label: 'Google Business Profile Management', href: p('services/gbp'), text: 'We manage your category, service structure, reviews and posts together.' },
+  ]}
+  relatedHeading="Related pages"
+  ctaLabel="Audit your profile for free"
+  ctaHref={p('tools/gbp-audit')}
+>
+  <h2 id="yontemler">Which verification method will you get?</h2>
+
+  <p>
+    Google chooses the method: it looks at the type of business, its category and your account’s history. You may be
+    offered video, a postcard, phone, email or a live video call.
+  </p>
+
+  <p>
+    In sensitive fields like healthcare, law and finance, Google offers stricter methods and reviews the profile by hand.
+    That’s normal; the process just takes longer.
+  </p>
+
+  <h2 id="video">Why does video verification get rejected?</h2>
+
+  <p>
+    A video gets rejected when one of the proofs is missing or the recording doesn’t follow the rules. This is the method
+    where people get stuck most. It must be a single uninterrupted take and show these three proofs in order:
+  </p>
+
+  <ol>
+    <li>
+      <strong>Location.</strong> Start outside: the street, the building, the door number and the sign. For a business
+      without a sign, this is the weakest link.
+    </li>
+    <li>
+      <strong>Operations.</strong> Go inside and show that you really do the work: equipment, workspace, stock, team.
+    </li>
+    <li>
+      <strong>Management.</strong> Show that the business belongs to you: access to the cash register, your tax
+      certificate, an invoice, keys or business documents.
+    </li>
+  </ol>
+
+  <p>Reasons videos get rejected, starting with the most common:</p>
+
+  <ul class="checklist">
+    <li>The sign or door number never appears</li>
+    <li>The address doesn’t match the pin on the map, meaning you forgot to drag the pin to the right place by hand</li>
+    <li>The recording is cut or uploaded in more than one part</li>
+    <li>The proof of management is skipped</li>
+    <li>Recording at a home address and making it look as if you receive customers there</li>
+  </ul>
+
+  <div class="callout">
+    <p>
+      <strong>Rehearse before you record.</strong> Every failed attempt drags the process out. Note what you’ll show and in
+      what order, do one rehearsal, and only then move on to the real recording.
+    </p>
+  </div>
+
+  <h2 id="kart">What should you do if the postcard doesn’t arrive?</h2>
+
+  <p>
+    Check your address line first, then request a new one only once. In Turkey, the postcard arrives within 1-3 weeks.
+  </p>
+
+  <p>
+    Say your accounting office is on the third floor of an apartment building in Karşıyaka. If the address lacks the
+    apartment and floor number, if the building has no mailbox, or if the doorman or a neighbor took the postcard, it may
+    never reach you.
+  </p>
+
+  <p>
+    You can request a new postcard from the dashboard, but <strong>don’t request a second one while the first is on its
+    way</strong>. A new request invalidates the first card’s code, and the wait gets longer. Request once and wait out the
+    full period.
+  </p>
+
+  <p>
+    If the second postcard doesn’t arrive either, ask Google support for a different method. Look at your address format
+    again too: when the Turkish address structure (neighborhood, street, housing complex, block) doesn’t fit Google’s
+    form, the postcard can’t be delivered.
+  </p>
+
+  <h2 id="askiya">What should you do if your profile is suspended?</h2>
+
+  <p>
+    Find and fix the cause first, then submit a review request. A suspended profile disappears from search entirely, and
+    the dashboard says “Suspended”. Most owners notice late, because they never see a notification.
+  </p>
+
+  <ol>
+    <li>
+      <strong>Find the cause and fix it.</strong> The most common causes are keywords added to the business name, a virtual
+      office address, a name, address and category changed several times in a short period, and more than one profile at
+      the same address. Appealing without fixing only drags the process out.
+    </li>
+    <li>
+      <strong>Submit a review request.</strong> Write clearly what you fixed and attach the documents you have: tax
+      certificate, lease agreement, a photo of the sign.
+    </li>
+    <li>
+      <strong>Wait.</strong> The review takes anywhere from days to weeks. Don’t make any other changes to the profile
+      during that time.
+    </li>
+  </ol>
+
+  <p>
+    <strong>Don’t open a new profile.</strong> It’s the first move everyone thinks of when they’re stuck, and it makes
+    things worse every time. A second listing for the same business counts as a duplicate and gets suspended too.
+  </p>
+
+  <h2 id="sahiplik">How do you get a profile back from someone else?</h2>
+
+  <p>
+    With an ownership request. Find the profile on Google and click the “Own this business?” link. An agency, a former
+    employee or the person you took the business over from may have created the profile earlier.
+  </p>
+
+  <p>
+    When you submit the request, the current owner is notified and given time to respond. If they don’t respond, the way
+    to claim the profile opens up for you. If they do, a dispute process starts and you may be asked for documents.
+  </p>
+
+  <p>
+    This process can take weeks. If you have a tax certificate or a trade registry record, attach it from the start; it
+    speeds things up. Don’t try to get around the problem by opening a new profile, because that doesn’t work here either.
+  </p>
+
+  <h2 id="beklerken">What shouldn’t you do while you wait?</h2>
+
+  <p>Don’t touch the profile while verification or a review is in progress. These four moves drag things out in every case:</p>
+
+  <ul>
+    <li>
+      <strong>Changing the name, address or category.</strong> A change made during a review resets the process.
+    </li>
+    <li>
+      <strong>Opening a new profile.</strong> It counts as a duplicate, and you end up with two problem listings.
+    </li>
+    <li>
+      <strong>Starting to collect reviews.</strong> Reviews on a profile that isn’t live don’t show, and arriving as a
+      sudden pile, they can get caught by the filter.
+    </li>
+    <li>
+      <strong>Paying people who sell “guaranteed verification”.</strong> These offers rely on fake documents or fake
+      addresses. When they’re caught, the profile can be closed permanently.
+    </li>
+  </ul>
+
+  <p>
+    We list what to do once verification is done in the
+    <a href={`${p('guides/create-profile')}#ilk-gun`}>day-one section of the profile creation guide</a>.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Verification is done, so <span class="highlight">what’s next</span>?</h2>
+    <p>
+      The free audit tool shows what your profile is missing in 10 questions. For every item that comes out weak, what to
+      do appears on screen right away, along with the result.
+    </p>
+  </Fragment>
+</ContentLayout>

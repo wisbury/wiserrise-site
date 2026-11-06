@@ -1,66 +1,77 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
-import CardGrid from '../../components/CardGrid.astro';
+import HubCards from '../../components/v2/HubCards.astro';
 import { routePath } from '../../i18n/routes';
 
 const locale = 'en' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+// Main services. Sub-services (profile management, rank tracking, technical SEO, on-page SEO, content) are linked
+// from their parent service page, not listed here. Services without a page yet open the analysis dialog.
 const services = [
   {
-    icon: 'profile',
-    href: p('services/gbp'),
-    title: 'Google Business Profile Management',
-    text: 'Categories, services, photos, posts and reviews. Most of what decides your Maps ranking sits inside the profile, not the website.',
+    href: p('services/seo'),
+    label: 'SEARCH',
+    title: 'SEO',
+    text: 'The search results below the map. With technical groundwork, page structure and content we fit your site to the questions your customers search for.',
+    cta: 'View service',
   },
   {
-    icon: 'map',
     href: p('services/local-seo'),
+    label: 'MAPS',
     title: 'Local SEO',
-    text: 'The umbrella programme that points your profile, your site and your external trust signals at the same target.',
+    text: 'Your profile and your site together. The work we do to get you into the first three businesses a nearby customer sees.',
+    cta: 'View service',
   },
   {
-    icon: 'grid',
-    href: p('services/rank-tracking'),
-    title: 'Map Rank Tracking',
-    text: 'Not one average number — a 7×7 grid laid over your city, showing where you actually rank block by block.',
+    href: '#analiz-formu',
+    analiz: 'gads',
+    label: 'ADS',
+    title: 'Google Ads',
+    text: 'Search ads that spend your budget on people who are searching, asking and ready to buy.',
+    cta: 'Request an ads analysis',
   },
   {
-    icon: 'wrench',
-    href: p('services/technical-seo'),
-    title: 'Technical SEO',
-    text: 'Crawlability, indexing, speed and structured data. However good the content is, none of it ranks if these are broken.',
+    href: '#analiz-formu',
+    analiz: 'meta',
+    label: 'SOCIAL',
+    title: 'Meta Ads',
+    text: 'Ads that reach people in your area on Instagram and Facebook. They get to know you before they ever search.',
+    cta: 'Request an ads analysis',
   },
   {
-    icon: 'document',
-    href: p('services/on-page-seo'),
-    title: 'On-Page SEO',
-    text: 'Titles, content depth, internal links and search intent. Makes it unambiguous which query each page answers.',
+    href: '#analiz-formu',
+    analiz: 'backlink',
+    label: 'AUTHORITY',
+    title: 'Link building',
+    text: 'Links from relevant sites with real traffic. White-label for agencies.',
+    cta: 'See packages',
   },
   {
-    icon: 'pen',
-    href: p('services/content'),
-    title: 'Content Production',
-    text: 'Service, industry and location pages that actually answer the search — researched, reviewed and ready to publish.',
+    href: p('services/geo'),
+    label: 'AI',
+    title: 'GEO',
+    text: 'We measure which questions get you mentioned in ChatGPT, Gemini and Google’s AI answers, then work on the ones where you’re missing.',
+    cta: 'View service',
   },
 ];
 
 const faq = [
   {
-    q: 'Do I have to buy these services separately?',
-    a: 'No. Most businesses run a single combined programme under local SEO; individual services make sense when there is one specific bottleneck. The free audit tells you which applies.',
+    q: 'Can I buy the services one at a time?',
+    a: 'You can, but for most businesses one service isn’t enough. If the problem sits in one place, say your site doesn’t show up on Google at all, we start with SEO alone. We tell you which one you need in the free analysis.',
   },
   {
-    q: 'Do you work with businesses outside Türkiye?',
-    a: 'Yes. Local SEO is executed remotely — we do not need to be in your city. Our base is Antalya, Türkiye, and we work in English, Turkish and German.',
+    q: 'Do you work with businesses all over Turkey?',
+    a: 'Yes. All the work runs remotely, so we don’t need to come to your city. We’re based in Antalya and work in Turkish, English and German.',
   },
   {
-    q: 'Would you also work with my competitor?',
-    a: 'No. We work with one business per city and industry. Moving two direct competitors up at the same time is not mathematically possible.',
+    q: 'Will you also work with my competitor in the same city?',
+    a: 'No. In each city we work with one business per industry. Trying to push two competitors up the same map at the same time would be unfair to both.',
   },
   {
-    q: 'How do you measure results?',
-    a: 'Grid-based map rankings, Google Business Profile interactions (searches, direction requests, calls) and Search Console data. All three are reported together — we do not send ranking screenshots on their own.',
+    q: 'How do you measure SEO results?',
+    a: 'We read measurement across your area, profile interactions and Search Console data together. We don’t send a single ranking screenshot, because your place on the map changes with where the searcher is standing. You see the work we’ve done in the report every week.',
   },
 ];
 ---
@@ -68,91 +79,129 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="services"
-  title="Local SEO Services | Wiserrise"
-  description="Google Business Profile management, local SEO, map rank tracking, technical SEO, on-page SEO and content production for local businesses."
-  eyebrow="Services"
-  h1="Local SEO Services"
-  lede="Three things decide where you rank on Maps: the strength of your profile, the strength of your site, and the trust signals coming from everywhere else. Each service below addresses one of them."
-  serviceName="Local SEO and Google Maps Optimization"
+  title="Digital Marketing Services | Wiserrise"
+  description="SEO, local SEO, Google Ads, Meta Ads, link building and GEO. The free analysis shows which one you need."
+  eyebrow="SERVICES"
+  h1="Digital marketing services: which one do you need?"
+  crumb="Services"
+  lede="Your customers might find you on Google, on the map, on Instagram or in ChatGPT. Each channel is its own job, but you don’t need all of them at once. Below we explain which service works on which channel."
+  serviceName="Digital Marketing Services"
   breadcrumb={[{ label: 'Home', href: '/' }]}
   faq={faq}
   wideFirst
-  ctaLabel="Get My Free Audit →"
+  related={[
+    { label: 'Local SEO by industry', href: p('industries'), text: 'How the work changes for lawyers, dentists, clinics and vehicle inspection.' },
+    { label: 'Guides', href: p('guides'), text: 'Steps you can apply yourself, from opening a profile to getting more reviews.' },
+    { label: 'Free profile audit', href: p('tools/gbp-audit'), text: 'See in 10 questions where your Google profile is weak.' },
+  ]}
+  relatedHeading="Related pages"
+  ctaLabel="Get a free analysis"
   ctaHref="/#contact"
 >
-  <p>
-    Local competition happens in a much narrower space than most businesses assume. When
-    someone opens their phone and types <strong>"lawyer near me"</strong> or
-    <strong>"car inspection Bursa"</strong>, Google scans a radius of a few kilometres around
-    that person and shows three businesses. The fourth result is technically "on page one"
-    and practically invisible.
-  </p>
+  <h2 id="kanallar">Where do your customers find you?</h2>
 
   <p>
-    Getting into those three is not one intervention. The signals Google weighs in local
-    ranking fall into roughly three groups, and our services map onto those groups.
+    Five of the six services each work on one channel. The sixth, link building, makes you stronger in search.
   </p>
-
-  <h2 id="three-layers">The three layers that decide ranking</h2>
 
   <div class="table-scroll">
     <table>
       <thead>
         <tr>
-          <th>Layer</th>
-          <th>What Google looks at</th>
-          <th>Related service</th>
+          <th>Where?</th>
+          <th>What do they see?</th>
+          <th>Which service</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>Profile</strong></td>
-          <td>Category accuracy, service list, photo and post freshness, review volume and wording</td>
-          <td><a href={p('services/gbp')}>Google Business Profile Management</a></td>
+          <td><strong>Google search</strong></td>
+          <td>The results below the map</td>
+          <td><a href={p('services/seo')}>SEO</a></td>
         </tr>
         <tr>
-          <td><strong>Site</strong></td>
-          <td>Crawlability, page speed, structured data, page-to-query match, content depth</td>
-          <td>
-            <a href={p('services/technical-seo')}>Technical SEO</a>,
-            <a href={p('services/on-page-seo')}>On-Page SEO</a>,
-            <a href={p('services/content')}>Content Production</a>
-          </td>
-        </tr>
-        <tr>
-          <td><strong>External signals</strong></td>
-          <td>Name and phone consistency across directories, mentions, links</td>
+          <td><strong>Google Maps</strong></td>
+          <td>The first three businesses on the map</td>
           <td><a href={p('services/local-seo')}>Local SEO</a></td>
+        </tr>
+        <tr>
+          <td><strong>Google’s ad slots</strong></td>
+          <td>The “Sponsored” lines above the results</td>
+          <td>Google Ads</td>
+        </tr>
+        <tr>
+          <td><strong>Instagram and Facebook</strong></td>
+          <td>An ad in their feed</td>
+          <td>Meta Ads</td>
+        </tr>
+        <tr>
+          <td><strong>ChatGPT, Gemini</strong></td>
+          <td>The businesses the assistant recommends</td>
+          <td><a href={p('services/geo')}>GEO</a></td>
+        </tr>
+        <tr>
+          <td><strong>Other websites</strong></td>
+          <td>Pages that mention you or link to you</td>
+          <td>Link building</td>
         </tr>
       </tbody>
     </table>
   </div>
 
+  <h2 id="reklam-seo">Ads or SEO?</h2>
+
   <p>
-    Investing in one layer while another is broken is the most common way we see money
-    wasted. A business with a fast site and good content can stay invisible for months
-    because it picked the wrong primary category. The reverse is just as common: a flawless
-    profile attached to a site Google cannot index will not reach the top three in a
-    competitive city.
+    Ads start right away and stop the day the budget runs out. SEO and local SEO start slower, but they don’t switch off
+    the day you stop working on them.
+  </p>
+
+  <p>
+    Google Ads reaches people who are searching, Meta Ads people who aren’t. Someone who sees your ad on Instagram wasn’t
+    looking for a physio at that moment. The ad is there so they remember your name on the day their back hurts.
+  </p>
+
+  <h2 id="baslangic">Where should you start?</h2>
+
+  <p>
+    If your customers come from nearby, start with the map, that is, with local SEO. If you sell to the whole city or the
+    whole country, start with SEO. If you can’t wait, you start with ads and we build the lasting side behind them.
+  </p>
+
+  <p>
+    Don’t start with a guess. In the free analysis we look at your profile, your site and your competitors and tell you
+    what is holding you back. We also don’t take on work where we can’t manage the whole site, because on a half-managed
+    site SEO doesn’t hold and the visitors your ads bring are wasted.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Don't guess where to start.</strong> The free audit measures all three layers
-      and shows you which one is holding you back. No obligation to work with us afterwards.
+      <strong>You don’t have to work with us after the analysis.</strong> There’s no contract either. If we work together
+      and you’re not happy, you simply don’t continue the next month.
     </p>
   </div>
 
   <Fragment slot="wide">
-    <h2 id="services" class="section-lead">Services</h2>
-    <p class="section-lead-sub">
-      Each one addresses one of the three layers that decide local ranking.
-    </p>
-    <CardGrid items={services} cta="Read more" />
+    <HubCards
+      id="hizmet-listesi"
+      eyebrow="SERVICES"
+      heading="We work wherever your customers are looking."
+      sub="SEO and local SEO earn you a lasting place in search and on the map. Google Ads and Meta Ads make you visible while the ads run. GEO carries the same foundation into AI answers."
+      items={services}
+      son={{
+        label: 'NOT SURE?',
+        title: 'Let’s work out together which one fits you.',
+        text: 'In the free analysis we look at your profile, your site and your competitors, and tell you where to start.',
+        cta: 'Free analysis',
+        alt: 'Get a free analysis →',
+      }}
+    />
   </Fragment>
 
   <Fragment slot="cta">
-    <h2>Not sure which one you <span class="highlight">need</span>?</h2>
-    <p>The free audit reviews your profile, your site and your competitors, and tells you.</p>
+    <h2>Which one do you <span class="highlight">need</span> first?</h2>
+    <p>
+      In the free analysis we look at your profile, your site and your competitors, and tell you what is holding you back.
+      The result lands in your inbox within <span style="white-space: nowrap;">24 hours</span>.
+    </p>
   </Fragment>
 </ContentLayout>

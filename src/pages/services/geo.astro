@@ -1,0 +1,220 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+/**
+ * English version of src/pages/tr/hizmetler/geo.astro. Same structure, facts and ids; keep the two in step.
+ */
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'ACCESS', title: 'An open door for bots', text: 'We check that your site is open to ChatGPT, Gemini and Google bots. AI can’t read a page that isn’t crawled.' },
+  { label: 'CONTENT', title: 'Pages that answer the question', text: 'The question your customer asks needs a clear answer on your site. If there’s nothing to quote, the assistant won’t mention you.' },
+  { label: 'SOURCES', title: 'Places that mention you', text: 'Your business profile, directories and pages that mention you. If your name is written the same way everywhere, the assistant sees the same business.' },
+  { label: 'MEASUREMENT', title: 'Which questions you’re mentioned in', text: 'We ask assistants questions about your industry and record whether your name and your competitors’ names come up in the answer.' },
+];
+
+const toc = [
+  { id: 'nedir', label: 'What is GEO, and how is it different from SEO?' },
+  { id: 'kaynak', label: 'Where does AI learn about a business?' },
+  { id: 'yerel', label: 'What does GEO have to do with a local business?' },
+  { id: 'isler', label: 'What do we fix?' },
+  { id: 'site', label: 'Why do we need to work on the site?' },
+  { id: 'olcum', label: 'What do we measure?' },
+];
+
+const faq = [
+  {
+    q: 'Do you guarantee I’ll show up in ChatGPT?',
+    a: 'No, no one can guarantee that. The assistant writes the answer, and it can give a different answer to the same question at a different time. What we promise is the work and the measurement: you see in the report what we changed and where you’re mentioned.',
+  },
+  {
+    q: 'When will I see results?',
+    a: 'We don’t give a timeframe. The assistants keep changing, and we don’t have enough data to say “you’ll show up in so many weeks”. With the first measurement you see where you stand today, and we track the rest together in the report.',
+  },
+  {
+    q: 'Do I need an llms.txt file?',
+    a: 'Not for Google; its own documentation says no special file is needed. We don’t make it a priority either. We first check whether the site gets crawled and whether it answers the question.',
+  },
+  {
+    q: 'If I have local SEO, do I also need GEO?',
+    a: 'If your customers come from nearby, local SEO comes first. Don’t spend money on GEO before your profile and site are fixed. We tell you in the free analysis which one is holding you back.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/geo"
+  title="GEO Service: Show Up in ChatGPT and Gemini Answers | Wiserrise"
+  description="We measure whether you’re mentioned in ChatGPT, Gemini and Google’s AI answers, and fix your site and profile for the questions where you aren’t."
+  eyebrow="SERVICE · GEO"
+  h1="Show up in AI answers with GEO."
+  crumb="GEO"
+  lede="GEO is the work we do to get your business mentioned when people put questions to ChatGPT, Gemini, Perplexity and Google’s AI answers. We measure which questions you’re mentioned in, and for the ones where you aren’t, we fix your site, your profile and the sources that mention you."
+  serviceName="GEO (Generative Engine Optimization)"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: p('services') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'We fix your profile and your site together so nearby customers can see you.' },
+    { label: 'Technical SEO', href: p('services/technical-seo'), text: 'We fix crawling and indexing errors so your site opens properly to Google.' },
+    { label: 'Content Production', href: p('services/content'), text: 'We write service pages that answer the questions your customers ask.' },
+    { label: 'Google Business Profile Management', href: p('services/gbp'), text: 'We keep your profile, which assistants read too, within the rules and up to date.' },
+  ]}
+  ctaLabel="Get a free analysis"
+  ctaHref="/#contact"
+>
+  <p>
+    Someone types into ChatGPT: “Can you recommend a good physiotherapist in Kadıköy?” A few names come up, each with a short
+    reason. If you’re not among those names, that customer never sees you.
+  </p>
+
+  <h2 id="nedir">What is GEO, and how is it different from SEO?</h2>
+
+  <p>
+    GEO is short for Generative Engine Optimization. You may also have heard it called AI search or AI SEO. In SEO you take
+    a place in a list; in GEO you get into the answer the assistant writes.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>SEO</th>
+          <th>GEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Where you appear</strong></td>
+          <td>In the list of search results</td>
+          <td>Inside the answer the assistant writes</td>
+        </tr>
+        <tr>
+          <td><strong>Who chooses</strong></td>
+          <td>Google’s ranking</td>
+          <td>The assistant, based on the sources it reads</td>
+        </tr>
+        <tr>
+          <td><strong>What we measure</strong></td>
+          <td>What position you’re in</td>
+          <td>Which questions you’re mentioned in, which of your pages get cited as a source</td>
+        </tr>
+        <tr>
+          <td><strong>When the same question is asked again</strong></td>
+          <td>The result stays similar</td>
+          <td>The answer can change</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="kaynak">Where does AI learn about a business?</h2>
+
+  <p>
+    From the sources it reads: your site, your business profile, directories, pages that mention you. It can’t get through a
+    closed door. If your page isn’t crawled, don’t expect AI to read about you.
+  </p>
+
+  <p>
+    Google states this plainly in <a href="https://developers.google.com/search/docs/appearance/ai-features" rel="noopener noreferrer" target="_blank">its own documentation</a>:
+    there are no extra requirements for AI Overviews and AI Mode, and no special schema or special file is needed. The
+    requirement is that the page is indexed and eligible to show a snippet, and there’s no guarantee of appearing. That’s
+    why <a href={p('services/technical-seo')}>technical SEO</a> is the first step of GEO.
+  </p>
+
+  <p>
+    On the ChatGPT side, the door is <a href="https://developers.openai.com/api/docs/bots" rel="noopener noreferrer" target="_blank">OAI-SearchBot</a>.
+    A site that blocks this bot isn’t shown in ChatGPT’s search answers. If Cloudflare’s AI bot blocking is switched on,
+    some AI bots can’t get into your site even if you’ve written nothing in robots.txt.
+  </p>
+
+  <h2 id="yerel">What does GEO have to do with a local business?</h2>
+
+  <p>
+    Your customers now ask with the city name, and the assistant answers with names. Most GEO articles in Turkey are written
+    for big brands; we look at the lawyer, the clinic, the physiotherapist and the vehicle inspection business that get
+    their customers from nearby.
+  </p>
+
+  <p>
+    The profile and site work we do for <a href={p('services/local-seo')}>local SEO</a> is also the foundation of GEO. For a
+    business whose customers come from nearby, we look at the map first, because that’s where the phone rings from today.
+    We build GEO on top of it.
+  </p>
+
+  <h2 id="isler">What do we fix?</h2>
+
+  <p>First we open the door, then we give the assistant something to read. The order never changes; the measurement decides the weight.</p>
+
+  <ul class="checklist">
+    <li>
+      <strong>Bot access.</strong> We check robots.txt and the Cloudflare setting. We keep bots such as GPTBot,
+      OAI-SearchBot and ClaudeBot open for all our clients.
+    </li>
+    <li>
+      <strong>Pages that answer the question.</strong> If the question your customer asks has no clear answer on your site,
+      the assistant has nothing to quote. This is where <a href={p('services/on-page-seo')}>on-page SEO</a> and
+      <a href={p('services/content')}>content production</a> come in.
+    </li>
+    <li>
+      <strong>Business profile.</strong> The category and service list need to be right and the reviews alive. We handle
+      this part through <a href={p('services/gbp')}>Google Business Profile management</a>.
+    </li>
+    <li>
+      <strong>Sources that mention you.</strong> If your name and phone are written the same way in every directory, the
+      assistant sees the same business whichever source it reads.
+    </li>
+  </ul>
+
+  <h2 id="site">Why do we need to work on the site?</h2>
+
+  <p>Because most of GEO happens on the site. Every change that has to pass through someone else’s hands slows down, and sometimes breaks.</p>
+
+  <p>
+    That’s why our rule is clear: if we can’t manage the whole site, we don’t start. We learned this the hard way, and we
+    tell the story on the <a href={p('services/local-seo')}>local SEO page</a>.
+  </p>
+
+  <h2 id="olcum">What do we measure?</h2>
+
+  <p>
+    Which questions you’re mentioned in, and who gets mentioned next to you. We put questions about your industry and your
+    city to ChatGPT, Gemini, Perplexity and Google’s AI answers, and record the answers.
+  </p>
+
+  <p>
+    We don’t leave the “did it recommend them?” call to the model. We match the name in the answer against your own
+    business record, so another business with a similar name isn’t counted as you.
+  </p>
+
+  <ul class="checklist">
+    <li>AI visibility score: a single score from 0-100, built from your recommendation and citation rates</li>
+    <li>Share of mentions: where you stand against your competitors on the same questions</li>
+    <li>Pages that cite you: which of your pages the assistant links to, question by question</li>
+    <li>
+      Search Console: traffic from Google’s AI answers doesn’t show up separately and is counted inside Web search. That’s
+      why we don’t rely on it alone.
+    </li>
+  </ul>
+
+  <p>
+    You see the work we’ve done in the report every week. The same question doesn’t get the same answer every time, so we
+    don’t send a single screenshot; we read the change over time.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Does AI <span class="highlight">know</span> you?</h2>
+    <p>
+      In the free analysis we map out where you stand in AI answers today, and who your competitors are there. The result
+      lands in your inbox within <span style="white-space: nowrap;">24 hours</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

@@ -2,8 +2,8 @@ import type { AuditContent } from './index';
 
 /**
  * Türkçe içerik. Puanlama bilerek şeffaf: her seçenek görünür puan taşıyor ve
- * toplam 100. Araç bir teşhis, lead kapısı değil — ziyaretçi bize hiç
- * yazmasa bile neyin zayıf olduğunu öğreniyor.
+ * toplam 100. Araç bir teşhis; ziyaretçi bize hiç yazmasa bile neyin zayıf
+ * olduğunu öğreniyor.
  */
 
 const groups = [
@@ -32,7 +32,7 @@ const questions = [
     id: 'q2',
     group: 'temel',
     question: 'Hizmet listeniz dolu mu ve her hizmetin açıklaması var mı?',
-    help: 'Çoğu profilde bu alan ya boş ya da Google’ın önerdiği genel etiketlerle dolu — yani rakiplerinizle birebir aynı.',
+    help: 'Çoğu profilde bu alan ya boş ya da Google’ın önerdiği genel etiketlerle dolu, yani rakiplerinizle birebir aynı.',
     options: [
       { label: 'Hepsi yazılı ve açıklamalı', points: 10 },
       { label: 'Liste var ama açıklama yok', points: 5 },
@@ -66,7 +66,7 @@ const questions = [
       { label: '0–4', points: 0 },
     ],
     advice:
-      'Değerlendirme hacmi, "öne çıkma" sinyalinin en ölçülebilir kaynağı. Hedefi mutlak bir sayı değil, ilk üçteki rakiplerin ortalaması olarak belirleyin.',
+      'Yorum sayısı, Google’ın bilinirlik dediği şeyin en kolay ölçülen parçası. Hedefinizi ilk üçteki rakiplerinizin ortalamasına göre koyun.',
     link: 'services/gbp',
   },
   {
@@ -81,34 +81,34 @@ const questions = [
       { label: 'Bakmadım / bilmiyorum', points: 0 },
     ],
     advice:
-      'Rakiplerin hacmini bilmeden yorum hedefi koymak anlamsız. Aradaki farkı sayısal olarak çıkarın; çoğu vakada geri kalmanın tek sebebi bu oluyor.',
+      'Rakiplerinizin yorum sayısını bilmeden hedef koymayın. Aradaki farkı sayıyla çıkarın; baktığımız profillerde geride kalmanın sebebi en sık burada çıkıyor.',
     link: 'services/rank-tracking',
   },
   {
     id: 'q6',
     group: 'yorum',
     question: 'Gelen yorumlara yanıt veriyor musunuz?',
-    help: 'Yanıtlarda geçen hizmet ve yer adları da alaka sinyali üretiyor.',
+    help: 'Yorumlara yanıt vermek Google’ın yerel sıralama önerileri arasında. Yanıtınızı bir sonraki müşteri de okur.',
     options: [
       { label: 'Hepsine, birkaç gün içinde', points: 10 },
       { label: 'Bazılarına', points: 5 },
       { label: 'Hayır', points: 0 },
     ],
     advice:
-      'Tüm yorumlara yanıt verin ve yanıtta hizmet adını doğal biçimde geçirin. Olumsuz yorumlarda önce özelden telafi edin, sonra kısa ve savunmacı olmayan bir yanıt yazın.',
+      'Tüm yorumlara yanıt verin. Olumsuz yorumda önce özelden telafi edin, sonra kısa ve sakin bir yanıt yazın.',
     link: 'services/gbp',
   },
   {
     id: 'q7',
     group: 'tazelik',
-    question: 'Son 30 günde profilinizden post paylaştınız mı?',
+    question: 'Son 30 günde profilinizde gönderi paylaştınız mı?',
     options: [
       { label: 'Düzenli paylaşıyorum', points: 10 },
       { label: 'Ara sıra', points: 5 },
       { label: 'Hayır', points: 0 },
     ],
     advice:
-      'Post tek başına sizi ilk üçe çıkarmıyor; ancak diğer her şey eşitken aktif profil pasif profili geçiyor. Her post’u sitenizdeki bir hizmet sayfasına bağlayın.',
+      'Gönderi tek başına sizi ilk üçe taşımaz. Profilin canlı olduğunu gösterir ve müşteriye güncel bir şey söyler. Her gönderiyi sitenizdeki bir hizmet sayfasına bağlayın.',
     link: 'services/gbp',
   },
   {
@@ -156,17 +156,17 @@ const bands = [
   {
     min: 80,
     title: 'Temeliniz sağlam',
-    text: 'Profil tarafında kök bir hata görünmüyor. Bu seviyede sıradaki iş, hangi bölgelerde geride kaldığınızı grid ölçümüyle çıkarmak — çünkü sorun artık profilde değil, rekabetin yoğunlaştığı noktalarda.',
+    text: 'Profil tarafında kök bir hata görünmüyor. Sıradaki iş, bölgenizden ölçümle hangi semtlerde geride kaldığınızı bulmak. Bu seviyede yarış, haritanın rekabetin yoğun olduğu köşelerinde.',
   },
   {
     min: 55,
     title: 'Belirgin boşluklar var',
-    text: 'Profil çalışıyor ama birkaç alanda rakiplerin gerisindesiniz. Aşağıdaki zayıf noktalar genelde 4–8 hafta içinde kapatılabilir ve ilk hareket de bu sürede görülür.',
+    text: 'Profil çalışıyor ama birkaç alanda rakiplerinizin gerisindesiniz. Aşağıdaki zayıf noktalardan başlayın. Haritada ilk hareketi çoğu işletmede 4 ile 8 hafta arasında görüyoruz.',
   },
   {
     min: 0,
     title: 'Kritik eksikler var',
-    text: 'Profilde sıralamayı doğrudan tutan eksikler var. İyi haber şu: bu seviyedeki profillerde en büyük sıçrama genelde ilk düzeltmelerden geliyor, çünkü rakiplerin çoğu da bu alanları yönetmiyor.',
+    text: 'Profilde sıralamayı doğrudan tutan eksikler var. İyi haber şu: aşağıdaki maddelerin çoğunu kendiniz düzeltebilirsiniz ve rakiplerinizin çoğu bu alanlara bakmıyor.',
   },
 ];
 
@@ -178,6 +178,6 @@ export const tr: AuditContent = {
     answered: 'soru yanıtlandı',
     adviceHeading: 'Önce şunları düzeltin',
     adviceLink: 'Nasıl düzeltilir →',
-    ctaLabel: 'Grid Ölçümümü İste →',
+    ctaLabel: 'Ücretsiz analiz al',
   },
 };

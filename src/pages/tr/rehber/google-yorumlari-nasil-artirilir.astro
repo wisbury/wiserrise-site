@@ -5,32 +5,43 @@ import { routePath } from '../../../i18n/routes';
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'HEDEF', title: 'Rakibe göre sayı', text: 'Herkes için geçerli bir yorum sayısı yok. Ölçütünüz, hedef aramanızda haritada ilk üçe çıkan işletmelerin hacmi.' },
+  { label: 'AN', title: 'İşin bittiği an', text: 'İşi teslim ettiğiniz anda, memnuniyet tazeyken isteyin. Günler sonra gönderilen hatırlatmaya dönen müşteri az olur.' },
+  { label: 'LİNK', title: 'Kısa yorum linki', text: 'Profilinizin yönetim ekranından alınan link müşteriyi doğrudan yorum ekranına götürür. Sizi haritada araması gerekmez.' },
+  { label: 'KURAL', title: 'Teşvik yasak', text: 'İndirim, hediye ya da çekiliş karşılığında yorum istemek Google’ın kurallarına aykırı. Yakalanan yorum silinir.' },
+];
+
 const toc = [
-  { id: 'hedef', label: 'Hedefi rakiplerinize göre belirleyin' },
-  { id: 'an', label: 'İstemenin doğru anı' },
-  { id: 'nasil', label: 'Nasıl istenir, nasıl istenmez' },
-  { id: 'filtre', label: 'Filtreye takılmamak' },
-  { id: 'yanit', label: 'Yanıt yazmak' },
-  { id: 'olumsuz', label: 'Olumsuz yorumu yönetmek' },
-  { id: 'regule', label: 'Regülasyonlu sektörlerde dikkat' },
+  { id: 'hedef', label: 'Kaç yorum yeterli?' },
+  { id: 'an', label: 'Ne zaman istemeli?' },
+  { id: 'nasil', label: 'Yorum nasıl istenir?' },
+  { id: 'kurallar', label: 'Google neyi yasaklıyor?' },
+  { id: 'filtre', label: 'Yorumlar neden kaybolur?' },
+  { id: 'yanit', label: 'Yanıt nasıl yazılır?' },
+  { id: 'olumsuz', label: 'Olumsuz yorum gelirse' },
 ];
 
 const faq = [
   {
     q: 'Yorum karşılığında indirim verebilir miyim?',
-    a: 'Hayır. Google’ın kurallarına göre yorum karşılığında teşvik vermek yasak — indirim, hediye, çekiliş dahil. Yakalandığında yorumlar siliniyor, tekrarında profil askıya alınabiliyor. Ayrıca teşvikle gelen yorumlar genelde içeriksiz oluyor ve alaka sinyali üretmiyor.',
+    a: 'Veremezsiniz. Yorum karşılığında indirim, hediye ya da çekiliş Google’ın kurallarına aykırı. Yakalanan yorumlar silinir, tekrarında profil askıya alınabilir.',
   },
   {
-    q: 'Müşteriye ne yazacağını söylesem olur mu?',
-    a: 'Olmaz. Kopyala-yapıştır yorumlar hem Google’ın filtrelerine takılıyor hem de okuyan kişide güven kaybı yaratıyor — birbirine benzeyen beş yorum, sahte olduklarını insan gözüne de anlatıyor. Yönlendirme yapacaksanız "hangi hizmeti aldığınızı ve nerede olduğunuzu yazarsanız bize çok yardımcı olur" düzeyinde kalın.',
+    q: 'Yorum satın almak işe yarar mı?',
+    a: 'Yaramaz, profilinizi riske atar. Satın alınan yorum Google’ın gözünde sahte yorumdur, filtre yakaladığında silinir. Aynı parayı ve emeği kendi müşterilerinizden yorum isteyen bir düzene harcayın.',
   },
   {
-    q: 'Sahte olumsuz yorum aldım, sildirebilir miyim?',
-    a: 'Politika ihlali içeriyorsa (hakaret, alakasız içerik, rakip kaynaklı olduğu belli) bildirebilirsiniz. Süreç garantili değil ve haftalar sürebiliyor. Bu yüzden tek yoruma bağımlı kalmamak için gerçek hacmi yükseltmek daha kalıcı bir savunma.',
+    q: 'Müşteriye ne yazacağını söyleyebilir miyim?',
+    a: 'Hazır metin vermeyin. Birbirine benzeyen yorumlar filtreye takılır, okuyan kişi de sahte olduklarını anlar. “Hangi hizmeti aldığınızı yazarsanız çok seviniriz” demeniz yeterli.',
   },
   {
     q: 'Eski müşterilerimden toplu yorum isteyebilir miyim?',
-    a: 'Teknik olarak evet ama kısa sürede gelen yorum yığını Google’ın filtrelerinin baktığı tipik desen. Listeyi haftalara yayın. Aynı sayıyı bir ayda toplamak, bir haftada toplamaktan çok daha güvenli ve etkili.',
+    a: 'İsteyebilirsiniz ama aynı gün istemeyin. Birkaç gün içinde gelen yorum yığını, filtrenin baktığı tipik desen. Listeyi haftalara yayın.',
+  },
+  {
+    q: 'Sahte olumsuz yorumu sildirebilir miyim?',
+    a: 'Kural ihlali varsa Google’a bildirebilirsiniz. Hakaret, alakasız içerik ya da rakipten geldiği belli olan yorumlar kaldırılabilir, ama süreç garantili değil ve haftalar sürebilir. Asıl savunmanız gerçek yorum hacminiz.',
   },
 ];
 ---
@@ -39,54 +50,67 @@ const faq = [
   locale={locale}
   route="guides/more-reviews"
   title="Google Yorumları Nasıl Artırılır? | Wiserrise"
-  description="Yorum hacmini filtreye takılmadan büyütmek: istemenin doğru anı, yönlendirme sınırı, yanıt yazma ve olumsuz yorum yönetimi."
-  eyebrow="Rehber"
+  description="Google yorumlarınızı kurallara uygun artırmanın yolu: doğru an, kısa yorum linki, yanıt yazma. Yorum satın almak ve teşvik neden yasak, o da burada."
+  eyebrow="REHBER · YORUMLAR"
   h1="Google yorumları nasıl artırılır?"
-  lede="Yorumlar yerel sıralamada iki iş birden yapıyor: hacim öne çıkma sinyali üretiyor, içerik ise alaka sinyali. Bu yüzden mesele sadece sayı toplamak değil."
+  crumb="Yorumları artırma"
+  lede="Google yorumlarını artırmanın yolu, her memnun müşteriden işin bittiği anda ve tek tıkla açılan bir linkle yorum istemek. Yorum satın almak, indirim karşılığında yorum toplamak ve yalnız memnun müşteriyi Google’a yönlendirmek kurallara aykırı. Hedefinizi rakiplerinize göre koyun, akışı haftalara yayın."
   schemaType="article"
   datePublished="2026-08-01"
+  dateModified="2026-11-06"
   breadcrumb={[
     { label: 'Ana Sayfa', href: '/tr' },
-    { label: 'Rehber', href: p('guides') },
+    { label: 'Rehberler', href: p('guides') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Google Haritalar’da üst sıraya çıkma', href: p('guides/rank-higher') },
-    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp') },
-    { label: 'Avukatlar için SEO', href: p('industries/law') },
+    { label: 'Google Haritalar’da üst sıraya çıkma', href: p('guides/rank-higher'), text: 'Yorumların sıradaki yeri ve hangi sırayla çalışmanız gerektiği.' },
+    { label: 'İşletmem Google’da çıkmıyor', href: p('guides/not-showing'), text: 'Yorumunuz yeterli ama haritada yoksanız sebebi sırayla eleyin.' },
+    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp'), text: 'Kategori, hizmet yapısı, yorum ve gönderileri birlikte yönetiriz.' },
+    { label: 'Avukatlar için SEO', href: p('industries/law'), text: 'Reklam yasağı altında profil ve yorum tarafında neyin mümkün olduğu.' },
   ]}
-  ctaLabel="Profilimi Ücretsiz Denetle →"
+  relatedHeading="İlgili sayfalar"
+  ctaLabel="Profilinizi ücretsiz denetleyin"
   ctaHref={p('tools/gbp-audit')}
 >
-  <h2 id="hedef">Hedefi rakiplerinize göre belirleyin</h2>
+  <h2 id="hedef">Kaç yorum yeterli?</h2>
 
   <p>
-    "Kaç yorum yeterli" sorusunun mutlak bir cevabı yok. Ölçüt, hedef sorgunuzda ilk üçe
-    çıkan işletmelerin hacmi. Bazı sektörlerde bu 20, bazılarında 200 demek.
+    Herkes için geçerli bir sayı yok. Ölçütünüz, hedef aramanızda haritada ilk üçe çıkan işletmelerin yorum hacmi. Bazı
+    sektörlerde bu 20 yorum demek, bazılarında 200.
   </p>
 
   <p>
-    Bakma yöntemi basit: hedef sorgunuzu Haritalar'da aratın, ilk üçün yorum sayısını ve
-    ortalamasını not edin. Belirgin altındaysanız öncelik burası. Üstündeyseniz sorun
-    yorumda değil, başka yerde — muhtemelen
-    <a href={p('guides/not-showing')}>kategori veya alaka tarafında</a>.
+    Bakması kolay. Aramanızı Google Haritalar’da yazın, ilk üçün yorum sayısını ve puanını not edin. Belirgin
+    altındaysanız öncelik yorum.
+  </p>
+
+  <p>
+    Rakiplerle aynı seviyedeyseniz ve hâlâ görünmüyorsanız sorun başka yerde, büyük ihtimalle kategoride. O zaman
+    <a href={p('guides/not-showing')}>işletmem Google’da çıkmıyor</a> rehberindeki kontrollerden başlayın.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Ortalama puan, hacimden daha az önemli.</strong> 4,7 ortalamalı 80 yorum,
-      5,0 ortalamalı 6 yorumdan neredeyse her zaman daha güçlü. Kusursuz ortalama kovalamak
-      yerine hacmi büyütün — birkaç 4 yıldız zaten güvenilirliği artırıyor.
+      <strong>Hacim, ortalama puandan önce gelir.</strong> 4,7 puanlı 80 yorum, 5,0 puanlı 6 yorumdan daha güçlü bir
+      profildir. Kusursuz puan kovalamayın, birkaç 4 yıldız profilinizi daha inandırıcı yapar.
     </p>
   </div>
 
-  <h2 id="an">İstemenin doğru anı</h2>
+  <h2 id="an">Yorumu ne zaman istemelisiniz?</h2>
 
   <p>
-    Yorum oranını en çok belirleyen şey metin değil, zamanlama. Doğru an, müşterinin
-    memnuniyetinin en yüksek olduğu andır ve bu sektöre göre değişiyor:
+    Müşterinin memnuniyeti en taze haldeyken. Yorum oranını metinden çok zamanlama belirler.
   </p>
+
+  <p>
+    Diyelim ki Bornova’da oto ekspertiz işletiyorsunuz. Müşteri raporu elinde tutuyor, almak üzere olduğu arabanın temiz
+    çıktığını yeni öğrendi ve rahatlamış. Yorumu isteyeceğiniz an tam bu an, o tesisten çıkmadan.
+  </p>
+
+  <p>Doğru an sektöre göre değişir:</p>
 
   <div class="table-scroll">
     <table>
@@ -99,163 +123,170 @@ const faq = [
       <tbody>
         <tr>
           <td>Oto ekspertiz</td>
-          <td>Rapor teslim edilirken, müşteri hâlâ tesiste</td>
+          <td>Rapor teslim edilirken, müşteri henüz tesisteyken</td>
         </tr>
         <tr>
-          <td>Diş / sağlık</td>
-          <td>Tedavi tamamlandığında, kontrol randevusu sonrası</td>
-        </tr>
-        <tr>
-          <td>Hukuk</td>
-          <td>Dosya olumlu sonuçlandığında — ama aşağıdaki mevzuat uyarısını okuyun</td>
+          <td>Diş kliniği</td>
+          <td>Tedavi bitip kontrol randevusu da geçtiğinde</td>
         </tr>
         <tr>
           <td>Fizyoterapi</td>
-          <td>Seans programı bittiğinde, iyileşme hissedildiğinde</td>
+          <td>Seans programı bittiğinde, hasta iyileşmeyi hissettiğinde</td>
         </tr>
         <tr>
-          <td>Perakende / hizmet</td>
-          <td>Teslimat veya işlem tamamlandıktan sonraki birkaç saat içinde</td>
+          <td>Avukatlık</td>
+          <td>Dosya kapandığında, ama önce aşağıdaki mevzuat notunu okuyun</td>
+        </tr>
+        <tr>
+          <td>Kuaför, servis, perakende</td>
+          <td>İşlem ya da teslimat bittikten sonraki birkaç saat içinde</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <p>
-    Günler sonra gönderilen hatırlatmaların dönüşü belirgin şekilde düşük. Müşteri
-    memnuniyeti hatırlıyor ama harekete geçme isteği geçmiş oluyor.
+    Günler sonra gönderilen hatırlatmalara dönen müşteri az olur. Memnuniyetini hatırlıyor, ama o an geçtiği için
+    harekete geçmiyor.
   </p>
 
-  <h2 id="nasil">Nasıl istenir, nasıl istenmez</h2>
+  <h2 id="nasil">Yorum nasıl istenir?</h2>
 
-  <p>
-    Sürtünmeyi azaltmak, ikna etmekten daha etkili. Yapılacaklar:
-  </p>
-
-  <ul class="checklist">
-    <li>
-      Google'ın panelinden aldığınız <strong>kısa yorum linkini</strong> kullanın — müşteriyi
-      Haritalar'da işletmenizi aramaya zorlamayın
-    </li>
-    <li>
-      Tesiste hizmet veriyorsanız <strong>QR kod</strong> bastırın; kasa, masa veya teslim
-      noktasında dursun
-    </li>
-    <li>
-      Yüz yüze isteyin, sonra linki gönderin — sadece mesaj atmak dönüşümü düşürüyor
-    </li>
-    <li>
-      İsteği <strong>bir kez</strong> yapın; ısrarlı hatırlatma memnuniyeti zedeliyor
-    </li>
-  </ul>
-
-  <p>Yapılmayacaklar:</p>
-
-  <ul>
-    <li>
-      <strong>Teşvik vermeyin.</strong> İndirim, hediye, çekiliş — hepsi Google'ın
-      kurallarına aykırı ve yakalandığında yorumlar siliniyor.
-    </li>
-    <li>
-      <strong>Metni siz yazmayın.</strong> Birbirine benzeyen yorumlar hem filtreye takılıyor
-      hem de okuyan kişide ters etki yapıyor.
-    </li>
-    <li>
-      <strong>Sadece memnun olanı süzmeyin.</strong> Müşteriyi önce "memnun musunuz" diye
-      filtreleyip yalnızca olumlu olanları Google'a yönlendirmek (review gating) açıkça
-      yasak.
-    </li>
-  </ul>
-
-  <p>
-    Yönlendirme yaparken sınır şu: <em>"Aldığınız hizmeti ve bulunduğunuz semti yazarsanız
-    bize çok yardımcı olur"</em> demek kabul edilebilir — çünkü müşteri kendi cümlelerini
-    kuruyor. Hazır metin vermek kabul edilemez.
-  </p>
-
-  <h2 id="filtre">Filtreye takılmamak</h2>
-
-  <p>
-    Google'ın spam filtreleri yorumları sessizce kaldırabiliyor — bildirim gelmiyor, sayı
-    düşüyor. Filtreye takılan tipik desenler:
-  </p>
-
-  <ul>
-    <li><strong>Ani yığın.</strong> Yeni bir profilde birkaç gün içinde gelen çok sayıda yorum</li>
-    <li><strong>Aynı ağdan gelen yorumlar.</strong> İşletmenin wi-fi'ından toplu yorum yazdırmak</li>
-    <li><strong>Boş hesaplar.</strong> Hiç geçmişi olmayan, tek yorumluk hesaplar</li>
-    <li><strong>Benzer metinler.</strong> Aynı kalıbın tekrarı</li>
-  </ul>
-
-  <p>
-    Bunun pratik karşılığı: <strong>düzenli akış, kampanya sprintinden iyidir.</strong>
-    Haftada iki-üç gerçek yorum, ayda bir kez toplanan yirmi yorumdan hem daha güvenli
-    hem de sıralamaya katkısı daha istikrarlı.
-  </p>
-
-  <h2 id="yanit">Yanıt yazmak</h2>
-
-  <p>
-    Yanıtlar iki nedenle önemli: Google aktif yönetilen profilleri ayırt ediyor, ve
-    yanıtta geçen hizmet adı metinsel alaka üretiyor.
-  </p>
-
-  <p>
-    İyi yanıt kısa, somut ve insanca olanı. Şablon yanıtlar — hele abartılı olanları —
-    ters tepiyor: potansiyel müşteri, işletmenin yorumlara gerçekten bakmadığını anlıyor.
-    <em>"Bu güzel yorumunuz günümüzü aydınlattı, markanızın dijital sahnede parlamasını
-    görmek bizim için tarifsiz bir mutluluk"</em> tipi metinler, yapay olduklarını ilk
-    cümlede belli ediyor.
-  </p>
-
-  <p>
-    Bunun yerine: aldığı hizmeti sade biçimde anın, teşekkür edin, bitirin. İki cümle
-    yeterli.
-  </p>
-
-  <h2 id="olumsuz">Olumsuz yorumu yönetmek</h2>
-
-  <p>Sıra önemli:</p>
+  <p>Müşterinin yorum yazmasını olabildiğince kolaylaştırın. Biz şu sırayı kuruyoruz:</p>
 
   <ol>
     <li>
-      <strong>Önce özelden ulaşın.</strong> Sorunu çözmek, kamuya açık tartışmaktan her
-      zaman daha iyi sonuç veriyor. Çözülürse müşteri çoğu zaman yorumu kendisi güncelliyor.
+      <strong>Kısa yorum linkini alın.</strong> İşletme profilinizin yönetim ekranında bir yorum linki var. Müşteriyi
+      doğrudan yorum yazma ekranına götürür, sizi haritada araması gerekmez.
     </li>
     <li>
-      <strong>Sonra kısa ve savunmacı olmayan bir yanıt yazın.</strong> Bu yanıt aslında
-      şikâyetçiye değil, onu okuyacak yüzlerce kişiye yazılıyor.
+      <strong>Yüz yüze isteyin, linki hemen gönderin.</strong> İşi teslim ederken tek cümleyle söyleyin, linki o anda
+      WhatsApp’tan atın. Yalnız mesaj atmak daha az dönüş getirir.
     </li>
     <li>
-      <strong>Politika ihlali varsa bildirin.</strong> Hakaret, alakasız içerik veya açıkça
-      rakip kaynaklı yorumlar kaldırılabiliyor — ama süreç garantili değil.
+      <strong>Tesiste QR kod bulundurun.</strong> Kasada, bekleme salonunda ya da teslim masasında linkin QR kodu dursun.
+    </li>
+    <li>
+      <strong>Bir kez isteyin.</strong> Israrlı hatırlatma, memnun müşterinin keyfini kaçırır.
     </li>
   </ol>
 
   <p>
-    Detaya girmeyin, müşteriyi yalanlamayın ve asla kişiselleştirmeyin. Sağlık ve hukukta
-    ayrıca mahremiyet var: bir yoruma "implant tedavinizden memnun kalmanıza sevindik"
-    diye cevap vermek, o kişinin aldığı hizmeti kamuya açıklamak demek.
+    Yön vermekle metin vermek arasında net bir çizgi var. “Aldığınız hizmeti ve hangi semtten geldiğinizi
+    yazarsanız çok seviniriz” demek sorun olmaz, cümleleri müşteri kuruyor. Hazır metin verdiğiniz an yorumlar
+    birbirine benzer ve filtreye takılır.
   </p>
 
-  <h2 id="regule">Regülasyonlu sektörlerde dikkat</h2>
+  <h2 id="kurallar">Google hangi yorum taktiklerini yasaklıyor?</h2>
 
   <p>
-    Avukatlıkta TBB Reklam Yasağı Yönetmeliği, yorum talebinin teşvik edici hale gelmesini
-    riskli kılıyor. Sağlıkta ise hasta deneyimini tanıtım aracına dönüştürmek mevzuata
-    aykırı.
+    Bu konuda net konuşalım: aşağıdakilerin hiçbirini yapmayın, rakibiniz yapıyor olsa bile. Kısa vadede sayı
+    artırır, sonra profilinizi riske atar.
+  </p>
+
+  <ul>
+    <li>
+      <strong>Yorum satın almak.</strong> Para karşılığı yazılan yorum sahte yorumdur ve Google’ın kurallarına aykırı.
+      Filtre yakalarsa yorumlar silinir, profil askıya alınma riskine girer.
+    </li>
+    <li>
+      <strong>Teşvikle yorum toplamak.</strong> İndirim, hediye, çekiliş ya da “yorum yazana kahve bizden” hepsi aynı
+      kapıya çıkar. Yakalanan yorumlar silinir, tekrarında profil askıya alınabilir.
+    </li>
+    <li>
+      <strong>Yalnız memnun müşteriye link göndermek.</strong> Önce “memnun musunuz” diye sorup sadece evet diyenleri
+      Google’a yönlendirmek açıkça yasak. İngilizcesi review gating.
+    </li>
+  </ul>
+
+  <p>
+    Rakibiniz satın aldığı yorumlarla öndeyse kural ihlalini Google’a bildirin ve kendi gerçek akışınızı kurun. Onun
+    yorumları her an silinebilir, sizin gerçek yorumlarınız birikmeye devam eder.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Avukatlar ve sağlık işletmeleri için not:</strong> Avukatlıkta TBB Reklam Yasağı Yönetmeliği, yorum
+      isteğinin teşvike dönüşmesini riskli kılar; sağlıkta da hasta deneyimini tanıtım aracına çevirmek mevzuata aykırı.
+      Bu alanlarda yorumu teşviksiz ve tek cümleyle isteyin, ayrıntısı <a href={p('industries/law')}>avukatlar</a> ve
+      <a href={p('industries/dental')}>diş hekimleri</a> sayfalarımızda.
+    </p>
+  </div>
+
+  <h2 id="filtre">Yorumlarınız neden kayboluyor?</h2>
+
+  <p>
+    Google’ın filtresi şüpheli gördüğü yorumu sessizce kaldırır. Bildirim gelmez, yalnız sayı düşer. Filtreye takılan
+    tipik desenler:
+  </p>
+
+  <ul>
+    <li><strong>Ani yığın.</strong> Yeni bir profilde birkaç gün içinde gelen çok sayıda yorum.</li>
+    <li><strong>Aynı ağdan gelen yorumlar.</strong> Müşterilere işletmenin internetine bağlıyken toplu yorum yazdırmak.</li>
+    <li><strong>Geçmişi olmayan hesaplar.</strong> Daha önce hiç yorum yazmamış, tek yorumluk hesaplar.</li>
+    <li><strong>Birbirine benzeyen metinler.</strong> Aynı kalıbın küçük değişikliklerle tekrarı.</li>
+  </ul>
+
+  <p>
+    En bilinen tuzak toplu istek. Eski müşteri listesine aynı gün mesaj atmak teknik olarak serbest, ama birkaç gün içinde
+    gelen yorum yığını filtrenin aradığı desenin ta kendisi.
   </p>
 
   <p>
-    Bu alanlarda yorum hacmini tek başına hedef yapmak yerine, yorum yazmaya istekli
-    müşteri grubunu doğru anda ve teşviksiz yönlendirmek, hacim eksiğini de profil
-    tazeliği ve içerik derinliğiyle telafi etmek gerekiyor. Ayrıntısını
-    <a href={p('industries/law')}>avukatlar için SEO</a> ve
-    <a href={p('industries/dental')}>diş hekimleri için SEO</a> sayfalarında anlattık.
+    Listeyi haftalara yayın. Haftada iki üç gerçek yorum, bir haftada toplanan yirmi yorumdan daha güvenli bir akış.
+  </p>
+
+  <h2 id="yanit">Yorumlara nasıl yanıt vermelisiniz?</h2>
+
+  <p>
+    Kısa ve insan ağzından, iyisine de kötüsüne de. Google’ın yerel sıralama önerilerinde de yorumlara yanıt vermek var.
+    Yanıt, sizi araştıran bir sonraki müşteriye işletmenin canlı olduğunu gösterir.
+  </p>
+
+  <p>
+    “Bu güzel yorumunuz günümüzü aydınlattı, markamızın dijital sahnede parlamasını görmek tarifsiz bir mutluluk” gibi
+    şablon yanıtlar ilk cümlede belli olur. Okuyan kişi, yorumlara gerçekten bakmadığınızı anlar.
+  </p>
+
+  <p>
+    Aldığı hizmeti sade biçimde anın, teşekkür edin, bitirin. “Teşekkürler Ayşe Hanım, raporun içinize sinmesine sevindik,
+    yeni arabanız hayırlı olsun” gibi iki satır yeter.
+  </p>
+
+  <p>
+    Sağlıkta ve hukukta bir istisna var: yanıtta hizmetin adını anmayın. “İmplant tedavinizden memnun kalmanıza sevindik”
+    cevabı, o kişinin aldığı tedaviyi herkese açıklar.
+  </p>
+
+  <h2 id="olumsuz">Olumsuz yorum gelirse ne yapmalısınız?</h2>
+
+  <p>Sırayla ilerleyin:</p>
+
+  <ol>
+    <li>
+      <strong>Önce özelden ulaşın.</strong> Sorunu konuşarak çözün. Çözülürse müşteri yorumunu kendisi güncelleyebilir.
+    </li>
+    <li>
+      <strong>Sonra kısa, savunmaya geçmeyen bir yanıt yazın.</strong> Bu yanıtı asıl okuyacak olan, sizi araştıran bir
+      sonraki müşteri. Müşteriyi yalanlamayın, detaya girmeyin.
+    </li>
+    <li>
+      <strong>Kural ihlali varsa bildirin.</strong> Hakaret, alakasız içerik ya da rakipten geldiği belli olan yorumlar
+      kaldırılabilir. Süreç garantili değil ve haftalar sürebilir.
+    </li>
+  </ol>
+
+  <p>
+    Tek bir olumsuz yoruma karşı en sağlam savunma, gerçek yorum hacminiz. 120 yorumlu bir profilde bir kötü yorum
+    kaybolur, 8 yorumlu profilde ise ilk göze çarpan o olur.
   </p>
 
   <Fragment slot="cta">
-    <h2>Rakiplerinizle yorum farkınız <span class="highlight">ne kadar</span>?</h2>
-    <p>Ücretsiz analizde ilk üçteki rakiplerin hacmini ve aradaki farkı sayısal olarak çıkarıyoruz.</p>
+    <h2>Yorumlarınız rakiplerinizin <span class="highlight">gerisinde</span> mi?</h2>
+    <p>
+      Ücretsiz denetim aracımız 10 soruda profilinizi puanlar, yorum hacminizi ilk üçteki rakiplerinizle kıyaslatır. Zayıf
+      çıkan her madde için ne yapacağınızı hemen görürsünüz, kayıt ya da <span style="white-space: nowrap;">e-posta</span>
+      istemez.
+    </p>
   </Fragment>
 </ContentLayout>

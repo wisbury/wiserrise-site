@@ -1,0 +1,149 @@
+---
+import LegalPage from '../components/v2/LegalPage.astro';
+import { routePath } from '../i18n/routes';
+import { COMPANY_LEGAL_NAME } from '../i18n/ui';
+import { COMPANY_ADDRESS_INTL, KVKK_EMAIL } from '../data/legal';
+
+/**
+ * English translation of the KVKK Art. 10 privacy notice (/kvkk-aydinlatma-metni): site visits, the analysis form,
+ * the newsletter and correspondence. The client portal has its own notice: app.wiserrise.com/gizlilik.
+ *
+ * The text depends on the site: if a form field, service or tracking code is added, update the tables here,
+ * the Turkish source and the cookie policy pages too.
+ */
+const mail = `mailto:${KVKK_EMAIL}`;
+---
+
+<LegalPage
+  locale="en"
+  route="legal/kvkk"
+  title="Privacy Notice | Wiserrise"
+  description="Which personal data we process through wiserrise.com and why, who we share it with, and your rights under Turkey’s data protection law (KVKK)."
+  heading="Privacy Notice"
+>
+  <p class="v2-legal-lead">
+    This notice explains how your personal data is processed when you visit wiserrise.com, fill in the free analysis form,
+    subscribe to the newsletter or write to us, in accordance with Article 10 of Turkey’s Personal Data Protection Law
+    No. 6698 (Kişisel Verilerin Korunması Kanunu, “KVKK”). For the client portal, the
+    <a href="https://app.wiserrise.com/gizlilik">portal privacy notice</a> applies.
+  </p>
+
+  <h2>1. Data controller</h2>
+  <p>
+    The data controller is {COMPANY_LEGAL_NAME}, the owner of the Wiserrise brand. Address: {COMPANY_ADDRESS_INTL}.
+    For questions and applications concerning the KVKK: <a href={mail}>{KVKK_EMAIL}</a>.
+  </p>
+
+  <h2>2. What data we process and why</h2>
+  <div class="v2-legal-table" tabindex="0" role="region" aria-label="Data processed, purposes and legal grounds">
+    <table>
+      <thead>
+        <tr><th>When</th><th>What data</th><th>Purpose</th><th>Legal ground (KVKK Art. 5)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>When you fill in the free analysis form</td>
+          <td>Full name, business name, email, phone, website, Google Maps or Instagram link, the services you are interested in, when you would like to start</td>
+          <td>To assess your request, prepare the analysis and send it to you, and discuss the service with you</td>
+          <td>Processing is directly related to the formation of a contract (Art. 5/2-c); legitimate interest in keeping a record of the request (Art. 5/2-f)</td>
+        </tr>
+        <tr>
+          <td>When you subscribe to the newsletter</td>
+          <td>Email address, subscription consent</td>
+          <td>To send tips and announcement emails</td>
+          <td>Explicit consent (Art. 5/1)</td>
+        </tr>
+        <tr>
+          <td>When you write to us or call us</td>
+          <td>Your contact details, the content of the correspondence</td>
+          <td>To answer your question and follow up on your request</td>
+          <td>Processing is directly related to the formation of a contract (Art. 5/2-c); legitimate interest (Art. 5/2-f)</td>
+        </tr>
+        <tr>
+          <td>When you visit the site</td>
+          <td>IP address, browser and device information, page opened, time of the request</td>
+          <td>To serve the site, keep it secure and keep page view statistics</td>
+          <td>Legitimate interest (Art. 5/2-f)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Your answers in the <a href={routePath('en', 'tools/gbp-audit')}>Google profile analysis tool</a> are calculated in
+    your browser; they are not sent to us or to any other service. We do not ask for special categories of personal data,
+    such as health or religion, in our forms; please do not enter such information.
+  </p>
+
+  <h2>3. How we collect data</h2>
+  <p>
+    Through the forms on the site, email and phone conversations, and the technical logs kept by the site infrastructure,
+    by automated or partly automated means. When preparing an analysis, we also look at publicly available information
+    about your business, such as its Google Business Profile, website and search results.
+  </p>
+
+  <h2>4. Who we share it with</h2>
+  <p>We do not sell your data or share it for advertising purposes. We share it with the following parties to carry out this work:</p>
+  <ul>
+    <li><b>Formspree (USA):</b> delivering the analysis form to us.</li>
+    <li><b>Kit (USA):</b> the newsletter subscriber list and sending emails.</li>
+    <li><b>Google LLC (USA):</b> our mailbox (Google Workspace) and our working files.</li>
+    <li><b>Supabase, Inc. (USA):</b> the database that holds our lead and client records.</li>
+    <li><b>Meta Platforms (WhatsApp):</b> corresponding with you, if you have given us your phone number.</li>
+    <li><b>Cloudflare, Inc. (USA):</b> hosting the site, its security and page view statistics.</li>
+    <li>Competent public authorities and institutions, and courts, where required by law.</li>
+  </ul>
+  <p>
+    Because the data controller and most of these providers are located outside Turkey, your data is transferred abroad.
+    These transfers are subject to the rules in Article 9 of the KVKK.
+  </p>
+
+  <h2>5. How long we keep it</h2>
+  <div class="v2-legal-table" tabindex="0" role="region" aria-label="Retention periods">
+    <table>
+      <thead>
+        <tr><th>Data</th><th>Period</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Analysis request, if you did not become a client</td><td>Up to 2 years from our last conversation</td></tr>
+        <tr><td>Contract and invoice records, if you became a client</td><td>For the duration of the service relationship; afterwards for the statutory periods, up to 10 years</td></tr>
+        <tr><td>Your newsletter email</td><td>As long as your subscription lasts; after you unsubscribe, it is deleted or kept only to make sure we do not email you again</td></tr>
+        <tr><td>Server logs (IP, browser)</td><td>Limited to the provider’s standard short-term retention policy</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>When the period ends, the data is deleted or anonymized.</p>
+
+  <h2>6. Your rights</h2>
+  <p>Under Article 11 of the KVKK, you have the right to:</p>
+  <ul>
+    <li>find out whether your personal data is processed and, if it is, request information about it;</li>
+    <li>find out the purpose of the processing and whether the data is used in line with that purpose;</li>
+    <li>know the third parties in Turkey or abroad to whom it is transferred;</li>
+    <li>ask for it to be corrected if it is incomplete or inaccurate;</li>
+    <li>ask for it to be deleted or destroyed under the conditions set out in Article 7 of the KVKK;</li>
+    <li>ask for these corrections and deletions to be notified to the third parties to whom the data was transferred;</li>
+    <li>object to an outcome against you that results solely from analysis by automated systems;</li>
+    <li>claim compensation for damage you suffered because of unlawful processing.</li>
+  </ul>
+
+  <h2>7. How to apply</h2>
+  <p>
+    You can send your application to <a href={mail}>{KVKK_EMAIL}</a> from the email address you previously gave us, or in
+    writing to the address in section 1. State your full name, contact details and request; we may ask for additional
+    information to verify your identity. We conclude your application within 30 days at the latest and charge no fee
+    unless the process involves a separate cost; if your application is rejected or left unanswered, you retain the right
+    to file a complaint with the Personal Data Protection Board (Kişisel Verileri Koruma Kurulu).
+  </p>
+
+  <h2>8. Withdrawing newsletter consent</h2>
+  <p>
+    You can withdraw your newsletter consent at any time: use the unsubscribe link at the bottom of the emails or write
+    to <a href={mail}>{KVKK_EMAIL}</a>.
+  </p>
+
+  <h2>9. Changes</h2>
+  <p>
+    We update this notice when necessary; the current version is published on this page with its date. For what is
+    stored in your browser, see the <a href={routePath('en', 'legal/cookies')}>Cookie Policy</a>.
+  </p>
+</LegalPage>

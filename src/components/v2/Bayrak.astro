@@ -1,0 +1,32 @@
+---
+/** Dil seçicideki küçük bayraklar (20×14). Emoji bayrak Windows'ta harf olarak çıktığı için SVG. */
+interface Props {
+  dil: 'tr' | 'en' | 'de';
+}
+const { dil } = Astro.props;
+---
+
+{dil === 'tr' && (
+  <svg class="v2-bayrak" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="1200" height="800" fill="#e30a17" />
+    <circle cx="425" cy="400" r="200" fill="#ffffff" />
+    <circle cx="475" cy="400" r="160" fill="#e30a17" />
+    <path d="M583.33 400 764.24 458.78 652.43 304.89 652.43 495.11 764.24 341.22z" fill="#ffffff" />
+  </svg>
+)}
+{dil === 'en' && (
+  <svg class="v2-bayrak" viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="60" height="30" fill="#012169" />
+    <path d="M0 0 60 30M60 0 0 30" stroke="#ffffff" stroke-width="6" />
+    <path d="M0 0 60 30M60 0 0 30" stroke="#c8102e" stroke-width="2" />
+    <path d="M30 0v30M0 15h60" stroke="#ffffff" stroke-width="10" />
+    <path d="M30 0v30M0 15h60" stroke="#c8102e" stroke-width="6" />
+  </svg>
+)}
+{dil === 'de' && (
+  <svg class="v2-bayrak" viewBox="0 0 5 3" preserveAspectRatio="none" aria-hidden="true">
+    <rect width="5" height="1" fill="#000000" />
+    <rect y="1" width="5" height="1" fill="#dd0000" />
+    <rect y="2" width="5" height="1" fill="#ffce00" />
+  </svg>
+)}

@@ -1,0 +1,54 @@
+---
+/**
+ * Analiz formundan sonra gelinen teşekkür sayfası. Form gönderilince /js/script.js dönüşüm olayını
+ * tetikleyip buraya yönlendirir. Arama motorlarına kapalı (noindex, robots.txt ve site haritası dışında).
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AnalizDialog from '../components/AnalizDialog.astro';
+import Header from '../components/v2/Header.astro';
+import Footer from '../components/v2/Footer.astro';
+import { CONTACT_EMAIL } from '../i18n/ui';
+import { routePath } from '../i18n/routes';
+
+const email = CONTACT_EMAIL.en;
+---
+
+<BaseLayout
+  locale="en"
+  route="thanks"
+  title="Request received | Wiserrise"
+  description="Your free analysis request has reached us. The analysis lands in your inbox within 24 hours."
+  design="v2"
+  noindex
+>
+
+<Header locale="en" route="thanks" />
+
+<main id="main" class="v2-page">
+  <div class="v2-top v2-top-renk">
+    <section class="v2-page-hero v2-tesekkur">
+      <span class="v2-tesekkur-ok" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="28" height="28"><path d="M5 12.5 10 17.5 19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </span>
+      <span class="v2-eyebrow">REQUEST RECEIVED</span>
+      <h1>Thank you, we’re starting on your business.</h1>
+      <p class="v2-page-lede">
+        We’ll look at your profile, your website and your competitors, then write down where you should start. The analysis lands in your inbox within
+        <span style="white-space: nowrap;">24 hours</span>.
+      </p>
+      <div class="v2-page-actions">
+        <a class="btn v2-btn-firuze" href="/">Back to the home page</a>
+      </div>
+      <p class="v2-tesekkur-not">
+        While you wait, you can <a href={routePath('en', 'tools/gbp-audit')}>score your profile yourself in 10 questions</a>.
+        Any questions? Write to <a href={`mailto:${email}`}>{email}</a>.
+      </p>
+    </section>
+  </div>
+</main>
+
+<AnalizDialog locale="en" email={email} />
+
+<Footer locale="en" email={email} news={false} />
+
+</BaseLayout>

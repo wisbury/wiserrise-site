@@ -1,63 +1,63 @@
 import type { AuditContent } from './index';
 
 /**
- * English content. Scoring is deliberately transparent: every option carries a
- * visible point value and the maximum is 100. The tool is a diagnostic, not a
- * lead gate — visitors learn what is weak even if they never contact us.
+ * English content, a translation of tr.ts. Scoring is deliberately transparent: every
+ * option carries a visible point value and the total is 100. The tool is a diagnosis;
+ * visitors learn what is weak even if they never write to us.
  */
 
 const groups = [
-  { id: 'basics', label: 'Category and basics', max: 30 },
-  { id: 'reviews', label: 'Reviews', max: 30 },
-  { id: 'freshness', label: 'Content and freshness', max: 20 },
-  { id: 'site', label: 'Website connection', max: 20 },
+  { id: 'temel', label: 'Category and basics', max: 30 },
+  { id: 'yorum', label: 'Reviews', max: 30 },
+  { id: 'tazelik', label: 'Content and freshness', max: 20 },
+  { id: 'site', label: 'Website link', max: 20 },
 ];
 
 const questions = [
   {
     id: 'q1',
-    group: 'basics',
+    group: 'temel',
     question: 'Does your primary category match your main service exactly?',
-    help: 'The primary category is the heaviest relevance signal in local ranking. It should sit on your highest-volume core service.',
+    help: 'The primary category is the heaviest relevance signal in local ranking. It belongs to your main service with the highest search volume.',
     options: [
       { label: 'Yes, it matches exactly', points: 10 },
       { label: 'Close, but not exact', points: 5 },
-      { label: 'Not sure — I have not checked', points: 0 },
+      { label: 'Not sure / haven’t checked', points: 0 },
     ],
     advice:
-      'Category is the single biggest ranking change you can make through one field. Extract the primary categories of the current top three and compare before doing anything else.',
+      'The category is the biggest ranking change you can make with a single field. Before you start anything else, list the primary categories of the top three competitors and compare them with yours.',
     link: 'services/gbp' as const,
   },
   {
     id: 'q2',
-    group: 'basics',
-    question: 'Is your service list filled in, with a description for each item?',
-    help: 'On most profiles this field is either empty or filled with Google’s generic suggestions — meaning it is identical to your competitors’.',
+    group: 'temel',
+    question: 'Is your service list filled in, with a description for every service?',
+    help: 'On most profiles this field is either empty or full of the generic labels Google suggests, which makes it identical to your competitors’.',
     options: [
       { label: 'All written, each with a description', points: 10 },
-      { label: 'List exists but no descriptions', points: 5 },
-      { label: 'Empty, or left as Google suggested', points: 0 },
+      { label: 'There’s a list but no descriptions', points: 5 },
+      { label: 'Empty, or as Google suggested it', points: 0 },
     ],
     advice:
-      'Write service items in the words people actually search for and add a description to each. Keep that naming identical to the service pages on your site.',
+      'Name your services with the words people actually search for, and add a description to each one. Keep these names identical to the service pages on your website.',
     link: 'services/gbp' as const,
   },
   {
     id: 'q3',
-    group: 'basics',
-    question: 'Are your hours, phone and website link current?',
-    help: 'A profile that shows as closed, or has the wrong number, loses that customer even when its ranking is good.',
+    group: 'temel',
+    question: 'Are your opening hours, phone number and website link up to date?',
+    help: 'A profile that shows as closed or lists the wrong phone number loses that customer, even with a good ranking.',
     options: [
-      { label: 'All three current, holidays included', points: 10 },
-      { label: 'Mostly current but I do not check', points: 5 },
-      { label: 'Something is missing or outdated', points: 0 },
+      { label: 'All three up to date, holidays included', points: 10 },
+      { label: 'Mostly up to date, but I don’t check', points: 5 },
+      { label: 'Some information is missing or old', points: 0 },
     ],
     advice:
-      'These fields affect conversion more than ranking. Setting special hours for public holidays in particular prevents showing as "closed" and losing the enquiry.',
+      'These fields affect conversions more than rankings. Setting special hours for public holidays in particular keeps you from showing as “closed” and losing customers.',
   },
   {
     id: 'q4',
-    group: 'reviews',
+    group: 'yorum',
     question: 'How many reviews do you have?',
     options: [
       { label: '50 or more', points: 10 },
@@ -66,88 +66,88 @@ const questions = [
       { label: '0–4', points: 0 },
     ],
     advice:
-      'Review volume is the most measurable source of the prominence signal. Set the target from the average of the current top three, not from an absolute number.',
+      'Your review count is the easiest part to measure of what Google calls prominence. Set your target by the average of your top three competitors.',
     link: 'services/gbp' as const,
   },
   {
     id: 'q5',
-    group: 'reviews',
-    question: 'How does your review volume compare to the top three?',
-    help: 'Look at the three businesses that appear for your target query.',
+    group: 'yorum',
+    question: 'How does your review volume compare with your top three competitors?',
+    help: 'Look at the first three businesses that show up on the map for the same search.',
     options: [
       { label: 'More than theirs', points: 10 },
       { label: 'About the same', points: 6 },
-      { label: 'Noticeably fewer', points: 2 },
-      { label: 'I have not looked', points: 0 },
+      { label: 'Clearly fewer', points: 2 },
+      { label: 'Haven’t looked / don’t know', points: 0 },
     ],
     advice:
-      'Setting a review target without knowing your competitors’ volume is meaningless. Quantify the gap — in most cases it turns out to be the single reason you are behind.',
+      'Don’t set a target before you know your competitors’ review counts. Put a number on the gap; in the profiles we review, this is the most common reason a business falls behind.',
     link: 'services/rank-tracking' as const,
   },
   {
     id: 'q6',
-    group: 'reviews',
-    question: 'Do you reply to reviews?',
-    help: 'Service and place names that appear in your replies also produce relevance signals.',
+    group: 'yorum',
+    question: 'Do you reply to the reviews you get?',
+    help: 'Replying to reviews is one of Google’s own recommendations for local ranking. Your next customer reads your reply too.',
     options: [
-      { label: 'To all of them, within a few days', points: 10 },
-      { label: 'To some', points: 5 },
+      { label: 'All of them, within a few days', points: 10 },
+      { label: 'Some of them', points: 5 },
       { label: 'No', points: 0 },
     ],
     advice:
-      'Reply to every review and name the service naturally in the reply. For negative ones, fix it privately first, then post a short, non-defensive public reply.',
+      'Reply to every review. With a negative review, make it right in private first, then write a short, calm reply.',
     link: 'services/gbp' as const,
   },
   {
     id: 'q7',
-    group: 'freshness',
-    question: 'Have you posted from your profile in the last 30 days?',
+    group: 'tazelik',
+    question: 'Have you published a post on your profile in the last 30 days?',
     options: [
       { label: 'I post regularly', points: 10 },
-      { label: 'Occasionally', points: 5 },
+      { label: 'Now and then', points: 5 },
       { label: 'No', points: 0 },
     ],
     advice:
-      'Posting alone will not put you in the top three; but with everything else equal, an active profile beats a dormant one. Point each post at a service page on your site.',
+      'Posts alone won’t get you into the top three. They show that the profile is active and give customers something current to read. Link each post to a service page on your website.',
     link: 'services/gbp' as const,
   },
   {
     id: 'q8',
-    group: 'freshness',
+    group: 'tazelik',
     question: 'Have you added new photos in the last 90 days?',
-    help: 'A steady trickle works better than uploading thirty photos once and never touching it again.',
+    help: 'Adding photos regularly works better than uploading thirty at once and leaving them untouched for two years.',
     options: [
       { label: 'Yes, I add them regularly', points: 10 },
       { label: 'No, not for a long time', points: 0 },
     ],
     advice:
-      'Real premises and team photos produce a freshness signal and build trust that stock imagery cannot.',
+      'Real photos of your premises and your team send a freshness signal and build the trust that stock images can’t.',
   },
   {
     id: 'q9',
     group: 'site',
-    question: 'Which page on your site does the profile link to?',
+    question: 'Which page of your website does your profile link to?',
     options: [
-      { label: 'Homepage plus each service linked separately', points: 10 },
+      { label: 'Homepage, plus each service linked separately', points: 10 },
       { label: 'Homepage only', points: 6 },
-      { label: 'No site linked', points: 0 },
+      { label: 'No website linked', points: 0 },
     ],
     advice:
-      'Linking each profile service to its matching page on the site helps Google match the two entities as one business.',
+      'Linking each service on the profile to its matching page on your website makes it easier for Google to match the two as the same business.',
     link: 'services/on-page-seo' as const,
   },
   {
     id: 'q10',
     group: 'site',
-    question: 'Are the business name and phone on your site identical to the profile?',
-    help: 'NAP consistency: the same business written the same way across every source.',
+    question: 'Are the business name and phone number on your website exactly the same as on your profile?',
+    help: 'NAP consistency: the same business written the same way in every source.',
     options: [
-      { label: 'Yes, character for character', points: 10 },
+      { label: 'Yes, letter for letter', points: 10 },
       { label: 'There are small differences', points: 3 },
-      { label: 'I have not checked', points: 0 },
+      { label: 'I haven’t checked', points: 0 },
     ],
     advice:
-      'Name and phone being byte-identical everywhere directly affects the confidence Google accumulates that the business is real. On address-hidden profiles this matters even more.',
+      'A name and phone number that match exactly in every source directly affect the trust Google builds up that your business is real. On profiles without a public address, this matters even more.',
     link: 'services/local-seo' as const,
   },
 ];
@@ -156,17 +156,17 @@ const bands = [
   {
     min: 80,
     title: 'Your foundation is solid',
-    text: 'There is no root problem on the profile side. At this level the next job is finding out where you fall behind geographically, through grid measurement — because the problem is no longer the profile, it is the points where competition concentrates.',
+    text: 'We see no root problem on the profile side. The next job is to find out, with measurement across your area, in which districts you fall behind. At this level the race is in the corners of the map where competition is heaviest.',
   },
   {
     min: 55,
     title: 'There are clear gaps',
-    text: 'The profile works, but you are behind competitors in a few areas. The weak points below can usually be closed within four to eight weeks, which is also when first movement shows.',
+    text: 'The profile works, but you’re behind your competitors in a few areas. Start with the weak points below. For most businesses, we see the first movement on the map within 4 to 8 weeks.',
   },
   {
     min: 0,
     title: 'There are critical gaps',
-    text: 'The profile has gaps that directly hold ranking down. The good news: at this level the biggest jump usually comes from the first fixes, because most competitors are not managing these areas either.',
+    text: 'The profile has gaps that directly hold your ranking back. The good news: you can fix most of the items below yourself, and most of your competitors don’t look at these areas.',
   },
 ];
 
@@ -178,6 +178,6 @@ export const en: AuditContent = {
     answered: 'questions answered',
     adviceHeading: 'Fix these first',
     adviceLink: 'How to fix it →',
-    ctaLabel: 'Request My Grid Report →',
+    ctaLabel: 'Get a free analysis',
   },
 };

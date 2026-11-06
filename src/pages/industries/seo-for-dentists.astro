@@ -1,0 +1,264 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'URGENT', title: 'The patient searching in pain', text: 'A patient with a throbbing tooth at night checks the map and calls straight away. Your hours and phone number have to be right at that moment.' },
+  { label: 'TREATMENT', title: 'Treatment pages', text: 'A patient considering implants or clear aligners reads for weeks. For every main treatment we write a page that answers their questions.' },
+  { label: 'REVIEWS', title: 'Reviews that respect privacy', text: 'We ask for reviews and give nothing in return. In our replies we never mention which treatment the patient had.' },
+  { label: 'RULES', title: 'Promotion limits', text: 'We don’t use before/after images, special offers or “best” claims. We have you approve every text before it goes live.' },
+];
+
+const toc = [
+  { id: 'acil', label: 'Emergency toothache searches' },
+  { id: 'tedavi', label: 'The patient researching treatment' },
+  { id: 'kurallar', label: 'Health advertising rules' },
+  { id: 'kategori', label: 'Category and profile name' },
+  { id: 'yorum', label: 'Reviews and privacy' },
+  { id: 'sube', label: 'Branches and health tourism' },
+  { id: 'olcum', label: 'What we measure' },
+];
+
+const faq = [
+  {
+    q: 'If we can’t share before/after photos, how do we convince patients?',
+    a: 'With pages that explain the treatment honestly. Before deciding, patients look for answers to questions like “how many sessions does it take” or “when can I go back to work”. A page that answers these questions openly also follows the rules.',
+  },
+  {
+    q: 'Can we put prices on the website?',
+    a: 'We don’t publish price lists, because promotion through prices and discounts is restricted in healthcare. Instead we explain what determines the price, for example the number of implants or the condition of the bone. The patient learns the exact figure from your clinic after the examination.',
+  },
+  {
+    q: 'We don’t see patients at night. Do we need to show up in emergency searches?',
+    a: 'No, correct hours are enough. The profile should clearly show the hours when you’re closed, and the patient who will call the next morning checks them too. Only use the word “emergency” if you really accept emergency patients.',
+  },
+  {
+    q: 'When will we see results?',
+    a: 'For most businesses we see the first movement on the map within 4-8 weeks, and treatment pages take 3-6 months to find their place in search. In big city centers packed with dental clinics it takes longer. We can’t give an exact date, but you see the work we do every week in the report.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="industries/dental"
+  title="SEO for Dentists and Dental Clinics | Wiserrise"
+  description="Local SEO for dental clinics within Turkey’s health advertising rules: emergency searches, treatment pages, reviews, branches. Measured across your area."
+  eyebrow="INDUSTRY · DENTISTS"
+  h1="SEO for dentists: be there the moment a patient searches."
+  crumb="Dentists"
+  lede="SEO for dentists means showing up for two different patients at once: the one typing “dentist open now” at night in pain, and the one who has been researching implants for weeks. The first looks at the map and the phone, the second reads your treatment pages. We build for both while staying inside Turkey’s health advertising rules."
+  serviceName="Local SEO for Dental Clinics"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Industries', href: p('industries') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Google Business Profile Management', href: p('services/gbp'), text: 'We manage hours, category, service list and review replies together.' },
+    { label: 'Content Production', href: p('services/content'), text: 'We write treatment pages around the questions patients actually ask.' },
+    { label: 'SEO for Aesthetic Clinics', href: p('industries/aesthetics'), text: 'How we work in a field where decisions take long and price comes up all the time.' },
+    { label: 'SEO for Physiotherapists', href: p('industries/physio'), text: 'Searches shaped by neighborhood proximity and repeat sessions.' },
+  ]}
+  relatedHeading="Related pages"
+  ctaLabel="Get a free analysis"
+  ctaHref="/#contact"
+>
+  <h2 id="acil">How does a patient in pain find you?</h2>
+
+  <p>
+    On the map, and they call without opening the website. Someone with a throbbing tooth at 11 pm types “dentist open now”
+    or “emergency dentist”, looks at the first few clinics on the map and taps the call button. The decision takes seconds.
+  </p>
+
+  <p>
+    In this search, your hours get checked first. If the hours are missing from the profile or no special hours are set for
+    public holidays, someone filtering the map for places open now won’t see you in the list.
+  </p>
+
+  <p>
+    Then there’s the profile name trap. Names like “Emergency Dental Clinic Kadıköy Implant” seem to work in the short term,
+    yet they break Google’s rules and can go as far as getting the profile suspended. Your profile name should match the
+    name on your sign.
+  </p>
+
+  <p>
+    If you don’t really see patients at night, don’t use the word “emergency” anywhere. A patient who calls at night and
+    can’t reach you won’t trust your “emergency” profile again.
+  </p>
+
+  <p>
+    If you do, the real work is answering the phone. We paid the price of responding late ourselves: when we were still
+    new, we noticed the only lead from a Meta ad 5 days later, it was too late to pass on to the client, and thousands of
+    lira went to waste. A patient writing in pain won’t wait 5 days, or even 5 minutes.
+  </p>
+
+  <p>
+    We track hours, special days, phone and messaging settings as part of
+    <a href={p('services/gbp')}>Google Business Profile management</a>.
+  </p>
+
+  <h2 id="tedavi">What does a patient researching implants read?</h2>
+
+  <p>
+    The answers to their questions. A patient considering implants or orthodontics researches for weeks before deciding
+    and types “how many sessions does it take”, “does it hurt”, “how long does it last”, “what does the price depend on”.
+  </p>
+
+  <p>
+    On most dental clinic websites, treatments sit on a single “Our Services” page with two paragraphs each. That page
+    doesn’t stand out in any treatment search. Every main treatment needs its own page.
+  </p>
+
+  <p>On an implant page we write:</p>
+
+  <ul class="checklist">
+    <li>How many stages the procedure has, the total time and the healing period</li>
+    <li>A realistic account of pain and anaesthesia</li>
+    <li>Who it isn’t suitable for and which preconditions apply</li>
+    <li>The factors that determine the price, for example the number of implants and the condition of the bone</li>
+    <li>A comparison with alternatives such as a bridge, without superiority claims</li>
+    <li>The questions patients actually ask, with short answers</li>
+  </ul>
+
+  <p>
+    We keep the treatment names on the page exactly the same as the service list on the profile. If patients type “wisdom
+    tooth extraction”, that’s what both say.
+  </p>
+
+  <p>
+    We write these pages as part of <a href={p('services/content')}>content production</a> and fit each one to a single
+    search with <a href={p('services/on-page-seo')} style="white-space: nowrap;">on-page SEO</a>. On health pages Google
+    looks more closely at who wrote the text, so we recommend putting the name and title of the dentist who reviewed the
+    content on the page.
+  </p>
+
+  <h2 id="kurallar">What do health advertising rules prohibit?</h2>
+
+  <p>
+    In Turkey, the promotion of health services is limited by Ministry of Health (Sağlık Bakanlığı) regulations. Many moves
+    that count as ordinary in other industries get a dental clinic into trouble. None of the texts we write contain the
+    following:
+  </p>
+
+  <ul>
+    <li>Promises of results, “guaranteed results” or treatment guarantees</li>
+    <li>Promotion with before/after photos</li>
+    <li>Announcements of discounts, special offers and package prices</li>
+    <li>Using patient reviews as praise material on the website or in ads</li>
+    <li>Comparative superiority claims like “best” or “most affordable”</li>
+  </ul>
+
+  <p>
+    The open ground is information: what the treatment is, how it’s done, how long it takes and what the patient will
+    face. That’s exactly what patients look for. The rules push you towards the content patients want to read anyway.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>This page is not legal advice.</strong> For the current interpretation of the rules, your provincial health
+      directorate and your professional chamber have the final say. We submit every text we write for your approval before
+      it goes live.
+    </p>
+  </div>
+
+  <p>
+    The same rules apply to <a href={p('industries/aesthetics')}>aesthetic clinics</a> and
+    <a href={p('industries/physio')}>physiotherapists</a>. Their search behavior is different, so we cover them on
+    separate pages.
+  </p>
+
+  <h2 id="kategori">Which category should you choose?</h2>
+
+  <p>
+    Give the primary category to the main search: “Dentist” or “Dental clinic”. Add the areas you really focus on as
+    additional categories. Each category corresponds to a different cluster of searches.
+  </p>
+
+  <p>
+    A mistake we see a lot is a clinic focused on implants or orthodontics giving its primary category to that narrow area.
+    It gains visibility in the narrow area and loses the large volume of “dentist” searches.
+  </p>
+
+  <p>
+    Then there’s the question of titles. If there’s no orthodontic specialist on your team, don’t choose the
+    “Orthodontist” category, because it gives patients the impression of a specialisation. We choose the category by
+    comparing it with the categories of the clinics that stand out in your area; we describe the method on the
+    <a href={p('services/gbp')}>profile management page</a>.
+  </p>
+
+  <h2 id="yorum">Is asking patients for reviews a problem?</h2>
+
+  <p>
+    You can ask for reviews. Offering a discount or a gift in return breaks Google’s rules, and in healthcare the promotion
+    rules come into play as well. Dictating what the patient should write carries the same risk.
+  </p>
+
+  <p>
+    The real subtlety is in the replies. When you reply to a review with “we’re glad you were happy with your implant
+    treatment”, you announce to everyone which treatment that person had. That’s why we keep our replies short and calm,
+    without naming the treatment.
+  </p>
+
+  <p>
+    With a negative review, the patient is contacted by phone first, then a short reply that doesn’t turn defensive gets
+    written. Don’t display incoming reviews on the website under a “what our patients say” heading like an ad. We explain
+    the review request flow step by step in the <a href={p('guides/more-reviews')}>guide to getting more Google reviews</a>.
+  </p>
+
+  <h2 id="sube">What if you have several branches or patients from abroad?</h2>
+
+  <p>
+    Every physical branch needs its own profile and its own page on the website. Branch pages that copy each other are one
+    of the costliest mistakes, because the branches end up eating into each other in the same search. On each page we write
+    about that branch’s team and the treatments done there.
+  </p>
+
+  <p>
+    If you accept patients from abroad, the work goes somewhere else entirely. This field requires a health tourism
+    authorization certificate from the Ministry of Health, and the promotion rules work differently too. Searches happen in
+    another language and across a whole country, so proximity stops mattering.
+  </p>
+
+  <p>
+    We work in Turkish, English and German, and we don’t squeeze health tourism into the local program. If we plan it
+    together, we set it up separately from the start.
+  </p>
+
+  <h2 id="olcum">What do we measure?</h2>
+
+  <p>
+    For a dental clinic, the most misleading number is website traffic. Some patients who come from the map call without
+    ever visiting the website, and a clinic that only looks at website statistics doesn’t see them. That’s why we read four
+    sources together:
+  </p>
+
+  <ul class="checklist">
+    <li>
+      <a href={p('services/rank-tracking')}>Measurement across your area</a>: where you rank from different points around
+      you
+    </li>
+    <li>Profile interactions: how many people called you, got directions, sent a message or clicked through to your website</li>
+    <li>Search Console data for treatment pages: which searches they appear in and how many clicks they get</li>
+    <li>The work we do: what we changed on the profile and the website</li>
+  </ul>
+
+  <p>
+    You see the work we do every week in the report and in the client portal. Reading all four together catches the
+    “rankings went up but the phone isn’t ringing” situation early. Sometimes the reason is that the ranking rose in a
+    low-volume treatment search.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>How many clinics in your district are <span class="highlight">ahead of you</span>?</h2>
+    <p>
+      In the free analysis we measure across your area and work out the gap between you and rival clinics. The result lands
+      in your inbox within <span style="white-space: nowrap;">24 hours</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

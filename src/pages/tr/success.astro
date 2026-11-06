@@ -1,0 +1,54 @@
+---
+/**
+ * Analiz formundan sonra gelinen teşekkür sayfası. Form gönderilince /js/script.js dönüşüm olayını
+ * tetikleyip buraya yönlendirir. Arama motorlarına kapalı (noindex, robots.txt ve site haritası dışında).
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnalizDialog from '../../components/AnalizDialog.astro';
+import Header from '../../components/v2/Header.astro';
+import Footer from '../../components/v2/Footer.astro';
+import { CONTACT_EMAIL } from '../../i18n/ui';
+import { routePath } from '../../i18n/routes';
+
+const email = CONTACT_EMAIL.tr;
+---
+
+<BaseLayout
+  locale="tr"
+  route="thanks"
+  title="Talebiniz alındı | Wiserrise"
+  description="Ücretsiz analiz talebiniz bize ulaştı. Analiz 24 saat içinde e-postanızda."
+  design="v2"
+  noindex
+>
+
+<Header locale="tr" route="thanks" />
+
+<main id="main" class="v2-page">
+  <div class="v2-top v2-top-renk">
+    <section class="v2-page-hero v2-tesekkur">
+      <span class="v2-tesekkur-ok" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="28" height="28"><path d="M5 12.5 10 17.5 19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </span>
+      <span class="v2-eyebrow">TALEBİNİZ ALINDI</span>
+      <h1>Teşekkürler, işletmenize bakmaya başlıyoruz.</h1>
+      <p class="v2-page-lede">
+        Profilinize, sitenize ve rakiplerinize bakıp nereden başlamanız gerektiğini yazacağız. Analiz 24 saat içinde
+        <span style="white-space: nowrap;">e-postanızda</span>.
+      </p>
+      <div class="v2-page-actions">
+        <a class="btn v2-btn-firuze" href="/tr">Ana sayfaya dön</a>
+      </div>
+      <p class="v2-tesekkur-not">
+        Beklerken profilinizi <a href={routePath('tr', 'tools/gbp-audit')}>10 soruda kendiniz puanlayabilirsiniz</a>.
+        Sorunuz olursa <a href={`mailto:${email}`}>{email}</a> adresine yazın.
+      </p>
+    </section>
+  </div>
+</main>
+
+<AnalizDialog locale="tr" email={email} />
+
+<Footer locale="tr" email={email} news={false} />
+
+</BaseLayout>

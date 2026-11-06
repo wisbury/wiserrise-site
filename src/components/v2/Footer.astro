@@ -1,72 +1,115 @@
 ---
-/** v2 alt bilgi: bülten, link ızgarası, telif, şemse kelime işareti. */
+/** v2 sayfa sonu: bülten, makaleler; ardından ekranı dolduran alt bilgi (link ızgarası, telif, şemse kelime işareti). */
+import { guidesFor } from '../../data/guides';
+import { legalLinksFor } from '../../data/legal';
+import { localeHome, type Locale } from '../../i18n/config';
+import { routePath } from '../../i18n/routes';
+import { v2ui } from '../../i18n/v2';
+
 interface Props {
+  locale: Locale;
   email: string;
-  base?: string;
+  /** Bülten ve makaleler bölümü. Yasal metin sayfalarında kapalı. */
+  news?: boolean;
 }
-const { email, base = '' } = Astro.props;
+const { locale, email, news = true } = Astro.props;
+const s = v2ui[locale];
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+// Ana sayfa bölümleri: /#surec, /tr#surec, /de#surec
+const home = localeHome(locale) === '/' ? '/' : localeHome(locale);
+const legal = legalLinksFor(locale);
 const year = new Date().getFullYear();
+const makaleler = guidesFor(locale).filter((g) => g.featured);
 ---
 
-<footer style="max-width: 1312px; margin: 0 auto; padding: clamp(64px, 8vw, 96px) clamp(16px, 3vw, 32px) 0;">
+{news && (
+<div style="max-width: 1312px; margin: 0 auto; padding: clamp(64px, 8vw, 96px) clamp(16px, 3vw, 32px);">
   <div class="v2-news">
     <div class="v2-news-copy">
-      <span class="v2-eyebrow">BÜLTEN</span>
-      <span class="v2-news-title">Bugün uygulayabileceğiniz üç ücretsiz ipucuyla başlayın.</span>
+      <span class="v2-eyebrow">{s.news.eyebrow}</span>
+      <span class="v2-news-title">{s.news.title}</span>
     </div>
     <form id="newsletterForm" class="v2-news-form" action="https://app.kit.com/forms/9696107/subscriptions" method="POST">
       <div class="v2-news-row">
-        <input type="email" name="email_address" placeholder="ad@isletmeniz.com" required aria-label="E-posta adresi" autocomplete="email" />
-        <button type="submit" class="btn">Abone Ol</button>
+        <input type="email" name="email_address" placeholder={s.news.placeholder} required aria-label={s.news.emailAria} autocomplete="email" />
+        <button type="submit" class="btn">{s.news.subscribe}</button>
       </div>
       <label class="v2-news-consent">
         <input type="checkbox" name="consent" required />
-        <span>Wiserrise'den e-posta almayı ve <a href="/gizlilik">gizlilik koşullarını</a> kabul ediyorum.</span>
+        <span>{s.news.consent} <a href={legal[0].href}>{legal[0].label}</a>.</span>
       </label>
       <p class="newsletter-status v2-news-status" role="status" aria-live="polite"></p>
     </form>
   </div>
+  <section aria-labelledby="makaleler" style="display: flex; flex-direction: column; gap: 32px;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px 24px;">
+      <h2 id="makaleler" class="v2-news-title" style="margin: 0;">{s.news.articles}</h2>
+      <a href={p('guides')} style="font-size: 15px; font-weight: 600; color: #16244d; text-decoration: none;">{s.news.all}</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 16px;">
+      {makaleler.map((m) => (
+        <a class="card" href={m.href} style="display: flex; flex-direction: column; gap: 14px; padding: 32px; border-radius: 20px; background: #ffffff; border: 1px solid #dedfda; color: #1a1b19; text-decoration: none; box-sizing: border-box;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;">{s.news.cardEyebrow}</span>
+            <span class="v2-arrow" aria-hidden="true"><span class="v2-arrow-t">{s.news.read}</span><i></i></span>
+          </div>
+          <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 24px; line-height: 1.15; font-weight: 600; letter-spacing: -0.02em;">{m.title}</span>
+          <span style="font-size: 15px; line-height: 1.55; color: #5c5e59;">{m.text}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</div>
+)}
+
+<footer class="v2-foot">
+  <div class="v2-foot-in">
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 32px; padding-bottom: 48px; border-bottom: 1px solid #dedfda;">
     <div style="display: flex; flex-direction: column; gap: 12px; max-width: 280px;">
       <span style="display: flex; align-items: center; gap: 8px;"><svg aria-hidden="true" viewBox="0 0 110.25 80" width="33" height="24" style="display: block; flex: 0 0 auto;"><polygon points="0,80 49,0 67.5,30.2 37,80" fill="#16244d"></polygon><polygon points="57.25,60 83.75,16.7 110.25,60" fill="#2bb3a6"></polygon></svg><span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.03em;">Wiserrise</span></span>
-      <span style="font-size: 14px; line-height: 1.55; color: #5c5e59;">Yerel işletmeler ve markalar için dijital pazarlama. Haritada, aramada, reklamda ve süper zekâ yanıtlarında bulunun.</span>
+      <span style="font-size: 14px; line-height: 1.55; color: #5c5e59;">{s.footer.about}</span>
       <a href={`mailto:${email}`} style="font-size: 14px; font-weight: 500; color: #16244d;">{email}</a>
     </div>
-    <nav aria-label="Hizmetler" style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
-      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59; margin-bottom: 4px;">HİZMETLER</span>
-      <a href="/tr/hizmetler/yerel-seo" style="color: #1a1b19; text-decoration: none;">Local SEO</a>
-      <a href="/tr/hizmetler" style="color: #1a1b19; text-decoration: none;">SEO</a>
-      <a href="#analiz-formu" data-analiz style="color: #1a1b19; text-decoration: none;">Google Ads</a>
-      <a href="#analiz-formu" data-analiz style="color: #1a1b19; text-decoration: none;">GEO</a>
-      <a href="#analiz-formu" data-analiz style="color: #1a1b19; text-decoration: none;">Backlink paketleri</a>
+    <nav aria-label={s.nav.services} style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59; margin-bottom: 4px;">{s.footer.services}</span>
+      <a href={p('services/seo')} style="color: #1a1b19; text-decoration: none;">SEO</a>
+      <a href={p('services/local-seo')} style="color: #1a1b19; text-decoration: none;">Local SEO</a>
+      <a href="#analiz-formu" data-analiz data-hizmet="gads" style="color: #1a1b19; text-decoration: none;">Google Ads</a>
+      <a href="#analiz-formu" data-analiz data-hizmet="meta" style="color: #1a1b19; text-decoration: none;">Meta Ads</a>
+      <a href="#analiz-formu" data-analiz data-hizmet="backlink" style="color: #1a1b19; text-decoration: none;">{s.footer.backlinks}</a>
+      <a href={p('services/geo')} style="color: #1a1b19; text-decoration: none;">GEO</a>
     </nav>
-    <nav aria-label="Şirket" style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
-      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59; margin-bottom: 4px;">ŞİRKET</span>
-      <a href="/tr/sektorler" style="color: #1a1b19; text-decoration: none;">Sektörler</a>
-      <a href={`${base}#surec`} style="color: #1a1b19; text-decoration: none;">Nasıl çalışır</a>
-      <a href={`${base}#sss`} style="color: #1a1b19; text-decoration: none;">Sık sorulanlar</a>
-      <a href={`mailto:${email}`} style="color: #1a1b19; text-decoration: none;">İletişim</a>
+    <nav aria-label={s.footer.company} style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59; margin-bottom: 4px;">{s.footer.company}</span>
+      <a href={p('industries')} style="color: #1a1b19; text-decoration: none;">{s.footer.industries}</a>
+      <a href={`${home}#surec`} style="color: #1a1b19; text-decoration: none;">{s.footer.process}</a>
+      <a href={`${home}#sss`} style="color: #1a1b19; text-decoration: none;">{s.footer.faq}</a>
+      <a href={`mailto:${email}`} style="color: #1a1b19; text-decoration: none;">{s.footer.contact}</a>
     </nav>
-    <nav aria-label="Araçlar" style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
-      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59; margin-bottom: 4px;">ÜCRETSİZ ARAÇLAR</span>
-      <a href="/tr/araclar/google-isletme-profili-denetimi" style="color: #1a1b19; text-decoration: none;">Google profil analizi</a>
-      <a href="#analiz-formu" data-analiz style="color: #1a1b19; text-decoration: none;">Görünürlük analizi</a>
-      <a href="/tr/rehber" style="color: #1a1b19; text-decoration: none;">Rehberler</a>
+    <nav aria-label={s.footer.tools} style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59; margin-bottom: 4px;">{s.footer.tools}</span>
+      <a href={p('tools/gbp-audit')} style="color: #1a1b19; text-decoration: none;">{s.footer.profileAudit}</a>
+      <a href="#analiz-formu" data-analiz style="color: #1a1b19; text-decoration: none;">{s.footer.visibility}</a>
+      <a href={p('guides')} style="color: #1a1b19; text-decoration: none;">{s.footer.guides}</a>
     </nav>
-    <nav aria-label="Dil" style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
-      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59; margin-bottom: 4px;">DİL</span>
-      <a href="/tr" style="color: #1a1b19; text-decoration: none;">Türkçe</a>
-      <a href="/" style="color: #1a1b19; text-decoration: none;">English</a>
-      <a href="/de" style="color: #1a1b19; text-decoration: none;">Deutsch</a>
+    <nav aria-label={s.footer.language} style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59; margin-bottom: 4px;">{s.footer.language}</span>
+      <a href="/tr" hreflang="tr" lang="tr" style="color: #1a1b19; text-decoration: none;">Türkçe</a>
+      <a href="/" hreflang="en" lang="en" style="color: #1a1b19; text-decoration: none;">English</a>
+      <a href="/de" hreflang="de" lang="de" style="color: #1a1b19; text-decoration: none;">Deutsch</a>
     </nav>
   </div>
   <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; padding: 24px 0; font-size: 13px; color: #5c5e59;">
-    <span>© {year} Wisbury LLC. Wiserrise, Wisbury LLC markasıdır.</span>
-    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-      <a href="/gizlilik" style="color: #5c5e59; text-decoration: none;">Gizlilik</a>
-      <a href="/kullanim-kosullari" style="color: #5c5e59; text-decoration: none;">Koşullar</a>
+    <span>© {year} Wisbury LLC. {s.footer.brand}</span>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px 20px;">
+      {legal.map((l) => <a href={l.href} style="color: #5c5e59; text-decoration: none;">{l.label}</a>)}
+      <a href={s.footer.privacy.href} style="color: #5c5e59; text-decoration: none;">{s.footer.privacy.label}</a>
+      <a href={s.footer.terms.href} style="color: #5c5e59; text-decoration: none;">{s.footer.terms.label}</a>
     </div>
-  </div><div class="semse-foot" aria-hidden="true" style="margin-top: 24px; height: clamp(84px, 15vw, 220px); overflow: hidden; display: flex; align-items: flex-end; justify-content: center">
-  <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: clamp(88px, 17vw, 240px); line-height: 0.78; font-weight: 700; letter-spacing: -0.045em; color: #16244d; white-space: nowrap; transform: translateY(18px);">Wiserrise</span>
-</div>
+  </div>
+  </div>
+  <div class="semse-foot" data-kavis="footer" aria-hidden="true">
+    <span>Wiserrise</span>
+  </div>
 </footer>
+<script src="/js/kavis.js" defer is:inline></script>

@@ -1,0 +1,193 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'INFRASTRUCTURE', title: 'Technical SEO', text: 'Making sure your site opens properly to Google. A page that isn’t crawled won’t rank, however well it’s written.' },
+  { label: 'PAGE', title: 'On-page SEO', text: 'One page for one search. Title, copy and internal links are built around that search.' },
+  { label: 'CONTENT', title: 'Content production', text: 'Missing service, district and question pages. Copy that answers the searcher’s question in the first paragraph.' },
+  { label: 'AUTHORITY', title: 'Link building', text: 'Links from sites related to your field. Google also looks at how much other sites trust you.' },
+];
+
+const toc = [
+  { id: 'nedir', label: 'What SEO does' },
+  { id: 'local', label: 'How it differs from local SEO' },
+  { id: 'parcalar', label: 'The parts of SEO' },
+  { id: 'backlink', label: 'Backlinks' },
+  { id: 'sira', label: 'The order we work in' },
+  { id: 'olcum', label: 'Measurement and reports' },
+];
+
+const faq = [
+  {
+    q: 'When does SEO start working?',
+    a: 'We can’t give you an exact time, because it depends on your competitors and on where your site stands today. Technical fixes show up before new content does, and new pages can take months to settle. You see the progress in the report every week.',
+  },
+  {
+    q: 'Do you guarantee rankings?',
+    a: 'No, because nobody can guarantee rankings. What we put on the table is the work and the measurement: you see in the report what we did and how your position changed. There’s no contract, so if you’re not happy you simply don’t continue the next month.',
+  },
+  {
+    q: 'Can you work with my existing site?',
+    a: 'We can, but we need to manage the whole site. On work where we passed tasks on to someone else and waited for them to be done, we fixed the same mistakes for months.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/seo"
+  title="SEO Services | Wiserrise"
+  description="We fit your site to the questions your customers search for on Google: technical groundwork, page structure, content and links. Weekly report, no contract."
+  eyebrow="SERVICE · SEO"
+  h1="Stand out in search with SEO."
+  crumb="SEO"
+  lede="When someone types “what does a vehicle inspection report cover” into Google, SEO decides the order of the pages they see. We prepare your site for these searches in four places: groundwork, page structure, content and links from other sites. First we crawl your site, then we close the gaps one by one."
+  serviceName="SEO"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: p('services') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Technical SEO', href: p('services/technical-seo'), text: 'We close crawling and indexing errors so your site opens properly to Google.' },
+    { label: 'On-Page SEO', href: p('services/on-page-seo'), text: 'We fit every page to a single search and fix titles and internal links.' },
+    { label: 'Content Production', href: p('services/content'), text: 'We write the service, district and question pages your site is missing.' },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'We fix your profile and your site together so you stand out on the map.' },
+  ]}
+  ctaLabel="Get a free analysis"
+  ctaHref="/#contact"
+>
+  <h2 id="nedir">What does SEO do?</h2>
+
+  <p>
+    It brings customers who don’t know you yet to your site. People type what they need into Google, and Google ranks the
+    pages it thinks answer best. Hardly anyone clicks on a site that sits below the first page.
+  </p>
+
+  <p>
+    The difference from ads is that it lasts. Ads stop the day the budget runs out, while a page that ranks well keeps
+    bringing visitors month after month. In return, it starts slower.
+  </p>
+
+  <h2 id="local">How is it different from local SEO?</h2>
+
+  <p>
+    <a href={p('services/local-seo')}>Local SEO</a> works on the map and on customers near you. SEO works on the results
+    below the map and on searches that don’t depend on location.
+  </p>
+
+  <p>
+    If your customers come from nearby, local SEO comes first. If you sell to the whole city or the whole country, or your
+    customers read at length before they decide, SEO weighs more. Both feed the same site, so we run them together.
+  </p>
+
+  <h2 id="parcalar">What parts does SEO work consist of?</h2>
+
+  <p>Four parts, and the order matters. If the groundwork is broken, even the best copy won’t rank.</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>What do we look at?</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Groundwork</strong></td>
+          <td>Crawling, indexing, speed, structured data</td>
+          <td><a href={p('services/technical-seo')}>Technical SEO</a></td>
+        </tr>
+        <tr>
+          <td><strong>Page</strong></td>
+          <td>Every page answering a single search, headings and internal links</td>
+          <td><a href={p('services/on-page-seo')} style="white-space: nowrap;">On-page SEO</a></td>
+        </tr>
+        <tr>
+          <td><strong>Content</strong></td>
+          <td>Service, district and question pages that people search for but your site doesn’t have</td>
+          <td><a href={p('services/content')}>Content production</a></td>
+        </tr>
+        <tr>
+          <td><strong>Outside</strong></td>
+          <td>Links from sites related to your field</td>
+          <td>Link building</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    We work in this order. Writing copy for a page that isn’t crawled, or building links to a weak page, is money thrown
+    away.
+  </p>
+
+  <h2 id="backlink">Why do you need backlinks?</h2>
+
+  <p>
+    Google decides how far to trust a page partly by whether other sites link to it. If your competitors’ pages are as
+    good as yours, links from outside make the difference.
+  </p>
+
+  <p>
+    Links coming in bulk from unrelated sites don’t help, and Google may treat them as spam. We only get links from sites
+    related to your field that have real traffic.
+  </p>
+
+  <h2 id="sira">In what order do we work?</h2>
+
+  <p>The same order on every site. We don’t touch anything before we measure.</p>
+
+  <ol>
+    <li>
+      <strong>Crawl and measurement.</strong> We crawl your whole site. We work out which pages are indexed, which searches
+      you appear for and where your competitors are ahead.
+    </li>
+    <li>
+      <strong>Groundwork.</strong> We close the errors that stop pages from being crawled and indexed.
+    </li>
+    <li>
+      <strong>Page structure.</strong> We fit every page to a single search and build headings and internal links around
+      it.
+    </li>
+    <li>
+      <strong>Missing pages and links.</strong> We write the topics people search for that your site doesn’t cover, and
+      where needed we get links from sites related to your field.
+    </li>
+  </ol>
+
+  <p>
+    We learned this the hard way with one client. We were sending the to-do list to their developer, the pages that came
+    back were terrible, and we redid the same work for months.
+  </p>
+
+  <p>Since then our rule is clear: if we can’t manage the whole site, we don’t take the job.</p>
+
+  <h2 id="olcum">What do we measure and report?</h2>
+
+  <p>
+    A page in first place that nobody clicks is a position that does nothing for you. So we look at position together
+    with clicks.
+  </p>
+
+  <p>
+    From Search Console we read which searches your site appears for, how many clicks it gets and its average position.
+    Next to that we put the result of the technical crawl. You see the work we’ve done in the report every week.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Where does your site stand on <span class="highlight">Google</span>?</h2>
+    <p>
+      In the free analysis we look at your site and your competitors and tell you what is holding you back. The result
+      lands in your inbox within <span style="white-space: nowrap;">24 hours</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

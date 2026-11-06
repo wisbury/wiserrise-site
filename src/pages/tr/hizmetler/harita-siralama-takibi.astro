@@ -5,31 +5,39 @@ import { routePath } from '../../../i18n/routes';
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'KONUM', title: 'Bölgenizden ölçüm', text: 'Sıranızı çevrenizin farklı noktalarından ölçeriz. Müşteri nerede duruyorsa sıranız da oradan okunur.' },
+  { label: 'DESEN', title: 'Haritayı okumak', text: 'Merkezde güçlü, kenarda zayıf mısınız? Bu desen, sorunun profilde mi yoksa sitede mi olduğunu gösterir.' },
+  { label: 'RAKİP', title: 'Rakiplerle yan yana', text: 'Aynı ölçümü ilk üçteki rakipleriniz için de alırız. Hangi semtte neden önde olduklarını veriyle görürüz.' },
+  { label: 'ETKİ', title: 'Sıra yetmez', text: 'Sırayı arama, yol tarifi ve mesaj sayılarıyla birlikte okuruz. Telefon çalmıyorsa yüksek sıranın anlamı yok.' },
+];
+
 const toc = [
-  { id: 'sorun', label: 'Tek sıralama değeri neden yanıltıyor?' },
-  { id: 'grid', label: 'Grid ölçümü nasıl çalışır?' },
-  { id: 'okuma', label: 'Grid’i okumak' },
+  { id: 'tek-nokta', label: 'Tek noktadan bakmak' },
+  { id: 'nasil', label: 'Bölgenizden ölçüm' },
+  { id: 'alan', label: 'Ölçüm alanı' },
+  { id: 'okuma', label: 'Sonucu okumak' },
   { id: 'rakip', label: 'Rakip karşılaştırması' },
+  { id: 'aramalar', label: 'Takip edilen aramalar' },
   { id: 'sinirlar', label: 'Ölçümün sınırları' },
-  { id: 'raporlama', label: 'Raporlama ritmi' },
 ];
 
 const faq = [
   {
-    q: 'Neden kendi telefonumdan arayıp bakamıyorum?',
-    a: 'Bakabilirsiniz ama gördüğünüz sonuç sadece bulunduğunuz noktaya ait. Ayrıca Google, kendi işletmenizi ve geçmiş aramalarınızı hesaba katarak size kişiselleştirilmiş sonuç gösterir. Grid ölçümü bunu ortadan kaldırır ve şehrin tamamını tarar.',
+    q: 'Kendi telefonumdan arayıp bakmam yetmez mi?',
+    a: 'Yetmez. Gördüğünüz sonuç yalnız durduğunuz noktaya ait ve Google onu arama geçmişinize göre kişiselleştiriyor. Müşterinizin iki semt ötede ne gördüğünü bilmek için bölgenizden ölçüm gerekiyor.',
   },
   {
-    q: 'Grid ne sıklıkla ölçülüyor?',
-    a: 'Program yürürken ayda en az bir kez, kritik müdahalelerin (kategori değişimi gibi) öncesi ve sonrasında ek olarak. Böylece hangi değişikliğin ne ürettiği izole edilebiliyor.',
+    q: 'Kaç arama takip ediyorsunuz?',
+    a: 'Sabit bir sayı yok. Size iş getiren aramaları seçiyoruz; uzun bir listenin ortalaması yerine az sayıda doğru aramayı izlemek daha çok şey anlatıyor.',
   },
   {
-    q: 'Kaç sorgu takip ediliyor?',
-    a: 'Genelde 3–8 ana sorgu. Az sayıda ama gerçekten talep getiren sorgular, uzun bir listenin ortalamasından çok daha kullanışlı. Sorgu seçimini Search Console verisi ve rakip analiziyle birlikte yapıyoruz.',
+    q: 'Sıram yükselirse müşterim de artar mı?',
+    a: 'Kendiliğinden artmaz. Talebi olmayan bir aramada üste çıkmak telefonu çaldırmaz; bu yüzden sırayı arama, yol tarifi ve mesaj sayılarıyla birlikte okuyoruz.',
   },
   {
-    q: 'Takip hizmetini tek başına alabilir miyim?',
-    a: 'Evet. Kendi ekibiyle çalışan ya da başka bir ajansla ilerleyen işletmeler için bağımsız ölçüm anlamlı bir kontrol mekanizması. Bu durumda ölçüm ve yorum veriyoruz, uygulamayı siz yürütüyorsunuz.',
+    q: 'Rakiplerimin sırasını da görebilir miyim?',
+    a: 'Evet. Aynı ölçümü ilk üçteki rakipleriniz için de alıyoruz. Hangi semtte kimin önde olduğunu yan yana görürsünüz.',
   },
 ];
 ---
@@ -38,68 +46,82 @@ const faq = [
   locale={locale}
   route="services/rank-tracking"
   title="Google Haritalar Sıralama Takibi | Wiserrise"
-  description="Şehrin üstüne serilmiş 7×7 grid ile harita sıralamanızı nokta nokta ölçüyoruz. Tek ortalama değil, hangi bölgede kaçıncı olduğunuzun haritası."
-  eyebrow="Hizmet"
-  h1="Harita Sıralama Takibi"
-  lede="Yerel sıralama arayanın bulunduğu noktaya göre değişir. Tek bir sıralama değeri bu yüzden yanıltıcıdır. Şehrin üstüne 7×7 grid serip 49 ayrı noktada gerçekten kaçıncı olduğunuzu ölçüyoruz."
+  description="Haritada kaçıncı olduğunuz, arayanın durduğu yere göre değişir. Sıranızı bölgenizin farklı noktalarından ölçüyor, rakiplerinizle birlikte okuyoruz."
+  eyebrow="HİZMET · HARİTA SIRALAMASI"
+  h1="Harita sıralamanızı bölgenizin her köşesinden ölçüyoruz."
+  crumb="Harita Sıralama Takibi"
+  lede="Harita sıralama takibi, Google Haritalar’da kaçıncı çıktığınızı çevrenizin farklı noktalarından ölçmek. Haritada tek bir sıranız yok; aynı aramada bir semtte ikinci, karşı semtte yirminci çıkabilirsiniz. Biz nerede güçlü, nerede zayıf olduğunuzu harita üstünde gösterir, sonucu rakiplerinizle yan yana okuruz."
   serviceName="Google Haritalar Sıralama Takibi"
   breadcrumb={[
     { label: 'Ana Sayfa', href: '/tr' },
     { label: 'Hizmetler', href: p('services') },
+    { label: 'Local SEO', href: p('services/local-seo') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Yerel SEO', href: p('services/local-seo') },
-    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp') },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'Ölçümde çıkan eksikleri profilinizde ve sitenizde kapatırız.' },
+    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp'), text: 'Kategori, hizmetler, yorumlar ve gönderileri kurallara uygun yönetiriz.' },
+    { label: 'GEO', href: p('services/geo'), text: 'ChatGPT, Gemini ve Google’ın süper zeka yanıtlarında anılıp anılmadığınızı ölçeriz.' },
   ]}
-  ctaLabel="Grid Ölçümümü İste →"
+  ctaLabel="Ücretsiz analiz al"
   ctaHref="/tr#contact"
 >
-  <h2 id="sorun">Tek sıralama değeri neden yanıltıyor?</h2>
+  <h2 id="tek-nokta">Kendi telefonunuzdan baktığınız sıra neden yanıltır?</h2>
 
   <p>
-    Klasik SEO’da bir sorguda kaçıncı olduğunuz tek bir sayıdır. Yerel aramada böyle bir sayı
-    yoktur. Aynı sorgu, şehrin kuzeyinde 2., merkezinde 5., güneyinde 20. sırayı verebilir —
-    çünkü Google sıralamayı arayanın konumundan itibaren hesaplıyor.
+    Çünkü yalnız durduğunuz noktanın sırasını gösterir. Google haritadaki sonuçları arayanın konumuna göre sıralar;
+    dükkanınızın önünde birinci olmanız, iki semt ötedeki müşterinin de sizi birinci gördüğü anlamına gelmez.
   </p>
 
   <p>
-    Bunun pratik sonucu şu: işletme sahibi kendi ofisinden arattığında genellikle iyi bir
-    sıralama görür. Ofise en yakın nokta, doğal olarak en güçlü olduğu nokta. Ama müşterilerin
-    çoğu oradan aramıyor. "Ben zaten birinciyim" ile "gelen telefon yok" arasındaki çelişkinin
-    kaynağı neredeyse her zaman burası.
+    Bunun bir de tuzağı var. İşletme sahibi aramayı ofisinden yapar ve ofise en yakın nokta, işletmenin en güçlü olduğu
+    nokta. “Ben zaten birinciyim ama telefon çalmıyor” diyen işletmede ilk baktığımız yer burası.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Kendi konumunuzdan yaptığınız arama ölçüm değildir.</strong> Google sonuçları
-      arama geçmişinize ve konumunuza göre kişiselleştirir; kendi işletmenizi görme olasılığınız
-      yapay olarak yüksektir.
+      <strong>Kendi aramanız ölçüm sayılmaz.</strong> Google sonucu konumunuza ve arama geçmişinize göre
+      kişiselleştirir. Telefonunuzda gördüğünüz sıra, müşterinizin gördüğüyle aynı olmayabilir.
     </p>
   </div>
 
-  <h2 id="grid">Grid ölçümü nasıl çalışır?</h2>
+  <p>
+    Aynı sebeple tek bir ekran görüntüsüyle gelen “birinci olduk” raporuna güvenmiyoruz. O görüntü, haritanın küçük bir
+    köşesini gösterir.
+  </p>
+
+  <h2 id="nasil">Bölgenizden ölçüm nasıl yapılıyor?</h2>
 
   <p>
-    Hedef bölgenin üstüne eşit aralıklı bir koordinat ızgarası seriyoruz — standart kurulumumuz
-    7×7, yani 49 nokta. Her noktada, o noktada duran bir kullanıcının göreceği sonuçlar sorgulanıyor
-    ve işletmenizin kaçıncı sırada çıktığı kaydediliyor. Sonuç, tek bir sayı değil, şehrin
-    görünürlük haritası oluyor.
+    İşletmenizin çevresine yayılmış farklı noktalardan ölçüm alıyoruz. Her noktada, orada duran birinin telefonunda
+    göreceği haritayı sorguluyor ve kaçıncı çıktığınızı kaydediyoruz.
   </p>
 
   <p>
-    Izgaranın kapsadığı alan işletmenin tipine göre belirleniyor. Mahalle ölçeğinde çalışan bir
-    oto ekspertiz için 3–5 km’lik dar bir grid anlamlıyken, şehir geneline hizmet veren bir hukuk
-    bürosu için 15–20 km’lik bir grid gerekiyor. Yanlış ölçekte kurulan grid, ya her yerde yeşil
-    ya da her yerde kırmızı çıkarak hiçbir şey söylemiyor.
+    Sonuçta elinizde çevrenizin görünürlük haritası olur. Yeşil üst sıraları, kırmızı listenin çok gerisinde kaldığınız
+    ya da hiç çıkmadığınız yerleri gösterir. Sayıya bakmadan bile hangi semtte zayıf olduğunuzu görürsünüz.
   </p>
 
-  <h2 id="okuma">Grid’i okumak</h2>
+  <h2 id="alan">Ölçüm alanını nasıl belirliyoruz?</h2>
 
   <p>
-    Grid’in asıl değeri, ortalamada değil <strong>desende</strong>. Aynı ortalamayı veren iki
-    grid tamamen farklı sorunlara işaret edebiliyor:
+    İşinizin müşteri çektiği mesafeye göre. Çevre semtlerden müşteri alan bir oto ekspertiz için dar bir alan ölçeriz;
+    şehrin her yerinden müvekkil alan bir hukuk bürosunda alanı genişletiriz.
+  </p>
+
+  <p>
+    Alanı yanlış kurmak ölçümü boşa çıkarır. Çok dar kurarsanız her yer yeşil görünür ve rahatlarsınız. Çok geniş
+    kurarsanız her yer kırmızı çıkar ve hiçbir şey öğrenmezsiniz.
+  </p>
+
+  <p>Birden fazla şubeniz varsa her şubeyi kendi çevresinde ayrı ölçeriz.</p>
+
+  <h2 id="okuma">Ölçüm sonucunu nasıl okuyoruz?</h2>
+
+  <p>
+    Asıl bilgi desende. Ortalaması aynı çıkan iki ölçüm bambaşka sorunlara işaret edebilir:
   </p>
 
   <div class="table-scroll">
@@ -107,106 +129,107 @@ const faq = [
       <thead>
         <tr>
           <th>Desen</th>
-          <th>Ne anlama geliyor</th>
-          <th>Müdahale</th>
+          <th>Ne anlatıyor</th>
+          <th>Ne yapıyoruz</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Merkezde güçlü, kenarlara doğru hızlı düşüş</td>
-          <td>Yakınlık dışında güçlü sinyaliniz yok; profil ve öne çıkma zayıf</td>
-          <td>Değerlendirme hacmi, profil tazeliği, dış sinyaller</td>
+          <td>Merkezde güçlü, kenara doğru hızla düşüyor</td>
+          <td>Yakınlık dışında güçlü bir işaretiniz yok. Profil ve tanınırlık zayıf.</td>
+          <td>Yorum sayısı, profil güncelliği, sizden bahseden kaynaklar</td>
         </tr>
         <tr>
-          <td>Her yerde ortalama, hiçbir yerde ilk üç</td>
-          <td>Alaka sorunu — Google sizi bu sorgunun tam karşılığı görmüyor</td>
-          <td>Kategori ve hizmet yapısı, sayfa–sorgu eşleşmesi</td>
+          <td>Her yerde orta sıralarda, hiçbir yerde ilk üçte yok</td>
+          <td>Google sizi bu aramanın tam karşılığı olarak görmüyor.</td>
+          <td>Kategori, hizmet listesi, sitedeki hizmet sayfası</td>
         </tr>
         <tr>
           <td>Bir yönde güçlü, karşı yönde çok zayıf</td>
-          <td>O yönde baskın bir rakip var</td>
-          <td>Rakip karşılaştırması, o bölgeye özgü içerik ve sinyal</td>
+          <td>O tarafta güçlü bir rakip var.</td>
+          <td>O rakiple karşılaştırma, o semte dair içerik</td>
         </tr>
         <tr>
-          <td>Dağınık, komşu noktalar arasında büyük fark</td>
-          <td>Sinyaller istikrarsız; profil yeni ya da yakın zamanda değişmiş</td>
-          <td>Oturması beklenir, bu sürede büyük değişiklik yapılmaz</td>
+          <td>Yan yana noktalar arasında büyük farklar</td>
+          <td>Sıra henüz oturmamış. Profil yeni ya da yakın zamanda değişmiş.</td>
+          <td>Oturmasını bekleriz, bu arada büyük değişiklik yapmayız.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <p>
-    Ana sayfadaki öncesi/sonrası görselinde gördüğünüz kırmızıdan yeşile geçiş tam olarak bu
-    ölçümün çıktısı. Kırmızı noktalar 20+ sıra, turuncu 11–15, yeşil ilk üç anlamına geliyor.
+    Desen bize nereden başlayacağımızı söyler. Kategori sorunu olan bir profile yorum kampanyası açmak, emeği yanlış
+    kapıya harcamak demek.
   </p>
 
-  <h2 id="rakip">Rakip karşılaştırması</h2>
+  <h2 id="rakip">Rakiplerinizle nasıl karşılaştırıyoruz?</h2>
 
   <p>
-    Aynı grid’i ilk üçteki rakipler için de çalıştırıyoruz. Bu, "neden onlar önde" sorusunu
-    tahminden çıkarıp veriye bağlıyor. Karşılaştırdığımız alanlar: değerlendirme sayısı ve
-    ortalaması, birincil kategori, hizmet listesi genişliği, foto sayısı, profil yaşı ve
-    sitesinin hangi sorgularda sıralandığı.
+    Aynı ölçümü ilk üçteki rakipleriniz için de alıyoruz. Böylece “neden onlar önde?” sorusunun cevabını veride ararız
+    ve profillerini sizinkiyle yan yana koyarız:
+  </p>
+
+  <ul class="checklist">
+    <li>Birincil ve ek kategoriler</li>
+    <li>Yorum sayısı, puanı ve yorumların ne kadar yeni olduğu</li>
+    <li>Hizmet listesi ve işletme açıklaması</li>
+    <li>Fotoğraf ve gönderi sıklığı</li>
+    <li>Sitelerinin hangi aramalarda çıktığı</li>
+  </ul>
+
+  <p>
+    Farkı görünce bütçenin nereye gideceği de netleşir. Rakibin yorumu sizinkinin birkaç katıysa önce yorum akışına,
+    kategorisi daha isabetliyse önce <a href={p('services/gbp')}>profile</a> yükleniriz.
+  </p>
+
+  <h2 id="aramalar">Hangi aramaları takip ediyoruz?</h2>
+
+  <p>
+    Size gerçekten iş getiren aramaları. Uzun bir kelime listesinin ortalaması raporda güzel durur ama size bir şey
+    söylemez.
   </p>
 
   <p>
-    Çoğu vakada fark, tahmin edilenden basit çıkıyor — üç kat daha fazla değerlendirme ya da
-    doğru seçilmiş bir birincil kategori. Bu farkı görmek, bütçenin nereye gideceğini de
-    netleştiriyor.
+    Listeyi müşterinin sizi nasıl aradığına bakarak kuruyoruz: “diş hekimi”, “implant”, “yakınımdaki diş hekimi” gibi.
+    İşletme profilinizin hangi aramalarla bulunduğunu gösteren verisi ve sitenizin Search Console kayıtları bu listeyi
+    belirliyor.
   </p>
 
-  <h2 id="sinirlar">Ölçümün sınırları</h2>
+  <h2 id="sinirlar">Bu ölçüm neyi göstermez?</h2>
 
-  <p>
-    Grid ölçümünü satarken ne yaptığını abartmamak gerekiyor. Bilmeniz gereken sınırlar:
-  </p>
+  <p>Her ölçümün sınırı var, bunları baştan söylüyoruz.</p>
 
   <ul>
     <li>
-      <strong>Grid sıralaması gelir değildir.</strong> 49 noktanın tamamında birinci olmak,
-      o sorguda talep yoksa hiçbir şey ifade etmiyor. Bu yüzden grid’i tek başına değil,
-      profil etkileşimleri ve gelen arama sayısıyla birlikte okuyoruz.
+      <strong>Sıra, gelir demek değil.</strong> Talebi olmayan bir aramada her yerde birinci olmak telefonu çaldırmaz.
+      Bu yüzden sırayı profil etkileşimleriyle, yani arama, yol tarifi ve mesaj sayılarıyla birlikte okuyoruz.
     </li>
     <li>
-      <strong>Ölçüm anlıktır.</strong> Google yerel sonuçları gün içinde ve kullanıcıya göre
-      değiştirebiliyor. Tek bir ölçümdeki iki-üç sıralık oynama gürültüdür; anlamlı olan,
-      aynı koşullarda alınmış ölçümler arasındaki trend.
+      <strong>Ölçüm o anın fotoğrafı.</strong> Google yerel sonuçları gün içinde de oynatıyor. İki üç sıralık oynama
+      gürültü sayılır; anlamlı olan, aynı koşullarda alınmış ölçümler arasındaki yön.
     </li>
     <li>
-      <strong>Grid rakip hamlesini açıklamaz.</strong> Bir bölgede düşüş gördüğünüzde bunun
-      sebebi sizin bir şeyi bozmanız da olabilir, rakibin o bölgede güçlenmesi de. Ayırt etmek
-      için rakip ölçümünü de almak gerekiyor.
+      <strong>Düşüşün sebebini tek başına söylemez.</strong> Bir semtte gerilediyseniz sebep yaptığımız bir değişiklik de
+      olabilir, o semtte güçlenen bir rakip de. Ayırt etmek için rakip ölçümüne bakıyoruz.
     </li>
     <li>
-      <strong>Yeni profillerde erken ölçüm yanıltır.</strong> Profil açıldıktan sonraki ilk
-      haftalarda sıralama oturmamış olur. Bu dönemde alınan ölçüme bakıp müdahale etmek,
-      düzelmekte olan bir tabloyu bozmakla sonuçlanabiliyor.
+      <strong>Yeni profilde erken ölçüm yanıltır.</strong> Profil açıldıktan sonraki ilk haftalarda sıra oturmamış olur.
+      O dönemde ölçüme bakıp aceleyle değişiklik yapmak, düzelmekte olan tabloyu bozar.
     </li>
   </ul>
 
   <p>
-    Bu sınırları bilerek kurulan bir ölçüm düzeni, "sıralamamız yükseldi" cümlesini
-    doğrulanabilir hale getiriyor. Amacımız güzel görünen bir görsel üretmek değil, hangi
-    müdahalenin işe yaradığını ayırt edebilmek.
-  </p>
-
-  <h2 id="raporlama">Raporlama ritmi</h2>
-
-  <p>
-    Ölçümü ay başında alıyor, bir önceki ayla üst üste bindirerek raporluyoruz. Rapor üç soruya
-    cevap veriyor: hangi bölgelerde ilerledik, hangi bölgelerde geriledik, bu ay yapılan
-    müdahalelerden hangisi işe yaradı.
-  </p>
-
-  <p>
-    Grid ölçümünü <a href={p('services/local-seo')}>yerel SEO programının</a> içinde yürütüyoruz;
-    ancak kendi ekibiyle çalışan işletmeler için bağımsız ölçüm hizmeti olarak da veriyoruz.
-    Yaptığınız işin karşılığını gördüğünüzden emin olmanın en doğrudan yolu.
+    Haritada ilk hareketi çoğu işletmede 4 ile 8 hafta arasında görüyoruz; rekabetin yoğun olduğu büyük şehir
+    merkezlerinde bu süre uzar. Ölçümde çıkan eksikleri <a href={p('services/local-seo')}>local SEO</a> çalışmasında
+    kapatırız ve yaptığımız işleri her hafta raporda görürsünüz.
   </p>
 
   <Fragment slot="cta">
-    <h2>Şehrinizin <span class="highlight">görünürlük haritasını</span> çıkaralım</h2>
-    <p>Ücretsiz analizde 49 noktalık grid ölçümünüzü ve ilk üçteki rakiplerle farkınızı gönderiyoruz.</p>
+    <h2>Müşteriniz sizi <span class="highlight">kaçıncı</span> görüyor?</h2>
+    <p>
+      Ücretsiz analizde bölgenizden ölçüm alır, ilk üçteki rakiplerinizle aranızdaki farkı çıkarırız. Sonuç 24 saat
+      içinde <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
   </Fragment>
 </ContentLayout>

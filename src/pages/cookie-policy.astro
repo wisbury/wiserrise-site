@@ -1,0 +1,83 @@
+---
+import LegalPage from '../components/v2/LegalPage.astro';
+import { routePath } from '../i18n/routes';
+import { KVKK_EMAIL } from '../data/legal';
+
+/**
+ * English translation of the cookie policy (/cerez-politikasi). The table is based on the measurement of 2026-11-01
+ * (live /, /tr, /de, /tr/hizmetler and local /tr: cookies and browser storage empty on the first visit).
+ *
+ * If GA4, an ad tag or a pixel is added, a consent banner is needed (see Analytics.astro);
+ * this page and the "we do not show a cookie consent banner" sentence change on that day too.
+ */
+---
+
+<LegalPage
+  locale="en"
+  route="legal/cookies"
+  title="Cookie Policy | Wiserrise"
+  description="What wiserrise.com stores in your browser, which cookies it uses and how you can delete them."
+  heading="Cookie Policy"
+>
+  <p class="v2-legal-lead">
+    This page explains what wiserrise.com stores in your browser. In short: the site does not use advertising, marketing
+    or tracking cookies, so we do not show a cookie consent banner either.
+  </p>
+
+  <h2>1. What is a cookie</h2>
+  <p>
+    A cookie is a small text file that a website saves in your browser. Local storage (localStorage) is a similar
+    technology; this page covers both together.
+  </p>
+
+  <h2>2. What the site uses</h2>
+  <div class="v2-legal-table" tabindex="0" role="region" aria-label="Cookies and similar technologies used on the site">
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Purpose</th><th>Duration</th><th>Set by</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>wr-lang</code></td>
+          <td>Local storage</td>
+          <td>Remembers the language you chose and stops the language suggestion bar from showing again. It is written only when you choose a language or close the bar, and it is not sent to the server.</td>
+          <td>Until you delete it</td>
+          <td>Wiserrise</td>
+        </tr>
+        <tr>
+          <td><code>cf_clearance</code></td>
+          <td>Strictly necessary cookie</td>
+          <td>Not set during a normal visit. If our hosting provider asks for a security check and you pass it, it is saved so that you are not asked again.</td>
+          <td>Depends on the provider’s security settings</td>
+          <td>Cloudflare</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>3. What the site does not use</h2>
+  <ul>
+    <li>Advertising and retargeting cookies, the Meta pixel, the Google Ads tag</li>
+    <li>Google Analytics</li>
+    <li>Personalization or third-party tracking cookies</li>
+  </ul>
+  <p>If we add any of these, we will ask for your consent first and update this page.</p>
+
+  <h2>4. Site statistics</h2>
+  <p>
+    We see how many times each page is opened and how fast pages load with Cloudflare Web Analytics. This service does
+    not set cookies and keeps no record in your browser.
+  </p>
+
+  <h2>5. How to delete them</h2>
+  <p>
+    You can delete or block all of them in the cookies and site data section of your browser settings. The site works
+    without them; only the language suggestion bar may appear again.
+  </p>
+
+  <h2>6. Questions</h2>
+  <p>
+    For how your personal data is processed: <a href={routePath('en', 'legal/kvkk')}>Privacy Notice</a>. For questions:
+    <a href={`mailto:${KVKK_EMAIL}`}>{KVKK_EMAIL}</a>.
+  </p>
+</LegalPage>

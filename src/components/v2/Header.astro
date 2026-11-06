@@ -1,37 +1,70 @@
 ---
-/** v2 üst şerit + başlık. Ana sayfada bölüm linkleri sayfa içi (#), diğer sayfalarda /tr#… olur. */
+/** v2 üst şerit + başlık. Analiz çağrısı üst şeritte; dil listesi sayfanın diğer dillerdeki karşılığına gider. */
+import Bayrak from './Bayrak.astro';
+import { LOCALES, localeHome, type Locale } from '../../i18n/config';
+import { routePath, routeLocales, type RouteKey } from '../../i18n/routes';
+import { v2ui, LANG_NAMES } from '../../i18n/v2';
+
 interface Props {
-  base?: string;
-  alternates?: { en?: string; de?: string };
+  locale: Locale;
+  route: RouteKey;
+  slug?: string;
 }
-const { base = '', alternates = {} } = Astro.props;
+const { locale, route, slug } = Astro.props;
+const s = v2ui[locale];
+const varOlan = routeLocales(route);
+// Sayfanın o dilde karşılığı yoksa dil listesi o dilin ana sayfasına gider. Geçerli dil listenin başında.
+const diller = LOCALES.map((l) => ({
+  dil: l,
+  ad: LANG_NAMES[l],
+  href: varOlan.includes(l) ? routePath(l, route) + (slug ? `/${slug}` : '') : localeHome(l),
+})).sort((a, b) => (a.dil === locale ? -1 : b.dil === locale ? 1 : 0));
 ---
 
 <div style="background: #2bb3a6; color: #16244d; font-size: 13px; font-weight: 500; text-align: center; padding: 9px 24px; line-height: 1.4;">
-  <a href="#analiz-formu" data-analiz style="color: #16244d; text-decoration: none;"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; margin-right: 10px;">ÜCRETSİZ ANALİZ</span>İşletmenizi tüm kanallarda inceleyelim, yol haritanız 24 saat içinde gelsin →</a>
+  <a href="#analiz-formu" data-analiz style="color: #16244d; text-decoration: none;"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; margin-right: 10px;">{s.topbar.label}</span>{s.topbar.text}</a>
 </div>
 
 <header class="v2-header" style="max-width: 1312px; margin: 0 auto; padding: 16px clamp(16px, 3vw, 32px); min-height: 72px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
-  <a href="/tr" aria-label="Wiserrise ana sayfa" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1a1b19;">
+  <a href={localeHome(locale)} aria-label={s.homeAria} style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1a1b19;">
     <svg aria-hidden="true" viewBox="0 0 110.25 80" width="44" height="32" style="display: block; flex: 0 0 auto;"><polygon points="0,80 49,0 67.5,30.2 37,80" fill="#16244d"></polygon><polygon points="57.25,60 83.75,16.7 110.25,60" fill="#2bb3a6"></polygon></svg>
     <span style="display: flex; flex-direction: column; line-height: 1;">
       <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 26px; font-weight: 700; letter-spacing: -0.03em;">Wiserrise</span>
-      <span style="font-size: 11px; color: #5c5e59; margin-top: 3px; letter-spacing: 0.01em;">Dijital pazarlama ajansı</span>
+      <span style="font-size: 11px; color: #5c5e59; margin-top: 3px; letter-spacing: 0.01em;">{s.tagline}</span>
     </span>
   </a>
-  <nav class="v2-nav" aria-label="Ana menü" style="display: flex; flex-wrap: wrap; align-items: center; gap: 32px; font-size: 15px; font-weight: 500;">
-    <a class="navlink" href={`${base}#hizmetler`} style="color: #1a1b19; text-decoration: none;">Hizmetler</a>
-    <a class="navlink" href="/tr/sektorler" style="color: #1a1b19; text-decoration: none;">Sektörler</a>
-    <a class="navlink" href="/tr/rehber" style="color: #1a1b19; text-decoration: none;">Rehberler</a>
-    <a class="navlink" href={`${base}#surec`} style="color: #1a1b19; text-decoration: none;">Nasıl çalışır</a>
-    <a class="navlink" href={`${base}#sss`} style="color: #1a1b19; text-decoration: none;">SSS</a>
+  <nav class="v2-nav" aria-label={s.nav.aria} style="display: flex; flex-wrap: wrap; align-items: center; gap: 32px; font-size: 15px; font-weight: 500;">
+    <a class="navlink" href={routePath(locale, 'services')} style="color: #1a1b19; text-decoration: none;">{s.nav.services}</a>
+    <a class="navlink" href={routePath(locale, 'industries')} style="color: #1a1b19; text-decoration: none;">{s.nav.industries}</a>
+    <a class="navlink" href={routePath(locale, 'guides')} style="color: #1a1b19; text-decoration: none;">{s.nav.guides}</a>
   </nav>
-  <div style="display: flex; align-items: center; gap: 10px;">
-    <div class="v2-lang" aria-label="Dil" style="display: inline-flex; align-items: center; height: 44px; padding: 0 6px; border-radius: 999px; border: 1px solid #868982; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 13px; font-weight: 500; box-sizing: border-box;">
-      <span aria-current="true" style="padding: 0 8px; color: #16244d; font-weight: 700;">TR</span>
-      <a href={alternates.en ?? "/"} hreflang="en" lang="en" style="padding: 0 8px; color: #5c5e59; text-decoration: none;">EN</a>
-      <a href={alternates.de ?? "/de"} hreflang="de" lang="de" style="padding: 0 8px; color: #5c5e59; text-decoration: none;">DE</a>
-    </div>
-    <a class="btn v2-header-cta" href="#analiz-formu" data-analiz style="display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 22px; border-radius: 999px; background: #16244d; color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; box-sizing: border-box;">Ücretsiz analiz</a>
+  <div class="v2-dil">
+    <button type="button" class="v2-dil-btn" aria-expanded="false" aria-controls="dil-listesi" aria-label={s.lang.aria}>
+      <Bayrak dil={locale} />
+      <span>{locale.toUpperCase()}</span>
+      <svg class="v2-dil-ok" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </button>
+    <ul id="dil-listesi" class="v2-dil-liste" hidden>
+      {diller.map((d) => (
+        <li>
+          <a href={d.href} hreflang={d.dil} lang={d.dil} aria-current={d.dil === locale ? 'true' : undefined}>
+            <Bayrak dil={d.dil} />
+            <span>{d.ad}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
   </div>
 </header>
+
+<script is:inline>
+  // Dil listesi: düğmeyle açılır, dışarı tıklayınca ya da Esc ile kapanır
+  (function () {
+    var btn = document.querySelector('.v2-dil-btn'), liste = document.getElementById('dil-listesi');
+    if (!btn || !liste) return;
+    var ac = function (acik) { liste.hidden = !acik; btn.setAttribute('aria-expanded', String(acik)); };
+    btn.addEventListener('click', function () { ac(liste.hidden); });
+    document.addEventListener('click', function (e) { if (!liste.hidden && !e.target.closest('.v2-dil')) ac(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !liste.hidden) { ac(false); btn.focus(); } });
+  })();
+</script>

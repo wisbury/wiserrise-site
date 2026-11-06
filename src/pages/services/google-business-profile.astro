@@ -5,32 +5,39 @@ import { routePath } from '../../i18n/routes';
 const locale = 'en' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'CATEGORY', title: 'The right primary category', text: 'The first field that tells Google what you do. We look at your competitors’ categories and set yours accordingly.' },
+  { label: 'SERVICES', title: 'Service list', text: 'We list every service you offer under the name customers search for. We use the same names as the service pages on your site.' },
+  { label: 'REVIEWS', title: 'Review flow', text: 'We ask every customer for a review once the job is done and reply to every review that comes in. We don’t touch bought reviews.' },
+  { label: 'POSTS', title: 'Posts and photos', text: 'New services, offers, the team and the premises. We keep the profile alive with recent posts and real photos.' },
+];
+
 const toc = [
-  { id: 'why', label: 'Why the profile sits at the centre' },
-  { id: 'category', label: 'Category: the single highest-impact field' },
-  { id: 'services', label: 'Services and products' },
-  { id: 'reviews', label: 'Review management' },
-  { id: 'freshness', label: 'Posts, photos and freshness signals' },
-  { id: 'service-area', label: 'Service-area (address-hidden) profiles' },
-  { id: 'process', label: 'How we run it' },
+  { id: 'nedir', label: 'What profile management means' },
+  { id: 'kategori', label: 'Which category?' },
+  { id: 'hizmetler', label: 'Services and description' },
+  { id: 'yorumlar', label: 'Reviews' },
+  { id: 'gonderi', label: 'Posts and photos' },
+  { id: 'kurallar', label: 'Shortcuts we don’t take' },
+  { id: 'surec', label: 'How we work' },
 ];
 
 const faq = [
   {
-    q: 'Is profile optimisation a one-off job?',
-    a: 'Setup is one-off, management is continuous. Category and service structure get built correctly once; but if posts, photos, review responses and Q&A are not fed, the profile drifts behind competitors over time.',
+    q: 'Is profile management a one-off job?',
+    a: 'No. The category and service structure is set up correctly once. If the flow of reviews, posts and photos stops, the profile falls behind your competitors, so the work continues.',
   },
   {
-    q: 'Will changing my category hurt my ranking?',
-    a: 'Moving from a wrong category to the right one usually helps. Changing it experimentally while already correct is risky — Google treats the primary category as a strong relevance signal, and rankings take a few weeks to settle after a change.',
+    q: 'How frequently should I change my category?',
+    a: 'Once you’ve found the right category, don’t change it unless you have to. After every change the ranking takes time to settle, and changes made as experiments make it harder to see what’s working.',
   },
   {
-    q: 'Can fake reviews be removed?',
-    a: 'Competitor-driven fake reviews can be removed through a policy violation report, but the process is not guaranteed and can take weeks. The durable fix is raising genuine review volume so that any single review carries less weight.',
+    q: 'Can you get a fake negative review removed?',
+    a: 'If it breaks the rules, we report it to Google, but Google decides whether it comes down and the process can take weeks. The lasting fix is to grow the number of real reviews and lower the weight of any single one.',
   },
   {
-    q: 'Do I have to give you access to my profile?',
-    a: 'Manager access, yes. Ownership stays with you; we are added as a manager and access can be removed when the engagement ends. We never ask you to transfer ownership.',
+    q: 'Do I need to give you access to my profile?',
+    a: 'Yes, you add us as a manager. You stay the primary owner of the profile; we don’t ask you to transfer ownership. When you stop working with us, you remove our access.',
   },
 ];
 ---
@@ -38,183 +45,237 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="services/gbp"
-  title="Google Business Profile Management | Wiserrise"
-  description="Category, service list, reviews, posts and photo management. Every profile signal that decides your Google Maps ranking, handled in one place."
-  eyebrow="Service"
-  h1="Google Business Profile Management"
-  lede="Most of the gap between businesses that reach the Maps top three and those that don't sits inside the profile, not the website. We manage category, service structure, reviews and freshness signals together."
+  title="Google Business Profile Management Service | Wiserrise"
+  description="Category, services, reviews, posts and photos. We manage your Google Business Profile within the rules and report the work we do every week."
+  eyebrow="SERVICE · BUSINESS PROFILE"
+  h1="We manage your Google Business Profile within the rules."
+  crumb="Google Business Profile"
+  lede="Google Business Profile management means setting up the profile that represents you on the map correctly and keeping it alive: category, services, reviews, posts and photos. More than anything else, this profile decides your place on the map. We do this work within Google’s rules and don’t take shortcuts that bend them."
   serviceName="Google Business Profile Management"
   breadcrumb={[
     { label: 'Home', href: '/' },
     { label: 'Services', href: p('services') },
+    { label: 'Local SEO', href: p('services/local-seo') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Local SEO', href: p('services/local-seo') },
-    { label: 'Map Rank Tracking', href: p('services/rank-tracking') },
-    { label: 'Content Production', href: p('services/content') },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'We fix your profile and your site together so nearby customers can see you.' },
+    { label: 'Map Rank Tracking', href: p('services/rank-tracking'), text: 'We measure where you rank from different points around you.' },
+    { label: 'Content Production', href: p('services/content'), text: 'For every service on your profile, we write the matching page on your site.' },
+    { label: 'GEO', href: p('services/geo'), text: 'We work on getting you mentioned in ChatGPT, Gemini and Google’s AI answers.' },
   ]}
-  ctaLabel="Audit My Profile Free →"
+  ctaLabel="Get a free analysis"
   ctaHref="/#contact"
 >
-  <h2 id="why">Why the profile sits at the centre</h2>
+  <h2 id="nedir">What does Google Business Profile management mean?</h2>
 
   <p>
-    Google ranks local results with a different system from organic results. That system has
-    three main inputs: <strong>relevance</strong> (does this business actually do the thing
-    being searched for), <strong>distance</strong> (how close is it to the searcher) and
-    <strong>prominence</strong> (how well known is it). You cannot change distance. Most of
-    the other two are read straight out of the Google Business Profile.
+    Setting up the profile that represents you on the map correctly and keeping it alive. When someone in Kadıköy searches
+    for “dentist”, Google shows three businesses on the map; each of those three cards is a Business Profile.
   </p>
 
   <p>
-    In practice: regardless of what your website says, the category on your profile is the
-    single strongest signal telling Google "this business does that". Your review count and
-    what those reviews say is the most measurable source of the prominence signal. If those
-    two are wrong, nothing you do on the site moves you into the top three.
-  </p>
-
-  <h2 id="category">Category: the single highest-impact field</h2>
-
-  <p>
-    The primary category is the biggest change you can make through one field. Because
-    Google's category list contains many near-synonyms, a large share of businesses end up
-    filed under a neighbouring but wrong category.
+    Google decides the order on the map by looking at three things: whether you do the work being searched for, how close
+    you are to the searcher and how well known you are. You can’t change proximity. Google reads most of the other two from
+    your profile.
   </p>
 
   <p>
-    A common example: a lawyer who also works as a mediator setting the primary category to
-    "Mediator". That choice badly damages visibility for "lawyer" searches, because the
-    primary category is the heaviest relevance signal. The correct setup is to give the
-    primary category to the service with the real search volume ("Lawyer") and add mediation
-    as a secondary.
-  </p>
-
-  <p>What the category work involves:</p>
-
-  <ul class="checklist">
-    <li>Extracting the primary and secondary categories of everyone in the top three</li>
-    <li>Comparing those categories against your target queries</li>
-    <li>Anchoring the primary category to your highest-volume core service</li>
-    <li>Keeping secondary categories few enough not to dilute relevance</li>
-  </ul>
-
-  <div class="callout">
-    <p>
-      <strong>More secondary categories is not better.</strong> Irrelevant secondaries blur
-      which query set Google thinks you belong to and can weaken you in your main query.
-    </p>
-  </div>
-
-  <h2 id="services">Services and products</h2>
-
-  <p>
-    The category answers "what kind of business are you"; the service list answers "what
-    exactly do you do". On most profiles this field is either empty or filled with Google's
-    suggested generic labels — meaning it is identical to your competitors'.
-  </p>
-
-  <p>
-    We write service items in the words people actually search for and add a description to
-    each. Those descriptions create textual relevance inside the profile and clarify scope
-    for anyone reading it, which lifts the search-to-enquiry conversion. We keep service
-    naming identical to the <a href={p('services/content')}>service pages on the site</a>;
-    that consistency helps Google match the two entities as one business.
-  </p>
-
-  <h2 id="reviews">Review management</h2>
-
-  <p>
-    Reviews do two separate jobs in local ranking. The first is volume and average rating.
-    The second, less widely understood, is the <strong>content</strong> of the reviews: the
-    services and place names customers mention become relevance signals.
-  </p>
-
-  <p>
-    So "please give us five stars" is not enough. The request flow we build nudges satisfied
-    customers to describe the service they received and where they are, in their own words —
-    without writing the text for them, because copy-pasted reviews both trip Google's filters
-    and read as fake to anyone who sees them.
-  </p>
-
-  <ul class="checklist">
-    <li>A review request triggered at the right moment after delivery</li>
-    <li>Short links and QR codes so leaving a review is frictionless</li>
-    <li>Replies to every review, naturally containing the service name</li>
-    <li>Negative reviews: fix it privately first, then reply publicly</li>
-    <li>Reporting competitor-driven reviews that violate policy</li>
-  </ul>
-
-  <h2 id="freshness">Posts, photos and freshness signals</h2>
-
-  <p>
-    Google distinguishes actively managed profiles from abandoned ones. Regular posts, new
-    photos and answered questions are the inputs to that judgement. Posting alone will not
-    put you in the top three; but with everything else equal, the active profile beats the
-    dormant one.
-  </p>
-
-  <p>
-    We tie posts to a content calendar and point each one at a service or case page with a
-    UTM-tagged link. That lets us measure profile-driven traffic separately and see which
-    service actually attracts interest.
-  </p>
-
-  <h2 id="service-area">Service-area (address-hidden) profiles</h2>
-
-  <p>
-    Businesses that don't receive customers at an office can run a profile without showing an
-    address, defining service areas instead. There is a widespread misconception here: adding
-    service areas does not widen your ranking radius.
-  </p>
-
-  <p>
-    Even for address-hidden profiles, Google still computes ranking from proximity to the
-    <strong>hidden base address</strong>. The service-area list tells users "we serve these
-    places"; it does not change the radius in which you rank. Adding twenty regions does not
-    mean you appear on the map in those twenty regions.
+    We see many businesses that set up their profile once and leave it. Setup happens once, and if reviews, posts and
+    photos stop coming in, the profile stands still while competitors move ahead.
   </p>
 
   <div class="callout">
     <p>
-      <strong>The right strategy is to split the goal.</strong> Play the profile for the top
-      three in the city you are actually based in, and build nationwide visibility through
-      the organic work in <a href={p('services/local-seo')}>local SEO</a> and
-      <a href={p('services/content')}>content</a>. Ranking countrywide is possible for queries
-      that carry no proximity signal — but that is the site's job, not the profile's.
+      <strong>If you’d like to check it yourself first:</strong> our <a href={p('tools/gbp-audit')}>free profile audit
+      tool</a> shows the weak spots in your profile in 10 questions. It asks for no sign-up or email, and the calculation
+      runs in your browser.
     </p>
   </div>
 
-  <h2 id="process">How we run it</h2>
+  <h2 id="kategori">Which category should you choose?</h2>
+
+  <p>
+    The one that describes your work most narrowly and most accurately. The primary category is the strongest field telling
+    Google what you do. Of all the fields you can change on the profile, it’s also the one with the biggest effect on
+    ranking.
+  </p>
+
+  <p>
+    The Turkish category list has many names that sit very close to each other, and businesses frequently pick a
+    neighboring, wrong category. Say you’re a lawyer who also works as a mediator. If you choose “Mediator” as your primary
+    category, you drop in searches for “lawyer”; the right move is to make “Lawyer” primary and add mediation as an
+    additional category.
+  </p>
+
+  <p>
+    With additional categories, “the more the better” doesn’t work. Google itself asks you to choose the fewest categories
+    that describe your business. Every unrelated additional category blurs which searches Google should put you in.
+  </p>
+
+  <p>What we do in the category work:</p>
+
+  <ul class="checklist">
+    <li>We list the primary and additional categories of the competitors in the top three</li>
+    <li>We compare the categories against your target searches</li>
+    <li>We fix the primary category to the main service that brings in the most work</li>
+    <li>We keep additional categories limited to services you really offer</li>
+  </ul>
+
+  <h2 id="hizmetler">What do we write in the service list and description?</h2>
+
+  <p>
+    Every service you offer, under the name customers search for and with a short description. On most profiles this field
+    is either empty or filled with the generic names Google suggests, which makes it identical to your competitors’.
+  </p>
+
+  <p>
+    We keep service names the same as the pages on your site. If the profile says “Physiotherapy for knee pain”, the site
+    has a page with that name too, and Google sees the same business and the same service in two places. If the page
+    doesn’t exist, we write it as part of <a href={p('services/content')}>content production</a>.
+  </p>
+
+  <p>
+    In the business description we explain in plain language what you do and where you are. Google doesn’t want links or
+    discount announcements in this field, and we don’t stuff keywords into it.
+  </p>
+
+  <p>
+    Opening hours and attributes are part of this work too. Showing as open on your profile while you’re closed for a
+    public holiday turns customers away at the door and brings a bad review right after.
+  </p>
+
+  <h2 id="yorumlar">How do we collect and reply to reviews?</h2>
+
+  <p>
+    We ask every customer for a review at the right moment once the job is done, and we reply to every review that comes
+    in. The content of a review matters as much as the count and the rating: the service and district a customer mentions
+    are an extra signal for Google.
+  </p>
+
+  <p>
+    That’s why we don’t send “give us 5 stars” messages. We give the customer a short link or a QR code and ask them to
+    describe the service they received in their own words. We don’t hand out ready-made text; reviews where everyone pastes
+    the same sentence look fake to readers and get caught in Google’s filter.
+  </p>
+
+  <ul class="checklist">
+    <li>A review request that goes out right after the job is done</li>
+    <li>One-step reviews through a short link and a QR code on the counter</li>
+    <li>A natural reply to every review that mentions the service received</li>
+    <li>With a negative review, talking to the customer first, then writing a calm public reply</li>
+    <li>Reporting fake reviews that contain insults or clearly come from a competitor to Google</li>
+  </ul>
+
+  <p>
+    Some of the reviews we report stay up; Google has the final say. What reduces the effect of a bad review most is the
+    real reviews that come after it. We explain the steps for collecting reviews in our
+    <a href={p('guides/more-reviews')}>review guide</a>.
+  </p>
+
+  <h2 id="gonderi">Do posts and photos work?</h2>
+
+  <p>
+    They do, though they won’t lift you to the top on their own. Google tells a maintained profile from an abandoned one, and
+    regular posts and new photos are the most visible sign of that. With everything else equal, a live profile gets ahead of
+    a dormant one.
+  </p>
+
+  <p>
+    In posts we share a new service, an offer, an event or the answer to a common question. We link every post to the
+    matching page on the site and add a UTM tag to the link. That way we see visits from the profile separately on the site.
+  </p>
+
+  <p>
+    We have one rule for photos: they must be real. Exterior, entrance, interior, team and the work itself. We don’t use
+    stock images, because when a customer arrives at your door they should find the place they saw on the profile.
+  </p>
+
+  <h2 id="kurallar">Which shortcuts don’t we take?</h2>
+
+  <p>
+    We don’t do anything that breaks Google’s rules, even if the client asks. These tricks seem to work for a while, then
+    the profile gets suspended and all the effort is gone in a day.
+  </p>
+
+  <h3>Adding keywords to the business name</h3>
+
+  <p>
+    The name on the profile must match the name on your sign. Writing “Mavi Çınar Fizyoterapi Kadıköy Herniated Disc
+    Treatment” instead of “Mavi Çınar Fizyoterapi” breaks Google’s rules. We know this can lift rankings in the short term,
+    and we still don’t do it.
+  </p>
+
+  <p>
+    If a competitor does this, you can report it to Google with the “Suggest an edit” option in Maps. Once the name follows
+    the rules, that profile loses the boost it got from the keyword.
+  </p>
+
+  <h3>Fake or bought reviews</h3>
+
+  <p>
+    Asking for reviews in exchange for money, discounts or gifts, having employees and acquaintances write reviews, buying
+    reviews: all of it breaks Google’s rules. Asking only the customers you know are happy is also forbidden. We send every
+    customer the same request and reply to the bad reviews too.
+  </p>
+
+  <h3>Unnecessary extra profiles</h3>
+
+  <p>
+    One profile is opened for each real branch. If you have no branches, opening a separate profile for each district or
+    each service breaks the rules. A virtual office address where no one is present during opening hours doesn’t count as
+    valid for a profile either.
+  </p>
+
+  <p>
+    If you work without showing an address, we set up the profile with a service area. There’s a misconception here: adding
+    20 districts to your service area doesn’t mean you’ll show up on the map in those districts. Google still calculates
+    the ranking by proximity to where your business is located.
+  </p>
+
+  <p>
+    The way to show up in surrounding districts runs through your site, and we build that in the
+    <a href={p('services/local-seo')}>local SEO</a> work. If you don’t have a profile yet, we explain the steps in the
+    <a href={p('guides/create-profile')}>profile setup guide</a>, and if you’re stuck on verification, in the
+    <a href={p('guides/verification')}>verification guide</a>.
+  </p>
+
+  <h2 id="surec">How do we work?</h2>
+
+  <p>We measure first, then touch the profile.</p>
 
   <ol>
     <li>
-      <strong>Audit.</strong> Current state of the profile, category and service structure of
-      the top three competitors, the review-volume gap, and your
-      <a href={p('services/rank-tracking')}>current position across the grid</a>.
+      <strong>Audit.</strong> We map out your profile as it stands today, the category and service structure of the
+      competitors in the top three and the review gap between you. We take <a href={p('services/rank-tracking')}>measurement
+      across your area</a> and see where you rank from different points around you.
     </li>
     <li>
-      <strong>Setup.</strong> Category, service list, description, attributes and photo set
-      corrected. One-off, and usually where the biggest jump comes from.
+      <strong>Setup.</strong> Category, service list, description, hours, attributes and photos get fixed. Most of the work
+      comes out at this stage.
     </li>
     <li>
-      <strong>Feeding.</strong> Post calendar, review flow and Q&amp;A management. Runs on a
-      monthly rhythm.
+      <strong>Flow.</strong> The post calendar and the review request flow start, and every incoming review gets a reply.
     </li>
     <li>
-      <strong>Measurement.</strong> Grid rankings, profile interactions and site traffic
-      reported together. Comparable data, not screenshots.
+      <strong>Measurement.</strong> We read how your ranking changes together with profile interactions, meaning the
+      number of calls, direction requests and messages.
     </li>
   </ol>
 
   <p>
-    First movement typically shows in four to eight weeks — faster on profiles with a single
-    root problem such as a category error, slower in dense city centres.
+    For most businesses we see the first movement on the map between 4 and 8 weeks; in competitive big-city centers it
+    takes longer. You see the work we’ve done in the report every week. There’s no contract, and if you’re not happy you
+    don’t continue the next month.
   </p>
 
   <Fragment slot="cta">
-    <h2>Which signal is your profile <span class="highlight">weak</span> on?</h2>
-    <p>The free audit maps your category, service structure, review gap and grid ranking.</p>
+    <h2>Where is your profile <span class="highlight">weak</span>?</h2>
+    <p>
+      In the free analysis we map out your category, your service list and the review gap between you and your competitors.
+      The result lands in your inbox within <span style="white-space: nowrap;">24 hours</span>.
+    </p>
   </Fragment>
 </ContentLayout>

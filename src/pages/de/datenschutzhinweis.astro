@@ -1,0 +1,148 @@
+---
+import LegalPage from '../../components/v2/LegalPage.astro';
+import { routePath } from '../../i18n/routes';
+import { COMPANY_LEGAL_NAME } from '../../i18n/ui';
+import { COMPANY_ADDRESS_INTL, KVKK_EMAIL } from '../../data/legal';
+
+/**
+ * Deutsche Übersetzung des KVKK-Informationstexts (Art. 10 KVKK): Website-Besuch, Analyseformular, Newsletter, Korrespondenz.
+ * Quelle ist /tr/kvkk-aydinlatma-metni; ändert sich der türkische Text, wird dieser hier nachgezogen.
+ */
+const mail = `mailto:${KVKK_EMAIL}`;
+---
+
+<LegalPage
+  locale="de"
+  route="legal/kvkk"
+  title="Datenschutzhinweis nach KVKK | Wiserrise"
+  description="Welche personenbezogenen Daten wir über wiserrise.com zu welchem Zweck verarbeiten, an wen wir sie weitergeben und welche Rechte Sie nach dem KVKK haben."
+  heading="Datenschutzhinweis"
+>
+  <p class="v2-legal-lead">
+    Dieser Hinweis erläutert gemäß Artikel 10 des türkischen Gesetzes Nr. 6698 zum Schutz personenbezogener Daten
+    (Kişisel Verilerin Korunması Kanunu, KVKK), wie Ihre personenbezogenen Daten verarbeitet werden, wenn Sie die Website
+    wiserrise.com besuchen, das Formular für die kostenlose Analyse ausfüllen, den Newsletter abonnieren oder uns schreiben.
+    Für das Kundenportal gilt der <a href="https://app.wiserrise.com/gizlilik">Datenschutzhinweis des Portals</a>.
+  </p>
+
+  <h2>1. Verantwortlicher</h2>
+  <p>
+    Verantwortlicher ist die {COMPANY_LEGAL_NAME}, Inhaberin der Marke Wiserrise. Adresse: {COMPANY_ADDRESS_INTL}.
+    Für Fragen und Anträge zum KVKK: <a href={mail}>{KVKK_EMAIL}</a>.
+  </p>
+
+  <h2>2. Welche Daten wir zu welchem Zweck verarbeiten</h2>
+  <div class="v2-legal-table" tabindex="0" role="region" aria-label="Verarbeitete Daten, Zwecke und Rechtsgrundlagen">
+    <table>
+      <thead>
+        <tr><th>Wann</th><th>Welche Daten</th><th>Zweck</th><th>Rechtsgrundlage (Art. 5 KVKK)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Wenn Sie das Formular für die kostenlose Analyse ausfüllen</td>
+          <td>Vor- und Nachname, Name des Unternehmens, E-Mail, Telefon, Website, Google-Maps- oder Instagram-Link, gewünschte Leistungen, gewünschter Starttermin</td>
+          <td>Ihre Anfrage prüfen, die Analyse erstellen und Ihnen zusenden, über die Leistung sprechen</td>
+          <td>Unmittelbarer Zusammenhang mit dem Abschluss eines Vertrags (Art. 5 Abs. 2 lit. c); berechtigtes Interesse an der Speicherung der Anfrage (Art. 5 Abs. 2 lit. f)</td>
+        </tr>
+        <tr>
+          <td>Wenn Sie den Newsletter abonnieren</td>
+          <td>E-Mail-Adresse, Bestätigung des Abonnements</td>
+          <td>Tipps und Ankündigungen per E-Mail senden</td>
+          <td>Ausdrückliche Einwilligung (Art. 5 Abs. 1)</td>
+        </tr>
+        <tr>
+          <td>Wenn Sie uns schreiben oder anrufen</td>
+          <td>Ihre Kontaktdaten, Inhalt der Korrespondenz</td>
+          <td>Ihre Frage beantworten, Ihr Anliegen weiterverfolgen</td>
+          <td>Unmittelbarer Zusammenhang mit dem Abschluss eines Vertrags (Art. 5 Abs. 2 lit. c); berechtigtes Interesse (Art. 5 Abs. 2 lit. f)</td>
+        </tr>
+        <tr>
+          <td>Wenn Sie die Website besuchen</td>
+          <td>IP-Adresse, Browser- und Geräteinformationen, aufgerufene Seite, Zeitpunkt der Anfrage</td>
+          <td>Die Website bereitstellen, ihre Sicherheit gewährleisten, Statistiken über Seitenaufrufe führen</td>
+          <td>Berechtigtes Interesse (Art. 5 Abs. 2 lit. f)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Ihre Antworten im Tool <a href={routePath('de', 'tools/gbp-audit')}>Google-Profilanalyse</a> werden in Ihrem Browser
+    berechnet und weder an uns noch an einen anderen Dienst gesendet. In den Formularen fragen wir keine besonderen
+    Kategorien personenbezogener Daten wie Gesundheit oder Religion ab; bitte geben Sie solche Angaben nicht ein.
+  </p>
+
+  <h2>3. Wie wir die Daten erheben</h2>
+  <p>
+    Über die Formulare auf der Website, über E-Mails und Telefonate sowie über die technischen Protokolle der
+    Website-Infrastruktur, automatisiert oder teilweise automatisiert. Bei der Erstellung einer Analyse sehen wir uns
+    außerdem öffentlich zugängliche Informationen über Ihr Unternehmen an, etwa das Google-Unternehmensprofil, die Website
+    und Suchergebnisse.
+  </p>
+
+  <h2>4. An wen wir Daten weitergeben</h2>
+  <p>Wir verkaufen Ihre Daten nicht und geben sie nicht zu Werbezwecken weiter. Um diese Aufgaben zu erledigen, geben wir sie an folgende Stellen weiter:</p>
+  <ul>
+    <li><b>Formspree (USA):</b> Übermittlung des Analyseformulars an uns.</li>
+    <li><b>Kit (USA):</b> Abonnentenliste des Newsletters und E-Mail-Versand.</li>
+    <li><b>Google LLC (USA):</b> unser E-Mail-Postfach (Google Workspace) und unsere Arbeitsdateien.</li>
+    <li><b>Supabase, Inc. (USA):</b> Datenbank, in der unsere Daten zu Interessenten und Kunden gespeichert sind.</li>
+    <li><b>Meta Platforms (WhatsApp):</b> Korrespondenz mit Ihnen, wenn Sie uns Ihre Telefonnummer gegeben haben.</li>
+    <li><b>Cloudflare, Inc. (USA):</b> Hosting und Sicherheit der Website sowie Statistik der Seitenaufrufe.</li>
+    <li>Bei gesetzlicher Verpflichtung zuständige Behörden, öffentliche Stellen und Gerichte.</li>
+  </ul>
+  <p>
+    Da sich der Verantwortliche und die meisten dieser Anbieter außerhalb der Türkei befinden, werden Ihre Daten ins
+    Ausland übermittelt. Diese Übermittlungen unterliegen den Regeln von Artikel 9 KVKK.
+  </p>
+
+  <h2>5. Wie lange wir Daten speichern</h2>
+  <div class="v2-legal-table" tabindex="0" role="region" aria-label="Speicherfristen">
+    <table>
+      <thead>
+        <tr><th>Daten</th><th>Frist</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Analyseanfrage, wenn Sie nicht Kunde geworden sind</td><td>Höchstens 2 Jahre ab dem letzten Gespräch</td></tr>
+        <tr><td>Vertrags- und Rechnungsunterlagen, wenn Sie Kunde geworden sind</td><td>Für die Dauer der Geschäftsbeziehung; danach für die gesetzlichen Fristen, höchstens 10 Jahre</td></tr>
+        <tr><td>Ihre E-Mail-Adresse für den Newsletter</td><td>Solange Ihr Abonnement besteht; nach der Abmeldung wird sie gelöscht oder nur aufbewahrt, damit wir Ihnen keine E-Mails mehr senden</td></tr>
+        <tr><td>Serverprotokolle (IP, Browser)</td><td>Begrenzt durch die übliche, kurze Speicherfrist des Anbieters</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Nach Ablauf der Frist werden die Daten gelöscht oder anonymisiert.</p>
+
+  <h2>6. Ihre Rechte</h2>
+  <p>Nach Artikel 11 KVKK haben Sie das Recht,</p>
+  <ul>
+    <li>zu erfahren, ob Ihre personenbezogenen Daten verarbeitet werden, und, falls ja, Auskunft darüber zu verlangen;</li>
+    <li>den Zweck der Verarbeitung zu erfahren und ob die Daten diesem Zweck entsprechend verwendet werden;</li>
+    <li>die Dritten in der Türkei oder im Ausland zu kennen, an die die Daten übermittelt wurden;</li>
+    <li>die Berichtigung unvollständig oder unrichtig verarbeiteter Daten zu verlangen;</li>
+    <li>die Löschung oder Vernichtung der Daten unter den Voraussetzungen von Artikel 7 KVKK zu verlangen;</li>
+    <li>zu verlangen, dass Berichtigungen und Löschungen den Dritten mitgeteilt werden, an die die Daten übermittelt wurden;</li>
+    <li>einem für Sie nachteiligen Ergebnis zu widersprechen, das ausschließlich durch die Auswertung mit automatisierten Systemen entsteht;</li>
+    <li>Ersatz des Schadens zu verlangen, wenn Ihnen durch eine rechtswidrige Verarbeitung ein Schaden entstanden ist.</li>
+  </ul>
+
+  <h2>7. Wie Sie einen Antrag stellen</h2>
+  <p>
+    Sie können Ihren Antrag von der E-Mail-Adresse, die Sie uns bereits mitgeteilt haben, an <a href={mail}>{KVKK_EMAIL}</a>
+    senden oder schriftlich an die Adresse in Abschnitt 1 richten. Geben Sie Ihren Vor- und Nachnamen, Ihre Kontaktdaten und
+    Ihr Anliegen an; zur Bestätigung Ihrer Identität können wir zusätzliche Angaben verlangen. Wir bearbeiten Ihren Antrag
+    spätestens innerhalb von 30 Tagen und erheben keine Gebühr, sofern die Bearbeitung keine gesonderten Kosten verursacht;
+    wird Ihr Antrag abgelehnt oder bleibt er unbeantwortet, haben Sie das Recht, sich bei der türkischen
+    Datenschutzbehörde (Kişisel Verileri Koruma Kurulu) zu beschweren.
+  </p>
+
+  <h2>8. Widerruf der Einwilligung zum Newsletter</h2>
+  <p>
+    Sie können Ihre Einwilligung zum Newsletter jederzeit widerrufen: über den Abmeldelink am Ende jeder E-Mail oder mit
+    einer Nachricht an <a href={mail}>{KVKK_EMAIL}</a>.
+  </p>
+
+  <h2>9. Änderungen</h2>
+  <p>
+    Wir aktualisieren diesen Hinweis bei Bedarf; die aktuelle Fassung wird mit Datum auf dieser Seite veröffentlicht. Was
+    in Ihrem Browser gespeichert wird, erfahren Sie in der <a href={routePath('de', 'legal/cookies')}>Cookie-Richtlinie</a>.
+  </p>
+</LegalPage>

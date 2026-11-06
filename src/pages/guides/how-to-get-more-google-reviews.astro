@@ -1,0 +1,299 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'TARGET', title: 'A number set by competitors', text: 'There’s no review count that applies to everyone. Your benchmark is the volume of the businesses in the top three on the map for your target search.' },
+  { label: 'MOMENT', title: 'The moment the job is done', text: 'Ask when you hand over the work, while satisfaction is fresh. Few customers respond to a reminder sent days later.' },
+  { label: 'LINK', title: 'A short review link', text: 'The link from your profile’s management screen takes the customer straight to the review screen. They don’t have to search for you on the map.' },
+  { label: 'RULE', title: 'Incentives are banned', text: 'Asking for reviews in exchange for a discount, a gift or a prize draw breaks Google’s rules. Reviews that get caught are removed.' },
+];
+
+const toc = [
+  { id: 'hedef', label: 'How many reviews are enough?' },
+  { id: 'an', label: 'When to ask' },
+  { id: 'nasil', label: 'How to ask for a review' },
+  { id: 'kurallar', label: 'What does Google ban?' },
+  { id: 'filtre', label: 'Why do reviews disappear?' },
+  { id: 'yanit', label: 'How to write a reply' },
+  { id: 'olumsuz', label: 'If a negative review comes in' },
+];
+
+const faq = [
+  {
+    q: 'Can I offer a discount in exchange for a review?',
+    a: 'No. A discount, gift or prize draw in exchange for a review breaks Google’s rules. Reviews that get caught are removed, and a repeat can get the profile suspended.',
+  },
+  {
+    q: 'Does buying reviews work?',
+    a: 'No, it puts your profile at risk. In Google’s eyes, a bought review is a fake review, and it gets removed when the filter catches it. Spend the same money and effort on a routine for asking your own customers for reviews.',
+  },
+  {
+    q: 'Can I tell the customer what to write?',
+    a: 'Don’t give them ready-made text. Reviews that resemble each other get caught by the filter, and readers can tell they’re fake. Saying “We’d love it if you mentioned which service you had” is enough.',
+  },
+  {
+    q: 'Can I ask my past customers for reviews in bulk?',
+    a: 'You can, just not all on the same day. A pile of reviews arriving within a few days is the classic pattern the filter looks for. Spread the list over weeks.',
+  },
+  {
+    q: 'Can I get a fake negative review removed?',
+    a: 'If it breaks the rules, you can report it to Google. Insults, irrelevant content or reviews that clearly come from a competitor can be removed, though the process isn’t guaranteed and can take weeks. Your real defense is your genuine review volume.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="guides/more-reviews"
+  title="How to Get More Google Reviews | Wiserrise"
+  description="How to get more Google reviews within the rules: the right moment, a short review link, writing replies. And why buying reviews and incentives are banned."
+  eyebrow="GUIDE · REVIEWS"
+  h1="How do you get more Google reviews?"
+  crumb="Getting more reviews"
+  lede="The way to get more Google reviews is to ask every satisfied customer the moment the job is done, with a link that opens in one tap. Buying reviews, collecting them in exchange for discounts and sending only happy customers to Google all break the rules. Set your target based on your competitors and spread the flow over weeks."
+  schemaType="article"
+  datePublished="2026-08-01"
+  dateModified="2026-11-06"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Guides', href: p('guides') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Ranking higher on Google Maps', href: p('guides/rank-higher'), text: 'Where reviews fit in rankings and the order to work in.' },
+    { label: 'Business not showing on Google', href: p('guides/not-showing'), text: 'If you have enough reviews and are still missing from the map, rule out the causes one by one.' },
+    { label: 'Google Business Profile Management', href: p('services/gbp'), text: 'We manage your category, service structure, reviews and posts together.' },
+    { label: 'SEO for lawyers', href: p('industries/law'), text: 'What’s possible on the profile and review side under the advertising ban.' },
+  ]}
+  relatedHeading="Related pages"
+  ctaLabel="Audit your profile for free"
+  ctaHref={p('tools/gbp-audit')}
+>
+  <h2 id="hedef">How many reviews are enough?</h2>
+
+  <p>
+    There’s no number that applies to everyone. Your benchmark is the review volume of the businesses in the top three on
+    the map for your target search. In some industries that means 20 reviews, in others 200.
+  </p>
+
+  <p>
+    It’s easy to check. Type your search into Google Maps and note the review count and rating of the top three. If
+    you’re clearly below them, reviews are the priority.
+  </p>
+
+  <p>
+    If you’re level with your competitors and still invisible, the problem is somewhere else, most likely in the
+    category. In that case, start with the checks in the <a href={p('guides/not-showing')}>business not showing on
+    Google</a> guide.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Volume comes before the average rating.</strong> 80 reviews at 4.7 make a stronger profile than 6 reviews at
+      5.0. Don’t chase a perfect score; a few 4-star reviews make your profile more believable.
+    </p>
+  </div>
+
+  <h2 id="an">When should you ask for a review?</h2>
+
+  <p>
+    While the customer’s satisfaction is at its freshest. Timing decides your review rate more than the wording does.
+  </p>
+
+  <p>
+    Say you run a vehicle inspection business in Bornova. The customer is holding the report, has just learned that the
+    car they’re about to buy came out clean, and is relieved. This is exactly the moment to ask, before they leave the
+    premises.
+  </p>
+
+  <p>The right moment depends on the industry:</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Industry</th>
+          <th>The right moment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Vehicle inspection</td>
+          <td>When handing over the report, while the customer is still on site</td>
+        </tr>
+        <tr>
+          <td>Dental clinic</td>
+          <td>When treatment is finished and the follow-up appointment has passed</td>
+        </tr>
+        <tr>
+          <td>Physiotherapy</td>
+          <td>When the session program ends and the patient feels the improvement</td>
+        </tr>
+        <tr>
+          <td>Law</td>
+          <td>When the case is closed, but read the regulation note below first</td>
+        </tr>
+        <tr>
+          <td>Hairdresser, repair service, retail</td>
+          <td>Within a few hours after the service or delivery is complete</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Few customers respond to reminders sent days later. They remember being satisfied, but the moment has passed, so
+    they don’t act.
+  </p>
+
+  <h2 id="nasil">How do you ask for a review?</h2>
+
+  <p>Make writing a review as easy as possible for the customer. This is the routine we set up:</p>
+
+  <ol>
+    <li>
+      <strong>Get the short review link.</strong> Your business profile’s management screen has a review link. It takes
+      the customer straight to the review screen, so they don’t have to search for you on the map.
+    </li>
+    <li>
+      <strong>Ask face to face and send the link right away.</strong> Say it in one sentence when you hand over the work,
+      and send the link on WhatsApp at that moment. Sending a message alone brings fewer responses.
+    </li>
+    <li>
+      <strong>Keep a QR code on site.</strong> Put the link’s QR code at the checkout, in the waiting room or on the
+      handover desk.
+    </li>
+    <li>
+      <strong>Ask once.</strong> Persistent reminders spoil a happy customer’s mood.
+    </li>
+  </ol>
+
+  <p>
+    There’s a clear line between giving direction and giving text. Saying “We’d love it if you mentioned the service you
+    had and which neighborhood you came from” is fine, because the customer writes the sentences. The moment you hand
+    over ready-made text, the reviews start to look alike and get caught by the filter.
+  </p>
+
+  <h2 id="kurallar">Which review tactics does Google ban?</h2>
+
+  <p>
+    Let’s be clear about this: don’t do any of the following, even if your competitor does. They raise the count in the
+    short term, then put your profile at risk.
+  </p>
+
+  <ul>
+    <li>
+      <strong>Buying reviews.</strong> A review written for money is a fake review and breaks Google’s rules. If the filter
+      catches them, the reviews are removed and the profile risks suspension.
+    </li>
+    <li>
+      <strong>Collecting reviews with incentives.</strong> A discount, a gift, a prize draw or “coffee’s on us if you leave
+      a review” all lead to the same place. Reviews that get caught are removed, and a repeat can get the profile
+      suspended.
+    </li>
+    <li>
+      <strong>Sending the link only to happy customers.</strong> Asking “are you satisfied?” first and directing only the
+      ones who say yes to Google is explicitly banned. The industry term for it is review gating.
+    </li>
+  </ul>
+
+  <p>
+    If your competitor is ahead with bought reviews, report the violation to Google and build your own genuine flow.
+    Their reviews can be removed at any moment, while your real reviews keep adding up.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>A note for lawyers and healthcare businesses:</strong> In law, the Turkish Bar Association’s advertising
+      regulation (TBB Reklam Yasağı Yönetmeliği) makes it risky for a review request to turn into an incentive; in
+      healthcare, turning patient experience into a promotional tool is against the regulations too. In these fields, ask
+      for reviews without incentives and in a single sentence; the details are on our <a href={p('industries/law')}>lawyers</a>
+      and <a href={p('industries/dental')}>dentists</a> pages.
+    </p>
+  </div>
+
+  <h2 id="filtre">Why are your reviews disappearing?</h2>
+
+  <p>
+    Google’s filter quietly removes reviews it finds suspicious. No notification comes, the count just drops. Typical
+    patterns that get caught:
+  </p>
+
+  <ul>
+    <li><strong>A sudden pile.</strong> Lots of reviews arriving on a new profile within a few days.</li>
+    <li><strong>Reviews from the same network.</strong> Having customers write reviews in bulk while they’re on the business’s Wi-Fi.</li>
+    <li><strong>Accounts with no history.</strong> Accounts that have never reviewed anything before, with a single review each.</li>
+    <li><strong>Texts that resemble each other.</strong> The same template repeated with small changes.</li>
+  </ul>
+
+  <p>
+    The best-known trap is the bulk request. Messaging your list of past customers on the same day is technically allowed,
+    but a pile of reviews arriving within a few days is exactly the pattern the filter looks for.
+  </p>
+
+  <p>
+    Spread the list over weeks. Two or three real reviews a week is a safer flow than twenty reviews collected in one
+    week.
+  </p>
+
+  <h2 id="yanit">How should you reply to reviews?</h2>
+
+  <p>
+    Briefly and in a human voice, to the good ones and the bad ones. Replying to reviews is also among Google’s own
+    recommendations for local rankings. A reply shows the next customer researching you that the business is active.
+  </p>
+
+  <p>
+    Template replies like “Your lovely review brightened our day, seeing our brand shine on the digital stage is an
+    indescribable joy” give themselves away in the first sentence. Readers can tell you don’t really read your reviews.
+  </p>
+
+  <p>
+    Mention the service they received plainly, say thank you, and stop. Two lines like “Thank you, Ayşe, we’re glad the
+    report put your mind at ease, enjoy your new car” are enough.
+  </p>
+
+  <p>
+    Healthcare and law are an exception: don’t name the service in your reply. A reply like “We’re glad you were happy
+    with your implant treatment” discloses that person’s treatment to everyone.
+  </p>
+
+  <h2 id="olumsuz">What should you do if a negative review comes in?</h2>
+
+  <p>Go step by step:</p>
+
+  <ol>
+    <li>
+      <strong>Reach out privately first.</strong> Solve the problem by talking it through. If it’s solved, the customer can
+      update the review themselves.
+    </li>
+    <li>
+      <strong>Then write a short, non-defensive reply.</strong> The person who will really read this reply is the next
+      customer researching you. Don’t call the customer a liar and don’t go into detail.
+    </li>
+    <li>
+      <strong>If it breaks the rules, report it.</strong> Insults, irrelevant content or reviews that clearly come from a
+      competitor can be removed. The process isn’t guaranteed and can take weeks.
+    </li>
+  </ol>
+
+  <p>
+    Your strongest defense against a single negative review is your genuine review volume. On a profile with 120 reviews,
+    one bad review gets lost; on a profile with 8, it’s the first thing people notice.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Are your reviews <span class="highlight">behind</span> your competitors’?</h2>
+    <p>
+      Our free audit tool scores your profile in 10 questions and has you compare your review volume with the competitors
+      in the top three. For every item that comes out weak, you see what to do right away, with no sign-up or
+      <span style="white-space: nowrap;">email address</span> required.
+    </p>
+  </Fragment>
+</ContentLayout>

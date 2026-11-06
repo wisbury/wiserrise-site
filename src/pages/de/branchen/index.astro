@@ -1,0 +1,209 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import HubCards from '../../../components/v2/HubCards.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const verticals = [
+  {
+    href: p('industries/law'),
+    label: 'RECHT',
+    title: 'Anwälte',
+    text: 'Sichtbar werden, obwohl Werbung verboten ist. Die Arbeit stützt sich auf ein regelkonformes Profil und informative Inhalte.',
+    cta: 'Branche ansehen',
+  },
+  {
+    href: p('industries/dental'),
+    label: 'GESUNDHEIT',
+    title: 'Zahnärzte',
+    text: 'Wer nachts mit Schmerzen anruft und wer seit Wochen zu Implantaten recherchiert, sehen dieselbe Karte. Für beide müssen Sie getrennt sichtbar sein.',
+    cta: 'Branche ansehen',
+  },
+  {
+    href: p('industries/aesthetics'),
+    label: 'GESUNDHEIT',
+    title: 'Ästhetik-Kliniken',
+    text: 'Der Bereich mit den strengsten Werberegeln. Entscheidend sind die richtige Kategorie und Inhalte ohne Ergebnisversprechen.',
+    cta: 'Branche ansehen',
+  },
+  {
+    href: p('industries/physio'),
+    label: 'GESUNDHEIT',
+    title: 'Physiotherapeuten',
+    text: 'Patienten kennen ihre Diagnose nicht, sie schreiben ihre Beschwerden. Wie Sie Praxis und Hausbesuch im Profil trennen, beeinflusst auch Ihren Platz.',
+    cta: 'Branche ansehen',
+  },
+  {
+    href: p('industries/vehicle-inspection'),
+    label: 'KFZ',
+    title: 'Kfz-Gutachter',
+    text: 'Der Wettbewerb spielt sich auf wenigen Kilometern ab, der Kunde entscheidet in Minuten. Profil, Bewertungen und echte Fotos geben den Ausschlag.',
+    cta: 'Branche ansehen',
+  },
+];
+
+const toc = [
+  { id: 'ne-degisir', label: 'Was ändert sich je nach Branche?' },
+  { id: 'icerik', label: 'Warum wirken Brancheninhalte getrennt?' },
+  { id: 'diger', label: 'Wenn Ihre Branche fehlt' },
+];
+
+const faq = [
+  {
+    q: 'Meine Branche ist nicht aufgeführt. Können wir trotzdem zusammenarbeiten?',
+    a: 'Ja. Die Methode bleibt in jeder Branche gleich, anders sind die Struktur des Wettbewerbs und die Art, wie Kunden suchen. In der kostenlosen Analyse schauen wir uns Ihre Branche mit demselben Blick an.',
+  },
+  {
+    q: 'Werden die Texte nicht falsch, wenn Sie meine Branche nicht kennen?',
+    a: 'Google ordnet die Karte in jeder Branche nach derselben Logik; je nach Branche ändert sich, was im Text fachlich stimmen muss. In einem Bereich, den wir nicht kennen, lassen wir Sie den Text vor der Veröffentlichung auf Richtigkeit prüfen. So arbeiten wir auch bei Anwälten und im Gesundheitswesen.',
+  },
+  {
+    q: 'Arbeiten Sie in derselben Stadt auch mit meinem Konkurrenten?',
+    a: 'Nein. Pro Stadt und Branche arbeiten wir mit einem einzigen Unternehmen. Zwei Konkurrenten gleichzeitig auf derselben Karte nach oben bringen zu wollen, wäre beiden gegenüber unfair.',
+  },
+  {
+    q: 'Gehen wir in regulierten Branchen wie Recht und Gesundheit ein Risiko ein?',
+    a: 'Nein. Bei Anwälten zieht das Werbeverbot die Grenze des Textes, im Gesundheitswesen tun das die Werberegeln, und wir bleiben innerhalb dieser Grenze. Eine Formulierung mit Sanktionsrisiko setzen wir für kein Ranking ein.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="industries"
+  title="Lokale SEO nach Branchen | Wiserrise"
+  description="Lokale SEO für Anwälte, Zahnärzte, Ästhetik-Kliniken, Physiotherapeuten und Kfz-Gutachter. Ausgerichtet auf die Regeln der Branche und die Suche Ihrer Kunden."
+  eyebrow="BRANCHEN"
+  h1="Wie unterscheidet sich lokale SEO von Branche zu Branche?"
+  crumb="Branchen"
+  lede="Die Methode bleibt gleich, vier Dinge ändern sich: wie weit der Kunde fährt, wie schnell er entscheidet, was die Regeln der Branche erlauben und wie bereitwillig er Bewertungen schreibt. Arbeit, die das nicht berücksichtigt, ist verschwendet. Unten beschreiben wir die fünf Branchen, mit denen wir am meisten arbeiten, jeweils einzeln."
+  serviceName="Branchenspezifische lokale SEO"
+  breadcrumb={[{ label: 'Startseite', href: '/de' }]}
+  toc={toc}
+  faq={faq}
+  wideFirst
+  related={[
+    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Die Hauptleistung, bei der wir Ihr Profil und Ihre Website gemeinsam in Ordnung bringen.' },
+    { label: 'Content-Erstellung', href: p('services/content'), text: 'Leistungs- und Stadtteilseiten, die die Fragen Ihrer Branche beantworten.' },
+    { label: 'Alle Leistungen', href: p('services'), text: 'Die Liste, auf der Sie sehen, welche Leistung was löst.' },
+  ]}
+  ctaLabel="Kostenlose Analyse anfordern"
+  ctaHref="/de#contact"
+>
+  <h2 id="ne-degisir">Was ändert sich von Branche zu Branche?</h2>
+
+  <p>
+    Google ordnet die Karte in jeder Branche nach derselben Logik. Anders sind die Art, wie Kunden suchen, und das, was
+    Sie sagen dürfen.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Warum es wichtig ist</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Entfernung</strong></td>
+          <td>
+            Wer einen Kfz-Gutachter sucht, fährt zum nächstgelegenen. Für einen guten Scheidungsanwalt fährt man ans andere
+            Ende der Stadt. Die Messung richten wir nach dieser Entfernung aus.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Regeln</strong></td>
+          <td>
+            Für Anwälte gilt ein Werbeverbot, im Gesundheitswesen gelten Werberegeln. Viele Methoden, die in anderen Branchen
+            funktionieren, sind hier nicht erlaubt.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Kategorie</strong></td>
+          <td>
+            „Medizinische Ästhetik“ und „Kosmetikstudio“ sind für Google zwei verschiedene Unternehmensarten. Eine Klinik mit
+            der falschen Kategorie fällt bei der richtigen Suche zurück.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Entscheidungsdauer</strong></td>
+          <td>
+            Beim Gebrauchtwagen-Check dauert die Entscheidung Minuten, bei einer Implantatbehandlung Wochen. Bei langen
+            Entscheidungen zählen informative Seiten, bei kurzen das Profil und die Bewertungen.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Bewertungen</strong></td>
+          <td>
+            In manchen Branchen schreiben Kunden gern eine Bewertung, in anderen wegen der Privatsphäre nicht. Danach richten
+            wir das Bewertungsziel aus.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <p>
+      <strong>Ein Text ohne Branchenkenntnis kommt nicht nach vorne.</strong> Zur selben Suche gibt es Hunderte allgemeiner
+      Texte, den Unterschied macht das Detail, das nur jemand aus der Branche kennt. Deshalb lassen wir Sie in einem
+      Bereich, den wir nicht kennen, den Text auf Richtigkeit prüfen.
+    </p>
+  </div>
+
+  <h2 id="icerik">Warum wirken Brancheninhalte getrennt von der Karte?</h2>
+
+  <p>
+    Bei der Suche „Anwalt Antalya“ schaut Google, wo sich die suchende Person befindet. Bei „Wie lange dauert ein
+    Scheidungsverfahren“ gibt es das nicht: Diese Frage wird aus der ganzen Türkei gestellt, und die Seite mit der Antwort
+    kann überall erscheinen.
+  </p>
+
+  <p>
+    Dass eine Kanzlei bei dieser Frage sichtbar ist, ist eine andere Aufgabe als ihr Platz auf der Karte in der eigenen
+    Stadt. Wir bearbeiten beides zusammen. Die Karte bringt Kunden aus der Nähe, <a href={p('services/content')}>informative
+    Seiten</a> stellen Sie Kunden vor, die noch recherchieren.
+  </p>
+
+  <h2 id="diger">Ihre Branche ist nicht dabei?</h2>
+
+  <p>
+    Wir arbeiten trotzdem mit Ihnen. Die Methode ist dieselbe: zuerst die <a href={p('services/rank-tracking')}>Messung in
+    Ihrem Umkreis</a>, dann Profil und Website.
+  </p>
+
+  <p>
+    Ob Immobilienbüro, Tierarzt, Friseur, Steuerberater, Umzugsfirma, Installateur oder Fitnessstudio, spielt keine Rolle.
+    Bei jedem Unternehmen, dessen Kunden aus der Umgebung kommen, gehen wir in derselben Reihenfolge vor, den
+    branchenspezifischen Teil erarbeiten wir gemeinsam in der kostenlosen Analyse.
+  </p>
+
+  <Fragment slot="wide">
+    <HubCards
+      id="sektor-listesi"
+      eyebrow="BRANCHEN"
+      heading="Branchen mit eigener Seite."
+      sub="Wir arbeiten mit jeder Branche. Zu diesen haben wir branchenspezifisch etwas Konkretes zu sagen."
+      items={verticals}
+      son={{
+        label: 'IHRE BRANCHE FEHLT?',
+        title: 'Die Methode ist dieselbe, schauen wir gemeinsam.',
+        text: 'In der kostenlosen Analyse ermitteln wir die Wettbewerber in Ihrer Branche und wie Ihre Kunden suchen, und sagen Ihnen, wo Sie anfangen sollten.',
+        cta: 'Kostenlose Analyse',
+        alt: 'Kostenlose Analyse anfordern →',
+      }}
+    />
+  </Fragment>
+
+  <Fragment slot="cta">
+    <h2><span class="highlight">Wo</span> liegt der Wettbewerb in Ihrer Branche?</h2>
+    <p>
+      In der kostenlosen Analyse messen wir in Ihrem Umkreis und ermitteln Ihre Wettbewerber und Ihre fehlenden Seiten.
+      Das Ergebnis liegt innerhalb von 24 Stunden in Ihrem <span style="white-space: nowrap;">E-Mail-Postfach</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

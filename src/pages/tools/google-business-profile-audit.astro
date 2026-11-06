@@ -1,25 +1,30 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { routePath } from '../../i18n/routes';
-import AuditTool from '../../components/AuditTool.astro';
+import AuditTool from '../../components/v2/AuditTool.astro';
+import AnalizDialog from '../../components/AnalizDialog.astro';
+import Header from '../../components/v2/Header.astro';
+import Footer from '../../components/v2/Footer.astro';
 import { servicePageSchema } from '../../lib/schema';
+import { CONTACT_EMAIL } from '../../i18n/ui';
 
 const locale = 'en' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 const url = routePath(locale, 'tools/gbp-audit');
+const email = CONTACT_EMAIL[locale];
 
 const faq = [
   {
     q: 'Does this tool connect to my profile?',
-    a: 'No. Nothing is sent to a server — everything is calculated in your browser. We do not ask for access to your Google account and we do not store your answers.',
+    a: 'No. No data is sent to a server, and everything is calculated in your browser. We don’t ask for access to your Google account and we don’t save your answers.',
   },
   {
-    q: 'Does my score guarantee a ranking?',
-    a: 'No. This tool measures the structural state of your profile, not your ranking. Ranking also depends on proximity and competition — seeing your real position requires grid measurement laid over the city.',
+    q: 'Does my score guarantee my ranking?',
+    a: 'No, this tool scores the structure of your profile. Your ranking also depends on how close the searcher is and on your competitors. To see your real position on the map you need measurement across your area, and we include that in the free analysis.',
   },
   {
-    q: 'Why don’t you ask for an email at the end?',
-    a: 'Because this is not a trap. You see your score and your weak points immediately. Whether you request a free audit afterwards is up to you.',
+    q: 'Why don’t you ask for an email to show the result?',
+    a: 'Because we want you to see your score and your weak points right away. Whether you request a free analysis afterwards is up to you.',
   },
 ];
 
@@ -28,73 +33,92 @@ const schema = servicePageSchema({
   url,
   name: 'Google Business Profile Audit Tool',
   description:
-    'A free tool that scores the local-ranking strengths and weaknesses of your Google Business Profile in 10 questions.',
+    'A free tool that measures the strengths and weaknesses of your Google Business Profile for local ranking in 10 questions.',
   faq,
   breadcrumb: [
     { label: 'Home', href: '/' },
     { label: 'Google Business Profile Audit', href: url },
   ],
 });
+
+
+const mono = "font-family: 'Geist Mono', ui-monospace, monospace;";
+const display = "font-family: 'Bricolage Grotesque', Geist, sans-serif;";
+const chip = `${mono} display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.7); box-shadow: inset 0 0 0 1px rgba(22,36,77,.08); font-size: 12px; font-weight: 500; color: #16244d;`;
 ---
 
 <BaseLayout
   locale={locale}
   route="tools/gbp-audit"
+  design="v2"
   title="Free Google Business Profile Audit | Wiserrise"
-  description="Score your profile’s local-ranking weak points in 10 questions. No signup, no email — the result appears instantly in your browser."
+  description="Find out where your Google Business Profile is weak in 10 questions. No signup, no email, and the result shows instantly in your browser."
 >
-  <script slot="schema" type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+  <script
+    slot="schema"
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(schema)}
+  />
 
-  <section class="page-hero">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <ol>
-          <li><a href="/">Home</a></li>
-          <li><span aria-current="page">Profile Audit</span></li>
-        </ol>
-      </nav>
+<Header locale={locale} route="tools/gbp-audit" />
 
-      <span class="eyebrow">Free tool</span>
-      <h1>Google Business Profile Audit</h1>
-      <p class="lede">
-        See where your profile is strong and where it is weak for local ranking, in 10
-        questions. No signup, no email — the calculation runs in your browser and no data
-        is sent to us.
-      </p>
+<main id="main">
+<div class="v2-top" style="background: linear-gradient(180deg, rgba(246,246,243,0) 60%, #f6f6f3 100%), linear-gradient(115deg, #dff3ef 0%, #eef1f6 48%, #e2e6f7 100%);">
+  <section style="max-width: 1312px; margin: 0 auto; padding: clamp(48px, 7vw, 88px) clamp(16px, 3vw, 32px) clamp(40px, 5vw, 56px); display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;">
+    <span style={`${mono} font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;`}>FREE TOOL</span>
+    <h1 style={`${display} margin: 0; font-size: clamp(40px, 6.4vw, 76px); line-height: 0.98; font-weight: 600; letter-spacing: -0.045em; color: #1a1b19; max-width: 900px; text-wrap: balance;`}>How does your Google profile score?</h1>
+    <p style="margin: 0; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.5; color: #4a4c48; max-width: 640px;">Score your profile in four areas with 10 questions. The scoring is open: you see how many points each answer earns, and for every weak item the fix is listed below.</p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 4px;">
+      <span style={chip}>10 questions</span>
+      <span style={chip}>~2 minutes</span>
+      <span style={chip}>No signup, no email</span>
+      <span style={chip}>Your data stays in your browser</span>
     </div>
   </section>
+</div>
 
-  <section style="padding-top:0;">
-    <div class="container">
-      <AuditTool locale={locale} ctaHref="/#contact" />
+<section style="max-width: 1312px; margin: 0 auto; padding: 8px clamp(16px, 3vw, 32px) 0;">
+  <AuditTool locale={locale} />
+</section>
 
-      <div class="prose" style="margin-top:64px;">
-        <h2>What this measures — and what it doesn’t</h2>
-        <p>
-          What it measures is the <strong>structural state</strong> of your profile: category
-          accuracy, service structure, review strength, freshness and website connection.
-          Together these make up most of the relevance and prominence signals Google weighs
-          in local ranking.
-        </p>
-        <p>
-          What it does not measure is <strong>your actual ranking</strong>. Local ranking
-          changes with the searcher’s location; a single score cannot represent that. Seeing
-          where you place across your city requires a
-          <a href={p('services/rank-tracking')}>49-point grid measurement</a> — which is
-          included in the free audit.
-        </p>
-
-        <h2 id="faq">Frequently asked</h2>
-        {faq.map((item) => (
-          <details class="faq-item">
-            <summary>
-              <span>{item.q}</span>
-              <div class="faq-icon">+</div>
-            </summary>
-            <p>{item.a}</p>
-          </details>
-        ))}
-      </div>
+<section style="max-width: 1312px; margin: 0 auto; padding: clamp(72px, 10vw, 112px) clamp(16px, 3vw, 32px) 0;">
+  <span style={`${mono} font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;`}>TRANSPARENCY</span>
+  <h2 style={`${display} margin: 12px 0 32px; font-size: clamp(30px, 4.2vw, 44px); line-height: 1.02; font-weight: 600; letter-spacing: -0.03em; max-width: 640px;`}>What does this tool measure, and what does it leave out?</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
+    <div style="display: flex; flex-direction: column; gap: 12px; padding: 32px; border-radius: 24px; background: #ffffff; border: 1px solid #e3e5df;">
+      <span style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 12px; background: #e9f8f6; color: #187a50;"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3.5 8.5 6.5 11.5 12.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <h3 style={`${display} margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; color: #16244d;`}>What it measures: your profile’s structure</h3>
+      <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #5c5e59;">Category accuracy, service structure, review strength, freshness and the link to your website. These make up most of the relevance and prominence signals Google looks at on the map.</p>
     </div>
-  </section>
+    <div style="display: flex; flex-direction: column; gap: 12px; padding: 32px; border-radius: 24px; background: #ffffff; border: 1px solid #e3e5df;">
+      <span style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 12px; background: #fbefd9; color: #8a5a12;"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M4.5 4.5 11.5 11.5M11.5 4.5 4.5 11.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+      <h3 style={`${display} margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; color: #16244d;`}>What it doesn’t measure: your real ranking</h3>
+      <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #5c5e59;">Your position on the map changes with where the searcher is standing, and a single score can’t show that. To see where you rank in each district, you need <a href={p('services/rank-tracking')} style="color: #16244d; font-weight: 600;">measurement across your area</a>. We include it in the free analysis.</p>
+    </div>
+  </div>
+</section>
+
+<section id="sss" style="max-width: 1312px; margin: 0 auto; padding: clamp(72px, 10vw, 112px) clamp(16px, 3vw, 32px) 0; display: flex; flex-wrap: wrap; gap: 48px;">
+  <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 16px;">
+    <span style={`${mono} font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;`}>FREQUENTLY ASKED</span>
+    <h2 style={`${display} margin: 0; font-size: clamp(30px, 4.2vw, 44px); line-height: 1.02; font-weight: 600; letter-spacing: -0.03em;`}>About the tool.</h2>
+    <p style="margin: 8px 0 0; font-size: 15px; color: #5c5e59;">For any other question: <a href={`mailto:${email}`} style="color: #16244d; font-weight: 500;">{email}</a></p>
+  </div>
+  <div style="flex: 999 1 560px; display: flex; flex-direction: column; border-top: 1px solid #dedfda;">
+    {faq.map((item, i) => (
+      <details open={i === 0} style="border-bottom: 1px solid #dedfda; padding: 24px 0;">
+        <summary style={`${display} display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 22px; font-weight: 600; letter-spacing: -0.015em;`}><span>{item.q}</span><span aria-hidden="true" class="v2-faq-plus" style="width: 32px; height: 32px; border-radius: 999px; border: 1px solid #868982; display: inline-flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500; color: #16244d; flex: 0 0 auto;">+</span></summary>
+        <p style="margin: 12px 0 0; font-size: 16px; color: #5c5e59; max-width: 640px;">{item.a}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+</main>
+
+<AnalizDialog locale={locale} email={email} />
+
+<Footer locale={locale} email={email} />
+
 </BaseLayout>

@@ -1,0 +1,64 @@
+---
+/**
+ * Liste sayfalarındaki kart ızgarası (hizmetler, sektörler, rehberler). Ana sayfadaki hizmet kartlarının sade hali:
+ * üstte etiket ve ok, altında başlık ve kısa açıklama. İstenirse sona koyu bir yönlendirme kartı eklenir; kavis yalnız onda.
+ */
+interface Kart {
+  href: string;
+  label: string;
+  title: string;
+  text: string;
+  /** Okun üzerine gelince açılan eylem yazısı. */
+  cta: string;
+  /** Sayfası henüz olmayan hizmet: kart analiz penceresini bu hizmet seçili açar (gads, meta, backlink…). */
+  analiz?: string;
+}
+
+interface Props {
+  id: string;
+  eyebrow: string;
+  heading: string;
+  sub?: string;
+  items: Kart[];
+  /** Koyu kart; href verilmezse analiz penceresini açar. `alt` kartın altındaki eylem satırı, kavis onun sağına çizilir. */
+  son?: Omit<Kart, 'href'> & { href?: string; alt: string };
+}
+
+const { id, eyebrow, heading, sub, items, son } = Astro.props;
+const sonLink = son?.href ? { href: son.href } : { href: '#analiz-formu', 'data-analiz': true };
+// Koyu kart son satırdaki boş sütunları doldurur (masaüstünde 3, tablette 2 sütun), ızgarada delik kalmaz.
+const bosluk = (k: number) => k - (items.length % k);
+---
+
+<section class="v2-hub" aria-labelledby={id}>
+  <div class="v2-hub-h">
+    <div class="v2-hub-hl">
+      <span class="v2-eyebrow">{eyebrow} <span class="v2-hub-n">( {items.length} )</span></span>
+      <h2 id={id}>{heading}</h2>
+    </div>
+    {sub && <p>{sub}</p>}
+  </div>
+  <div class="v2-hub-grid">
+    {items.map((k) => (
+      <a class="card v2-hub-card" href={k.href} data-analiz={k.analiz ? true : undefined} data-hizmet={k.analiz}>
+        <span class="v2-hub-top">
+          <span class="v2-eyebrow">{k.label}</span>
+          <span class="v2-arrow" aria-hidden="true"><span class="v2-arrow-t">{k.cta}</span><i></i></span>
+        </span>
+        <span class="v2-hub-t">{k.title}</span>
+        <span class="v2-hub-p">{k.text}</span>
+      </a>
+    ))}
+    {son && (
+      <a class="card v2-hub-card v2-hub-son" data-kavis="liste" style={`--s3: ${bosluk(3)}; --s2: ${bosluk(2)};`} {...sonLink}>
+        <span class="v2-hub-top">
+          <span class="v2-eyebrow">{son.label}</span>
+          <span class="v2-arrow v2-arrow--accent" aria-hidden="true"><span class="v2-arrow-t">{son.cta}</span><i></i></span>
+        </span>
+        <span class="v2-hub-t">{son.title}</span>
+        <span class="v2-hub-p">{son.text}</span>
+        <span class="v2-hub-alt">{son.alt}</span>
+      </a>
+    )}
+  </div>
+</section>

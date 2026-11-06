@@ -1,0 +1,251 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'CATEGORY', title: 'The right business type', text: 'To Google, a medical aesthetics center and a beauty salon are separate businesses. With the wrong category, people searching for the procedure struggle to find you.' },
+  { label: 'DECISION', title: 'Long research', text: 'Patients read for weeks before deciding. We write pages for every step, from the first search where they describe their problem to the last one where they choose a clinic.' },
+  { label: 'PRICE', title: 'Price questions', text: 'Promotion through price is restricted, yet a page that leaves the question unanswered sends the patient to a competitor. We explain what determines the price.' },
+  { label: 'RULES', title: 'Promotion limits', text: 'We don’t use before/after images, special offers or claims like “the most natural result”. We have you approve every text before it goes live.' },
+];
+
+const toc = [
+  { id: 'kategori', label: 'Medical aesthetics or salon' },
+  { id: 'karar', label: 'The long decision process' },
+  { id: 'fiyat', label: 'Price questions' },
+  { id: 'kurallar', label: 'Promotion rules' },
+  { id: 'icerik', label: 'Convincing without images' },
+  { id: 'reklam', label: 'Ads and organic' },
+];
+
+const faq = [
+  {
+    q: 'Am I a medical aesthetics clinic or a beauty salon? How do I decide?',
+    a: 'Look at the service you provide. If you perform medical procedures under a physician’s responsibility, the medical categories are right; if you only provide care services, the salon categories are. With the wrong category, it gets harder to appear in front of people searching for the procedure.',
+  },
+  {
+    q: 'If I can’t share before/afters, how do I compete with my rivals on Instagram?',
+    a: 'By competing in search. The person searching wants to learn about the procedure, its risks and the recovery time; a page that answers these questions is written for exactly that search. If your rival who competes with images leaves these questions unanswered, search is yours.',
+  },
+  {
+    q: 'Can we use patient reviews on our website?',
+    a: 'Don’t use them as praise material. Content that turns patient experience into a promotional tool is risky under Turkey’s health advertising rules. Leave reviews on your Google profile, and don’t mention which procedure the patient had in your replies.',
+  },
+  {
+    q: 'I want patients from abroad. Is the same website enough?',
+    a: 'No. Health tourism requires an authorization certificate from Turkey’s Ministry of Health, and the searches happen in other languages and across whole countries. We work in Turkish, English and German, and we plan this work from the start, separately from the local program.',
+  },
+  {
+    q: 'When will we see results?',
+    a: 'For most businesses we see the first movement on the map within 4-8 weeks, and procedure pages take 3-6 months to find their place in search. We can’t give an exact date. You see the work we do every week in the report and in the client portal.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="industries/aesthetics"
+  title="SEO for Aesthetic and Medical Aesthetic Clinics | Wiserrise"
+  description="SEO for medical aesthetic clinics within Turkey’s promotion rules: the right category and pages that answer price and risk questions during a long decision."
+  eyebrow="INDUSTRY · AESTHETIC CLINICS"
+  h1="SEO for aesthetic clinics: answer the patient who is researching."
+  crumb="Aesthetic Clinics"
+  lede="SEO for aesthetic clinics means showing up at every step of a patient’s research, which lasts for weeks. In a field where you can’t lean on before/after photos, visibility comes from the right category and pages that answer patients’ questions. We do both while staying inside Turkey’s health advertising rules."
+  serviceName="Local SEO for Aesthetic Clinics"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Industries', href: p('industries') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Content Production', href: p('services/content'), text: 'We write procedure pages around the questions patients actually ask.' },
+    { label: 'GEO', href: p('services/geo'), text: 'We work to get your clinic mentioned in AI answers.' },
+    { label: 'SEO for Dentists', href: p('industries/dental'), text: 'How we work on emergency toothache searches and treatment pages.' },
+    { label: 'SEO for Physiotherapists', href: p('industries/physio'), text: 'Searches shaped by neighborhood proximity and repeat sessions.' },
+  ]}
+  relatedHeading="Related pages"
+  ctaLabel="Get a free analysis"
+  ctaHref="/#contact"
+>
+  <h2 id="kategori">Are you a medical aesthetics clinic or a beauty salon?</h2>
+
+  <p>
+    The service you provide decides it. A center performing medical procedures like botox or fillers under a physician’s
+    responsibility and a salon doing skin care are two different types of business to Google. With the wrong category, you
+    struggle to appear in front of people searching for the procedure.
+  </p>
+
+  <p>
+    The most expensive mistake we see in this field is a center performing medical procedures putting itself in the “Beauty
+    salon” category. The reverse happens too: a salon that only does skin care picks a medical category, runs into
+    verification problems and collects traffic from irrelevant searches.
+  </p>
+
+  <p>
+    Before choosing the category, we list the categories of the clinics that stand out in your area and compare which one
+    shows up in which search. We describe the method on the <a href={p('services/gbp')}>profile management page</a>. Your
+    profile name also stays the same as the name on your sign, because adding “botox” or “fillers” to the name breaks
+    Google’s rules.
+  </p>
+
+  <h2 id="karar">What does a patient search for until they decide?</h2>
+
+  <p>
+    Questions, for weeks. In aesthetics the decision takes a long time, and what the patient types changes along the way.
+    Most clinics compete only at the last step, when the clinic is being chosen.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th>What the patient types</th>
+          <th>Page that answers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Recognizing the problem</strong></td>
+          <td>“what causes dark circles under the eyes”</td>
+          <td>Informative guide</td>
+        </tr>
+        <tr>
+          <td><strong>Researching solutions</strong></td>
+          <td>“fillers or laser”, “how long does botox last”</td>
+          <td>Procedure page and comparison article</td>
+        </tr>
+        <tr>
+          <td><strong>Choosing a clinic</strong></td>
+          <td>“medical aesthetics antalya”, “botox near me”</td>
+          <td>Google Business Profile and location page</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    The last step is the most crowded one and the most expensive in ads. A clinic that shows up in the first two steps
+    catches the patient at the start of the research, and by the time they come to choose a clinic, they’ve already read
+    your name.
+  </p>
+
+  <p>
+    Some of these questions now get answered directly by AI: ChatGPT, Gemini and Google’s AI Overviews. We describe what
+    we do to get you mentioned there on the <a href={p('services/geo')}>GEO page</a>.
+  </p>
+
+  <h2 id="fiyat">What do you tell a patient who asks about price?</h2>
+
+  <p>
+    An answer that explains the factors behind the price. Promotion through prices and discounts is restricted in
+    healthcare, so we don’t publish price lists on the website. Patients, meanwhile, search for “botox prices”.
+  </p>
+
+  <p>
+    On every procedure page we write what the price depends on, for example the number of areas treated or how many
+    sessions are needed. We say clearly that the exact figure is settled at your clinic after the examination. The patient
+    calls knowing what to expect.
+  </p>
+
+  <p>
+    A procedure page that never touches on price is a half-finished page. The patient leaves without the answer and looks
+    for it on the next clinic’s website.
+  </p>
+
+  <h2 id="kurallar">Which kinds of promotion are banned in aesthetics?</h2>
+
+  <p>
+    Turkey’s rules on promoting health services are applied at their strictest in aesthetics. Many posts you see on social
+    media run into these rules. None of the pages we write contain the following:
+  </p>
+
+  <ul>
+    <li>Promotion with before/after photos</li>
+    <li>Promises of results, “guaranteed results” or satisfaction guarantees</li>
+    <li>Announcements of special offers, package prices and discounts</li>
+    <li>Turning patient reviews or patient stories into praise material</li>
+    <li>Superiority claims like “the best” or “the most natural result”</li>
+  </ul>
+
+  <p>
+    Images need the same care. A photo that highlights the target look reads like a promise even when the text makes none.
+    Photos of the clinic interior and the team carry no such risk.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>This page is not legal advice.</strong> For the current interpretation of the rules, your provincial health
+      directorate has the final say. We don’t use any wording we’re unsure about, and we submit every text for your approval
+      before it goes live.
+    </p>
+  </div>
+
+  <p>
+    We explain how the same rules work for <a href={p('industries/dental')}>dental clinics</a> and
+    <a href={p('industries/physio')}>physiotherapists</a> on separate pages.
+  </p>
+
+  <h2 id="icerik">How do you convince without before/after photos?</h2>
+
+  <p>
+    By answering the patient’s questions honestly. The person searching wants to learn about the procedure and understand
+    its risks. A patient at the decision stage asks:
+  </p>
+
+  <ul class="checklist">
+    <li>How is the procedure done, and how long does it take</li>
+    <li>Does it hurt, is anaesthesia needed</li>
+    <li>When can I go back to work and to my social life</li>
+    <li>How long does the effect last, does it need repeating</li>
+    <li>What are the risks and side effects, who is it unsuitable for</li>
+    <li>What does the price depend on</li>
+  </ul>
+
+  <p>
+    None of these questions needs an image. We don’t write a procedure page without a section on risks and side effects. A
+    patient whose expectations are set right from the start arrives at the appointment more decided.
+  </p>
+
+  <p>
+    On health pages Google looks more closely at who wrote the text, so we recommend putting the name and title of the
+    physician who reviewed the content on the page. We write the pages as part of
+    <a href={p('services/content')}>content production</a> and fit each one to a single search with
+    <a href={p('services/on-page-seo')} style="white-space: nowrap;">on-page SEO</a>.
+  </p>
+
+  <h2 id="reklam">Should you stop ads and switch to SEO?</h2>
+
+  <p>
+    Don’t stop them right away. Ads bring traffic from the first week, while the first movement in search takes 3-6 months.
+    Shifting the budget gradually as organic rankings settle is the healthier route.
+  </p>
+
+  <p>
+    With ads you pay for every click. So the information searches of a patient doing long research should be left to
+    organic, and ads should stay on decision searches.
+  </p>
+
+  <p>
+    We learned this the hard way in Google Ads. Around 800 TL went on information searches with no intent before we
+    noticed, and it was a close call. Don’t pay per click for someone typing “what is botox”.
+  </p>
+
+  <p>
+    <a href={p('services/rank-tracking')}>Measurement across your area</a> and Search Console together show which searches
+    you’re weak in organically. Keeping ads on those searches makes sense. You see the work we do every week in the report.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Are you in the right <span class="highlight">category</span>?</h2>
+    <p>
+      In the free analysis we look at your category setup and the rival clinics in your area. The result lands in your inbox
+      within <span style="white-space: nowrap;">24 hours</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

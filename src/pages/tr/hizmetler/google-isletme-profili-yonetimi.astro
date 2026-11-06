@@ -5,32 +5,39 @@ import { routePath } from '../../../i18n/routes';
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'KATEGORİ', title: 'Doğru birincil kategori', text: 'Google’a ne iş yaptığınızı söyleyen ilk alan. Rakiplerin kategorilerine bakar, sizinkini ona göre kurarız.' },
+  { label: 'HİZMET', title: 'Hizmet listesi', text: 'Verdiğiniz her hizmeti müşterinin aradığı adla yazarız. Sitedeki hizmet sayfalarıyla aynı adı kullanırız.' },
+  { label: 'YORUM', title: 'Yorum akışı', text: 'İşi biten her müşteriden yorum isteriz, gelen her yoruma cevap yazarız. Satın alınmış yoruma dokunmayız.' },
+  { label: 'GÖNDERİ', title: 'Gönderi ve fotoğraf', text: 'Yeni hizmet, kampanya, ekip ve mekan. Profili güncel gönderiler ve gerçek fotoğraflarla canlı tutarız.' },
+];
+
 const toc = [
-  { id: 'neden', label: 'Profil neden sıralamanın merkezinde?' },
-  { id: 'kategori', label: 'Kategori: en yüksek etkili tek alan' },
-  { id: 'hizmetler', label: 'Hizmetler ve ürünler' },
-  { id: 'degerlendirme', label: 'Değerlendirme yönetimi' },
-  { id: 'post-foto', label: 'Post, foto ve tazelik sinyalleri' },
-  { id: 'hizmet-bolgesi', label: 'Adressiz (hizmet bölgeli) profiller' },
-  { id: 'sureç', label: 'Bizim süreç' },
+  { id: 'nedir', label: 'Profil yönetimi ne demek?' },
+  { id: 'kategori', label: 'Hangi kategori?' },
+  { id: 'hizmetler', label: 'Hizmetler ve açıklama' },
+  { id: 'yorumlar', label: 'Yorumlar' },
+  { id: 'gonderi', label: 'Gönderi ve fotoğraf' },
+  { id: 'kurallar', label: 'Girmediğimiz kısa yollar' },
+  { id: 'surec', label: 'Nasıl çalışıyoruz?' },
 ];
 
 const faq = [
   {
-    q: 'Profilimi optimize etmek tek seferlik bir iş mi?',
-    a: 'Kurulum tek seferlik, yönetim sürekli. Kategori ve hizmet yapısı bir kez doğru kurulur; ancak post, foto, değerlendirme yanıtları ve Q&A sürekli beslenmezse profil zamanla rakiplerin gerisine düşer.',
+    q: 'Profil yönetimi tek seferlik bir iş mi?',
+    a: 'Hayır. Kategori ve hizmet yapısı bir kez doğru kurulur. Yorum, gönderi ve fotoğraf akışı durursa profil rakiplerin gerisine düşer, o yüzden iş devam eder.',
   },
   {
-    q: 'Kategori değiştirmek sıralamamı düşürür mü?',
-    a: 'Yanlış kategoriden doğru kategoriye geçiş genelde yükseltir. Ancak doğru kategorideyken deneme amaçlı değişiklik yapmak riskli — Google birincil kategoriyi güçlü bir alaka sinyali olarak kullanır ve değişimden sonra sıralamanın oturması birkaç hafta sürer.',
+    q: 'Kategoriyi ne sıklıkla değiştirmeliyim?',
+    a: 'Doğru kategoriyi bulduktan sonra gerekmedikçe değiştirmeyin. Her değişiklikten sonra sıranın oturması zaman alıyor ve deneme amaçlı değişiklik, neyin işe yaradığını görmeyi zorlaştırıyor.',
   },
   {
-    q: 'Sahte değerlendirme siliniyor mu?',
-    a: 'Google’ın politika ihlali bildirimiyle rakip kaynaklı sahte olumsuz yorumlar kaldırılabiliyor, ancak süreç garantili değil ve haftalar sürebiliyor. Kalıcı çözüm, gerçek değerlendirme hacmini yükselterek tek bir yorumun ağırlığını düşürmek.',
+    q: 'Sahte olumsuz yorumu sildirebilir misiniz?',
+    a: 'Kurala aykırıysa Google’a bildiririz, ama silinip silinmeyeceğine Google karar veriyor ve süreç haftalar sürebiliyor. Kalıcı çözüm, gerçek yorum sayısını artırıp tek bir yorumun ağırlığını düşürmek.',
   },
   {
     q: 'Profilime erişim vermem gerekiyor mu?',
-    a: 'Evet, yönetici erişimi gerekiyor. Sahiplik sizde kalır; biz yönetici olarak eklenir, iş bitiminde erişim kaldırılabilir. Hesabınızın sahipliğini hiçbir aşamada devretmenizi istemiyoruz.',
+    a: 'Evet, bizi yönetici olarak eklersiniz. Profilin asıl sahibi siz kalırsınız, sahipliği devretmenizi istemiyoruz. Birlikte çalışmayı bıraktığınızda erişimimizi kaldırırsınız.',
   },
 ];
 ---
@@ -38,192 +45,229 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="services/gbp"
-  title="Google İşletme Profili Yönetimi | Wiserrise"
-  description="Kategori, hizmet listesi, değerlendirme, post ve foto yönetimi. Google Haritalar sıralamanızı belirleyen profil sinyallerinin tamamı tek elden."
-  eyebrow="Hizmet"
-  h1="Google İşletme Profili Yönetimi"
-  lede="Haritalarda ilk üçe giren işletmelerle giremeyenler arasındaki farkın büyük bölümü sitede değil, profilin içinde. Kategori, hizmet yapısı, değerlendirme ve tazelik sinyallerini birlikte yönetiyoruz."
+  title="Google İşletme Profili Yönetimi Hizmeti | Wiserrise"
+  description="Kategori, hizmetler, yorumlar, gönderiler ve fotoğraflar. Google İşletme Profilinizi kurallara uygun yönetiyor, yaptığımız işi her hafta raporluyoruz."
+  eyebrow="HİZMET · İŞLETME PROFİLİ"
+  h1="Google İşletme Profilinizi kurallara uygun yönetiyoruz."
+  crumb="Google İşletme Profili"
+  lede="Google İşletme Profili yönetimi, haritada sizi temsil eden profili doğru kurmak ve canlı tutmak demek: kategori, hizmetler, yorumlar, gönderiler ve fotoğraflar. Haritadaki sıranızı en çok bu profil belirliyor. Biz bu işi Google’ın kurallarına uyarak yapıyoruz, kuralı esneten kısa yollara girmiyoruz."
   serviceName="Google İşletme Profili Yönetimi"
   breadcrumb={[
     { label: 'Ana Sayfa', href: '/tr' },
     { label: 'Hizmetler', href: p('services') },
+    { label: 'Local SEO', href: p('services/local-seo') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Yerel SEO', href: p('services/local-seo') },
-    { label: 'Harita Sıralama Takibi', href: p('services/rank-tracking') },
-    { label: 'İçerik Üretimi', href: p('services/content') },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'Profilinizi ve sitenizi birlikte düzelterek çevrenizdeki müşteriye görünmeniz için çalışırız.' },
+    { label: 'Harita Sıralama Takibi', href: p('services/rank-tracking'), text: 'Çevrenizin farklı noktalarında kaçıncı çıktığınızı ölçeriz.' },
+    { label: 'İçerik Üretimi', href: p('services/content'), text: 'Profildeki her hizmet için sitede ona karşılık gelen sayfayı yazarız.' },
+    { label: 'GEO', href: p('services/geo'), text: 'ChatGPT, Gemini ve Google’ın süper zeka yanıtlarında anılmanız için çalışırız.' },
   ]}
-  ctaLabel="Profilimi Ücretsiz Analiz Et →"
+  ctaLabel="Ücretsiz analiz al"
   ctaHref="/tr#contact"
 >
-  <h2 id="neden">Profil neden sıralamanın merkezinde?</h2>
+  <h2 id="nedir">Google İşletme Profili yönetimi ne demek?</h2>
 
   <p>
-    Google, yerel sonuçları organik sonuçlardan ayrı bir sistemle sıralıyor. Bu sistemde üç ana
-    girdi var: <strong>alaka</strong> (işletme aranan şeyi gerçekten yapıyor mu), <strong>mesafe</strong>
-    (arayan kişiye ne kadar yakın) ve <strong>öne çıkma</strong> (işletme ne kadar tanınıyor).
-    Mesafeyi değiştiremezsiniz. Geriye kalan iki girdinin de büyük bölümü Google İşletme
-    Profili’nin içinden okunuyor.
+    Haritada sizi temsil eden profili doğru kurmak ve canlı tutmak. Biri Kadıköy’de “diş hekimi” aradığında Google
+    haritada üç işletme gösterir; o üç kartın her biri bir İşletme Profili.
   </p>
 
   <p>
-    Pratikte şu anlama geliyor: sitenizde ne yazdığınızdan bağımsız olarak, profilinizdeki kategori
-    Google’a "bu işletme şu işi yapar" diyen en güçlü tek sinyal. Değerlendirme sayınız ve
-    içerikleri, "bu işletme tanınıyor" sinyalinin en ölçülebilir kaynağı. Bu ikisi yanlışsa,
-    sitenizde yapacağınız hiçbir iyileştirme sizi ilk üçe taşımıyor.
-  </p>
-
-  <h2 id="kategori">Kategori: en yüksek etkili tek alan</h2>
-
-  <p>
-    Birincil kategori, yerel sıralamada tek bir alanla yapabileceğiniz en büyük değişiklik.
-    Google’ın kategori listesi Türkçe’de zaman zaman yanıltıcı çevirilere sahip olduğu için,
-    işletmelerin önemli bir kısmı kendini komşu ama yanlış bir kategoriye yerleştiriyor.
+    Google haritadaki sırayı üç şeye bakarak belirliyor: aranan işi yapıp yapmadığınız, arayana ne kadar yakın olduğunuz
+    ve ne kadar tanındığınız. Yakınlığı değiştiremezsiniz. Diğer ikisinin büyük kısmını Google profilinizden okur.
   </p>
 
   <p>
-    Sık gördüğümüz örnek: arabuluculuk da yapan bir avukatın birincil kategorisini
-    "Arabulucu" seçmesi. Bu seçim, "avukat" aramalarındaki görünürlüğü ciddi biçimde düşürüyor,
-    çünkü birincil kategori en ağır basan alaka sinyali. Doğrusu birincil kategoriyi hacmi
-    yüksek olan ana hizmete ("Avukat") vermek, arabuluculuğu ikincil kategori olarak eklemek.
-  </p>
-
-  <p>Kategori çalışmasında yaptığımız:</p>
-
-  <ul class="checklist">
-    <li>İlk üçteki rakiplerin birincil ve ikincil kategorilerinin çıkarılması</li>
-    <li>Hedef sorgularla kategori eşleşmesinin karşılaştırılması</li>
-    <li>Birincil kategorinin en yüksek hacimli ana hizmete sabitlenmesi</li>
-    <li>İkincil kategorilerin, alakayı sulandırmayacak sayıda tutulması</li>
-  </ul>
-
-  <div class="callout">
-    <p>
-      <strong>İkincil kategoride "ne kadar çok o kadar iyi" geçerli değil.</strong> Alakasız
-      ikincil kategoriler, Google’ın işletmeyi hangi sorgu kümesine ait gördüğünü bulanıklaştırır
-      ve ana sorgudaki gücünüzü düşürebilir.
-    </p>
-  </div>
-
-  <h2 id="hizmetler">Hizmetler ve ürünler</h2>
-
-  <p>
-    Kategori "ne tür bir işletmesiniz" sorusuna cevap verir; hizmet listesi ise "tam olarak neler
-    yapıyorsunuz" sorusuna. Bu alan çoğu profilde ya boş ya da Google’ın önerdiği genel
-    etiketlerle doldurulmuş durumda — yani rakiplerinizle birebir aynı.
-  </p>
-
-  <p>
-    Hizmet kalemlerini, insanların gerçekten arattığı ifadelerle yazıyor ve her birine açıklama
-    ekliyoruz. Bu açıklamalar hem profilin içinde metinsel alaka üretiyor hem de kullanıcı
-    profili açtığında hizmetin kapsamını netleştirerek arama–talep dönüşümünü artırıyor.
-    Hizmet isimlendirmesini sitedeki
-    <a href={p('services/content')}>hizmet sayfalarıyla</a> birebir aynı tutuyoruz; profil ile
-    site arasındaki bu tutarlılık, Google’ın iki varlığı aynı işletme olarak eşleştirmesini
-    kolaylaştırıyor.
-  </p>
-
-  <h2 id="degerlendirme">Değerlendirme yönetimi</h2>
-
-  <p>
-    Değerlendirmeler yerel sıralamada iki ayrı işlev görüyor. Birincisi hacim ve ortalama puan;
-    ikincisi ve daha az bilineni, yorumların <strong>içeriği</strong>. Kullanıcıların yorumlarında
-    geçen hizmet ve yer adları, Google için alaka sinyali oluşturuyor.
-  </p>
-
-  <p>
-    Bu yüzden "bize 5 yıldız verin" demek yetmiyor. Kurduğumuz talep akışı, memnun müşteriyi
-    aldığı hizmeti ve bulunduğu yeri kendi cümleleriyle yazmaya yönlendiriyor — yönlendirme
-    metnini müşteriye yazdırmadan, çünkü kopyala-yapıştır yorumlar hem Google filtrelerine
-    takılıyor hem de okuyan kişide güven kaybı yaratıyor.
-  </p>
-
-  <ul class="checklist">
-    <li>Hizmet tesliminden sonra doğru anda tetiklenen değerlendirme talebi</li>
-    <li>Kısa link ve QR ile sürtünmesiz yorum akışı</li>
-    <li>Tüm yorumlara, hizmet adını doğal biçimde içeren yanıtlar</li>
-    <li>Olumsuz yorumlarda önce telafi, sonra kamuya açık yanıt</li>
-    <li>Politika ihlali içeren rakip kaynaklı yorumların bildirilmesi</li>
-  </ul>
-
-  <h2 id="post-foto">Post, foto ve tazelik sinyalleri</h2>
-
-  <p>
-    Google, aktif yönetilen profilleri terk edilmiş profillerden ayırt ediyor. Düzenli post,
-    yeni foto ve cevaplanmış sorular bu ayrımın girdileri. Tek başına post atmak sizi ilk üçe
-    çıkarmıyor; ancak diğer her şey eşitken, aktif profil pasif profili geçiyor.
-  </p>
-
-  <p>
-    Post’ları içerik takvimine bağlıyoruz ve her post’u sitedeki bir hizmet ya da vaka sayfasına
-    UTM etiketli bağlantıyla gönderiyoruz. Böylece profilden gelen trafiği ayrı ölçebiliyor,
-    hangi hizmetin ilgi çektiğini veriyle görebiliyoruz.
-  </p>
-
-  <h2 id="hizmet-bolgesi">Adressiz (hizmet bölgeli) profiller</h2>
-
-  <p>
-    Ofisine müşteri kabul etmeyen işletmeler profillerini adres göstermeden, yalnızca hizmet
-    bölgesi tanımlayarak açabiliyor. Burada yaygın bir yanılgı var: hizmet bölgesi eklemek
-    sıralama alanını genişletmiyor.
-  </p>
-
-  <p>
-    Google, adressiz profillerde de sıralamayı <strong>gizli merkez adrese olan yakınlığa</strong>
-    göre hesaplıyor. Hizmet bölgesi listesi kullanıcıya "buralara hizmet veriyor" bilgisini
-    gösteriyor, sıralama yarıçapını değiştirmiyor. 20 il eklemek, o illerin haritasında
-    çıkacağınız anlamına gelmiyor.
+    Profili bir kez kurup bırakan çok işletme görüyoruz. Kurulum bir kez yapılır, ama yorumlar, gönderiler ve
+    fotoğraflar akmazsa profil yerinde sayar ve rakipler öne geçer.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Doğru strateji ikiye ayırmak.</strong> Profili bulunduğunuz şehirde ilk üçe
-      oynatın; Türkiye geneli görünürlüğü ise <a href={p('services/local-seo')}>yerel SEO</a> ve
-      <a href={p('services/content')}>içerik</a> tarafındaki organik çalışmayla kurun. Yakınlık
-      sinyali olmayan sorgularda ülke geneli sıralanmak mümkün, ama bu profilin değil sitenin işi.
-    </p>
-  </div>
-
-  <div class="callout">
-    <p>
-      <strong>Profilinizin durumunu kendiniz ölçmek isterseniz:</strong>
-      <a href={p('tools/gbp-audit')}>ücretsiz profil denetim aracımız</a> 10 soruda hangi
-      alanda zayıf olduğunuzu gösteriyor. Kayıt istemiyor, e-posta istemiyor; hesaplama
+      <strong>Önce kendiniz bakmak isterseniz:</strong> <a href={p('tools/gbp-audit')}>ücretsiz profil denetim
+      aracımız</a> 10 soruda profilinizin zayıf yerlerini gösteriyor. Kayıt ve e-posta istemiyor, hesaplama
       tarayıcınızda yapılıyor.
     </p>
   </div>
 
-  <h2 id="sureç">Bizim süreç</h2>
+  <h2 id="kategori">Hangi kategoriyi seçmelisiniz?</h2>
+
+  <p>
+    İşinizi en dar ve en doğru anlatan kategoriyi. Birincil kategori, Google’a ne iş yaptığınızı söyleyen en güçlü alan.
+    Profilde değiştirebileceğiniz alanlar içinde sıraya en çok etki eden de bu.
+  </p>
+
+  <p>
+    Türkçe kategori listesinde birbirine çok yakın adlar var ve işletmeler sık sık komşu ama yanlış kategoriyi seçiyor.
+    Diyelim ki arabuluculuk da yapan bir avukatsınız. Birincil kategoriyi “Arabulucu” seçerseniz “avukat” aramalarında
+    geri düşersiniz; doğrusu birincili “Avukat” yapıp arabuluculuğu ek kategori olarak eklemek.
+  </p>
+
+  <p>
+    Ek kategoride “ne kadar çok o kadar iyi” işlemiyor. Google da işinizi anlatacak en az sayıda kategoriyi seçmenizi
+    istiyor. Alakasız her ek kategori, Google’ın sizi hangi aramaya koyacağını bulanıklaştırır.
+  </p>
+
+  <p>Kategori çalışmasında yaptıklarımız:</p>
+
+  <ul class="checklist">
+    <li>İlk üçteki rakiplerin birincil ve ek kategorilerini çıkarırız</li>
+    <li>Hedef aramalarla kategorileri karşılaştırırız</li>
+    <li>Birincil kategoriyi en çok iş getiren ana hizmete sabitleriz</li>
+    <li>Ek kategorileri gerçekten verdiğiniz hizmetlerle sınırlı tutarız</li>
+  </ul>
+
+  <h2 id="hizmetler">Hizmet listesine ve açıklamaya ne yazıyoruz?</h2>
+
+  <p>
+    Verdiğiniz her hizmeti, müşterinin aradığı adla ve kısa bir açıklamayla. Bu alan çoğu profilde ya boş ya da
+    Google’ın önerdiği genel adlarla dolu, yani rakiplerinizinkiyle birebir aynı.
+  </p>
+
+  <p>
+    Hizmet adlarını sitenizdeki sayfalarla aynı tutuyoruz. Profilde “Diz ağrısı fizyoterapisi” yazıyorsa sitede de o
+    adla bir sayfa olur ve Google iki yerde aynı işletmeyi, aynı hizmeti görür. Sayfa yoksa
+    <a href={p('services/content')}>içerik üretimi</a> tarafında yazarız.
+  </p>
+
+  <p>
+    İşletme açıklamasında ne yaptığınızı ve nerede olduğunuzu düz bir dille anlatırız. Google
+    bu alanda link ve indirim duyurusu istemiyor, biz de anahtar kelime yığmıyoruz.
+  </p>
+
+  <p>
+    Çalışma saatleri ve öznitelikler de bu işin parçası. Bayramda kapalıyken profilde açık görünmek, müşteriyi
+    kapıdan döndürür ve arkasından gelen kötü yorumu da beraberinde getirir.
+  </p>
+
+  <h2 id="yorumlar">Yorumları nasıl topluyor ve cevaplıyoruz?</h2>
+
+  <p>
+    İşi biten her müşteriden doğru anda yorum isteriz, gelen her yoruma cevap yazarız. Yorumun sayısı ve puanı kadar
+    içeriği de önemli: müşterinin yorumda andığı hizmet ve semt, Google için ek bir işaret.
+  </p>
+
+  <p>
+    Bu yüzden “bize 5 yıldız verin” mesajı atmıyoruz. Müşteriye kısa bir link ya da QR veriyoruz ve aldığı hizmeti
+    kendi cümleleriyle anlatmasını rica ediyoruz. Hazır metin vermiyoruz; herkesin aynı cümleyi yapıştırdığı yorumlar
+    okura sahte görünür ve Google’ın filtresine takılır.
+  </p>
+
+  <ul class="checklist">
+    <li>İş bittikten hemen sonra giden yorum isteği</li>
+    <li>Kısa link ve tezgahta duran QR ile tek adımda yorum</li>
+    <li>Her yoruma, aldığı hizmeti anan doğal bir cevap</li>
+    <li>Olumsuz yorumda önce müşteriyle konuşmak, sonra herkese açık sakin bir cevap</li>
+    <li>Hakaret içeren ya da rakipten geldiği belli olan sahte yorumları Google’a bildirmek</li>
+  </ul>
+
+  <p>
+    Bildirdiğimiz her yorum silinmiyor, son karar Google’ın. Kötü bir yorumun etkisini en çok arkasından gelen gerçek
+    yorumlar azaltır. Yorum toplamanın adımlarını <a href={p('guides/more-reviews')}>yorum rehberimizde</a> anlattık.
+  </p>
+
+  <h2 id="gonderi">Gönderi ve fotoğraf işe yarıyor mu?</h2>
+
+  <p>
+    Yarıyor, ama tek başına sizi üste taşımıyor. Google bakımlı profili terk edilmiş profilden ayırıyor ve düzenli
+    gönderi ile yeni fotoğraf bunun en görünür işareti. Diğer her şey eşitken canlı profil, uykudaki profilin önüne geçer.
+  </p>
+
+  <p>
+    Gönderilerde yeni hizmet, kampanya, etkinlik ya da sık gelen bir sorunun cevabını paylaşıyoruz. Her gönderiyi
+    sitedeki ilgili sayfaya bağlıyor, linke UTM etiketi ekliyoruz. Böylece profilden gelen ziyareti sitede ayrı görürüz.
+  </p>
+
+  <p>
+    Fotoğrafta tek kuralımız var: gerçek olsun. Dış cephe, giriş, iç mekan, ekip ve yapılan iş. Hazır stok görsel
+    koymuyoruz, çünkü müşteri kapıya geldiğinde profilde gördüğü yeri bulmalı.
+  </p>
+
+  <h2 id="kurallar">Hangi kısa yollara girmiyoruz?</h2>
+
+  <p>
+    Google’ın kurallarına aykırı hiçbir şeyi yapmıyoruz, müşteri istese de. Bu yollar bir süre işe yarıyor gibi görünür,
+    sonra profil askıya alınır ve emek bir günde gider.
+  </p>
+
+  <h3>İşletme adına anahtar kelime eklemek</h3>
+
+  <p>
+    Profildeki ad, tabelanızdaki adla aynı olmalı. “Mavi Çınar Fizyoterapi” yerine “Mavi Çınar Fizyoterapi Kadıköy Bel
+    Fıtığı Tedavisi” yazmak Google’ın kurallarına aykırı. Bunun kısa vadede sırayı yükseltebildiğini biliyoruz ve yine de
+    yapmıyoruz.
+  </p>
+
+  <p>
+    Rakibiniz bunu yapıyorsa Haritalar’daki “düzenleme öner” seçeneğiyle Google’a bildirebilirsiniz. Ad kurala uygun hale
+    gelince o profil, anahtar kelimeden aldığı desteği kaybeder.
+  </p>
+
+  <h3>Sahte ya da satın alınmış yorum</h3>
+
+  <p>
+    Para, indirim ya da hediye karşılığı yorum istemek, çalışana ve tanıdığa yorum yazdırmak, yorum satın almak:
+    hepsi Google’ın kurallarına aykırı. Yalnız memnun olduğunu bildiğiniz müşteriden yorum istemek de yasak. Biz her
+    müşteriye aynı isteği gönderiyor, gelen kötü yorumu da cevaplıyoruz.
+  </p>
+
+  <h3>Gereksiz ek profil</h3>
+
+  <p>
+    Her gerçek şube için bir profil açılır. Şubeniz yoksa her ilçe ya da her hizmet için ayrı profil açmak kurala
+    aykırı. Çalışma saatinde kimsenin bulunmadığı sanal ofis adresi de profil için geçerli sayılmıyor.
+  </p>
+
+  <p>
+    Adres göstermeden çalışıyorsanız profili hizmet bölgesiyle açarız. Burada bir yanılgı var: hizmet bölgesine 20 ilçe
+    eklemek, o ilçelerin haritasında çıkacağınız anlamına gelmiyor. Google sırayı yine işletmenizin bulunduğu yere olan
+    yakınlığa göre hesaplıyor.
+  </p>
+
+  <p>
+    Çevre ilçelerde görünmenin yolu sitenizden geçiyor ve bunu <a href={p('services/local-seo')}>local SEO</a>
+    çalışmasında kuruyoruz. Profiliniz henüz yoksa adımları <a href={p('guides/create-profile')}>profil açma
+    rehberinde</a>, doğrulamada takıldıysanız <a href={p('guides/verification')}>doğrulama rehberinde</a> anlattık.
+  </p>
+
+  <h2 id="surec">Nasıl çalışıyoruz?</h2>
+
+  <p>Önce ölçüyor, sonra profile dokunuyoruz.</p>
 
   <ol>
     <li>
-      <strong>Denetim.</strong> Profilin mevcut hali, ilk üçteki rakiplerin kategori ve hizmet
-      yapısı, değerlendirme hacmi farkı ve
-      <a href={p('services/rank-tracking')}>grid üzerinde mevcut sıralama</a> çıkarılır.
+      <strong>Denetim.</strong> Profilinizin bugünkü halini, ilk üçteki rakiplerin kategori ve hizmet yapısını, aranızdaki
+      yorum farkını çıkarırız. <a href={p('services/rank-tracking')}>Bölgenizden ölçüm</a> alır, çevrenizin farklı
+      noktalarında kaçıncı çıktığınızı görürüz.
     </li>
     <li>
-      <strong>Kurulum.</strong> Kategori, hizmet listesi, açıklama, öznitelikler ve foto seti
-      düzeltilir. Bu aşama tek seferlik ve en büyük sıçramayı genelde burası üretir.
+      <strong>Kurulum.</strong> Kategori, hizmet listesi, açıklama, saatler, öznitelikler ve fotoğraflar düzelir. En çok
+      iş bu aşamada çıkar.
     </li>
     <li>
-      <strong>Besleme.</strong> Post takvimi, değerlendirme akışı ve Q&amp;A yönetimi devreye
-      girer. Aylık ritimde yürür.
+      <strong>Akış.</strong> Gönderi takvimi ve yorum isteme akışı devreye girer, gelen her yoruma cevap yazılır.
     </li>
     <li>
-      <strong>Ölçüm.</strong> Grid sıralaması, profil etkileşimleri ve siteye gelen trafik birlikte
-      raporlanır. Ekran görüntüsü değil, karşılaştırılabilir veri.
+      <strong>Ölçüm.</strong> Sıranızın nasıl değiştiğini profil etkileşimleriyle, yani arama, yol tarifi ve mesaj
+      sayılarıyla birlikte okuruz.
     </li>
   </ol>
 
   <p>
-    İlk hareket genelde 4–8 hafta içinde görülüyor. Kategori hatası gibi tek bir kök sorunu olan
-    profillerde daha hızlı, rekabetin yüksek olduğu büyük şehir merkezlerinde daha uzun sürüyor.
+    Haritada ilk hareketi çoğu işletmede 4 ile 8 hafta arasında görüyoruz; rekabetin yoğun olduğu büyük şehir
+    merkezlerinde bu süre uzar. Yaptığımız işleri her hafta raporda görürsünüz. Sözleşme yok, memnun kalmazsanız bir
+    sonraki ay devam etmezsiniz.
   </p>
 
   <Fragment slot="cta">
-    <h2>Profiliniz hangi sinyalde <span class="highlight">zayıf</span>?</h2>
-    <p>Ücretsiz analizde kategori, hizmet yapısı, değerlendirme farkı ve grid sıralamanızı çıkarıyoruz.</p>
+    <h2>Profiliniz nerede <span class="highlight">zayıf</span>?</h2>
+    <p>
+      Ücretsiz analizde kategorinizi, hizmet listenizi ve rakiplerinizle aranızdaki yorum farkını çıkarırız. Sonuç 24
+      saat içinde <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
   </Fragment>
 </ContentLayout>

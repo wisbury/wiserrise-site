@@ -5,32 +5,39 @@ import { routePath } from '../../../i18n/routes';
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'ETKENLER', title: 'Google’ın üç etkeni', text: 'Google haritada sırayı alaka, mesafe ve bilinirliğe göre verir. Mesafeye dokunamazsınız, bütün iş diğer ikisinde.' },
+  { label: 'KATEGORİ', title: 'Önce birincil kategori', text: 'Google’a ne iş yaptığınızı söyleyen ilk alan. Yanlışsa yorum ve gönderi için harcadığınız emek karşılığını vermez.' },
+  { label: 'ÖLÇÜM', title: 'Telefonunuz yanıltır', text: 'Ofisinizden gördüğünüz sıra en iyi olduğunuz noktadır. Gerçek tablo bölgenizin farklı noktalarından ölçünce çıkar.' },
+  { label: 'SÜRE', title: '4 ile 8 hafta', text: 'Haritada ilk hareketi çoğu işletmede bu aralıkta görüyoruz. Rekabetin yoğun olduğu şehir merkezlerinde süre uzar.' },
+];
+
 const toc = [
-  { id: 'uc-girdi', label: 'Sıralamayı belirleyen üç girdi' },
-  { id: 'olcum', label: 'Önce ölçün: nerede olduğunuzu bilmeden başlamayın' },
+  { id: 'etkenler', label: 'Sırayı ne belirler?' },
+  { id: 'olcum', label: 'Gerçekte kaçıncısınız?' },
   { id: 'sira', label: 'Hangi sırayla çalışmalı?' },
-  { id: 'alaka', label: 'Alakayı güçlendirmek' },
-  { id: 'one-cikma', label: 'Öne çıkmayı güçlendirmek' },
+  { id: 'alaka', label: 'Alaka nasıl artar?' },
+  { id: 'bilinirlik', label: 'Bilinirlik nasıl artar?' },
+  { id: 'yaramayanlar', label: 'İşe yaramayan taktikler' },
   { id: 'sure', label: 'Ne kadar sürer?' },
-  { id: 'ise-yaramayanlar', label: 'İşe yaramayan şeyler' },
 ];
 
 const faq = [
   {
-    q: 'Google Haritalar sıralamasını satın alabilir miyim?',
-    a: 'Hayır. Harita paketindeki organik üç sıra satın alınamaz. Satın alabileceğiniz şey, onların üstünde görünen reklam alanı — o ayrı bir ürün ve "Sponsorlu" etiketiyle gösteriliyor. Sıralama garantisi satan hiçbir hizmet Google ile doğrudan bir anlaşmaya dayanmıyor.',
+    q: 'Google Haritalar’da sıra satın alınabilir mi?',
+    a: 'Alınamaz. Haritadaki üç işletmenin sırası satılmaz, parayla alabileceğiniz tek yer “Sponsorlu” etiketiyle görünen reklam alanı. Sıralama garantisi satan biri Google’la yapılmış bir anlaşmaya dayanmıyor.',
   },
   {
-    q: 'Post atmak sıralamamı yükseltir mi?',
-    a: 'Tek başına hayır. Yaptığı şey profilin aktif yönetildiğini göstermek. Diğer her şey eşitken aktif profil pasif profili geçiyor, ama post atarak yanlış kategoriyi veya yorum eksiğini telafi edemezsiniz.',
+    q: 'Gönderi paylaşmak sıramı yükseltir mi?',
+    a: 'Tek başına yükseltmez. Gönderi profilin yaşadığını gösterir, ama yanlış kategoriyi ya da yorum eksiğini kapatmaz. Temeller tamamsa düzenli ritmin parçası olarak yerini alır.',
   },
   {
-    q: 'Rakibim sahte yorumlarla önde, ne yapabilirim?',
-    a: 'Politika ihlali içeren yorumları bildirebilirsiniz; süreç garantili değil ve haftalar sürebiliyor. Daha kalıcı yol, kendi gerçek yorum hacminizi yükselterek tek bir yorumun ağırlığını düşürmek. İşletme adına anahtar kelime eklemiş rakipleri de bildirebilirsiniz — bu genelde daha hızlı sonuç veriyor.',
+    q: 'Rakibim işletme adına anahtar kelime eklemiş, ne yapabilirim?',
+    a: 'Google’a bildirebilirsiniz. Haritada o işletmenin kaydına girip düzenleme önerir, gerçek adını yazarsınız. Kabul edilip edilmeyeceğine Google karar verir.',
   },
   {
-    q: 'Kaç yorum yeterli?',
-    a: 'Mutlak bir sayı yok. Ölçüt, hedef sorgunuzda ilk üçe çıkanların hacmi. Onların belirgin altındaysanız önce o seviyeye ulaşmak hedef olmalı. Bazı sektörlerde bu 20, bazılarında 200 demek.',
+    q: 'Rakibim sahte yorumlarla önde, ne yapmalıyım?',
+    a: 'Kural ihlali içeren yorumları Google’a bildirin, ama sonucu beklerken durmayın. Bildirim süreci garantili değil ve haftalar sürebiliyor. Kalıcı savunma, kendi gerçek yorum akışınızı büyütmek.',
   },
 ];
 ---
@@ -39,213 +46,238 @@ const faq = [
   locale={locale}
   route="guides/rank-higher"
   title="Google Haritalar’da Üst Sıraya Nasıl Çıkılır? | Wiserrise"
-  description="Harita paketinde ilk üçe girmek için sıralamayı belirleyen üç girdi, hangisini değiştirebileceğiniz ve hangi sırayla çalışmanız gerektiği."
-  eyebrow="Rehber"
-  h1="Google Haritalar’da üst sıraya çıkma"
-  lede="Harita paketi üç işletme gösteriyor; dördüncü sıra pratikte görünmüyor. Bu rehber o üç sıraya girmek için neyin işe yaradığını, neyin yaramadığını ve hangi sırayla çalışılması gerektiğini anlatıyor."
+  description="Google Haritalar’da üst sıraya çıkmak için sırayı belirleyen etkenler, kendi telefonunuzun neden yanılttığı ve hangi sırayla çalışmanız gerektiği."
+  eyebrow="REHBER · HARİTA SIRALAMASI"
+  h1="Google Haritalar’da üst sıraya nasıl çıkılır?"
+  crumb="Üst sıraya çıkma"
+  lede="Haritada üst sıraya, Google’a ne iş yaptığınızı net anlatarak ve rakiplerinizden daha bilinir hale gelerek çıkarsınız. Google sırayı alaka, mesafe ve bilinirliğe göre veriyor; mesafeyi değiştiremezsiniz, iş diğer ikisinde. Önce bölgenizden ölçüm alın, sonra kategori, profil, yorum ve site sırasıyla ilerleyin."
   schemaType="article"
   datePublished="2026-08-01"
+  dateModified="2026-11-06"
   breadcrumb={[
     { label: 'Ana Sayfa', href: '/tr' },
-    { label: 'Rehber', href: p('guides') },
+    { label: 'Rehberler', href: p('guides') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Google yorumları nasıl artırılır?', href: p('guides/more-reviews') },
-    { label: 'İşletmem Google’da çıkmıyor', href: p('guides/not-showing') },
-    { label: 'Harita Sıralama Takibi', href: p('services/rank-tracking') },
+    { label: 'Google yorumları nasıl artırılır?', href: p('guides/more-reviews'), text: 'Kurallara takılmadan yorum hacminizi büyütmenin yolu.' },
+    { label: 'İşletmem Google’da çıkmıyor', href: p('guides/not-showing'), text: 'Haritada hiç görünmüyorsanız sebebi sırayla eleyin.' },
+    { label: 'Harita Sıralama Takibi', href: p('services/rank-tracking'), text: 'Çevrenizin farklı noktalarında kaçıncı çıktığınızı ölçeriz.' },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'Google İşletme Profilinizi ve sitenizi birlikte düzelttiğimiz hizmet.' },
   ]}
-  ctaLabel="Grid Ölçümümü İste →"
+  relatedHeading="İlgili sayfalar"
+  ctaLabel="Ücretsiz analiz al"
   ctaHref="/tr#contact"
 >
-  <h2 id="uc-girdi">Sıralamayı belirleyen üç girdi</h2>
+  <h2 id="etkenler">Google Haritalar’da sırayı ne belirler?</h2>
 
   <p>
-    Google yerel sonuçları organik sonuçlardan ayrı bir sistemle sıralıyor ve bu sistemin
-    üç ana girdisi var:
+    Google bunu kendisi açıklıyor: yerel sonuçlar alaka, mesafe ve bilinirliğe göre sıralanır. İngilizce kaynaklarda
+    relevance, distance ve prominence diye geçer. Google üçünü birlikte tartar, ağırlıklarını da açıklamaz.
   </p>
 
   <div class="table-scroll">
     <table>
       <thead>
         <tr>
-          <th>Girdi</th>
+          <th>Etken</th>
           <th>Ne demek</th>
-          <th>Değiştirebilir misiniz?</th>
+          <th>Sizin elinizde mi?</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><strong>Alaka</strong></td>
-          <td>İşletme, aranan şeyi gerçekten yapıyor mu</td>
-          <td>Evet — kategori, hizmet listesi, site içeriği</td>
+          <td>İşletmeniz arayanın aradığı işi yapıyor mu</td>
+          <td>Evet. Kategori, hizmet listesi, sitedeki sayfalar.</td>
         </tr>
         <tr>
           <td><strong>Mesafe</strong></td>
-          <td>Arayan kişiye ne kadar yakın</td>
-          <td>Hayır</td>
+          <td>Arayana ya da aranan semte ne kadar yakınsınız</td>
+          <td>Hayır. Google bunu arayanın konumuna göre hesaplar.</td>
         </tr>
         <tr>
-          <td><strong>Öne çıkma</strong></td>
-          <td>İşletme ne kadar tanınıyor</td>
-          <td>Evet — yorumlar, bahsedilmeler, site otoritesi</td>
+          <td><strong>Bilinirlik</strong></td>
+          <td>İşletmeniz ne kadar tanınıyor</td>
+          <td>Evet. Yorumlar, başka sitelerde anılmanız, sitenizin gücü.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <p>
-    Mesafeyi değiştiremezsiniz. Yani bütün iş, kalan iki girdide rakiplerinizin önüne
-    geçmek. Bu basit görünüyor ama pratikte en sık yapılan hata, bu ikisinden yalnızca
-    birine yüklenmek: kategorisi yanlış bir işletmenin yorum toplaması ya da yorum hacmi
-    çeyrek kalmış bir işletmenin post atmakla uğraşması.
-  </p>
-
-  <h2 id="olcum">Önce ölçün: nerede olduğunuzu bilmeden başlamayın</h2>
-
-  <p>
-    Yerel sıralamada tek bir "sıra" yoktur. Aynı sorgu, şehrin kuzeyinde 2., merkezinde
-    5., güneyinde 20. sırayı verebilir — çünkü hesap arayanın konumundan yapılıyor.
+    Mesafeye dokunamazsınız. Bütün iş, alaka ve bilinirlikte rakiplerinizin önüne geçmek.
   </p>
 
   <p>
-    Bunun pratik sonucu şu: kendi ofisinizden arattığınızda göreceğiniz sıralama, en iyi
-    olduğunuz noktadır. Müşterilerin çoğu oradan aramıyor. "Ben zaten birinciyim" ile
-    "gelen telefon yok" arasındaki çelişkinin kaynağı neredeyse her zaman burası.
+    En sık gördüğümüz hata, bu ikisinden yalnız birine yüklenmek. Kategorisi yanlış olan işletme yorum toplamakla
+    uğraşıyor, yorumu rakiplerinin çeyreği kadar olan işletme her gün gönderi paylaşıyor.
+  </p>
+
+  <h2 id="olcum">Şu an gerçekte kaçıncısınız?</h2>
+
+  <p>
+    Bunu tek bir aramayla öğrenemezsiniz. Haritada tek bir sıra yok, çünkü Google sırayı arayanın nerede durduğuna göre
+    hesaplıyor.
+  </p>
+
+  <p>
+    Diyelim ki Bornova’da Kordon Oto Ekspertiz’i işletiyorsunuz. Dükkanın önünde “oto ekspertiz” yazınca haritada
+    birinci çıkıyorsunuz. Karşıyaka’da oturan biri aynı aramayı yaptığında ise ilk üçte yoksunuz ve o kişi sizi hiç
+    görmeden rakibinizi arıyor.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Kendi telefonunuzdan yaptığınız arama ölçüm değildir.</strong> Google
-      sonuçları arama geçmişinize ve konumunuza göre kişiselleştirir; kendi işletmenizi
-      görme olasılığınız yapay olarak yüksektir. Şehre yayılmış
-      <a href={p('services/rank-tracking')}>grid ölçümü</a> bunu ortadan kaldırıyor.
+      <strong>Kendi telefonunuzdan yaptığınız arama ölçüm sayılmaz.</strong> Google sonuçları konumunuza ve arama
+      geçmişinize göre kişiselleştirir, kendi işletmenizi görmeniz kolaylaşır. Ofiste birinci olup telefonu çalmayan
+      işletmelerde ilk baktığımız yer burası.
     </p>
   </div>
 
-  <h2 id="sira">Hangi sırayla çalışmalı?</h2>
+  <p>
+    Biz işe <a href={p('services/rank-tracking')}>bölgenizden ölçüm</a> alarak başlıyoruz. Çevrenizin farklı
+    noktalarında kaçıncı çıktığınızı görünce nerede güçlü, nerede zayıf olduğunuz ortaya çıkar. Ölçmeden yapılan iş,
+    nereye gittiği belli olmayan iştir.
+  </p>
+
+  <h2 id="sira">Hangi sırayla çalışmalısınız?</h2>
 
   <p>
-    Sıra önemli, çünkü alttaki adımlar üsttekiler düzeltilmeden karşılığını vermiyor:
+    Sıra önemli. Alttaki adımlar, üsttekiler düzelmeden karşılığını vermez. Her profilde bu sırayla ilerliyoruz:
   </p>
 
   <ol>
     <li>
-      <strong>Kategori doğru mu?</strong> Yanlışsa diğer hiçbir şeyin önemi yok — hizmet
-      sorgularının değerlendirme havuzuna hiç girmiyorsunuz.
+      <strong>Birincil kategori.</strong> Hedef aramanızda ilk üçe çıkan işletmelerin kategorisine bakın. Sizinki
+      farklıysa ilk düzeltilecek yer burası.
     </li>
     <li>
-      <strong>Profil eksiksiz mi?</strong> Hizmet listesi, açıklamalar, fotoğraflar,
-      öznitelikler, çalışma saatleri.
+      <strong>Eksiksiz profil.</strong> Hizmet listesi ve açıklamaları, fotoğraflar, çalışma saatleri, telefon ve site
+      linki.
     </li>
     <li>
-      <strong>Yorum hacmi rakiplerle karşılaştırılabilir mi?</strong> Değilse öncelik burası.
+      <strong>Yorum hacmi.</strong> İlk üçteki rakiplerin belirgin altındaysanız öncelik bu.
     </li>
     <li>
-      <strong>Site profili destekliyor mu?</strong> Hizmetlerin ayrı sayfaları var mı,
-      site indeksleniyor mu.
+      <strong>Profili destekleyen site.</strong> Her hizmetin ayrı sayfası var mı, site Google’da düzgün açılıyor mu?
     </li>
     <li>
-      <strong>Tazelik ve süreklilik.</strong> Post, foto, yorum yanıtları — aylara yayılan
-      ritim.
+      <strong>Süreklilik.</strong> Gönderi, fotoğraf ve yorum yanıtları. Haftalara yayılan bir ritim.
     </li>
   </ol>
 
-  <h2 id="alaka">Alakayı güçlendirmek</h2>
+  <p>
+    İlk iki adımı kendiniz kontrol etmek isterseniz <a href={p('tools/gbp-audit')}>ücretsiz profil denetim aracımız</a>
+    10 soruda profilinizi puanlar ve zayıf çıkan maddeleri listeler.
+  </p>
+
+  <h2 id="alaka">Google’a ne iş yaptığınızı nasıl anlatırsınız?</h2>
 
   <p>
-    Alaka, Google'ın "bu işletme aranan şeyi yapıyor" kararı. Güçlendirmenin yolları,
-    etki sırasına göre:
+    Alaka, Google’ın “bu işletme aranan işi yapıyor” kararı. Biz bu kararı dört yerden besliyoruz, etkisi en büyük olandan
+    başlayarak:
   </p>
 
   <ul class="checklist">
     <li>
-      <strong>Birincil kategoriyi hacme vermek.</strong> Hedef sorgunuzu aratıp ilk üçün
-      kategorisine bakın; farklıysa sebep büyük olasılıkla bu.
+      <strong>Birincil kategori.</strong> Sahada gördüğümüz en güçlü alaka sinyali. İkincil kategorileri yalnız gerçekten
+      verdiğiniz hizmetler için ekleyin.
     </li>
     <li>
-      <strong>Hizmet listesini gerçek arama diliyle yazmak</strong> ve her birine açıklama
-      eklemek. Boş bırakılan ya da Google'ın önerdiği haliyle kalan liste, rakiplerinizle
-      birebir aynı demek.
+      <strong>Hizmet listesi.</strong> Hizmetleri müşterinin aradığı kelimelerle yazın, her birine kısa açıklama ekleyin.
+      Google’ın önerdiği haliyle bırakılan liste rakiplerinizinkiyle birebir aynıdır.
     </li>
     <li>
-      <strong>Sitede her hizmete ayrı sayfa açmak.</strong> Tek bir "hizmetlerimiz"
-      sayfasında üç paragrafla anlatılan hizmetler, o hizmetin sorgusunda sıralanmıyor.
+      <strong>Sitede her hizmete ayrı sayfa.</strong> Tek bir “hizmetlerimiz” sayfasında üç paragrafta geçen hizmet, o
+      hizmetin aramasında zorlanır. Bu sayfaları <a href={p('services/content')}>içerik üretimi</a> işimizde yazıyoruz.
     </li>
     <li>
-      <strong>Profil ile sitedeki isimlendirmeyi eşitlemek.</strong> Aynı hizmetin iki
-      yerde farklı adlandırılması eşleşmeyi zayıflatıyor.
+      <strong>Aynı adlandırma.</strong> Profilde “kanal tedavisi”, sitede “endodonti” yazıyorsa eşleşme zayıflar.
+      Hizmetin adı iki yerde de müşterinin kullandığı kelime olsun.
     </li>
   </ul>
 
-  <h2 id="one-cikma">Öne çıkmayı güçlendirmek</h2>
+  <h2 id="bilinirlik">Bilinirliğinizi ne artırır?</h2>
 
   <p>
-    Öne çıkma, işletmenin ne kadar tanındığı. En ölçülebilir kaynağı yorumlar — hem hacim
-    hem de içerik olarak. Kullanıcıların yorumlarında geçen hizmet ve yer adları da alaka
-    sinyali üretiyor, yani yorumlar iki girdiye birden çalışıyor.
+    Bilinirlik, işletmenizin ne kadar tanındığı. Google bunu internette sizinle ilgili bulduğu her şeyden okuyor:
+    linkler, haberler, dizin kayıtları ve yorumlar. Sitenizin normal arama sonuçlarındaki yeri de buna dahil.
   </p>
 
   <p>
-    Bunun dışındaki öne çıkma kaynakları: dizin kayıtlarında isim ve telefonun tutarlı
-    olması, başka sitelerde işletmeden bahsedilmesi ve sitenin kendi organik gücü.
-    Yorum tarafının nasıl büyütüleceğini
-    <a href={p('guides/more-reviews')}>ayrı bir rehberde</a> anlattık.
+    En ölçülebilir parçası yorumlar. Google, yorum sayısının ve puanın yerel sıralamaya etki ettiğini açıkça söylüyor.
+    Müşterinin yorumda andığı hizmet ve semt de profilinizi okuyan herkese ne iş yaptığınızı anlatır.
   </p>
-
-  <h2 id="sure">Ne kadar sürer?</h2>
 
   <p>
-    Çoğu işletmede ilk hareket 4–8 hafta içinde görülüyor, sonuçlar 3–6 ayda birikiyor.
-    Bu aralık geniş çünkü başlangıç noktası belirleyici:
+    Yorumların yanında iki kaynak daha var. Adınız, adresiniz ve telefonunuz geçtiği her yerde aynı yazılmalı, nedenini
+    <a href={p('services/local-seo')}>local SEO sayfamızda</a> anlattık. Sektör sitelerinde, yerel haberlerde ya da
+    dernek listelerinde adınızın geçmesi de Google’ın sizi tanımasını kolaylaştırır, çünkü bilinirlik tam olarak bu
+    izlerden okunuyor.
   </p>
+
+  <p>
+    Yorum tarafını nasıl büyüteceğinizi <a href={p('guides/more-reviews')}>yorum rehberimizde</a> adım adım yazdık.
+  </p>
+
+  <h2 id="yaramayanlar">Hangi taktikler işe yaramaz?</h2>
+
+  <p>Sık denenen ama karşılığı olmayan, bir kısmı da profilinizi riske atan taktikler:</p>
 
   <ul>
     <li>
-      <strong>Kategori hatası gibi tek bir kök sorun varsa</strong> düzeltmeden sonraki
-      hafta içinde belirgin sıçrama görülebiliyor.
+      <strong>İşletme adına anahtar kelime eklemek.</strong> “Kordon Oto Ekspertiz” yerine “Kordon Oto Ekspertiz Bornova
+      En Ucuz Ekspertiz” yazmak Google’ın kurallarına aykırı. Rakip bildirirse ad düzeltilir, tekrarında profil askıya
+      alınabilir.
     </li>
     <li>
-      <strong>Profil zaten düzgün ama yorum hacmi eksikse</strong> süre, yorum toplama
-      hızınıza bağlı — bu aylara yayılıyor.
+      <strong>Sahte yorum satın almak.</strong> Google’ın filtreleri yakalar, yakalamadığında da okuyan müşteri fark eder.
+      Profili askıya alınma riskine sokar.
     </li>
     <li>
-      <strong>Yoğun şehir merkezlerinde</strong> rakiplerin de aktif olması nedeniyle
-      4–6 ayı bulabiliyor.
+      <strong>İkinci profil açmak.</strong> Şubesi olmayan işletmede ikinci profil kurallara aykırı. Kopya olarak
+      işaretlenir, ikisi de zayıflar.
+    </li>
+    <li>
+      <strong>Alakasız ikincil kategori eklemek.</strong> Vermediğiniz hizmetin kategorisi alakanızı
+      bulanıklaştırır.
+    </li>
+    <li>
+      <strong>Yalnız gönderi paylaşmak.</strong> Temeller eksikken her gün gönderi atmak sıranızı taşımaz.
     </li>
   </ul>
 
-  <h2 id="ise-yaramayanlar">İşe yaramayan şeyler</h2>
+  <p>
+    İşletme adına semt ya da hizmet eklemenin kısa vadede işe yaradığını biliyoruz. Yine de yapmıyoruz, çünkü hiçbir sıra
+    profilinizi askıya aldırma riskine değmez.
+  </p>
 
-  <p>Sık denenen ve karşılığı olmayan, bazıları da riskli olanlar:</p>
+  <h2 id="sure">Üst sıraya çıkmak ne kadar sürer?</h2>
 
-  <ul>
-    <li>
-      <strong>İşletme adına anahtar kelime eklemek.</strong> Kısa vadede etkili olabiliyor
-      ama kurallara aykırı; rakip bildirimiyle kaldırılıyor, tekrarında profil askıya
-      alınıyor.
-    </li>
-    <li>
-      <strong>Sahte yorum satın almak.</strong> Google'ın filtreleri yakalıyor, yakalamadığında
-      da insan gözü yakalıyor. Askıya alınma riski taşıyor.
-    </li>
-    <li>
-      <strong>İkinci profil açmak.</strong> Şubesi olmayan işletmelerde politika ihlali;
-      kopya olarak işaretlenip ikisi de zayıflıyor.
-    </li>
-    <li>
-      <strong>Alakasız ikincil kategorileri doldurmak.</strong> Alakayı güçlendirmiyor,
-      bulanıklaştırıyor.
-    </li>
-    <li>
-      <strong>Sadece post atmak.</strong> Diğer temeller eksikken tek başına ölçülebilir
-      bir etkisi yok.
-    </li>
-  </ul>
+  <p>
+    Haritada ilk hareketi çoğu işletmede 4 ile 8 hafta arasında görüyoruz. Kesin tarih veremeyiz, çünkü süreyi başlangıç
+    noktanız belirler.
+  </p>
+
+  <p>
+    Sorun yanlış kategori gibi tek bir kök hatadan geliyorsa düzeltmenin kendisi kısa sürer. Profiliniz düzgün olduğu
+    halde yorumunuz rakiplerin gerisindeyse süre doğrudan yorum toplama hızınıza bağlanır; rekabetin yoğun olduğu şehir
+    merkezlerinde her aşama biraz daha uzar.
+  </p>
+
+  <p>
+    Haritanın altındaki normal arama sonuçlarında, yani sitenizin sırasında hareket 3 ile 6 ayı buluyor. Bu sürede ne
+    yaptığımızı her hafta raporda görürsünüz. Sözleşme olmadığı için memnun kalmazsanız bir sonraki ay devam etmezsiniz.
+  </p>
 
   <Fragment slot="cta">
-    <h2>Şehrinizin hangi bölgesinde <span class="highlight">geridesiniz</span>?</h2>
-    <p>Ücretsiz analizde 49 noktalık grid ölçümünüzü ve ilk üçle farkınızı çıkarıyoruz.</p>
+    <h2>Bölgenizin neresinde <span class="highlight">geridesiniz</span>?</h2>
+    <p>
+      Ücretsiz analizde bölgenizden ölçüm alır, profilinizdeki eksikleri ve ilk üçle aranızdaki farkı çıkarırız. Sonuç
+      24 saat içinde <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
   </Fragment>
 </ContentLayout>

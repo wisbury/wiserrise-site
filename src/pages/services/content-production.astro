@@ -5,31 +5,38 @@ import { routePath } from '../../i18n/routes';
 const locale = 'en' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'SERVICE', title: 'Service pages', text: 'A separate page for every service you offer. It answers the searcher’s questions and leads them to a call or a booking.' },
+  { label: 'DISTRICT', title: 'District and city', text: 'Opened only when there’s something real to say about that area. We don’t write copies with the city name swapped.' },
+  { label: 'GUIDE', title: 'Guide articles', text: 'They catch people looking for information early and send them to the service page. We don’t move on to guides before the service pages are done.' },
+  { label: 'APPROVAL', title: 'Expert approval', text: 'The draft comes from us, the sign-off on accuracy from you. On legal and health sites we write to that profession’s advertising rules.' },
+];
+
 const toc = [
-  { id: 'what', label: 'What we produce' },
-  { id: 'industry', label: 'Industry pages' },
-  { id: 'city', label: 'City pages and the doorway line' },
-  { id: 'regulated', label: 'Regulated industries' },
-  { id: 'process', label: 'Production process' },
-  { id: 'ai', label: 'How we use AI' },
+  { id: 'nedir', label: 'What does content production cover?' },
+  { id: 'sira', label: 'Why service pages first?' },
+  { id: 'sehir', label: 'District and city pages' },
+  { id: 'kurallar', label: 'Legal and health sites' },
+  { id: 'surec', label: 'How a page gets written' },
+  { id: 'yapay-zeka', label: 'Use of AI' },
 ];
 
 const faq = [
   {
     q: 'Who writes the content?',
-    a: 'Research and drafting are ours, technical accuracy review is yours. In fields like law and healthcare we get sign-off from the relevant professional before publishing — for accuracy and for liability.',
+    a: 'We do the research and the draft, and you approve the accuracy of the professional information. On legal and health sites no page goes live without expert approval.',
   },
   {
-    q: 'How many pieces per month do I need?',
-    a: 'We do not quote a fixed number. Most local businesses first need their missing service and industry pages completed; starting a blog before that is a common sequencing error. Once the core pages exist, two to four pieces a month is enough rhythm for most sectors.',
+    q: 'How many pieces of content do I need per month?',
+    a: 'We don’t give a fixed number. The missing service pages get finished first, and that list of gaps sets the number. After that we choose every page to write by the real demand in searches.',
   },
   {
-    q: 'Does blogging actually help a local business?',
-    a: 'Its direct contribution to map rankings is limited. What it does is carry internal links to service pages, catch users earlier in their decision, and produce expertise signals. Blogging works as a supporting layer, not on its own.',
+    q: 'Does blogging affect my place on the map?',
+    a: 'Its direct effect is limited. A blog brings people looking for information to the site and carries them to your service page through links. For your place on the map, your Google Business Profile and your service pages matter more.',
   },
   {
-    q: 'What happens to my existing content?',
-    a: 'We assess it first. Pieces that get impressions but no clicks, or that are stuck on page two, are usually worth rewriting — and that is the fastest available win. New production starts after those gaps are closed.',
+    q: 'What happens to my existing articles?',
+    a: 'We look at them first. Articles that get impressions but no clicks, or that compete with another of your pages for the same search, we rewrite or merge. We recommend removing articles that get no impressions at all and have little to do with your business.',
   },
 ];
 ---
@@ -38,175 +45,196 @@ const faq = [
   locale={locale}
   route="services/content"
   title="SEO Content Production | Wiserrise"
-  description="Service, industry and location pages that answer the search intent, sit correctly in the internal link structure and are ready to publish."
-  eyebrow="Service"
-  h1="Content Production"
-  lede="Ranking requires pages that answer the search. We identify which pages are missing using data, produce them, and wire them into the internal link structure."
+  description="SEO content for local business sites: service pages first, then district pages and guides built on real information. Published with expert approval."
+  eyebrow="SERVICE · CONTENT PRODUCTION"
+  h1="Complete your missing pages with SEO content production."
+  crumb="Content production"
+  lede="Content production is the work of writing the pages missing from your site. First we complete the service pages that bring customers to the phone; the blog comes last. We work out which pages are missing from search data and from the services on your Google profile."
   serviceName="SEO Content Production"
   breadcrumb={[
     { label: 'Home', href: '/' },
     { label: 'Services', href: p('services') },
+    { label: 'SEO', href: p('services/seo') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'On-Page SEO', href: p('services/on-page-seo') },
-    { label: 'Local SEO', href: p('services/local-seo') },
-    { label: 'Technical SEO', href: p('services/technical-seo') },
+    { label: 'SEO', href: p('services/seo'), text: 'Groundwork, page structure, content and links: the main service this one belongs to.' },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'We fix your profile and your site together and work on getting you to stand out on the map.' },
+    { label: 'On-Page SEO', href: p('services/on-page-seo'), text: 'We fit each page to a single search and fix titles and internal links.' },
+    { label: 'Technical SEO', href: p('services/technical-seo'), text: 'We fix crawling and indexing errors so the pages we write reach Google.' },
   ]}
-  ctaLabel="Find My Content Gaps →"
+  ctaLabel="Get a free analysis"
   ctaHref="/#contact"
 >
-  <h2 id="what">What we produce</h2>
+  <h2 id="nedir">What does content production cover?</h2>
 
   <p>
-    We do not treat content production as a synonym for blogging. The content a local business
-    needs in order to rank is mostly not blog posts but missing <strong>service</strong>,
-    <strong>industry</strong> and <strong>location</strong> pages.
+    Every page that should be on your site and isn’t. For a local business, service pages head the list and blog articles
+    come last.
+  </p>
+
+  <p>
+    When someone in İzmir searches “Bornova vehicle inspection”, Google looks for a page that describes that service in that
+    area. If your site has only a home page and a contact page, Google has nothing to show.
   </p>
 
   <div class="table-scroll">
     <table>
       <thead>
         <tr>
-          <th>Page type</th>
-          <th>Search it targets</th>
-          <th>Function</th>
+          <th>Page</th>
+          <th>Example search</th>
+          <th>What it does</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Service page</td>
-          <td>"divorce lawyer", "vehicle inspection"</td>
-          <td>Direct demand — the main source of conversion</td>
+          <td><strong>Service page</strong></td>
+          <td>“root canal treatment”, “divorce lawyer”</td>
+          <td>Meets the person who is ready to buy. The page closest to a phone call.</td>
         </tr>
         <tr>
-          <td>Industry page</td>
-          <td>"seo for lawyers"</td>
-          <td>National visibility; requires no proximity signal</td>
+          <td><strong>District or city page</strong></td>
+          <td>“Bornova vehicle inspection”</td>
+          <td>Gets you seen in the area you serve. Real local information is a must.</td>
         </tr>
         <tr>
-          <td>City page</td>
-          <td>"local seo antalya"</td>
-          <td>Regional visibility — only with real local data</td>
-        </tr>
-        <tr>
-          <td>Case study</td>
-          <td>Brand and comparison searches</td>
-          <td>Proof of trust and expertise</td>
-        </tr>
-        <tr>
-          <td>Guide content</td>
-          <td>"how long does a divorce take"</td>
-          <td>Early-stage users; carries internal links to service pages</td>
+          <td><strong>Guide article</strong></td>
+          <td>“how many sessions does a root canal take”</td>
+          <td>Catches people looking for information early and carries them to the service page through a link.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <p>
-    Sequence matters. Producing guide content before the service pages exist means bringing
-    visitors to a site with nowhere for them to go.
-  </p>
-
-  <h2 id="industry">Industry pages</h2>
+  <h2 id="sira">Why service pages first?</h2>
 
   <p>
-    This is the most valuable and most frequently skipped page type for a local service
-    business. The reason: industry queries carry no proximity signal. Someone searching "SEO
-    for lawyers" is not tied to a location, so it is possible to rank for that query nationwide.
+    Because they’re what bring in customers. If you draw visitors with guide articles to a site with no service pages, they
+    find nowhere to go and leave.
   </p>
 
   <p>
-    That makes industry pages the real gateway to national visibility for businesses whose
-    profile is geographically constrained. For the page to work it has to speak the language of
-    that industry — not generic SEO advice with the industry name inserted, but text written by
-    someone who knows that industry's specific constraints and customer behaviour.
-  </p>
-
-  <h2 id="city">City pages and the doorway line</h2>
-
-  <p>
-    City pages cut both ways. Done properly they open regional visibility; done badly they
-    damage the whole site.
+    That’s why we don’t write blog posts until the service pages are done. When a business asks for a blog, we show them the
+    list of missing service pages first.
   </p>
 
   <p>
-    Google's definition of a doorway page is one produced purely to appear in different searches
-    without offering the user real value. Template pages with the city name swapped fit that
-    definition exactly, and they are not hard to detect.
+    We build the list from searches in Search Console that get impressions but have no matching page, and from pages your
+    competitors have and you don’t. The fastest source is your <a href={p('services/gbp')}>Google Business Profile</a>:
+    every service listed on the profile with no page on the site goes on the list.
   </p>
 
-  <div class="callout">
-    <p>
-      <strong>The bar we apply:</strong> a city page gets created only if it carries real data
-      about that city — a <a href={p('services/rank-tracking')}>competition density grid</a> for
-      the area, a case from there, or local competitor analysis. If we cannot produce the data,
-      we do not create the page. Ten solid city pages outperform fifty templates.
-    </p>
-  </div>
-
-  <h2 id="regulated">Regulated industries</h2>
+  <h2 id="sehir">When do you open a district or city page?</h2>
 
   <p>
-    In fields such as law, healthcare and finance, content production is not only an SEO
-    question. Professional advertising rules limit which claims can be made at all — success
-    claims, client numbers, comparative superiority and promotional incentives are typically
-    off-limits, and the specific rules differ by country and profession.
+    When you have something real to say about that area. Google treats copied pages with only the city name changed as
+    “doorway” pages, and they harm the whole site. We explain the rules for branches and for the cities you serve on the
+    <a href={`${p('services/local-seo')}#coklu`}>local SEO page</a>.
   </p>
 
   <p>
-    Every piece we produce in these fields goes through the relevant rule set before publishing,
-    and we get sign-off from the professional. It looks like a constraint but works out as an
-    advantage: text written to be compliant, informative and free of claims carries no
-    enforcement risk and tends to do well in Google's expertise assessment.
+    What does something real mean? Say you have a physiotherapy center in Kadıköy and also do home visits in Ataşehir. An
+    Ataşehir page could cover:
   </p>
 
-  <h2 id="process">Production process</h2>
+  <ul class="checklist">
+    <li>Which neighborhoods in Ataşehir you go to</li>
+    <li>Which treatments can be done on a home visit</li>
+    <li>How home visits are scheduled, and how to get to the center for those who want to come in</li>
+    <li>The questions patients from that area ask most on the phone</li>
+  </ul>
+
+  <p>
+    If we don’t have this information, we don’t open the page. Dropping a district name into a template and multiplying it
+    looks fast, and it weakens the site in Google’s eyes.
+  </p>
+
+  <p>
+    The <a href={p('services/rank-tracking')}>measurement</a> we take across your area decides which district gets a page
+    first. Districts where you really get work but lag behind in search move to the front of the line.
+  </p>
+
+  <h2 id="kurallar">What do we watch for on legal and health sites?</h2>
+
+  <p>
+    Professional rules. On lawyers’ sites, the Turkish Bar Association’s advertising regulation (TBB Reklam Yasağı
+    Yönetmeliği) applies. Promises of winning, success rates, superiority claims like “the best” and client testimonials are
+    off limits.
+  </p>
+
+  <p>
+    Health has similar limits. We don’t write treatment guarantees or before-and-after promises. Every text goes through
+    this filter before publication and gets the lawyer’s or the doctor’s approval.
+  </p>
+
+  <p>
+    In these industries, informative copy written without claims also comes across as more trustworthy to readers. The
+    industry-specific details are on the <a href={p('industries/law')}>SEO for lawyers</a> and
+    <a href={p('industries/dental')}>SEO for dentists</a> pages.
+  </p>
+
+  <h2 id="surec">How does a page get written?</h2>
+
+  <p>Every page goes through the same steps:</p>
 
   <ol>
     <li>
-      <strong>Gap analysis.</strong> Queries getting impressions with no page behind them, pages
-      competitors have that you don't, and which intent each existing page serves.
+      <strong>Gap list.</strong> From the sources above, we list the pages missing from your site.
     </li>
     <li>
-      <strong>Prioritisation.</strong> Pages ranked by demand volume and proximity to
-      conversion. Service pages come before guide content.
+      <strong>Order.</strong> The page closest to a phone call goes first; guide articles come last.
     </li>
     <li>
-      <strong>Brief.</strong> Target query, subheadings to cover, internal link plan and schema
-      type defined per page.
+      <strong>Plan.</strong> For each page we set the target search, the questions to answer, the internal links to add and
+      the schema type. This part belongs to the
+      <a href={p('services/on-page-seo')} style="white-space: nowrap;">on-page SEO</a> work.
     </li>
     <li>
-      <strong>Writing and expert review.</strong> Draft produced, submitted to you for technical
-      accuracy, checked against the applicable rules in regulated fields.
+      <strong>Writing and approval.</strong> We write the draft, and you approve the accuracy of the details about your
+      business.
     </li>
     <li>
-      <strong>Publish and wire.</strong> Page goes live, joins the internal link structure, gets
-      its structured data and enters the sitemap.
+      <strong>Publishing.</strong> We put the page on the site, link it in and add it to the sitemap. If we can’t manage the
+      whole site, we don’t start, and that’s why publishing stays with us.
     </li>
     <li>
-      <strong>Follow-up.</strong> Impression and position data read after four to eight weeks;
-      the page is deepened if needed. Published does not mean finished.
+      <strong>Follow-up.</strong> We track which searches the page appears in through Search Console and add the questions
+      that are still missing.
     </li>
   </ol>
 
-  <h2 id="ai">How we use AI</h2>
+  <p>
+    You see the work we’ve done in the report every week. For most businesses we see the first movement in search between 3
+    and 6 months; for a page to reach Google, the <a href={p('services/technical-seo')}>technical SEO</a> side has to be
+    clean first.
+  </p>
+
+  <h2 id="yapay-zeka">Do you use AI?</h2>
 
   <p>
-    Let's be direct about this: we use AI in research, drafting and data processing. Where we do
-    not use it is publishing the output as-is.
+    We do, for research and the first draft. We don’t publish the raw output as it is.
   </p>
 
   <p>
-    The reason is practical, not ideological. Raw generated text does not know the real
-    constraints of your profession, your actual processes, or the actual state of competition in
-    your city. Content published without that knowledge does not differentiate from the hundreds
-    of similar pages targeting the same query. Content that does not differentiate does not rank.
+    AI doesn’t know your business. Copy written without knowing which districts you go to and what customers ask on the
+    phone doesn’t stand apart from similar pages targeting the same search. And a page that doesn’t stand apart doesn’t
+    rank.
+  </p>
+
+  <p>
+    Getting mentioned in AI answers depends on the same thing. ChatGPT and Gemini lean on sources that answer the question
+    clearly and describe the business the same way everywhere; we measure this side in our <a href={p('services/geo')}>GEO</a>
+    service.
   </p>
 
   <Fragment slot="cta">
-    <h2>Which pages are <span class="highlight">missing</span>?</h2>
-    <p>The free audit surfaces queries you appear for without a matching page, plus the content gap against competitors.</p>
+    <h2>Which pages are <span class="highlight">missing</span> from your site?</h2>
+    <p>
+      In the free analysis we look at your site and your profile and list the pages to write first, in order. The result
+      lands in your inbox within <span style="white-space: nowrap;">24 hours</span>.
+    </p>
   </Fragment>
 </ContentLayout>

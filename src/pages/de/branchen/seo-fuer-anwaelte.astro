@@ -1,0 +1,278 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'KATEGORIE', title: 'Die richtige Hauptkategorie', text: 'Die Hauptkategorie im Profil ist Rechtsanwalt. Mediation und Rechtsgebiete bleiben Nebenkategorien, sonst fallen Sie bei der Hauptsuche zurück.' },
+  { label: 'SEITE', title: 'Seiten pro Rechtsgebiet', text: 'Für jedes Gebiet, auf das Sie sich konzentrieren, eine eigene Seite: Ablauf, Dauer, Unterlagen. Eine Gebietsliste mit drei Absätzen erscheint in keiner Suche.' },
+  { label: 'INHALT', title: 'Informative Beiträge', text: 'Klare Antworten auf Fragen wie „Wie lange dauert eine Scheidung?“. Die Richtlinie erlaubt das, die meisten Wettbewerber lassen diese Fläche leer.' },
+  { label: 'SPRACHE', title: 'Sprache im Rahmen des Verbots', text: 'Überlegenheitsbehauptungen, Erfolgsquoten, Gewinnversprechen und Aktionen schreiben wir nicht. Jeden Satz formulieren wir innerhalb der Grenzen der Richtlinie.' },
+];
+
+const toc = [
+  { id: 'yasak', label: 'Werbeverbot und SEO' },
+  { id: 'kategori', label: 'Kategorie im Profil' },
+  { id: 'arama', label: 'Wie suchen Mandanten?' },
+  { id: 'sayfa', label: 'Welche Seiten auf der Website?' },
+  { id: 'yorum', label: 'Google-Bewertungen' },
+  { id: 'ilerleme', label: 'Wie sehen Sie den Fortschritt?' },
+  { id: 'sehir', label: 'Mandate von außerhalb' },
+];
+
+const faq = [
+  {
+    q: 'Verstößt SEO gegen das Werbeverbot?',
+    a: 'Für sich genommen nicht. Das Verbot erfasst Werbung und Anreize, die auf die Gewinnung von Mandaten zielen; informative Inhalte über Ihre Kanzlei und Ihre Tätigkeitsgebiete fallen nicht darunter. Das Risiko entsteht durch die gewählten Formulierungen, und diese Formulierungen verwenden wir nie.',
+  },
+  {
+    q: 'Sollte ich Mandanten um eine Google-Bewertung bitten?',
+    a: 'Wir raten davon ab. Um Bewertungen zu bitten, erst recht mit einem Geschenk oder einem vorformulierten Text, liegt sehr nah an einem Anreiz zur Mandatsgewinnung. Auf Bewertungen, die von selbst kommen, schreiben wir eine kurze Antwort ohne Details zum Fall.',
+  },
+  {
+    q: 'Darf ich meine Tätigkeitsgebiete auf der Website nennen?',
+    a: 'Ja, eine Liste Ihrer Gebiete gilt als Information. Vorsicht ist bei Wörtern geboten, die ein Gebiet wie einen Titel wirken lassen oder Überlegenheit andeuten. Wir benennen die Gebiete schlicht und ohne Behauptung.',
+  },
+  {
+    q: 'Wann sehe ich Ergebnisse?',
+    a: 'Die erste Bewegung auf der Karte sehen wir bei den meisten Unternehmen nach 4 bis 8 Wochen, in der Suche nach 3 bis 6 Monaten. In umkämpften Großstadtzentren dauert es länger. Ein genaues Datum können wir nicht nennen, aber was wir erledigt haben, sehen Sie jede Woche im Bericht.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="industries/law"
+  title="SEO für Anwälte und Google Maps | Wiserrise"
+  description="SEO für Kanzleien im Rahmen des Werbeverbots: richtige Profilkategorie, Seiten pro Rechtsgebiet, informative Inhalte. Wöchentlicher Bericht, kein Vertrag."
+  eyebrow="BRANCHE · ANWÄLTE"
+  h1="SEO für Anwälte: sichtbar werden, ohne zu werben."
+  crumb="Anwälte"
+  lede="SEO für Anwälte heißt, Ihr Profil und Ihre Website mit informativen Inhalten so aufzubauen, dass Ihre Kanzlei bei Suchen wie „Scheidungsanwalt Mersin“ auf der Karte und in den Ergebnissen erscheint. Das türkische Werbeverbot für Anwälte schließt Überlegenheitsbehauptungen und Versprechen aus, Information erlaubt es. Wir erledigen die ganze Arbeit innerhalb dieser Grenze."
+  serviceName="SEO für Anwälte"
+  breadcrumb={[
+    { label: 'Startseite', href: '/de' },
+    { label: 'Branchen', href: p('industries') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Betreuung des Google-Unternehmensprofils', href: p('services/gbp'), text: 'Kategorien und Leistungsstruktur formulieren wir im Einklang mit der Richtlinie.' },
+    { label: 'Content-Erstellung', href: p('services/content'), text: 'Seiten zu Rechtsgebieten und informative Beiträge schreiben wir passend zu den Gebieten Ihrer Kanzlei.' },
+    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Profil und Website bringen wir gemeinsam für den Wettbewerb auf der Karte in Ordnung.' },
+  ]}
+  ctaLabel="Kostenlose Analyse anfordern"
+  ctaHref="/de#contact"
+>
+  <h2 id="yasak">Ist SEO trotz Werbeverbot möglich?</h2>
+
+  <p>
+    Ja. Artikel 55 des türkischen Rechtsanwaltsgesetzes (Avukatlık Kanunu, Gesetz Nr. 1136) verbietet Anwälten jeden
+    Versuch, der als Werbung zur Mandatsgewinnung gelten kann. Die Einzelheiten regelt die Werbeverbotsrichtlinie der
+    Vereinigung der türkischen Anwaltskammern (TBB Reklam Yasağı Yönetmeliği).
+  </p>
+
+  <p>
+    Verboten sind Lob und Anreize. Zu beschreiben, wer Ihre Kanzlei ist und in welchen Gebieten sie tätig ist, gilt als
+    Information, und SEO sorgt dafür, dass diese Information bei Google gefunden wird. Das Risiko entsteht in den Sätzen,
+    die auf der Seite stehen.
+  </p>
+
+  <p>So ziehen wir die Grenze:</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Das schreiben wir nicht</th>
+          <th>Das schreiben wir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>„90 % Erfolgsquote“, Zahl gewonnener Verfahren</td>
+          <td>Wie ein Verfahren abläuft und wie lange es dauert</td>
+        </tr>
+        <tr>
+          <td>„Der beste Strafverteidiger der Stadt“</td>
+          <td>Eine schlichte Liste Ihrer Tätigkeitsgebiete</td>
+        </tr>
+        <tr>
+          <td>Mandantenbewertungen, Dankesbriefe</td>
+          <td>Anwaltskammer, Registernummer und beruflicher Werdegang</td>
+        </tr>
+        <tr>
+          <td>Rabatte, Aktionen, Angebot einer kostenlosen Beratung</td>
+          <td>Kontaktdaten und Bürozeiten</td>
+        </tr>
+        <tr>
+          <td>Vergleich mit anderen Kanzleien</td>
+          <td>Ihre Veröffentlichungen und Fachartikel</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Unter den <a href={p('industries')}>Branchen, mit denen wir arbeiten</a>, ist das Recht die mit den meisten
+    Einschränkungen. Wenn Sie uns fragen, spielt diese Einschränkung der Kanzlei in die Hände, die ihre Arbeit ordentlich
+    macht. Ein Teil der Wettbewerber schreibt riskante Texte, ohne die Richtlinie je gelesen zu haben, ein anderer Teil
+    schreibt aus Angst gar nichts.
+  </p>
+
+  <p>
+    Seiten, die sich an die Regeln halten und wirklich informieren, sind in dieser Branche selten. Diese Lücke steht der
+    Kanzlei offen, die nach den Regeln arbeiten will.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Was auf dieser Seite steht, ist keine Rechtsberatung.</strong> Das letzte Wort bei der Auslegung der
+      Richtlinie hat Ihre Anwaltskammer. Fragen Sie dort nach, bevor Sie eine Formulierung veröffentlichen, bei der Sie
+      unsicher sind.
+    </p>
+  </div>
+
+  <h2 id="kategori">Welche Kategorie sollte Ihr Google-Profil haben?</h2>
+
+  <p>
+    Die Hauptkategorie sollte Rechtsanwalt sein. Bei Kanzleien ist das der Bereich, der am häufigsten falsch eingerichtet
+    ist, und den Fehler sehen wir vor allem bei Anwälten, die auch als Mediator arbeiten: Als Hauptkategorie ist Mediator
+    gewählt.
+  </p>
+
+  <p>
+    Diese Wahl wirft Sie bei Suchen mit dem Wort „Anwalt“ zurück. Richtig ist, Rechtsanwalt als Hauptkategorie zu setzen
+    und Mediation als Nebenkategorie aufzunehmen. Die Nachfrage nach Mediation fängt eine eigene Seite auf der Website auf.
+  </p>
+
+  <p>
+    Der zweite häufige Fehler: alle Rechtsgebiete als Nebenkategorien einzutragen. Googles Liste enthält eigene
+    Anwaltskategorien für Gebiete wie Strafrecht und Scheidung, aber alle hinzuzufügen macht das Profil unscharf. Wir
+    beschränken uns auf die zwei oder drei Gebiete, auf die Sie sich wirklich konzentrieren; Details stehen auf der Seite
+    zur <a href={p('services/gbp')}>Betreuung des Google-Unternehmensprofils</a>.
+  </p>
+
+  <h2 id="arama">Wie suchen Mandanten bei Google?</h2>
+
+  <p>Auf zwei Arten. Beides zu verwechseln ist der Inhaltsfehler, der Kanzleien am teuersten zu stehen kommt.</p>
+
+  <ul>
+    <li>
+      <strong>Wer Informationen sucht.</strong> „Wie lange dauert eine Scheidung“, „Wie wird eine Abfindung berechnet“.
+      Diese Person sucht noch keinen Anwalt, sie versucht ihre Lage zu verstehen. Diese Suchen ranken unabhängig von der
+      Stadt.
+    </li>
+    <li>
+      <strong>Wer einen Anwalt sucht.</strong> „Scheidungsanwalt Mersin“, „Strafverteidiger in der Nähe“. Diese Person
+      steht kurz vor ihrer Entscheidung. Bei diesen Suchen erscheint zuerst die Karte, und die Nähe zur suchenden Person ist
+      entscheidend.
+    </li>
+  </ul>
+
+  <p>
+    Wer einen Anwalt sucht, erreichen Sie auf der Karte, wer Informationen sucht, mit den Beiträgen auf Ihrer Website. Eine
+    Kanzlei, die nur bloggt und das Profil leer lässt, bekommt Besucher, aber das Telefon klingelt nicht. Dieses Bild sehen
+    wir in dieser Branche am häufigsten.
+  </p>
+
+  <h2 id="sayfa">Welche Seiten sollte die Website Ihrer Kanzlei haben?</h2>
+
+  <p>
+    Für jedes Gebiet, auf das Sie sich konzentrieren, eine eigene Seite. Die meisten Kanzlei-Websites folgen demselben
+    Muster: Startseite, Über uns und eine Seite mit Tätigkeitsgebieten, die jedem Gebiet drei Absätze widmet. Diese
+    Struktur erscheint bei keiner Suche nach einem Rechtsgebiet, weil sie kein Gebiet wirklich erklärt.
+  </p>
+
+  <p>Diese Struktur bauen wir auf:</p>
+
+  <ul class="checklist">
+    <li>Eine eigene Seite für jedes Haupttätigkeitsgebiet: Ablauf, Dauer, nötige Unterlagen, häufige Fragen</li>
+    <li>Eine Übersichtsseite der Tätigkeitsgebiete, die diese Seiten zusammenführt</li>
+    <li>Informative Beiträge, die auf die passende Gebietsseite verlinken</li>
+    <li>Berufsangaben des Anwalts: Anwaltskammer, Registernummer, beruflicher Werdegang</li>
+    <li>Strukturierte Daten vom Typ LegalService, die exakt mit den Angaben in Ihrem Google-Profil übereinstimmen</li>
+  </ul>
+
+  <p>
+    Die Seite mit den Berufsangaben erfüllt zwei Aufgaben. Sie bündelt die Angaben, die die Richtlinie erlaubt, an einem
+    Ort und zeigt Google, dass hinter dieser Website ein eingetragener, echter Anwalt steht. Diese Seiten schreiben wir im
+    Rahmen der <a href={p('services/content')}>Content-Erstellung</a> passend zu den Gebieten Ihrer Kanzlei.
+  </p>
+
+  <h2 id="yorum">Was ist mit Google-Bewertungen?</h2>
+
+  <p>
+    Für den Platz auf der Karte sind Bewertungen ein starkes Signal. Im Recht ist das zugleich das Thema, das am stärksten
+    mit den Vorschriften kollidiert.
+  </p>
+
+  <p>
+    Es gibt zwei Probleme. Um Bewertungen zu bitten, erst recht mit einem Geschenk oder einem vorformulierten Text, liegt
+    sehr nah an einem Anreiz zur Mandatsgewinnung. Im Straf- und Familienrecht möchte ein Mandant die erhaltene Leistung
+    ohnehin nicht öffentlich machen, und diese Grenze verdient Respekt.
+  </p>
+
+  <p>
+    Deshalb richten wir für Kanzleien keinen Ablauf zum Einholen von Bewertungen ein und veröffentlichen auf der Website
+    auch keine Mandantenbewertungen. Das fehlende Signal gleichen wir mit einem vollständigen Profil und gründlichen
+    Gebietsseiten aus. Auf Bewertungen, die von selbst kommen, schreiben wir eine kurze Antwort, ohne auf den Fall
+    einzugehen.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Mandanteninformationen sind kein Inhalt.</strong> In keinem Text verwenden wir Aktendetails, Angaben zu
+      Parteien oder ein Detail, das einen Mandanten erkennbar macht. Selbst bei der Antwort auf eine negative Bewertung
+      erwähnen wir die Akte nicht.
+    </p>
+  </div>
+
+  <h2 id="ilerleme">Wie sehen Sie den Fortschritt?</h2>
+
+  <p>
+    Zuerst messen wir, auf welchem Platz Sie an verschiedenen Punkten im Umkreis Ihrer Kanzlei bei Suchen wie
+    „Strafverteidiger“ stehen. Die erste Bewegung auf der Karte sehen wir bei den meisten Unternehmen nach 4 bis 8 Wochen,
+    in der Suche nach 3 bis 6 Monaten. Was wir erledigt haben, sehen Sie jede Woche im Bericht und im Kundenportal.
+  </p>
+
+  <p>
+    Wir arbeiten in Adana mit einem Strafverteidiger. Bei der Suche „Strafverteidiger Adana“ kam er in 3 Monaten unter die
+    ersten 3, und eines Tages sagte er zu uns: „Chef, letzte Woche waren die Anrufe echt super.“
+  </p>
+
+  <p>
+    Er ist zufrieden und gibt uns obendrein Insidertipps aus der Branche. Ein Versprechen an Sie ist das nicht: In jeder
+    Stadt und bei jedem Rechtsgebiet ist der Wettbewerb anders.
+  </p>
+
+  <h2 id="sehir">Kommen Mandate auch von außerhalb der Stadt?</h2>
+
+  <p>
+    Das ist möglich, und der Weg dorthin sind die informativen Beiträge auf der Website. Die Karte zeigt Kanzleien in der
+    Nähe der suchenden Person, und ein zweites Profil für eine andere Stadt verstößt gegen Googles Richtlinien.
+  </p>
+
+  <p>
+    Informationssuchen ranken dagegen unabhängig von der Stadt. Bei Beratung und Handelsstreitigkeiten, die sich aus der
+    Ferne betreuen lassen, sind diese Beiträge der realistischste Weg, auf dem ein Mandant aus einer anderen Stadt Sie
+    findet.
+  </p>
+
+  <p>
+    Bei Stadtseiten sind wir vorsichtig. Eine Seite für eine Stadt, in der Sie tatsächlich keine Mandate übernehmen,
+    verstößt gegen Googles Regel zu kopierten Seiten und ist auch mit Blick auf die Richtlinie riskant. Deshalb legen wir
+    sie nur für Orte an, an denen Sie wirklich tätig sind, und mit Inhalten, die zu diesem Ort passen.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Bei welcher Suche ist Ihre Kanzlei <span class="highlight">unsichtbar</span>?</h2>
+    <p>
+      In der kostenlosen Analyse prüfen wir die Kategorieeinstellung Ihres Profils und den Abstand zu konkurrierenden
+      Kanzleien. Das Ergebnis liegt innerhalb von 24 Stunden in Ihrem <span style="white-space: nowrap;">E-Mail-Postfach</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

@@ -47,24 +47,74 @@ export const ROUTES = {
     tr: '/hizmetler/icerik-uretimi',
     de: '/leistungen/content-erstellung',
   },
+  'services/geo': { en: '/services/geo', tr: '/hizmetler/geo', de: '/leistungen/geo' },
+  // Parent of technical SEO, on-page SEO and content (their breadcrumbs run through it).
+  'services/seo': { en: '/services/seo', tr: '/hizmetler/seo', de: '/leistungen/seo' },
 
   // Industries. These target queries with no proximity signal ("avukatlar için
   // SEO"), which is the only layer that can rank nationwide.
-  industries: { tr: '/sektorler' },
-  'industries/law': { tr: '/sektorler/avukatlar-icin-seo' },
-  'industries/dental': { tr: '/sektorler/dis-hekimleri-icin-seo' },
-  'industries/aesthetics': { tr: '/sektorler/estetik-klinikleri-icin-seo' },
-  'industries/physio': { tr: '/sektorler/fizyoterapistler-icin-seo' },
-  'industries/vehicle-inspection': { tr: '/sektorler/oto-ekspertiz-icin-seo' },
+  industries: { en: '/industries', tr: '/sektorler', de: '/branchen' },
+  'industries/law': {
+    en: '/industries/seo-for-lawyers',
+    tr: '/sektorler/avukatlar-icin-seo',
+    de: '/branchen/seo-fuer-anwaelte',
+  },
+  'industries/dental': {
+    en: '/industries/seo-for-dentists',
+    tr: '/sektorler/dis-hekimleri-icin-seo',
+    de: '/branchen/seo-fuer-zahnaerzte',
+  },
+  'industries/aesthetics': {
+    en: '/industries/seo-for-aesthetic-clinics',
+    tr: '/sektorler/estetik-klinikleri-icin-seo',
+    de: '/branchen/seo-fuer-aesthetik-kliniken',
+  },
+  'industries/physio': {
+    en: '/industries/seo-for-physiotherapists',
+    tr: '/sektorler/fizyoterapistler-icin-seo',
+    de: '/branchen/seo-fuer-physiotherapeuten',
+  },
+  'industries/vehicle-inspection': {
+    en: '/industries/seo-for-vehicle-inspection',
+    tr: '/sektorler/oto-ekspertiz-icin-seo',
+    de: '/branchen/seo-fuer-kfz-gutachter',
+  },
 
   // Guides. Informational layer — these queries carry no proximity signal, so
   // they are the layer that reaches beyond Antalya.
-  guides: { tr: '/rehber' },
-  'guides/not-showing': { tr: '/rehber/isletmem-googleda-cikmiyor' },
-  'guides/create-profile': { tr: '/rehber/google-isletme-profili-nasil-acilir' },
-  'guides/rank-higher': { tr: '/rehber/google-haritalarda-ust-siraya-cikma' },
-  'guides/more-reviews': { tr: '/rehber/google-yorumlari-nasil-artirilir' },
-  'guides/verification': { tr: '/rehber/isletme-profili-dogrulama-sorunlari' },
+  guides: { en: '/guides', tr: '/rehber', de: '/ratgeber' },
+  'guides/not-showing': {
+    en: '/guides/business-not-showing-on-google',
+    tr: '/rehber/isletmem-googleda-cikmiyor',
+    de: '/ratgeber/unternehmen-nicht-bei-google-sichtbar',
+  },
+  'guides/create-profile': {
+    en: '/guides/how-to-create-a-google-business-profile',
+    tr: '/rehber/google-isletme-profili-nasil-acilir',
+    de: '/ratgeber/google-unternehmensprofil-erstellen',
+  },
+  'guides/rank-higher': {
+    en: '/guides/rank-higher-on-google-maps',
+    tr: '/rehber/google-haritalarda-ust-siraya-cikma',
+    de: '/ratgeber/bei-google-maps-hoeher-ranken',
+  },
+  'guides/more-reviews': {
+    en: '/guides/how-to-get-more-google-reviews',
+    tr: '/rehber/google-yorumlari-nasil-artirilir',
+    de: '/ratgeber/mehr-google-bewertungen-bekommen',
+  },
+  'guides/verification': {
+    en: '/guides/google-business-profile-verification-problems',
+    tr: '/rehber/isletme-profili-dogrulama-sorunlari',
+    de: '/ratgeber/google-unternehmensprofil-verifizierung-probleme',
+  },
+
+  // Founder page, written for the "Türkiye'nin en başarılı SEO uzmanı" query; en/de are translations.
+  'about/founder': {
+    en: '/turkeys-most-successful-seo-expert',
+    tr: '/turkiyenin-en-basarili-seo-uzmani',
+    de: '/erfolgreichster-seo-experte-der-tuerkei',
+  },
 
   // Free tools. Link magnets — they run entirely in the browser, no API.
   'tools/gbp-audit': {
@@ -72,6 +122,15 @@ export const ROUTES = {
     tr: '/araclar/google-isletme-profili-denetimi',
     de: '/tools/google-unternehmensprofil-analyse',
   },
+
+  // Thank-you page the analysis form redirects to (public/js/script.js). noindex, kept out of the sitemap.
+  thanks: { en: '/success', tr: '/success', de: '/success' },
+
+  // Legal. KVKK is Turkish law; en/de are translations of the Turkish notices.
+  'legal/kvkk': { en: '/privacy-notice', tr: '/kvkk-aydinlatma-metni', de: '/datenschutzhinweis' },
+  'legal/cookies': { en: '/cookie-policy', tr: '/cerez-politikasi', de: '/cookie-richtlinie' },
+  // German imprint (§ 5 DDG); only the German pages need one.
+  'legal/impressum': { de: '/impressum' },
 } as const satisfies Record<string, Partial<Record<Locale, string>>>;
 
 export type RouteKey = keyof typeof ROUTES;

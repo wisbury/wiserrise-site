@@ -5,31 +5,39 @@ import { routePath } from '../../../i18n/routes';
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'NİYET', title: 'Arama niyeti', text: 'Her sayfa tek bir aramaya cevap verir. Hangi sayfanızın hangi aramayı karşıladığını tek tek çıkarırız.' },
+  { label: 'BAŞLIK', title: 'Title ve açıklama', text: 'Aramada görünen ilk iki satır. Hizmeti ve semti başa yakın yazar, sayfada ne bulunacağını dürüstçe söyleriz.' },
+  { label: 'LİNK', title: 'İç linkler', text: 'Hizmet sayfalarını birbirine ve semt sayfalarına bağlarız. Hiçbir yerden link almayan sayfa Google’a önemsiz görünür.' },
+  { label: 'ÇAKIŞMA', title: 'Sayfa çakışması', text: 'Aynı aramayı iki sayfanız hedefliyorsa ikisi de geride kalır. Sayfaları birleştirir ya da hedeflerini ayırırız.' },
+];
+
 const toc = [
-  { id: 'niyet', label: 'Her sayfa tek bir niyete cevap verir' },
-  { id: 'title', label: 'Başlık ve açıklama' },
-  { id: 'yapi', label: 'Başlık hiyerarşisi ve içerik yapısı' },
-  { id: 'ic-link', label: 'İç link mimarisi' },
-  { id: 'yamyamlik', label: 'Sayfa yamyamlığı' },
-  { id: 'yerel', label: 'Yerel sinyaller' },
+  { id: 'nedir', label: 'On-page SEO ne demek?' },
+  { id: 'niyet', label: 'Bir sayfa kaç aramaya cevap verir?' },
+  { id: 'title', label: 'Title ve açıklama' },
+  { id: 'yapi', label: 'Sayfanın içinde ne olmalı?' },
+  { id: 'link', label: 'İç linkler' },
+  { id: 'cakisma', label: 'Aynı aramada yarışan sayfalar' },
+  { id: 'yerel', label: 'Semt adı sayfaya nasıl girer?' },
 ];
 
 const faq = [
   {
-    q: 'Anahtar kelimeyi kaç kez geçirmeliyim?',
-    a: 'Belirli bir oran yok ve yoğunluk kovalamak zarar veriyor. Doğru ölçüt, konuyu gerçekten kapsayıp kapsamadığınız. Bir hizmeti hakkıyla anlatan metin, o hizmetin etrafındaki ifadeleri zaten doğal olarak içerir.',
+    q: 'Anahtar kelimeyi sayfada kaç kez geçirmeliyim?',
+    a: 'Sayı tutmayın. Hizmeti hakkıyla anlatan metin o hizmetin etrafındaki ifadeleri kendiliğinden içerir. Yoğunluk kovalayan metni hem okuyan hem Google fark eder.',
   },
   {
-    q: 'Title etiketini Google değiştiriyor, yazmanın anlamı var mı?',
-    a: 'Google zaman zaman kendi başlığını üretiyor, ama bunu genelde title eksik, çok uzun veya sayfa içeriğiyle uyumsuz olduğunda yapıyor. İyi yazılmış ve içerikle tutarlı bir title büyük çoğunlukla korunuyor.',
+    q: 'Google title’ımı değiştiriyor, yazmaya değer mi?',
+    a: 'Değer. Google başlığı en çok title eksik, çok uzun ya da sayfayla uyumsuz olduğunda değiştiriyor. Biz title’ı H1 ve içerikle aynı şeyi söyleyecek şekilde yazıyoruz.',
   },
   {
-    q: 'Uzun içerik her zaman daha mı iyi sıralanıyor?',
-    a: 'Hayır. Uzunluk bir sonuç, hedef değil. Sorunun karşılığını 400 kelimede veren bir sayfa, aynı şeyi 2000 kelimeye yayan sayfadan iyi sıralanabiliyor. Kötü olan, konuyu eksik bırakmak.',
+    q: 'Uzun sayfa daha iyi sıralanır mı?',
+    a: 'Hayır. Soruyu kısa ve eksiksiz cevaplayan sayfa, aynı şeyi uzatan sayfanın önüne geçebilir. Bizim baktığımız şey, okurun sorduğu her sorunun sayfada cevabı olup olmadığı.',
   },
   {
-    q: 'Mevcut sayfalarımı düzeltmek mi, yenilerini yazmak mı?',
-    a: 'Neredeyse her zaman önce mevcutları düzeltmek. Zaten gösterim alan ama tıklanmayan ya da ikinci sayfada takılmış sayfalar, en hızlı kazanç alanı. Yeni içerik bu boşluklar kapandıktan sonra anlamlı.',
+    q: 'Mevcut sayfaları mı düzeltelim, yenilerini mi yazalım?',
+    a: 'Önce mevcutları düzeltiyoruz. Gösterim alıp tıklanmayan ya da ikinci sayfada takılan sayfalar en çabuk hareket eden yerler. Yeni sayfa bu boşluklar kapandıktan sonra gelir.',
   },
 ];
 ---
@@ -38,145 +46,170 @@ const faq = [
   locale={locale}
   route="services/on-page-seo"
   title="On-Page SEO Hizmeti | Wiserrise"
-  description="Başlık, içerik derinliği, başlık hiyerarşisi ve iç link mimarisi. Sayfanın hangi aramaya cevap verdiğini Google için netleştiren çalışma."
-  eyebrow="Hizmet"
-  h1="On-Page SEO"
-  lede="Bir sayfanın sıralanabilmesi için Google’ın onu hangi sorgunun karşılığı olarak göreceğini net anlaması gerekir. On-page çalışması tam olarak bu netliği kurar."
+  description="Her sayfanın hangi aramaya cevap verdiğini netleştiriyoruz: title, başlıklar, iç linkler ve çakışan sayfalar. Yerel işletme siteleri için on-page SEO."
+  eyebrow="HİZMET · ON-PAGE SEO"
+  h1="On-page SEO ile her sayfayı doğru aramaya oturtun."
+  crumb="On-page SEO"
+  lede="On-page SEO, sitenizdeki her sayfanın hangi aramaya cevap verdiğini Google’a net anlatma işi. Title’dan başlıklara, metinden iç linklere kadar sayfanın kendisini düzeltiyoruz. Yerel işletmede hedef, “Kadıköy fizyoterapi” arayana doğrudan o hizmeti Kadıköy’de anlatan sayfanın çıkması."
   serviceName="On-Page SEO"
   breadcrumb={[
     { label: 'Ana Sayfa', href: '/tr' },
     { label: 'Hizmetler', href: p('services') },
+    { label: 'SEO', href: p('services/seo') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Teknik SEO', href: p('services/technical-seo') },
-    { label: 'İçerik Üretimi', href: p('services/content') },
-    { label: 'Yerel SEO', href: p('services/local-seo') },
+    { label: 'SEO', href: p('services/seo'), text: 'Altyapı, sayfa düzeni, içerik ve backlink: bu hizmetin bağlı olduğu ana iş.' },
+    { label: 'Teknik SEO', href: p('services/technical-seo'), text: 'Sitenizin Google’a düzgün açılması için tarama ve indeksleme hatalarını kapatırız.' },
+    { label: 'İçerik Üretimi', href: p('services/content'), text: 'Eksik kalan hizmet ve semt sayfalarını yazar, iç link yapısına bağlarız.' },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'Profilinizi ve sitenizi birlikte düzeltip haritada öne çıkmanız için çalışırız.' },
   ]}
-  ctaLabel="Sayfalarımı Analiz Et →"
+  ctaLabel="Ücretsiz analiz al"
   ctaHref="/tr#contact"
 >
-  <h2 id="niyet">Her sayfa tek bir niyete cevap verir</h2>
+  <h2 id="nedir">On-page SEO ne demek?</h2>
 
   <p>
-    On-page SEO’nun tek cümlelik özeti bu. İnsanlar arama yaparken farklı şeyler istiyor: kimi
-    bilgi arıyor ("boşanma davası ne kadar sürer"), kimi karşılaştırma yapıyor ("anlaşmalı mı
-    çekişmeli mi"), kimi doğrudan hizmet alacak ("mersin boşanma avukatı"). Bunlar üç ayrı
-    niyet ve tek bir sayfada üçünü birden karşılamaya çalışmak, hiçbirinde sıralanamamakla
-    sonuçlanıyor.
+    Sayfanın kendisi üzerinde yapılan SEO işi. Title, açıklama, başlıklar, metin ve iç linkler bu işin malzemesi. Amaç tek:
+    Google sayfaya baktığında hangi aramanın karşılığı olduğunu tereddütsüz anlasın.
   </p>
 
   <p>
-    Yaptığımız ilk iş, mevcut sayfaları hedefledikleri niyete göre haritalamak. Bu haritada
-    genelde iki tür boşluk çıkıyor: karşılığı olmayan niyetler (hiç sayfa yok) ve aynı niyeti
-    hedefleyen birden fazla sayfa. İkincisi daha sinsi ve aşağıda ayrı başlık altında.
+    <a href={p('services/technical-seo')}>Teknik SEO</a> sayfanın Google’a ulaşmasını sağlar, on-page SEO ulaştığında ne
+    anlatacağını belirler. Biri olmadan diğeri yarım kalır, bu yüzden ikisini aynı planda yürütüyoruz.
   </p>
 
-  <h2 id="title">Başlık ve açıklama</h2>
+  <h2 id="niyet">Bir sayfa kaç aramaya cevap verir?</h2>
 
   <p>
-    Title etiketi, hâlâ sayfanın konusunu belirleyen en güçlü tek on-page sinyali. Yazarken
-    dikkat ettiklerimiz:
+    Bir aramaya. Diyelim ki Mersin’de boşanma davalarına bakan bir avukatsınız. “Boşanma davası ne kadar sürer” yazan kişi
+    bilgi istiyor, “Mersin boşanma avukatı” yazan kişi avukat arıyor.
+  </p>
+
+  <p>
+    İkisini tek sayfada karşılamaya çalışan site ikisinde de geride kalır. Bu yüzden bir sayfaya iki hizmeti ya da
+    iki niyeti sığdırmayın. Hizmet sayfası hizmeti anlatır, bilgi soran kişiye ayrı bir rehber yazısı yazılır ve ikisi
+    birbirine linklenir.
+  </p>
+
+  <p>
+    Niyet farkını biz Google Ads’te parayla öğrendik. Hizmet almaya niyeti olmayan, bilgi arayan aramalara habersiz para
+    harcadık; yaklaşık 800 TL gitti, kıyısından döndük. O günden beri her sayfaya önce şunu soruyoruz: bu aramayı yapan kişi
+    ne istiyor?
+  </p>
+
+  <h2 id="title">Title ve açıklama nasıl yazılır?</h2>
+
+  <p>
+    Title, sayfanın konusunu Google’a söyleyen en güçlü sayfa içi sinyal. Arama sonucunda tıklanan mavi satır da o.
+    Yazarken baktıklarımız:
   </p>
 
   <ul class="checklist">
-    <li>Hedef sorgunun, zorlama olmadan başa yakın yer alması</li>
-    <li>Yerel hizmetlerde şehir ya da bölge adının geçmesi</li>
-    <li>Marka adının sonda ve kısa tutulması</li>
-    <li>Sonuç sayfasında kesilmeyecek uzunlukta kalması</li>
-    <li>Sitedeki her sayfanın kendine ait, tekrar etmeyen bir title taşıması</li>
+    <li>Aranan ifade zorlamadan başa yakın durur</li>
+    <li>Yerel hizmette semt ya da şehir adı geçer</li>
+    <li>Marka adı sonda ve kısa olur</li>
+    <li>Sonuç sayfasında kesilmeyecek uzunlukta kalır</li>
+    <li>Sitedeki her sayfanın title’ı kendine ait olur, iki sayfa aynı title’ı taşımaz</li>
   </ul>
 
   <p>
-    Meta açıklama sıralama faktörü değil, ama tıklama oranını belirliyor. İkinci sırada olup
-    iyi yazılmış bir açıklamayla daha çok tıklanan sayfa, zamanla birinci sıradakinin yerini
-    alabiliyor. Açıklamayı bir reklam metni gibi değil, sayfanın gerçekten ne vaat ettiğinin
-    dürüst özeti olarak yazıyoruz — beklentiyi karşılamayan açıklama, kullanıcıyı geri
-    döndürüyor ve bu geri dönüş sinyal olarak okunuyor.
+    Meta açıklama, sonuç sayfasında title’ın altındaki kısa metin. Arayan kişi tıklayıp tıklamamaya ona bakarak karar
+    verir, biz de onu sayfada gerçekten ne olduğunun dürüst özeti olarak yazıyoruz. Vaat edip sayfada karşılığını vermeyen
+    açıklama, ziyaretçiyi birkaç saniyede sonuç sayfasına geri gönderir.
   </p>
 
-  <h2 id="yapi">Başlık hiyerarşisi ve içerik yapısı</h2>
+  <h2 id="yapi">Sayfanın içinde ne olmalı?</h2>
 
   <p>
-    Sayfada tek bir H1 olmalı ve bu H1 sayfanın ne hakkında olduğunu tek başına anlatmalı. Alt
-    başlıklar (H2, H3) konuyu mantıklı parçalara bölmeli — görsel biçimlendirme için değil,
-    yapı için kullanılmalı.
+    Tek bir H1 ve onun altında okurun soracağı sorular. H1 sayfanın ne hakkında olduğunu tek başına söyler, H2’ler konuyu
+    okurun sorularına göre parçalara böler.
   </p>
 
+  <p>Yerel bir hizmet sayfasında aradığımız başlıklar:</p>
+
+  <ul class="checklist">
+    <li>Hizmetin ne olduğu ve kime uygun olduğu</li>
+    <li>Nasıl ilerlediği ve ne kadar sürdüğü</li>
+    <li>Hangi semtlere hizmet verdiğiniz ya da size nasıl ulaşılacağı</li>
+    <li>Müşterinin telefonda en çok sorduğu sorular</li>
+    <li>Telefon, adres ve randevu yolu, ilk ekrandan ulaşılabilir şekilde</li>
+  </ul>
+
   <p>
-    Yapının pratik faydası, konunun kapsanıp kapsanmadığını görünür kılması. Bir hizmeti
-    anlatan sayfada kullanıcıların gerçekten sorduğu alt başlıklar (süreç nasıl işliyor,
-    ne kadar sürüyor, neye göre fiyatlanıyor, hangi durumlarda gerekmez) yoksa, sayfa o
-    hizmetin karşılığı olarak zayıf kalıyor. Bu alt başlıkları tahminle değil, arama
-    verisinden ve müşteri sorularından çıkarıyoruz.
+    Bu başlıkları tahminle seçmiyoruz. Search Console’da sayfanın göründüğü aramalara ve sizin telefonda duyduğunuz sorulara
+    bakıyoruz. Bu ikisinde geçip sayfada cevabı olmayan her soru eksik sayılır.
   </p>
 
-  <h2 id="ic-link">İç link mimarisi</h2>
+  <h2 id="link">İç linkler neden önemli?</h2>
 
   <p>
-    İç linkler iki iş yapıyor: Google’a sitedeki hiyerarşiyi öğretiyor ve sayfalar arasında
-    otorite taşıyor. Yerel işletme sitelerinde en sık gördüğümüz eksik, hizmet sayfalarının
-    birbirine ve üstteki hub sayfasına hiç bağlanmaması — her sayfa ada gibi duruyor.
-  </p>
-
-  <p>
-    Kurduğumuz yapı basit: <a href={p('services')}>hizmetler hub’ı</a> tüm hizmet sayfalarına
-    bağlanır, her hizmet sayfası hub’a geri döner ve konu olarak komşu olduğu 2–3 hizmete
-    bağlanır. Vaka çalışmaları ilgili hizmet sayfasına, hizmet sayfaları da ilgili vakalara
-    bağlanır. Bu sayfanın alt kısmındaki "İlgili hizmetler" bloğu aynı mantığın uygulaması.
+    İç linkler Google’a sitenin haritasını çizer ve önemli sayfaları gösterir. Yerel işletme sitelerinde en sık gördüğümüz
+    eksik, hizmet sayfalarının birbirine hiç bağlanmaması. Her sayfa ada gibi tek başına duruyor.
   </p>
 
   <p>
-    Link metninde dikkat ettiğimiz nokta, "buraya tıklayın" gibi anlamsız ifadeler yerine hedef
-    sayfanın konusunu içeren doğal bir ifade kullanmak — ama aynı hedefe her seferinde birebir
-    aynı metinle bağlanmamak.
-  </p>
-
-  <h2 id="yamyamlik">Sayfa yamyamlığı</h2>
-
-  <p>
-    Aynı sorguyu hedefleyen birden fazla sayfanız varsa, Google hangisini göstereceğine karar
-    veremiyor ve genelde ikisini de olması gerekenden aşağıda tutuyor. Buna sayfa yamyamlığı
-    (cannibalization) deniyor ve içerik üretmeye erken başlamış sitelerde neredeyse her zaman
-    çıkıyor.
+    Kurduğumuz yapı basit. Hizmetler sayfası bütün hizmet sayfalarına bağlanır, her hizmet sayfası ona geri döner ve konu
+    olarak komşu olduğu iki üç hizmete bağlanır. Semt sayfaları ilgili hizmet sayfasına, rehber yazıları da anlattıkları
+    hizmete link verir.
   </p>
 
   <p>
-    Teşhisi Search Console üzerinden yapıyoruz: aynı sorguda dönüşümlü olarak farklı adreslerin
-    gösterildiğini görmek yeterli işaret. Çözüm duruma göre değişiyor — sayfaları birleştirip
-    güçlü olana yönlendirmek, ya da ikisinin hedefini birbirinden gerçekten ayrıştırmak.
-    Birleştirme çoğu zaman toplam trafiği artırıyor, çünkü bölünmüş sinyaller tek sayfada
-    topluyor.
+    Link metni hedef sayfanın konusunu söyler, “buraya tıklayın” yazmayız. Bu sayfanın altındaki ilgili hizmetler bloğu da
+    aynı mantıkla kuruldu.
+  </p>
+
+  <h2 id="cakisma">İki sayfanız aynı aramada mı yarışıyor?</h2>
+
+  <p>
+    Öyleyse Google hangisini göstereceğine karar veremez ve ikisini de geride tutar. Buna sayfa yamyamlığı, İngilizcesiyle
+    cannibalization deniyor. Yıllardır blog yazan sitelerde bunu sık buluyoruz.
+  </p>
+
+  <p>
+    Diyelim ki sitenizde hem “Kadıköy fizik tedavi” hem “Kadıköy fizyoterapi” için ayrı sayfa var. İkisi aynı kişiye, aynı
+    hizmeti anlatıyor. Search Console’da aynı aramada bir gün birinin, ertesi gün ötekinin çıktığını görürseniz teşhis
+    budur.
+  </p>
+
+  <p>
+    Çözüm iki yoldan biri. Zayıf sayfayı güçlü olanla birleştirip 301 ile yönlendiririz ya da iki sayfanın hedefini gerçekten
+    ayırırız.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Yeni sayfa açmadan önce sorun:</strong> bu sorgunun karşılığı olan bir sayfam
-      zaten var mı? Varsa doğru hamle yeni sayfa açmak değil, mevcut sayfayı derinleştirmek.
+      <strong>Yeni sayfa açmadan önce sorun:</strong> Bu aramanın karşılığı olan bir sayfam zaten var mı? Varsa yeni sayfa
+      açmayın, eldekini derinleştirin.
     </p>
   </div>
 
-  <h2 id="yerel">Yerel sinyaller</h2>
+  <h2 id="yerel">Semt adı sayfaya nasıl girer?</h2>
 
   <p>
-    Yerel hizmet veren işletmelerde on-page çalışmasının bir de coğrafi boyutu var. Sayfanın
-    hangi bölgeye hizmet verdiğinin metin içinde doğal olarak geçmesi, iletişim bilgilerinin
-    işletme profiliyle birebir aynı yazılması ve
-    <a href={p('services/technical-seo')}>yapılandırılmış verinin</a> işletme varlığına
-    bağlanması gerekiyor.
+    Doğal yerlerinden. Title’da, H1’de ya da girişte bir kez geçer, sonra metin o semtle gerçekten ilgili bilgiyle devam eder.
+    Semt adını metne serpiştirmek işe yaramaz, okuyan da fark eder.
   </p>
 
   <p>
-    Burada sınır, şehir adını metne serpiştirmek ile sayfayı gerçekten o bölgeye özgü hale
-    getirmek arasında. Birincisi işe yaramıyor ve fark ediliyor; ikincisi için sayfanın o
-    bölgeye dair gerçek bir şey söylemesi gerekiyor. Şehir bazlı sayfa üretimini bu yüzden
-    <a href={p('services/content')}>içerik üretimi</a> başlığı altında, gerçek veriye bağlı
-    olarak ele alıyoruz.
+    Sayfalar Google İşletme Profilinizle de konuşmalı. Profilde yazan hizmetlerin sitede aynı adla bir sayfası olur. Ad,
+    adres ve telefon profildekiyle birebir aynı yazılır ve şemayla aynı işletmeye bağlanır; bu kısmı
+    <a href={`${p('services/technical-seo')}#schema`}>teknik SEO</a> tarafında yapıyoruz.
+  </p>
+
+  <p>
+    Her semte ayrı sayfa açmak ayrı bir karar. O sayfaları yalnız o bölge için söyleyecek gerçek bir şey varsa açıyoruz,
+    neye baktığımızı <a href={`${p('services/content')}#sehir`}>içerik üretimi</a> sayfasında anlattık. Profille sitenin
+    birlikte nasıl yürüdüğü <a href={p('services/local-seo')}>local SEO</a> sayfasında.
   </p>
 
   <Fragment slot="cta">
-    <h2>Sayfalarınız hangi sorguda <span class="highlight">birbirini yiyor</span>?</h2>
-    <p>Ücretsiz analizde niyet haritanızı, title eksiklerinizi ve yamyamlık vakalarını çıkarıyoruz.</p>
+    <h2>Sayfalarınız hangi aramada <span class="highlight">çakışıyor</span>?</h2>
+    <p>
+      Ücretsiz analizde sitenize ve profilinize bakar, önce hangi sayfayı düzeltmeniz gerektiğini yazarız. Sonuç 24 saat
+      içinde <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
   </Fragment>
 </ContentLayout>

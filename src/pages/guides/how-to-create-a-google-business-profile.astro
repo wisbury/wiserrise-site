@@ -1,0 +1,264 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'ADDRESS', title: 'Show your address', text: 'If you have a place where you receive customers, let the address show. A profile that hides its address falls behind in “near me” searches.' },
+  { label: 'CATEGORY', title: 'Choose by looking at competitors', text: 'Check the primary category of the businesses in the top three for your search. The primary category goes after volume, the secondary ones after specialties.' },
+  { label: 'VERIFICATION', title: 'The condition for going live', text: 'An unverified profile doesn’t appear in search. For video verification, you need to show the sign and the interior in a single take.' },
+  { label: 'NAME', title: 'The name on your sign', text: 'Don’t add keywords to the business name. It breaks the rules: when a competitor reports it, the name gets corrected, and a repeat gets the profile suspended.' },
+];
+
+const toc = [
+  { id: 'hazirlik', label: 'Preparation' },
+  { id: 'adres', label: 'The address decision' },
+  { id: 'adimlar', label: 'Setup steps' },
+  { id: 'kategori', label: 'Choosing a category' },
+  { id: 'ilk-gun', label: 'The day it’s verified' },
+  { id: 'hatalar', label: 'Common mistakes' },
+];
+
+const faq = [
+  {
+    q: 'I don’t have a registered company. Can I create a profile?',
+    a: 'You can; Google doesn’t require an official company registration. What it wants is to confirm that the business really exists, so verification may ask for an invoice, a photo of your sign or your tax certificate. For an unregistered business, getting through verification is harder.',
+  },
+  {
+    q: 'Can I use my home address?',
+    a: 'If you work from home and don’t receive customers, you can, but hide the address and define a service area. There’s no need to show your home address publicly. Changing it later can also trigger verification again.',
+  },
+  {
+    q: 'How many categories can I add?',
+    a: 'One primary and up to nine secondary categories. We recommend sticking to the two or three secondary categories you really focus on, because unrelated categories weaken you in your main search.',
+  },
+  {
+    q: 'I’ve created the profile. When will I show up?',
+    a: 'After verification, the profile starts appearing within a few days, and rankings take a few weeks to settle. Don’t change the name, address or category during that time.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="guides/create-profile"
+  title="How to Create a Google Business Profile, Step by Step | Wiserrise"
+  description="How to create a Google Business Profile step by step: whether to show your address, choosing the primary category, verification and what to do on day one."
+  eyebrow="GUIDE · CREATING A PROFILE"
+  h1="How do you create a Google Business Profile?"
+  crumb="Creating a profile"
+  lede="You create a Google Business Profile at google.com/business by entering the business name, category, address and contact details, then verifying with the method Google offers. The form itself takes ten minutes. Two decisions are hard to undo later: whether to show your address and the primary category."
+  schemaType="article"
+  datePublished="2026-08-01"
+  dateModified="2026-11-06"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Guides', href: p('guides') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Profile verification problems', href: p('guides/verification'), text: 'If the postcard didn’t arrive or the video was rejected, we cover what to do in each case.' },
+    { label: 'How do you get more Google reviews?', href: p('guides/more-reviews'), text: 'When and how to ask for your first reviews.' },
+    { label: 'Ranking higher on Google Maps', href: p('guides/rank-higher'), text: 'The order of work for getting a newly live profile ahead of your competitors.' },
+    { label: 'Google Business Profile Management', href: p('services/gbp'), text: 'We manage your category, service structure, reviews and posts together.' },
+  ]}
+  relatedHeading="Related pages"
+  ctaLabel="Audit your profile for free"
+  ctaHref={p('tools/gbp-audit')}
+>
+  <h2 id="hazirlik">What should you prepare before you start?</h2>
+
+  <p>
+    If you prepare the details in advance, the form won’t stall halfway. A half-finished setup is one of the most common
+    reasons behind the “I created a profile and I still don’t show up on Google” complaint.
+  </p>
+
+  <ul class="checklist">
+    <li>The business’s real name: the way it appears on your sign and invoices</li>
+    <li>A phone number that belongs to the business (if you have a line separate from your personal number, use that one)</li>
+    <li>Your website address</li>
+    <li>Your full address if you receive customers, or a list of the areas you serve if you don’t</li>
+    <li>Opening hours, including public holidays</li>
+    <li>Real photos of the exterior, the interior, the team and your products, if you sell any</li>
+  </ul>
+
+  <div class="callout">
+    <p>
+      <strong>Don’t add keywords to the business name.</strong> A name like “Defne Diş Kliniği Antalya Implants” works for
+      a short while, but it breaks Google’s rules: when a competitor reports it, the name gets corrected, and a repeat gets
+      the profile suspended. We don’t do this on our clients’ profiles.
+    </p>
+  </div>
+
+  <h2 id="adres">Should you show your address?</h2>
+
+  <p>
+    If customers come to your address, yes. Google recognizes two profile types, and this choice directly determines how
+    you appear on the map.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Profile with address</th>
+          <th>No address (service area)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Who it’s for</strong></td>
+          <td>Customers come to your address</td>
+          <td>You go to the customer</td>
+        </tr>
+        <tr>
+          <td><strong>On the map</strong></td>
+          <td>Pin shows, directions available</td>
+          <td>No pin</td>
+        </tr>
+        <tr>
+          <td><strong>“Near me” searches</strong></td>
+          <td>Strong</td>
+          <td>Weak</td>
+        </tr>
+        <tr>
+          <td><strong>What rankings are based on</strong></td>
+          <td>Proximity to the address</td>
+          <td>Still proximity to the address, even when it’s hidden</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    The last row is the most misunderstood point. Hiding your address and adding twenty provinces won’t put you on the map
+    in those twenty provinces. Google still calculates rankings from proximity to your hidden address.
+  </p>
+
+  <p>
+    Say you’re a physiotherapist with a clinic in Çankaya, and you hid the address. A patient heading to the clinic sees
+    no pin on the map and gets no directions, and you fall behind in “physiotherapist near me” searches.
+  </p>
+
+  <p>
+    Our rule is simple: if you have a place where you receive customers, show the address. We cover address and service
+    area settings separately on the <a href={p('services/gbp')}>Google Business Profile management</a> page.
+  </p>
+
+  <h2 id="adimlar">How do you create the profile, step by step?</h2>
+
+  <p>If your preparation is done, setup takes ten minutes. Here’s the order:</p>
+
+  <ol>
+    <li>
+      <strong>Go to google.com/business.</strong> Sign in with the Google account you’ll use for the business. If you use
+      an account that belongs to the business instead of your personal one, handing the profile over later is easier.
+    </li>
+    <li>
+      <strong>Type the business name.</strong> If Google finds an existing listing, it suggests that you claim it. Claim
+      it instead of creating a new listing, or you’ll end up with a duplicate profile.
+    </li>
+    <li>
+      <strong>Choose the primary category.</strong> We explain how to choose it below. Don’t rush this step.
+    </li>
+    <li>
+      <strong>Make the address decision.</strong> If you receive customers, enter the address and drag the map pin by hand
+      to your front door. If you don’t, hide the address and define your service areas.
+    </li>
+    <li>
+      <strong>Add your phone number and website.</strong> Put your homepage in the website field. You add links to your
+      service pages to the individual services later.
+    </li>
+    <li>
+      <strong>Choose the verification method.</strong> Video or a postcard are the most common options. Video is faster,
+      but in a single take you need to show the sign, the interior and that you run the business, so don’t start
+      unprepared.
+    </li>
+  </ol>
+
+  <p>
+    If verification gets stuck, we cover each case separately in the
+    <a href={p('guides/verification')}>verification problems guide</a>.
+  </p>
+
+  <h2 id="kategori">Which category should you choose?</h2>
+
+  <p>
+    Whichever category the top three businesses have for the search your customers type to find you. The primary category
+    has the biggest ranking effect you can get from a single field. So don’t guess, look:
+  </p>
+
+  <ol>
+    <li>Search the query your customer would type on Google Maps.</li>
+    <li>Check the primary category of the businesses in the top three.</li>
+    <li>Give yourself the same category as your primary.</li>
+    <li>Add the two or three areas you really focus on as secondary categories. Don’t add more.</li>
+  </ol>
+
+  <p>
+    Google allows one primary and up to nine secondary categories. Don’t fill all nine: unrelated categories blur which
+    searches Google sees you as belonging to.
+  </p>
+
+  <p>
+    A common mistake is making a narrow specialty the primary category. A dental clinic that focuses on implants and sets
+    its primary category to “Cosmetic dentist” gains strength in a narrow area and loses the large volume of “dentist”
+    searches. The primary category goes after volume, the secondary ones after specialties.
+  </p>
+
+  <h2 id="ilk-gun">What should you do the day your profile is verified?</h2>
+
+  <p>
+    Fill in the gaps the day it goes live. Google looks at how complete a profile is early on, so don’t leave these for
+    later.
+  </p>
+
+  <ul class="checklist">
+    <li>Write the business description: what you do and who you serve.</li>
+    <li>Fill the service list with the phrases people search for, and add a description to every service.</li>
+    <li>Upload at least 10 real photos: the exterior and sign, the interior, the team, examples of your work.</li>
+    <li>Tick the attributes: parking, wheelchair access, appointments, payment methods.</li>
+    <li>Start asking for your first reviews. We explain how in the <a href={p('guides/more-reviews')}>reviews guide</a>.</li>
+  </ul>
+
+  <p>
+    Keep the service names exactly the same as the page names on your website. This consistency makes it easier for
+    Google to match the profile and the site as the same business.
+  </p>
+
+  <h2 id="hatalar">What are the most common setup mistakes?</h2>
+
+  <ol>
+    <li>
+      <strong>Dressing up the name.</strong> Adding keywords to the name is one of the top causes of suspension.
+    </li>
+    <li>
+      <strong>Giving a virtual office address.</strong> Even if an address where you aren’t really located passes
+      verification, the profile can be suspended later.
+    </li>
+    <li>
+      <strong>Filling up the category list.</strong> Using all nine secondary categories dilutes relevance.
+    </li>
+    <li>
+      <strong>Uploading stock photos.</strong> Searchers spot the difference between the real place and a stock image
+      right away, and trust drops.
+    </li>
+    <li>
+      <strong>Playing with the core fields in the first weeks.</strong> Changing the name, address and category over and
+      over delays rankings from settling and triggers a review on top of that.
+    </li>
+  </ol>
+
+  <Fragment slot="cta">
+    <h2>Your profile is live, but is it <span class="highlight">incomplete</span>?</h2>
+    <p>
+      The free audit tool shows in 10 questions which areas of your profile are weak. No sign-up needed, and you see the
+      result on screen right away.
+    </p>
+  </Fragment>
+</ContentLayout>

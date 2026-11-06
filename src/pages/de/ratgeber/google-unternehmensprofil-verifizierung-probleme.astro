@@ -1,0 +1,234 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'VIDEO', title: 'Eine Aufnahme, drei Nachweise', text: 'Zeigen Sie in einer ununterbrochenen Aufnahme den Standort, Ihre Tätigkeit und dass Sie das Unternehmen führen. Am häufigsten wird der Nachweis der Verwaltung vergessen.' },
+  { label: 'POSTKARTE', title: 'Einmal anfordern', text: 'Die Karte kommt innerhalb von 1-3 Wochen. Fordern Sie eine neue an, während die erste unterwegs ist, wird der Code der ersten ungültig, und es dauert länger.' },
+  { label: 'EINSPRUCH', title: 'Erst die Ursache beheben', text: 'Stellen Sie bei einem gesperrten Profil keinen Antrag auf erneute Prüfung, bevor die Ursache behoben ist. Schreiben Sie im Antrag, was Sie korrigiert haben, und fügen Sie Belege bei.' },
+  { label: 'DUPLIKAT', title: 'Kein neues Profil', text: 'Ein zweiter Eintrag für dasselbe Unternehmen gilt als Duplikat und wird ebenfalls gesperrt. Arbeiten Sie in jedem Fall mit dem bestehenden Profil weiter.' },
+];
+
+const toc = [
+  { id: 'yontemler', label: 'Verifizierungsmethoden' },
+  { id: 'video', label: 'Video abgelehnt' },
+  { id: 'kart', label: 'Postkarte nicht angekommen' },
+  { id: 'askiya', label: 'Profil gesperrt' },
+  { id: 'sahiplik', label: 'Profil in fremder Hand' },
+  { id: 'beklerken', label: 'Was Sie beim Warten lassen' },
+];
+
+const faq = [
+  {
+    q: 'Wie lange dauert die Verifizierung?',
+    a: 'Die Video-Verifizierung ist innerhalb weniger Tage abgeschlossen, manchmal in wenigen Stunden. Die Postkarte kann in der Türkei 1-3 Wochen brauchen. Dauert die Prüfung des Videos länger als zwei Wochen, schreiben Sie dem Google-Support.',
+  },
+  {
+    q: 'Ist mein Profil während der Verifizierung sichtbar?',
+    a: 'Nein. Ein nicht verifiziertes Profil wird weder in der Suche noch in Google Maps veröffentlicht, egal wie vollständig es ist.',
+  },
+  {
+    q: 'Kann ich es nach einer Ablehnung noch einmal versuchen?',
+    a: 'Ja, aber beheben Sie zuerst den Grund für die Ablehnung. Mehrere gescheiterte Versuche hintereinander verlangsamen das Verfahren.',
+  },
+  {
+    q: 'Geht es nicht schneller, wenn ich ein neues Profil anlege?',
+    a: 'Nein, das ist der schlechteste Zug. Ein zweiter Eintrag für dasselbe Unternehmen wird als Duplikat markiert und ebenfalls gesperrt, und dann haben Sie zwei Einträge mit Problemen. Arbeiten Sie mit dem bestehenden Profil weiter.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="guides/verification"
+  title="Google-Unternehmensprofil: Probleme bei der Verifizierung | Wiserrise"
+  description="Video-Verifizierung abgelehnt, Postkarte nicht angekommen, Profil gesperrt oder in fremder Hand: was Sie in jedem Fall tun, der Reihe nach erklärt."
+  eyebrow="RATGEBER · VERIFIZIERUNG"
+  h1="Wie löst man Probleme bei der Verifizierung des Google-Unternehmensprofils?"
+  crumb="Verifizierungsprobleme"
+  lede="Hakt die Verifizierung, liegt die Lösung darin, im selben Profil die fehlende Voraussetzung zu erfüllen. Wurde das Video abgelehnt, zeigen Sie Standort, Tätigkeit und Verwaltung in einer einzigen Aufnahme; kam die Postkarte nicht an, prüfen Sie die Adresszeile und fordern Sie sie einmal neu an. Egal in welcher Lage Sie sind, legen Sie kein neues Profil an."
+  schemaType="article"
+  datePublished="2026-08-01"
+  dateModified="2026-11-06"
+  breadcrumb={[
+    { label: 'Startseite', href: '/de' },
+    { label: 'Ratgeber', href: p('guides') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Wie erstellt man ein Google-Unternehmensprofil?', href: p('guides/create-profile'), text: 'Die Einrichtung vor der Verifizierung und was am Tag zu tun ist, an dem das Profil erscheint.' },
+    { label: 'Unternehmen nicht bei Google sichtbar', href: p('guides/not-showing'), text: 'Profil verifiziert, aber nicht sichtbar? Schließen Sie die acht Ursachen nacheinander aus.' },
+    { label: 'Bei Google Maps höher ranken', href: p('guides/rank-higher'), text: 'Die Arbeitsreihenfolge, mit der Sie ein neues Profil vor die Wettbewerber bringen.' },
+    { label: 'Google-Unternehmensprofil-Betreuung', href: p('services/gbp'), text: 'Kategorie, Leistungsstruktur, Bewertungen und Beiträge betreuen wir als Ganzes.' },
+  ]}
+  relatedHeading="Verwandte Seiten"
+  ctaLabel="Profil kostenlos prüfen"
+  ctaHref={p('tools/gbp-audit')}
+>
+  <h2 id="yontemler">Welche Verifizierungsmethode bekommen Sie?</h2>
+
+  <p>
+    Die Methode wählt Google: Es berücksichtigt die Art des Unternehmens, die Kategorie und die Vorgeschichte Ihres
+    Kontos. Angeboten werden können Video, Postkarte, Telefon, E-Mail oder ein Live-Videoanruf.
+  </p>
+
+  <p>
+    In sensiblen Bereichen wie Gesundheit, Recht und Finanzen bietet Google strengere Methoden an und prüft von Hand. Das
+    ist normal, das Verfahren dauert nur länger.
+  </p>
+
+  <h2 id="video">Warum wird eine Video-Verifizierung abgelehnt?</h2>
+
+  <p>
+    Ein Video wird abgelehnt, wenn einer der Nachweise fehlt oder die Aufnahme gegen die Regeln verstößt. An keiner
+    Methode scheitern so viele wie an dieser. Es muss eine ununterbrochene Aufnahme sein, die diese drei Nachweise der
+    Reihe nach zeigt:
+  </p>
+
+  <ol>
+    <li>
+      <strong>Standort.</strong> Beginnen Sie draußen: Straße, Gebäude, Hausnummer und Schild. Bei Unternehmen ohne
+      Schild ist das die schwächste Stelle.
+    </li>
+    <li>
+      <strong>Tätigkeit.</strong> Gehen Sie hinein und zeigen Sie, dass Sie diese Arbeit wirklich ausführen: Geräte,
+      Arbeitsbereich, Lager, Team.
+    </li>
+    <li>
+      <strong>Verwaltung.</strong> Zeigen Sie, dass das Unternehmen Ihnen gehört: Zugang zur Kasse, Steuerbescheinigung,
+      Rechnung, Schlüssel oder Geschäftsunterlagen.
+    </li>
+  </ol>
+
+  <p>Gründe für die Ablehnung eines Videos, beginnend mit dem häufigsten:</p>
+
+  <ul class="checklist">
+    <li>Schild oder Hausnummer sind gar nicht zu sehen</li>
+    <li>Die Adresse passt nicht zum Pin auf der Karte, weil Sie vergessen haben, den Pin von Hand an die richtige Stelle zu ziehen</li>
+    <li>Die Aufnahme ist unterbrochen oder wurde in mehreren Teilen hochgeladen</li>
+    <li>Der Nachweis der Verwaltung fehlt</li>
+    <li>An einer Privatadresse gedreht und so getan, als würden dort Kunden empfangen</li>
+  </ul>
+
+  <div class="callout">
+    <p>
+      <strong>Proben Sie vor der Aufnahme.</strong> Jeder gescheiterte Versuch verlängert das Verfahren. Notieren Sie, was
+      Sie in welcher Reihenfolge zeigen, proben Sie einmal und starten Sie erst dann die echte Aufnahme.
+    </p>
+  </div>
+
+  <h2 id="kart">Was tun Sie, wenn die Postkarte nicht ankommt?</h2>
+
+  <p>
+    Prüfen Sie zuerst Ihre Adresszeile, dann fordern Sie nur ein einziges Mal eine neue Karte an. In der Türkei kommt die
+    Karte innerhalb von 1-3 Wochen an.
+  </p>
+
+  <p>
+    Angenommen, Sie haben in Karşıyaka ein Buchhaltungsbüro im dritten Stock eines Wohnhauses. Fehlen in der Adresse
+    Wohnungsnummer und Stockwerk, hat das Gebäude keinen Briefkasten oder hat der Hausmeister oder ein Nachbar die Karte
+    angenommen, erreicht sie Sie womöglich nie.
+  </p>
+
+  <p>
+    Sie können im Dashboard eine neue Karte anfordern, aber <strong>fordern Sie keine zweite an, solange die erste
+    unterwegs ist</strong>. Die neue Anfrage macht den Code der ersten Karte ungültig, und es dauert länger. Fordern Sie
+    einmal an und warten Sie die Frist vollständig ab.
+  </p>
+
+  <p>
+    Kommt auch die zweite Karte nicht an, bitten Sie den Google-Support um eine andere Methode. Prüfen Sie auch das Format
+    Ihrer Adresse noch einmal: Passt die türkische Adressstruktur aus Viertel, Straße, Wohnanlage und Block nicht in das
+    Formular von Google, kann die Karte nicht zugestellt werden.
+  </p>
+
+  <h2 id="askiya">Was tun Sie, wenn Ihr Profil gesperrt wurde?</h2>
+
+  <p>
+    Finden und beheben Sie zuerst die Ursache, dann stellen Sie einen Antrag auf erneute Prüfung. Ein gesperrtes Profil
+    verschwindet komplett aus der Suche, im Dashboard steht „Gesperrt“. Die meisten Inhaber merken es spät, weil sie
+    keine Benachrichtigung sehen.
+  </p>
+
+  <ol>
+    <li>
+      <strong>Ursache finden und beheben.</strong> Die häufigsten Ursachen sind Keywords im Firmennamen, eine virtuelle
+      Büroadresse, Name, Adresse und Kategorie, die kurz hintereinander geändert wurden, und mehrere Profile an derselben
+      Adresse. Ein Einspruch ohne Korrektur verlängert nur das Verfahren.
+    </li>
+    <li>
+      <strong>Antrag auf erneute Prüfung stellen.</strong> Schreiben Sie klar, was Sie korrigiert haben, und fügen Sie
+      Ihre Belege bei: Steuerbescheinigung, Mietvertrag, Foto des Schildes.
+    </li>
+    <li>
+      <strong>Warten.</strong> Die Prüfung dauert Tage bis Wochen. Ändern Sie in dieser Zeit nichts weiter am Profil.
+    </li>
+  </ol>
+
+  <p>
+    <strong>Legen Sie kein neues Profil an.</strong> Das ist der erste Gedanke, wenn man feststeckt, und er macht die Lage
+    jedes Mal schlimmer. Ein zweiter Eintrag für dasselbe Unternehmen gilt als Duplikat und wird ebenfalls gesperrt.
+  </p>
+
+  <h2 id="sahiplik">Wie holen Sie ein Profil zurück, das jemand anderes verwaltet?</h2>
+
+  <p>
+    Mit einer Anfrage auf Inhaberschaft. Suchen Sie das Profil bei Google und klicken Sie auf den Link „Inhaber dieses
+    Unternehmens?“. Angelegt hat das Profil vielleicht eine Agentur, ein früherer Mitarbeiter oder die Person, von der Sie
+    das Unternehmen übernommen haben.
+  </p>
+
+  <p>
+    Nach Ihrer Anfrage bekommt der aktuelle Inhaber eine Benachrichtigung und eine Frist für die Antwort. Antwortet er
+    nicht, steht Ihnen der Weg offen, das Profil zu übernehmen. Antwortet er, beginnt ein Einspruchsverfahren, und Sie
+    müssen womöglich Belege vorlegen.
+  </p>
+
+  <p>
+    Das kann Wochen dauern. Haben Sie eine Steuerbescheinigung oder einen Handelsregisterauszug, fügen Sie ihn gleich zu
+    Beginn bei, das beschleunigt die Sache. Versuchen Sie nicht, das Problem mit einem neuen Profil zu umgehen, auch hier
+    bringt das nichts.
+  </p>
+
+  <h2 id="beklerken">Was sollten Sie beim Warten lassen?</h2>
+
+  <p>
+    Fassen Sie das Profil nicht an, solange Verifizierung oder Prüfung laufen. Diese vier Schritte verlängern Ihr
+    Verfahren in jedem Fall:
+  </p>
+
+  <ul>
+    <li>
+      <strong>Name, Adresse oder Kategorie ändern.</strong> Eine Änderung während der Prüfung setzt das Verfahren zurück.
+    </li>
+    <li>
+      <strong>Ein neues Profil anlegen.</strong> Es gilt als Duplikat, und Sie haben zwei Einträge mit Problemen.
+    </li>
+    <li>
+      <strong>Mit dem Sammeln von Bewertungen beginnen.</strong> Bewertungen für ein Profil, das nicht online ist, sind
+      unsichtbar und können als plötzlicher Stapel im Filter hängen bleiben.
+    </li>
+    <li>
+      <strong>Für eine „garantierte Verifizierung“ bezahlen.</strong> Solche Angebote arbeiten mit gefälschten Dokumenten
+      oder falschen Adressen. Fliegt das auf, kann das Profil dauerhaft geschlossen werden.
+    </li>
+  </ul>
+
+  <p>
+    Was nach der Verifizierung zu tun ist, haben wir im <a href={`${p('guides/create-profile')}#ilk-gun`}>Abschnitt zum
+    ersten Tag im Ratgeber zum Erstellen</a> aufgelistet.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Verifizierung geschafft, <span class="highlight">was</span> kommt jetzt?</h2>
+    <p>
+      Der kostenlose Profil-Check zeigt in 10 Fragen die Lücken in Ihrem Profil. Was Sie bei jedem schwachen Punkt tun,
+      erscheint sofort zusammen mit dem Ergebnis.
+    </p>
+  </Fragment>
+</ContentLayout>

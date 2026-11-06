@@ -1,0 +1,230 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'ADDRESS', title: 'Clinic and home visits', text: 'If you have a clinic, the address stays visible and home visits are added as a service area. The wrong setup costs you visibility on the map.' },
+  { label: 'PROXIMITY', title: 'Neighborhood scale', text: 'Patients will come back again and again during treatment, so they look for somewhere close. We measure where you rank from different points around your neighborhood.' },
+  { label: 'COMPLAINT', title: 'The patient’s language', text: 'Patients type “stiff neck” or “can’t lift my shoulder”. We build the pages on your website around these complaints.' },
+  { label: 'TITLE', title: 'The right title', text: 'In Turkey, “physical medicine specialist” is a doctor’s title. We write your title correctly and avoid wording that looks like a diagnosis or promises a certain recovery.' },
+];
+
+const toc = [
+  { id: 'adres', label: 'Clinic or home visits' },
+  { id: 'yakinlik', label: 'Neighborhood proximity and repeat sessions' },
+  { id: 'sikayet', label: 'Searches by complaint' },
+  { id: 'kategori', label: 'Category and title' },
+  { id: 'sayfa', label: 'Pages your website needs' },
+  { id: 'yorum', label: 'When to ask for reviews' },
+  { id: 'sinir', label: 'What we don’t write' },
+];
+
+const faq = [
+  {
+    q: 'I work both in a clinic and at patients’ homes. How should I set up the profile?',
+    a: 'Set it up with the address, and add home visits separately as a service area. Hiding the address when patients come to you costs visibility in “near me” searches. On the website, open separate pages for the clinic and for home visits.',
+  },
+  {
+    q: 'Can I use the word “treatment” on my website?',
+    a: 'You can when describing the method you apply. A physiotherapist’s scope is set by Turkey’s professional regulations, and diagnosing or recommending medication falls outside it. We write copy that doesn’t look like a diagnosis or promise a certain recovery, and we have you approve it before it goes live.',
+  },
+  {
+    q: 'Does an online booking system affect rankings?',
+    a: 'There’s no information that it affects rankings directly. The benefit is on the booking side: a patient who can’t reach you by phone books through the link on the profile. For a physiotherapist who can’t pick up the phone during working hours, that’s a real advantage.',
+  },
+  {
+    q: 'I’m in a small city with few competitors. Do I need SEO?',
+    a: 'Yes, though the job is smaller. Where competitors are few, the profile setup and a handful of good pages come first, and a long content program may not be needed. We tell you this in the free analysis, based on your area’s data.',
+  },
+  {
+    q: 'When will I see results?',
+    a: 'For most businesses we see the first movement on the map within 4-8 weeks, and complaint pages take 3-6 months to find their place in search. We can’t give an exact date. You see the work we do every week in the report and in the client portal.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="industries/physio"
+  title="SEO for Physiotherapists and Google Maps | Wiserrise"
+  description="Local SEO for physiotherapy clinics and home physiotherapy: address and service area setup, complaint pages, measurement across your neighborhood. No contract."
+  eyebrow="INDUSTRY · PHYSIOTHERAPISTS"
+  h1="SEO for physiotherapists: show up for patients searching in your neighborhood."
+  crumb="Physiotherapists"
+  lede="SEO for physiotherapists means appearing in front of patients who live near you and type in their complaint. A patient types “slipped disc pain” or “physiotherapist near me” and looks for a place they can keep coming back to during treatment. We fix your profile’s address setup first, then the complaint language on your website."
+  serviceName="Local SEO for Physiotherapists"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Industries', href: p('industries') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'We fix your profile and your website together for your map ranking.' },
+    { label: 'Content Production', href: p('services/content'), text: 'We write complaint and service pages in the patient’s own words.' },
+    { label: 'SEO for Dentists', href: p('industries/dental'), text: 'How we work on emergency toothache searches and treatment pages.' },
+    { label: 'SEO for Aesthetic Clinics', href: p('industries/aesthetics'), text: 'How we work in a field where decisions take long and price comes up all the time.' },
+  ]}
+  relatedHeading="Related pages"
+  ctaLabel="Get a free analysis"
+  ctaHref="/#contact"
+>
+  <h2 id="adres">Should you show your address?</h2>
+
+  <p>
+    Yes, if you have a clinic patients come to. Google recognizes two kinds of profile: businesses with an address that
+    patients visit, and those that define only a service area without showing an address. A physiotherapist who has a
+    clinic but hides the address loses part of their visibility in “physiotherapist near me” searches.
+  </p>
+
+  <p>
+    This is the most important decision in the profile setup, and it’s a hassle to fix later. If there’s a clinic, the
+    address stays visible and the home visits you offer are added separately as a service area. The website gets a separate
+    page for each.
+  </p>
+
+  <p>
+    If you only do home visits, a profile without an address is the right choice. Even with the address hidden, Google
+    takes the profile’s registered address into account for ranking; we explain the details on the
+    <a href={p('services/gbp')}>profile management page</a>. You can check your profile’s current setup with our
+    <a href={p('tools/gbp-audit')}>free profile audit tool</a>.
+  </p>
+
+  <h2 id="yakinlik">Why do patients choose a physiotherapist close by?</h2>
+
+  <p>
+    Because they won’t come just once. For most patients physiotherapy doesn’t end in a single session, so they look for
+    somewhere they can travel to and from for weeks. With an aching back, nobody wants to cross the city.
+  </p>
+
+  <p>
+    That’s why competition in physiotherapy plays out at neighborhood scale. Someone typing “physiotherapist Ataşehir” or
+    just “physiotherapist” sees you in the same list as a clinic a few streets away, and where the searcher stands changes
+    the order. A single measurement taken at your clinic door won’t show you this picture.
+  </p>
+
+  <p>
+    We take <a href={p('services/rank-tracking')}>measurement across your area</a>: where you rank from different points
+    around your neighborhood. Work done without seeing the streets where you fall behind is done blind. You see the work
+    we do every week in the report.
+  </p>
+
+  <h2 id="sikayet">What do patients type when they search?</h2>
+
+  <p>
+    Their complaint. Most physiotherapy websites describe the methods they use, such as manual therapy or dry needling.
+    Patients, meanwhile, type things like:
+  </p>
+
+  <ul>
+    <li>“slipped disc pain won’t go away”</li>
+    <li>“stiff neck what to do”</li>
+    <li>“can’t lift my shoulder”</li>
+    <li>“knee exercises after surgery”</li>
+    <li>“heel spur treatment”</li>
+  </ul>
+
+  <p>
+    The gap between these two languages is the biggest content gap in the industry. A page that explains why the complaint
+    happens and how physiotherapy deals with it answers the patient in their own words.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>A complaint page works nationwide, a service page works in your neighborhood.</strong> In a search for
+      “slipped disc exercises” proximity has little effect, and you can rank across Turkey. In a search for
+      “physiotherapist Kadıköy” proximity decides, so we meet the two with separate pages.
+    </p>
+  </div>
+
+  <h2 id="kategori">Which category and title are right?</h2>
+
+  <p>
+    The primary category should be “Physiotherapist” or, depending on your type of practice, “Physical therapy clinic”.
+    The list also has options that look similar, like “Massage therapist” and “Rehabilitation center”, and each one
+    corresponds to a different cluster of searches. With the massage therapist category, it gets harder to appear in front
+    of patients looking for physiotherapy.
+  </p>
+
+  <p>
+    The title needs the same care. In Turkey, “physical medicine specialist” (fizik tedavi uzmanı) is a doctor’s title, so a
+    physiotherapist using it is both wrong and a problem under the health advertising rules. We write your title correctly
+    on the profile and the website, which also makes it easier for Google to place you in the right category.
+  </p>
+
+  <h2 id="sayfa">Which pages should your website have?</h2>
+
+  <p>This is the basic structure we build:</p>
+
+  <ul class="checklist">
+    <li>Complaint pages: back, neck, shoulder, knee and sports injuries</li>
+    <li>Service pages: physiotherapy at the clinic, physiotherapy at home, rehabilitation after surgery</li>
+    <li>Physiotherapist credentials: education and certificates</li>
+    <li>A page explaining what happens at the first appointment</li>
+    <li>Structured data (schema) of the Physiotherapy type</li>
+  </ul>
+
+  <p>
+    The first appointment page looks small, yet it’s one of the most useful pages. The biggest hesitation of a patient
+    coming to physiotherapy for the first time is the unknown: what to wear, or what will happen in the first session. A
+    clinic that answers these questions up front reduces the hesitation on the phone.
+  </p>
+
+  <p>
+    To write and publish these pages we need to run the website, and if we can’t manage the site completely, we don’t take
+    on the work. We explain how we write on the <a href={p('services/content')}>content production</a> page, and how we fit
+    each page to a single search on the
+    <a href={p('services/on-page-seo')} style="white-space: nowrap;">on-page SEO</a> page.
+  </p>
+
+  <h2 id="yorum">When should you ask patients for a review?</h2>
+
+  <p>
+    Towards the end of treatment, when the patient feels the progress themselves. Repeat sessions give you this
+    opportunity: you see the patient for weeks and know when they’re happy. A review requested at the first session comes
+    too early and feels forced.
+  </p>
+
+  <p>
+    Don’t offer a discount or a free session in return for a review, because it breaks Google’s rules. When replying,
+    don’t mention the patient’s complaint or treatment, because the reply is public. We explain the review request flow in
+    the <a href={p('guides/more-reviews')}>guide to getting more Google reviews</a>.
+  </p>
+
+  <h2 id="sinir">What don’t we write?</h2>
+
+  <p>
+    A physiotherapist’s scope is set by Turkey’s professional regulations, and diagnosing and recommending medication fall
+    outside it. The health advertising rules come on top of this. So we leave the following out of the content:
+  </p>
+
+  <ul>
+    <li>Wording that looks like a diagnosis</li>
+    <li>Certain recovery, “guaranteed results” or treatment guarantees</li>
+    <li>Before/after images and incentives like discounted session packages</li>
+    <li>Using patient reviews and stories like advertising</li>
+    <li>Superiority claims like “the best physiotherapist”</li>
+  </ul>
+
+  <p>
+    Describing methods is fine: how manual therapy is applied, how a session goes. A page that gives a clear answer to the
+    patient’s question is easy to write within these limits.
+  </p>
+
+  <p>
+    We explain how the same rules work for <a href={p('industries/dental')}>dental clinics</a> and
+    <a href={p('industries/aesthetics')}>aesthetic clinics</a> on separate pages.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Where do you <span class="highlight">rank</span> in your neighborhood?</h2>
+    <p>
+      In the free analysis we measure across your area and list the gaps in your profile setup. The result lands in your
+      inbox within <span style="white-space: nowrap;">24 hours</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

@@ -5,30 +5,42 @@ import { routePath } from '../../../i18n/routes';
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'KATEGORİ', title: 'Doğru işletme türü', text: 'Medikal estetik merkezi ile güzellik salonu Google için ayrı işletmeler. Kategori yanlışsa işlemi arayan kişi sizi zor bulur.' },
+  { label: 'KARAR', title: 'Uzun araştırma', text: 'Hasta karar vermeden önce haftalarca okur. Sorununu tanımladığı ilk aramadan klinik seçtiği son aramaya kadar sayfa yazarız.' },
+  { label: 'FİYAT', title: 'Fiyat soruları', text: 'Fiyatla tanıtım kısıtlı, ama soruyu cevapsız bırakan sayfa hastayı rakibe yollar. Fiyatı neyin belirlediğini anlatırız.' },
+  { label: 'KURAL', title: 'Tanıtım sınırları', text: 'Önce/sonra görseli, kampanya ve “en doğal sonuç” gibi iddialar yazmayız. Her metni yayından önce size onaylatırız.' },
+];
+
 const toc = [
-  { id: 'kategori', label: 'Kategori: tek kararla ikiye katlanan görünürlük' },
-  { id: 'mevzuat', label: 'Mevzuat: en sıkı alan' },
-  { id: 'icerik', label: 'Görsel kullanamadan içerik kurmak' },
-  { id: 'sorgu', label: 'Arama davranışı ve karar süresi' },
-  { id: 'rekabet', label: 'Rekabet ve reklam maliyeti' },
+  { id: 'kategori', label: 'Medikal estetik mi, salon mu' },
+  { id: 'karar', label: 'Uzun karar süreci' },
+  { id: 'fiyat', label: 'Fiyat soruları' },
+  { id: 'kurallar', label: 'Tanıtım kuralları' },
+  { id: 'icerik', label: 'Görselsiz ikna' },
+  { id: 'reklam', label: 'Reklam ve organik' },
 ];
 
 const faq = [
   {
-    q: 'Medikal estetik miyim, güzellik salonu mu?',
-    a: 'Bu ayrımı siz değil, verdiğiniz hizmetin niteliği belirliyor. Tıbbi işlem uygulayan, hekim sorumluluğunda çalışan bir merkez ile cilt bakımı yapan bir salon Google için farklı işletme türleri ve farklı sorgu kümelerine karşılık geliyor. Yanlış kategori, doğru sorguda hiç görünmemek demek.',
+    q: 'Medikal estetik miyim, güzellik salonu mu, nasıl karar veririm?',
+    a: 'Verdiğiniz hizmete bakın. Hekim sorumluluğunda tıbbi işlem yapıyorsanız tıbbi kategoriler, yalnız bakım hizmeti veriyorsanız salon kategorileri doğru. Yanlış kategoriyle işlemi arayan kişinin karşısına çıkmak zorlaşır.',
   },
   {
-    q: 'Öncesi/sonrası paylaşamıyorsam Instagram\'daki rakiplerimle nasıl yarışırım?',
-    a: 'Yarışma alanınız Instagram değil, arama sonuçları. Arama yapan kişi keşif değil araştırma modunda: işlemin ne olduğunu, risklerini, iyileşme süresini öğrenmek istiyor. Bu içeriği üreten klinik, görsel paylaşan klinikten arama tarafında daha görünür oluyor.',
+    q: 'Önce/sonra paylaşamıyorsam Instagram’daki rakiplerimle nasıl yarışırım?',
+    a: 'Aramada yarışarak. Arama yapan kişi işlemi, riskini ve iyileşme süresini öğrenmek istiyor; bu soruları cevaplayan sayfa tam o aramaya yazılmış olur. Görselle yarışan rakibiniz bu soruları cevapsız bırakıyorsa arama tarafı size kalır.',
   },
   {
-    q: 'Yurt dışından hasta almak istiyorum, aynı site yeterli mi?',
-    a: 'Hayır. Sağlık turizmi ayrı bir yetki belgesi, ayrı dil, ayrı arama davranışı ve ayrı içerik yapısı gerektiriyor. Yerel SEO programının içine sıkıştırılamaz; birlikte planlanacaksa baştan ayrı kurgulanmalı.',
+    q: 'Hasta yorumlarını sitede kullanabilir miyiz?',
+    a: 'Övgü malzemesi olarak kullanmayın. Hasta deneyimini tanıtım aracına çeviren içerik sağlık tanıtım kuralları açısından riskli. Yorumlar Google profilinizde kalsın, yanıtlarda da hastanın hangi işlemi yaptırdığını anmayın.',
   },
   {
-    q: 'Google Ads yerine SEO yeterli mi?',
-    a: 'Estetikte tıklama maliyetleri Türkiye ortalamasının çok üzerinde, bu da organik görünürlüğü değerli kılıyor. Ancak SEO 3–6 aylık bir yatırım; reklamı hemen kesmek yerine organik oturdukça ağırlığı kaydırmak daha sağlıklı.',
+    q: 'Yurt dışından hasta almak istiyorum, aynı site yeter mi?',
+    a: 'Yetmez. Sağlık turizmi Sağlık Bakanlığı’nın yetki belgesine tabi, arama da başka dilde ve ülke çapında yapılır. Türkçe, İngilizce ve Almanca çalışıyoruz, ama bu işi yerel programdan ayrı ve baştan planlarız.',
+  },
+  {
+    q: 'Ne zaman sonuç görürüz?',
+    a: 'Haritada ilk hareketi çoğu işletmede 4 ile 8 hafta arasında görüyoruz, işlem sayfalarının aramada yer bulması 3-6 ay sürer. Kesin tarih veremeyiz. Yaptığımız işleri her hafta raporda ve müşteri portalında görürsünüz.',
   },
 ];
 ---
@@ -37,160 +49,199 @@ const faq = [
   locale={locale}
   route="industries/aesthetics"
   title="Estetik ve Medikal Estetik Klinikleri İçin SEO | Wiserrise"
-  description="Medikal estetik merkezleri için mevzuata uygun yerel SEO. Kategori kurulumu, görsel kullanmadan içerik stratejisi, yüksek rekabetli sorgularda konumlanma."
-  eyebrow="Sektör"
-  h1="Estetik Klinikleri İçin SEO"
-  lede="Estetik, mevzuatın en sıkı, rekabetin en pahalı olduğu dikey. Öncesi/sonrası görselinin kullanılamadığı bir alanda görünürlük, tamamen doğru kategori ve doğru içerik üzerine kuruluyor."
+  description="Medikal estetik klinikleri için tanıtım kurallarına uygun SEO: doğru kategori, fiyat ve risk sorularını cevaplayan sayfalar, uzun karar sürecinde görünürlük."
+  eyebrow="SEKTÖR · ESTETİK KLİNİKLERİ"
+  h1="Estetik klinikleri için SEO: araştıran hastaya cevap verin."
+  crumb="Estetik Klinikleri"
+  lede="Estetik klinikleri için SEO, hastanın haftalar süren araştırmasının her adımında karşısına çıkmak demek. Önce/sonra fotoğrafına yaslanamadığınız bu alanda görünürlüğü doğru kategori ve hastanın sorularını cevaplayan sayfalar kurar. Biz ikisini sağlık tanıtım kurallarının içinde kalarak yapıyoruz."
   serviceName="Estetik Klinikleri İçin Yerel SEO"
   breadcrumb={[
     { label: 'Ana Sayfa', href: '/tr' },
     { label: 'Sektörler', href: p('industries') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp') },
-    { label: 'İçerik Üretimi', href: p('services/content') },
-    { label: 'On-Page SEO', href: p('services/on-page-seo') },
+    { label: 'İçerik Üretimi', href: p('services/content'), text: 'İşlem sayfalarını hastanın gerçekten sorduğu sorulara göre yazarız.' },
+    { label: 'GEO', href: p('services/geo'), text: 'Süper zeka yanıtlarında kliniğinizin anılması için çalışırız.' },
+    { label: 'Diş Hekimleri İçin SEO', href: p('industries/dental'), text: 'Acil diş ağrısı aramalarında ve tedavi sayfalarında nasıl çalıştığımız.' },
+    { label: 'Fizyoterapistler İçin SEO', href: p('industries/physio'), text: 'Semt yakınlığının ve tekrar eden seansların belirlediği aramalar.' },
   ]}
-  ctaLabel="Kliniğimi Ücretsiz Analiz Et →"
+  relatedHeading="İlgili sayfalar"
+  ctaLabel="Ücretsiz analiz al"
   ctaHref="/tr#contact"
 >
-  <h2 id="kategori">Kategori: tek kararla ikiye katlanan görünürlük</h2>
+  <h2 id="kategori">Medikal estetik misiniz, güzellik salonu mu?</h2>
 
   <p>
-    Bu dikeyde en yüksek etkili tek müdahale kategori seçimi ve en sık yapılan hata da
-    burada. Google, tıbbi işlem uygulayan merkezleri ile bakım hizmeti veren salonları
-    farklı işletme türleri olarak görüyor ve bunları farklı sorgu kümelerinde gösteriyor.
+    Bunu verdiğiniz hizmet belirler. Hekim sorumluluğunda botoks ya da dolgu gibi tıbbi işlem yapan bir merkez ile cilt
+    bakımı yapan bir salon, Google için iki ayrı işletme türüdür. Kategori yanlışsa işlemi arayan kişinin karşısına
+    çıkmakta zorlanırsınız.
   </p>
 
   <p>
-    Botoks, dolgu, lazer epilasyon gibi tıbbi işlemler uygulayan bir merkez kendini
-    "Güzellik salonu" kategorisine yerleştirdiğinde, o işlemleri arayan kullanıcının
-    sonuçlarında görünmüyor. Tersi de geçerli: yalnızca cilt bakımı yapan bir salonun
-    kendini tıbbi kategoriye yerleştirmesi hem doğrulama sorunları hem de alakasız trafik
-    üretiyor.
+    Bu alanda gördüğümüz en pahalı hata, tıbbi işlem yapan merkezin kendini “Güzellik salonu” kategorisine koyması. Tersi
+    de olur: yalnız cilt bakımı yapan salon tıbbi bir kategori seçer, hem doğrulamada sorun yaşar hem alakasız aramalardan
+    trafik toplar.
   </p>
 
   <p>
-    Kategori kararını verirken ilk üçteki rakiplerin kategorilerini çıkarıyor, hangi
-    kategorinin hangi sorguda gösterildiğini karşılaştırıyoruz. Yöntemi
-    <a href={p('services/gbp')}>profil yönetimi sayfasında</a> anlattık.
+    Kategoriyi seçmeden önce bölgenizde öne çıkan kliniklerin kategorilerini çıkarır, hangisinin hangi aramada
+    gösterildiğini karşılaştırırız. Yöntemi <a href={p('services/gbp')}>profil yönetimi sayfasında</a> anlattık. Profil
+    adınız da tabelanızdaki adla aynı kalır, ada “botoks” ya da “dolgu” eklemek Google’ın kurallarına aykırı.
   </p>
 
-  <h2 id="mevzuat">Mevzuat: en sıkı alan</h2>
+  <h2 id="karar">Hasta karar verene kadar ne arıyor?</h2>
 
   <p>
-    Sağlık hizmeti sunucularının tanıtımına ilişkin düzenlemeler estetik alanında özellikle
-    sıkı uygulanıyor. Kullanılamayacak olanlar:
-  </p>
-
-  <ul>
-    <li>Öncesi/sonrası görselleriyle yapılan tanıtım</li>
-    <li>Sonuç vaadi ve memnuniyet garantisi ifadeleri</li>
-    <li>Kampanya, paket fiyat, indirim duyurusu</li>
-    <li>Hasta deneyiminin övgü aracı olarak kullanılması</li>
-    <li>Karşılaştırmalı üstünlük ve "en iyi" iddiaları</li>
-  </ul>
-
-  <p>
-    Bu, pek çok kliniğin bugün fiilen yaptığı şeyin dışarıda kalması anlamına geliyor.
-    Ama tam da bu yüzden arama tarafı boş: rakipler görsel odaklı sosyal medyada yarışırken,
-    bilgilendirici içerikle kurulan arama görünürlüğünde ciddi bir boşluk kalıyor.
-  </p>
-
-  <div class="callout">
-    <p>
-      <strong>Bu sayfa hukuki görüş değildir.</strong> Mevzuatın güncel yorumu için bağlı
-      olduğunuz il sağlık müdürlüğü esastır. Ürettiğimiz her metni yayına almadan önce
-      onayınıza sunuyoruz ve tereddütlü ifadeleri kullanmıyoruz.
-    </p>
-  </div>
-
-  <h2 id="icerik">Görsel kullanamadan içerik kurmak</h2>
-
-  <p>
-    "Sonucu gösteremiyorsam nasıl ikna ederim" sorusunun cevabı, arama yapan kişinin
-    aslında ne aradığında gizli. Estetik işlem araştıran kullanıcı, karar aşamasında
-    şu soruları soruyor:
-  </p>
-
-  <ul class="checklist">
-    <li>İşlem tam olarak nasıl uygulanıyor, ne kadar sürüyor</li>
-    <li>Acıyor mu, anestezi gerekiyor mu</li>
-    <li>Ne kadar sürede işe/sosyal hayata dönebilirim</li>
-    <li>Etkisi ne kadar kalıcı, tekrarlanması gerekiyor mu</li>
-    <li>Riskleri ve yan etkileri neler, kimlere uygun değil</li>
-    <li>Maliyeti neye göre değişiyor</li>
-  </ul>
-
-  <p>
-    Bu soruların hiçbiri görsel gerektirmiyor ve hepsi mevzuata uygun biçimde
-    cevaplanabiliyor. Dahası, riskleri ve uygun olmayan durumları dürüstçe yazan sayfalar
-    hem Google'ın uzmanlık değerlendirmesinde iyi duruyor hem de gelen hastanın kalitesini
-    yükseltiyor — beklentisi yönetilmiş hasta, randevuya daha kararlı geliyor.
-  </p>
-
-  <h2 id="sorgu">Arama davranışı ve karar süresi</h2>
-
-  <p>
-    Estetikte karar süresi uzun. Kullanıcı genelde haftalar boyunca araştırıyor ve bu
-    süreçte üç aşamadan geçiyor:
+    Haftalarca soru arıyor. Estetikte karar uzun sürer ve hastanın yazdığı şey bu süre boyunca değişir. Kliniklerin çoğu
+    yalnız son adımda, klinik seçilirken yarışır.
   </p>
 
   <div class="table-scroll">
     <table>
       <thead>
         <tr>
-          <th>Aşama</th>
-          <th>Örnek sorgu</th>
-          <th>Karşılığı olan sayfa</th>
+          <th>Adım</th>
+          <th>Hastanın yazdığı</th>
+          <th>Karşılayan sayfa</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Sorun tanımı</td>
-          <td>"göz altı morluğu neden olur"</td>
-          <td>Bilgilendirici rehber içerik</td>
+          <td><strong>Sorunu tanıma</strong></td>
+          <td>“göz altı morluğu neden olur”</td>
+          <td>Bilgilendirici rehber</td>
         </tr>
         <tr>
-          <td>Çözüm araştırması</td>
-          <td>"dolgu mu lazer mi", "botoks kaç ay sürer"</td>
-          <td>İşlem sayfası ve karşılaştırma içeriği</td>
+          <td><strong>Çözüm araştırma</strong></td>
+          <td>“dolgu mu lazer mi”, “botoks kaç ay sürer”</td>
+          <td>İşlem sayfası ve karşılaştırma yazısı</td>
         </tr>
         <tr>
-          <td>Sağlayıcı seçimi</td>
-          <td>"antalya medikal estetik", "yakınımdaki botoks"</td>
-          <td>Profil + lokasyon sayfası</td>
+          <td><strong>Klinik seçme</strong></td>
+          <td>“antalya medikal estetik”, “yakınımdaki botoks”</td>
+          <td>Google İşletme Profili ve konum sayfası</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <p>
-    Kliniklerin çoğu yalnızca üçüncü aşamaya oynuyor — en rekabetçi ve en pahalı aşama.
-    İlk iki aşamada görünür olan klinik, kullanıcıyı karar sürecinin başında yakalıyor ve
-    üçüncü aşamaya geldiğinde marka olarak zaten tanınıyor.
-  </p>
-
-  <h2 id="rekabet">Rekabet ve reklam maliyeti</h2>
-
-  <p>
-    Estetik, Türkiye'de tıklama maliyetlerinin en yüksek olduğu alanlardan biri. Bu, organik
-    görünürlüğün değerini doğrudan artırıyor: reklamla alınan her ziyaretçinin maliyeti
-    yüksekken, organik sıralamadan gelen aynı ziyaretçi marjinal maliyetsiz.
+    Son adım en kalabalık ve reklamda en pahalı adım. İlk iki adımda görünen klinik hastayı araştırmanın başında yakalar,
+    hasta klinik seçmeye geldiğinde adınızı zaten okumuş olur.
   </p>
 
   <p>
-    Buna karşılık organik çalışma 3–6 aylık bir yatırım. Gerçekçi plan, reklamı bir anda
-    kesmek değil; organik sıralamalar oturdukça bütçeyi kademeli kaydırmak ve reklamı
-    yalnızca organikte zayıf kaldığınız sorgularda tutmak. Hangi sorgularda zayıf
-    olduğunuzu <a href={p('services/rank-tracking')}>grid ölçümü</a> ve Search Console
-    verisi birlikte gösteriyor.
+    Bu soruların bir kısmı artık süper zeka yanıtlarında cevaplanıyor. Orada anılmak için yaptığımız işi
+    <a href={p('services/geo')}>GEO sayfasında</a> anlattık.
+  </p>
+
+  <h2 id="fiyat">Fiyat soran hastaya ne cevap verilir?</h2>
+
+  <p>
+    Fiyatı belirleyen etkenleri anlatan bir cevap. Sağlıkta fiyat ve indirim üzerinden tanıtım kısıtlı, bu yüzden sitede
+    fiyat listesi yayınlamıyoruz. Hasta ise “botoks fiyatları” diye arıyor.
+  </p>
+
+  <p>
+    Her işlem sayfasına fiyatın neye göre değiştiğini yazarız, örneğin uygulanan bölge sayısı ya da kaç seans gerektiği.
+    Kesin rakamın muayeneden sonra kliniğinizde netleştiğini açıkça söyleriz. Hasta neyle karşılaşacağını bilerek arar.
+  </p>
+
+  <p>
+    Fiyat sorusuna hiç değinmeyen işlem sayfası yarım kalmış sayfadır. Hasta cevabı bulamadığı sayfadan çıkar ve aynı
+    soruyu bir sonraki kliniğin sitesinde arar.
+  </p>
+
+  <h2 id="kurallar">Estetikte hangi tanıtımlar yasak?</h2>
+
+  <p>
+    Sağlık hizmetlerinin tanıtım kuralları estetikte en sıkı haliyle uygulanır. Sosyal medyada sık gördüğünüz birçok
+    paylaşım bu kurallara takılır. Yazdığımız hiçbir sayfada şunlar olmaz:
+  </p>
+
+  <ul>
+    <li>Önce/sonra fotoğraflarıyla tanıtım</li>
+    <li>Sonuç vaadi, “kesin sonuç” ya da memnuniyet garantisi</li>
+    <li>Kampanya, paket fiyat ve indirim duyurusu</li>
+    <li>Hasta yorumlarını ya da hasta hikayelerini övgü malzemesi yapmak</li>
+    <li>“En iyi”, “en doğal sonuç” gibi üstünlük iddiaları</li>
+  </ul>
+
+  <p>
+    Görsellerde de aynı dikkat gerekir. Hedef görünümü öne çıkaran bir fotoğraf, yazıda vaat olmasa da vaat gibi okunur.
+    Klinik içi ve ekip fotoğrafları bu riski taşımaz.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Bu sayfa hukuki görüş değildir.</strong> Kuralların güncel yorumu için bağlı olduğunuz il sağlık müdürlüğü
+      esastır. Tereddüt ettiğimiz ifadeyi kullanmayız, her metni yayından önce onayınıza sunarız.
+    </p>
+  </div>
+
+  <p>
+    Aynı kuralların <a href={p('industries/dental')}>diş klinikleri</a> ve
+    <a href={p('industries/physio')}>fizyoterapistler</a> için nasıl işlediğini ayrı sayfalarda anlattık.
+  </p>
+
+  <h2 id="icerik">Önce/sonra fotoğrafı olmadan nasıl ikna edersiniz?</h2>
+
+  <p>
+    Hastanın sorularını dürüstçe cevaplayarak. Arama yapan kişi işlemi öğrenmek ve riskini anlamak istiyor. Karar
+    aşamasındaki hasta şunları soruyor:
+  </p>
+
+  <ul class="checklist">
+    <li>İşlem nasıl uygulanıyor, ne kadar sürüyor</li>
+    <li>Acıyor mu, uyuşturma gerekiyor mu</li>
+    <li>Ne zaman işe ve sosyal hayata dönebilirim</li>
+    <li>Etkisi ne kadar kalıyor, tekrar gerekiyor mu</li>
+    <li>Riskleri ve yan etkileri neler, kimlere uygun değil</li>
+    <li>Fiyat neye göre değişiyor</li>
+  </ul>
+
+  <p>
+    Bu soruların hiçbiri görsel gerektirmiyor. Biz risk ve yan etki bölümü olmayan işlem sayfası yazmıyoruz. Beklentisi
+    baştan doğru kurulmuş hasta randevuya daha kararlı gelir.
+  </p>
+
+  <p>
+    Sağlık sayfalarında Google metni kimin yazdığına daha sıkı bakar. Bu yüzden içeriği kontrol eden hekimin adını ve
+    unvanını sayfaya yazmanızı öneririz. Sayfaları <a href={p('services/content')}>içerik üretimi</a> işinde yazar,
+    <a href={p('services/on-page-seo')} style="white-space: nowrap;">on-page SEO</a> ile her birini tek bir aramaya
+    oturturuz.
+  </p>
+
+  <h2 id="reklam">Reklamı kesip SEO’ya mı geçmeli?</h2>
+
+  <p>
+    Hemen kesmeyin. Reklam ilk haftadan trafik getirir, aramada ilk hareket ise 3-6 ay sürer. Organik sıralar oturdukça
+    bütçeyi kademeli kaydırmak daha sağlıklı.
+  </p>
+
+  <p>
+    Reklamda her tıklamaya para ödersiniz. Uzun araştırma yapan hastanın bilgi aramaları bu yüzden organiğe bırakılmalı,
+    reklam karar aramalarında kalmalı.
+  </p>
+
+  <p>
+    Bunu Google Ads’te acı yoldan öğrendik. Niyetsiz bilgi aramalarına haberimiz olmadan yaklaşık 800 TL harcandı,
+    kıyısından döndük. “Botoks nedir” yazan kişiye tıklama başına para ödemeyin.
+  </p>
+
+  <p>
+    Hangi aramalarda organikte zayıf kaldığınızı <a href={p('services/rank-tracking')}>bölgenizden ölçüm</a> ve Search
+    Console birlikte gösterir. Reklamı o aramalarda tutmak mantıklı. Yaptığımız işleri her hafta raporda görürsünüz.
   </p>
 
   <Fragment slot="cta">
     <h2>Doğru <span class="highlight">kategoride</span> misiniz?</h2>
-    <p>Ücretsiz analizde kategori kurulumunuzu, rakip yapısını ve içerik boşluğunuzu çıkarıyoruz.</p>
+    <p>
+      Ücretsiz analizde kategori kurulumunuza ve bölgenizdeki rakip kliniklere bakarız. Sonuç 24 saat içinde
+      <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
   </Fragment>
 </ContentLayout>

@@ -1,0 +1,299 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'FAKTOREN', title: 'Die drei Faktoren von Google', text: 'Google vergibt die Plätze auf der Karte nach Relevanz, Entfernung und Bekanntheit. Die Entfernung können Sie nicht beeinflussen, die ganze Arbeit liegt bei den anderen beiden.' },
+  { label: 'KATEGORIE', title: 'Zuerst die Hauptkategorie', text: 'Das erste Feld, das Google sagt, was Sie tun. Ist es falsch, bringt die Mühe für Bewertungen und Beiträge nichts.' },
+  { label: 'MESSUNG', title: 'Ihr Handy täuscht Sie', text: 'Der Platz, den Sie im Büro sehen, ist Ihr bester Punkt. Das echte Bild entsteht erst, wenn Sie an verschiedenen Punkten in Ihrem Umkreis messen.' },
+  { label: 'DAUER', title: '4 bis 8 Wochen', text: 'Die erste Bewegung auf der Karte sehen wir bei den meisten Unternehmen in diesem Zeitraum. In Innenstädten mit starkem Wettbewerb dauert es länger.' },
+];
+
+const toc = [
+  { id: 'etkenler', label: 'Was bestimmt das Ranking?' },
+  { id: 'olcum', label: 'Wo stehen Sie wirklich?' },
+  { id: 'sira', label: 'In welcher Reihenfolge?' },
+  { id: 'alaka', label: 'Mehr Relevanz' },
+  { id: 'bilinirlik', label: 'Mehr Bekanntheit' },
+  { id: 'yaramayanlar', label: 'Taktiken ohne Wirkung' },
+  { id: 'sure', label: 'Wie lange dauert es?' },
+];
+
+const faq = [
+  {
+    q: 'Kann man einen Platz in Google Maps kaufen?',
+    a: 'Nein. Die Plätze der drei Unternehmen auf der Karte sind nicht käuflich, mit Geld bekommen Sie nur die Anzeigenfläche mit der Kennzeichnung „Gesponsert“. Wer Ihnen eine Ranking-Garantie verkauft, hat dafür keine Vereinbarung mit Google.',
+  },
+  {
+    q: 'Bringen Beiträge mein Ranking nach oben?',
+    a: 'Allein nicht. Beiträge zeigen, dass das Profil lebt, gleichen aber eine falsche Kategorie oder fehlende Bewertungen nicht aus. Wenn die Grundlagen stimmen, sind sie ein Teil des regelmäßigen Rhythmus.',
+  },
+  {
+    q: 'Mein Wettbewerber hat Keywords in seinen Firmennamen geschrieben, was kann ich tun?',
+    a: 'Sie können es Google melden. Öffnen Sie auf der Karte den Eintrag dieses Unternehmens, schlagen Sie eine Änderung vor und tragen Sie den echten Namen ein. Ob die Änderung übernommen wird, entscheidet Google.',
+  },
+  {
+    q: 'Mein Wettbewerber liegt mit gefälschten Bewertungen vorn, was soll ich tun?',
+    a: 'Melden Sie Bewertungen, die gegen die Regeln verstoßen, an Google, aber warten Sie nicht untätig auf das Ergebnis. Eine Meldung führt nicht sicher zum Erfolg und kann Wochen dauern. Die dauerhafte Verteidigung ist, Ihren eigenen Fluss echter Bewertungen auszubauen.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="guides/rank-higher"
+  title="Bei Google Maps höher ranken: So gehen Sie vor | Wiserrise"
+  description="Was das Ranking in Google Maps bestimmt, warum Ihr eigenes Handy Sie täuscht und in welcher Reihenfolge Sie arbeiten sollten, um höher zu ranken."
+  eyebrow="RATGEBER · KARTEN-RANKING"
+  h1="Wie rankt man bei Google Maps höher?"
+  crumb="Höher ranken"
+  lede="Auf der Karte kommen Sie nach oben, indem Sie Google klar sagen, was Sie tun, und bekannter werden als Ihre Wettbewerber. Google sortiert nach Relevanz, Entfernung und Bekanntheit; die Entfernung können Sie nicht ändern, die Arbeit liegt bei den anderen beiden. Messen Sie zuerst in Ihrem Umkreis, dann gehen Sie in dieser Reihenfolge vor: Kategorie, Profil, Bewertungen, Website."
+  schemaType="article"
+  datePublished="2026-08-01"
+  dateModified="2026-11-06"
+  breadcrumb={[
+    { label: 'Startseite', href: '/de' },
+    { label: 'Ratgeber', href: p('guides') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Wie bekommt man mehr Google-Bewertungen?', href: p('guides/more-reviews'), text: 'Wie Sie die Zahl Ihrer Bewertungen erhöhen, ohne gegen Regeln zu verstoßen.' },
+    { label: 'Unternehmen nicht bei Google sichtbar', href: p('guides/not-showing'), text: 'Wenn Sie auf der Karte gar nicht erscheinen, schließen Sie die Ursachen nacheinander aus.' },
+    { label: 'Google-Maps-Ranking-Tracking', href: p('services/rank-tracking'), text: 'Wir messen, auf welchem Platz Sie an verschiedenen Punkten in Ihrem Umkreis stehen.' },
+    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Die Leistung, bei der wir Ihr Google-Unternehmensprofil und Ihre Website gemeinsam in Ordnung bringen.' },
+  ]}
+  relatedHeading="Verwandte Seiten"
+  ctaLabel="Kostenlose Analyse anfordern"
+  ctaHref="/de#contact"
+>
+  <h2 id="etkenler">Was bestimmt das Ranking in Google Maps?</h2>
+
+  <p>
+    Google sagt es selbst: Lokale Ergebnisse werden nach Relevanz, Entfernung und Bekanntheit sortiert. In englischen
+    Quellen heißen sie relevance, distance und prominence. Google gewichtet alle drei zusammen und legt die Gewichtung
+    nicht offen.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Faktor</th>
+          <th>Was er bedeutet</th>
+          <th>Liegt er in Ihrer Hand?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Relevanz</strong></td>
+          <td>Ob Ihr Unternehmen die Leistung anbietet, nach der gesucht wird</td>
+          <td>Ja. Kategorie, Leistungsliste, Seiten auf der Website.</td>
+        </tr>
+        <tr>
+          <td><strong>Entfernung</strong></td>
+          <td>Wie nah Sie an der suchenden Person oder am gesuchten Stadtteil sind</td>
+          <td>Nein. Google berechnet sie nach dem Standort der suchenden Person.</td>
+        </tr>
+        <tr>
+          <td><strong>Bekanntheit</strong></td>
+          <td>Wie bekannt Ihr Unternehmen ist</td>
+          <td>Ja. Bewertungen, Erwähnungen auf anderen Websites, die Stärke Ihrer Website.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Die Entfernung können Sie nicht beeinflussen. Die ganze Arbeit besteht darin, bei Relevanz und Bekanntheit vor Ihre
+    Wettbewerber zu kommen.
+  </p>
+
+  <p>
+    Der Fehler, den wir am häufigsten sehen: Man setzt nur auf einen der beiden Faktoren. Das Unternehmen mit der
+    falschen Kategorie sammelt Bewertungen, das Unternehmen mit einem Viertel der Bewertungen seiner Wettbewerber postet
+    jeden Tag einen Beitrag.
+  </p>
+
+  <h2 id="olcum">Auf welchem Platz stehen Sie gerade wirklich?</h2>
+
+  <p>
+    Das erfahren Sie nicht mit einer einzigen Suche. Auf der Karte gibt es nicht den einen Platz, weil Google das Ranking
+    danach berechnet, wo die suchende Person steht.
+  </p>
+
+  <p>
+    Angenommen, Sie betreiben Kordon Oto Ekspertiz in Bornova. Vor Ihrem Laden geben Sie „Kfz-Gutachter“ ein und stehen
+    auf der Karte auf Platz eins. Jemand, der in Karşıyaka wohnt, macht dieselbe Suche, findet Sie nicht unter den ersten
+    drei und ruft Ihren Wettbewerber an, ohne Sie je gesehen zu haben.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Eine Suche mit Ihrem eigenen Handy ist keine Messung.</strong> Google personalisiert die Ergebnisse nach
+      Ihrem Standort und Ihrem Suchverlauf, Ihr eigenes Unternehmen sehen Sie leichter. Bei Unternehmen, die im Büro auf
+      Platz eins stehen und bei denen trotzdem das Telefon nicht klingelt, schauen wir zuerst hierhin.
+    </p>
+  </div>
+
+  <p>
+    Wir beginnen mit einer <a href={p('services/rank-tracking')}>Messung in Ihrem Umkreis</a>. Wenn Sie sehen, auf
+    welchem Platz Sie an verschiedenen Punkten in Ihrem Umkreis stehen, wird klar, wo Sie stark und wo Sie schwach sind.
+    Arbeit ohne Messung ist Arbeit, von der niemand weiß, wohin sie führt.
+  </p>
+
+  <h2 id="sira">In welcher Reihenfolge sollten Sie arbeiten?</h2>
+
+  <p>
+    Die Reihenfolge zählt. Die unteren Schritte bringen nichts, solange die oberen nicht stimmen. Bei jedem Profil gehen
+    wir so vor:
+  </p>
+
+  <ol>
+    <li>
+      <strong>Hauptkategorie.</strong> Sehen Sie sich die Kategorie der Unternehmen an, die bei Ihrem Zielbegriff unter
+      den ersten drei stehen. Weicht Ihre ab, korrigieren Sie zuerst hier.
+    </li>
+    <li>
+      <strong>Vollständiges Profil.</strong> Leistungsliste mit Beschreibungen, Fotos, Öffnungszeiten, Telefonnummer und
+      Link zur Website.
+    </li>
+    <li>
+      <strong>Anzahl der Bewertungen.</strong> Liegen Sie deutlich unter den Wettbewerbern unter den ersten drei, hat das
+      Vorrang.
+    </li>
+    <li>
+      <strong>Eine Website, die das Profil stützt.</strong> Hat jede Leistung eine eigene Seite, öffnet sich die Website
+      bei Google sauber?
+    </li>
+    <li>
+      <strong>Kontinuität.</strong> Beiträge, Fotos und Antworten auf Bewertungen. Ein Rhythmus, der sich über Wochen
+      zieht.
+    </li>
+  </ol>
+
+  <p>
+    Wenn Sie die ersten beiden Schritte selbst prüfen möchten, bewertet unser
+    <a href={p('tools/gbp-audit')}>kostenloser Profil-Check</a> Ihr Profil in 10 Fragen und listet die schwachen Punkte
+    auf.
+  </p>
+
+  <h2 id="alaka">Wie sagen Sie Google, was Sie tun?</h2>
+
+  <p>
+    Relevanz ist die Entscheidung von Google, dass dieses Unternehmen die gesuchte Leistung anbietet. Wir speisen diese
+    Entscheidung aus vier Quellen, beginnend mit der stärksten Wirkung:
+  </p>
+
+  <ul class="checklist">
+    <li>
+      <strong>Hauptkategorie.</strong> Das stärkste Relevanzsignal, das wir in der Praxis sehen. Zusätzliche Kategorien
+      fügen Sie nur für Leistungen hinzu, die Sie wirklich anbieten.
+    </li>
+    <li>
+      <strong>Leistungsliste.</strong> Schreiben Sie die Leistungen mit den Wörtern, nach denen Kunden suchen, und
+      ergänzen Sie zu jeder eine kurze Beschreibung. Eine Liste, die so bleibt, wie Google sie vorschlägt, gleicht der
+      Ihrer Wettbewerber aufs Wort.
+    </li>
+    <li>
+      <strong>Eine eigene Seite für jede Leistung auf der Website.</strong> Eine Leistung, die auf einer einzigen Seite
+      „Unsere Leistungen“ in drei Absätzen vorkommt, hat es bei der Suche nach dieser Leistung schwer. Diese Seiten
+      schreiben wir im Rahmen unserer <a href={p('services/content')}>Content-Erstellung</a>.
+    </li>
+    <li>
+      <strong>Gleiche Bezeichnungen.</strong> Steht im Profil „Wurzelbehandlung“ und auf der Website „Endodontie“, wird
+      die Zuordnung schwächer. Der Name der Leistung sollte an beiden Stellen das Wort sein, das Kunden benutzen.
+    </li>
+  </ul>
+
+  <h2 id="bilinirlik">Was steigert Ihre Bekanntheit?</h2>
+
+  <p>
+    Bekanntheit heißt, wie gut man Ihr Unternehmen kennt. Google liest sie aus allem, was es im Internet über Sie findet:
+    Links, Presseberichte, Verzeichniseinträge und Bewertungen. Auch der Platz Ihrer Website in den normalen
+    Suchergebnissen gehört dazu.
+  </p>
+
+  <p>
+    Der am besten messbare Teil sind Bewertungen. Google sagt offen, dass Anzahl und Durchschnitt der Bewertungen das
+    lokale Ranking beeinflussen. Die Leistung und der Stadtteil, die Kunden in ihren Bewertungen nennen, zeigen außerdem
+    jedem, der Ihr Profil liest, was Sie tun.
+  </p>
+
+  <p>
+    Neben Bewertungen gibt es zwei weitere Quellen. Ihr Name, Ihre Adresse und Ihre Telefonnummer müssen überall gleich
+    geschrieben sein, warum, erklären wir auf unserer <a href={p('services/local-seo')}>Seite zur lokalen SEO</a>. Taucht
+    Ihr Name auf Branchenportalen, in lokalen Nachrichten oder in Vereinslisten auf, erkennt Google Sie leichter, denn
+    Bekanntheit wird genau aus diesen Spuren gelesen.
+  </p>
+
+  <p>
+    Wie Sie bei den Bewertungen zulegen, haben wir in unserem <a href={p('guides/more-reviews')}>Ratgeber zu
+    Bewertungen</a> Schritt für Schritt beschrieben.
+  </p>
+
+  <h2 id="yaramayanlar">Welche Taktiken bringen nichts?</h2>
+
+  <p>Taktiken, die viele ausprobieren, die nichts bringen und von denen einige Ihr Profil gefährden:</p>
+
+  <ul>
+    <li>
+      <strong>Keywords im Firmennamen.</strong> „Kordon Oto Ekspertiz Bornova Günstigster Gutachter“ statt „Kordon Oto
+      Ekspertiz“ zu schreiben, verstößt gegen die Regeln von Google. Meldet ein Wettbewerber das, wird der Name
+      korrigiert, im Wiederholungsfall kann das Profil gesperrt werden.
+    </li>
+    <li>
+      <strong>Gefälschte Bewertungen kaufen.</strong> Die Filter von Google erkennen sie, und wo nicht, merkt es der Kunde
+      beim Lesen. Das Profil riskiert damit eine Sperrung.
+    </li>
+    <li>
+      <strong>Ein zweites Profil anlegen.</strong> Ohne Filiale ist ein zweites Profil ein Regelverstoß. Es wird als
+      Duplikat markiert, und beide werden schwächer.
+    </li>
+    <li>
+      <strong>Unpassende zusätzliche Kategorien.</strong> Die Kategorie einer Leistung, die Sie nicht anbieten, verwischt
+      Ihre Relevanz.
+    </li>
+    <li>
+      <strong>Nur Beiträge posten.</strong> Solange die Grundlagen fehlen, bringt ein täglicher Beitrag Ihr Ranking nicht
+      voran.
+    </li>
+  </ul>
+
+  <p>
+    Wir wissen, dass Stadtteil oder Leistung im Firmennamen kurzfristig wirken. Wir machen es trotzdem nicht, weil kein
+    Platz das Risiko wert ist, dass Ihr Profil gesperrt wird.
+  </p>
+
+  <h2 id="sure">Wie lange dauert es, nach oben zu kommen?</h2>
+
+  <p>
+    Die erste Bewegung auf der Karte sehen wir bei den meisten Unternehmen nach 4 bis 8 Wochen. Ein festes Datum können
+    wir nicht nennen, weil Ihr Ausgangspunkt die Dauer bestimmt.
+  </p>
+
+  <p>
+    Liegt das Problem an einem einzelnen Grundfehler wie einer falschen Kategorie, ist die Korrektur selbst schnell
+    erledigt. Ist Ihr Profil in Ordnung, haben Sie aber weniger Bewertungen als die Wettbewerber, hängt die Dauer direkt
+    davon ab, wie schnell Sie Bewertungen sammeln; in Innenstädten mit starkem Wettbewerb dauert jede Phase etwas länger.
+  </p>
+
+  <p>
+    In den normalen Suchergebnissen unter der Karte, also beim Ranking Ihrer Website, dauert eine Bewegung 3 bis 6
+    Monate. Was wir in dieser Zeit tun, sehen Sie jede Woche im Bericht. Da es keinen Vertrag gibt, machen Sie im nächsten
+    Monat einfach nicht weiter, wenn Sie nicht zufrieden sind.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Wo in Ihrem Umkreis <span class="highlight">liegen Sie zurück</span>?</h2>
+    <p>
+      In der kostenlosen Analyse messen wir in Ihrem Umkreis und zeigen die Lücken in Ihrem Profil sowie den Abstand zu
+      den ersten drei. Das Ergebnis ist innerhalb von 24 Stunden in Ihrem
+      <span style="white-space: nowrap;">E-Mail-Postfach</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

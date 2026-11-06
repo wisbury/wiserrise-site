@@ -5,31 +5,38 @@ import { routePath } from '../../../i18n/routes';
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'VİDEO', title: 'Tek çekim, üç kanıt', text: 'Kesintisiz tek çekimde konumu, işi yaptığınızı ve işletmeyi yönettiğinizi gösterin. En çok yönetim kanıtı unutuluyor.' },
+  { label: 'KART', title: 'Bir kez isteyin', text: 'Kart 1-3 hafta içinde gelir. İlki yoldayken yenisini isterseniz ilk kartın kodu geçersiz olur ve süre uzar.' },
+  { label: 'İTİRAZ', title: 'Önce sebebi düzeltin', text: 'Askıya alınan profilde sebebi düzeltmeden inceleme talebi açmayın. Talepte neyi düzelttiğinizi yazıp belge ekleyin.' },
+  { label: 'KOPYA', title: 'Yeni profil açmayın', text: 'Aynı işletme için ikinci kayıt kopya sayılır ve o da askıya alınır. Her durumda mevcut profil üzerinden ilerleyin.' },
+];
+
 const toc = [
-  { id: 'yontemler', label: 'Hangi doğrulama yöntemi size sunulur?' },
-  { id: 'video', label: 'Video doğrulama reddedildi' },
-  { id: 'kart', label: 'Posta kartı gelmedi' },
+  { id: 'yontemler', label: 'Doğrulama yöntemleri' },
+  { id: 'video', label: 'Video reddedildi' },
+  { id: 'kart', label: 'Kart gelmedi' },
   { id: 'askiya', label: 'Profil askıya alındı' },
-  { id: 'sahiplik', label: 'Profil başkasının elinde' },
-  { id: 'beklerken', label: 'Beklerken yapılmaması gerekenler' },
+  { id: 'sahiplik', label: 'Profil başkasında' },
+  { id: 'beklerken', label: 'Beklerken yapılmayacaklar' },
 ];
 
 const faq = [
   {
     q: 'Doğrulama ne kadar sürer?',
-    a: 'Video doğrulaması genelde birkaç gün, bazen saatler içinde sonuçlanıyor. Posta kartı Türkiye içinde 1–3 hafta sürebiliyor. İnceleme kuyruğu yoğunsa süreler uzayabiliyor; iki haftayı geçen video incelemeleri için destekle iletişime geçmek mantıklı.',
+    a: 'Video doğrulama birkaç gün içinde, bazen birkaç saatte sonuçlanır. Posta kartı Türkiye’de 1-3 hafta sürebilir. Video incelemesi iki haftayı geçtiyse Google desteğine yazın.',
   },
   {
-    q: 'Doğrulama sırasında profilim görünür mü?',
-    a: 'Hayır. Doğrulanmamış profil arama sonuçlarında ve Haritalar’da yayınlanmaz, ne kadar eksiksiz doldurulmuş olursa olsun. Bu yüzden doğrulama, kurulumun en kritik adımı.',
+    q: 'Doğrulama sürerken profilim görünür mü?',
+    a: 'Görünmez. Doğrulanmamış profil aramada ve Haritalar’da yayınlanmaz, ne kadar dolu olursa olsun.',
   },
   {
     q: 'Reddedilirse tekrar deneyebilir miyim?',
-    a: 'Evet, ancak aynı hatayı tekrarlamadan. Arka arkaya başarısız denemeler süreci yavaşlatıyor. Reddedilme sebebini anladığınızdan emin olmadan yeniden başvurmayın.',
+    a: 'Deneyebilirsiniz, ama önce reddedilme sebebini düzeltin. Arka arkaya başarısız denemeler süreci yavaşlatır.',
   },
   {
     q: 'Yeni bir profil açsam daha hızlı olmaz mı?',
-    a: 'Hayır, en kötü hamle bu. Aynı işletme için ikinci profil kopya olarak işaretleniyor; yenisi de askıya alınıyor ve iki kayıt birden sorunlu hale geliyor. Mevcut profil üzerinden ilerleyin.',
+    a: 'Olmaz, en kötü hamle bu. Aynı işletme için ikinci kayıt kopya olarak işaretlenir, o da askıya alınır ve iki kayıt birden sorunlu hale gelir. Mevcut profil üzerinden ilerleyin.',
   },
 ];
 ---
@@ -38,180 +45,180 @@ const faq = [
   locale={locale}
   route="guides/verification"
   title="Google İşletme Profili Doğrulama Sorunları | Wiserrise"
-  description="Video doğrulama reddedildi, posta kartı gelmedi, profil askıya alındı ya da başkasının elinde — her senaryo için ne yapılacağı."
-  eyebrow="Rehber"
-  h1="Profil doğrulama sorunları"
-  lede="Doğrulanmamış profil yayına çıkmaz. Bu rehber en sık takılınan dört senaryoyu ve her biri için izlenecek yolu anlatıyor."
+  description="Video doğrulama reddedildi, posta kartı gelmedi, profil askıya alındı ya da başkasının elinde: her durumda ne yapacağınızı sırayla anlattık."
+  eyebrow="REHBER · DOĞRULAMA"
+  h1="Google İşletme Profili doğrulama sorunları nasıl çözülür?"
+  crumb="Doğrulama sorunları"
+  lede="Doğrulama takıldığında çözüm, aynı profil üzerinden eksik kalan şartı tamamlamaktır. Video reddedildiyse konumu, işi ve yönetimi tek çekimde gösterin; kart gelmediyse adres satırını kontrol edip bir kez yeniden isteyin. Hangi durumda olursanız olun yeni profil açmayın."
   schemaType="article"
   datePublished="2026-08-01"
+  dateModified="2026-11-06"
   breadcrumb={[
     { label: 'Ana Sayfa', href: '/tr' },
-    { label: 'Rehber', href: p('guides') },
+    { label: 'Rehberler', href: p('guides') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Google İşletme Profili nasıl açılır?', href: p('guides/create-profile') },
-    { label: 'İşletmem Google’da çıkmıyor', href: p('guides/not-showing') },
-    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp') },
+    { label: 'Google İşletme Profili nasıl açılır?', href: p('guides/create-profile'), text: 'Doğrulamadan önceki kurulum ve profil yayına girdiği gün yapılacaklar.' },
+    { label: 'İşletmem Google’da çıkmıyor', href: p('guides/not-showing'), text: 'Profil doğrulandı ama görünmüyorsa sekiz sebebi sırayla eleyin.' },
+    { label: 'Google Haritalar’da üst sıraya çıkma', href: p('guides/rank-higher'), text: 'Yayına giren profili rakiplerin önüne geçirmek için çalışma sırası.' },
+    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp'), text: 'Kategori, hizmet yapısı, yorum ve gönderileri birlikte yönetiriz.' },
   ]}
-  ctaLabel="Profilimi Ücretsiz Denetle →"
+  relatedHeading="İlgili sayfalar"
+  ctaLabel="Profilinizi ücretsiz denetleyin"
   ctaHref={p('tools/gbp-audit')}
 >
-  <h2 id="yontemler">Hangi doğrulama yöntemi size sunulur?</h2>
+  <h2 id="yontemler">Hangi doğrulama yöntemi size çıkar?</h2>
 
   <p>
-    Yöntemi siz seçmiyorsunuz — Google, işletme türüne, kategoriye ve hesabınızın geçmişine
-    göre belirliyor. Karşınıza çıkabilecekler: video doğrulama, posta kartı, telefon, e-posta
-    veya canlı görüntülü görüşme.
+    Yöntemi Google seçer: işletmenin türüne, kategorisine ve hesabınızın geçmişine bakar. Karşınıza video, posta kartı,
+    telefon, e-posta ya da canlı görüntülü görüşme çıkabilir.
   </p>
 
   <p>
-    Bazı kategorilerde (özellikle sağlık, hukuk ve finans gibi hassas alanlarda) yalnızca
-    daha katı yöntemler sunuluyor ve inceleme elle yapılıyor. Bu normaldir, bir sorun
-    işareti değildir — sadece daha uzun sürer.
+    Sağlık, hukuk ve finans gibi hassas alanlarda Google daha katı yöntemler sunar ve incelemeyi elle yapar. Bu normal,
+    süreç sadece daha uzun sürer.
   </p>
 
-  <h2 id="video">Video doğrulama reddedildi</h2>
+  <h2 id="video">Video doğrulama neden reddedilir?</h2>
 
   <p>
-    En sık takılınan adım. Video tek çekimde, kesintisiz olmalı ve üç şeyi sırayla
-    göstermeli:
+    Video, kanıtlardan biri eksik kaldığında ya da çekim kurala uymadığında reddedilir. En sık takılınan yöntem bu.
+    Kesintisiz tek çekim olmalı ve şu üç kanıtı sırayla göstermeli:
   </p>
 
   <ol>
     <li>
-      <strong>Konum kanıtı.</strong> Dışarıdan başlayın: sokak, bina, kapı numarası ve
-      tabela. Tabelası olmayan işletmelerde bu adım en zayıf halka.
+      <strong>Konum.</strong> Dışarıdan başlayın: sokak, bina, kapı numarası ve tabela. Tabelası olmayan işletmede en
+      zayıf halka burası.
     </li>
     <li>
-      <strong>Faaliyet kanıtı.</strong> İçeri girin ve gerçekten o işi yaptığınızı gösterin:
-      cihazlar, çalışma alanı, stok, ekip.
+      <strong>Faaliyet.</strong> İçeri girin ve o işi gerçekten yaptığınızı gösterin: cihazlar, çalışma alanı, stok,
+      ekip.
     </li>
     <li>
-      <strong>Yönetim kanıtı.</strong> İşletmeye ait olduğunuzu gösterin: kasaya erişim,
-      vergi levhası, fatura, anahtar, ticari evrak.
+      <strong>Yönetim.</strong> İşletmenin size ait olduğunu gösterin: kasaya erişim, vergi levhası, fatura, anahtar ya
+      da ticari evrak.
     </li>
   </ol>
 
-  <p>Reddedilme sebepleri, sıklık sırasına göre:</p>
+  <p>Videonun reddedilme sebepleri, en sık görülenden başlayarak:</p>
 
   <ul class="checklist">
-    <li>Videoda tabela veya kapı numarası hiç görünmemesi</li>
-    <li>Adresin haritadaki pinle eşleşmemesi — pini elle doğru yere taşımayı unutmak</li>
+    <li>Tabelanın ya da kapı numarasının hiç görünmemesi</li>
+    <li>Adresin haritadaki pinle eşleşmemesi, yani pini elle doğru yere taşımayı unutmak</li>
     <li>Çekimin kesilmesi ya da birden fazla parça halinde yüklenmesi</li>
-    <li>Yönetim kanıtının atlanması — en sık unutulan adım</li>
-    <li>Ev adresinde çekim yapıp müşteri kabul ediliyormuş gibi göstermek</li>
+    <li>Yönetim kanıtının atlanması</li>
+    <li>Ev adresinde çekip müşteri kabul ediliyormuş gibi göstermek</li>
   </ul>
 
   <div class="callout">
     <p>
-      <strong>Çekimden önce prova edin.</strong> Video tek seferde çekilmek zorunda ve
-      başarısız her deneme süreci uzatıyor. Ne göstereceğinizi sırayla not edip bir kez
-      deneyin, sonra gerçeğini çekin.
+      <strong>Çekimden önce prova yapın.</strong> Başarısız her deneme süreci uzatır. Neyi hangi sırayla göstereceğinizi
+      not edin, bir kez prova yapın ve gerçek çekime ondan sonra geçin.
     </p>
   </div>
 
-  <h2 id="kart">Posta kartı gelmedi</h2>
+  <h2 id="kart">Posta kartı gelmezse ne yapmalısınız?</h2>
 
   <p>
-    Kart genelde 1–3 hafta içinde ulaşıyor. Gelmediyse önce şunları kontrol edin: adres
-    satırında daire/kat bilgisi eksik mi, apartman girişinde posta kutusu var mı, kapıcı
-    veya komşu almış olabilir mi.
+    Önce adres satırınızı kontrol edin, sonra yalnızca bir kez yeniden isteyin. Kart Türkiye’de 1-3 hafta içinde
+    ulaşır.
   </p>
 
   <p>
-    Kart gelmediyse panelden yeniden talep edebilirsiniz — ama <strong>ilk kart yoldayken
-    ikincisini istemeyin</strong>, ilkinin kodu geçersiz oluyor ve süre uzuyor. Bir kez
-    isteyin, tam süreyi bekleyin.
+    Diyelim ki Karşıyaka’da bir apartmanın üçüncü katında muhasebe büronuz var. Adreste daire ve kat bilgisi yoksa,
+    binada posta kutusu yoksa ya da kartı kapıcı ya da komşu aldıysa kart size hiç ulaşmayabilir.
   </p>
 
   <p>
-    İkinci kart da gelmezse Google destek üzerinden alternatif yöntem talep edin. Bu
-    aşamada adres formatını da gözden geçirin: Türkiye adres yapısı (mahalle, cadde,
-    site, blok) Google'ın formuna oturmadığında kart teslim edilemiyor.
+    Panelden yeni kart isteyebilirsiniz ama <strong>ilk kart yoldayken ikincisini istemeyin</strong>. Yeni talep ilk
+    kartın kodunu geçersiz kılar ve süre uzar. Bir kez isteyin, süreyi sonuna kadar bekleyin.
   </p>
-
-  <h2 id="askiya">Profil askıya alındı</h2>
 
   <p>
-    Askıya alınan profil aramadan tamamen kaybolur. Panelde "Askıya alındı" ibaresi görünür;
-    çoğu işletme sahibi bildirim gelmediği için geç fark ediyor.
+    İkinci kart da gelmezse Google desteğinden başka bir yöntem isteyin. Adresinizin biçimine de tekrar bakın: Türkiye’deki
+    adres yapısı (mahalle, cadde, site, blok) Google’ın formuna oturmayınca kart teslim edilemiyor.
   </p>
 
-  <p>Yapılacaklar sırayla:</p>
+  <h2 id="askiya">Profiliniz askıya alındıysa ne yapmalısınız?</h2>
+
+  <p>
+    Önce sebebi bulup düzeltin, sonra yeniden inceleme talebi açın. Askıya alınan profil aramadan tamamen kaybolur ve
+    panelde “Askıya alındı” yazar. Çoğu işletme sahibi bildirim görmediği için bunu geç fark eder.
+  </p>
 
   <ol>
     <li>
-      <strong>Önce sebebi bulun ve düzeltin.</strong> Düzeltmeden itiraz açmak, süreci
-      uzatmaktan başka işe yaramıyor. En sık sebepler: işletme adına eklenen anahtar
-      kelimeler, sanal ofis adresi, kısa sürede üst üste yapılan ad/adres/kategori
-      değişiklikleri, aynı adreste birden fazla profil.
+      <strong>Sebebi bulun ve düzeltin.</strong> En sık sebepler işletme adına eklenen keyword, sanal ofis adresi, kısa
+      sürede üst üste değiştirilen ad, adres ve kategori, bir de aynı adreste birden fazla profil. Düzeltmeden itiraz
+      etmek süreci uzatmaktan başka işe yaramaz.
     </li>
     <li>
-      <strong>Sonra yeniden inceleme talebi açın.</strong> Talepte neyi düzelttiğinizi
-      açıkça yazın ve varsa belge ekleyin — vergi levhası, kira sözleşmesi, tabela
-      fotoğrafı.
+      <strong>Yeniden inceleme talebi açın.</strong> Neyi düzelttiğinizi açıkça yazın ve elinizdeki belgeleri ekleyin:
+      vergi levhası, kira sözleşmesi, tabela fotoğrafı.
     </li>
     <li>
-      <strong>Bekleyin.</strong> İnceleme günler ile haftalar sürebiliyor. Bu süreçte
-      profil üzerinde başka değişiklik yapmayın.
+      <strong>Bekleyin.</strong> İnceleme günler ile haftalar arasında sürer. Bu sürede profilde başka değişiklik
+      yapmayın.
     </li>
   </ol>
 
   <p>
-    <strong>Yeni profil açmayın.</strong> Aynı işletme için ikinci kayıt kopya olarak
-    işaretleniyor, o da askıya alınıyor ve durum daha karmaşık hale geliyor.
+    <strong>Yeni profil açmayın.</strong> Sıkışınca herkesin aklına ilk gelen hamle bu ve her durumda işi kötüleştiriyor.
+    Aynı işletme için ikinci kayıt kopya sayılır, o da askıya alınır.
   </p>
 
-  <h2 id="sahiplik">Profil başkasının elinde</h2>
+  <h2 id="sahiplik">Profil başkasının elindeyse nasıl geri alınır?</h2>
 
   <p>
-    Sık karşılaşılan bir durum: profil daha önce bir ajans, eski bir çalışan ya da işletmeyi
-    devraldığınız kişi tarafından açılmış ve erişim sizde değil.
-  </p>
-
-  <p>
-    Google'da profili bulup "Bu işletmenin sahibi misiniz?" bağlantısından sahiplik talebi
-    açın. Mevcut sahibe bildirim gidiyor ve yanıt vermesi için süre tanınıyor. Yanıt
-    vermezse talep genelde size aktarılıyor; verirse itiraz sürecine giriliyor ve belge
-    istenebiliyor.
+    Sahiplik talebiyle. Google’da profili bulun ve “Bu işletmenin sahibi misiniz?” bağlantısına tıklayın. Profili daha
+    önce bir ajans, eski bir çalışan ya da işletmeyi devraldığınız kişi açmış olabilir.
   </p>
 
   <p>
-    Bu süreç haftalar sürebildiği için, elinizde ticari belge varsa (vergi levhası,
-    ticaret sicil kaydı) baştan eklemek işi hızlandırıyor. Yeni profil açarak sorunu
-    atlatmaya çalışmak yine işe yaramıyor.
+    Talep açınca mevcut sahibe bildirim gider ve cevap vermesi için süre tanınır. Cevap vermezse profili sahiplenme
+    yolu size açılır. Cevap verirse itiraz süreci başlar ve sizden belge istenebilir.
   </p>
 
-  <h2 id="beklerken">Beklerken yapılmaması gerekenler</h2>
+  <p>
+    Bu süreç haftalar sürebilir. Elinizde vergi levhası ya da ticaret sicil kaydı varsa baştan ekleyin, işi hızlandırır.
+    Yeni profil açarak sorunu atlatmaya çalışmayın, burada da işe yaramaz.
+  </p>
+
+  <h2 id="beklerken">Beklerken neyi yapmamalısınız?</h2>
+
+  <p>Doğrulama ya da inceleme sürerken profile dokunmayın. Şu dört hamle her durumda işinizi uzatır:</p>
 
   <ul>
     <li>
-      <strong>Ad, adres veya kategoriyi değiştirmeyin.</strong> İnceleme sırasında yapılan
-      değişiklik süreci sıfırlıyor.
+      <strong>Ad, adres ya da kategoriyi değiştirmek.</strong> İnceleme sırasında yapılan değişiklik süreci sıfırlar.
     </li>
     <li>
-      <strong>Yeni profil açmayın.</strong> Her senaryoda durumu kötüleştiriyor.
+      <strong>Yeni profil açmak.</strong> Kopya sayılır ve elinizde iki sorunlu kayıt kalır.
     </li>
     <li>
-      <strong>Yorum toplamaya başlamayın.</strong> Yayında olmayan profile gelen yorumlar
-      görünmüyor ve ani yığın olarak filtreye takılabiliyor.
+      <strong>Yorum toplamaya başlamak.</strong> Yayında olmayan profile gelen yorumlar görünmez, ani bir yığın halinde
+      filtreye de takılabilir.
     </li>
     <li>
-      <strong>Doğrulamayı satan hizmetlere para vermeyin.</strong> "Garantili doğrulama"
-      teklifleri genelde sahte belge veya sahte adres kullanıyor; yakalandığında profil
-      kalıcı olarak kapanabiliyor.
+      <strong>“Garantili doğrulama” satanlara para vermek.</strong> Bu teklifler sahte belge ya da sahte adresle çalışır.
+      Yakalandığında profil kalıcı olarak kapanabilir.
     </li>
   </ul>
 
   <p>
-    Doğrulama tamamlandığında yapılacaklar listesi
-    <a href={p('guides/create-profile')}>profil açma rehberinin</a> son bölümünde.
+    Doğrulama bitince yapılacakları <a href={`${p('guides/create-profile')}#ilk-gun`}>profil açma rehberinin ilk gün
+    bölümünde</a> listeledik.
   </p>
 
   <Fragment slot="cta">
-    <h2>Doğrulama bitti, <span class="highlight">sırada ne var</span>?</h2>
-    <p>Ücretsiz denetim aracı 10 soruda profilinizin hangi alanda eksik kaldığını söylüyor.</p>
+    <h2>Doğrulama bitti, sırada <span class="highlight">ne</span> var?</h2>
+    <p>
+      Ücretsiz denetim aracı 10 soruda profilinizin eksiklerini gösterir. Zayıf çıkan her madde için ne yapacağınız
+      sonuçla birlikte hemen ekrana gelir.
+    </p>
   </Fragment>
 </ContentLayout>

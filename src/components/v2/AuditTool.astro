@@ -7,6 +7,7 @@
 import type { Locale } from '../../i18n/config';
 import { routePath } from '../../i18n/routes';
 import { getAudit } from '../../data/gbp-audit';
+import { v2ui } from '../../i18n/v2';
 
 interface Props {
   locale: Locale;
@@ -14,6 +15,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const { groups, questions, bands, ui } = getAudit(locale);
+const t = v2ui[locale].audit;
 
 const maxScore = questions.reduce((s, q) => s + Math.max(...q.options.map((o) => o.points)), 0);
 
@@ -42,7 +44,7 @@ const lock =
         <legend class="at-legend">
           <span class="at-gnum">{String(gi + 1).padStart(2, '0')}</span>
           <span class="at-gname">{group.label}</span>
-          <em>{group.max} puan</em>
+          <em>{group.max} {t.points}</em>
         </legend>
         {questions
           .filter((q) => q.group === group.id)
@@ -71,7 +73,7 @@ const lock =
 
   <aside class="at-panel" id="auditResult" aria-live="polite">
     <div class="at-card">
-      <span class="at-kicker">Profil puanınız</span>
+      <span class="at-kicker">{t.score}</span>
       <div class="at-score">
         <svg viewBox="0 0 120 120" width="120" height="120" aria-hidden="true">
           <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"></circle>
@@ -99,20 +101,20 @@ const lock =
       <div id="auditVerdict" class="at-verdict" hidden></div>
 
       <a href="#analiz-formu" data-analiz class="at-cta" id="auditCta" hidden>{ui.ctaLabel}</a>
-      <p class="at-note"><Fragment set:html={lock} /> Hesaplama tarayıcınızda yapılır, yanıtlar kaydedilmez.</p>
+      <p class="at-note"><Fragment set:html={lock} /> {t.note}</p>
     </div>
-    <button type="reset" class="at-reset">Baştan başla</button>
+    <button type="reset" class="at-reset">{t.reset}</button>
   </aside>
 
   <a class="at-mini" href="#auditResult" aria-hidden="true" tabindex="-1">
     <span class="at-mini-s"></span><small>/{maxScore}</small>
     <span class="at-mini-n"></span>
-    <span class="at-mini-go">Sonuç ↓</span>
+    <span class="at-mini-go">{t.result}</span>
   </a>
 </form>
 
 <section id="auditAdvice" class="at-advice" hidden>
-  <span class="at-kicker at-kicker--dark">Öncelik sırası</span>
+  <span class="at-kicker at-kicker--dark">{t.priority}</span>
   <h2>{ui.adviceHeading}</h2>
   <div id="auditAdviceList" class="at-advice-list"></div>
 </section>

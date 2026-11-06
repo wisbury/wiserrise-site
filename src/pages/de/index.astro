@@ -1,550 +1,672 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnalizDialog from '../../components/AnalizDialog.astro';
+import Header from '../../components/v2/Header.astro';
+import Footer from '../../components/v2/Footer.astro';
 import { homeSchema, type FaqEntry } from '../../lib/schema';
+import { CONTACT_EMAIL } from '../../i18n/ui';
+import { routePath } from '../../i18n/routes';
 
 /**
- * Tek kaynak: hem görünen SSS bloğu hem `FAQPage` şeması buradan üretilir.
- * Google, FAQ işaretlemesinin sayfada GÖRÜNEN metinle birebir aynı olmasını
- * şart koşar; iki ayrı liste tutmak er geç kayar.
+ * DE-Startseite: Übersetzung von src/pages/tr/index.astro (design="v2").
+ * Markup, Klassen, Inline-Styles und Skripte sind mit TR identisch, nur der sichtbare Text ist deutsch.
+ *
+ * Eine Quelle für die FAQ: Der sichtbare Block und das `FAQPage`-Schema entstehen aus dieser Liste.
  */
 const faq: FaqEntry[] = [
   {
-    q: 'Wie lange dauert lokale SEO?',
-    a: 'Die meisten Unternehmen sehen erste Bewegung in 4–8 Wochen, mit stärkeren Ergebnissen, die sich über 3–6 Monate aufbauen.',
+    q: 'Mit welcher Leistung sollte ich anfangen?',
+    a: 'Das hängt von Ihrer Lage ab. Ein Unternehmen mit Kunden aus der Umgebung startet bei Google Maps, ein Onlinehändler bei Suche und Anzeigen. In der kostenlosen Analyse sagen wir es Ihnen anhand Ihrer eigenen Daten.',
   },
   {
-    q: 'Arbeiten Sie nur mit einer Stadt?',
-    a: 'Nein. Wir unterstützen lokale SEO-Kampagnen für einzelne Städte, mehrere Städte und mehrere Standorte – je nach Ihrem Wachstumsmodell.',
+    q: 'Wann sieht man Ergebnisse?',
+    a: 'Anzeigen bringen ab der ersten Woche Besucher. Auf der Karte sehen wir die erste Bewegung bei den meisten Unternehmen nach 4-8 Wochen, in der Suche nach 3-6 Monaten. Den Fortschritt sehen Sie jede Woche im Bericht.',
   },
   {
     q: 'Garantieren Sie Rankings?',
-    a: 'Rankings kann niemand garantieren; Google sagt das selbst ausdrücklich. Was wir garantieren, sind Arbeit und Messung: Jede Woche sehen Sie, was wir getan haben und wie sich Ihre Rankings entwickelt haben. Es gibt keinen Vertrag – wenn Sie nicht zufrieden sind, machen Sie im nächsten Monat einfach nicht weiter.',
+    a: 'Rankings kann niemand garantieren, und Google sagt das selbst ganz offen. Wir garantieren die Arbeit und die Messung: Jede Woche sehen Sie im Bericht, was wir getan haben und wie sich Ihr Ranking verändert hat. Da es keinen Vertrag gibt, machen Sie im nächsten Monat einfach nicht weiter, wenn Sie nicht zufrieden sind.',
   },
   {
-    q: 'Was bekomme ich bei der kostenlosen Analyse?',
-    a: 'Sie erhalten eine klare Auswertung Ihres Google-Unternehmensprofils, lokaler Sichtbarkeitsprobleme, Wettbewerbslücken und der wirkungsvollsten nächsten Schritte.',
+    q: 'Was ist KI-Sichtbarkeit?',
+    a: 'Ihr Unternehmen wird genannt und empfohlen, wenn jemand Assistenten wie ChatGPT, Gemini oder Perplexity fragt oder Googles KI-Übersichten liest. Wir messen, bei welchen Fragen Sie genannt werden. Für die Fragen, bei denen Sie fehlen, stärken wir Ihre Website, Ihr Profil und die Quellen, die über Sie schreiben.',
+  },
+  {
+    q: 'Was enthält die kostenlose Analyse?',
+    a: 'Eine Übersicht zu Ihrem Google-Unternehmensprofil, zu Problemen bei der lokalen Sichtbarkeit, zum Abstand zur Konkurrenz und zu den nächsten Schritten mit der größten Wirkung.',
   },
   {
     q: 'Was ist das Local Pack?',
-    a: 'Das Local Pack ist der Kartenblock mit drei Unternehmen, den Google bei einer lokalen Suche über den normalen Suchergebnissen zeigt. Diese drei Einträge bekommen die meisten Anrufe – genau dorthin zielt lokale SEO.',
-  },
-  {
-    q: 'Was unterscheidet lokale SEO von klassischer SEO?',
-    a: 'Klassische SEO bringt eine Webseite in den Suchergebnissen nach vorn. Lokale SEO bringt ein Unternehmen an einem Ort nach vorn: Die Suchmaschine bewertet neben Ihrer Website auch Ihr Google-Unternehmensprofil, Ihre Bewertungen und Ihre Entfernung zum Suchenden.',
-  },
-  {
-    q: 'Brauche ich für lokale SEO eine Website?',
-    a: 'Sie können auch ohne Website im Local Pack ranken, stoßen aber an eine Grenze. Die Website belegt, dass Sie für genau diese Leistungen und Stadtteile relevant sind – und dort wird lokale Suche zu einer Buchung oder einem Anruf.',
+    a: 'Das Local Pack ist der Kartenblock mit drei Unternehmen, den Google über den normalen Suchergebnissen zeigt. Die meisten Suchenden landen bei einem dieser drei Einträge, und genau dorthin zu kommen ist das ganze Ziel lokaler SEO.',
   },
   {
     q: 'Wie messen Sie den Fortschritt?',
-    a: 'Wir messen Ihr Ranking über ein Raster von Punkten rund um Ihren Standort statt an einem einzelnen Mittelpunkt, denn ein lokales Suchergebnis ändert sich mit der Entfernung des Suchenden. Sie sehen die ganze Karte, dazu Anrufe, Routenanfragen und Profilaufrufe.',
+    a: 'Mit einer Messung in Ihrem Umkreis: Wir prüfen an verschiedenen Punkten rund um Ihren Standort, auf welchem Platz Sie stehen, denn die Reihenfolge auf der Karte hängt davon ab, wo der Suchende gerade ist. Dazu sehen Sie die Zahl der Anrufe, Routenanfragen und Profilaufrufe.',
+  },
+  {
+    q: 'Arbeiten Sie auch mit Unternehmen außerhalb der Türkei?',
+    a: 'Ja. Wir arbeiten auf Türkisch, Englisch und Deutsch, Messung und Berichte sind in jedem Land gleich.',
   },
 ];
 
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+
+/**
+ * Logos der KI-Dienste. Liegen die offiziellen Logodateien unter diesen Namen in public/images/ai/
+ * (chatgpt.svg, gemini.svg, perplexity.svg, google.svg), erscheinen sie automatisch im Panel;
+ * fehlt eine Datei, steht dort das allgemeine Sternsymbol.
+ */
+const aiLogo = (id: string) =>
+  existsSync(join(process.cwd(), 'public', 'images', 'ai', `${id}.svg`)) ? `/images/ai/${id}.svg` : null;
+const ai = {
+  chatgpt: aiLogo('chatgpt'),
+  gemini: aiLogo('gemini'),
+  perplexity: aiLogo('perplexity'),
+  google: aiLogo('google'),
+  claude: aiLogo('claude'),
+};
+
+// Film zur lokalen SEO: Startplätze der Beispielmessung, zeilenweise von links nach rechts (Farbbuchstabe + Platz)
+const lmBas = 'a20 a19 a17 a14 a14 a16 g20+ a17 a16 a13 a14 a15 a14 a18 a15 a14 b10 b5 b10 a12 a17 a18 a11 b8 t3 b10 a11 a14 a14 a14 a11 b9 b10 a15 a17 a16 a16 a15 a11 a11 a14 a16 a19 a18 a15 a16 a18 a18 g20+'.split(' ');
+
 const locale = 'de' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+const email = CONTACT_EMAIL[locale];
+const title = 'Online-Marketing-Agentur: lokale SEO, SEO, Google Ads, GEO | Wiserrise';
+const description =
+  'Google Maps, Suchergebnisse, Anzeigen und KI-Antworten. Wiserrise macht Ihr Unternehmen dort sichtbar, wo Kunden suchen. Kostenlose Analyse in 24 Stunden.';
 ---
 
 <BaseLayout
   locale={locale}
   route="home"
-  title="Wiserrise | Lokale SEO & Google Maps Wachstum"
-  description="Lokale SEO für das Google Maps Local Pack: Wiserrise bringt lokale Unternehmen in die Top 3, vor die Wettbewerber nebenan, und macht Sichtbarkeit zu echten Anfragen."
+  design="v2"
+  title={title}
+  description={description}
   ogImage="/images/og-image.png"
 >
   <script
     slot="schema"
     type="application/ld+json"
     is:inline
-    set:html={JSON.stringify(
-      homeSchema({
-        locale,
-        name: 'Wiserrise | Lokale SEO & Google Maps Wachstum',
-        description:
-          'Lokale SEO für das Google Maps Local Pack: Wiserrise bringt lokale Unternehmen in die Top 3, vor die Wettbewerber nebenan, und macht Sichtbarkeit zu echten Anfragen.',
-        faq,
-      }),
-    )}
+    set:html={JSON.stringify(homeSchema({ locale, name: title, description, faq }))}
   />
 
-   <section class="hero" id="contact">
-  <div class="container hero-grid">
+<Header locale={locale} route="home" />
 
-    <!-- LEFT -->
-     <div class="hero-content">
-
-    <div class="user-location">
-  <span class="status-dot"></span>
-  <span id="userLocation">Standort wird geladen...</span>
-</div>
-
-      <h1>
-  <span class="h1-kicker">Lokale SEO</span>
-  Beherrschen Sie Ihre <span class="highlight">Stadt</span><br>
-  bei <span class="google-font">Google</span>
-</h1>
-
-      <p style="font-weight:700;">
-        Kommen Sie in die Google Maps Top 3 – mit einem fokussierten lokalen SEO-System für echtes lokales Wachstum.
-      </p>
-
-      <p style="font-size:14px; color:#6F6C64; margin-top:10px;">
-        Wenn Sie nicht in den Top-Ergebnissen stehen, verlieren Sie jeden Tag Kunden.
-      </p>
-
-      <div class="hero-newsletter">
-        <p class="hero-newsletter-title">
-          Melden Sie sich unten an und erhalten Sie <strong>drei kostenlose Tipps</strong>, die Sie noch heute umsetzen können, um aufzusteigen.
-        </p>
-        <form id="newsletterForm" class="newsletter-form" action="https://app.kit.com/forms/9696110/subscriptions" method="POST">
-          <div class="newsletter-row">
-            <input type="email" name="email_address" placeholder="name@email.com" required aria-label="E-Mail-Adresse">
-            <button type="submit" class="btn btn-primary">Abonnieren</button>
-          </div>
-          <label class="newsletter-consent">
-            <input type="checkbox" name="consent" required>
-            <span>Ich stimme zu, E-Mails von Wiserrise zu erhalten, und akzeptiere die Datenschutzbestimmungen.</span>
-          </label>
-          <p class="newsletter-status" role="status" aria-live="polite"></p>
-        </form>
-      </div>
-
-       <div class="client-strip">
-
-  <p class="client-strip-title">
-    Unternehmen, die mit uns arbeiten
-  </p>
-
-  <div class="client-logo-marquee">
-  <div class="client-logo-track">
-    <img src="/images/kadim-hukuk.svg" alt="Kadim Hukuk ve Danışmanlık, Ankara" decoding="async">
-    <img src="/images/avukat-cansu-bayramoglu.svg" alt="Avukat Cansu Bayramoğlu, Samsun" decoding="async">
-    <img src="/images/sever-hukuk-burosu.svg" alt="Sever &amp; Sever Hukuk Bürosu, Trabzon" decoding="async">
-    <img src="/images/avukat-tugrul-alatas.svg" alt="Tuğrul Alataş Avukatlık Bürosu, Ankara" decoding="async">
-    <img src="/images/avukatceyhunguvel.svg" alt="Avukat Arabulucu Ceyhun Güvel, Mersin" decoding="async">
-    <img src="/images/avukat-oguzhan-manga.svg" alt="Avukat Oğuzhan Manga, Adana" decoding="async">
-    <img src="/images/fizyoterapist-onur-yalcin.svg" alt="Kadıköy Fizyoterapist Onur Yalçın, İstanbul" decoding="async">
-    <!-- KOPYA: kesintisiz kayma için ikinci tur; ekran okuyucuya ikinci kez okunmaz -->
-    <img src="/images/kadim-hukuk.svg" alt="" aria-hidden="true" decoding="async">
-    <img src="/images/avukat-cansu-bayramoglu.svg" alt="" aria-hidden="true" decoding="async">
-    <img src="/images/sever-hukuk-burosu.svg" alt="" aria-hidden="true" decoding="async">
-    <img src="/images/avukat-tugrul-alatas.svg" alt="" aria-hidden="true" decoding="async">
-    <img src="/images/avukatceyhunguvel.svg" alt="" aria-hidden="true" decoding="async">
-    <img src="/images/avukat-oguzhan-manga.svg" alt="" aria-hidden="true" decoding="async">
-    <img src="/images/fizyoterapist-onur-yalcin.svg" alt="" aria-hidden="true" decoding="async">
-  </div>
-</div>
-</div>
-</div>
-
-    <!-- RIGHT: ANALYSE-FORMULAR -->
-   <div class="hero-right">
-  <div class="hero-form-card">
-    <h3>Ihre <span class="highlight">kostenlose Analyse</span></h3>
-    <p>Persönliche Analyse Ihres Google-Profils innerhalb von 24 Stunden. Keine Kosten, keine Verpflichtungen, kein Verkaufsgespräch.</p>
-
-    <form id="applyForm" class="audit-form" action="https://formspree.io/f/mlgpzokq" method="POST">
-      <div class="audit-field">
-        <label for="auditName">Vollständiger Name *</label>
-        <input type="text" id="auditName" name="name" required>
-      </div>
-
-      <div class="audit-field">
-        <label for="auditEmail">Geschäftliche E-Mail *</label>
-        <input type="email" id="auditEmail" name="email" required>
-      </div>
-
-      <div class="audit-field">
-        <label for="auditPhone">Telefonnummer *</label>
-        <input type="tel" id="auditPhone" name="phone" required>
-      </div>
-
-      <div class="form-row">
-        <div class="audit-field">
-          <label for="auditCompany">Firmenname *</label>
-          <input type="text" id="auditCompany" name="company" required>
-        </div>
-
-        <div class="audit-field">
-          <label for="auditCity">Stadt *</label>
-          <input type="text" id="auditCity" name="city" required>
-        </div>
-      </div>
-
-      <div class="audit-field">
-        <label for="auditMaps">Ihre Google Maps URL</label>
-        <input type="url" id="auditMaps" name="maps_url" placeholder="https://maps.app.goo.gl/...">
-      </div>
-
-      <div class="audit-urgency">
-        <span class="audit-urgency-label">Bis wann möchten Sie dieses Problem lösen? *</span>
-        <div class="urgency-options">
-          <input type="radio" id="urgToday" name="urgency" value="Heute" required>
-          <label for="urgToday">Heute</label>
-
-          <input type="radio" id="urgTomorrow" name="urgency" value="Morgen">
-          <label for="urgTomorrow">Morgen</label>
-
-          <input type="radio" id="urgWeeks" name="urgency" value="In einigen Wochen">
-          <label for="urgWeeks">In einigen Wochen</label>
-        </div>
-      </div>
-
-      <button type="submit" class="btn btn-primary" style="width:100%; border-radius:999px;">Kostenlose Analyse anfordern →</button>
-    </form>
-
-    <p class="hero-form-note">Wir arbeiten pro Stadt &amp; Branche nur mit einem Unternehmen.</p>
-  </div>
-</div>
+<main id="main">
+<div class="v2-top v2-top-renk">
+<section id="analiz" style="max-width: 1100px; margin: 0 auto; padding: clamp(48px, 7vw, 88px) clamp(16px, 3vw, 32px) clamp(56px, 8vw, 104px); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px;">
+  <h1 style="margin: 0; font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: clamp(44px, 7.6vw, 92px); line-height: 1.0; font-weight: 600; letter-spacing: -0.045em; color: #1a1b19; max-width: 1000px;">Gefunden, wenn man sucht. Gewählt, wenn man Sie findet.</h1>
+  <p style="margin: 0; font-size: 20px; line-height: 1.5; color: #1a1b19; max-width: 600px;">Google Maps, Suchergebnisse, Anzeigen und KI-Antworten. Seien Sie dort sichtbar, wo Ihre Kunden Sie suchen.</p>
+  <form id="heroForm" action="#analiz-formu" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 8px; width: 100%; max-width: 680px; box-sizing: border-box; background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.95); border-radius: 32px; box-shadow: 0 24px 48px -30px rgba(22,36,77,0.45); margin-top: 12px;">
+    <label for="heroSite" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Ihre Website oder Ihr Google-Profil</label>
+    <div class="v2-hero-field" style="flex: 1 1 280px; min-width: 0; display: flex; align-items: center; height: 60px; box-sizing: border-box; background: #ffffff; border-radius: 999px; overflow: hidden;">
+      <input id="heroSite" name="site" type="text" autocomplete="url" placeholder="ihre-firma.de oder Google-Maps-Link" style="flex: 1; min-width: 0; height: 100%; padding: 0 20px 0 24px; box-sizing: border-box; border: 0; border-radius: inherit; background: transparent; color: #1a1b19; font: inherit; font-size: 16px;">
+    </div>
+    <button class="btn v2-hero-btn" type="submit" style="height: 60px; padding: 0 32px; border-radius: 999px; border: 0; background: #2bb3a6; color: #16244d; font: inherit; font-size: 16px; font-weight: 600; cursor: pointer; white-space: nowrap;">Analyse anfordern</button>
+  </form>
+  <span style="font-size: 14px; color: #5c5e59;">Kostenlos · In 24 Stunden in Ihrem Postfach · Unverbindlich</span>
 </section>
 
-<section id="positioning" class="reveal">
-  <div class="container">
-
-    <div class="section-head center">
-      <span class="eyebrow">Warum lokale SEO wichtig ist</span>
-      <h2>Die meisten Unternehmen sind <span class="highlight">unsichtbar</span>.<br>Sie müssen es nicht sein.</h2>
-      <p>
-        Wenn Menschen in Ihrer Stadt nach Dienstleistungen suchen, wählen sie aus den ersten Ergebnissen.
-        Wenn Sie nicht dabei sind, sind Sie nicht einmal im Gespräch.
-      </p>
-    </div>
-
-    <div class="grid-3">
-
-     <div class="card positioning-card">
-
-  <div class="positioning-icon">
-    <div class="icon-shell">
-      <svg viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="9"/>
-        <circle cx="12" cy="12" r="4"/>
-        <circle cx="12" cy="12" r="1"/>
-      </svg>
-    </div>
-  </div>
-
-  <h3>Kaufbereiter Traffic</h3>
-  <p>
-    Das sind keine zufälligen Besucher. Es sind Menschen, die jetzt bereit sind zu kaufen, anzurufen oder zu buchen.
-  </p>
-
-</div>
-
-
-<div class="card positioning-card">
-
-  <div class="positioning-icon">
-    <div class="icon-shell">
-      <svg viewBox="0 0 24 24" fill="none">
-        <path d="M3 17l6-6 4 4 7-7"/>
-        <path d="M14 5h7v7"/>
-      </svg>
-    </div>
-  </div>
-
-  <h3>Kumulierter Vorsprung</h3>
-  <p>
-    Rankings gewinnen mit der Zeit an Dynamik. Sind Sie einmal vorn, tun sich Wettbewerber schwer aufzuholen.
-  </p>
-
-</div>
-
-
-<div class="card positioning-card">
-
-  <div class="positioning-icon">
-    <div class="icon-shell">
-      <svg viewBox="0 0 24 24" fill="none">
-        <path d="M2 7l5 3 5-6 5 6 5-3v10H2z"/>
-      </svg>
-    </div>
-  </div>
-
-  <h3>Beherrschen Sie Ihren Markt</h3>
-  <p>
-    Wenn Sie Ihre Stadt dominieren, werden Sie zur ersten Wahl – nicht nur eine weitere Option.
-  </p>
-
-</div>
-
-    </div>
-
-  </div>
-</section>
-
-      <section id="difference-section" class="reveal">
-  <div class="container">
-    <div class="section-head center">
-      <span class="eyebrow">Vorher & Nachher</span>
-      <h2>Der Wiserrise <span class="highlight">Unterschied</span></h2>
-      <p>
-        Eine stärkere lokale Präsenz bedeutet bessere Rankings, mehr Sichtbarkeit und mehr eingehende Nachfrage.
-      </p>
-    </div>
-
-    <div class="difference-wrap">
-      <div class="difference-panel">
-        <div class="difference-tabs">
-          <button class="diff-tab active" data-view="before" type="button">Vorher</button>
-          <button class="diff-tab" data-view="after" type="button">Nachher</button>
-        </div>
-
-        <div class="difference-company">
-          <div class="difference-company-icon">A</div>
-          <div>
-            <strong>Ihr Unternehmen</strong>
-            <p>Momentaufnahme der lokalen Sichtbarkeit</p>
-          </div>
-        </div>
-
-        <div id="beforeMetrics" class="difference-metrics active">
-  <div class="difference-metric">
-    <span>Durchschnittliches Ranking</span>
-    <strong class="metric-bad counter" data-value="18">18</strong>
-  </div>
-  <div class="difference-metric">
-    <span>Sichtbarkeitsanteil</span>
-    <strong class="metric-bad counter percent" data-value="12">12%</strong>
-  </div>
-  <div class="difference-metric">
-    <span>Anrufe pro Monat</span>
-    <strong class="metric-bad counter" data-value="9">9</strong>
-  </div>
-  <div class="difference-metric">
-    <span>Leads pro Monat</span>
-    <strong class="metric-bad counter" data-value="5">5</strong>
-  </div>
-</div>
-
-<div id="afterMetrics" class="difference-metrics">
-  <div class="difference-metric">
-    <span>Durchschnittliches Ranking</span>
-    <strong class="metric-good counter" data-value="3">3</strong>
-  </div>
-  <div class="difference-metric">
-    <span>Sichtbarkeitsanteil</span>
-    <strong class="metric-good counter percent" data-value="68">68%</strong>
-  </div>
-  <div class="difference-metric">
-    <span>Anrufe pro Monat</span>
-    <strong class="metric-good counter" data-value="37">37</strong>
-  </div>
-  <div class="difference-metric">
-    <span>Leads pro Monat</span>
-    <strong class="metric-good counter" data-value="14">14</strong>
-  </div>
-</div>
-
-      </div>
-
-      <div class="difference-visual">
-        <div id="beforeVisual" class="difference-map active map-background map--chicago">
-          <div class="map-chip">7×7 Raster · 49 Punkte · Berlin</div>
-          <div class="map-grid">
-            <span class="dot-dred">20+</span><span class="dot-red">20</span><span class="dot-red">19</span><span class="dot-red">18</span><span class="dot-red">19</span><span class="dot-red">20</span><span class="dot-dred">20+</span>
-            <span class="dot-red">20</span><span class="dot-red">18</span><span class="dot-orange">15</span><span class="dot-orange">14</span><span class="dot-red">16</span><span class="dot-red">19</span><span class="dot-red">20</span>
-            <span class="dot-red">19</span><span class="dot-red">16</span><span class="dot-orange">13</span><span class="dot-orange">12</span><span class="dot-orange">13</span><span class="dot-red">17</span><span class="dot-red">19</span>
-            <span class="dot-red">18</span><span class="dot-orange">14</span><span class="dot-orange">12</span><span class="dot-orange">11</span><span class="dot-orange">12</span><span class="dot-orange">15</span><span class="dot-red">18</span>
-            <span class="dot-red">19</span><span class="dot-red">16</span><span class="dot-orange">13</span><span class="dot-orange">12</span><span class="dot-orange">14</span><span class="dot-red">17</span><span class="dot-red">19</span>
-            <span class="dot-red">20</span><span class="dot-red">18</span><span class="dot-red">16</span><span class="dot-orange">15</span><span class="dot-red">17</span><span class="dot-red">19</span><span class="dot-red">20</span>
-            <span class="dot-dred">20+</span><span class="dot-red">20</span><span class="dot-red">19</span><span class="dot-red">18</span><span class="dot-red">19</span><span class="dot-red">20</span><span class="dot-dred">20+</span>
-          </div>
-          <div class="map-attribution">© OpenStreetMap-Mitwirkende</div>
-        </div>
-
-        <div id="afterVisual" class="difference-map map-background map--chicago">
-          <div class="map-chip">7×7 Raster · 49 Punkte · Berlin</div>
-          <div class="map-grid">
-            <span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">3</span>
-            <span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span>
-            <span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">1</span>
-            <span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">2</span>
-            <span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span>
-            <span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">3</span><span class="dot-green">1</span><span class="dot-green">1</span>
-            <span class="dot-green">1</span><span class="dot-green">3</span><span class="dot-green">1</span><span class="dot-green">1</span><span class="dot-green">2</span><span class="dot-green">1</span><span class="dot-green">2</span>
-          </div>
-          <div class="map-attribution">© OpenStreetMap-Mitwirkende</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <section id="process" class="reveal">
-  <div class="container">
-    <div class="section-head">
-      <h2>
-  Ein einfacher Prozess,<br>
-  der <span class="highlight">skaliert</span>
-</h2>
-      <p>Wir halten den Ablauf schlank, damit Verbesserungen schnell und in der richtigen Reihenfolge passieren.</p>
-    </div>
-
-    <div class="process-vertical">
-      <div class="process-step">
-        <div class="process-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97757" stroke-width="2">
-            <circle cx="11" cy="11" r="7"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </div>
-        <div class="process-content">
-          <p class="process-inline">
-            <strong><span>1.</span> Analyse</strong>
-            Wir bewerten Ihre Rankings, Profilstärke, Website-Struktur und Wettbewerber.
-          </p>
-        </div>
-      </div>
-
-      <div class="process-step">
-        <div class="process-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97757" stroke-width="2">
-            <path d="M3 17l6-6 4 4 7-7"></path>
-            <path d="M14 5h7v7"></path>
-          </svg>
-        </div>
-        <div class="process-content">
-          <p class="process-inline">
-            <strong><span>2.</span> Strategie</strong>
-            Wir identifizieren die wirkungsvollsten lokalen Chancen und priorisieren die Umsetzung.
-          </p>
-        </div>
-      </div>
-
-      <div class="process-step">
-        <div class="process-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97757" stroke-width="2">
-            <path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"></path>
-          </svg>
-        </div>
-        <div class="process-content">
-          <p class="process-inline">
-            <strong><span>3.</span> Umsetzung</strong>
-            Wir optimieren Ihre Assets, verbessern Vertrauenssignale und stärken die Ranking-Relevanz.
-          </p>
-        </div>
-      </div>
-
-      <div class="process-step">
-        <div class="process-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97757" stroke-width="2">
-            <path d="M3 17l6-6 4 4 7-7"></path>
-          </svg>
-        </div>
-        <div class="process-content">
-          <p class="process-inline">
-            <strong><span>4.</span> Wachstum</strong>
-            Sie gewinnen stärkere Sichtbarkeit, mehr Nachfrage und einen besseren lokalen Lead-Fluss.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="was-ist-lokale-seo" class="reveal">
-  <div class="container">
-
-    <div class="section-head center">
-      <span class="eyebrow">Die Arbeit Hinter Dem Ranking</span>
-      <h2>Was <span class="highlight">lokale SEO</span> wirklich ist</h2>
-      <p>Kein Fachjargon. Das ist die Arbeit, die wir leisten – und die die Karte bewegt.</p>
-    </div>
-
-    <div class="explainer">
-      <p>
-        Lokale SEO ist die Arbeit, ein Unternehmen an einem Ort zur offensichtlichen
-        Antwort zu machen. Jemand in der Nähe sucht, was Sie anbieten. Google wählt drei
-        Unternehmen für das Local Pack – den Kartenblock über den normalen
-        Suchergebnissen. Diese drei bekommen die Anrufe, alle anderen werden
-        weggescrollt.
-      </p>
-      <p>
-        Google entscheidet nach Relevanz, Entfernung und Bekanntheit. Ihr Ladenlokal
-        können Sie nicht verschieben, also arbeitet lokale SEO an den beiden anderen. Wir
-        machen das Unternehmen relevant für die Suchanfragen, die wirklich Umsatz
-        bringen, und bekannt genug, dass die Suchmaschine ihm mehr vertraut als dem
-        Wettbewerber nebenan.
-      </p>
-      <p>Das sind sechs konkrete Aufgaben, der Reihe nach:</p>
-
-      <ul class="explainer-list">
-        <li>
-          <strong>Google-Unternehmensprofil</strong> — Kategorien, Leistungen,
-          Einzugsgebiet, Fotos und Beiträge, so eingerichtet, wie das Local Pack sie
-          tatsächlich liest.
-        </li>
-        <li>
-          <strong>Bewertungen</strong> — ein stetiger, ehrlicher Fluss, sauber
-          beantwortet. Das ist das stärkste Bekanntheitssignal, das Sie steuern können.
-        </li>
-        <li>
-          <strong>Lokale Landingpages</strong> — eine echte Seite je Leistung und je
-          Stadtteil, damit eine lokale Suche etwas Konkretes zum Abgleichen hat.
-        </li>
-        <li>
-          <strong>Brancheneinträge</strong> — Name, Adresse und Telefonnummer überall
-          identisch, damit die Suchmaschine sicher ist: ein Unternehmen, nicht drei.
-        </li>
-        <li>
-          <strong>Technische Basis</strong> — eine schnelle, crawlbare Website, denn eine
-          langsame Seite verliert den Klick, den sie gerade gewonnen hat.
-        </li>
-        <li>
-          <strong>Raster-Rankingmessung</strong> — gemessen über Ihr gesamtes Gebiet statt
-          an einem Mittelpunkt, damit Sie sehen, wo Sie wirklich stehen.
-        </li>
+<section class="v2-hl" aria-label="Schwerpunkte" style="max-width: 1376px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 32px) clamp(64px, 8vw, 96px); display: flex; flex-wrap: wrap; gap: 16px; align-items: stretch;">
+    <a class="semse" data-kavis="superzeka" href={p('services/geo')} style="flex: 999 1 760px; min-width: 0; border-radius: 24px; padding: clamp(28px, 4vw, 56px) clamp(20px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: 40px; align-items: center; color: #ffffff; text-decoration: none; box-sizing: border-box;">
+    <div style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #2bb3a6;">GEO · KI-SICHTBARKEIT</span>
+      <h2 style="margin: 0; font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: clamp(30px, 4.2vw, 44px); line-height: 1.02; font-weight: 600; letter-spacing: -0.03em; color: #ffffff;">Lassen Sie sich von KI empfehlen.</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.55; color: #c3cbe0; max-width: 400px;">ChatGPT, Gemini, Perplexity und Googles KI-Übersichten sollen Sie empfehlen. Wir messen jede Woche, bei welchen Fragen Sie genannt werden, und schließen die Lücken dort, wo Sie fehlen.</p>
+      <ul style="margin: 8px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #ffffff;">
+        <li style="display: flex; gap: 10px; align-items: center;"><span aria-hidden="true" style="width: 20px; height: 20px; border-radius: 999px; background: #2bb3a6; color: #16244d; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700;">✓</span>Wöchentlicher KI-Sichtbarkeitswert</li>
+        <li style="display: flex; gap: 10px; align-items: center;"><span aria-hidden="true" style="width: 20px; height: 20px; border-radius: 999px; background: #2bb3a6; color: #16244d; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700;">✓</span>Ihr Anteil an Nennungen gegenüber der Konkurrenz</li>
+        <li style="display: flex; gap: 10px; align-items: center;"><span aria-hidden="true" style="width: 20px; height: 20px; border-radius: 999px; background: #2bb3a6; color: #16244d; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700;">✓</span>Seiten, die Sie als Quelle nennen</li>
       </ul>
-
-      <p>
-        Nichts davon ist ein Trick. Es sind dieselben sechs Aufgaben, jede Woche sauber
-        erledigt – bis die Karte sich bewegt.
-      </p>
+      <span class="btn" style="align-self: flex-start; margin-top: 4px; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border-radius: 999px; border: 1.5px solid #ffffff; color: #ffffff; font-size: 15px; font-weight: 600; box-sizing: border-box;">GEO-Leistung ansehen →</span>
     </div>
+    <div class="wz-frame" aria-hidden="true" style="flex: 999 1 440px; min-width: 0;">
+      <div class="wz-stage">
 
+        <div class="wz-scene" style="--d: 0s;">
+          <div style="position: relative; width: 100%; max-width: 470px; display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center;">
+            <div class="wz-slate" aria-hidden="true">
+              <svg class="wz-slate-mark" viewBox="0 0 110.25 80" width="77" height="56"><polygon class="wz-peak wz-peak1" points="0,80 49,0 67.5,30.2 37,80" fill="#16244d"></polygon><polygon class="wz-peak wz-peak2" points="57.25,60 83.75,16.7 110.25,60" fill="#2bb3a6"></polygon></svg>
+              <span class="wz-slate-word">Wiserrise</span>
+              <span class="wz-slate-tag">ONLINE-MARKETING-AGENTUR</span>
+            </div>
+            <span class="wz-in" style="--t: 1.75s; font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 36px; line-height: 1.02; font-weight: 600; letter-spacing: -0.035em; color: #16244d;">Bei jeder Suche<br>gewählt werden.</span>
+            <div class="wz-in" style="--t: 1.9s; position: relative; width: 100%; display: flex; align-items: center; gap: 8px; height: 60px; padding: 0 8px 0 22px; box-sizing: border-box; border-radius: 999px; background: #ffffff; box-shadow: 0 14px 30px rgba(22,36,77,.12);">
+              <span style="flex: 1; text-align: left; font-size: 16px; color: #1a1b19;"><span class="wz-type" style="--t: 2.2s;">ihre-firma.de</span></span>
+              <span class="wz-press" style="--t: 3.9s; display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 999px; background: #2bb3a6; color: #16244d; font-size: 15px; font-weight: 600;">Analysieren</span>
+              <span class="wz-cursor" style="--t: 2.7s; right: 26px; bottom: -4px;"><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><path d="M4 2 L4 18 L8.5 13.8 L11.6 20 L14.2 18.8 L11.2 12.6 L17 12.4 Z" fill="#16244d" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"></path></svg></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="wz-scene wz-scene--still" style="--d: 4.8s;">
+          <div class="wz-card wz-in" style="--t: 0s;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px;">
+              <span class="wz-h">KI-Sichtbarkeit</span>
+              <span style="display: flex; gap: 2px; padding: 3px; border-radius: 10px; background: #ecece7; font-size: 12px; font-weight: 600;"><span style="padding: 4px 10px; border-radius: 8px; background: #ffffff; color: #16244d; box-shadow: inset 0 0 0 1px #9fb3e8;">KI-Suche</span><span style="padding: 4px 10px; color: #5c5e59;">SEO</span></span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 22px; margin: 18px 0 16px;">
+              <div style="position: relative; width: 84px; height: 84px; flex: 0 0 84px;">
+                <svg viewBox="0 0 84 84" width="84" height="84" aria-hidden="true" style="display: block; transform: rotate(-90deg);"><circle cx="42" cy="42" r="34" fill="none" stroke="#ecece7" stroke-width="9"></circle><circle class="wz-ring" cx="42" cy="42" r="34" fill="none" stroke="#2bb3a6" stroke-width="9" stroke-linecap="round" style="--len: 213.6; --off: 70.5; --t: 0.3s;"></circle></svg>
+                <span class="wz-mono wz-count" style="--to: 67; --t: 0.3s; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 600; color: #16244d;"></span>
+              </div>
+              <div class="wz-in" style="--t: 0.5s; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 12px; color: #5c5e59;">Nennungen</span><span class="wz-mono" style="font-size: 26px; font-weight: 500; letter-spacing: -0.03em;">1.240</span></div>
+              <div class="wz-in" style="--t: 0.7s; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 12px; color: #5c5e59;">Quellen</span><span class="wz-mono" style="font-size: 26px; font-weight: 500; letter-spacing: -0.03em;">86</span></div>
+            </div>
+            <div style="display: flex; flex-direction: column; border-top: 1px solid #ecece7;">
+              <div class="wz-slide" style="--t: 1.1s; display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid #f1f2ee; font-size: 14px;">{ai.chatgpt ? <img class="wz-ailogo" src={ai.chatgpt} alt="" width="22" height="22" /> : <span class="wz-logo"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M8 1.5C8.6 5.6 10.4 7.4 14.5 8 10.4 8.6 8.6 10.4 8 14.5 7.4 10.4 5.6 8.6 1.5 8 5.6 7.4 7.4 5.6 8 1.5Z" fill="#2bb3a6"></path></svg></span>}<span style="flex: 1;">ChatGPT</span><span class="wz-mono" style="width: 56px; text-align: right;">412</span><span class="wz-mono" style="width: 40px; text-align: right; color: #5c5e59;">38</span></div>
+              <div class="wz-slide" style="--t: 1.3s; display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid #f1f2ee; font-size: 14px;">{ai.gemini ? <img class="wz-ailogo" src={ai.gemini} alt="" width="22" height="22" /> : <span class="wz-logo"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M8 1.5C8.6 5.6 10.4 7.4 14.5 8 10.4 8.6 8.6 10.4 8 14.5 7.4 10.4 5.6 8.6 1.5 8 5.6 7.4 7.4 5.6 8 1.5Z" fill="#2bb3a6"></path></svg></span>}<span style="flex: 1;">Gemini</span><span class="wz-mono" style="width: 56px; text-align: right;">356</span><span class="wz-mono" style="width: 40px; text-align: right; color: #5c5e59;">27</span></div>
+              <div class="wz-slide" style="--t: 1.5s; display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid #f1f2ee; font-size: 14px;">{ai.perplexity ? <img class="wz-ailogo" src={ai.perplexity} alt="" width="22" height="22" /> : <span class="wz-logo"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M8 1.5C8.6 5.6 10.4 7.4 14.5 8 10.4 8.6 8.6 10.4 8 14.5 7.4 10.4 5.6 8.6 1.5 8 5.6 7.4 7.4 5.6 8 1.5Z" fill="#2bb3a6"></path></svg></span>}<span style="flex: 1;">Perplexity</span><span class="wz-mono" style="width: 56px; text-align: right;">248</span><span class="wz-mono" style="width: 40px; text-align: right; color: #5c5e59;">12</span></div>
+              <div class="wz-slide" style="--t: 1.7s; display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid #f1f2ee; font-size: 14px;">{ai.google ? <img class="wz-ailogo" src={ai.google} alt="" width="22" height="22" /> : <span class="wz-logo"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M8 1.5C8.6 5.6 10.4 7.4 14.5 8 10.4 8.6 8.6 10.4 8 14.5 7.4 10.4 5.6 8.6 1.5 8 5.6 7.4 7.4 5.6 8 1.5Z" fill="#2bb3a6"></path></svg></span>}<span style="flex: 1;">Google KI-Übersicht</span><span class="wz-mono" style="width: 56px; text-align: right;">128</span><span class="wz-mono" style="width: 40px; text-align: right; color: #5c5e59;">5</span></div>
+              <div class="wz-slide" style="--t: 1.9s; display: flex; align-items: center; gap: 10px; padding: 9px 0; font-size: 14px;">{ai.claude ? <img class="wz-ailogo" src={ai.claude} alt="" width="22" height="22" /> : <span class="wz-logo"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M8 1.5C8.6 5.6 10.4 7.4 14.5 8 10.4 8.6 8.6 10.4 8 14.5 7.4 10.4 5.6 8.6 1.5 8 5.6 7.4 7.4 5.6 8 1.5Z" fill="#2bb3a6"></path></svg></span>}<span style="flex: 1;">Claude</span><span class="wz-mono" style="width: 56px; text-align: right;">96</span><span class="wz-mono" style="width: 40px; text-align: right; color: #5c5e59;">4</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wz-scene" style="--d: 9.6s;">
+          <div class="wz-card wz-in" style="--t: 0s;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;">
+              <span class="wz-h">Sichtbarkeitstrend</span>
+              <span style="display: flex; gap: 12px; font-size: 12px; color: #5c5e59;"><span style="display: inline-flex; align-items: center; gap: 5px;"><i style="width: 8px; height: 8px; border-radius: 2px; background: #2bb3a6; display: inline-block;"></i>Sie</span><span style="display: inline-flex; align-items: center; gap: 5px;"><i style="width: 8px; height: 8px; border-radius: 2px; background: #16244d; display: inline-block;"></i>Wettbewerber 1</span><span style="display: inline-flex; align-items: center; gap: 5px;"><i style="width: 8px; height: 8px; border-radius: 2px; background: #9fb3e8; display: inline-block;"></i>Wettbewerber 2</span></span>
+            </div>
+            <div style="position: relative; margin-top: 16px;">
+              <svg viewBox="0 0 420 190" width="100%" height="190" aria-hidden="true" style="display: block; overflow: visible;">
+                <g stroke="#ecece7" stroke-width="1"><path d="M28 20H420M28 65H420M28 110H420M28 155H420"></path></g>
+                <g class="wz-mono" font-size="10" fill="#868982"><text x="0" y="24">100</text><text x="6" y="69">75</text><text x="6" y="114">50</text><text x="6" y="159">25</text><text x="40" y="182">Jun</text><text x="130" y="182">Jul</text><text x="220" y="182">Aug</text><text x="310" y="182">Sep</text><text x="392" y="182">Okt</text></g>
+                <polyline class="wz-draw" style="--t: 0.5s;" points="40,104 85,100 130,96 175,99 220,92 265,90 310,88 355,90 400,87" fill="none" stroke="#9fb3e8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"></polyline>
+                <polyline class="wz-draw" style="--t: 0.35s;" points="40,70 85,72 130,74 175,73 220,77 265,80 310,79 355,83 400,85" fill="none" stroke="#16244d" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"></polyline>
+                <polyline class="wz-draw" style="--t: 0.2s;" points="40,140 85,134 130,124 175,116 220,100 265,86 310,72 355,58 400,45" fill="none" stroke="#2bb3a6" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></polyline>
+                <circle class="wz-in" style="--t: 2.1s;" cx="400" cy="45" r="6" fill="#2bb3a6" stroke="#ffffff" stroke-width="2.5"></circle>
+              </svg>
+              <div class="wz-in" style="--t: 2.3s; position: absolute; right: 6px; top: -6px; padding: 8px 10px; border-radius: 10px; background: #16244d; color: #ffffff; font-size: 12px; box-shadow: 0 10px 24px rgba(22,36,77,.25);"><span class="wz-mono" style="opacity: .7;">Okt</span> · Sie <b class="wz-mono">69</b> <span style="color: #7ff0e3; font-weight: 600;">▲ 8</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wz-scene" style="--d: 14.4s;">
+          <div class="wz-card wz-in" style="--t: 0s;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px;">
+              <span class="wz-h">Chancen</span>
+              <span style="position: relative; display: flex; padding: 3px; border-radius: 10px; background: #ecece7; font-size: 12px; font-weight: 600;"><span class="wz-tabpill" style="--t: 2.1s; position: absolute; left: 3px; top: 3px; bottom: 3px; width: 64px; border-radius: 8px; background: #ffffff; box-shadow: inset 0 0 0 1px #9fb3e8;"></span><span style="position: relative; width: 64px; text-align: center; padding: 4px 0; color: #16244d;">Fehlt</span><span style="position: relative; width: 64px; text-align: center; padding: 4px 0; color: #16244d;">Schwach</span></span>
+            </div>
+            <div style="display: flex; gap: 10px; margin: 16px 0 6px; font-size: 11px; font-weight: 600; color: #868982; text-transform: uppercase; letter-spacing: .06em;"><span style="flex: 1;">Gestellte Frage</span><span style="width: 64px; text-align: right;">Monat</span><span style="width: 86px; text-align: right;">Status</span></div>
+            <div style="position: relative;">
+              <div class="wz-set wz-setA" style="display: flex; flex-direction: column;">
+                <div class="wz-slide" style="--t: 0.4s; display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid #f1f2ee; font-size: 14px;"><span style="flex: 1;">Physiotherapeut in der Nähe</span><span class="wz-mono" style="width: 64px; text-align: right;">2.400</span><span style="width: 86px; text-align: right;"><span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: #fbefd9; color: #8a5a12; white-space: nowrap;">Fehlt</span></span></div>
+                <div class="wz-slide" style="--t: 0.6000000000000001s; display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid #f1f2ee; font-size: 14px;"><span style="flex: 1;">zuverlässiger Heizungsservice</span><span class="wz-mono" style="width: 64px; text-align: right;">1.600</span><span style="width: 86px; text-align: right;"><span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: #fbefd9; color: #8a5a12; white-space: nowrap;">Fehlt</span></span></div>
+                <div class="wz-slide" style="--t: 0.8s; display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid #f1f2ee; font-size: 14px;"><span style="flex: 1;">Klempner Notdienst</span><span class="wz-mono" style="width: 64px; text-align: right;">1.400</span><span style="width: 86px; text-align: right;"><span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: #fbefd9; color: #8a5a12; white-space: nowrap;">Fehlt</span></span></div>
+                <div class="wz-slide" style="--t: 1.0s; display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid #f1f2ee; font-size: 14px;"><span style="flex: 1;">Scheidungsanwalt Kosten</span><span class="wz-mono" style="width: 64px; text-align: right;">1.200</span><span style="width: 86px; text-align: right;"><span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: #fbefd9; color: #8a5a12; white-space: nowrap;">Fehlt</span></span></div>
+                <div class="wz-slide" style="--t: 1.2000000000000002s; display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid #f1f2ee; font-size: 14px;"><span style="flex: 1;">Zahnimplantat Kosten</span><span class="wz-mono" style="width: 64px; text-align: right;">980</span><span style="width: 86px; text-align: right;"><span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: #fbefd9; color: #8a5a12; white-space: nowrap;">Fehlt</span></span></div>
+              </div>
+              <div class="wz-set wz-setB" style="position: absolute; inset: 0 0 auto 0; display: flex; flex-direction: column;">
+                <div class="wz-slide" style="--t: 2.9s; display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid #f1f2ee; font-size: 14px;"><span style="flex: 1;">Kinderzahnarzt Empfehlung</span><span class="wz-mono" style="width: 64px; text-align: right;">1.900</span><span style="width: 86px; text-align: right;"><span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: #dde3f0; color: #16244d; white-space: nowrap;">Platz 4</span></span></div>
+                <div class="wz-slide" style="--t: 3.05s; display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid #f1f2ee; font-size: 14px;"><span style="flex: 1;">bester Strafverteidiger</span><span class="wz-mono" style="width: 64px; text-align: right;">2.100</span><span style="width: 86px; text-align: right;"><span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: #dde3f0; color: #16244d; white-space: nowrap;">Platz 6</span></span></div>
+                <div class="wz-slide" style="--t: 3.1999999999999997s; display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid #f1f2ee; font-size: 14px;"><span style="flex: 1;">Tierarzt abends geöffnet</span><span class="wz-mono" style="width: 64px; text-align: right;">1.100</span><span style="width: 86px; text-align: right;"><span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: #dde3f0; color: #16244d; white-space: nowrap;">Platz 5</span></span></div>
+                <div class="wz-slide" style="--t: 3.3499999999999996s; display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid #f1f2ee; font-size: 14px;"><span style="flex: 1;">Physiotherapie Kosten</span><span class="wz-mono" style="width: 64px; text-align: right;">860</span><span style="width: 86px; text-align: right;"><span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: #dde3f0; color: #16244d; white-space: nowrap;">Keine Quelle</span></span></div>
+                <div class="wz-slide" style="--t: 3.5s; display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid #f1f2ee; font-size: 14px;"><span style="flex: 1;">Zähne bleichen</span><span class="wz-mono" style="width: 64px; text-align: right;">740</span><span style="width: 86px; text-align: right;"><span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: #dde3f0; color: #16244d; white-space: nowrap;">Platz 8</span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wz-scene" style="--d: 19.2s;">
+          <div class="wz-card wz-in" style="--t: 0s; position: relative;">
+            <span class="wz-h">Überblick</span>
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
+              <span style="display: flex; gap: 2px; padding: 3px; border-radius: 10px; background: #ecece7; font-size: 12px; font-weight: 600;"><span style="padding: 4px 10px; border-radius: 8px; background: #ffffff; color: #16244d; box-shadow: inset 0 0 0 1px #9fb3e8;">DE</span><span style="padding: 4px 10px; color: #5c5e59;">Berlin</span><span style="padding: 4px 10px; color: #5c5e59;">···</span></span>
+              <span style="position: relative; display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 12px; border-radius: 8px; border: 1px solid #9fb3e8; font-size: 12px; font-weight: 600; color: #16244d; background: #ffffff;"><span class="wz-lbl"><span class="wz-lblA">Alle KI-Plattformen</span><span class="wz-lblB">Gemini</span></span> <span style="font-size: 10px;">▾</span>
+                <span class="wz-menu" style="position: absolute; right: 0; top: 36px; z-index: 4; width: 184px; padding: 6px; border-radius: 12px; background: #ffffff; box-shadow: 0 16px 36px rgba(22,36,77,.18); border: 1px solid #ecece7; display: flex; flex-direction: column;">
+                  <span class="wz-hl2" style="position: absolute; left: 6px; right: 6px; top: 6px; height: 32px; border-radius: 8px; background: #e9f8f6;"></span>
+                  <span style="position: relative; height: 32px; display: flex; align-items: center; gap: 8px; padding: 0 8px; font-weight: 500;">Alle KI-Plattformen</span>
+                  <span style="position: relative; height: 32px; display: flex; align-items: center; gap: 8px; padding: 0 8px; font-weight: 500;">{ai.chatgpt ? <img class="wz-ailogo" src={ai.chatgpt} alt="" width="18" height="18" /> : <span class="wz-logo" style="flex-basis: 18px; width: 18px; height: 18px; font-size: 9px;"><svg viewBox="0 0 16 16" width="10" height="10" aria-hidden="true"><path d="M8 1.5C8.6 5.6 10.4 7.4 14.5 8 10.4 8.6 8.6 10.4 8 14.5 7.4 10.4 5.6 8.6 1.5 8 5.6 7.4 7.4 5.6 8 1.5Z" fill="#2bb3a6"></path></svg></span>}ChatGPT</span>
+                  <span style="position: relative; height: 32px; display: flex; align-items: center; gap: 8px; padding: 0 8px; font-weight: 500;">{ai.gemini ? <img class="wz-ailogo" src={ai.gemini} alt="" width="18" height="18" /> : <span class="wz-logo" style="flex-basis: 18px; width: 18px; height: 18px; font-size: 9px;"><svg viewBox="0 0 16 16" width="10" height="10" aria-hidden="true"><path d="M8 1.5C8.6 5.6 10.4 7.4 14.5 8 10.4 8.6 8.6 10.4 8 14.5 7.4 10.4 5.6 8.6 1.5 8 5.6 7.4 7.4 5.6 8 1.5Z" fill="#2bb3a6"></path></svg></span>}Gemini</span>
+                  <span style="position: relative; height: 32px; display: flex; align-items: center; gap: 8px; padding: 0 8px; font-weight: 500;">{ai.perplexity ? <img class="wz-ailogo" src={ai.perplexity} alt="" width="18" height="18" /> : <span class="wz-logo" style="flex-basis: 18px; width: 18px; height: 18px; font-size: 9px;"><svg viewBox="0 0 16 16" width="10" height="10" aria-hidden="true"><path d="M8 1.5C8.6 5.6 10.4 7.4 14.5 8 10.4 8.6 8.6 10.4 8 14.5 7.4 10.4 5.6 8.6 1.5 8 5.6 7.4 7.4 5.6 8 1.5Z" fill="#2bb3a6"></path></svg></span>}Perplexity</span>
+                  <span style="position: relative; height: 32px; display: flex; align-items: center; gap: 8px; padding: 0 8px; font-weight: 500;">{ai.google ? <img class="wz-ailogo" src={ai.google} alt="" width="18" height="18" /> : <span class="wz-logo" style="flex-basis: 18px; width: 18px; height: 18px; font-size: 9px;"><svg viewBox="0 0 16 16" width="10" height="10" aria-hidden="true"><path d="M8 1.5C8.6 5.6 10.4 7.4 14.5 8 10.4 8.6 8.6 10.4 8 14.5 7.4 10.4 5.6 8.6 1.5 8 5.6 7.4 7.4 5.6 8 1.5Z" fill="#2bb3a6"></path></svg></span>}Google KI-Übersicht</span>
+                  <span style="position: relative; height: 32px; display: flex; align-items: center; gap: 8px; padding: 0 8px; font-weight: 500;">{ai.claude ? <img class="wz-ailogo" src={ai.claude} alt="" width="18" height="18" /> : <span class="wz-logo" style="flex-basis: 18px; width: 18px; height: 18px; font-size: 9px;"><svg viewBox="0 0 16 16" width="10" height="10" aria-hidden="true"><path d="M8 1.5C8.6 5.6 10.4 7.4 14.5 8 10.4 8.6 8.6 10.4 8 14.5 7.4 10.4 5.6 8.6 1.5 8 5.6 7.4 7.4 5.6 8 1.5Z" fill="#2bb3a6"></path></svg></span>}Claude</span>
+                </span>
+                <span class="wz-cursor3" style="right: 30px; top: 12px;"><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><path d="M4 2 L4 18 L8.5 13.8 L11.6 20 L14.2 18.8 L11.2 12.6 L17 12.4 Z" fill="#16244d" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"></path></svg></span>
+              </span>
+            </div>
+            <div style="display: flex; align-items: flex-end; gap: 20px; margin-top: 18px;">
+              <div style="position: relative; width: 180px; height: 100px; flex: 0 0 180px;">
+                <svg viewBox="0 0 180 100" width="180" height="100" aria-hidden="true" style="display: block;"><path d="M20 92 A70 70 0 0 1 160 92" fill="none" stroke="#ecece7" stroke-width="14" stroke-linecap="round"></path><path class="wz-ring" style="--len: 220; --off: 24.2; --t: 0.3s;" d="M20 92 A70 70 0 0 1 160 92" fill="none" stroke="#2bb3a6" stroke-width="14" stroke-linecap="round"></path></svg>
+                <span style="position: absolute; left: 0; right: 0; bottom: 4px; display: flex; flex-direction: column; align-items: center;"><span class="wz-mono" style="font-size: 13px; color: #868982;"><b class="wz-count" style="--to: 89; --t: 0.3s; font-size: 28px; color: #16244d; font-weight: 600;"></b>/100</span><span style="font-size: 14px; font-weight: 700; color: #187a50;">Sehr gut</span></span>
+              </div>
+              <svg viewBox="0 0 220 90" width="100%" height="90" aria-hidden="true" style="display: block; flex: 1; min-width: 0;"><path d="M0 20H220M0 50H220M0 80H220" stroke="#ecece7"></path><polyline class="wz-draw" style="--t: 0.6s;" points="0,74 30,70 60,66 90,60 120,48 150,40 180,30 220,18" fill="none" stroke="#2bb3a6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></polyline><polyline class="wz-draw" style="--t: 0.7s;" points="0,50 30,52 60,50 90,55 120,54 150,58 180,57 220,60" fill="none" stroke="#9fb3e8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"></polyline></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+
+    <a class="card v2-ray-card" data-kavis="harita" href={p('services/local-seo')} style="flex: 1 1 320px; min-width: 0; position: relative; display: flex; flex-direction: column; gap: 18px; padding: 56px 40px 40px; border-radius: 24px; background-color: #e6f6f3; border: 1px solid #dedfda; color: #1a1b19; text-decoration: none; box-sizing: border-box;">
+      <div class="gp-text">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;">LOKALE SEO · GOOGLE MAPS</span>
+      <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: clamp(30px, 3.6vw, 40px); line-height: 1.04; font-weight: 600; letter-spacing: -0.03em; max-width: 320px;">Kommen Sie auf der Karte nach vorn.</span>
+      <span style="font-size: 16px; line-height: 1.55; color: #5c5e59; max-width: 320px;">Wir messen in Ihrem Umkreis und sehen, auf welchem Platz Sie an jeder Ecke stehen. Dann stärken wir Ihr Profil, Ihre Bewertungen und Ihre lokalen Signale.</span>
+      <span style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11.5px; font-weight: 500; color: #16244d;"><span style="padding: 4px 10px; border-radius: 999px; background: #eef1f6;">Messung im Umkreis</span><span style="padding: 4px 10px; border-radius: 999px; background: #eef1f6;">Profilpflege</span><span style="padding: 4px 10px; border-radius: 999px; background: #eef1f6;">Wöchentlicher Bericht</span></span>
+      <span class="btn" style="margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border-radius: 999px; border: 1px solid #1a1b19; background: #ffffff; font-size: 15px; font-weight: 600;">Lokale SEO ansehen →</span>
+      </div>
+      <div class="gp-panel" aria-hidden="true">
+        <div class="gp-stage wz-stage">
+          <div class="lm-film">
+
+            <div class="wz-scene" style="--d: 0s;">
+              <div class="lm-col" style="gap: 18px;">
+                <span class="wz-in lm-big" style="--t: 0.1s;">Ihr Kunde sucht<br>gerade auf der Karte.</span>
+                <div class="wz-in lm-search" style="--t: 0.3s;">
+                  <svg viewBox="0 0 24 24" width="18" height="18" style="flex: 0 0 auto;"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z" fill="#2bb3a6"></path></svg>
+                  <span class="lm-ara"><span class="wz-type" style="--t: 0.6s;">Physio in der Nähe</span></span>
+                  <span class="wz-press lm-go" style="--t: 2.7s;">Suchen</span>
+                  <span class="wz-cursor" style="--t: 1.5s; right: 12px; bottom: -8px;"><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><path d="M4 2 L4 18 L8.5 13.8 L11.6 20 L14.2 18.8 L11.2 12.6 L17 12.4 Z" fill="#16244d" stroke="#ffffff" stroke-width="1.4" stroke-linejoin="round"></path></svg></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="wz-scene" style="--d: 4.8s;">
+              <div class="lm-col">
+                <span class="wz-in lm-capt" style="--t: 0.1s;">Die meisten Klicks gehen an die Top 3.</span>
+                <div class="wz-card lm-card wz-in" style="--t: 0.2s;">
+                  <span class="lm-note">„Physio in der Nähe“</span>
+                  <div class="wz-slide lm-row" style="--t: 0.4s;"><span class="lm-rk lm-t">1</span><span class="lm-nm">Westwind Physio</span><span class="lm-st">★ 4,9</span></div>
+                  <div class="wz-slide lm-row" style="--t: 0.6s;"><span class="lm-rk lm-t">2</span><span class="lm-nm">Physio Zedernhof</span><span class="lm-st">★ 4,8</span></div>
+                  <div class="wz-slide lm-row" style="--t: 0.8s;"><span class="lm-rk lm-t">3</span><span class="lm-nm">Reha Nordwinkel</span><span class="lm-st">★ 4,7</span></div>
+                  <div class="wz-in lm-dots" style="--t: 1.3s;">···</div>
+                  <div class="wz-slide lm-row lm-you" style="--t: 1.5s;"><span class="lm-rk lm-a">14</span><span class="lm-nm">Physio Blaue Platane</span><span class="lm-st">★ 4,3</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="lm-mapsc" style="--d: 9.6s;">
+              <div class="lm-capts lm-capt">
+                <span class="lm-capA">Zuerst messen wir in Ihrem Umkreis.</span>
+                <span class="lm-capB" style="--d: 19.2s;">Ziel: jeder Punkt grün.</span>
+              </div>
+              <div class="lm-body">
+                <div class="lm-mapwrap">
+                  <svg class="lm-map" viewBox="0 0 300 300" aria-hidden="true"><rect width="300" height="300" rx="16" fill="#eef1ec"></rect><path d="M-10 214C60 196 98 230 160 206S250 150 310 166" fill="none" stroke="#cfe6ef" stroke-width="16" stroke-linecap="round"></path><g fill="none" stroke="#ffffff" stroke-linecap="round"><path d="M0 62H300M0 132H300M0 262H300M44 0V300M118 0V300M196 0V300M262 0V300" stroke-width="7"></path><path d="M0 22 300 290M300 40 120 300M0 170 150 0" stroke-width="4"></path></g><g fill="#dfe8d9"><rect x="128" y="72" width="58" height="50" rx="6"></rect><rect x="206" y="226" width="46" height="28" rx="6"></rect><rect x="54" y="142" width="54" height="40" rx="6"></rect></g></svg>
+                  <div class="lm-grid">{lmBas.map((h, i) => <span class={i === 24 ? 'lm-cell lm-me lm-ping' : 'lm-cell'}><i class={`lm-${h[0]}`}>{h.slice(1)}</i></span>)}</div>
+                  <div class="lm-grid lm-gridB">{lmBas.map((_, i) => <span class={i === 24 ? 'lm-cell lm-me' : 'lm-cell'}><b class="lm-t">1</b></span>)}</div>
+                  <span class="lm-sweep"></span>
+                </div>
+                <div class="lm-side">
+                  <div class="lm-sideA">
+                    <span class="lm-when">Beispiel</span>
+                    <span class="lm-stat">Ø Platz<b>14,3</b></span>
+                    <span class="lm-stat">Bester Platz<b>3</b></span>
+                  </div>
+                  <div class="lm-sideB">
+                    <span class="lm-when">Ziel</span>
+                    <span class="lm-note">Beispielbild. Das Ergebnis hängt vom Unternehmen und vom Wettbewerb ab.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="wz-scene" style="--d: 14.4s;">
+              <div class="lm-col">
+                <span class="wz-in lm-capt" style="--t: 0.1s;">Dann schließen wir jede Lücke einzeln.</span>
+                <div class="wz-card lm-card wz-in" style="--t: 0.2s;">
+                  <div class="wz-slide lm-row" style="--t: 0.5s; border: 0;"><span class="lm-chk"></span><span class="lm-nm">Kategorien und Leistungen</span></div>
+                  <div class="wz-slide lm-row" style="--t: 0.9s;"><span class="lm-chk"></span><span class="lm-nm">Einheitliche NAP-Daten in Verzeichnissen</span></div>
+                  <div class="wz-slide lm-row" style="--t: 1.3s;"><span class="lm-chk"></span><span class="lm-nm">Beitragsplan fürs Profil</span></div>
+                  <div class="wz-slide lm-row" style="--t: 1.7s;"><span class="lm-chk"></span><span class="lm-nm">Stetiger Bewertungsfluss</span></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </a>
+</section>
+
+</div>
+
+<span id="difference-section" aria-hidden="true"></span>
+<section id="hizmetler" style="max-width: 1312px; margin: 0 auto; padding: clamp(72px, 10vw, 120px) clamp(16px, 3vw, 32px) 0; display: flex; flex-direction: column; gap: 48px;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px;">
+    <div style="display: flex; flex-direction: column; gap: 16px; max-width: 720px;">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;">LEISTUNGEN <span style="color: #868982;">( 6 )</span></span>
+      <h2 style="margin: 0; font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: clamp(34px, 5vw, 52px); line-height: 1.0; font-weight: 600; letter-spacing: -0.03em;">Alles für Ihre Sichtbarkeit bei Google, aus einer Hand.</h2>
+    </div>
+    <p style="margin: 0; font-size: 17px; line-height: 1.55; color: #5c5e59; max-width: 400px;">Für Kanzleien, Kliniken, Berater, lokale Dienstleister und Onlineshops. Wir wählen die passende Mischung und richten alles auf dasselbe Ziel aus.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px;">
+
+    <a class="card" href={p('services/seo')} style="display: flex; flex-direction: column; gap: 14px; padding: 32px; border-radius: 20px; background: #ffffff; border: 1px solid #dedfda; color: #1a1b19; text-decoration: none; min-height: 340px; box-sizing: border-box;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;">SUCHE</span>
+        <span class="v2-arrow" aria-hidden="true"><span class="v2-arrow-t">Leistung ansehen</span><i></i></span>
+      </div>
+      <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 28px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em;">SEO</span>
+      <span style="font-size: 15px; line-height: 1.55; color: #5c5e59;">Mit technischer Grundlage, Seitenaufbau und Inhalten richten wir Ihre Website auf die Fragen Ihrer Kunden aus.</span>
+      <div style="margin-top: auto; padding: 16px; border-radius: 12px; background: #f6f6f3; display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 600; width: 18px; color: #16244d;">1</span><span style="height: 8px; border-radius: 999px; background: #16244d; flex: 0 0 62%;"></span><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #16244d;">Sie</span></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 600; width: 18px; color: #868982;">2</span><span style="height: 8px; border-radius: 999px; background: #dedfda; flex: 0 0 48%;"></span></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 600; width: 18px; color: #868982;">3</span><span style="height: 8px; border-radius: 999px; background: #dedfda; flex: 0 0 36%;"></span></div>
+      </div>
+    </a>
+
+    <a class="card" href={p('services/local-seo')} style="display: flex; flex-direction: column; gap: 14px; padding: 32px; border-radius: 20px; background: #ffffff; border: 1px solid #dedfda; color: #1a1b19; text-decoration: none; min-height: 340px; box-sizing: border-box;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;">GOOGLE MAPS</span>
+        <span class="v2-arrow" aria-hidden="true"><span class="v2-arrow-t">Leistung ansehen</span><i></i></span>
+      </div>
+      <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 28px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em;">Lokale SEO</span>
+      <span style="font-size: 15px; line-height: 1.55; color: #5c5e59;">Gehören Sie auf Google Maps zu den ersten drei Unternehmen, die Kunden in Ihrer Nähe sehen.</span>
+      <div style="margin-top: auto; padding: 16px; border-radius: 12px; background: #f6f6f3; display: flex; align-items: center; gap: 16px;">
+        <div style="display: grid; grid-template-columns: repeat(5, 14px); gap: 3px;">
+                      <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #e8a33d; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #2bb3a6; box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px #16244d;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #e8a33d; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #187a50; box-shadow: none;"></div>
+            <div style="width: 14px; height: 14px; border-radius: 3px; background: #e8a33d; box-shadow: none;"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 22px; font-weight: 500; letter-spacing: -0.02em;">1,6</span><span style="font-size: 12px; color: #5c5e59;">Ø Platz, Beispielmessung</span></div>
+      </div>
+    </a>
+
+    <a class="card" href="#analiz-formu" data-analiz data-hizmet="gads" style="display: flex; flex-direction: column; gap: 14px; padding: 32px; border-radius: 20px; background: #ffffff; border: 1px solid #dedfda; color: #1a1b19; text-decoration: none; min-height: 340px; box-sizing: border-box;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;">ANZEIGEN</span>
+        <span class="v2-arrow" aria-hidden="true"><span class="v2-arrow-t">Anzeigen-Analyse anfordern</span><i></i></span>
+      </div>
+      <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 28px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em;">Google Ads</span>
+      <span style="font-size: 15px; line-height: 1.55; color: #5c5e59;">Suchanzeigen, die Ihr Budget nur für Menschen ausgeben, die gerade suchen und kaufbereit sind.</span>
+      <div style="margin-top: auto; padding: 16px; border-radius: 12px; background: #f6f6f3; display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59;">GESPONSERT</span>
+        <span style="font-size: 14px; font-weight: 600; color: #16244d;">Ihr Unternehmen · Heute Termin buchen</span>
+        <span style="height: 6px; width: 70%; border-radius: 999px; background: #dedfda;"></span>
+        <span style="height: 6px; width: 50%; border-radius: 999px; background: #dedfda;"></span>
+      </div>
+    </a>
+
+    <a class="card" href="#analiz-formu" data-analiz data-hizmet="meta" style="display: flex; flex-direction: column; gap: 14px; padding: 32px; border-radius: 20px; background: #ffffff; border: 1px solid #dedfda; color: #1a1b19; text-decoration: none; min-height: 340px; box-sizing: border-box;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;">SOCIAL</span>
+        <span class="v2-arrow" aria-hidden="true"><span class="v2-arrow-t">Anzeigen-Analyse anfordern</span><i></i></span>
+      </div>
+      <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 28px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em;">Meta Ads</span>
+      <span style="font-size: 15px; line-height: 1.55; color: #5c5e59;">Anzeigen auf Instagram und Facebook für Menschen in Ihrer Umgebung. Sie lernen Sie kennen, bevor sie suchen.</span>
+      <div style="margin-top: auto; padding: 12px; border-radius: 12px; background: #f6f6f3; display: flex; align-items: center; gap: 12px;">
+        <span style="flex: none; width: 64px; height: 64px; border-radius: 8px; background: linear-gradient(135deg, #2bb3a6, #16244d);"></span>
+        <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;">
+          <span style="display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #16244d;"><span style="width: 16px; height: 16px; border-radius: 999px; background: #16244d;"></span>Ihr Unternehmen</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; color: #5c5e59;">GESPONSERT</span>
+          <span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px; background: #dde3f0; color: #16244d;">Nachricht senden</span>
+        </span>
+      </div>
+    </a>
+
+    <a class="card" href="#analiz-formu" data-analiz data-hizmet="backlink" style="display: flex; flex-direction: column; gap: 14px; padding: 32px; border-radius: 20px; background: #ffffff; border: 1px solid #dedfda; color: #1a1b19; text-decoration: none; min-height: 340px; box-sizing: border-box;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;">AUTORITÄT</span>
+        <span class="v2-arrow" aria-hidden="true"><span class="v2-arrow-t">Pakete ansehen</span><i></i></span>
+      </div>
+      <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 28px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em;">Linkaufbau</span>
+      <span style="font-size: 15px; line-height: 1.55; color: #5c5e59;">Links von themennahen Websites mit echtem Traffic. Für Agenturen auch als White-Label.</span>
+      <div style="margin-top: auto; padding: 16px; border-radius: 12px; background: #f6f6f3; display: flex; align-items: center; justify-content: center;">
+        <svg width="200" height="64" viewBox="0 0 200 64" aria-hidden="true" style="display: block;">
+          <path d="M100 32 L30 14 M100 32 L24 48 M100 32 L170 12 M100 32 L176 50 M100 32 L100 6" stroke="#868982" stroke-width="1.5" fill="none"></path>
+          <circle cx="30" cy="14" r="6" fill="#dde3f0" stroke="#16244d" stroke-width="1.5"></circle>
+          <circle cx="24" cy="48" r="6" fill="#dde3f0" stroke="#16244d" stroke-width="1.5"></circle>
+          <circle cx="170" cy="12" r="6" fill="#dde3f0" stroke="#16244d" stroke-width="1.5"></circle>
+          <circle cx="176" cy="50" r="6" fill="#dde3f0" stroke="#16244d" stroke-width="1.5"></circle>
+          <circle cx="100" cy="6" r="6" fill="#dde3f0" stroke="#16244d" stroke-width="1.5"></circle>
+          <circle cx="100" cy="32" r="11" fill="#16244d"></circle>
+          <circle cx="100" cy="32" r="4" fill="#2bb3a6"></circle>
+        </svg>
+      </div>
+    </a>
+
+    <a class="card" href={p('services/geo')} style="display: flex; flex-direction: column; gap: 14px; padding: 32px; border-radius: 20px; background: #ffffff; border: 1px solid #dedfda; color: #1a1b19; text-decoration: none; min-height: 340px; box-sizing: border-box;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;">KI</span>
+        <span class="v2-arrow" aria-hidden="true"><span class="v2-arrow-t">Leistung ansehen</span><i></i></span>
+      </div>
+      <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 28px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em;">GEO</span>
+      <span style="font-size: 15px; line-height: 1.55; color: #5c5e59;">Seien Sie dabei, wenn ChatGPT, Gemini und Googles KI-Antworten eine Empfehlung geben.</span>
+      <div style="margin-top: auto; padding: 16px; border-radius: 12px; background: #f6f6f3; display: flex; flex-direction: column; gap: 8px;">
+        <span style="align-self: flex-end; font-size: 13px; padding: 6px 10px; border-radius: 10px 10px 2px 10px; background: #dde3f0; color: #16244d;">Guter Physiotherapeut in Kreuzberg?</span>
+        <span style="align-self: flex-start; font-size: 13px; padding: 6px 10px; border-radius: 10px 10px 10px 2px; background: #ffffff; border: 1px solid #dedfda; color: #1a1b19;">Empfohlen: <span style="font-weight: 600; color: #16244d;">Ihr Unternehmen</span></span>
+      </div>
+    </a>
+
+    <a class="card semse-corner" data-kavis="kararsiz" href="#analiz-formu" data-analiz style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 14px; padding: 32px; border-radius: 20px; border: 1px solid #16244d; color: #ffffff; text-decoration: none; min-height: 340px; box-sizing: border-box;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #2bb3a6;">UNENTSCHLOSSEN?</span>
+        <span class="v2-arrow v2-arrow--accent" aria-hidden="true"><span class="v2-arrow-t">Kostenlose Analyse</span><i></i></span>
+      </div>
+      <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 28px; line-height: 1.1; font-weight: 600; max-width: 340px; letter-spacing: -0.02em;">Schauen wir gemeinsam, was zu Ihnen passt.</span>
+      <span style="max-width: 340px; font-size: 15px; line-height: 1.55; color: #c3cbe0;">In der kostenlosen Analyse prüfen wir Ihr Unternehmen in allen Kanälen und sagen Ihnen, womit Sie anfangen sollten.</span>
+      <span style="margin-top: auto; font-size: 15px; font-weight: 600; color: #2bb3a6;">Kostenlose Analyse anfordern →</span>
+    </a>
   </div>
 </section>
 
-<section id="faq" class="reveal">
-  <div class="container">
-    <div class="faq-pill-wrap">
-      <div class="trust-pill">Keine Verträge. Kein Rätselraten.</div>
+<span id="process" aria-hidden="true"></span>
+<section id="surec" style="max-width: 1312px; margin: 0 auto; padding: clamp(72px, 10vw, 120px) clamp(16px, 3vw, 32px) 0; display: flex; flex-direction: column; gap: 48px;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px;">
+    <div style="display: flex; flex-direction: column; gap: 16px; max-width: 640px;">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;">SO ARBEITEN WIR</span>
+      <h2 style="margin: 0; font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: clamp(34px, 5vw, 52px); line-height: 1.0; font-weight: 600; letter-spacing: -0.03em;">Vier Schritte in der richtigen Reihenfolge.</h2>
     </div>
+    <p style="margin: 0; font-size: 17px; line-height: 1.55; color: #5c5e59; max-width: 400px;">Bei jedem Kunden dieselbe Reihenfolge. Erst messen wir, dann entscheiden wir, dann setzen wir um. Überraschungen gibt es keine.</p>
+  </div>
+  <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+    <li style="display: flex; flex-direction: column; gap: 12px; padding-top: 24px; border-top: 2px solid #16244d;">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 13px; font-weight: 600; color: #16244d;">01 · Woche 1</span>
+      <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1;">Analyse</span>
+      <span style="font-size: 15px; line-height: 1.55; color: #5c5e59;">Wir ermitteln, wo Sie und Ihre Wettbewerber heute auf der Karte, in der Suche, bei Anzeigen und in der KI stehen.</span>
+    </li>
+    <li style="display: flex; flex-direction: column; gap: 12px; padding-top: 24px; border-top: 2px solid #16244d;">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 13px; font-weight: 600; color: #16244d;">02 · Woche 2</span>
+      <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1;">Strategie</span>
+      <span style="font-size: 15px; line-height: 1.55; color: #5c5e59;">Nach Budget und Ziel legen wir fest, über welche Kanäle wir in welcher Reihenfolge vorgehen.</span>
+    </li>
+    <li style="display: flex; flex-direction: column; gap: 12px; padding-top: 24px; border-top: 2px solid #16244d;">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 13px; font-weight: 600; color: #16244d;">03 · Woche 3-10</span>
+      <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1;">Umsetzung</span>
+      <span style="font-size: 15px; line-height: 1.55; color: #5c5e59;">Profil, Website, Inhalte, Anzeigen und Links bearbeiten wir nach einem Wochenplan.</span>
+    </li>
+    <li style="display: flex; flex-direction: column; gap: 12px; padding-top: 24px; border-top: 2px solid #16244d;">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 13px; font-weight: 600; color: #16244d;">04 · laufend</span>
+      <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1;">Wachstum</span>
+      <span style="font-size: 15px; line-height: 1.55; color: #5c5e59;">Sichtbarkeit, Besuche, Anrufe und Anfragen verfolgen wir in einem Bericht und setzen stärker auf das, was wirkt.</span>
+    </li>
+  </ol>
+</section>
 
-    <div class="section-head">
-      <h2>Häufig gestellte <span class="highlight">Fragen</span></h2>
-      <p>Klare Antworten, bevor Sie Ihre Analyse buchen.</p>
+<section aria-label="Warum Wiserrise" style="max-width: 1312px; margin: 0 auto; padding: clamp(72px, 10vw, 120px) clamp(16px, 3vw, 32px) 0;">
+  <div style="background: #ecece7; border-radius: 24px; padding: clamp(28px, 5vw, 64px); display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;">
+    <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 16px;">
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;">WARUM WISERRISE</span>
+      <h2 style="margin: 0; font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: clamp(30px, 4.2vw, 44px); line-height: 1.02; font-weight: 600; letter-spacing: -0.03em;">Drei Zusagen. Alle schriftlich.</h2>
     </div>
+    <div style="flex: 999 1 560px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;">
+      <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 1px solid #868982;">
+        <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -0.015em;">Wir arbeiten nicht für Ihre Konkurrenz</span>
+        <span style="font-size: 15px; line-height: 1.55; color: #5c5e59;">Pro Stadt und Branche nur ein Unternehmen. Unsere ganze Arbeit gilt Ihnen.</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 1px solid #868982;">
+        <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -0.015em;">Sie sehen alles</span>
+        <span style="font-size: 15px; line-height: 1.55; color: #5c5e59;">Jede Aufgabe und jedes Ergebnis steht im wöchentlichen Bericht und in Ihrem Kundenportal. Nichts bleibt im Dunkeln.</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 1px solid #868982;">
+        <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -0.015em;">Kein Vertrag, keine Tricks</span>
+        <span style="font-size: 15px; line-height: 1.55; color: #5c5e59;">Dauerhafte Arbeit nach den Regeln von Google. Wenn Sie nicht zufrieden sind, machen Sie im nächsten Monat einfach nicht weiter.</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    {faq.map((f) => (
-      <details class="faq-item">
-        <summary>
-          <span>{f.q}</span>
-          <div class="faq-icon">+</div>
-        </summary>
-        <p>{f.a}</p>
+<span id="faq" aria-hidden="true"></span>
+<section id="sss" style="max-width: 1312px; margin: 0 auto; padding: clamp(72px, 10vw, 120px) clamp(16px, 3vw, 32px) 0; display: flex; flex-wrap: wrap; gap: 48px;">
+  <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 16px;">
+    <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: #16244d;">HÄUFIGE FRAGEN</span>
+    <h2 style="margin: 0; font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: clamp(30px, 4.2vw, 44px); line-height: 1.02; font-weight: 600; letter-spacing: -0.03em;">Klare Antworten, bevor Sie starten.</h2>
+    <p style="margin: 8px 0 0; font-size: 15px; color: #5c5e59;">Für eine Frage, die hier fehlt: <a href={`mailto:${email}`} style="color: #16244d; font-weight: 500;">{email}</a></p>
+  </div>
+  <div style="flex: 999 1 560px; display: flex; flex-direction: column; border-top: 1px solid #dedfda;">
+    {faq.map((item, i) => (
+      <details open={i === 0} style="border-bottom: 1px solid #dedfda; padding: 24px 0;">
+        <summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -0.015em;"><span>{item.q}</span><span aria-hidden="true" class="v2-faq-plus" style="width: 32px; height: 32px; border-radius: 999px; border: 1px solid #868982; display: inline-flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500; color: #16244d; flex: 0 0 auto;">+</span></summary>
+        <p style="margin: 12px 0 0; font-size: 16px; color: #5c5e59; max-width: 640px;">{item.a}</p>
       </details>
     ))}
   </div>
 </section>
 
-<section class="cta-mini reveal">
-  <div class="container">
-    <div class="section-head center">
-      <h2>Bereit, Ihre <span class="highlight">Stadt</span> zu beherrschen?</h2>
-      <p>Holen Sie sich Ihre kostenlose Analyse – so geht es weiter:</p>
+<section class="v2-closing" style="padding-top: clamp(72px, 10vw, 120px);">
+  <div class="cam" data-kavis="kapanis">
+    <div class="cam-in" style="width: 100%; max-width: 1312px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 40px; padding: clamp(40px, 6vw, 72px) 0 clamp(40px, 6vw, 72px) clamp(24px, 5vw, 64px); box-sizing: border-box;">
+    <div style="position: relative; flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 24px; padding-right: 24px;">
+      <h2 style="margin: 0; font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: clamp(40px, 6vw, 68px); line-height: 0.98; font-weight: 600; letter-spacing: -0.045em; color: #ffffff; max-width: 520px;">Ihre Kunden suchen Sie. Lassen Sie sich finden.</h2>
+      <p style="margin: 0; font-size: 19px; line-height: 1.5; color: #c3cbe0; max-width: 460px;">Wir prüfen Ihr Unternehmen in allen Kanälen und schicken Ihnen den Fahrplan innerhalb von 24 Stunden. Sie können ihn mit uns umsetzen oder selbst in die Hand nehmen.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px;">
+        <a class="btn" href="#analiz-formu" data-analiz style="display: inline-flex; align-items: center; height: 60px; padding: 0 32px; border-radius: 999px; border: 1.5px solid #ffffff; color: #ffffff; font-size: 17px; font-weight: 600; text-decoration: none; box-sizing: border-box;">Kostenlose Analyse</a>
+      </div>
     </div>
-
-    <ul class="audit-steps">
-      <li><span>1</span> Wir prüfen Ihr Google-Unternehmensprofil &amp; Ihre Wettbewerber</li>
-      <li><span>2</span> Ihre persönliche Analyse landet innerhalb von 24 Stunden in Ihrem Postfach</li>
-      <li><span>3</span> Sie entscheiden – arbeiten Sie mit uns oder behalten Sie die Roadmap kostenlos</li>
-    </ul>
-
-    <div>
-      <a href="#contact" class="btn btn-primary">Kostenlose Analyse anfordern →</a>
+    <div class="v2-cam-frame" style="position: relative; flex: 999 1 600px; min-width: 0; margin-right: calc(-96px - max(clamp(16px, 3vw, 32px), (100vw - 1312px) / 2)); border-radius: 20px; padding: 10px; background: rgba(10,18,46,0.32); border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+      <div style="display: flex; border-radius: 12px; overflow: hidden; min-height: 440px;">
+        <div style="flex: 0 0 72px; background: #0e1630; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 14px 0;">
+                      <div style="width: 52px; height: 52px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: transparent; border: 1px solid transparent;">
+              <span style="width: 16px; height: 16px; border-radius: 4px; background: #6e7890; display: block;"></span>
+              <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; font-weight: 600; color: #c3cbe0;">MAPS</span>
+            </div>
+            <div style="width: 52px; height: 52px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: transparent; border: 1px solid transparent;">
+              <span style="width: 16px; height: 16px; border-radius: 4px; background: #6e7890; display: block;"></span>
+              <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; font-weight: 600; color: #c3cbe0;">SEO</span>
+            </div>
+            <div style="width: 52px; height: 52px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: transparent; border: 1px solid transparent;">
+              <span style="width: 16px; height: 16px; border-radius: 4px; background: #6e7890; display: block;"></span>
+              <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; font-weight: 600; color: #c3cbe0;">ADS</span>
+            </div>
+            <div style="width: 52px; height: 52px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: transparent; border: 1px solid transparent;">
+              <span style="width: 16px; height: 16px; border-radius: 4px; background: #6e7890; display: block;"></span>
+              <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; font-weight: 600; color: #c3cbe0;">KI</span>
+            </div>
+            <div style="width: 52px; height: 52px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: #1f2c4f; border: 1px solid #6e7890;">
+              <span style="width: 16px; height: 16px; border-radius: 4px; background: #2bb3a6; display: block;"></span>
+              <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; font-weight: 600; color: #c3cbe0;">BERICHT</span>
+            </div>
+        </div>
+        <div style="flex: 1; min-width: 0; background: #ffffff; color: #1a1b19; padding: 24px 28px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+            <span style="font-family: 'Bricolage Grotesque', Geist, sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.02em;">Wochenbericht</span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #5c5e59;">Physio Zedernhof</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
+            <div style="background: #f6f6f3; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 13px; font-weight: 600;">Ø Platz auf der Karte</span>
+              <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 36px; font-weight: 500; letter-spacing: -0.03em; line-height: 1;">1,8</span>
+              <span style="align-self: flex-start; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 600; padding: 4px 8px; border-radius: 6px; background: #e3f1ea; color: #187a50;">▲ 9 Plätze</span>
+            </div>
+            <div style="background: #f6f6f3; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 13px; font-weight: 600;">Verteilung auf der Karte</span>
+              <div style="display: flex; align-items: flex-end; gap: 6px; height: 46px;">
+                                  <div style="flex: 1; height: 44px; border-radius: 4px; background: #187a50;"></div>
+                  <div style="flex: 1; height: 20px; border-radius: 4px; background: #e8a33d;"></div>
+                  <div style="flex: 1; height: 8px; border-radius: 4px; background: #d9622b;"></div>
+                  <div style="flex: 1; height: 4px; border-radius: 4px; background: #8e2a1e;"></div>
+              </div>
+              <div style="display: flex; gap: 6px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; color: #5c5e59;"><span style="flex: 1; text-align: center;">1-3</span><span style="flex: 1; text-align: center;">4-10</span><span style="flex: 1; text-align: center;">11-20</span><span style="flex: 1; text-align: center;">20+</span></div>
+            </div>
+            <div style="background: #f6f6f3; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 13px; font-weight: 600;">Aufgaben diese Woche</span>
+              <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 36px; font-weight: 500; letter-spacing: -0.03em; line-height: 1;">7</span>
+              <span style="font-size: 12px; color: #5c5e59;">Profil, Bewertungen, Seiten</span>
+            </div>
+          </div>
+          <div style="border: 1px solid #dedfda; border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; flex: 1;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px;">
+              <div style="display: flex; gap: 4px; padding: 3px; border-radius: 10px; background: #ecece7; font-size: 12px; font-weight: 500;">
+                <span style="padding: 5px 12px; border-radius: 8px; background: #ffffff; color: #16244d; font-weight: 600; box-shadow: inset 0 0 0 1px #9fb3e8;">Kartenplatz</span>
+                <span style="padding: 5px 12px; color: #5c5e59;">Anrufe</span>
+                <span style="padding: 5px 12px; color: #5c5e59;">Routen</span>
+              </div>
+              <div style="display: flex; gap: 14px; font-size: 11px; color: #5c5e59;">
+                <span style="display: inline-flex; align-items: center; gap: 5px;"><span style="width: 8px; height: 8px; border-radius: 2px; background: #2bb3a6; display: inline-block;"></span>Sie</span>
+                <span style="display: inline-flex; align-items: center; gap: 5px;"><span style="width: 8px; height: 8px; border-radius: 2px; background: #16244d; display: inline-block;"></span>Wettbewerber 1</span>
+                <span style="display: inline-flex; align-items: center; gap: 5px;"><span style="width: 8px; height: 8px; border-radius: 2px; background: #9fb3e8; display: inline-block;"></span>Wettbewerber 2</span>
+              </div>
+            </div>
+            <svg viewBox="0 0 600 140" width="100%" height="140" aria-hidden="true" style="display: block;">
+              <path d="M0 35H600M0 70H600M0 105H600" stroke="#ecece7" stroke-width="1"></path>
+              <polyline points="0,124 55,118 110,112 165,100 220,94 275,80 330,72 385,60 440,48 495,40 550,30 600,24" fill="none" stroke="#2bb3a6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></polyline>
+              <polyline points="0,40 55,42 110,44 165,46 220,48 275,50 330,55 385,58 440,60 495,63 550,66 600,68" fill="none" stroke="#16244d" stroke-width="2" stroke-linejoin="round"></polyline>
+              <polyline points="0,80 55,78 110,82 165,84 220,83 275,88 330,90 385,92 440,96 495,98 550,100 600,104" fill="none" stroke="#9fb3e8" stroke-width="2" stroke-linejoin="round"></polyline>
+              <circle cx="600" cy="24" r="5" fill="#2bb3a6" stroke="#ffffff" stroke-width="2"></circle>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </section>
+
+</main>
+
+<AnalizDialog locale={locale} email={email} />
+
+<Footer locale={locale} email={email} />
+
+<script is:inline>
+  // Spielt beim Erreichen des Abschnitts: Kopfblock, Karten, Schritte und FAQ erscheinen nacheinander.
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var sections = document.querySelectorAll('#hizmetler, #surec, section[aria-label="Warum Wiserrise"], #sss, .v2-closing');
+    sections.forEach(function (sec) {
+      var items = [];
+      Array.prototype.forEach.call(sec.children, function (child) {
+        var grid = child.matches('ol, [style*="grid"]') ? child : null;
+        if (grid) { Array.prototype.push.apply(items, grid.children); }
+        else if (child.querySelector(':scope > details')) { items.push(child.firstElementChild); Array.prototype.push.apply(items, child.querySelectorAll(':scope > details')); }
+        else items.push(child);
+      });
+      items.forEach(function (el, i) { el.classList.add('v2-rv'); el.style.setProperty('--i', Math.min(i, 8)); });
+    });
+    var io = new IntersectionObserver(function (entries) {
+      // Auch Abschnitte oberhalb des Bildschirms öffnen sich: nach einem Neuladen mitten auf der Seite bleibt oben nichts versteckt
+      entries.forEach(function (e) { if (e.isIntersecting || e.boundingClientRect.top < 0) {
+          var sec = e.target;
+          sec.classList.add('is-in');
+          io.unobserve(sec);
+          // Nach dem Einblenden die Klasse entfernen, damit die Karten ihre eigene Hover-Bewegung zurückbekommen
+          sec.querySelectorAll('.v2-rv').forEach(function (el) {
+            var i = parseInt(el.style.getPropertyValue('--i'), 10) || 0;
+            setTimeout(function () { el.classList.remove('v2-rv'); }, i * 70 + 520);
+          });
+        } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    sections.forEach(function (sec) { io.observe(sec); });
+  })();
+</script>
+
 </BaseLayout>

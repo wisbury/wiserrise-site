@@ -9,6 +9,7 @@ import {
 } from '../i18n/config';
 import { routePath, routeLocales, type RouteKey } from '../i18n/routes';
 import { t, CONTACT_EMAIL, CONTACT_PHONE, COMPANY_LEGAL_NAME } from '../i18n/ui';
+import { legalLinks } from '../data/legal';
 import Analytics from '../components/Analytics.astro';
 import LangSuggest from '../components/LangSuggest.astro';
 
@@ -222,6 +223,12 @@ const langAlternates = Object.fromEntries(availableIn.map((l) => [l, withSlug(l)
           <a href={anchor('#faq')}>{strings.nav.faq}</a>
           {toolHref && <a href={toolHref}>{strings.nav.tool}</a>}
         </div>
+
+        {locale === 'tr' && (
+          <div style="margin-top:10px; display:flex; gap:14px; justify-content:flex-end; flex-wrap:wrap; font-size:13px; color:#6F6C64;">
+            {legalLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+          </div>
+        )}
       </div>
     </div>
   </footer>

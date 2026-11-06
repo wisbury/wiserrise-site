@@ -5,30 +5,43 @@ import { routePath } from '../../../i18n/routes';
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'ADRES', title: 'Klinik ve evde hizmet', text: 'Kliniğiniz varsa adres açık kalır, evde hizmet ayrıca hizmet bölgesi olarak eklenir. Yanlış kurulum haritada görünürlük kaybettirir.' },
+  { label: 'YAKINLIK', title: 'Semt ölçeği', text: 'Hasta tedavi boyunca tekrar tekrar gelecek, yakın bir yer arar. Semtinizin farklı noktalarında kaçıncı çıktığınızı ölçeriz.' },
+  { label: 'ŞİKÂYET', title: 'Hastanın dili', text: 'Hasta “boyun tutulması” ya da “omuz kaldıramıyorum” diye yazar. Sitenizdeki sayfaları bu şikâyetlere göre kurarız.' },
+  { label: 'UNVAN', title: 'Doğru unvan', text: '“Fizik tedavi uzmanı” bir hekim unvanıdır. Unvanı doğru yazar, tanı koyar görünen ve kesin iyileşme vaat eden ifade kullanmayız.' },
+];
+
 const toc = [
-  { id: 'klinik-evde', label: 'Klinik mi, evde hizmet mi? En kritik teknik karar' },
-  { id: 'kategori', label: 'Kategori ve unvan doğruluğu' },
-  { id: 'sorgu', label: 'Hasta şikâyetle arıyor, tedaviyle değil' },
-  { id: 'sayfa', label: 'Sayfa yapısı' },
-  { id: 'mevzuat', label: 'Mevzuat sınırları' },
+  { id: 'adres', label: 'Klinik mi, evde hizmet mi' },
+  { id: 'yakinlik', label: 'Semt yakınlığı ve tekrar seans' },
+  { id: 'sikayet', label: 'Şikâyetle yapılan aramalar' },
+  { id: 'kategori', label: 'Kategori ve unvan' },
+  { id: 'sayfa', label: 'Sitede olması gereken sayfalar' },
+  { id: 'yorum', label: 'Yorumu ne zaman istemeli' },
+  { id: 'sinir', label: 'Neleri yazmıyoruz' },
 ];
 
 const faq = [
   {
     q: 'Hem klinikte hem evde hizmet veriyorum, profili nasıl kurmalıyım?',
-    a: 'Hastanın geldiği fiziksel bir adresiniz varsa profil adresli olmalı; hizmet bölgesi de ayrıca tanımlanabilir. Adresi gizleyip yalnızca hizmet bölgesi bırakmak, kliniğe gelen hasta akışını kaybettiriyor çünkü adresli profiller "yakınımdaki" aramalarında farklı davranıyor.',
+    a: 'Adresli kurun, evde hizmeti ayrıca hizmet bölgesi olarak ekleyin. Hastanın geldiği bir adres varken onu gizlemek “yakınımdaki” aramalarında görünürlük kaybettirir. Sitede de klinik ve evde hizmet için ayrı sayfa açın.',
   },
   {
-    q: 'Fizyoterapist olarak "tedavi" kelimesini kullanabilir miyim?',
-    a: 'Fizyoterapistlerin yetki sınırları meslek mevzuatıyla belirli ve tanı koyma ile ilaç önerme bu sınırın dışında. İçerikte hastalık tanısı koyar görünen ya da hekim yönlendirmesi olmadan tedavi vaat eden ifadelerden kaçınıyoruz. Uygulanan yöntemleri anlatmak ise serbest.',
+    q: 'Sitemde “tedavi” kelimesini kullanabilir miyim?',
+    a: 'Uyguladığınız yöntemi anlatırken kullanabilirsiniz. Fizyoterapistin yetki alanı meslek mevzuatıyla çizili, tanı koymak ve ilaç önermek bu alanın dışında. Biz metinleri tanı koyar ya da kesin iyileşme vaat eder görünmeden yazar, yayından önce size onaylatırız.',
   },
   {
-    q: 'Randevu sistemi sıralamayı etkiliyor mu?',
-    a: 'Doğrudan bir sıralama faktörü değil, ama profil üzerinden randevu alınabilmesi etkileşimi artırıyor ve etkileşim dolaylı olarak işe yarıyor. Asıl faydası dönüşümde: telefonla ulaşamayan hastayı kaybetmemek.',
+    q: 'Online randevu sistemi sıralamayı etkiler mi?',
+    a: 'Sıralamayı doğrudan etkilediğine dair bir bilgi yok. Faydası randevu tarafında: telefona ulaşamayan hasta profildeki bağlantıdan randevusunu alır. Mesai saatinde telefona bakamayan fizyoterapist için bu bayağı işe yarar.',
   },
   {
-    q: 'Küçük bir şehirdeyim, rekabet zaten yok. SEO gerekli mi?',
-    a: 'Rekabetin az olduğu yerde iş daha kolay, gereksiz değil. Az sayıda rakip varsa profil kurulumu ve birkaç iyi sayfa çoğu zaman ilk üçe yetiyor — yani maliyeti de düşük oluyor. Bu durumda gereksiz olan uzun soluklu içerik programı, temel kurulum değil.',
+    q: 'Küçük bir şehirdeyim, rakip az. SEO’ya gerek var mı?',
+    a: 'Var, ama iş daha küçük olur. Az rakipli yerde önce profil kurulumu ve birkaç iyi sayfa gelir, uzun bir içerik programı gerekmeyebilir. Ücretsiz analizde bunu bölgenizin verisiyle söyleriz.',
+  },
+  {
+    q: 'Ne zaman sonuç görürüm?',
+    a: 'Haritada ilk hareketi çoğu işletmede 4 ile 8 hafta arasında görüyoruz, şikâyet sayfalarının aramada yer bulması 3-6 ay sürer. Kesin tarih veremeyiz. Yaptığımız işleri her hafta raporda ve müşteri portalında görürsünüz.',
   },
 ];
 ---
@@ -37,134 +50,176 @@ const faq = [
   locale={locale}
   route="industries/physio"
   title="Fizyoterapistler İçin SEO ve Google Haritalar | Wiserrise"
-  description="Fizyoterapi klinikleri ve evde fizyoterapi hizmeti için yerel SEO. Profil kurulumu, şikâyet bazlı içerik yapısı ve mevzuat sınırları."
-  eyebrow="Sektör"
-  h1="Fizyoterapistler İçin SEO"
-  lede="Fizyoterapide hasta genelde bir teşhisle değil bir şikâyetle arama yapıyor. Sıralamayı belirleyen şey, sitenin bu şikâyet dilini konuşup konuşmadığı."
+  description="Fizyoterapi klinikleri ve evde fizyoterapi için local SEO: adres ve hizmet bölgesi kurulumu, şikâyet sayfaları, semtinizden ölçüm. Sözleşme yok."
+  eyebrow="SEKTÖR · FİZYOTERAPİSTLER"
+  h1="Fizyoterapistler için SEO: semtinizde arayan hastaya görünün."
+  crumb="Fizyoterapistler"
+  lede="Fizyoterapistler için SEO, yakınınızda oturan ve şikâyetini yazan hastanın karşısına çıkmak demek. Hasta “bel fıtığı ağrısı” ya da “yakınımdaki fizyoterapist” yazar ve tedavi boyunca tekrar tekrar gelebileceği bir yer arar. Biz önce profilinizin adres kurulumunu, sonra sitenizin şikâyet dilini düzeltiyoruz."
   serviceName="Fizyoterapistler İçin Yerel SEO"
   breadcrumb={[
     { label: 'Ana Sayfa', href: '/tr' },
     { label: 'Sektörler', href: p('industries') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp') },
-    { label: 'İçerik Üretimi', href: p('services/content') },
-    { label: 'Yerel SEO', href: p('services/local-seo') },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'Profilinizi ve sitenizi haritadaki sıra için birlikte düzeltiriz.' },
+    { label: 'İçerik Üretimi', href: p('services/content'), text: 'Şikâyet ve hizmet sayfalarını hastanın kendi cümlelerine göre yazarız.' },
+    { label: 'Diş Hekimleri İçin SEO', href: p('industries/dental'), text: 'Acil diş ağrısı aramalarında ve tedavi sayfalarında nasıl çalıştığımız.' },
+    { label: 'Estetik Klinikleri İçin SEO', href: p('industries/aesthetics'), text: 'Kararın uzun sürdüğü ve fiyatın sık sorulduğu bir alanda nasıl çalıştığımız.' },
   ]}
-  ctaLabel="Ücretsiz Analizimi Al →"
+  relatedHeading="İlgili sayfalar"
+  ctaLabel="Ücretsiz analiz al"
   ctaHref="/tr#contact"
 >
-  <h2 id="klinik-evde">Klinik mi, evde hizmet mi? En kritik teknik karar</h2>
+  <h2 id="adres">Adresinizi göstermeli misiniz?</h2>
 
   <p>
-    Bu dikeyde profil kurulumunun tek en önemli kararı bu ve yanlış verildiğinde geri
-    dönmesi zor. Google iki farklı profil tipi tanıyor: hastanın geldiği fiziksel adresi
-    olan işletmeler ve yalnızca hizmet bölgesi tanımlayan, adres göstermeyen işletmeler.
+    Hastanın geldiği bir kliniğiniz varsa evet. Google iki tür profil tanır: hastanın gittiği adresi olan işletmeler ve
+    adres göstermeden yalnız hizmet bölgesi tanımlayanlar. Kliniği olduğu halde adresi gizleyen fizyoterapist, “yakınımdaki
+    fizyoterapist” aramasında görünürlüğün bir kısmını kaybeder.
   </p>
 
   <p>
-    Kliniği olan bir fizyoterapistin adresi gizleyip yalnızca hizmet bölgesi bırakması,
-    sık gördüğümüz ve pahalıya patlayan bir hata. Adresli profiller, "yakınımdaki
-    fizyoterapist" aramalarında ve harita üzerinde doğrudan gösterim alırken, adressiz
-    profiller bu görünürlüğün bir kısmını kaybediyor.
+    Bu, profil kurulumundaki en önemli karar ve sonradan düzeltmesi zahmetli. Klinik varsa adres açık kalır, evde
+    verdiğiniz hizmet ayrıca hizmet bölgesi olarak eklenir. Sitede de ikisinin ayrı sayfası olur.
   </p>
 
   <p>
-    Doğru kurulum: klinik varsa adres açık olmalı, evde hizmet ayrıca hizmet bölgesi olarak
-    tanımlanmalı ve sitede ikisi için ayrı sayfalar bulunmalı. Yalnızca evde hizmet veren
-    fizyoterapistlerde ise adressiz profil doğru seçim — ancak bu durumda sıralamanın gizli
-    merkez adrese göre hesaplandığını bilmek gerekiyor; detayını
-    <a href={p('services/gbp')}>profil yönetimi sayfasında</a> anlattık.
+    Yalnız evde hizmet veriyorsanız adressiz profil doğru seçim. Adres gizli olsa da Google sıralamada profilin kayıtlı
+    adresini hesaba katar; detayını <a href={p('services/gbp')}>profil yönetimi sayfasında</a> anlattık. Profilinizin şu
+    anki kurulumunu <a href={p('tools/gbp-audit')}>ücretsiz profil denetim aracımızla</a> kontrol edebilirsiniz.
   </p>
 
-  <h2 id="kategori">Kategori ve unvan doğruluğu</h2>
+  <h2 id="yakinlik">Hasta neden yakınındaki fizyoterapisti seçer?</h2>
 
   <p>
-    Google'ın listesinde "Fizyoterapist", "Fizik tedavi merkezi", "Rehabilitasyon merkezi",
-    "Masaj terapisti" gibi seçenekler var. Bunlar birbirine yakın görünse de farklı sorgu
-    kümelerine karşılık geliyor ve önemli bir ayrım taşıyor: masaj terapisti kategorisi,
-    fizyoterapi arayan hastanın sorgularında sizi göstermiyor.
+    Çünkü bir kez gelmeyecek. Fizyoterapi çoğu hastada tek seansta bitmez, hasta haftalar boyunca gidip geleceği bir yer
+    arar. Ağrıyan beliyle şehrin öbür ucuna gitmek istemez.
   </p>
 
   <p>
-    Bir başka nokta unvan doğruluğu. "Fizik tedavi uzmanı" bir hekim unvanı; fizyoterapistin
-    bu ifadeyi kullanması hem yanlış hem de mevzuat açısından sorunlu. İşletme adı ve
-    içerikte unvanı doğru kullanıyoruz — bu aynı zamanda Google'ın işletmeyi doğru kategoriye
-    yerleştirmesine yardım ediyor.
+    Bu yüzden fizyoterapide rekabet semt ölçeğinde döner. “Ataşehir fizyoterapist” ya da yalnız “fizyoterapist” yazan
+    kişi, birkaç sokak ötedeki klinikle sizi aynı listede görür ve arayanın nerede durduğu sırayı değiştirir. Kliniğinizin
+    kapısından alınan tek bir ölçüm size bu tabloyu göstermez.
   </p>
 
-  <h2 id="sorgu">Hasta şikâyetle arıyor, tedaviyle değil</h2>
+  <p>
+    Biz <a href={p('services/rank-tracking')}>bölgenizden ölçüm</a> alıyoruz: semtinizin farklı noktalarında kaçıncı
+    çıktığınızı. Geride kaldığınız mahalleleri görmeden yapılan çalışma körlemesine yürür. Yaptığımız işleri her hafta
+    raporda görürsünüz.
+  </p>
+
+  <h2 id="sikayet">Hasta ne yazarak arıyor?</h2>
 
   <p>
-    Fizyoterapi sitelerinin çoğu uyguladıkları yöntemleri anlatıyor: manuel terapi, kuru
-    iğneleme, egzersiz terapisi. Hasta ise bunları aramıyor. Hasta şunu arıyor:
+    Şikâyetini yazarak. Fizyoterapi sitelerinin çoğu manuel terapi ya da kuru iğneleme gibi uyguladığı yöntemleri anlatır.
+    Hasta ise şöyle yazar:
   </p>
 
   <ul>
-    <li>"bel fıtığı ağrısı geçmiyor"</li>
-    <li>"boyun tutulması ne yapmalı"</li>
-    <li>"omuz kaldıramıyorum"</li>
-    <li>"ameliyat sonrası diz egzersizleri"</li>
-    <li>"topuk dikeni tedavisi"</li>
+    <li>“bel fıtığı ağrısı geçmiyor”</li>
+    <li>“boyun tutulması ne yapmalı”</li>
+    <li>“omuz kaldıramıyorum”</li>
+    <li>“ameliyat sonrası diz egzersizleri”</li>
+    <li>“topuk dikeni tedavisi”</li>
   </ul>
 
   <p>
-    Bu iki dil arasındaki uçurum, sektörde en büyük içerik boşluğu. Şikâyet dilinde yazılan
-    ve o şikâyetin ne olduğunu, neden olduğunu, hangi durumda fizyoterapiyle geçtiğini
-    anlatan sayfalar hem ülke genelinde sıralanıyor hem de yerel talebi besliyor.
+    Bu iki dil arasındaki boşluk, sektördeki en büyük içerik açığı. Şikâyetin neden olduğunu ve fizyoterapide nasıl ele
+    alındığını anlatan sayfa, hastanın kendi cümlesine cevap verir.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Şikâyet içeriği ulusal, hizmet sayfası yerel çalışır.</strong> "Bel fıtığı
-      egzersizleri" sorgusunda yakınlık sinyali yok; Türkiye genelinde sıralanabilirsiniz.
-      "Antalya fizyoterapist" sorgusunda ise yakınlık belirleyici. İkisini ayrı sayfalarla
-      karşılıyoruz.
+      <strong>Şikâyet sayfası ülke çapında, hizmet sayfası semtte çalışır.</strong> “Bel fıtığı egzersizleri” aramasında
+      yakınlığın etkisi az, Türkiye genelinde sıralanabilirsiniz. “Kadıköy fizyoterapist” aramasında ise yakınlık
+      belirler, bu yüzden ikisini ayrı sayfalarla karşılarız.
     </p>
   </div>
 
-  <h2 id="sayfa">Sayfa yapısı</h2>
+  <h2 id="kategori">Hangi kategori ve unvan doğru?</h2>
 
-  <p>Kurduğumuz temel yapı:</p>
+  <p>
+    Birincil kategori “Fizyoterapist” ya da kurumunuzun türüne göre “Fizik tedavi merkezi” olmalı. Listede “Masaj
+    terapisti” ve “Rehabilitasyon merkezi” gibi yakın görünen seçenekler de var, ama her biri farklı bir arama kümesine
+    karşılık gelir. Masaj terapisti kategorisiyle fizyoterapi arayan hastanın karşısına çıkmak zorlaşır.
+  </p>
+
+  <p>
+    Unvan da aynı dikkati ister. “Fizik tedavi uzmanı” bir hekim unvanıdır; fizyoterapistin bu ifadeyi kullanması hem
+    yanlış hem de tanıtım kuralları açısından sorunlu. Profilde ve sitede unvanı doğru yazarız, bu Google’ın sizi doğru
+    kategoriye oturtmasını da kolaylaştırır.
+  </p>
+
+  <h2 id="sayfa">Sitenizde hangi sayfalar olmalı?</h2>
+
+  <p>Kurduğumuz temel yapı şu:</p>
 
   <ul class="checklist">
-    <li>Şikâyet bazlı sayfalar — bel, boyun, omuz, diz, spor yaralanmaları</li>
-    <li>Hizmet sayfaları — klinikte fizyoterapi, evde fizyoterapi, ameliyat sonrası rehabilitasyon</li>
-    <li>Fizyoterapist künyesi: eğitim, mesleki geçmiş, sertifikalar</li>
-    <li>Seans akışının anlatıldığı bir "ilk randevuda ne oluyor" sayfası</li>
-    <li><code>Physiotherapy</code> / <code>MedicalBusiness</code> yapılandırılmış verisi</li>
+    <li>Şikâyet sayfaları: bel, boyun, omuz, diz ve spor yaralanmaları</li>
+    <li>Hizmet sayfaları: klinikte fizyoterapi, evde fizyoterapi, ameliyat sonrası rehabilitasyon</li>
+    <li>Fizyoterapistlerin künyesi: eğitim ve sertifikalar</li>
+    <li>İlk randevuda ne olduğunu anlatan bir sayfa</li>
+    <li>Physiotherapy türünde yapılandırılmış veri (schema)</li>
   </ul>
 
   <p>
-    "İlk randevuda ne oluyor" sayfası küçük görünür ama dönüşümde en çok işe yarayan
-    sayfalardan biri. Fizyoterapiye ilk kez gidecek hastanın en büyük tereddüdü bilinmezlik;
-    bunu ortadan kaldırmak randevu oranını doğrudan etkiliyor.
+    İlk randevu sayfası küçük görünür ama en çok işe yarayan sayfalardan biri. Fizyoterapiye ilk kez gelecek hastanın en
+    büyük tereddüdü bilinmezlik: ne giyeceği ya da ilk seansta ne yapılacağı. Bu soruları baştan cevaplayan klinik,
+    telefondaki tereddüdü azaltır.
   </p>
 
-  <h2 id="mevzuat">Mevzuat sınırları</h2>
+  <p>
+    Bu sayfaları yazıp yayına alabilmemiz için sitenin bizde olması gerekiyor, siteyi komple yönetemeyeceksek işe
+    başlamıyoruz. Nasıl yazdığımızı <a href={p('services/content')}>içerik üretimi</a>, her sayfayı tek bir aramaya nasıl
+    oturttuğumuzu <a href={p('services/on-page-seo')} style="white-space: nowrap;">on-page SEO</a> sayfasında anlattık.
+  </p>
+
+  <h2 id="yorum">Hastadan yorumu ne zaman istemeli?</h2>
 
   <p>
-    Fizyoterapistlerin yetki alanı meslek mevzuatıyla belirli. İçerik üretirken dikkat
-    ettiğimiz sınırlar:
+    Tedavinin sonuna doğru, hasta ilerlemeyi kendisi hissettiğinde. Tekrar eden seanslar size bu fırsatı verir: hastayı
+    haftalarca görürsünüz ve ne zaman memnun olduğunu bilirsiniz. İlk seansta istenen yorum hem erken hem zorlama durur.
+  </p>
+
+  <p>
+    Yorum karşılığında indirim ya da ücretsiz seans teklif etmeyin, Google’ın kurallarına aykırı. Yanıt verirken hastanın
+    şikâyetini ya da tedavisini anmayın, çünkü yanıt herkese açık. Yorum isteme akışını
+    <a href={p('guides/more-reviews')}>Google yorumlarını artırma rehberinde</a> anlattık.
+  </p>
+
+  <h2 id="sinir">Neleri yazmıyoruz?</h2>
+
+  <p>
+    Fizyoterapistin yetki alanı meslek mevzuatıyla çizili; tanı koymak ve ilaç önermek bu alanın dışında. Sağlık tanıtım
+    kuralları da buna eklenir. Bu yüzden içerikte şunlara yer vermiyoruz:
   </p>
 
   <ul>
-    <li>Hastalık tanısı koyar görünen ifadeler kullanılmıyor</li>
-    <li>Hekim yönlendirmesi gerektiren durumlarda bu gereklilik metinde belirtiliyor</li>
-    <li>Kesin iyileşme ve sonuç vaadi verilmiyor</li>
-    <li>Sağlık tanıtım kuralları gereği öncesi/sonrası görsel ve kampanya kurgusu kullanılmıyor</li>
+    <li>Hastalık tanısı koyar görünen ifadeler</li>
+    <li>Kesin iyileşme, “kesin sonuç” ya da tedavi garantisi</li>
+    <li>Önce/sonra görselleri ve paket seans indirimi gibi teşvikler</li>
+    <li>Hasta yorumlarını ve hikayelerini reklam gibi kullanmak</li>
+    <li>“En iyi fizyoterapist” gibi üstünlük iddiaları</li>
   </ul>
 
   <p>
-    Bu sınırlar içerik kalitesini düşürmüyor; aksine "hangi durumda fizyoterapi yeterli
-    değildir, ne zaman hekime gitmelisiniz" gibi dürüst bölümler hem güven hem de arama
-    performansı üretiyor.
+    Yöntemleri anlatmak serbest: manuel terapinin nasıl uygulandığı, bir seansın nasıl geçtiği. Hastanın sorusuna net
+    cevap veren sayfa bu sınırların içinde rahatça yazılır.
+  </p>
+
+  <p>
+    Aynı kuralların <a href={p('industries/dental')}>diş klinikleri</a> ve
+    <a href={p('industries/aesthetics')}>estetik klinikleri</a> için nasıl işlediğini ayrı sayfalarda anlattık.
   </p>
 
   <Fragment slot="cta">
-    <h2>Hastalarınızın aradığı <span class="highlight">şikâyetlerde</span> görünüyor musunuz?</h2>
-    <p>Ücretsiz analizde profil kurulumunuzu ve şikâyet bazlı içerik boşluğunuzu çıkarıyoruz.</p>
+    <h2>Semtinizde kaçıncı <span class="highlight">çıkıyorsunuz</span>?</h2>
+    <p>
+      Ücretsiz analizde bölgenizden ölçüm alır, profil kurulumunuzdaki eksikleri çıkarırız. Sonuç 24 saat içinde
+      <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
   </Fragment>
 </ContentLayout>

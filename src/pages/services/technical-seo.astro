@@ -5,31 +5,39 @@ import { routePath } from '../../i18n/routes';
 const locale = 'en' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'INDEX', title: 'Crawling and indexing', text: 'Can Google find your pages, and does it index them? We check your service and district pages one by one.' },
+  { label: 'SPEED', title: 'Speed on mobile', text: 'People who come from the map open your site on their phone. We make sure the first screen loads fast and doesn’t shift while loading.' },
+  { label: 'SCHEMA', title: 'Structured data', text: 'We add your business details to the page in a form Google can read. Name, address and phone match your profile.' },
+  { label: 'PROFILE', title: 'Profile link', text: 'Does the website link on your profile go to the right page? In a business with branches, each profile links to its own branch page.' },
+];
+
 const toc = [
-  { id: 'why', label: 'Why technical SEO comes first' },
-  { id: 'indexing', label: 'Crawlability and indexing' },
-  { id: 'speed', label: 'Page speed and Core Web Vitals' },
+  { id: 'nedir', label: 'What does technical SEO do?' },
+  { id: 'indeks', label: 'Are your pages on Google?' },
+  { id: 'yerel', label: 'What we check on a local business site' },
+  { id: 'hiz', label: 'The effect of site speed' },
   { id: 'schema', label: 'Structured data' },
-  { id: 'hreflang', label: 'hreflang on multilingual sites' },
-  { id: 'audit', label: 'What the audit covers' },
+  { id: 'dil', label: 'More than one language' },
+  { id: 'sonra', label: 'After the audit' },
 ];
 
 const faq = [
   {
-    q: 'My site is on WordPress — can technical SEO still be done?',
-    a: 'Yes. The issues we see most often on WordPress are plugin bloat, unnecessary archive pages getting indexed, and theme-driven speed problems. Most of these are fixable without rebuilding the site.',
+    q: 'My site runs on WordPress. Can you do technical SEO on it?',
+    a: 'Yes. On WordPress we see two problems most: pages weighed down by plugins, and unnecessary tag and archive pages getting indexed. Both can be fixed without rebuilding the site.',
   },
   {
-    q: 'Does page speed really affect my ranking?',
-    a: 'Its direct effect is smaller than most people assume in most sectors. The real effect is indirect: a slow page gets abandoned, conversion drops and user behaviour signals degrade. Speed is less about ranking than about getting value from the traffic you already have.',
+    q: 'Will structured data raise my rankings?',
+    a: 'Not directly. It lets Google understand the page and the business correctly, and opens up rich results in some searches. We set it up mainly to make the link between your profile and your site clear.',
   },
   {
-    q: 'Will adding structured data raise my ranking?',
-    a: 'It is not a ranking factor by itself. What it does is help Google understand the page and the business correctly, and earn rich presentation (stars, FAQs, prices) in results. The effect shows up in click-through rate.',
+    q: 'Is technical SEO done once and finished?',
+    a: 'The big fixes are done once. New errors can appear every time the site changes; a theme update or a new plugin is enough. That’s why we repeat the crawl regularly.',
   },
   {
-    q: 'Is technical SEO a one-off job?',
-    a: 'The audit and the fixes are one-off, but every change to the site can introduce new problems. The checks should be repeated when pages are added, the theme is updated or a plugin is installed.',
+    q: 'Do I need to hand over management of my site to you?',
+    a: 'Yes. If we can’t manage the whole site, we don’t start. We make the fixes, and you see what we did in the report and the client portal every week.',
   },
 ];
 ---
@@ -38,103 +46,137 @@ const faq = [
   locale={locale}
   route="services/technical-seo"
   title="Technical SEO Service | Wiserrise"
-  description="Crawlability, indexing, page speed, structured data and multilingual setup. The layer that has to work before any content can rank."
-  eyebrow="Service"
-  h1="Technical SEO"
-  lede="However good the content is, a page that cannot be crawled or indexed will not rank. Technical SEO firms up the ground every other piece of work is built on."
+  description="Can Google crawl your site, and are your pages indexed? We fix indexing, speed, schema and the profile link on local business websites."
+  eyebrow="SERVICE · TECHNICAL SEO"
+  h1="Open your site properly to Google with technical SEO."
+  crumb="Technical SEO"
+  lede="Technical SEO is the work we do so Google can crawl your site and index your pages. For a local business, that means your service and district pages work both in search and on the map. We crawl the site first, then close the errors we find in order of impact."
   serviceName="Technical SEO"
   breadcrumb={[
     { label: 'Home', href: '/' },
     { label: 'Services', href: p('services') },
+    { label: 'SEO', href: p('services/seo') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'On-Page SEO', href: p('services/on-page-seo') },
-    { label: 'Content Production', href: p('services/content') },
-    { label: 'Local SEO', href: p('services/local-seo') },
+    { label: 'SEO', href: p('services/seo'), text: 'Groundwork, page structure, content and links: the main service this one belongs to.' },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'We fix your profile and your site together and work on getting you to stand out on the map.' },
+    { label: 'On-Page SEO', href: p('services/on-page-seo'), text: 'We fit each page to a single search and fix titles and internal links.' },
+    { label: 'Content Production', href: p('services/content'), text: 'We write the service and district pages missing from your site.' },
   ]}
-  ctaLabel="Audit My Site Free →"
+  ctaLabel="Get a free analysis"
   ctaHref="/#contact"
 >
-  <h2 id="why">Why technical SEO comes first</h2>
+  <h2 id="nedir">What does technical SEO do?</h2>
 
   <p>
-    For a page to appear in search results it has to clear three stages: Google has to
-    <strong>find</strong> it, be able to <strong>crawl</strong> it, and consider it
-    <strong>worth indexing</strong>. A page blocked at any of those stages does not rank, no
-    matter how well it is written.
+    It makes sure your pages reach Google. Google first crawls a page, then decides whether to index it. A page that gets
+    stuck at either step won’t appear in search, however well it’s written.
   </p>
 
   <p>
-    The most expensive mistakes we find live here. It is not unusual to discover that half
-    the pages a business spent months producing were never indexed, or that a site redesign
-    dropped every old URL without redirects and threw away all the accumulated authority.
-    That is why every programme starts with a technical audit.
+    For a local business there’s a map side to this as well. Your Google Business Profile links to your site, and Google
+    also reads from your site which service you offer in which district. A service page Google can’t see is no use on the
+    map either; we explain this link in detail on the <a href={p('services/local-seo')}>local SEO</a> page.
   </p>
 
-  <h2 id="indexing">Crawlability and indexing</h2>
+  <p>
+    That’s why we start every job with a technical audit. We don’t write a single line of content for a site that isn’t
+    getting indexed.
+  </p>
 
-  <p>What we check under this heading:</p>
+  <h2 id="indeks">Are your pages really on Google?</h2>
+
+  <p>
+    Search Console tells you the fastest. The Pages report shows which URLs are indexed, which were left out and on what
+    grounds. We start the diagnosis there, then crawl the site from end to end.
+  </p>
+
+  <p>What we look at in the crawl:</p>
 
   <ul class="checklist">
     <li>
-      <strong>robots.txt and meta robots.</strong> Sections blocked unintentionally, or the
-      reverse — pages that should not be indexed (thank-you pages, filter combinations) left
-      open
+      <strong>robots.txt and noindex.</strong> Sections blocked by mistake, or thank-you and filter pages that shouldn’t be
+      in the index. Google can’t see a noindex tag on a page blocked by robots.txt, so the two must not be mixed up.
     </li>
     <li>
-      <strong>Canonical tags.</strong> The same content reachable from several addresses
-      (www/non-www, http/https, trailing slash) with no declaration of which one is canonical
+      <strong>Canonical.</strong> If the same page opens at more than one URL, with and without www or over both http and
+      https, you need to tell Google which one is the main one.
     </li>
     <li>
-      <strong>Sitemap.</strong> Does it exist, is it current, does it contain pages that
-      shouldn't be indexed, is it referenced from robots.txt
+      <strong>Sitemap.</strong> Is it up to date, does it contain only the pages that should be indexed, has it been
+      submitted to Search Console.
     </li>
     <li>
-      <strong>Redirects.</strong> Broken internal links, redirect chains, URLs orphaned by a
-      site migration
-    </li>
-    <li>
-      <strong>Search Console coverage report.</strong> Which pages are excluded from the index
-      and why — the most direct diagnostic source there is
+      <strong>Redirects and broken links.</strong> Redirect chains, internal links that return 404 and lost URLs left over
+      from the old site.
     </li>
   </ul>
 
   <div class="callout">
     <p>
-      <strong>The critical step in any redesign is the redirect map.</strong> Every migration
-      that does not map old URLs to new ones with 301s resets the rankings those URLs had
-      accumulated. Most "traffic dropped after the relaunch" complaints trace back to this.
+      <strong>When you rebuild your site, list your redirects first.</strong> If each old URL isn’t tied to its new
+      counterpart with a 301, the ranking built up at those URLs is lost. It’s the most common traffic loss we see in
+      businesses that change web designers.
     </p>
   </div>
 
-  <h2 id="speed">Page speed and Core Web Vitals</h2>
+  <h2 id="yerel">What do we check on a local business site?</h2>
 
   <p>
-    Google's user experience metrics measure three things: how fast the main content appears
-    (LCP), how quickly the page responds to interaction (INP), and how much the content shifts
-    while loading (CLS).
+    On top of the general crawl, we check four things separately. All of them concern the link between your profile and
+    your site.
+  </p>
+
+  <ul class="checklist">
+    <li>
+      <strong>The website link on your profile.</strong> If it goes to a redirect, an old URL or a page that isn’t indexed,
+      we fix it. In a business with branches, each profile links to its own branch page.
+    </li>
+    <li>
+      <strong>Name, address and phone.</strong> They’re written on the page as text and match the spelling on the profile
+      exactly. The phone number can be called with one tap on a phone.
+    </li>
+    <li>
+      <strong>Service and district pages.</strong> Do they get links from the menu or from other pages? Google finds a page
+      with no links late, and sometimes never.
+    </li>
+    <li>
+      <strong>The mobile version.</strong> Google evaluates the site by looking at its mobile version. Content that exists
+      on desktop and is missing on mobile doesn’t exist for Google.
+    </li>
+  </ul>
+
+  <p>
+    This part is the site side of the work. We handle the profile side in
+    <a href={p('services/gbp')}>Google Business Profile management</a>, and the two run within the same plan.
+  </p>
+
+  <h2 id="hiz">Does site speed affect your rankings?</h2>
+
+  <p>
+    It does, though less than people think. The measures Google calls Core Web Vitals look at how fast the main content
+    appears (LCP), how fast the page responds to a tap (INP) and how much the page shifts while loading (CLS).
   </p>
 
   <p>
-    Their direct effect on ranking is usually overstated. The real importance is elsewhere: on
-    a slow, jumping page the visitor leaves before filling in the form. Visitors arriving from
-    local search are already at the decision stage, so every one lost here is a lost customer
-    directly.
+    Speed matters most for the customer. A person coming from the map has already decided and is about to call you or get directions. If the page opens slowly, they go back and move on to the next business on the list.
   </p>
 
   <p>
-    We focus on the practical fixes: serving images in the right format and size, deferring
-    render-blocking scripts, removing unused CSS and JS, and setting a sane font-loading
-    strategy. Scoring 100 is not the goal; the user seeing the first screen quickly is.
+    Our goal is that a person arriving on a phone sees the first screen right away. Most of the work is serving images at
+    the right size, deferring scripts that hold the page up, dropping unused CSS and JavaScript and lightening fonts. We
+    track the PageSpeed score as a by-product of this work.
   </p>
 
-  <h2 id="schema">Structured data</h2>
+  <h2 id="schema">What does structured data do?</h2>
 
   <p>
-    Structured data (schema.org) lets Google read the information on a page in a
-    machine-readable form. The types that matter for local businesses:
+    It writes your business details onto the page in a form Google reads as a machine. In the shared language called
+    Schema.org, you’re saying “this is a dental clinic, this is its address, these are the services it offers”. The types
+    we use for local businesses:
   </p>
 
   <div class="table-scroll">
@@ -147,67 +189,80 @@ const faq = [
       </thead>
       <tbody>
         <tr>
-          <td><code>LocalBusiness</code> and its subtypes</td>
-          <td>Defines the business entity; strengthens the match between profile and site</td>
+          <td><strong>LocalBusiness</strong> and its subtypes (such as Dentist, Physiotherapy, LegalService)</td>
+          <td>Defines the business and matches the profile and the site as the same business</td>
         </tr>
         <tr>
-          <td><code>Service</code></td>
-          <td>Clarifies which service a page describes and who provides it</td>
+          <td><strong>Service</strong></td>
+          <td>Says which service a service page describes and who provides it</td>
         </tr>
         <tr>
-          <td><code>FAQPage</code></td>
-          <td>Can earn expandable question-and-answer display in results</td>
+          <td><strong>sameAs</strong></td>
+          <td>Ties the site, the Google profile and social accounts to the same business</td>
         </tr>
         <tr>
-          <td><code>BreadcrumbList</code></td>
-          <td>Shows site hierarchy instead of a raw URL, lifting click-through rate</td>
+          <td><strong>BreadcrumbList</strong></td>
+          <td>Describes where the page sits on the site</td>
         </tr>
         <tr>
-          <td><code>Organization</code> + <code>sameAs</code></td>
-          <td>Binds site, business profile and social accounts into one entity</td>
+          <td><strong>FAQPage</strong></td>
+          <td>Makes questions and answers readable. Since 2023 Google shows the expandable result only for well-known government and health sites.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <p>
-    The detail we care about in setup: every schema block ties back to the same business
-    entity through a fixed <code>@id</code>. Writing disconnected schema page by page leads
-    Google to see several unrelated entities instead of one business.
-  </p>
-
-  <h2 id="hreflang">hreflang on multilingual sites</h2>
-
-  <p>
-    On sites publishing in more than one language, the most common error we find is every page
-    declaring hreflang for every language — including pages that have no translation. When
-    Google follows the link and finds no counterpart, it can discard the whole hreflang cluster.
+    What we pay attention to when setting it up: the schemas on every page are tied to the same business with a fixed @id.
+    If you write disconnected schema page by page, Google may take the same business for several separate entities.
   </p>
 
   <p>
-    The correct setup is to declare hreflang only between pages that genuinely correspond, and
-    to leave market-specific pages out of the cluster entirely. Each page also needs to
-    reference itself, and <code>x-default</code> has to be defined.
+    The name, address and phone in the schema must match your profile. Writing “Mavi Çınar Fizyoterapi” on the profile and
+    leaving the old company name in the schema means showing Google two separate businesses.
   </p>
 
-  <h2 id="audit">What the audit covers</h2>
+  <h2 id="dil">What if your site is in more than one language?</h2>
 
   <p>
-    On the technical side the free audit reports: pages excluded from the index and why,
-    broken links and redirect chains, canonical conflicts, missing or malformed structured
-    data, mobile usability errors and first-screen load time. Findings are ordered by impact —
-    you do not need to fix everything at once, and usually one or two of them are what is
-    holding the rankings down.
+    You set up hreflang. This tag tells Google “the English version of this page is here, the German version is here” and
+    shows the right language to the right searcher.
   </p>
 
   <p>
-    Technical fixes alone are rarely enough. Once the ground is solid,
-    <a href={p('services/on-page-seo')}>on-page</a> and
-    <a href={p('services/content')}>content</a> take over.
+    Say you’re a dental clinic in Antalya that also treats patients from abroad, and your site is in three languages. The
+    most common mistake we see is every page pointing hreflang at every language, including pages that have no translation.
+    Google ignores hreflang signals that have no counterpart or don’t point back.
+  </p>
+
+  <p>
+    In a correct setup, hreflang connects only pages that really have a translation, each page also lists itself, and an
+    x-default is defined. District pages written only for people searching in Turkish stay outside this set.
+  </p>
+
+  <h2 id="sonra">What happens after the audit?</h2>
+
+  <p>
+    We rank the findings by impact. First we close the errors that keep pages out of the index; speed and schema come after
+    them. Trying to fix everything in the same week makes it hard to see what worked.
+  </p>
+
+  <p>
+    We make the fixes ourselves, because if we can’t manage the whole site, we don’t start. We explain where this rule
+    comes from on the <a href={`${p('services/local-seo')}#site`}>local SEO page</a>.
+  </p>
+
+  <p>
+    Once the foundation is solid, it’s the pages’ turn. We fit each page to a single search with
+    <a href={p('services/on-page-seo')} style="white-space: nowrap;">on-page SEO</a>, and write the missing service and
+    district pages as part of <a href={p('services/content')}>content production</a>.
   </p>
 
   <Fragment slot="cta">
-    <h2>Are your pages actually being <span class="highlight">indexed</span>?</h2>
-    <p>The free audit reports your indexing, speed and schema status in order of impact.</p>
+    <h2>Are your pages really getting <span class="highlight">indexed</span>?</h2>
+    <p>
+      In the free analysis we look at your site and your profile and list the problems to fix first, in order. The result
+      lands in your inbox within <span style="white-space: nowrap;">24 hours</span>.
+    </p>
   </Fragment>
 </ContentLayout>

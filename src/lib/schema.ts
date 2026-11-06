@@ -114,7 +114,10 @@ export function articlePageSchema(opts: {
   dateModified?: string;
   faq?: FaqEntry[];
   breadcrumb: Crumb[];
+  /** A named person who wrote the page. Without it the organisation is the author. */
+  author?: { name: string; jobTitle: string };
 }) {
+  const personId = `${SITE}${opts.url}#person`;
   const graph: Record<string, unknown>[] = [
     organizationNode(opts.locale),
     {
@@ -128,7 +131,7 @@ export function articlePageSchema(opts: {
       inLanguage: opts.locale,
       datePublished: opts.datePublished,
       dateModified: opts.dateModified ?? opts.datePublished,
-      author: { '@id': ORG_ID },
+      author: { '@id': opts.author ? personId : ORG_ID },
       publisher: { '@id': ORG_ID },
       mainEntityOfPage: `${SITE}${opts.url}`,
     },
@@ -143,6 +146,17 @@ export function articlePageSchema(opts: {
       })),
     },
   ];
+
+  if (opts.author) {
+    graph.push({
+      '@type': 'Person',
+      '@id': personId,
+      name: opts.author.name,
+      jobTitle: opts.author.jobTitle,
+      worksFor: { '@id': ORG_ID },
+      url: `${SITE}${opts.url}`,
+    });
+  }
 
   if (opts.faq?.length) {
     graph.push({

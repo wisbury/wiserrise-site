@@ -1,0 +1,209 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import HubCards from '../../components/v2/HubCards.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const verticals = [
+  {
+    href: p('industries/law'),
+    label: 'LAW',
+    title: 'Lawyers',
+    text: 'Being visible under an advertising ban. Work built on a compliant profile and informative content.',
+    cta: 'View industry',
+  },
+  {
+    href: p('industries/dental'),
+    label: 'HEALTH',
+    title: 'Dentists',
+    text: 'The patient calling at night in pain and the patient researching implants for weeks are on the same map. You need to show up for each of them separately.',
+    cta: 'View industry',
+  },
+  {
+    href: p('industries/aesthetics'),
+    label: 'HEALTH',
+    title: 'Aesthetic clinics',
+    text: 'The field with the strictest promotion rules. The right category and content that promises no results make the difference.',
+    cta: 'View industry',
+  },
+  {
+    href: p('industries/physio'),
+    label: 'HEALTH',
+    title: 'Physiotherapists',
+    text: 'Patients don’t know their diagnosis, they type their complaint. Setting up clinic and home visits correctly on the profile also affects your ranking.',
+    cta: 'View industry',
+  },
+  {
+    href: p('industries/vehicle-inspection'),
+    label: 'AUTOMOTIVE',
+    title: 'Vehicle inspection',
+    text: 'The race is decided within a few kilometers, and the customer decides within minutes. Your profile, reviews and real photos carry the weight.',
+    cta: 'View industry',
+  },
+];
+
+const toc = [
+  { id: 'ne-degisir', label: 'What changes from industry to industry?' },
+  { id: 'icerik', label: 'Why does industry content work separately?' },
+  { id: 'diger', label: 'If your industry isn’t listed' },
+];
+
+const faq = [
+  {
+    q: 'My industry isn’t on the list. Can we work together?',
+    a: 'Yes. The method doesn’t depend on the industry; what changes is how the competition is structured and how customers search. In the free analysis we look at your industry with the same eye.',
+  },
+  {
+    q: 'If you don’t know my industry, won’t the copy be wrong?',
+    a: 'The logic of the map ranking doesn’t change from industry to industry, the accuracy of the copy does. In a field we don’t know, we have you approve the accuracy of the copy before it goes live. We work the same way in law and health.',
+  },
+  {
+    q: 'Will you also work with my competitor in the same city?',
+    a: 'No. We work with one business per industry in each city. Trying to move two competitors up the same map at the same time would be unfair to both.',
+  },
+  {
+    q: 'Are we taking a risk in regulated industries like law and health?',
+    a: 'No. In law, Turkey’s advertising ban for lawyers sets the limits of the copy, in health the promotion rules do, and we stay inside those limits. We never use a phrase that carries a risk of sanctions for the sake of a ranking.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="industries"
+  title="Local SEO by Industry | Wiserrise"
+  description="Local SEO for lawyers, dentists, aesthetic clinics, physiotherapists and vehicle inspection, built around each industry’s rules and how its customers search."
+  eyebrow="INDUSTRIES"
+  h1="How does local SEO change from one industry to another?"
+  crumb="Industries"
+  lede="The method stays the same and four things change: how far the customer will travel, how long they take to decide, what the industry’s rules allow and how willing customers are to write a review. Work done without knowing these goes to waste. Below we describe the five industries we work with most, one by one."
+  serviceName="Industry-Specific Local SEO"
+  breadcrumb={[{ label: 'Home', href: '/' }]}
+  toc={toc}
+  faq={faq}
+  wideFirst
+  related={[
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'The core service where we fix your profile and your website together.' },
+    { label: 'Content production', href: p('services/content'), text: 'Service and neighborhood pages that answer your industry’s questions.' },
+    { label: 'All services', href: p('services'), text: 'The list that shows on one page which service solves what.' },
+  ]}
+  ctaLabel="Get a free analysis"
+  ctaHref="/#contact"
+>
+  <h2 id="ne-degisir">What changes from industry to industry?</h2>
+
+  <p>
+    Google ranks the map with the same logic in every industry. What changes is how the customer searches and what you’re
+    allowed to say.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Why it matters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Distance</strong></td>
+          <td>
+            Someone looking for a vehicle inspection goes to the nearest one. For a good divorce lawyer, people cross to the
+            other side of the city. We set up the measurement around this distance.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Rules</strong></td>
+          <td>
+            Lawyers in Turkey work under an advertising ban, and healthcare has promotion rules. Many methods that work in
+            other industries can’t be used here.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Category</strong></td>
+          <td>
+            To Google, “medical aesthetics” and “beauty salon” are two different types of business. A clinic that picks the
+            wrong category falls behind in the right search.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Decision time</strong></td>
+          <td>
+            In vehicle inspection the decision takes minutes, for implant treatment it takes weeks. With a long decision,
+            informative pages come first; with a short one, the profile and reviews do.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Reviews</strong></td>
+          <td>
+            In some industries customers happily write reviews, in others they hold back for privacy reasons. We set the
+            review target accordingly.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <p>
+      <strong>Copy written without knowing the industry doesn’t stand out.</strong> Hundreds of generic articles target the
+      same search, and the difference lies in the details only someone who has worked in that industry knows. That’s why,
+      in a field we don’t know, we have you approve the accuracy of the copy.
+    </p>
+  </div>
+
+  <h2 id="icerik">Why does industry content work separately from the map?</h2>
+
+  <p>
+    When someone searches “lawyer in Antalya”, Google looks at where the searcher is. A search like “how long does a
+    divorce case take” has nothing like that: the question is asked from all over Turkey, and the page that answers it can
+    rank anywhere.
+  </p>
+
+  <p>
+    For a law firm, showing up for this question is a separate job from getting onto the map in its own city. We run both
+    together. The map brings in the customer nearby, and <a href={p('services/content')}>informative pages</a> introduce
+    you to the customer who is still researching.
+  </p>
+
+  <h2 id="diger">What if your industry isn’t on the list?</h2>
+
+  <p>
+    We still work with you. The method is the same: first <a href={p('services/rank-tracking')}>measurement across your
+    area</a>, then the profile and the website.
+  </p>
+
+  <p>
+    Estate agent, vet, hairdresser, accountant, removals, plumbing or gym: it makes no difference. We follow the same order
+    for every business whose customers come from the surrounding area, and we work out the industry-specific part together
+    in the free analysis.
+  </p>
+
+  <Fragment slot="wide">
+    <HubCards
+      id="sektor-listesi"
+      eyebrow="INDUSTRIES"
+      heading="Industries with their own page."
+      sub="We work with every industry. These are the ones where we have something concrete to say about the industry itself."
+      items={verticals}
+      son={{
+        label: 'INDUSTRY NOT LISTED?',
+        title: 'The method is the same, let’s take a look together.',
+        text: 'In the free analysis we lay out the competitors in your industry and how customers search, then tell you where to start.',
+        cta: 'Free analysis',
+        alt: 'Get a free analysis →',
+      }}
+    />
+  </Fragment>
+
+  <Fragment slot="cta">
+    <h2>Where is the <span class="highlight">competition</span> in your industry?</h2>
+    <p>
+      In the free analysis we measure across your area and lay out your competitors and your missing pages. The result lands
+      in your inbox within <span style="white-space: nowrap;">24 hours</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

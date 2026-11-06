@@ -1,0 +1,47 @@
+---
+import LegalPage from '../../components/v2/LegalPage.astro';
+import { COMPANY_LEGAL_NAME, CONTACT_EMAIL } from '../../i18n/ui';
+import { COMPANY_ADDRESS_INTL } from '../../data/legal';
+
+/**
+ * Anbieterkennzeichnung nach § 5 DDG für die deutschsprachigen Seiten. Nur auf Deutsch: Die Pflicht folgt aus dem
+ * deutschen Recht, die türkischen und englischen Seiten nennen dieselben Angaben im Datenschutzhinweis.
+ */
+const email = CONTACT_EMAIL.de;
+---
+
+<LegalPage
+  locale="de"
+  route="legal/impressum"
+  title="Impressum | Wiserrise"
+  description="Anbieterkennzeichnung von wiserrise.com: Wisbury LLC, Anschrift, Vertretung und Kontakt."
+  heading="Impressum"
+>
+  <h2>Angaben gemäß § 5 DDG</h2>
+  <p>
+    {COMPANY_LEGAL_NAME}<br />
+    {COMPANY_ADDRESS_INTL}
+  </p>
+  <p>Wiserrise ist eine Marke der {COMPANY_LEGAL_NAME}.</p>
+
+  <h2>Rechtsform</h2>
+  <p>Limited Liability Company (LLC) nach dem Recht des US-Bundesstaates New Mexico.</p>
+
+  <h2>Vertreten durch</h2>
+  <p>Melih Us</p>
+
+  <h2>Kontakt</h2>
+  <p>
+    E-Mail: <a href={`mailto:${email}`}>{email}</a><br />
+    Außerdem erreichen Sie uns über das Formular „Kostenlose Analyse“ auf dieser Website.
+  </p>
+
+  <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+  <p>Melih Us, Anschrift wie oben.</p>
+
+  <h2>Verbraucherstreitbeilegung</h2>
+  <p>
+    Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
+    teilzunehmen.
+  </p>
+</LegalPage>

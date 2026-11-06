@@ -5,31 +5,39 @@ import { routePath } from '../../i18n/routes';
 const locale = 'en' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'LOCATION', title: 'Measurement across your area', text: 'We measure your rank from different points around you. Your rank is read from wherever the customer is standing.' },
+  { label: 'PATTERN', title: 'Reading the map', text: 'Strong in the center, weak at the edges? This pattern shows whether the problem is in the profile or on the site.' },
+  { label: 'COMPETITORS', title: 'Side by side with competitors', text: 'We take the same measurement for your competitors in the top three. We see in the data which districts they lead in, and why.' },
+  { label: 'IMPACT', title: 'Rank isn’t enough', text: 'We read rank together with calls, direction requests and messages. If the phone isn’t ringing, a high rank means nothing.' },
+];
+
 const toc = [
-  { id: 'problem', label: 'Why one ranking number misleads' },
-  { id: 'grid', label: 'How grid measurement works' },
-  { id: 'reading', label: 'Reading the grid' },
-  { id: 'competitors', label: 'Competitor comparison' },
-  { id: 'limits', label: 'What the measurement cannot tell you' },
-  { id: 'reporting', label: 'Reporting rhythm' },
+  { id: 'tek-nokta', label: 'Looking from one point' },
+  { id: 'nasil', label: 'Measurement across your area' },
+  { id: 'alan', label: 'The measurement area' },
+  { id: 'okuma', label: 'Reading the result' },
+  { id: 'rakip', label: 'Competitor comparison' },
+  { id: 'aramalar', label: 'Tracked searches' },
+  { id: 'sinirlar', label: 'Limits of the measurement' },
 ];
 
 const faq = [
   {
-    q: 'Why can\'t I just search from my own phone?',
-    a: 'You can, but what you see applies only to the point you are standing on. Google also personalises results using your search history and your own business, so you are unusually likely to see yourself. Grid measurement removes that and scans the whole city.',
+    q: 'Isn’t it enough to search from my own phone?',
+    a: 'No. The result you see belongs only to the spot where you’re standing, and Google personalizes it based on your search history. To know what your customer sees two districts away, you need measurement across your area.',
   },
   {
-    q: 'How often is the grid measured?',
-    a: 'At least monthly while a programme runs, plus before and after critical interventions such as a category change. That way the effect of each change can be isolated.',
+    q: 'How many searches do you track?',
+    a: 'There’s no fixed number. We pick the searches that bring you work; tracking a few of the right searches tells you more than the average of a long list.',
   },
   {
-    q: 'How many queries do you track?',
-    a: 'Usually three to eight core queries. A small number of queries that genuinely drive demand is far more useful than the average of a long list. We pick them from Search Console data and competitor analysis.',
+    q: 'If my rank goes up, will I get more customers?',
+    a: 'Not by itself. Reaching the top for a search nobody makes won’t make the phone ring; that’s why we read rank together with calls, direction requests and messages.',
   },
   {
-    q: 'Can I buy tracking on its own?',
-    a: 'Yes. For businesses running their own team or working with another agency, independent measurement is a meaningful control. In that case we provide the measurement and interpretation while you execute.',
+    q: 'Can I see my competitors’ rankings too?',
+    a: 'Yes. We take the same measurement for your competitors in the top three. You see side by side who leads in which district.',
   },
 ];
 ---
@@ -38,69 +46,84 @@ const faq = [
   locale={locale}
   route="services/rank-tracking"
   title="Google Maps Rank Tracking | Wiserrise"
-  description="A 7×7 grid laid over your city measures your Maps ranking point by point. Not one average, but a map of where you rank and where you don't."
-  eyebrow="Service"
-  h1="Map Rank Tracking"
-  lede="Local ranking changes with where the searcher is standing, which is why a single ranking number is misleading. We lay a 7×7 grid over the city and measure your real position at 49 separate points."
+  description="Your rank on the map depends on where the searcher stands. We measure it from different points in your area and read it next to your competitors."
+  eyebrow="SERVICE · MAP RANKING"
+  h1="We measure your map ranking from every corner of your area."
+  crumb="Map Rank Tracking"
+  lede="Map rank tracking means measuring your position on Google Maps from different points around you. You don’t have one rank on the map; for the same search you can be second in one district and twentieth in the district across the way. We show on the map where you’re strong and where you’re weak, and read the result next to your competitors."
   serviceName="Google Maps Rank Tracking"
   breadcrumb={[
     { label: 'Home', href: '/' },
     { label: 'Services', href: p('services') },
+    { label: 'Local SEO', href: p('services/local-seo') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Local SEO', href: p('services/local-seo') },
-    { label: 'Google Business Profile Management', href: p('services/gbp') },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'We close the gaps the measurement reveals on your profile and your site.' },
+    { label: 'Google Business Profile Management', href: p('services/gbp'), text: 'We manage your category, services, reviews and posts within the rules.' },
+    { label: 'GEO', href: p('services/geo'), text: 'We measure whether you’re mentioned in ChatGPT, Gemini and Google’s AI answers.' },
   ]}
-  ctaLabel="Request My Grid Report →"
+  ctaLabel="Get a free analysis"
   ctaHref="/#contact"
 >
-  <h2 id="problem">Why one ranking number misleads</h2>
+  <h2 id="tek-nokta">Why is the rank you see on your own phone misleading?</h2>
 
   <p>
-    In classic SEO, your position for a query is a single number. In local search no such
-    number exists. The same query can put you 2nd in the north of the city, 5th in the centre
-    and 20th in the south — because Google computes ranking outward from the searcher's
-    location.
+    Because it only shows the rank for the spot where you’re standing. Google ranks map results by the searcher’s location;
+    being first in front of your shop doesn’t mean a customer two districts away sees you first too.
   </p>
 
   <p>
-    The practical consequence: business owners searching from their own office usually see a
-    good ranking. The point nearest the office is naturally the point where they are
-    strongest. But most customers are not searching from there. The contradiction between
-    "I'm already number one" and "the phone isn't ringing" almost always starts here.
+    There’s a trap here as well. The business owner searches from their office, and the point closest to the office is
+    where the business is strongest. When a business tells us “I’m already first, and the phone still isn’t ringing”, this
+    is the first place we look.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Searching from your own location is not measurement.</strong> Google
-      personalises results based on your history and position, so your chance of seeing your
-      own business is artificially high.
+      <strong>Your own search doesn’t count as measurement.</strong> Google personalizes the result based on your location
+      and search history. The rank you see on your phone may not match what your customer sees.
     </p>
   </div>
 
-  <h2 id="grid">How grid measurement works</h2>
+  <p>
+    For the same reason we don’t trust “we’re number one” reports that come with a single screenshot. That screenshot shows
+    one small corner of the map.
+  </p>
+
+  <h2 id="nasil">How does measurement across your area work?</h2>
 
   <p>
-    We lay an evenly spaced coordinate grid over the target area — our standard setup is 7×7,
-    so 49 points. At each point we query the results a user standing there would see and
-    record where your business appears. The output is not one number but a visibility map of
-    the city.
+    We take measurements from different points spread around your business. At each point we query the map that a person
+    standing there would see on their phone, and record where you rank.
   </p>
 
   <p>
-    The area the grid covers depends on the type of business. A vehicle inspection centre
-    operating at neighbourhood scale needs a tight 3–5 km grid, while a law firm serving a
-    whole city needs 15–20 km. A grid set at the wrong scale comes back either all green or
-    all red and tells you nothing.
+    The result is a visibility map of your area. Green marks top positions; red marks places where you’re far down the list
+    or don’t appear at all. Even without looking at the numbers, you see which district you’re weak in.
   </p>
 
-  <h2 id="reading">Reading the grid</h2>
+  <h2 id="alan">How do we set the measurement area?</h2>
 
   <p>
-    The value of the grid is in the <strong>pattern</strong>, not the average. Two grids with
-    identical averages can point to completely different problems:
+    By the distance your business draws customers from. For a vehicle inspection business that gets customers from nearby
+    districts we measure a narrow area; for a law firm that takes clients from all over the city we widen it.
+  </p>
+
+  <p>
+    Setting the area wrong makes the measurement useless. Set it too narrow and everything looks green, so you relax. Set it
+    too wide and everything comes out red, so you learn nothing.
+  </p>
+
+  <p>If you have more than one branch, we measure each branch separately around its own location.</p>
+
+  <h2 id="okuma">How do we read the measurement result?</h2>
+
+  <p>
+    The real information is in the pattern. Two measurements with the same average can point to completely different
+    problems:
   </p>
 
   <div class="table-scroll">
@@ -108,103 +131,110 @@ const faq = [
       <thead>
         <tr>
           <th>Pattern</th>
-          <th>What it means</th>
-          <th>Intervention</th>
+          <th>What it tells you</th>
+          <th>What we do</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Strong in the centre, dropping fast at the edges</td>
-          <td>You have no strong signal beyond proximity; profile and prominence are weak</td>
-          <td>Review volume, profile freshness, external signals</td>
+          <td>Strong in the center, dropping fast toward the edges</td>
+          <td>You have no strong signal apart from proximity. The profile and prominence are weak.</td>
+          <td>Review count, how up to date the profile is, sources that mention you</td>
         </tr>
         <tr>
-          <td>Average everywhere, top three nowhere</td>
-          <td>A relevance problem — Google doesn't see you as the answer to this query</td>
-          <td>Category and service structure, page-to-query match</td>
+          <td>Mid-ranking everywhere, in the top three nowhere</td>
+          <td>Google doesn’t see you as an exact match for this search.</td>
+          <td>Category, service list, the service page on the site</td>
         </tr>
         <tr>
-          <td>Strong on one side, very weak on the opposite side</td>
-          <td>A dominant competitor sits on that side</td>
-          <td>Competitor comparison, content and signals specific to that area</td>
+          <td>Strong in one direction, very weak in the opposite one</td>
+          <td>There’s a strong competitor on that side.</td>
+          <td>A comparison with that competitor, content about that district</td>
         </tr>
         <tr>
-          <td>Scattered, large gaps between neighbouring points</td>
-          <td>Signals are unstable; the profile is new or recently changed</td>
-          <td>Wait for it to settle; make no large changes meanwhile</td>
+          <td>Big differences between neighboring points</td>
+          <td>The ranking hasn’t settled yet. The profile is new or changed recently.</td>
+          <td>We wait for it to settle and make no big changes in the meantime.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <p>
-    The red-to-green transition in the before/after visual on our homepage is exactly this
-    measurement. Red points mean position 20+, orange 11–15, green top three.
+    The pattern tells us where to start. Running a review campaign for a profile with a category problem means spending
+    effort on the wrong door.
   </p>
 
-  <h2 id="competitors">Competitor comparison</h2>
+  <h2 id="rakip">How do we compare you with your competitors?</h2>
 
   <p>
-    We run the same grid for the businesses in the top three. That turns "why are they ahead"
-    from guesswork into data. The fields we compare: review count and average, primary
-    category, breadth of the service list, photo count, profile age, and which queries their
-    site ranks for.
+    We take the same measurement for your competitors in the top three. That way we look for the answer to “why are they
+    ahead?” in the data, and put their profiles side by side with yours:
+  </p>
+
+  <ul class="checklist">
+    <li>Primary and additional categories</li>
+    <li>Review count, rating and how recent the reviews are</li>
+    <li>Service list and business description</li>
+    <li>How frequently they add photos and posts</li>
+    <li>Which searches their sites show up in</li>
+  </ul>
+
+  <p>
+    Once you see the gap, it also becomes clear where the budget should go. If a competitor has several times your
+    reviews, we push on the review flow first; if their category is a better fit, we push on the
+    <a href={p('services/gbp')}>profile</a> first.
+  </p>
+
+  <h2 id="aramalar">Which searches do we track?</h2>
+
+  <p>
+    The ones that actually bring you work. The average of a long keyword list looks good in a report and tells you nothing.
   </p>
 
   <p>
-    In most cases the gap turns out to be simpler than expected — three times the reviews, or
-    a well-chosen primary category. Seeing that gap also makes the budget decision obvious.
+    We build the list by looking at how customers search for you: “dentist”, “dental implant”, “dentist near me” and so on.
+    Your business profile’s data on which searches people find you through, and your site’s Search Console records, shape
+    this list.
   </p>
 
-  <h2 id="limits">What the measurement cannot tell you</h2>
+  <h2 id="sinirlar">What doesn’t this measurement show?</h2>
 
-  <p>We would rather not oversell what grid tracking does. The limits worth knowing:</p>
+  <p>Every measurement has limits, and we tell you about them up front.</p>
 
   <ul>
     <li>
-      <strong>Grid position is not revenue.</strong> Being first at all 49 points means
-      nothing if there is no demand behind that query. So we read the grid alongside profile
-      interactions and actual call volume.
+      <strong>Rank doesn’t mean revenue.</strong> Being first everywhere for a search nobody makes won’t make the phone
+      ring. That’s why we read rank together with profile interactions, meaning the number of calls, direction requests and
+      messages.
     </li>
     <li>
-      <strong>A measurement is a snapshot.</strong> Google can shift local results during the
-      day and per user. Two or three positions of movement in a single reading is noise; what
-      matters is the trend across readings taken under the same conditions.
+      <strong>A measurement is a snapshot of that moment.</strong> Google moves local results around during the day as
+      well. A shift of two or three places counts as noise; what matters is the direction across measurements taken under
+      the same conditions.
     </li>
     <li>
-      <strong>The grid does not explain competitor moves.</strong> A drop in one area might be
-      something you broke, or a competitor getting stronger there. Telling those apart requires
-      measuring competitors too.
+      <strong>On its own, it doesn’t tell you why you dropped.</strong> If you’ve slipped in a district, the cause could be
+      a change we made or a competitor getting stronger there. We look at the competitor measurement to tell them apart.
     </li>
     <li>
-      <strong>Early readings on new profiles mislead.</strong> Rankings have not settled in
-      the first weeks after a profile is created. Acting on a measurement from that period can
-      mean breaking something that was fixing itself.
+      <strong>Early measurement on a new profile misleads.</strong> In the first weeks after a profile opens, the ranking
+      hasn’t settled. Looking at the measurement in that period and making hasty changes breaks a picture that is
+      improving.
     </li>
   </ul>
 
   <p>
-    A measurement setup built with these limits in mind makes the sentence "our rankings
-    improved" verifiable. The point is not to produce a good-looking graphic; it is to tell
-    which intervention actually worked.
-  </p>
-
-  <h2 id="reporting">Reporting rhythm</h2>
-
-  <p>
-    We take the measurement at the start of each month and report it overlaid on the previous
-    one. The report answers three questions: where did we advance, where did we slip, and
-    which of this month's interventions worked.
-  </p>
-
-  <p>
-    Grid tracking runs inside the <a href={p('services/local-seo')}>local SEO programme</a>,
-    but we also provide it standalone for businesses running their own team. It is the most
-    direct way to know whether the work you are paying for is doing anything.
+    For most businesses we see the first movement on the map between 4 and 8 weeks; in competitive big-city centers it
+    takes longer. We close the gaps the measurement reveals in the <a href={p('services/local-seo')}>local SEO</a> work,
+    and you see the work we’ve done in the report every week.
   </p>
 
   <Fragment slot="cta">
-    <h2>Let's map your city's <span class="highlight">visibility</span></h2>
-    <p>The free audit includes your 49-point grid reading and the gap to the current top three.</p>
+    <h2>What <span class="highlight">position</span> does your customer see you in?</h2>
+    <p>
+      In the free analysis we take a measurement across your area and map out the gap between you and your competitors in
+      the top three. The result lands in your inbox within <span style="white-space: nowrap;">24 hours</span>.
+    </p>
   </Fragment>
 </ContentLayout>

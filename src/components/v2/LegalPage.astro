@@ -1,0 +1,42 @@
+---
+/** Yasal metin sayfası iskeleti: üst menü, başlık ve tarih, metin, sade alt bilgi (bülten ve makaleler yok). */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnalizDialog from '../AnalizDialog.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { CONTACT_EMAIL } from '../../i18n/ui';
+import { LEGAL_UPDATED_ISO } from '../../data/legal';
+import type { Locale } from '../../i18n/config';
+import type { RouteKey } from '../../i18n/routes';
+import { v2ui, formatDate } from '../../i18n/v2';
+
+interface Props {
+  locale: Locale;
+  route: RouteKey;
+  title: string;
+  description: string;
+  heading: string;
+}
+const { locale, route, title, description, heading } = Astro.props;
+const email = CONTACT_EMAIL[locale];
+const s = v2ui[locale].page;
+---
+
+<BaseLayout locale={locale} route={route} title={title} description={description} design="v2">
+
+<Header locale={locale} route={route} />
+
+<main id="main" style="max-width: 1312px; margin: 0 auto; padding: clamp(48px, 7vw, 88px) clamp(16px, 3vw, 32px) clamp(64px, 8vw, 96px); box-sizing: border-box;">
+  <article class="v2-legal">
+    <span class="v2-eyebrow">{s.legalEyebrow}</span>
+    <h1>{heading}</h1>
+    <p class="v2-legal-date">{s.updated} {formatDate(locale, LEGAL_UPDATED_ISO)}</p>
+    <slot />
+  </article>
+</main>
+
+<AnalizDialog locale={locale} email={email} />
+
+<Footer locale={locale} email={email} news={false} />
+
+</BaseLayout>

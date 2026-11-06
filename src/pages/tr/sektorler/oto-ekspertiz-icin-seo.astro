@@ -5,30 +5,38 @@ import { routePath } from '../../../i18n/routes';
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'YAKINLIK', title: 'Dar hizmet bölgesi', text: 'Müşteri ekspertiz için birkaç kilometreden uzağa gitmez. Biz de emeği, gerçekten gelebileceği çevreye harcarız.' },
+  { label: 'TELEFON', title: 'Tek dokunuşla arama', text: 'Karar dakikalar içinde verilir. Çalışma saatleriniz ya da numaranız yanlışsa iyi bir sıra da müşteriyi tutmaz.' },
+  { label: 'YORUM', title: 'Düzenli yorum akışı', text: 'Hizmetler birbirine benziyor, müşteriyi ayıran şey yorumlar. Yorum istemenin en doğal anı, raporu teslim ettiğiniz an.' },
+  { label: 'FOTOĞRAF', title: 'Gerçek tesis fotoğrafı', text: 'Müşteri aracını emanet edeceği yeri görmek ister. Tabela, lift, cihazlar ve bekleme alanı profilde görünmeli.' },
+];
+
 const toc = [
-  { id: 'yaricap', label: 'Mahalle ölçeğinde bir yakınlık savaşı' },
-  { id: 'yorum', label: 'Yorumlar burada her şeyi belirliyor' },
-  { id: 'foto', label: 'Tesis fotoğrafları' },
-  { id: 'sorgu', label: 'Arama davranışı: karar dakikalar içinde' },
-  { id: 'sayfa', label: 'Site tarafında ne gerekiyor' },
+  { id: 'yakinlik', label: 'Müşteri ne kadar uzağa gider?' },
+  { id: 'olcum', label: 'Sıranızı nasıl ölçüyoruz?' },
+  { id: 'arama', label: 'Müşteri ne yazıyor?' },
+  { id: 'profil', label: 'Profilde ne olmalı?' },
+  { id: 'yorum', label: 'Yorumları toplamak' },
+  { id: 'site', label: 'Sitede hangi sayfalar?' },
 ];
 
 const faq = [
   {
-    q: 'Rakiplerimle aynı hizmeti veriyoruz, nasıl ayrışacağım?',
-    a: 'Bu sektörde hizmet farkı yaratmak zor, güven farkı yaratmak kolay. Rapor örneğini yayınlamak, kontrol edilen kalem sayısını açıkça yazmak, cihaz ve tesis fotoğraflarını göstermek ve yorum hacmini yükseltmek — dördü birlikte ayrışmayı üretiyor.',
+    q: 'Rakiplerimle aynı hizmeti veriyorum, nasıl ayrışırım?',
+    a: 'Hizmette ayrışmak zor, güvende ayrışmak kolay. Örnek bir raporu ve gerçek tesis fotoğraflarını gösteren firma, müşteriye ilk bakışta güven verir. Yorumlar da bu güvenin en görünür kısmı.',
   },
   {
-    q: 'Franchise bir markanın bayisiyim, kendi SEO\'mu yapabilir miyim?',
-    a: 'Evet ve yapmalısınız. Marka merkezi genelde kurumsal siteyi yönetiyor ama harita sıralaması şube bazında yarışıyor. Kendi profiliniz, kendi yorumlarınız ve kendi lokasyon sayfanız üzerinde çalışabilirsiniz. Bunu marka kılavuzuna uygun biçimde kurguluyoruz.',
+    q: 'Kaç yoruma ihtiyacım var?',
+    a: 'Sabit bir sayı yok. Ölçüt, haritada ilk üçte çıkan rakiplerinizin yorum sayısı; onların belirgin altındaysanız ilk iş o farkı kapatmak. Ücretsiz analizde bu farkı rakamla çıkarırız.',
   },
   {
-    q: 'Ne kadar sürede ilk üçe girerim?',
-    a: 'Bu dikeyde işler görece hızlı ilerliyor çünkü rakiplerin çoğu profilini aktif yönetmiyor. Profil kurulumu ve yorum akışı düzgün kurulduğunda 4–8 haftada belirgin hareket görülüyor. Yoğun ilçe merkezlerinde süre uzayabiliyor.',
+    q: 'Profil yetmez mi, siteye de ihtiyacım var mı?',
+    a: 'Talebin büyük kısmı profilden gelir, ama Google profilin bağlı olduğu siteye de bakar. Rekabetin yoğun olduğu ilçede profil tek başına yetmez. Siteyi de biz yönetiriz; siteyi komple yönetemeyeceksek işe başlamıyoruz.',
   },
   {
-    q: 'Kaç yorum gerekiyor?',
-    a: 'Sabit bir sayı yok; ölçüt ilk üçteki rakiplerin hacmi. Onların ortalamasının belirgin altındaysanız hedef önce o seviyeye ulaşmak. Grid ölçümüyle birlikte bu farkı sayısal olarak çıkarıyoruz.',
+    q: 'Ne zaman sonuç görürüm?',
+    a: 'Haritada ilk hareketi çoğu işletmede 4 ile 8 hafta arasında görüyoruz. Rekabetin yoğun olduğu ilçe merkezlerinde bu süre uzar. Kesin tarih veremeyiz, ama yaptığımız işleri her hafta raporda görürsünüz.',
   },
 ];
 ---
@@ -37,179 +45,190 @@ const faq = [
   locale={locale}
   route="industries/vehicle-inspection"
   title="Oto Ekspertiz İçin SEO ve Google Haritalar | Wiserrise"
-  description="Oto ekspertiz ve araç muayene noktaları için yerel SEO. Mahalle ölçeğinde yakınlık rekabeti, yorum hacmi, tesis fotoğrafları ve profil yönetimi."
-  eyebrow="Sektör"
-  h1="Oto Ekspertiz İçin SEO"
-  lede="Bu sektörde müşteri uzağa gitmiyor. Rekabet birkaç kilometrelik bir alanda geçiyor ve sıralamayı belirleyen şey büyük ölçüde yorum hacmi ile profilin ne kadar canlı olduğu."
-  serviceName="Oto Ekspertiz İçin Yerel SEO"
+  description="Oto ekspertiz firmaları için local SEO: dar hizmet bölgesinde haritada görünmek, telefonla gelen müşteri, yorumlar ve tesis fotoğrafları. Sözleşme yok."
+  eyebrow="SEKTÖR · OTO EKSPERTİZ"
+  h1="Oto ekspertiz için SEO: yarış birkaç kilometrede."
+  crumb="Oto ekspertiz"
+  lede="Oto ekspertizde SEO, aracın ya da alıcının yakınındaki ilk birkaç firma arasında haritada çıkmak demek. Müşteri şehrin öbür ucuna gitmez ve kararını birkaç dakikada verir. Bu yüzden işin ağırlığı, telefonla aranan Google İşletme Profilinizde ve yorumlarınızda."
+  serviceName="Oto ekspertiz için SEO"
   breadcrumb={[
     { label: 'Ana Sayfa', href: '/tr' },
     { label: 'Sektörler', href: p('industries') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp') },
-    { label: 'Harita Sıralama Takibi', href: p('services/rank-tracking') },
-    { label: 'Yerel SEO', href: p('services/local-seo') },
+    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp'), text: 'Saatleri, fotoğrafları, gönderileri ve yorum yanıtlarını birlikte yönetiriz.' },
+    { label: 'Harita Sıralama Takibi', href: p('services/rank-tracking'), text: 'Tesisinizin çevresindeki farklı noktalarda kaçıncı çıktığınızı ölçeriz.' },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'Profilinizi ve sitenizi haritadaki yarış için birlikte düzeltiriz.' },
+    { label: 'İçerik Üretimi', href: p('services/content'), text: 'Örnek rapor ve süreç sayfalarını tesisinizin işleyişine göre yazarız.' },
   ]}
-  ctaLabel="Ücretsiz Analizimi Al →"
+  ctaLabel="Ücretsiz analiz al"
   ctaHref="/tr#contact"
 >
-  <h2 id="yaricap">Mahalle ölçeğinde bir yakınlık savaşı</h2>
+  <h2 id="yakinlik">Müşteri ekspertiz için ne kadar uzağa gider?</h2>
 
   <p>
-    İkinci el araç alacak kişi, ekspertiz için şehrin öbür ucuna gitmiyor. Genelde aracın
-    bulunduğu yere ya da kendi konumuna en yakın birkaç noktadan birini seçiyor. Bu, oto
-    ekspertizi yakınlığın en baskın olduğu dikeylerden biri yapıyor.
+    Fazla uzağa gitmez. İkinci el araç alacak kişi ekspertiz için şehrin öbür ucuna gitmiyor; aracın durduğu yere ya da
+    kendi konumuna en yakın birkaç firmadan birini seçiyor.
   </p>
 
   <p>
-    Pratik sonucu şu: sıralamanız birkaç kilometre içinde tamamen değişiyor. Tesisinizin
-    bulunduğu noktada birinci olabilirken, 4 km ötede ilk yirmide bile olmayabilirsiniz.
-    Bu yüzden ölçümü dar bir <a href={p('services/rank-tracking')}>grid</a> ile yapıyoruz —
-    şehir geneline yayılmış bir ızgara, bu sektörde anlamsız veri üretiyor.
+    Bu da sıranızın birkaç kilometre içinde tamamen değişmesi demek. Diyelim ki tesisinizin önünde birinci çıkıyorsunuz;
+    4 km ötedeki bir alıcının telefonunda ilk yirmide bile olmayabilirsiniz.
   </p>
 
   <p>
-    Hedef de buna göre kuruluyor: tüm şehirde görünmek değil, gerçekten müşteri gelebilecek
-    yarıçapın tamamında ilk üçte olmak. Bu yarıçapın dışında harcanan efor karşılıksız
-    kalıyor.
+    Oto ekspertiz, <a href={p('industries')}>çalıştığımız sektörler</a> içinde yakınlığın en baskın olduğu işlerden biri.
+    Bu yüzden emeği müşterinin gerçekten gelebileceği birkaç kilometrelik çevreye harcıyoruz. Şehrin öbür ucunda birinci
+    çıkmanın size bir faydası yok.
   </p>
 
-  <h2 id="yorum">Yorumlar burada her şeyi belirliyor</h2>
+  <h2 id="olcum">Sıranızı nasıl ölçüyoruz?</h2>
 
   <p>
-    Oto ekspertizde hizmetler birbirine çok benziyor: aynı kontrol kalemleri, benzer cihazlar,
-    yakın fiyatlar. Müşteri de teknik olarak ayırt edecek bilgiye sahip değil. Geriye tek bir
-    ayrım kalıyor: kaç kişi gitmiş ve ne demiş.
-  </p>
-
-  <p>
-    Bu, yorum hacmini hem sıralama hem de tıklama tarafında belirleyici yapıyor. İyi haber,
-    bu sektörde yorum toplamanın kolay olması — hizmet kısa, sonuç net ve müşteri işlem
-    bitiminde tesiste bulunuyor.
-  </p>
-
-  <ul class="checklist">
-    <li>Rapor teslim anında, tesiste, QR ile yorum akışı</li>
-    <li>Müşteriye metin yazdırmadan, kendi cümleleriyle yazmaya yönlendirme</li>
-    <li>Tüm yorumlara hizmet ve semt adını doğal biçimde içeren kısa yanıtlar</li>
-    <li>Olumsuz yorumda önce telefonla telafi, sonra savunmacı olmayan kamuya açık yanıt</li>
-    <li>İlk üçteki rakiplerin yorum hacmiyle aradaki farkın sayısal takibi</li>
-  </ul>
-
-  <div class="callout">
-    <p>
-      <strong>Yorumları bir anda toplamayın.</strong> Yeni profillerde kısa sürede gelen
-      yorum yığını Google'ın filtrelerine takılan tipik desen. Düzenli ve sürekli bir akış,
-      aynı sayıyı bir haftada toplamaktan çok daha etkili.
-    </p>
-  </div>
-
-  <h2 id="foto">Tesis fotoğrafları</h2>
-
-  <p>
-    Bu sektörde fotoğraf, diğer pek çok dikeyden daha fazla iş görüyor. Müşteri aracını
-    emanet edeceği yeri görmek istiyor ve profildeki fotoğraflar bu güveni doğrudan
-    etkiliyor.
+    Tesisinizin çevresindeki farklı noktalardan, o noktada arama yapan birinin telefonunda kaçıncı çıktığınıza bakarak.
+    Tek noktadan alınan sıra size gerçeği göstermez, çünkü arayan iki sokak öteye geçince sıra değişir.
   </p>
 
   <p>
-    Öncelik verdiğimiz kareler: tesisin dış cephesi ve tabelası (müşteri gelirken tanısın),
-    lift ve kontrol alanı, kullanılan cihazlar, bekleme alanı ve ekip. Stok görsel
-    kullanmıyoruz — gerçek tesis fotoğrafı ile stok fotoğraf arasındaki fark, kullanıcı
-    tarafında hemen anlaşılıyor.
+    Ekspertizde bu noktaları tesisinize yakın tutuyoruz. Şehrin geneline yayılan bir ölçüm, müşterinin hiç gelmeyeceği
+    yerlerden veri toplar ve tabloyu bulandırır. Ölçümün nasıl çalıştığını
+    <a href={p('services/rank-tracking')}>harita sıralama takibi</a> sayfasında anlattık.
   </p>
 
-  <p>
-    Fotoğrafları düzenli aralıklarla eklemek ayrıca profilin aktif yönetildiğine dair bir
-    sinyal üretiyor. Bir kerede otuz fotoğraf yükleyip iki yıl dokunmamak yerine, düzenli
-    ekleme yapıyoruz.
-  </p>
-
-  <h2 id="sorgu">Arama davranışı: karar dakikalar içinde</h2>
+  <h2 id="arama">Müşteri Google’da ne yazıyor?</h2>
 
   <p>
-    Bu dikeyde araştırma süreci yok denecek kadar kısa. Müşteri genelde aracı görmeye
-    giderken ya da pazarlık aşamasında telefonunu açıyor ve birkaç dakika içinde karar
-    veriyor. Sorgular da buna göre:
+    Araştırma süreci yok denecek kadar kısa. Müşteri aracı görmeye giderken ya da pazarlık sırasında telefonunu açıyor ve
+    birkaç dakikada karar veriyor. Yazdıkları dört gruba ayrılıyor:
   </p>
 
   <div class="table-scroll">
     <table>
       <thead>
         <tr>
-          <th>Sorgu tipi</th>
+          <th>Arama türü</th>
           <th>Örnek</th>
-          <th>Ne belirleyici</th>
+          <th>Neye bakılır</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Yakınlık</td>
-          <td>"yakınımdaki oto ekspertiz"</td>
-          <td>Konum + profil gücü</td>
+          <td><strong>Yakınlık</strong></td>
+          <td>“yakınımdaki oto ekspertiz”</td>
+          <td>Konumunuz ve profiliniz</td>
         </tr>
         <tr>
-          <td>Semt/ilçe</td>
-          <td>"nilüfer oto ekspertiz"</td>
-          <td>Profil + lokasyon sayfası</td>
+          <td><strong>İlçe</strong></td>
+          <td>“Nilüfer oto ekspertiz”</td>
+          <td>Profiliniz ve sitedeki ilçe sayfası</td>
         </tr>
         <tr>
-          <td>Fiyat</td>
-          <td>"oto ekspertiz ücreti 2026"</td>
-          <td>Bilgilendirici içerik</td>
+          <td><strong>Fiyat</strong></td>
+          <td>“oto ekspertiz ücreti”</td>
+          <td>Sitedeki fiyat bilgisi</td>
         </tr>
         <tr>
-          <td>Süreç</td>
-          <td>"oto ekspertiz ne kadar sürer", "neye bakılır"</td>
-          <td>Bilgilendirici içerik, ulusal sıralanabilir</td>
+          <td><strong>Süreç</strong></td>
+          <td>“oto ekspertiz ne kadar sürer”</td>
+          <td>Sitedeki bilgilendirici sayfa</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <p>
-    Karar hızlı olduğu için profilin eksiksiz olması kritik: çalışma saatleri doğru olmalı,
-    telefon tek tıkla aranabilmeli, yol tarifi çalışmalı. Kapalı görünen ya da telefonu
-    yanlış yazılmış bir profil, sıralaması iyi olsa bile o müşteriyi kaybediyor.
+    İlk ikisi haritada, son ikisi sitede kazanılır. Süreç aramaları şehirden bağımsız sıralanır, ama bu sektörde
+    müşteriyi kapınıza getiren haritadır.
   </p>
 
-  <h2 id="sayfa">Site tarafında ne gerekiyor</h2>
+  <h2 id="profil">Karar dakikalar içindeyse profilde ne olmalı?</h2>
 
   <p>
-    Bu sektörde site, hukuk ya da estetikteki kadar ağır bir yatırım gerektirmiyor. Talebin
-    büyük bölümü profilden geliyor. Yine de birkaç sayfa belirgin fark yaratıyor:
+    Her şeyden önce tek dokunuşla aranabilmeniz. Bu sektörde müşteri siteye girmez, profilden arar ya da yol tarifi alır.
+  </p>
+
+  <ul class="checklist">
+    <li>Özel günler dahil doğru çalışma saatleri</li>
+    <li>Doğru yazılmış, tek dokunuşla aranan telefon numarası</li>
+    <li>Müşteriyi tabelanızın önüne getiren doğru konum ve yol tarifi</li>
+    <li>Hizmetler bölümünde paketleriniz ve kontrol edilen kalemler</li>
+    <li>Gerçek tesis fotoğrafları: dış cephe ve tabela, lift, cihazlar, bekleme alanı</li>
+  </ul>
+
+  <p>
+    Kapalı görünen ya da numarası yanlış bir profil, sırası iyi olsa da o müşteriyi kaybeder. Kendi profilinizin
+    eksiklerini görmek isterseniz <a href={p('tools/gbp-audit')}>ücretsiz profil denetim aracımız</a> size listeyi çıkarır.
+  </p>
+
+  <p>
+    Fotoğraf bu sektörde başka işlerden fazla iş görür. Müşteri aracını emanet edeceği yeri görmek ister ve stok görselle
+    gerçek tesis arasındaki farkı hemen anlar. Otuz fotoğrafı bir kerede yükleyip bırakmayın, düzenli aralıklarla ekleyin.
+  </p>
+
+  <h2 id="yorum">Yorumları ne zaman ve nasıl toplamalısınız?</h2>
+
+  <p>
+    Rapor teslim edilirken, müşteri daha tesisteyken. Ekspertizde hizmetler birbirine çok benziyor: aynı kontrol
+    kalemleri, birbirine yakın fiyatlar. Müşterinin elinde ayırt edecek teknik bilgi yok, geriye kaç kişinin gittiği
+    ve ne dediği kalıyor.
+  </p>
+
+  <p>
+    İyi tarafı, bu sektörde yorum toplamak kolay. Hizmet kısa sürüyor ve müşteri iş bitince karşınızda duruyor. Kurduğumuz
+    akış şöyle:
+  </p>
+
+  <ul class="checklist">
+    <li>Rapor teslim edilirken tezgâhta yorum bağlantısına giden bir QR kod</li>
+    <li>Müşteriye metin yazdırmadan, kendi cümleleriyle yazmasını istemek</li>
+    <li>Her yoruma kısa, kişiye özel ve hazır kalıp olmayan bir yanıt</li>
+    <li>Olumsuz yorumda önce müşteriyi telefonla arayıp sorunu çözmek, sonra sakin bir açık yanıt yazmak</li>
+  </ul>
+
+  <div class="callout">
+    <p>
+      <strong>Yorumları bir anda toplamayın.</strong> Yeni bir profile birkaç günde gelen yorum yığını, Google’ın
+      filtrelerine takılan tipik görüntü. İndirim karşılığı yorum istemek de Google’ın kurallarına aykırı.
+    </p>
+  </div>
+
+  <h2 id="site">Sitede hangi sayfalar işe yarar?</h2>
+
+  <p>
+    Birkaç sayfa yeter. Talebin büyük kısmı profilden geliyor, ama Google profilin bağlı olduğu siteye de bakıyor. Fiyat ya
+    da süreç arayan müşteriyi de site karşılıyor.
   </p>
 
   <ul class="checklist">
     <li>
-      <strong>Rapor örneği sayfası.</strong> Kontrol edilen kalemlerin listesi ve örnek bir
-      rapor. Güven üreten en güçlü tek sayfa.
+      <strong>Örnek rapor sayfası.</strong> Kontrol edilen kalemlerin listesi ve kişisel bilgileri silinmiş bir rapor
+      örneği. Güveni en çok bu sayfa kurar.
     </li>
     <li>
-      <strong>Süreç sayfası.</strong> Randevu, süre, teslim — "ne kadar sürer" sorgusunun
-      karşılığı.
+      <strong>Süreç sayfası.</strong> Randevu, işlemin süresi ve raporun teslimi. “Ne kadar sürer” aramasının cevabı burada.
     </li>
     <li>
-      <strong>Semt/ilçe sayfası.</strong> Yalnızca gerçekten hizmet verdiğiniz ve o bölgeye
-      dair söyleyecek şeyiniz olan yerler için.
+      <strong>Fiyat sayfası.</strong> Kesin rakam yazmasanız da fiyatı neyin belirlediğini anlatın.
     </li>
     <li>
-      <strong>Fiyatlandırma bilgisi.</strong> Kesin rakam vermeseniz bile maliyeti neyin
-      belirlediğini açıklamak, hacimli bir sorgu grubunu karşılıyor.
+      <strong>İlçe sayfası.</strong> Yalnız gerçekten hizmet verdiğiniz ve söyleyecek bir şeyiniz olan ilçeler için.
     </li>
   </ul>
 
   <p>
-    Semt sayfalarında sınırı net tutuyoruz: şehirdeki her ilçe için şablon sayfa üretmek
-    doorway riski taşıyor. Yaklaşımın detayını
-    <a href={p('services/content')}>içerik üretimi sayfasında</a> anlattık.
+    İlçe sayfasında sınırımız net: şehirdeki her ilçe için şablon sayfa açmıyoruz. İlçe adı değiştirilmiş kopya sayfaları
+    Google “doorway” sayar ve siteye zarar verir. Gerçek ilçe sayfalarını <a href={p('services/content')}>içerik
+    üretimi</a> tarafında tesisinize göre yazarız.
   </p>
 
   <Fragment slot="cta">
-    <h2>Tesisinizin <span class="highlight">4 km çevresinde</span> kaçıncısınız?</h2>
-    <p>Ücretsiz analizde dar grid ölçümünüzü ve rakiplerle yorum farkınızı çıkarıyoruz.</p>
+    <h2>Müşteri sizi mi, <span class="highlight">yandakini</span> mi arıyor?</h2>
+    <p>
+      Ücretsiz analizde tesisinizin çevresinde kaçıncı çıktığınızı ölçer, profilinizdeki eksikleri ve rakiplerinizle
+      yorum farkınızı çıkarırız. Sonuç 24 saat içinde <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
   </Fragment>
 </ContentLayout>

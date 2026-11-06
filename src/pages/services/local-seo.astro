@@ -5,32 +5,39 @@ import { routePath } from '../../i18n/routes';
 const locale = 'en' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'PROFILE', title: 'Google Business Profile', text: 'Category, services, photos, posts and reviews. This is the main field of the race on the map.' },
+  { label: 'SITE', title: 'Your site', text: 'Google also looks at the site your profile links to. We make it clear on your site which service you offer in which district.' },
+  { label: 'CONSISTENCY', title: 'Name, address, phone', text: 'The same spelling in every directory that lists you. Inconsistent details lower Google’s trust in you.' },
+  { label: 'MEASUREMENT', title: 'Measurement across your area', text: 'We measure where you rank from different corners around you, because the order changes when the searcher moves two streets away.' },
+];
+
 const toc = [
-  { id: 'what', label: 'What local SEO actually is' },
-  { id: 'difference', label: 'How it differs from classic SEO' },
-  { id: 'nap', label: 'NAP consistency and directories' },
-  { id: 'site', label: 'The role of the website' },
-  { id: 'multi', label: 'Multi-city and multi-location setups' },
-  { id: 'programme', label: 'The 90-day programme' },
-  { id: 'measure', label: 'What we measure' },
+  { id: 'nedir', label: 'What does local SEO do?' },
+  { id: 'fark', label: 'How it differs from regular SEO' },
+  { id: 'nap', label: 'Name, address and phone' },
+  { id: 'site', label: 'How your site affects the map' },
+  { id: 'coklu', label: 'Branches and cities' },
+  { id: 'program', label: 'The first 90 days' },
+  { id: 'olcum', label: 'Measurement and reporting' },
 ];
 
 const faq = [
   {
-    q: 'What is the difference between local SEO and normal SEO?',
-    a: 'Normal SEO targets one result list. In local search there are two races: the map pack (three businesses) and the organic results underneath. They rank on different signals — in the map pack the business profile and proximity dominate.',
+    q: 'What’s the difference between local SEO and regular SEO?',
+    a: 'Regular SEO works toward a single results list. Local SEO has two races: the map with three businesses at the top, and the regular results below it. On the map, your business profile and how close you are to the searcher decide the order.',
   },
   {
-    q: 'How long until I see results?',
-    a: 'Most businesses see first movement in four to eight weeks, with results compounding over three to six months. Fixing a root problem on the profile can produce a faster jump; dense city centres take longer.',
+    q: 'When will I see results?',
+    a: 'For most businesses we see the first movement on the map between 4 and 8 weeks. In competitive big-city centers it takes longer. We can’t give you an exact date, and you see the progress in the report every week.',
   },
   {
     q: 'Do you guarantee rankings?',
-    a: 'No one can guarantee a ranking; Google itself says so plainly. What we guarantee is the work and the measurement: every week you see what we did and how your rankings moved. There is no contract, so if you are not happy you simply don’t continue next month.',
+    a: 'No, because no one can guarantee rankings. We put forward the work we do and the measurement: you see in the report what we did and how your ranking changed. There’s no contract, so if you’re not happy you don’t continue the next month.',
   },
   {
-    q: 'Could I do this myself?',
-    a: 'The basic profile fixes, yes. What gets hard is consistency and measurement: keeping the review flow alive, seeing what is actually happening across the grid, and reacting to competitor moves. Most businesses stall on rhythm, not strategy.',
+    q: 'Can I do it myself?',
+    a: 'You can make the basic fixes on the profile yourself. The hard part is keeping the review flow alive and measuring what changes in your area on a regular basis; most businesses lose that rhythm. If you want to start, the free profile analysis tool on our site shows what’s missing.',
   },
 ];
 ---
@@ -39,192 +46,214 @@ const faq = [
   locale={locale}
   route="services/local-seo"
   title="Local SEO Service | Wiserrise"
-  description="A local SEO programme that combines profile, website and external trust signals to reach the top three on Google Maps and local search."
-  eyebrow="Service"
-  h1="Local SEO"
-  lede="Local SEO is not the name of one task; it is a programme that aims your profile, your site and your external trust signals at the same target. This page explains how we build it and what we measure."
+  description="We fix your profile and your site together so nearby customers find you on Google Maps. Measurement across your area, weekly report, no contract."
+  eyebrow="SERVICE · LOCAL SEO"
+  h1="Stand out on the map with local SEO."
+  crumb="Local SEO"
+  lede="When someone types “physiotherapist near me” on their phone, Google first shows the map and three businesses. Local SEO is the work of fixing your Google Business Profile and your site together to get into those three. We start with measurement across your area, then close the gaps one by one."
   serviceName="Local SEO"
   breadcrumb={[
     { label: 'Home', href: '/' },
     { label: 'Services', href: p('services') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Google Business Profile Management', href: p('services/gbp') },
-    { label: 'Map Rank Tracking', href: p('services/rank-tracking') },
-    { label: 'Technical SEO', href: p('services/technical-seo') },
+    { label: 'Google Business Profile Management', href: p('services/gbp'), text: 'We manage your category, service structure, reviews and posts together.' },
+    { label: 'Map Rank Tracking', href: p('services/rank-tracking'), text: 'We measure where you rank from different points around you.' },
+    { label: 'Technical SEO', href: p('services/technical-seo'), text: 'We fix crawling and indexing errors so your site opens properly to Google.' },
+    { label: 'GEO', href: p('services/geo'), text: 'We work on getting you mentioned in ChatGPT, Gemini and Google’s AI answers.' },
   ]}
-  ctaLabel="Get My Free Audit →"
+  ctaLabel="Get a free analysis"
   ctaHref="/#contact"
 >
-  <h2 id="what">What local SEO actually is</h2>
+  <h2 id="nedir">What does local SEO do?</h2>
 
   <p>
-    When someone searches "dentist near me", Google produces two separate lists: a map with
-    three businesses on top, and classic organic results below. Those lists rank by different
-    rules, and most of the clicks go to the one on top.
+    It brings nearby customers to you. When someone in Kadıköy searches for “dentist”, Google shows two lists: the map
+    with three businesses at the top, and the regular search results below. Most of the clicks go to the top three.
   </p>
 
   <p>
-    Local SEO is the whole body of work required to be visible in both. In the map pack the
-    <a href={p('services/gbp')}>business profile</a> is decisive; in the organic list it is
-    your site's content and technical health. Running them separately is a common mistake,
-    because Google evaluates the same business entity in both and the signals feed each other.
+    The two lists are ranked by different rules. On the map your <a href={p('services/gbp')}>Google Business Profile</a>
+    decides; in the list below, your site does. We run both as parts of the same job, because Google looks at the same
+    business in both lists and one feeds the other.
   </p>
 
-  <h2 id="difference">How it differs from classic SEO</h2>
+  <h2 id="fark">How is it different from regular SEO?</h2>
+
+  <p>
+    In regular SEO you compete for a single list. Local SEO has two lists, and where the searcher stands changes the order.
+  </p>
 
   <div class="table-scroll">
     <table>
       <thead>
         <tr>
           <th></th>
-          <th>Classic SEO</th>
+          <th>Regular SEO</th>
           <th>Local SEO</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><strong>Where you compete</strong></td>
-          <td>One organic list</td>
-          <td>Map pack + organic list</td>
+          <td>A single results list</td>
+          <td>The map and the list below it</td>
         </tr>
         <tr>
           <td><strong>Effect of location</strong></td>
-          <td>Low</td>
-          <td>Decisive — the searcher's position changes the ranking</td>
+          <td>Small</td>
+          <td>Decisive. The order changes when the searcher moves two streets away.</td>
         </tr>
         <tr>
           <td><strong>Main asset</strong></td>
-          <td>The website</td>
-          <td>The business profile plus the website</td>
+          <td>Site</td>
+          <td>Business profile and site</td>
         </tr>
         <tr>
-          <td><strong>Unit of measurement</strong></td>
-          <td>One ranking number</td>
-          <td>A distribution of rankings across a grid</td>
+          <td><strong>Measurement</strong></td>
+          <td>A single rank</td>
+          <td>Your rank at different points in your area</td>
         </tr>
         <tr>
-          <td><strong>Conversion shape</strong></td>
-          <td>Site visit</td>
-          <td>Call, directions, message — often without visiting the site</td>
+          <td><strong>How the customer arrives</strong></td>
+          <td>Visits the site</td>
+          <td>Calls, gets directions, sends a message. May never visit the site.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <p>
-    That last row is what most businesses miss. A large share of local demand arrives as a
-    direct call or a directions request without the site ever being opened. A business
-    looking only at site analytics therefore systematically underestimates what local SEO
-    returns.
+    Don’t skip the last row. Some of the customers who find you on the map call you without ever opening your site. A
+    business that only looks at its site statistics sees less of its map business than it really gets.
   </p>
 
-  <h2 id="nap">NAP consistency and directories</h2>
+  <h2 id="nap">Why should your name, address and phone be the same everywhere?</h2>
 
   <p>
-    NAP stands for name, address and phone. Every time Google sees the same business across
-    different sources, it accumulates confidence that the business is real. Inconsistency
-    between those sources — a different spelling here, an old phone number there — weakens
-    that confidence.
+    Google wants to recognize you as the same business everywhere it sees you. We call this NAP: name, address, phone.
   </p>
 
   <p>
-    The work is to find every source the business appears in and lock it to a single form:
-    industry directories, map services, social profiles and any leftover records from an old
-    website. For address-hidden businesses the address field stays empty, which makes it even
-    more critical that the name and phone are byte-identical everywhere.
-  </p>
-
-  <h2 id="site">The role of the website</h2>
-
-  <p>
-    However strong the profile is, the top three gets hard in competitive cities when the
-    site does not support it. Google folds the linked website into its relevance calculation:
-    which services the site talks about, which place names appear, and whether the pages
-    genuinely explain those services.
+    If one directory says “Mavi Çınar Fizyoterapi”, another says “Mavi Cinar Fizik Tedavi” and a third still shows your old
+    number, Google’s trust weakens. We list every place your name appears and fix it to a single spelling. Industry
+    directories, map services, social profiles and your old site, if you have one, are all part of this.
   </p>
 
   <p>
-    So the site side of the programme runs three tracks:
-    <a href={p('services/technical-seo')}>technical SEO</a> makes sure the site can be crawled
-    and indexed, <a href={p('services/on-page-seo')}>on-page SEO</a> pins each page to a single
-    search intent, and <a href={p('services/content')}>content production</a> turns uncovered
-    services and queries into pages.
+    For businesses that work without showing an address, the address field stays empty. Then it matters even more that your
+    name and phone are exactly the same everywhere.
   </p>
 
-  <h2 id="multi">Multi-city and multi-location setups</h2>
+  <h2 id="site">Does your site affect your place on the map?</h2>
 
   <p>
-    Local SEO for a single-location business is not the same job as for one with three
-    branches. Branch setups need a separate profile per location, a separate review pool and
-    a separate location page on the site. Those pages being copies of each other is the
-    most common — and most expensive — mistake we see.
+    It does. Google also looks at the site your profile links to: which services you describe and which districts you name.
+    If a service has no page, you’ll struggle with it on the map too.
   </p>
 
   <p>
-    For businesses with no branches that nevertheless serve several cities, the situation is
-    different: opening additional profiles is a policy violation. The right route is to build
-    city-level visibility on the site — provided each city page carries real information about
-    that city. Template pages with the city name swapped are treated as doorway pages and
-    damage the site as a whole.
+    Where competition is strong, the profile alone isn’t enough. First we make sure your site opens properly to Google with
+    <a href={p('services/technical-seo')}>technical SEO</a>. Then we fit each page to a single search
+    (<a href={p('services/on-page-seo')} style="white-space: nowrap;">on-page SEO</a>) and write the missing service pages
+    (<a href={p('services/content')}>content production</a>).
+  </p>
+
+  <p>
+    We learned this the hard way. One client didn’t want to hand their site over to us. We sent the to-do list to their
+    developer as .md files, and the developer fed them to their own AI tool.
+  </p>
+
+  <p>
+    The pages that came out were terrible, and for months we did the same work over and over. In the end we took over the
+    whole site, and fixing it took at least a month. Since then our rule is clear: if we can’t manage the whole site, we
+    don’t start.
+  </p>
+
+  <h2 id="coklu">What if you have more than one branch or city?</h2>
+
+  <p>
+    Each branch counts as a separate business. Each branch gets its own profile and its own page on the site. Branch pages
+    that are copies of each other are the most common mistake we see, and the most expensive one.
+  </p>
+
+  <p>
+    If you have no branches but serve several cities, don’t open extra profiles; it’s against Google’s rules. In that case
+    we build your visibility in those cities on the site. Google treats copied pages with only the city name changed as
+    “doorway” pages, and they harm the site.
   </p>
 
   <div class="callout">
     <p>
-      <strong>The bar for creating a city page:</strong> if you have nothing real to say about
-      that city (local competitor analysis, a case from there, region-specific data), do not
-      create the page. Ten good city pages beat fifty templates.
+      <strong>Before you open a city page, ask yourself:</strong> Do I have something real to say about that city? If you
+      have no work from there and no information specific to that area, don’t open the page. Ten good city pages do more
+      than fifty copied ones.
     </p>
   </div>
 
-  <h2 id="programme">The 90-day programme</h2>
+  <h2 id="program">What do we do in the first 90 days?</h2>
+
+  <p>We follow the same order with every business. We don’t touch anything before we measure.</p>
 
   <ol>
     <li>
-      <strong>Weeks 0–2 — Measure and diagnose.</strong> Baseline grid rankings, profile
-      audit, competitor category and review gap, technical state of the site, NAP scan.
+      <strong>Weeks 1-2, measurement.</strong> We take a baseline measurement across your area. We map out your profile,
+      the category and review gap between you and your competitors, your site’s technical state and the directories where
+      your name appears.
     </li>
     <li>
-      <strong>Weeks 2–4 — Root fixes.</strong> Category and service structure, indexing
-      blockers, missing structured data, directory inconsistencies. Most of the jump usually
-      comes from this stage.
+      <strong>Weeks 3-4, root fixes.</strong> We fix the category and service structure, then clear out the errors that
+      keep your site from opening to Google and the inconsistent listings in directories. Most of the work comes out in
+      these two weeks.
     </li>
     <li>
-      <strong>Weeks 4–8 — Content and signal building.</strong> Missing service pages, the
-      profile post calendar, switching on the review flow.
+      <strong>Weeks 5-8, production.</strong> We write the missing service pages. The profile post calendar and the review
+      request flow start.
     </li>
     <li>
-      <strong>Weeks 8–12 — Consolidation.</strong> Targeted fixes for the areas still weak on
-      the grid, tightening internal links, reacting to competitor movement.
+      <strong>Weeks 9-12, tightening.</strong> We push on the areas that lag behind in the measurement. We tidy up the
+      internal links on the site and respond to competitors’ moves.
     </li>
   </ol>
 
-  <h2 id="measure">What we measure</h2>
+  <p>
+    The work doesn’t end when the 90 days are up. Your competitors are working too, and if the flow of reviews and posts
+    stops, your ranking slips back.
+  </p>
+
+  <h2 id="olcum">What do we measure and report?</h2>
 
   <p>
-    We do not send a single ranking screenshot, because local rankings change with the
-    searcher's location and a measurement from one point does not represent reality. Instead
-    we report three sources together:
+    We don’t settle for a single ranking screenshot. Your place on the map changes with where the searcher stands, and a
+    measurement from one point won’t show you the real picture.
   </p>
+
+  <p>That’s why we read four sources together:</p>
 
   <ul class="checklist">
     <li>
-      <a href={p('services/rank-tracking')}>Grid rankings</a> — where you place across 49
-      points laid over the city, tracked over time
+      <a href={p('services/rank-tracking')}>Measurement across your area</a>: where you rank from different points around
+      you and how that changes over time
     </li>
-    <li>Profile interactions — searches, direction requests, calls and messages</li>
-    <li>Search Console — which queries you appear for, clicks and average position</li>
+    <li>Profile interactions: how many people found you, got directions, called or sent a message</li>
+    <li>Search Console: which searches your site appears in and how many clicks it gets</li>
+    <li>Our work: what we changed on the profile, on the site and in directories</li>
   </ul>
 
   <p>
-    Read together, these catch situations like "rankings improved but the phone isn't ringing"
-    or "traffic grew but from the wrong city" early, so the programme can be corrected.
+    You see the work we’ve done in the report every week. Reading all four together, we catch situations like “the ranking
+    went up but the phone isn’t ringing” early and change the plan to match.
   </p>
 
   <Fragment slot="cta">
-    <h2>Where do you actually <span class="highlight">rank</span> in your city?</h2>
-    <p>The free audit maps your grid rankings, profile gaps and the distance to your competitors.</p>
+    <h2>What’s your <span class="highlight">rank</span> in your city right now?</h2>
+    <p>
+      In the free analysis we take a measurement across your area and map out the gaps in your profile and the distance
+      between you and your competitors. The result lands in your inbox within
+      <span style="white-space: nowrap;">24 hours</span>.
+    </p>
   </Fragment>
 </ContentLayout>

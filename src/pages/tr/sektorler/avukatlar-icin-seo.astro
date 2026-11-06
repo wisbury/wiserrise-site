@@ -5,31 +5,39 @@ import { routePath } from '../../../i18n/routes';
 const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
+const features = [
+  { label: 'KATEGORİ', title: 'Doğru birincil kategori', text: 'Profilde birincil kategori Avukat olur. Arabuluculuk ve dava türleri ikincil kalır, yoksa ana aramada geri düşersiniz.' },
+  { label: 'SAYFA', title: 'Dava türü sayfaları', text: 'Ağırlık verdiğiniz her alan için ayrı sayfa: süreç, süre, belgeler. Üç paragraflık alan listesi aramada çıkmaz.' },
+  { label: 'İÇERİK', title: 'Bilgilendirici yazılar', text: '“Boşanma davası ne kadar sürer?” gibi sorulara açık cevap. Yönetmelik buna izin veriyor, rakiplerin çoğu boş bırakıyor.' },
+  { label: 'DİL', title: 'Yasağa uygun dil', text: 'Üstünlük iddiası, başarı oranı, kazanma vaadi ve kampanya yazmayız. Her cümleyi yönetmeliğin sınırına göre kurarız.' },
+];
+
 const toc = [
-  { id: 'tbb', label: 'TBB Reklam Yasağı: sınır nerede?' },
-  { id: 'kategori', label: 'Kategori seçimi ve arabuluculuk tuzağı' },
-  { id: 'sorgu', label: 'Müvekkil nasıl arıyor?' },
-  { id: 'sayfa', label: 'Hangi sayfalara ihtiyacınız var?' },
-  { id: 'yorum', label: 'Yorumlar: en tartışmalı başlık' },
-  { id: 'ulusal', label: 'Şehir dışına çıkmak' },
+  { id: 'yasak', label: 'Reklam yasağı ve SEO' },
+  { id: 'kategori', label: 'Profilde kategori seçimi' },
+  { id: 'arama', label: 'Müvekkil nasıl arıyor?' },
+  { id: 'sayfa', label: 'Sitede hangi sayfalar?' },
+  { id: 'yorum', label: 'Google yorumları' },
+  { id: 'ilerleme', label: 'İlerlemeyi nasıl görürsünüz?' },
+  { id: 'sehir', label: 'Şehir dışından iş' },
 ];
 
 const faq = [
   {
-    q: 'SEO çalışması TBB reklam yasağını ihlal eder mi?',
-    a: 'Kendi başına hayır. Yönetmelik bilgilendirmeyi serbest bırakıyor, reklamı ve iş sağlamaya yönelik teşviki yasaklıyor. İhlal, çalışmanın kendisinde değil kullanılan ifadelerde doğuyor: başarı oranı vaadi, "en iyi avukat" gibi üstünlük iddiaları, müvekkil sayısı paylaşımı ve kampanya benzeri teşvikler. Bu ifadeler kullanılmadan yapılan teknik ve içerik çalışması yönetmelikle çelişmiyor.',
+    q: 'SEO çalışması reklam yasağını ihlal eder mi?',
+    a: 'Kendi başına etmez. Yasak iş elde etmeye yönelik reklamı ve teşviki kapsıyor; büronuzu ve çalışma alanlarınızı anlatan bilgilendirici içerik bu kapsama girmiyor. Risk kullanılan ifadelerde doğuyor, biz de o ifadeleri hiç kullanmıyoruz.',
   },
   {
-    q: 'Müvekkilden Google yorumu istemek doğru mu?',
-    a: 'Burada dikkatli olmak gerekiyor. Yorum talebinin kendisi yaygın bir pratik olsa da, teşvik edici hale gelmesi (hediye, indirim, yönlendirilmiş metin) yönetmelik açısından risk taşıyor. Bizim yaklaşımımız: yorum talebini teşvikten arındırmak, müvekkilin kendi cümlelerini kullanmasını sağlamak ve yorum hacmini tek başına hedef haline getirmemek.',
+    q: 'Müvekkilden Google yorumu istemeli miyim?',
+    a: 'Biz önermiyoruz. Yorum istemek, hele hediye ya da hazır metinle istemek, iş sağlamaya yönelik teşvike çok yakın duruyor. Kendiliğinden gelen yoruma dava detayına girmeden kısa bir yanıt yazarız.',
   },
   {
-    q: 'Uzmanlık alanı belirtmek serbest mi?',
-    a: 'Çalışma alanlarını belirtmek bilgilendirme kapsamında. Sorun, "uzman" ya da "ihtisas" gibi ifadelerin unvan izlenimi yaratacak biçimde kullanılması. Alan adlandırmasını iddia içermeyecek şekilde kuruyoruz.',
+    q: 'Çalışma alanlarımı sitede yazabilir miyim?',
+    a: 'Yazabilirsiniz, alanlarınızı listelemek bilgilendirme sayılır. Dikkat edilecek yer, alanı bir unvan gibi gösteren ya da üstünlük ima eden sözcükler. Alan adlarını düz ve iddiasız bir dille kurarız.',
   },
   {
-    q: 'Hukuk bürosu için blog yazmak işe yarıyor mu?',
-    a: 'Evet, ama beklentiyi doğru kurmak gerekiyor. Bilgilendirici içerik doğrudan müvekkil getirmez; yaptığı şey ülke genelinde görünürlük üretmek, hizmet sayfalarına iç link taşımak ve arayan kişinin güvenini erken kazanmak. Karar aşamasındaki müvekkil zaten "şehir + dava türü" sorgusundan geliyor.',
+    q: 'Ne zaman sonuç görürüm?',
+    a: 'Haritada ilk hareketi çoğu işletmede 4 ile 8 hafta, aramada 3 ile 6 ay arasında görüyoruz. Rekabetin yoğun olduğu büyük şehir merkezlerinde bu süre uzar. Kesin tarih veremeyiz, ama yaptığımız işleri her hafta raporda görürsünüz.',
   },
 ];
 ---
@@ -38,221 +46,220 @@ const faq = [
   locale={locale}
   route="industries/law"
   title="Avukatlar İçin SEO ve Google Haritalar | Wiserrise"
-  description="Hukuk büroları için TBB Reklam Yasağı Yönetmeliği'ne uygun yerel SEO. Kategori kurulumu, dava türü sayfaları, yorum yönetimi ve ulusal görünürlük."
-  eyebrow="Sektör"
-  h1="Avukatlar İçin SEO"
-  lede="Hukuk, yerel SEO'nun en çok kısıtla çalıştığı alan. TBB Reklam Yasağı Yönetmeliği diğer sektörlerde işe yarayan taktiklerin çoğunu devre dışı bırakıyor — ama kalan alan sanıldığından geniş."
-  serviceName="Hukuk Büroları İçin Yerel SEO"
+  description="Hukuk büroları için reklam yasağına uygun SEO: doğru profil kategorisi, dava türü sayfaları ve bilgilendirici içerik. Haftalık rapor, sözleşme yok."
+  eyebrow="SEKTÖR · AVUKATLAR"
+  h1="Avukatlar için SEO: reklam yapmadan görünür olun."
+  crumb="Avukatlar"
+  lede="Avukatlar için SEO, büronuzun “Mersin boşanma avukatı” gibi aramalarda haritada ve sonuçlarda çıkması için profilinizi ve sitenizi bilgilendirici içerikle kurmak demek. Reklam yasağı üstünlük iddiasını ve vaadi kapatıyor, bilgilendirmeye izin veriyor. Biz bütün işi bu sınırın içinde yürütüyoruz."
+  serviceName="Avukatlar için SEO"
   breadcrumb={[
     { label: 'Ana Sayfa', href: '/tr' },
     { label: 'Sektörler', href: p('industries') },
   ]}
+  features={features}
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp') },
-    { label: 'İçerik Üretimi', href: p('services/content') },
-    { label: 'Yerel SEO', href: p('services/local-seo') },
+    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp'), text: 'Kategori ve hizmet yapısını yönetmeliğe uygun bir dille kurarız.' },
+    { label: 'İçerik Üretimi', href: p('services/content'), text: 'Dava türü sayfalarını ve bilgilendirici yazıları büronuzun alanlarına göre yazarız.' },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'Profilinizi ve sitenizi haritadaki yarış için birlikte düzeltiriz.' },
   ]}
-  ctaLabel="Büromu Ücretsiz Analiz Et →"
+  ctaLabel="Ücretsiz analiz al"
   ctaHref="/tr#contact"
 >
-  <p>
-    Beş hukuk bürosuyla çalıştık: Mersin, Ankara, Antalya ve İzmir'de. Öğrendiğimiz ilk şey,
-    bu sektörde asıl zorluğun teknik değil <strong>ifade</strong> olduğu. Sıralamayı yükselten
-    pek çok standart hamle — başarı oranı yazmak, "şehrin en iyi ceza avukatı" demek, kampanya
-    kurgusu — burada doğrudan yaptırım riski demek.
-  </p>
-
-  <h2 id="tbb">TBB Reklam Yasağı: sınır nerede?</h2>
+  <h2 id="yasak">Reklam yasağı varken SEO yapılabilir mi?</h2>
 
   <p>
-    Türkiye Barolar Birliği Reklam Yasağı Yönetmeliği, avukatın mesleğini tanıtmasını tamamen
-    yasaklamıyor; <strong>bilgilendirmeyi serbest bırakıp reklamı ve iş sağlamaya yönelik
-    teşviki yasaklıyor</strong>. Pratikte sınır şurada çiziliyor:
+    Yapılabilir. 1136 sayılı Avukatlık Kanunu’nun 55. maddesi avukatın iş elde etmek için reklam sayılabilecek her
+    girişimini yasaklıyor, ayrıntıyı da TBB’nin Reklam Yasağı Yönetmeliği belirliyor.
   </p>
+
+  <p>
+    Yasaklanan şey övgü ve teşvik. Büronuzun kim olduğunu ve hangi alanlarda çalıştığını anlatmak bilgilendirme sayılıyor,
+    SEO dediğimiz iş de bu bilgilendirmenin Google’da bulunmasını sağlamak. Risk, sayfaya yazılan cümlelerde doğuyor.
+  </p>
+
+  <p>Sınırı şöyle çiziyoruz:</p>
 
   <div class="table-scroll">
     <table>
       <thead>
         <tr>
-          <th>Kullanılamaz</th>
-          <th>Kullanılabilir</th>
+          <th>Yazmıyoruz</th>
+          <th>Yazıyoruz</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>"%90 başarı oranı", dava sonucu vaadi</td>
-          <td>Sürecin nasıl işlediğinin bilgilendirici anlatımı</td>
+          <td>“%90 başarı oranı”, kazanılan dava sayısı</td>
+          <td>Davanın nasıl işlediği, ne kadar sürdüğü</td>
         </tr>
         <tr>
-          <td>"Şehrin en iyi / en tecrübeli avukatı"</td>
-          <td>Çalışma alanlarının iddiasız listelenmesi</td>
+          <td>“Şehrin en iyi ceza avukatı”</td>
+          <td>Çalışma alanlarınızın düz bir listesi</td>
         </tr>
         <tr>
-          <td>Müvekkil sayısı, kazanılmış dava sayısı</td>
-          <td>Mesleki kıdem ve baro bilgisi (künye)</td>
+          <td>Müvekkil yorumları, teşekkür mektupları</td>
+          <td>Baro, sicil numarası ve mesleki geçmiş</td>
         </tr>
         <tr>
-          <td>İndirim, kampanya, ücretsiz danışmanlık teşviki</td>
-          <td>İletişim kanalları ve çalışma saatleri</td>
+          <td>İndirim, kampanya, ücretsiz danışmanlık teklifi</td>
+          <td>İletişim bilgileri ve çalışma saatleri</td>
         </tr>
         <tr>
-          <td>Karşılaştırmalı üstünlük iddiası</td>
-          <td>Yayın, tebliğ ve akademik çalışmaların belirtilmesi</td>
+          <td>Rakip bürolarla karşılaştırma</td>
+          <td>Yayınlarınız ve makaleleriniz</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <p>
-    Bu tablo kısıt gibi görünüyor ama pratikte avantaja dönüşüyor. Rakiplerin çoğu ya
-    yönetmeliği hiç dikkate almadan riskli metinler yazıyor, ya da korkudan hiçbir şey
-    yazmıyor. İkisinin arasındaki alan — kurallara uygun, gerçekten bilgilendirici, derin
-    içerik — büyük ölçüde boş duruyor.
+    Hukuk, <a href={p('industries')}>çalıştığımız sektörler</a> içinde en çok kısıtla çalışılanı. Bize sorarsanız bu kısıt,
+    işini düzgün yapan büronun lehine. Rakip büroların bir kısmı yönetmeliği hiç okumadan riskli metin yazıyor, bir kısmı
+    da korkudan hiçbir şey yazmıyor.
+  </p>
+
+  <p>
+    Kurallara uyan ve gerçekten bilgi veren sayfa bu sektörde az. O boşluk, işini kurala göre yapmak isteyen büroya açık
+    duruyor.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Bu sayfadaki hiçbir şey hukuki görüş değildir.</strong> Yönetmeliğin
-      yorumlanmasında son söz bağlı olduğunuz baroya aittir. Ürettiğimiz her metni yayına
-      almadan önce onayınıza sunuyoruz; tereddütlü ifadeleri baronuza sormanızı öneriyoruz.
+      <strong>Bu sayfada yazanlar hukuki görüş sayılmaz.</strong> Yönetmeliği yorumlamada son söz baronuzun. Tereddüt
+      ettiğiniz bir ifadeyi yayına almadan önce baronuza sorun.
     </p>
   </div>
 
-  <h2 id="kategori">Kategori seçimi ve arabuluculuk tuzağı</h2>
+  <h2 id="kategori">Google profilinizde hangi kategori seçilmeli?</h2>
 
   <p>
-    Google İşletme Profili'ndeki birincil kategori, hukuk bürolarında en sık yanlış
-    kurulan alan. En yaygın hatayı arabuluculuk da yapan avukatlarda görüyoruz: birincil
-    kategoriyi "Arabulucu" seçmek.
+    Birincil kategori Avukat olmalı. Hukuk bürolarında en sık yanlış kurulan alan bu ve hatayı en çok arabuluculuk da
+    yapan avukatlarda görüyoruz: birincil kategori Arabulucu seçilmiş.
   </p>
 
   <p>
-    Bu seçim, arama hacminin ezici çoğunluğunu oluşturan "avukat" sorgularındaki görünürlüğü
-    ciddi biçimde düşürüyor. Doğrusu birincil kategoriyi <strong>Avukat</strong> yapmak,
-    arabuluculuğu ikincil kategori olarak eklemek ve arabuluculuk talebini ayrı bir hizmet
-    sayfasıyla karşılamak. Detayları
-    <a href={p('services/gbp')}>profil yönetimi sayfasında</a> anlattık.
+    Bu seçim, “avukat” kelimesiyle yapılan aramalarda sizi geri düşürür. Doğrusu birincil kategoriyi Avukat yapıp
+    arabuluculuğu ikincil kategoriye almak. Arabuluculuk talebini de sitede ayrı bir sayfa karşılar.
   </p>
 
   <p>
-    İkinci sık hata, dava türlerini ikincil kategoriye doldurmak. Google'ın kategori listesinde
-    "Boşanma avukatı", "Ceza avukatı" gibi seçenekler var; ancak hepsini eklemek alakayı
-    güçlendirmiyor, aksine bulanıklaştırıyor. Gerçekten ağırlık verdiğiniz iki-üç alanla
-    sınırlı tutuyoruz.
+    İkinci sık hata, dava türlerinin hepsini ikincil kategoriye doldurmak. Google’ın listesinde ceza ve boşanma gibi
+    alanlara özel avukat kategorileri var, ama hepsini eklemek profili bulanıklaştırır. Gerçekten ağırlık verdiğiniz iki
+    ya da üç alanla sınırlı tutarız; ayrıntısını <a href={p('services/gbp')}>Google İşletme Profili yönetimi</a>
+    sayfasında anlattık.
   </p>
 
-  <h2 id="sorgu">Müvekkil nasıl arıyor?</h2>
+  <h2 id="arama">Müvekkil Google’da nasıl arıyor?</h2>
 
-  <p>
-    Hukukta arama davranışı iki net gruba ayrılıyor ve bunları karıştırmak en pahalı içerik
-    hatası:
-  </p>
+  <p>İki türlü arıyor. Bu ikisini karıştırmak, hukuk bürolarında en pahalıya patlayan içerik hatası.</p>
 
   <ul>
     <li>
-      <strong>Bilgi arayanlar.</strong> "Boşanma davası ne kadar sürer", "işten çıkarılma
-      tazminatı nasıl hesaplanır". Karar aşamasında değiller, henüz avukat aramıyorlar.
-      Ülke genelinde sıralanabilirler ve hacimleri yüksektir.
+      <strong>Bilgi arayan.</strong> “Boşanma davası ne kadar sürer”, “kıdem tazminatı nasıl hesaplanır”. Henüz avukat
+      aramıyor, durumunu anlamaya çalışıyor. Bu aramalar şehirden bağımsız sıralanır.
     </li>
     <li>
-      <strong>Avukat arayanlar.</strong> "Mersin boşanma avukatı", "yakınımdaki ceza
-      avukatı". Doğrudan talep. Hacimleri düşük ama dönüşümleri karşılaştırılamayacak
-      kadar yüksek ve yakınlık sinyaline tabi.
+      <strong>Avukat arayan.</strong> “Mersin boşanma avukatı”, “yakınımdaki ceza avukatı”. Kararını vermek üzere. Bu
+      aramalarda önce harita çıkar ve arayana yakınlık belirleyicidir.
     </li>
   </ul>
 
   <p>
-    İkinci grup harita paketinde kazanılıyor, birinci grup içerikle. Sıralamayı bilgi
-    içeriğiyle kovalayıp harita tarafını ihmal eden bürolar, trafik alıp telefon almama
-    durumuna düşüyor — sektörde en sık gördüğümüz tablo bu.
+    Avukat arayanı haritada, bilgi arayanı sitedeki yazılarla karşılarsınız. Yalnız blog yazıp profili boş bırakan büro
+    trafik alır ama telefonu çalmaz. Bu sektörde en sık gördüğümüz tablo bu.
   </p>
 
-  <h2 id="sayfa">Hangi sayfalara ihtiyacınız var?</h2>
+  <h2 id="sayfa">Büronuzun sitesinde hangi sayfalar olmalı?</h2>
 
   <p>
-    Hukuk bürosu sitelerinde standart kurulum şu: bir ana sayfa, bir "hakkımızda", bir
-    "çalışma alanları" sayfası ve altında her alan için üç paragraf. Bu yapı, dava türü
-    sorgularının hiçbirinde sıralanmıyor çünkü hiçbir alanı gerçekten kapsamıyor.
+    Ağırlık verdiğiniz her alan için ayrı bir sayfa. Hukuk bürosu sitelerinin çoğu aynı kalıpta: ana sayfa, hakkımızda ve
+    her alana üç paragraf ayıran bir çalışma alanları sayfası. Bu yapı dava türü aramalarının hiçbirinde çıkmaz, çünkü
+    hiçbir alanı gerçekten anlatmaz.
   </p>
 
-  <p>Kurduğumuz yapı:</p>
+  <p>Kurduğumuz yapı şu:</p>
 
   <ul class="checklist">
-    <li>
-      Her ağırlıklı çalışma alanı için ayrı, derin sayfa — süreç, süre, gerekli belgeler,
-      sık sorulanlar
-    </li>
-    <li>
-      Alan sayfalarının bağlandığı bir çalışma alanları hub'ı
-    </li>
-    <li>
-      Bilgi amaçlı içerikler, ilgili alan sayfasına iç link taşıyacak şekilde
-    </li>
-    <li>
-      Avukat künyesi: baro, sicil, mesleki geçmiş — hem yönetmelik hem de Google'ın
-      uzmanlık değerlendirmesi için
-    </li>
-    <li>
-      <code>LegalService</code> ve <code>Attorney</code> yapılandırılmış verisi, profil
-      ile aynı işletme varlığına bağlı
-    </li>
+    <li>Her ana çalışma alanı için ayrı sayfa: süreç, süre, gerekli belgeler, sık sorulanlar</li>
+    <li>Bu sayfaları bir araya toplayan bir çalışma alanları sayfası</li>
+    <li>İlgili alan sayfasına link veren bilgilendirici yazılar</li>
+    <li>Avukat künyesi: baro, sicil numarası, mesleki geçmiş</li>
+    <li>Google profilinizdeki bilgilerle birebir aynı LegalService yapılandırılmış verisi</li>
   </ul>
 
-  <h2 id="yorum">Yorumlar: en tartışmalı başlık</h2>
+  <p>
+    Künye sayfası iki işe yarar. Yönetmeliğin izin verdiği bilgileri tek yerde toplar ve Google’a bu sitenin arkasında
+    kayıtlı, gerçek bir avukat olduğunu gösterir. Bu sayfaları <a href={p('services/content')}>içerik üretimi</a> tarafında
+    büronuzun alanlarına göre yazarız.
+  </p>
+
+  <h2 id="yorum">Google yorumları ne olacak?</h2>
 
   <p>
-    Google Haritalar sıralamasında yorum hacmi güçlü bir sinyal. Hukukta ise bu, mevzuatla
-    en çok gerilen alan. İki ayrı zorluk var.
+    Haritadaki sırada yorum güçlü bir sinyal. Hukukta ise mevzuatla en çok gerilen başlık da bu.
   </p>
 
   <p>
-    Birincisi mevzuat: yorum talebinin teşvik edici hale gelmesi — hediye, indirim, müvekkile
-    metin yazdırmak — reklam yasağı açısından risk taşıyor. İkincisi mahremiyet: ceza ya da
-    aile hukuku müvekkillerinin önemli bölümü, aldıkları hizmeti kamuya açık biçimde yazmak
-    istemiyor. Bu tamamen anlaşılır ve zorlanmaması gereken bir sınır.
+    İki sorun var. Yorum istemek, hele bir hediye ya da hazır metinle istemek, iş sağlamaya yönelik teşvike çok yakın
+    duruyor. Ceza ve aile hukukunda müvekkil zaten aldığı hizmeti herkesin göreceği bir yere yazmak istemez, bu da saygı
+    duyulacak bir sınır.
   </p>
 
   <p>
-    Bizim yaklaşımımız, yorum hacmini tek başına hedef haline getirmemek. Bunun yerine
-    yorum yazmaya istekli müvekkil grubunu (ticari uyuşmazlık, iş hukuku, danışmanlık)
-    doğru anda ve teşviksiz biçimde yönlendiriyor, hacim eksiğini profil tazeliği ve
-    içerik derinliğiyle telafi ediyoruz. Gelen her yoruma da, dava detayına girmeden
-    yanıt veriyoruz.
+    Bu yüzden hukuk bürolarında yorum isteme akışı kurmuyoruz, sitede de müvekkil yorumu yayınlamıyoruz. Eksik kalan
+    sinyali dolu bir profille ve derin alan sayfalarıyla kapatırız. Kendiliğinden gelen yoruma, dava detayına hiç girmeden
+    kısa bir yanıt yazarız.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Müvekkil bilgisi asla içerik değildir.</strong> Vaka çalışması yaparken dosya
-      detayı, taraf bilgisi ya da tanınabilir ayrıntı kullanmıyoruz. Hukuk bürolarında
-      vaka anlatımını yalnızca görünürlük metrikleri üzerinden kuruyoruz.
+      <strong>Müvekkil bilgisi içerik olmaz.</strong> Hiçbir yazıda dosya detayı, taraf bilgisi ya da müvekkili tanıtacak
+      bir ayrıntı kullanmayız. Olumsuz bir yoruma cevap verirken bile dosyadan söz etmeyiz.
     </p>
   </div>
 
-  <h2 id="ulusal">Şehir dışına çıkmak</h2>
+  <h2 id="ilerleme">İlerlemeyi nasıl görürsünüz?</h2>
 
   <p>
-    Harita paketinde kendi şehrinizin dışına çıkmanız mümkün değil — Google yakınlığı
-    hesaba katıyor ve ikinci bir profil açmak politika ihlali. Ama ülke genelinde görünür
-    olmanın yolu kapalı değil.
+    Önce büronuzun çevresinin farklı noktalarında, “ceza avukatı” gibi aramalarda kaçıncı çıktığınızı ölçeriz. Haritada
+    ilk hareketi çoğu işletmede 4 ile 8 hafta, aramada 3 ile 6 ay arasında görüyoruz. Yaptığımız işleri her hafta raporda
+    ve müşteri portalında görürsünüz.
   </p>
 
   <p>
-    Yakınlık sinyali taşımayan sorgular — mevzuat açıklamaları, süreç anlatımları, hesaplama
-    rehberleri — coğrafyadan bağımsız sıralanıyor. Uzaktan yürütülebilen danışmanlık ve
-    ticari uyuşmazlık işleri için bu, şehir dışından iş almanın en gerçekçi kanalı. Aynı
-    yapıyı <a href={p('services/content')}>içerik üretimi</a> tarafında kuruyoruz.
+    Adana’da bir ceza avukatıyla çalışıyoruz. “Adana ceza avukatı” aramasında 3 ayda ilk 3’e girdi ve bir gün bize şunu
+    söyledi: “Kralım, geçen hafta aramalar süperdi ya.”
   </p>
 
   <p>
-    Şehir bazlı sayfa açma konusunda ise temkinliyiz: fiilen hizmet vermediğiniz bir şehir
-    için sayfa açmak hem doorway riski hem de yönetmelik açısından sıkıntılı. Yalnızca
-    gerçekten dosya aldığınız yerler için, o yere özgü içerikle açıyoruz.
+    Memnun, üstelik bize sektörün tüyolarını o veriyor. Bunu size söz vermek için anlatmıyoruz: her şehirde ve her
+    dava türünde rekabet farklı.
+  </p>
+
+  <h2 id="sehir">Şehir dışından iş gelir mi?</h2>
+
+  <p>
+    Gelebilir, yolu sitedeki bilgilendirici yazılar. Harita arayana yakın büroları gösterir ve başka bir şehir için ikinci
+    profil açmak Google’ın kurallarına aykırı.
+  </p>
+
+  <p>
+    Bilgi aramaları ise şehirden bağımsız sıralanır. Uzaktan yürütülebilen danışmanlık ve ticari uyuşmazlık işlerinde,
+    şehir dışındaki müvekkilin sizi bulmasının en gerçekçi yolu bu yazılar.
+  </p>
+
+  <p>
+    Şehir sayfası konusunda temkinliyiz. Fiilen dosya almadığınız bir şehir için sayfa açmak Google’ın kopya sayfa
+    kuralına takılır, yönetmelik açısından da risklidir. Bu yüzden yalnız gerçekten çalıştığınız yerler için, o yere özgü
+    içerikle açarız.
   </p>
 
   <Fragment slot="cta">
-    <h2>Büronuz hangi dava türünde <span class="highlight">görünmüyor</span>?</h2>
-    <p>Ücretsiz analizde kategori kurulumunuzu, alan sayfalarındaki boşluğu ve harita sıralamanızı çıkarıyoruz.</p>
+    <h2>Büronuz hangi aramada <span class="highlight">görünmüyor</span>?</h2>
+    <p>
+      Ücretsiz analizde profilinizin kategori kurulumuna ve rakip bürolarla aranızdaki farka bakarız. Sonuç 24 saat içinde <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
   </Fragment>
 </ContentLayout>

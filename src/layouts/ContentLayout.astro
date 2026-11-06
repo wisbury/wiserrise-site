@@ -1,8 +1,9 @@
 ---
-import BaseLayout from './BaseLayout.astro';
+import ContentPage from '../components/v2/ContentPage.astro';
 import type { Locale } from '../i18n/config';
 import { routePath, type RouteKey } from '../i18n/routes';
 import { servicePageSchema, articlePageSchema, type Crumb, type FaqEntry } from '../lib/schema';
+import { v2ui, formatDate } from '../i18n/v2';
 
 interface Props {
   locale: Locale;
@@ -14,7 +15,11 @@ interface Props {
   description: string;
   eyebrow?: string;
   h1: string;
+  /** Last breadcrumb label; defaults to the H1, which is too long on pages with a sentence headline. */
+  crumb?: string;
   lede: string;
+  /** Short cards under the hero. */
+  features?: { label: string; title: string; text: string }[];
   /** Ancestors only; the current page is appended automatically. */
   breadcrumb?: Crumb[];
   /** Name used in the Service schema. Omit on pages that aren't a service. */
@@ -24,6 +29,8 @@ interface Props {
   /** Required for schemaType="article"; kept out of the build so it stays stable. */
   datePublished?: string;
   dateModified?: string;
+  /** Article pages written by a named person; omitted, the organisation is the author. */
+  author?: { name: string; jobTitle: string };
   toc?: { id: string; label: string }[];
   /**
    * Render the `wide` slot above the article instead of below it. Hub pages use
@@ -31,7 +38,10 @@ interface Props {
    */
   wideFirst?: boolean;
   faq?: FaqEntry[];
-  related?: { label: string; href: string }[];
+  /** `text` is the one-line description on the card. */
+  related?: { label: string; href: string; text?: string }[];
+  /** Heading above the related cards; defaults to "related services". */
+  relatedHeading?: string;
   ctaLabel: string;
   ctaHref: string;
 }
@@ -44,22 +54,26 @@ const {
   description,
   eyebrow,
   h1,
+  crumb,
   lede,
+  features,
   breadcrumb = [],
   serviceName,
   schemaType = 'service',
   datePublished,
   dateModified,
+  author,
   toc = [],
   wideFirst = false,
   faq = [],
   related = [],
+  relatedHeading: relatedHeadingProp,
   ctaLabel,
   ctaHref,
 } = Astro.props;
 
 const url = routePath(locale, route) + (slug ? `/${slug}` : '');
-const trail: Crumb[] = [...breadcrumb, { label: h1, href: url }];
+const trail: Crumb[] = [...breadcrumb, { label: crumb ?? h1, href: url }];
 
 const schema =
   schemaType === 'article'
@@ -72,6 +86,7 @@ const schema =
         dateModified,
         faq,
         breadcrumb: trail,
+        author,
       })
     : servicePageSchema({
         locale,
@@ -82,117 +97,35 @@ const schema =
         breadcrumb: trail,
       });
 
-const faqHeading = { tr: 'Sık sorulanlar', en: 'Frequently asked', de: 'Häufige Fragen' }[locale];
-const tocHeading = { tr: 'Bu sayfada', en: 'On this page', de: 'Auf dieser Seite' }[locale];
-const relatedHeading = {
-  tr: 'İlgili hizmetler',
-  en: 'Related services',
-  de: 'Verwandte Leistungen',
-}[locale];
+const relatedHeading = relatedHeadingProp ?? v2ui[locale].page.related;
+
+/** Articles show their last update in the hero, matching dateModified in the schema. */
+const iso = schemaType === 'article' ? dateModified ?? datePublished : undefined;
+const updated = iso ? formatDate(locale, iso) : undefined;
 ---
 
-<BaseLayout locale={locale} route={route} slug={slug} title={title} description={description}>
-  <script
-    slot="schema"
-    type="application/ld+json"
-    is:inline
-    set:html={JSON.stringify(schema)}
-  />
-
-  <section class="page-hero">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <ol>
-          {trail.map((crumb, i) => (
-            <li>
-              {i === trail.length - 1 ? (
-                <span aria-current="page">{crumb.label}</span>
-              ) : (
-                <a href={crumb.href}>{crumb.label}</a>
-              )}
-            </li>
-          ))}
-        </ol>
-      </nav>
-
-      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
-      <h1>{h1}</h1>
-      <p class="lede">{lede}</p>
-
-      <div class="page-hero-actions">
-        <a href={ctaHref} class="btn btn-primary">{ctaLabel}</a>
-      </div>
-    </div>
-  </section>
-
-  <section style="padding-top:0;">
-    <div class="container">
-      {/* Hub pages lead with the offer, so the wide slot goes above the copy. */}
-      {wideFirst && (
-        <div class="wide-block wide-block--lead">
-          <slot name="wide" />
-        </div>
-      )}
-
-      {/* On desktop the TOC becomes a sticky side rail; below 1000px it stacks above. */}
-      <div class:list={['content-layout', toc.length > 0 && 'has-toc']}>
-        {/* TOC first in the DOM so it stacks above the article on mobile and
-            reaches screen readers before the body; the grid places it right. */}
-        {toc.length > 0 && (
-          <nav class="toc" aria-label={tocHeading}>
-            <h2>{tocHeading}</h2>
-            <ol>
-              {toc.map((item) => (
-                <li><a href={`#${item.id}`}>{item.label}</a></li>
-              ))}
-            </ol>
-          </nav>
-        )}
-
-        <article class="prose">
-          <slot />
-        </article>
-      </div>
-
-      {/* Full-width blocks (card grids, tables) that shouldn't be capped at prose width. */}
-      {!wideFirst && <div class="wide-block"><slot name="wide" /></div>}
-
-      {faq.length > 0 && (
-        <div class="prose" style="margin-top:56px;">
-          <h2 id="sss">{faqHeading}</h2>
-          {faq.map((item) => (
-            <details class="faq-item">
-              <summary>
-                <span>{item.q}</span>
-                <div class="faq-icon">+</div>
-              </summary>
-              <p>{item.a}</p>
-            </details>
-          ))}
-        </div>
-      )}
-
-      {related.length > 0 && (
-        <div class="prose" style="margin-top:56px;">
-          <h2>{relatedHeading}</h2>
-          <ul class="related-links">
-            {related.map((item) => (
-              <li><a href={item.href}>{item.label}</a></li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
-  </section>
-
-  <section class="cta-mini reveal">
-    <div class="container">
-      <div class="section-head center">
-        <slot name="cta" />
-      </div>
-      <div style="text-align:center;">
-        <a href={ctaHref} class="btn btn-primary">{ctaLabel}</a>
-      </div>
-    </div>
-  </section>
-</BaseLayout>
+<ContentPage
+  locale={locale}
+  route={route}
+  slug={slug}
+  title={title}
+  description={description}
+  eyebrow={eyebrow}
+  updated={updated}
+  h1={h1}
+  lede={lede}
+  schema={schema}
+  features={features}
+  toc={toc}
+  wideFirst={wideFirst}
+  hasWide={Astro.slots.has('wide')}
+  faq={faq}
+  related={related}
+  relatedHeading={relatedHeading}
+  ctaLabel={ctaLabel}
+  ctaHref={ctaHref}
+>
+  <slot />
+  <slot name="wide" slot="wide" />
+  <slot name="cta" slot="cta" />
+</ContentPage>
