@@ -12,5 +12,8 @@ node_modules/
 # vercel
 .vercel/
 
+# cloudflare
+.wrangler/
+
 # macOS
 .DS_Store
