@@ -1,0 +1,14 @@
+{
+  "name": "wiserrise-site",
+  // Wisbury hesabına sabit: başka hesapla girişli wrangler buraya deploy edemez.
+  "account_id": "fd526ee96d1975c25ffee43592d2c7f7",
+  "compatibility_date": "2026-10-31",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "wiserrise.com", "custom_domain": true }],
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

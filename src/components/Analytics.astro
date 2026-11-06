@@ -2,33 +2,20 @@
 /**
  * Analytics layer.
  *
- * Vercel Web Analytics and Speed Insights are on by default: the site is hosted
- * on Vercel, they need no account or ID, and they set no cookies — so no consent
- * banner is required under KVKK/GDPR.
+ * Page views come from Cloudflare Web Analytics, which is switched on per
+ * hostname in the Cloudflare dashboard: nothing to load here, no cookies, so no
+ * consent banner is required under KVKK/GDPR.
  *
- * GA4 stays dormant unless PUBLIC_GA_ID is set in the Vercel project. Note that
- * GA4 *does* set cookies; enabling it means a consent banner is required.
+ * GA4 stays dormant unless PUBLIC_GA_ID is set at build time. Note that GA4
+ * *does* set cookies; enabling it means a consent banner is required.
  *
- * Both are reached through one helper so the rest of the code never has to know
- * which is active:
+ * Custom events go through one helper so the rest of the code never has to know
+ * which provider is active. They only reach GA4:
  *
  *     window.akTrack('audit_request', { lang: 'tr' })
  */
 const gaId = import.meta.env.PUBLIC_GA_ID;
 ---
-
-{/* Vercel Web Analytics — cookieless page views */}
-<script is:inline>
-  window.va =
-    window.va ||
-    function () {
-      (window.vaq = window.vaq || []).push(arguments);
-    };
-</script>
-<script defer src="/_vercel/insights/script.js" is:inline></script>
-
-{/* Vercel Speed Insights — real-user Core Web Vitals */}
-<script defer src="/_vercel/speed-insights/script.js" is:inline></script>
 
 {gaId && (
   <>
@@ -51,7 +38,6 @@ const gaId = import.meta.env.PUBLIC_GA_ID;
     try {
       var data = props || {};
       data.path = window.location.pathname;
-      if (typeof window.va === 'function') window.va('event', { name: name, data: data });
       if (typeof window.gtag === 'function') window.gtag('event', name, data);
     } catch (e) {
       /* tracking must never break the page */

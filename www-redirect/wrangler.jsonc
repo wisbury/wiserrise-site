@@ -1,0 +1,9 @@
+{
+  "name": "wiserrise-www-redirect",
+  "account_id": "fd526ee96d1975c25ffee43592d2c7f7",
+  "compatibility_date": "2026-10-31",
+  "main": "worker.js",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "www.wiserrise.com", "custom_domain": true }]
+}

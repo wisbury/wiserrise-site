@@ -8,15 +8,19 @@
     "build": "node scripts/check-vercel-json.mjs && astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "check:vercel": "node scripts/check-vercel-json.mjs"
+    "check:vercel": "node scripts/check-vercel-json.mjs",
+    "deploy": "set -a && . ~/.config/wisbury/cloudflare.env && set +a && npm run build && wrangler deploy"
   },
   "dependencies": {
-    "astro": "^5.13.0",
-    "@astrojs/sitemap": "^3.4.0"
+    "@astrojs/sitemap": "^3.4.0",
+    "astro": "^5.13.0"
   },
   "allowScripts": {
     "esbuild@0.27.7": true,
     "esbuild@0.25.12": true,
     "sharp@0.34.5": true
+  },
+  "devDependencies": {
+    "wrangler": "^4.156.0"
   }
 }
