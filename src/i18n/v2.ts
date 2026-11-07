@@ -71,7 +71,7 @@ export const v2ui = {
       read: 'Makaleyi oku',
     },
     footer: {
-      about: 'Yerel işletmeler ve markalar için dijital pazarlama. Haritada, aramada, reklamda ve süper zeka yanıtlarında bulunun.',
+      about: 'Yerel işletmeler ve markalar için dijital pazarlama. Haritada, aramada, reklamda ve yapay zeka yanıtlarında bulunun.',
       services: 'HİZMETLER',
       company: 'ŞİRKET',
       tools: 'ÜCRETSİZ ARAÇLAR',

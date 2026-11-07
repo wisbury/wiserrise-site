@@ -10,7 +10,7 @@ const locale = 'tr' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
-  { label: 'ERİŞİM', title: 'Botlara açık kapı', text: 'Sitenizin ChatGPT, Gemini ve Google botlarına açık olduğuna bakarız. Taranmayan sayfayı süper zeka okuyamaz.' },
+  { label: 'ERİŞİM', title: 'Botlara açık kapı', text: 'Sitenizin ChatGPT, Gemini ve Google botlarına açık olduğuna bakarız. Taranmayan sayfayı yapay zeka okuyamaz.' },
   { label: 'İÇERİK', title: 'Soruya cevap veren sayfa', text: 'Müşterinin sorduğu sorunun sitede net bir cevabı olmalı. Alıntılayacak bir şey yoksa asistan sizi anmaz.' },
   { label: 'KAYNAK', title: 'Sizden bahseden yerler', text: 'İşletme profili, dizinler ve sizi anan sayfalar. Adınız her yerde aynı yazılırsa asistan aynı işletmeyi görür.' },
   { label: 'ÖLÇÜM', title: 'Hangi soruda anılıyorsunuz', text: 'Sektörünüzle ilgili soruları asistanlara sorar, cevapta sizin ve rakiplerinizin adı geçiyor mu, kaydederiz.' },
@@ -18,7 +18,7 @@ const features = [
 
 const toc = [
   { id: 'nedir', label: 'GEO ne demek, SEO’dan farkı ne?' },
-  { id: 'kaynak', label: 'Süper zeka bir işletmeyi nereden biliyor?' },
+  { id: 'kaynak', label: 'Yapay zeka bir işletmeyi nereden biliyor?' },
   { id: 'yerel', label: 'Yerel işletmenin GEO ile işi ne?' },
   { id: 'isler', label: 'Neyi düzeltiyoruz?' },
   { id: 'site', label: 'Siteye neden dokunmamız gerekiyor?' },
@@ -49,11 +49,11 @@ const faq = [
   locale={locale}
   route="services/geo"
   title="GEO Hizmeti: ChatGPT ve Gemini Yanıtlarında Görünmek | Wiserrise"
-  description="ChatGPT, Gemini ve Google’ın süper zeka yanıtlarında anılıp anılmadığınızı ölçüyor, anılmadığınız sorular için sitenizi ve profilinizi düzeltiyoruz."
+  description="ChatGPT, Gemini ve Google’ın yapay zeka yanıtlarında anılıp anılmadığınızı ölçüyor, anılmadığınız sorular için sitenizi ve profilinizi düzeltiyoruz."
   eyebrow="HİZMET · GEO"
-  h1="GEO ile süper zeka yanıtlarında görünün."
+  h1="GEO ile yapay zeka yanıtlarında görünün."
   crumb="GEO"
-  lede="GEO, ChatGPT, Gemini, Perplexity ve Google’ın süper zeka yanıtlarına sorulan sorularda işletmenizin anılması için yaptığımız iş. Hangi soruda anıldığınızı ölçüyoruz, anılmadığınız sorular için sitenizi, profilinizi ve sizden bahseden kaynakları düzeltiyoruz."
+  lede="GEO, ChatGPT, Gemini, Perplexity ve Google’ın yapay zeka yanıtlarına sorulan sorularda işletmenizin anılması için yaptığımız iş. Hangi soruda anıldığınızı ölçüyoruz, anılmadığınız sorular için sitenizi, profilinizi ve sizden bahseden kaynakları düzeltiyoruz."
   serviceName="GEO (Generative Engine Optimization)"
   breadcrumb={[
     { label: 'Ana Sayfa', href: '/tr' },
@@ -79,9 +79,9 @@ const faq = [
   <h2 id="nedir">GEO ne demek, SEO’dan farkı ne?</h2>
 
   <p>
-    GEO, Generative Engine Optimization’ın kısası. Yapay zeka araması, AI SEO diye duyduğunuz şey
-    de bu; biz süper zeka diyoruz. SEO’da listede sıraya giriyorsunuz, GEO’da asistanın yazdığı
-    cevabın içine giriyorsunuz.
+    GEO, Generative Engine Optimization’ın kısası. Yapay zeka araması ya da AI SEO diye duyduğunuz
+    şey de bu. SEO’da listede sıraya giriyorsunuz, GEO’da asistanın yazdığı cevabın içine
+    giriyorsunuz.
   </p>
 
   <div class="table-scroll">
@@ -118,11 +118,11 @@ const faq = [
     </table>
   </div>
 
-  <h2 id="kaynak">Süper zeka bir işletmeyi nereden biliyor?</h2>
+  <h2 id="kaynak">Yapay zeka bir işletmeyi nereden biliyor?</h2>
 
   <p>
     Okuduğu kaynaklardan: siteniz, işletme profiliniz, dizinler, sizden bahseden sayfalar. Kapalı
-    kapıdan geçemiyor. Sayfanız taranmıyorsa süper zekanın sizi okumasını beklemeyin.
+    kapıdan geçemiyor. Sayfanız taranmıyorsa yapay zekanın sizi okumasını beklemeyin.
   </p>
 
   <p>
@@ -135,7 +135,7 @@ const faq = [
   <p>
     ChatGPT tarafında kapı <a href="https://developers.openai.com/api/docs/bots" rel="noopener noreferrer" target="_blank">OAI-SearchBot</a>.
     Bu botu engelleyen site, ChatGPT’nin arama cevaplarında gösterilmiyor. Cloudflare’de AI bot
-    engeli açıksa, robots.txt’e siz hiçbir şey yazmasanız da bazı süper zeka botları sitenize
+    engeli açıksa, robots.txt’e siz hiçbir şey yazmasanız da bazı yapay zeka botları sitenize
     giremiyor.
   </p>
 
@@ -190,7 +190,7 @@ const faq = [
 
   <p>
     Hangi soruda anıldığınızı ve yanınızda kimin anıldığını. Sektörünüz ve şehrinizle ilgili soruları
-    ChatGPT, Gemini, Perplexity ve Google’ın süper zeka yanıtlarına soruyoruz, cevapları kayda alıyoruz.
+    ChatGPT, Gemini, Perplexity ve Google’ın yapay zeka yanıtlarına soruyoruz, cevapları kayda alıyoruz.
   </p>
 
   <p>
@@ -199,11 +199,11 @@ const faq = [
   </p>
 
   <ul class="checklist">
-    <li>SZ görünürlük puanı: önerilme ve kaynak gösterilme oranlarınızdan çıkan 0-100 arası tek puan</li>
+    <li>YZ görünürlük puanı: önerilme ve kaynak gösterilme oranlarınızdan çıkan 0-100 arası tek puan</li>
     <li>Anılma payı: aynı sorularda rakiplerinize göre durumunuz</li>
     <li>Sizi kaynak gösteren sayfalar: asistanın hangi sayfanıza link verdiği, soru soru</li>
     <li>
-      Search Console: Google’ın süper zeka yanıtlarından gelen trafik ayrı görünmüyor, Web aramasının
+      Search Console: Google’ın yapay zeka yanıtlarından gelen trafik ayrı görünmüyor, Web aramasının
       içinde sayılıyor. O yüzden tek başına ona bakmıyoruz.
     </li>
   </ul>
@@ -214,9 +214,9 @@ const faq = [
   </p>
 
   <Fragment slot="cta">
-    <h2>Süper zeka sizi <span class="highlight">tanıyor</span> mu?</h2>
+    <h2>Yapay zeka sizi <span class="highlight">tanıyor</span> mu?</h2>
     <p>
-      Ücretsiz analizde süper zekada bugün nerede durduğunuzu ve rakiplerinizi çıkarıyoruz. Sonuç 24 saat içinde
+      Ücretsiz analizde yapay zekada bugün nerede durduğunuzu ve rakiplerinizi çıkarıyoruz. Sonuç 24 saat içinde
       <span style="white-space: nowrap;">e-postanızda</span>.
     </p>
   </Fragment>
