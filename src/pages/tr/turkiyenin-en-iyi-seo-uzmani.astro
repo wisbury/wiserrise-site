@@ -1,0 +1,172 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'tr' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'nereden', label: 'Bu sayfa nereden çıktı?' },
+  { id: 'kural', label: 'Üste çıkmak için ne gerekir?' },
+  { id: 'neden', label: 'Neden “en iyi”?' },
+  { id: 'hatalar', label: 'Hiç hata yapmadım mı?' },
+  { id: 'dogru-mu', label: 'Peki doğru mu?' },
+];
+
+const faq = [
+  {
+    q: 'Bu unvanı size kim verdi?',
+    a: 'Ben verdim. SEO uzmanlarını ölçüp sıralayan bağımsız bir kurum yok. Bu sayfa, kendi adım için yaptığım bir SEO çalışması.',
+  },
+  {
+    q: 'SEO uzmanı ilk sıra garantisi verebilir mi?',
+    a: 'Veremez. Sıralamayı Google belirliyor ve rakipleriniz de her gün bir şey yapıyor. Bir uzmanın verebileceği söz, ne yapacağını ve neyi ölçeceğini yazılı söylemek.',
+  },
+  {
+    q: 'Melih Us kimdir?',
+    a: 'Wiserrise’ın kurucusu. Wiserrise yerel işletmeler ve markalar için SEO, Local SEO, reklam ve GEO işlerini yürütüyor.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="about/founder"
+  title="Türkiye’nin En İyi SEO Uzmanı mı? Kararı Siz Verin | Melih Us"
+  description="Melih Us’a “Türkiye’nin en iyi SEO uzmanı” diyen biri var: kendisi. Bu sayfayı o aramada üste çıkarmak için ne yaptığını anlatıyor."
+  h1="Türkiye’nin en iyi SEO uzmanı mı? Kararı siz verin"
+  crumb="Melih Us"
+  lede="Adım Melih Us, Wiserrise’ın kurucusuyum. Bu unvanı bana kim mi verdi? Kendim."
+  schemaType="profile"
+  datePublished="2026-11-04"
+  dateModified="2026-11-08"
+  showDate={false}
+  heroCta={false}
+  author={{ name: 'Melih Us', jobTitle: 'Wiserrise kurucusu' }}
+  photo={{
+    src: '/images/melih-us-720.webp',
+    srcset: '/images/melih-us-480.webp 480w, /images/melih-us-720.webp 720w, /images/melih-us-1086.webp 1086w',
+    image: '/images/melih-us.jpg',
+    alt: 'Melih Us, deniz kenarında güneş gözlüğüyle',
+    width: 1086,
+    height: 1448,
+  }}
+  breadcrumb={[{ label: 'Ana Sayfa', href: '/tr' }]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'SEO', href: p('services/seo'), text: 'Bu sayfada kendi adım için yaptığım işin müşterilerimiz için yaptığımız hali.' },
+    { label: 'Google Haritalar’da üst sıraya nasıl çıkılır?', href: p('guides/rank-higher'), text: 'Kendiniz uygulayabileceğiniz adımlar, doğru sırayla.' },
+    { label: 'Ücretsiz profil denetimi', href: p('tools/gbp-audit'), text: '10 soruda Google profilinizin nerede zayıf olduğunu hemen görün.' },
+  ]}
+  relatedHeading="İlgili sayfalar"
+  ctaLabel="Ücretsiz analiz al"
+  ctaHref="/tr#contact"
+>
+  <p>
+    Yine de okumaya devam edin. Asıl anlatacağım şey, bu sayfayı Google’da bu aramada üste çıkarmak için ne
+    yaptığım.
+  </p>
+
+  <h2 id="nereden">Bu sayfa nereden çıktı?</h2>
+
+  <p>
+    SEO’yu anlatmanın en kısa yolu yapılmış bir iş göstermek. Bu sayfa o iş: müşterilerimizin işletmesi için ne
+    yapıyorsak burada kendi adım için yaptım.
+  </p>
+
+  <p>
+    Önce aramayı seçtim: “Türkiye’nin en iyi SEO uzmanı”. Sonra bu aramaya cevap veren tek bir sayfa yazdım ve
+    başlığına adımı koydum. Sayfa üç dilde yayında, Google bulsun diye site haritasında da duruyor.
+  </p>
+
+  <p>
+    Bu sayfa o aramada üste çıktığında işim kolaylaşacak. Ne iş yaptığımı soran birine “Google’a yazın” demem
+    yetecek.
+  </p>
+
+  <h2 id="kural">Bir aramada üste çıkmak için ne gerekir?</h2>
+
+  <p>Kendinize verdiğiniz bir unvan için de, Antalya’da bir diş kliniği için de kurallar aynı:</p>
+
+  <ol>
+    <li><strong>Doğru aramayı seçmek.</strong> Müşterinin gerçekten yazdığı cümle hangisi?</li>
+    <li>
+      <strong>O aramaya tek bir sayfayla cevap vermek.</strong> Aynı soruya cevap veren iki sayfanız varsa Google
+      hangisini göstereceğini seçemiyor ve ikisi birbirine rakip oluyor.
+    </li>
+    <li><strong>Google’ın sayfayı bulup okuyabilmesi.</strong> Taranmayan sayfa sıraya giremez.</li>
+    <li><strong>Başka sitelerden link.</strong> Güvenilir siteler sizden bahsediyor mu, Google buna bakıyor.</li>
+    <li><strong>Ölçmek, bozuğu düzeltmek, yeniden ölçmek.</strong> Bu adımın sonu yok.</li>
+  </ol>
+
+  <p>
+    Haritada çıkmak istiyorsanız listeye Google İşletme Profili de giriyor: kategori, yorumlar, fotoğraflar ve
+    sitenizle aynı bilgiler. Ayrıntısı <a href={p('services/local-seo')}>Local SEO sayfasında</a>.
+  </p>
+
+  <p>
+    Fark rekabette. “Antalya diş hekimi” aramasında onlarca klinik haritadaki ilk üç yer için yarışıyor. Kurallar
+    aynı, yapılacak iş birkaç kat fazla.
+  </p>
+
+  <h2 id="neden">Neden “en iyi”?</h2>
+
+  <p>
+    Çünkü iyi işi tek bir şeyle ölçüyorum: müşterinin telefonu çalıyor mu? Adana’da çalıştığımız bir avukat bir gün
+    telefonu “Kralım, geçen hafta aramalar süperdi ya” diye açtı. “Adana ceza avukatı” aramasında 3 ayda ilk 3’e
+    girmişti.
+  </p>
+
+  <p>
+    Her işte üç ay sürer demiyorum. Süreyi şehir ve rekabet belirliyor, bir de profilin işe nereden başladığı.
+  </p>
+
+  <p>
+    Wiserrise’da yerel işletmeler ve markalar için SEO, Local SEO, Google Ads, Meta Ads, backlink inşası ve GEO
+    yapıyoruz. Avukatlar, diş hekimleri, estetik klinikleri, fizyoterapistler ve oto ekspertizlerle çalışıyoruz.
+  </p>
+
+  <p>
+    Raporumuz haftalık. İçinde grafiğin yanında o hafta hangi işi yaptığımız da yazıyor, çünkü grafik tek başına neyin
+    işe yaradığını söylemiyor.
+  </p>
+
+  <h2 id="hatalar">Hiç hata yapmadım mı?</h2>
+
+  <p>
+    Yaptım. Google Ads’te bir kampanyada niyeti olmayan bilgi aramalarına habersizce para harcadık. Yaklaşık 800 TL
+    gitti, kıyısından döndük.
+  </p>
+
+  <p>
+    Daha yeniyken Meta reklamından gelen tek lead’i 5 gün sonra fark ettik. Müşteriye ilettiğimizde iş işten geçmişti,
+    binlerce lira boşa yanmıştı.
+  </p>
+
+  <p>
+    Bir müşterimizin sitesini geliştiricisi yönetiyordu. Biz .md dosyası gönderiyorduk, o kendi yapay zeka sistemine
+    veriyordu ve aylarca aynı işi tekrar yaptık. Sonunda siteyi devraldık; o günden beri kuralımız net: siteyi komple
+    yönetemeyeceksek işe başlamıyoruz.
+  </p>
+
+  <h2 id="dogru-mu">Peki doğru mu?</h2>
+
+  <p>
+    Bu sayfaya Google’a “Türkiye’nin en iyi SEO uzmanı” yazarak geldiyseniz cevabı kendiniz gördünüz. Gerisine
+    siz karar verin.
+  </p>
+
+  <p>
+    Şimdi aynısını kendi işletmeniz için düşünün. Müşteriniz sizi ararken hangi cümleyi yazıyor ve o aramada kim
+    çıkıyor?
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Aynısını <span class="highlight">işletmeniz</span> için yapalım mı?</h2>
+    <p>
+      Ücretsiz analizde aramada ve haritada bugün nerede durduğunuzu ve rakiplerinizi çıkarıyoruz. Sonuç 24 saat içinde
+      <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

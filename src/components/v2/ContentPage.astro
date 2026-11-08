@@ -14,6 +14,8 @@ import type { RouteKey } from '../../i18n/routes';
 import { v2ui } from '../../i18n/v2';
 import type { FaqEntry } from '../../lib/schema';
 
+export interface Photo { src: string; srcset: string; image: string; alt: string; width: number; height: number }
+
 interface Props {
   locale: Locale;
   route: RouteKey;
@@ -25,6 +27,7 @@ interface Props {
   updated?: string;
   h1: string;
   lede: string;
+  photo?: Photo;
   schema: object;
   features?: { label: string; title: string; text: string }[];
   toc?: { id: string; label: string }[];
@@ -35,11 +38,13 @@ interface Props {
   relatedHeading: string;
   ctaLabel: string;
   ctaHref: string;
+  /** Overrides the route rule below. */
+  heroCta?: boolean;
 }
 
 const {
-  locale, route, slug, title, description, eyebrow, updated, h1, lede, schema,
-  features = [], toc = [], wideFirst = false, hasWide, faq = [], related = [], relatedHeading, ctaLabel, ctaHref,
+  locale, route, slug, title, description, eyebrow, updated, h1, lede, photo, schema,
+  features = [], toc = [], wideFirst = false, hasWide, faq = [], related = [], relatedHeading, ctaLabel, ctaHref, heroCta: heroCtaProp,
 } = Astro.props;
 
 const email = CONTACT_EMAIL[locale];
@@ -48,7 +53,7 @@ const s = v2ui[locale].page;
 const analiz = ctaHref.endsWith('#contact');
 const cta = analiz ? { href: '#analiz-formu', 'data-analiz': true } : { href: ctaHref };
 // Hizmet ve sektör sayfalarında ilk ekranda düğme yok; analiz çağrısı üst şeritte ve sayfa sonunda kalıyor.
-const heroCta = !/^(services|industries)(\/|$)/.test(route);
+const heroCta = heroCtaProp ?? !/^(services|industries)(\/|$)/.test(route);
 ---
 
 <BaseLayout locale={locale} route={route} slug={slug} title={title} description={description} design="v2">
@@ -72,6 +77,11 @@ const heroCta = !/^(services|industries)(\/|$)/.test(route);
           <a class="btn v2-btn-firuze" {...cta}>{ctaLabel}</a>
           {analiz && <span class="v2-page-note">{s.note}</span>}
         </div>
+      )}
+      {photo && (
+        <figure class="v2-page-photo">
+          <img src={photo.src} srcset={photo.srcset} sizes="(max-width: 392px) calc(100vw - 32px), 360px" alt={photo.alt} width={photo.width} height={photo.height} decoding="async" />
+        </figure>
       )}
     </section>
 

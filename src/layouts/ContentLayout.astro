@@ -4,6 +4,7 @@ import type { Locale } from '../i18n/config';
 import { routePath, type RouteKey } from '../i18n/routes';
 import { servicePageSchema, articlePageSchema, type Crumb, type FaqEntry } from '../lib/schema';
 import { v2ui, formatDate } from '../i18n/v2';
+import type { Photo } from '../components/v2/ContentPage.astro';
 
 interface Props {
   locale: Locale;
@@ -24,14 +25,20 @@ interface Props {
   breadcrumb?: Crumb[];
   /** Name used in the Service schema. Omit on pages that aren't a service. */
   serviceName?: string;
-  /** Guides are Articles, not Services. */
-  schemaType?: 'service' | 'article';
-  /** Required for schemaType="article"; kept out of the build so it stays stable. */
+  /** Guides are Articles, not Services; the founder page is a ProfilePage with the Article inside. */
+  schemaType?: 'service' | 'article' | 'profile';
+  /** Required for article and profile pages; kept out of the build so it stays stable. */
   datePublished?: string;
   dateModified?: string;
   /** Article pages written by a named person; omitted, the organisation is the author. */
   author?: { name: string; jobTitle: string };
+  /** Portrait under the hero text (founder page). `image` is the JPEG used in the schema; `src`/`srcset` are WebP. */
+  photo?: Photo;
   toc?: { id: string; label: string }[];
+  /** Article pages show "last updated" in the hero; false hides it (the schema keeps the dates). */
+  showDate?: boolean;
+  /** Overrides the default first-screen analysis button (hidden on service and industry pages). */
+  heroCta?: boolean;
   /**
    * Render the `wide` slot above the article instead of below it. Hub pages use
    * this so visitors see the actual offer before the explanatory copy.
@@ -63,7 +70,10 @@ const {
   datePublished,
   dateModified,
   author,
+  photo,
   toc = [],
+  showDate = true,
+  heroCta,
   wideFirst = false,
   faq = [],
   related = [],
@@ -76,7 +86,7 @@ const url = routePath(locale, route) + (slug ? `/${slug}` : '');
 const trail: Crumb[] = [...breadcrumb, { label: crumb ?? h1, href: url }];
 
 const schema =
-  schemaType === 'article'
+  schemaType === 'article' || schemaType === 'profile'
     ? articlePageSchema({
         locale,
         url,
@@ -87,6 +97,8 @@ const schema =
         faq,
         breadcrumb: trail,
         author,
+        image: photo?.image,
+        profile: schemaType === 'profile',
       })
     : servicePageSchema({
         locale,
@@ -100,7 +112,7 @@ const schema =
 const relatedHeading = relatedHeadingProp ?? v2ui[locale].page.related;
 
 /** Articles show their last update in the hero, matching dateModified in the schema. */
-const iso = schemaType === 'article' ? dateModified ?? datePublished : undefined;
+const iso = schemaType !== 'service' && showDate ? dateModified ?? datePublished : undefined;
 const updated = iso ? formatDate(locale, iso) : undefined;
 ---
 
@@ -114,6 +126,7 @@ const updated = iso ? formatDate(locale, iso) : undefined;
   updated={updated}
   h1={h1}
   lede={lede}
+  photo={photo}
   schema={schema}
   features={features}
   toc={toc}
@@ -124,6 +137,7 @@ const updated = iso ? formatDate(locale, iso) : undefined;
   relatedHeading={relatedHeading}
   ctaLabel={ctaLabel}
   ctaHref={ctaHref}
+  heroCta={heroCta}
 >
   <slot />
   <slot name="wide" slot="wide" />

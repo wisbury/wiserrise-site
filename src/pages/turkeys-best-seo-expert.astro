@@ -1,0 +1,173 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { routePath } from '../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const toc = [
+  { id: 'nereden', label: 'Where did this page come from?' },
+  { id: 'kural', label: 'What does it take to reach the top?' },
+  { id: 'neden', label: 'Why “the best”?' },
+  { id: 'hatalar', label: 'Have I never made a mistake?' },
+  { id: 'dogru-mu', label: 'So, is it true?' },
+];
+
+const faq = [
+  {
+    q: 'Who gave you this title?',
+    a: 'I did. No independent body measures and ranks SEO experts. This page is an SEO project I did for my own name.',
+  },
+  {
+    q: 'Can an SEO expert guarantee the top spot?',
+    a: 'No. Google decides the rankings, and your competitors are doing something every day too. The promise an expert can make is to tell you in writing what they’ll do and what they’ll measure.',
+  },
+  {
+    q: 'Who is Melih Us?',
+    a: 'The founder of Wiserrise. Wiserrise does SEO, local SEO, advertising and GEO for local businesses and brands.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="about/founder"
+  title="Turkey’s Best SEO Expert? You Decide | Melih Us"
+  description="Who calls Melih Us “Turkey’s best SEO expert”? He does. Here he explains what he did to get this page to the top of that search."
+  h1="Turkey’s best SEO expert? You decide"
+  crumb="Melih Us"
+  lede="My name is Melih Us, and I’m the founder of Wiserrise. Who gave me this title? I did."
+  schemaType="profile"
+  datePublished="2026-11-04"
+  dateModified="2026-11-08"
+  showDate={false}
+  heroCta={false}
+  author={{ name: 'Melih Us', jobTitle: 'Founder of Wiserrise' }}
+  photo={{
+    src: '/images/melih-us-720.webp',
+    srcset: '/images/melih-us-480.webp 480w, /images/melih-us-720.webp 720w, /images/melih-us-1086.webp 1086w',
+    image: '/images/melih-us.jpg',
+    alt: 'Melih Us by the sea, wearing sunglasses',
+    width: 1086,
+    height: 1448,
+  }}
+  breadcrumb={[{ label: 'Home', href: '/' }]}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'SEO', href: p('services/seo'), text: 'The work I did here for my own name, the way we do it for our clients.' },
+    { label: 'How do you rank higher on Google Maps?', href: p('guides/rank-higher'), text: 'Steps you can take yourself, in the right order.' },
+    { label: 'Free profile audit', href: p('tools/gbp-audit'), text: 'See right away where your Google profile is weak, in 10 questions.' },
+  ]}
+  relatedHeading="Related pages"
+  ctaLabel="Get a free analysis"
+  ctaHref="/#contact"
+>
+  <p>
+    Keep reading anyway. What I really want to show you is what I did to get this page to the top of Google for this
+    search.
+  </p>
+
+  <h2 id="nereden">Where did this page come from?</h2>
+
+  <p>
+    The quickest way to explain SEO is to show work that’s been done. This page is that work: whatever we do for our
+    clients’ businesses, I did here for my own name.
+  </p>
+
+  <p>
+    First I picked the search: “Turkey’s best SEO expert”. Then I wrote a single page that answers it and put
+    my name in the title. The page is live in three languages and sits in the sitemap so Google can find it.
+  </p>
+
+  <p>
+    Once this page reaches the top for that search, my job gets easier. When someone asks what I do, I can just say
+    “Google it.”
+  </p>
+
+  <h2 id="kural">What does it take to reach the top of a search?</h2>
+
+  <p>The rules are the same for a title you give yourself and for a dental clinic in Antalya:</p>
+
+  <ol>
+    <li><strong>Pick the right search.</strong> Which sentence does the customer actually type?</li>
+    <li>
+      <strong>Answer that search with a single page.</strong> If two of your pages answer the same question, Google
+      can’t decide which one to show and the two end up competing with each other.
+    </li>
+    <li><strong>Make sure Google can find and read the page.</strong> A page that isn’t crawled can’t rank.</li>
+    <li><strong>Links from other websites.</strong> Google looks at whether trustworthy sites mention you.</li>
+    <li><strong>Measure, fix what’s broken, measure again.</strong> This step never ends.</li>
+  </ol>
+
+  <p>
+    If you want to show up on the map, your Google Business Profile joins the list too: category, reviews, photos and the
+    same details as your website. The details are on the <a href={p('services/local-seo')}>local SEO page</a>.
+  </p>
+
+  <p>
+    The difference is competition. For “dentist Antalya”, dozens of clinics compete for the top three spots on the map.
+    Same rules, several times the work.
+  </p>
+
+  <h2 id="neden">Why “the best”?</h2>
+
+  <p>
+    Because I measure good work by one thing: is the client’s phone ringing? A lawyer we work with in Adana once answered
+    the phone with “Mate, the calls were great last week.” Within 3 months the firm had reached the top 3 for “criminal
+    lawyer Adana”.
+  </p>
+
+  <p>
+    I’m not claiming it takes three months every time. The city and the competition set the timeline, and so does where
+    the profile starts from.
+  </p>
+
+  <p>
+    At Wiserrise we do SEO, local SEO, Google Ads, Meta Ads, link building and GEO for local businesses and brands. We
+    work with lawyers, dentists, aesthetic clinics, physiotherapists and vehicle inspection firms.
+  </p>
+
+  <p>
+    Our report is weekly. Next to the charts it says what work we did that week, because a chart alone doesn’t tell you
+    what worked.
+  </p>
+
+  <h2 id="hatalar">Have I never made a mistake?</h2>
+
+  <p>
+    I have. In one Google Ads campaign we spent money on information searches with no intent, without realizing it.
+    Around 800 TL was gone, and it was a close call.
+  </p>
+
+  <p>
+    When we were still new, we noticed the only lead from a Meta ad 5 days later. By the time we passed it on to the client
+    it was too late, and thousands of lira had gone to waste.
+  </p>
+
+  <p>
+    One client’s website was run by their developer. We sent .md files, the developer fed them into their own AI system,
+    and we redid the same work for months. In the end we took over the site; since then our rule has been clear: if we
+    can’t manage the site completely, we don’t take on the work.
+  </p>
+
+  <h2 id="dogru-mu">So, is it true?</h2>
+
+  <p>
+    If you got to this page by typing “Turkey’s best SEO expert” into Google, you’ve seen the answer for
+    yourself. The rest is up to you.
+  </p>
+
+  <p>
+    Now picture the same thing for your own business. What do your customers type when they look for you, and who shows
+    up for that search?
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Shall we do the same for <span class="highlight">your business</span>?</h2>
+    <p>
+      In the free analysis we work out where you stand today in search and on the map, and who your competitors are. The
+      result lands in your inbox within <span style="white-space: nowrap;">24 hours</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

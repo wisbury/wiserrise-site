@@ -1,5 +1,6 @@
 import type { Locale } from '../i18n/config';
 import { localeHome } from '../i18n/config';
+import { routePath } from '../i18n/routes';
 import { CONTACT_EMAIL, COMPANY_LEGAL_NAME } from '../i18n/ui';
 
 const SITE = 'https://wiserrise.com';
@@ -25,10 +26,46 @@ const SAME_AS = [GBP_URL];
 /** Must stay byte-identical to the number on the Google Business Profile. */
 const PHONE = '+90 545 505 23 86';
 
+// Sonuç vaadi yok: ne yaptığımızı söyler, ne olacağını söylemez.
 const DESCRIPTION: Record<Locale, string> = {
-  en: 'Wiserrise helps local businesses rank higher on Google Maps, outrank nearby competitors, and turn visibility into real leads.',
-  tr: 'Wiserrise, yerel işletmelerin Google Haritalar’da üst sıralara çıkmasını, yakın rakiplerini geçmesini ve görünürlüğü gerçek müşteriye dönüştürmesini sağlar.',
-  de: 'Wiserrise hilft lokalen Unternehmen, bei Google Maps besser zu ranken, Wettbewerber in der Nähe zu überholen und Sichtbarkeit in echte Anfragen zu verwandeln.',
+  en: 'Wiserrise is a digital marketing agency offering SEO, local SEO, Google Ads, Meta Ads, link building and GEO to local businesses and brands.',
+  tr: 'Wiserrise, yerel işletmeler ve markalar için SEO, Local SEO, Google Ads, Meta Ads, backlink inşası ve GEO hizmeti veren bir dijital pazarlama ajansı.',
+  de: 'Wiserrise ist eine Digitalmarketing-Agentur für lokale Unternehmen und Marken: SEO, lokale SEO, Google Ads, Meta Ads, Linkaufbau und GEO.',
+};
+
+/** The six main services, in the order the services page lists them. Only those with a page carry a URL. */
+const SERVICES: { name: Record<Locale, string>; route?: Parameters<typeof routePath>[1] }[] = [
+  { name: { en: 'SEO', tr: 'SEO', de: 'SEO' }, route: 'services/seo' },
+  { name: { en: 'Local SEO', tr: 'Local SEO', de: 'Lokale SEO' }, route: 'services/local-seo' },
+  { name: { en: 'Google Ads', tr: 'Google Ads', de: 'Google Ads' } },
+  { name: { en: 'Meta Ads', tr: 'Meta Ads', de: 'Meta Ads' } },
+  { name: { en: 'Link building', tr: 'Backlink inşası', de: 'Linkaufbau' } },
+  { name: { en: 'GEO (Generative Engine Optimization)', tr: 'GEO (Generative Engine Optimization)', de: 'GEO (Generative Engine Optimization)' }, route: 'services/geo' },
+];
+
+const CATALOG_NAME: Record<Locale, string> = {
+  en: 'Digital marketing services',
+  tr: 'Dijital pazarlama hizmetleri',
+  de: 'Digitale Marketing-Leistungen',
+};
+
+/**
+ * Melih Us, the founder. One @id for every page and every language, so Google
+ * sees one person instead of one per translation. His profile page is the
+ * Turkish founder page; the English and German pages are translations of it.
+ */
+export const PERSON_ID = `${SITE}/#melih-us`;
+const PERSON_URL = `${SITE}${routePath('tr', 'about/founder')}`;
+const PERSON_IMAGE = `${SITE}/images/melih-us.jpg`;
+const PERSON_SAME_AS = [
+  'https://www.linkedin.com/in/melih-us-8aa2281a0/',
+  'https://www.instagram.com/usmelih/',
+  'https://x.com/usmeliih',
+];
+const PERSON_KNOWS: Record<Locale, string[]> = {
+  en: ['SEO', 'Local SEO', 'Google Ads', 'Meta Ads', 'Link building', 'GEO (Generative Engine Optimization)', 'Google Business Profile'],
+  tr: ['SEO', 'Local SEO', 'Google Ads', 'Meta Ads', 'Backlink inşası', 'GEO (Generative Engine Optimization)', 'Google İşletme Profili'],
+  de: ['SEO', 'Lokale SEO', 'Google Ads', 'Meta Ads', 'Linkaufbau', 'GEO (Generative Engine Optimization)', 'Google Unternehmensprofil'],
 };
 
 /** Service-area business: no public street address, so we declare the areas served. */
@@ -114,10 +151,18 @@ export function articlePageSchema(opts: {
   dateModified?: string;
   faq?: FaqEntry[];
   breadcrumb: Crumb[];
-  /** A named person who wrote the page. Without it the organisation is the author. */
+  /**
+   * The founder wrote the page (the site's only named author). `jobTitle` is in
+   * the page's language. Without it the organisation is the author.
+   */
   author?: { name: string; jobTitle: string };
+  /** Page-specific image (absolute path from the site root). */
+  image?: string;
+  /** The page is about the founder: a ProfilePage whose main entity is him, with the Article inside it. */
+  profile?: boolean;
 }) {
-  const personId = `${SITE}${opts.url}#person`;
+  const pageUrl = `${SITE}${opts.url}`;
+  const webpageId = `${pageUrl}#webpage`;
   const graph: Record<string, unknown>[] = [
     organizationNode(opts.locale),
     {
@@ -126,14 +171,17 @@ export function articlePageSchema(opts: {
       headline: opts.headline,
       description: opts.description,
       // Article'da görsel Google'ın önerdiği alanlardan; sayfaya özel görsel
-      // olmadığı için markanın OG kartı kullanılıyor.
-      image: `${SITE}${opts.locale === 'tr' ? '/images/og-image-tr.png' : '/images/og-image.png'}`,
+      // yoksa markanın OG kartı kullanılıyor.
+      image: `${SITE}${opts.image ?? (opts.locale === 'tr' ? '/images/og-image-tr.png' : '/images/og-image.png')}`,
       inLanguage: opts.locale,
       datePublished: opts.datePublished,
       dateModified: opts.dateModified ?? opts.datePublished,
-      author: { '@id': opts.author ? personId : ORG_ID },
+      author: { '@id': opts.author ? PERSON_ID : ORG_ID },
       publisher: { '@id': ORG_ID },
-      mainEntityOfPage: `${SITE}${opts.url}`,
+      // On a profile page the person is the main entity, so the Article sits inside the page instead.
+      ...(opts.profile
+        ? { isPartOf: { '@id': webpageId }, about: { '@id': PERSON_ID } }
+        : { mainEntityOfPage: pageUrl }),
     },
     {
       '@type': 'BreadcrumbList',
@@ -147,14 +195,28 @@ export function articlePageSchema(opts: {
     },
   ];
 
+  if (opts.profile) {
+    graph.push({
+      '@type': 'ProfilePage',
+      '@id': webpageId,
+      url: pageUrl,
+      name: opts.headline,
+      inLanguage: opts.locale,
+      dateCreated: opts.datePublished,
+      dateModified: opts.dateModified ?? opts.datePublished,
+      mainEntity: { '@id': PERSON_ID },
+      breadcrumb: { '@id': `${pageUrl}#breadcrumb` },
+      ...(opts.image ? { primaryImageOfPage: { '@type': 'ImageObject', url: `${SITE}${opts.image}` } } : {}),
+    });
+  }
+
   if (opts.author) {
     graph.push({
-      '@type': 'Person',
-      '@id': personId,
-      name: opts.author.name,
+      ...founderRef(),
+      image: PERSON_IMAGE,
       jobTitle: opts.author.jobTitle,
       worksFor: { '@id': ORG_ID },
-      url: `${SITE}${opts.url}`,
+      knowsAbout: PERSON_KNOWS[opts.locale],
     });
   }
 
@@ -196,10 +258,36 @@ export function organizationNode(locale: Locale) {
     email: CONTACT_EMAIL[locale],
     telephone: PHONE,
     description: DESCRIPTION[locale],
-    serviceType: 'Local SEO & Google Maps Optimization',
+    // serviceType belongs to Service, not to an organisation; the services are listed here instead.
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: CATALOG_NAME[locale],
+      url: `${SITE}${routePath(locale, 'services')}`,
+      itemListElement: SERVICES.map((s) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: s.name[locale],
+          ...(s.route ? { url: `${SITE}${routePath(locale, s.route)}` } : {}),
+        },
+      })),
+    },
     areaServed: AREA_SERVED,
     knowsLanguage: ['tr', 'en', 'de'],
     sameAs: SAME_AS,
+    // Embedded on every page for the same reason as this node: an @id alone would resolve to nothing elsewhere.
+    founder: founderRef(),
+  };
+}
+
+/** Who the founder is, in the few fields every page carries. The founder page adds the rest. */
+function founderRef() {
+  return {
+    '@type': 'Person',
+    '@id': PERSON_ID,
+    name: 'Melih Us',
+    url: PERSON_URL,
+    sameAs: PERSON_SAME_AS,
   };
 }
 

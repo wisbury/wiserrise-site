@@ -109,11 +109,11 @@ export const ROUTES = {
     de: '/ratgeber/google-unternehmensprofil-verifizierung-probleme',
   },
 
-  // Founder page, written for the "Türkiye'nin en başarılı SEO uzmanı" query; en/de are translations.
+  // Founder page, written for the "Türkiye'nin en iyi SEO uzmanı" query; en/de are translations.
   'about/founder': {
-    en: '/turkeys-most-successful-seo-expert',
-    tr: '/turkiyenin-en-basarili-seo-uzmani',
-    de: '/erfolgreichster-seo-experte-der-tuerkei',
+    en: '/turkeys-best-seo-expert',
+    tr: '/turkiyenin-en-iyi-seo-uzmani',
+    de: '/bester-seo-experte-der-tuerkei',
   },
 
   // Free tools. Link magnets — they run entirely in the browser, no API.

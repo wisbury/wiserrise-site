@@ -507,6 +507,9 @@ details[open] .v2-faq-plus { transform: rotate(45deg); }
 .v2-page-lede { margin: 0; font-size: clamp(18px, 1.6vw, 20px); line-height: 1.55; color: #1a1b19; max-width: 680px; text-wrap: pretty; }
 .v2-page-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 20px; margin-top: 8px; }
 .v2-page-note { font-size: 14px; color: #5c5e59; }
+/* kurucu sayfasındaki portre: başlık ve düğmenin altında, ortalı */
+.v2-page-photo { margin: 12px 0 0; width: min(100%, 360px); }
+.v2-page-photo img { display: block; width: 100%; height: auto; border-radius: 20px; }
 /* teşekkür sayfası (src/pages/tr/success.astro) */
 .v2-tesekkur { padding-bottom: clamp(72px, 10vw, 120px); }
 .v2-tesekkur-ok { display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; border-radius: 999px; background: #2bb3a6; color: #16244d; }
