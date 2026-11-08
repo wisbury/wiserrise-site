@@ -11,6 +11,8 @@ const SITE = 'https://wiserrise.com';
  */
 export const ORG_ID = `${SITE}/#organization`;
 export const WEBSITE_ID = `${SITE}/#website`;
+/** Wisbury LLC, the company Wiserrise is a brand of. wisbury.com has no site yet, so the @id lives here. */
+export const WISBURY_ID = `${SITE}/#wisbury`;
 
 /**
  * Google Business Profile identifiers, read off the profile's Maps URL.
@@ -73,6 +75,14 @@ const AREA_SERVED = [
   { '@type': 'Country', name: 'Türkiye' },
   { '@type': 'City', name: 'Antalya' },
 ];
+
+/**
+ * Pages keep plain dates ("2026-11-04"); Google wants a time and a time zone
+ * on Article and ProfilePage dates. Türkiye is UTC+3 all year.
+ */
+function withTime(date: string) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(date) ? `${date}T00:00:00+03:00` : date;
+}
 
 export interface FaqEntry {
   q: string;
@@ -174,8 +184,8 @@ export function articlePageSchema(opts: {
       // yoksa markanın OG kartı kullanılıyor.
       image: `${SITE}${opts.image ?? (opts.locale === 'tr' ? '/images/og-image-tr.png' : '/images/og-image.png')}`,
       inLanguage: opts.locale,
-      datePublished: opts.datePublished,
-      dateModified: opts.dateModified ?? opts.datePublished,
+      datePublished: withTime(opts.datePublished),
+      dateModified: withTime(opts.dateModified ?? opts.datePublished),
       author: { '@id': opts.author ? PERSON_ID : ORG_ID },
       publisher: { '@id': ORG_ID },
       // On a profile page the person is the main entity, so the Article sits inside the page instead.
@@ -202,8 +212,8 @@ export function articlePageSchema(opts: {
       url: pageUrl,
       name: opts.headline,
       inLanguage: opts.locale,
-      dateCreated: opts.datePublished,
-      dateModified: opts.dateModified ?? opts.datePublished,
+      dateCreated: withTime(opts.datePublished),
+      dateModified: withTime(opts.dateModified ?? opts.datePublished),
       mainEntity: { '@id': PERSON_ID },
       breadcrumb: { '@id': `${pageUrl}#breadcrumb` },
       ...(opts.image ? { primaryImageOfPage: { '@type': 'ImageObject', url: `${SITE}${opts.image}` } } : {}),
@@ -212,11 +222,8 @@ export function articlePageSchema(opts: {
 
   if (opts.author) {
     graph.push({
-      ...founderRef(),
-      image: PERSON_IMAGE,
+      ...founderRef(opts.locale),
       jobTitle: opts.author.jobTitle,
-      worksFor: { '@id': ORG_ID },
-      knowsAbout: PERSON_KNOWS[opts.locale],
     });
   }
 
@@ -276,18 +283,30 @@ export function organizationNode(locale: Locale) {
     knowsLanguage: ['tr', 'en', 'de'],
     sameAs: SAME_AS,
     // Embedded on every page for the same reason as this node: an @id alone would resolve to nothing elsewhere.
-    founder: founderRef(),
+    founder: founderRef(locale),
+    // "Wiserrise, Wisbury LLC’nin bir markasıdır." Both directions are stated, and the founder is his on both.
+    parentOrganization: {
+      '@type': 'Organization',
+      '@id': WISBURY_ID,
+      name: COMPANY_LEGAL_NAME,
+      legalName: COMPANY_LEGAL_NAME,
+      founder: { '@id': PERSON_ID },
+      subOrganization: { '@id': ORG_ID },
+    },
   };
 }
 
-/** Who the founder is, in the few fields every page carries. The founder page adds the rest. */
-function founderRef() {
+/** Who the founder is, carried by every page. The founder page adds his job title in its own language. */
+function founderRef(locale: Locale) {
   return {
     '@type': 'Person',
     '@id': PERSON_ID,
     name: 'Melih Us',
     url: PERSON_URL,
+    image: PERSON_IMAGE,
+    worksFor: { '@id': ORG_ID },
     sameAs: PERSON_SAME_AS,
+    knowsAbout: PERSON_KNOWS[locale],
   };
 }
 
