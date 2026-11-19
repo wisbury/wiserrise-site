@@ -1,0 +1,348 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'en' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'TRACKING', title: 'Conversions first', text: 'Form leads, calls from the ad and calls from your site are counted separately. Not a cent is spent before tracking is verified.' },
+  { label: 'KEYWORDS', title: 'Buyer intent only', text: 'Service plus city, near me, price, emergency. “How to” and job searches go on the negative list on day one.' },
+  { label: 'SETTINGS', title: 'Built by hand', text: 'Display Network and search partners off, location set to “presence”, auto-applied recommendations off.' },
+  { label: 'REPORTING', title: 'Leads, not clicks', text: 'The weekly report leads with cost per lead and which leads became real customers, then clicks.' },
+];
+
+const toc = [
+  { id: 'what', label: 'What a Google Ads agency does' },
+  { id: 'tracking', label: 'Tracking comes first' },
+  { id: 'budget', label: 'How the budget is set' },
+  { id: 'keywords', label: 'Keywords and match types' },
+  { id: 'settings', label: 'Google’s default settings' },
+  { id: 'ads', label: 'Ad copy and landing page' },
+  { id: 'management', label: 'Weekly management' },
+  { id: 'seo', label: 'Google Ads or SEO?' },
+];
+
+const faq = [
+  {
+    q: 'Is the ad budget the same as your fee?',
+    a: 'No, they are two separate items. The money for clicks goes to Google. Our fee covers building and managing the campaign. We work out the budget with you from your customer value and close rate.',
+  },
+  {
+    q: 'Who owns the ad account?',
+    a: 'You do. You link your own Google Ads account to our manager account and we work through that link. If you stop working with us, you remove the link and your campaigns and history stay in your account.',
+  },
+  {
+    q: 'How soon will I see results?',
+    a: 'Clicks start the day the ads go live. The real question is what each lead costs, and that takes time to settle. In the first 14 days we only clean up search terms; the first 60 to 90 days are a learning period.',
+  },
+  {
+    q: 'Do you use the budget Google recommends?',
+    a: 'No. We set the daily budget to cover at least 10 clicks, based on real bid ranges from Keyword Planner. If that is more than you want to spend, we narrow the service or the area. We never loosen the search intent.',
+  },
+  {
+    q: 'Is there a contract?',
+    a: 'No. We work month to month. If you are not happy, you simply do not continue the next month.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/google-ads"
+  title="Google Ads Agency: Search Campaign Management | Wiserrise"
+  description="A Google Ads agency that starts with conversion tracking: buyer-intent keywords, hand-built settings, a shared negative list and weekly management. No contract."
+  eyebrow="SERVICE · GOOGLE ADS"
+  h1="Google Ads agency: spend your budget on people ready to buy."
+  crumb="Google Ads"
+  lede="Google Ads management means spending your ad budget on people who are searching for your service right now. As a Google Ads agency we get lead tracking right first, then build a search campaign around buyer-intent queries only. We don’t leave the campaign on Google’s defaults; we read the search terms and manage it every week."
+  serviceName="Google Ads Management"
+  breadcrumb={[
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: p('services') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'Your profile and site fixed together, so you stay visible on the map when the ads stop.' },
+    { label: 'SEO', href: p('services/seo'), text: 'Win the searches you pay for in the free results over time.' },
+    { label: 'Google Business Profile', href: p('services/gbp'), text: 'The location asset in your ads comes from your profile. A weak profile makes a weak ad.' },
+  ]}
+  ctaLabel="Get a free ads analysis"
+  ctaHref="/#contact"
+>
+  <h2 id="what">What does a Google Ads agency do?</h2>
+
+  <p>
+    A good Google Ads agency sells leads, and clicks are only the means. When someone types “emergency plumber Leeds”, they
+    click one of the “Sponsored” lines above the results. You pay for that click, and the agency’s job is to make sure the
+    money goes to people who intend to buy.
+  </p>
+
+  <p>
+    Our work is <strong>search campaigns</strong> that bring calls, forms and bookings to local service businesses. We don’t
+    start with Shopping, video or Performance Max. Search brings demand first; other campaign types come later, once there
+    is enough conversion data.
+  </p>
+
+  <p>We build every campaign around seven rules:</p>
+
+  <ol>
+    <li>Search comes first.</li>
+    <li>The search, the ad and the landing page say the same thing.</li>
+    <li>Tracking is verified before any money is spent.</li>
+    <li>Google’s defaults are read, never accepted blindly.</li>
+    <li>One service, one campaign.</li>
+    <li>We measure leads and revenue, and clicks come last.</li>
+    <li>AI drafts, a person checks before anything goes into the account.</li>
+  </ol>
+
+  <h2 id="tracking">Why do you start with tracking?</h2>
+
+  <p>
+    Because if tracking is wrong, every automated bidding feature Google has works against you. The system multiplies
+    whatever you count as success. An account that counts page views as conversions gets very good at finding people who
+    look at a page and leave.
+  </p>
+
+  <p>Before a campaign goes live, three conversion actions have to be installed and working:</p>
+
+  <ul class="checklist">
+    <li>A form or booking request, with a thank-you page at its own address</li>
+    <li>Calls from the call button in the ad</li>
+    <li>Calls from tapping the number on your website</li>
+  </ul>
+
+  <p>
+    Enhanced conversions are added on top. Only real lead actions are primary goals. Scrolling, page views or hovering over a
+    button never are. A new campaign does not go live until a conversion has been recorded; it waits, paused.
+  </p>
+
+  <h2 id="budget">How is a Google Ads budget calculated?</h2>
+
+  <p>
+    We start with two numbers: what an average customer is worth to you, and how many of every 10 leads become customers.
+    Multiply them and you have the most a single lead can cost you. If a customer is worth 5,000 and you close one lead in
+    five, a lead is worth at most 1,000 to you, in whatever currency you bill in.
+  </p>
+
+  <p>
+    Then we look at the top-of-page bid range for every keyword we keep in Keyword Planner. The daily budget has to cover at
+    least 10 clicks. A healthy start is 10 to 30 clicks a day, because with fewer the campaign cannot collect enough data to
+    learn which keywords work.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>What if the budget is too small?</strong> We narrow it to one service and a smaller area. We don’t loosen the
+      search intent: a campaign full of cheap, irrelevant clicks ends up costing more than one that gets fewer but better
+      clicks. Google’s recommended budget plays no part in the calculation.
+    </p>
+  </div>
+
+  <h2 id="keywords">Which keywords do you bid on?</h2>
+
+  <p>
+    Only the searches of someone who wants the service now. Service plus city or neighbourhood, “near me”, “emergency”,
+    “price” and “quote” are typical. “How to”, job searches and one-word generic queries stay out.
+  </p>
+
+  <p>
+    We learned this from our own mistake. In one Google Ads campaign we spent around 800 TL on informational searches with no
+    buying intent before we noticed. Since then, the first thing we open is the search terms report, to filter out people
+    who are only looking for information.
+  </p>
+
+  <p>
+    Every keyword goes in twice: exact match and phrase match. No broad match at the start. The structure stays simple: each
+    service in its own campaign, each ad group on a single theme with 4 to 8 keywords. A few campaigns full of data beat many
+    campaigns that split the data thin.
+  </p>
+
+  <h3>A negative list from day one</h3>
+
+  <p>
+    The cheapest bad click is the one you never pay for. Before launch we attach one shared negative list to the account. It
+    covers job seekers (jobs, salary, internship), do-it-yourselfers (how to, course, training), people with no budget (free,
+    coupon), the wrong product and every place outside your service area. The list grows every week from the search terms
+    report.
+  </p>
+
+  <h2 id="settings">What do you change in Google’s default settings?</h2>
+
+  <p>
+    Almost all of them, by hand. Default settings are chosen to show more ads, and lowering your cost per lead is not their
+    goal. In a new search campaign we change these:
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Setting</th>
+          <th>Google’s default</th>
+          <th>Our setup</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Networks</strong></td>
+          <td>Search partners and Display Network on</td>
+          <td>Both off, Google Search only</td>
+        </tr>
+        <tr>
+          <td><strong>Location option</strong></td>
+          <td>People in or interested in your area</td>
+          <td>Only people in your area</td>
+        </tr>
+        <tr>
+          <td><strong>AI Max and automatic assets</strong></td>
+          <td>Switched on by itself in some accounts</td>
+          <td>Off at campaign and ad group level</td>
+        </tr>
+        <tr>
+          <td><strong>Auto-applied recommendations</strong></td>
+          <td>May be on</td>
+          <td>Off. Recommendations are read, never applied without approval.</td>
+        </tr>
+        <tr>
+          <td><strong>Bidding</strong></td>
+          <td>Maximize conversions</td>
+          <td>Maximize clicks with a CPC cap at first, conversion bidding once data builds up</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Data decides the bid strategy. A campaign with fewer than 30 conversions in the last 30 days does not move to conversion
+    bidding. Setting a target cost on a campaign with no data either stops the spend or scatters it.
+  </p>
+
+  <h2 id="ads">How are the ads and landing page prepared?</h2>
+
+  <p>
+    First we search the main keyword ourselves and note what the competing ads promise. Then we write only the lines you
+    can honestly say. Each ad group gets 8 to 10 headlines, each from a different angle: intent, difference, offer, trust,
+    call to action and brand.
+  </p>
+
+  <p>
+    The intent headline, carrying the keyword and the city, is pinned to position one. Phone numbers never go in the ad
+    text; the call asset shows them. Sitelinks, callouts, a “Services” structured snippet, call and location assets are all
+    filled in.
+  </p>
+
+  <p>
+    The ad points to that service’s own page, never the homepage. The page has to load fast on a phone, with call and
+    WhatsApp buttons on the first screen. If the page is missing or weak, we write it as part of
+    <a href={p('services/content')}>content production</a>.
+  </p>
+
+  <h3>Regulated sectors: health and law</h3>
+
+  <p>
+    For health businesses we never write guarantees or “certain results” in an ad. If Google’s health policy flags a
+    keyword, we request a policy exception before deleting it. In Turkey, Article 55 of the Attorneys’ Act bans lawyers from
+    advertising, so we don’t recommend Google Ads to Turkish law firms and work with them through
+    <a href={p('industries/law')}>SEO that respects the advertising ban</a> instead. In other countries, the local bar rules
+    decide what an ad may say.
+  </p>
+
+  <h2 id="management">What happens after the campaign goes live?</h2>
+
+  <p>
+    For the first 14 days we don’t touch bids, ads or structure. Every day or two we read the search terms report and add
+    negatives, and check that the budget is spending and conversions are being recorded.
+  </p>
+
+  <ul class="checklist">
+    <li>
+      <strong>Every week:</strong> search terms, cost per click, click-through rate, conversion rate and cost per lead per ad
+      group. A new search term that works is added as an exact match keyword.
+    </li>
+    <li>
+      <strong>Every 30 days:</strong> keywords that spend without leads are paused, a new ad variant is tested, leads that
+      became customers are matched to keywords and budget moves toward those keywords.
+    </li>
+    <li>
+      <strong>Big changes spaced out:</strong> restructuring and bid strategy changes never happen in the same week. Each
+      change is judged over 14-day and 28-day windows.
+    </li>
+  </ul>
+
+  <p>
+    The weekly report also comes with one question for you: which of this week’s leads were real customers? Without that
+    answer the campaign only sees form counts, and a form count alone proves nothing.
+  </p>
+
+  <h3>If you already have an account</h3>
+
+  <p>
+    We don’t start from scratch. First we install and verify the conversion actions. Then we turn the good search terms from
+    the last 90 days of any broad match campaign into exact and phrase keywords and move the bad ones to the negative list.
+    We pause the old campaign instead of deleting it, so its history stays in your account.
+  </p>
+
+  <h2 id="seo">Google Ads or SEO?</h2>
+
+  <p>
+    They do different jobs. Ads bring traffic from the first week and stop the day the budget runs out.
+    <a href={p('services/seo')}>SEO</a> and <a href={p('services/local-seo')}>local SEO</a> start slower, but a page or profile
+    that ranks keeps bringing customers month after month.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Google Ads</th>
+          <th>SEO and local SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>First traffic</strong></td>
+          <td>The day it goes live</td>
+          <td>First movement on the map after 4 to 8 weeks for most businesses, 3 to 6 months in search</td>
+        </tr>
+        <tr>
+          <td><strong>Cost model</strong></td>
+          <td>You pay for every click</td>
+          <td>Clicks are free, the cost is work and content</td>
+        </tr>
+        <tr>
+          <td><strong>When it stops</strong></td>
+          <td>Visibility ends at once</td>
+          <td>Rankings slip slowly</td>
+        </tr>
+        <tr>
+          <td><strong>Best for</strong></td>
+          <td>Leads now, seasonal work, new services</td>
+          <td>Lasting visibility and a lower cost per lead over time</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    For most local businesses the right answer is both. Ads bring leads on keywords where you don’t rank yet. The search
+    terms report shows which keywords actually bring customers, and that data tells us which page to write first on the SEO
+    side.
+  </p>
+
+  <p>
+    We work with one business per city and industry. Managing two competitors’ ads in the same auction would only push up
+    the cost per click for both.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Where is your ad budget <span class="highlight">going</span>?</h2>
+    <p>
+      In a free ads analysis we read your account settings, search terms and conversion tracking and list what to fix first.
+      No account yet? We work out the budget from your own numbers. Results in your inbox within 24 hours.
+    </p>
+  </Fragment>
+</ContentLayout>

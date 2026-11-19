@@ -1,0 +1,373 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { routePath } from '../../../i18n/routes';
+
+const locale = 'tr' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'ÖLÇÜM', title: 'Önce dönüşüm takibi', text: 'Form, reklamdan gelen arama ve siteden gelen arama ayrı ayrı sayılır. Ölçüm doğrulanmadan tek kuruş harcanmaz.' },
+  { label: 'KELİME', title: 'Yalnız alım niyeti', text: 'Hizmet + şehir, yakınımda, fiyat, acil. “Nasıl yapılır” ve iş ilanı aramaları ilk günden negatif listede.' },
+  { label: 'AYAR', title: 'Elle kurulan kampanya', text: 'Görüntülü Reklam Ağı ve arama ortakları kapalı, konum “bulunan kişiler”, otomatik öneriler uygulanmaz.' },
+  { label: 'RAPOR', title: 'Tıklama değil talep', text: 'Haftalık raporda tıklama sayısından önce talep başı maliyet ve hangi talebin gerçek müşteri olduğu yazar.' },
+];
+
+const toc = [
+  { id: 'ne-yapar', label: 'Google Ads ajansı ne yapar?' },
+  { id: 'olcum', label: 'Önce ölçüm' },
+  { id: 'butce', label: 'Bütçe nasıl hesaplanır?' },
+  { id: 'kelime', label: 'Kelime ve eşleme' },
+  { id: 'ayarlar', label: 'Google’ın varsayılanları' },
+  { id: 'reklam', label: 'Reklam metni ve sayfa' },
+  { id: 'yonetim', label: 'Haftalık yönetim' },
+  { id: 'seo', label: 'Google Ads mı, SEO mu?' },
+];
+
+const faq = [
+  {
+    q: 'Reklam bütçesi ile sizin ücretiniz aynı şey mi?',
+    a: 'Hayır, iki ayrı kalem. Tıklamaların parası Google’a gider, bizim ücretimiz kampanyanın kurulumu ve yönetimi içindir. Bütçeyi sizin müşteri değeriniz ve kapanma oranınızla birlikte hesaplarız.',
+  },
+  {
+    q: 'Reklam hesabı kimin olur?',
+    a: 'Hesap sizin kalır. Kendi Google Ads hesabınızı yönetici hesabımıza bağlarsınız, biz o bağlantı üzerinden çalışırız. Bizimle çalışmayı bıraktığınız gün bağlantıyı kaldırırsınız, kampanyalar ve geçmiş veri hesabınızda durur.',
+  },
+  {
+    q: 'İlk sonuçları ne zaman görürüm?',
+    a: 'Reklam yayına girdiği gün tıklama gelir. Asıl soru talebin hangi maliyetle geldiği ve bunun oturması zaman alır. İlk 14 günde yalnız arama terimlerini temizleriz, ilk 60 ile 90 gün öğrenme dönemidir.',
+  },
+  {
+    q: 'Google’ın önerdiği bütçeyi kullanıyor musunuz?',
+    a: 'Kullanmıyoruz. Günlük bütçeyi en az 10 tıklamayı karşılayacak şekilde, Anahtar Kelime Planlayıcı’daki gerçek tıklama fiyatlarından hesaplarız. Bu tutar size uymuyorsa hizmeti ya da bölgeyi daraltırız, arama niyetini daraltmayız.',
+  },
+  {
+    q: 'Sözleşme var mı?',
+    a: 'Yok. Aylık çalışıyoruz. Memnun kalmazsanız bir sonraki ay devam etmezsiniz.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="services/google-ads"
+  title="Google Ads Ajansı: Reklam Yönetimi Hizmeti | Wiserrise"
+  description="Google Ads ajansı olarak arama kampanyanızı ölçümle başlatıyoruz: alım niyetli kelimeler, elle ayarlar, ortak negatif liste, haftalık yönetim. Sözleşme yok."
+  eyebrow="HİZMET · GOOGLE ADS"
+  h1="Google Ads ajansı: bütçeniz arayan müşteriye gitsin."
+  crumb="Google Ads"
+  lede="Google Ads yönetimi, reklam bütçenizi şu anda hizmetinizi arayan kişilere harcatma işidir. Biz Google Ads ajansı olarak önce talepleri doğru ölçeriz, sonra yalnız alım niyeti taşıyan aramalarla arama kampanyası kurarız. Kampanyayı Google’ın varsayılanlarına bırakmayız, her hafta arama terimlerini okuyup yönetiriz."
+  serviceName="Google Ads Yönetimi"
+  breadcrumb={[
+    { label: 'Ana Sayfa', href: '/tr' },
+    { label: 'Hizmetler', href: p('services') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'Reklam durduğunda da haritada görünmeniz için profilinizi ve sitenizi birlikte düzeltiriz.' },
+    { label: 'SEO', href: p('services/seo'), text: 'Reklama ödediğiniz aramaları zamanla ücretsiz sonuçlarda da kazanmak için.' },
+    { label: 'Google İşletme Profili Yönetimi', href: p('services/gbp'), text: 'Reklamdaki konum öğesi profilinizden gelir. Profil zayıfsa reklam da zayıf görünür.' },
+    { label: 'SEO fiyatları', href: p('pricing/seo'), text: 'Ücreti neyin belirlediğini ve paketlerin nasıl kurulduğunu anlattık.' },
+  ]}
+  ctaLabel="Ücretsiz reklam analizi al"
+  ctaHref="/tr#contact"
+>
+  <h2 id="ne-yapar">Google Ads ajansı ne yapar?</h2>
+
+  <p>
+    İyi bir Google Ads ajansı tıklama satmaz, talep getirir. Arayan kişi “Kadıköy kombi servisi” yazdığında sonuçların
+    üstündeki “Sponsorlu” satırlardan birine tıklar. O tıklamanın parasını siz ödersiniz, ajansın işi bu parayı alım
+    niyeti olan kişilere harcatmaktır.
+  </p>
+
+  <p>
+    Bizim işimiz yerel hizmet işletmeleri için arama, form ve randevu getiren <strong>arama kampanyalarıdır</strong>.
+    Alışveriş, video ve Performance Max kampanyalarıyla başlamıyoruz. Önce arama kampanyası talep getirir, öteki türler
+    ancak bundan sonra ve yeterli dönüşüm verisi olduğunda konuşulur.
+  </p>
+
+  <p>Bir kampanyayı yedi kurala göre kuruyoruz:</p>
+
+  <ol>
+    <li>Önce arama kampanyası.</li>
+    <li>Arama, reklam ve açılış sayfası aynı şeyi söyler.</li>
+    <li>Harcamadan önce ölçüm doğrulanır.</li>
+    <li>Google’ın varsayılanları okunur, kendiliğinden kabul edilmez.</li>
+    <li>Bir hizmet, bir kampanya.</li>
+    <li>Tıklama değil talep ve gelir ölçülür.</li>
+    <li>Yapay zeka taslak yazar, hesaba girmeden önce insan kontrol eder.</li>
+  </ol>
+
+  <h2 id="olcum">Neden önce ölçümle başlıyorsunuz?</h2>
+
+  <p>
+    Çünkü ölçüm yanlışsa Google’ın bütün otomatik teklif özellikleri sizin aleyhinize çalışır. Sistem neyi “başarı”
+    sayıyorsanız onu çoğaltır. Sayfa görüntülemeyi dönüşüm sayan bir hesap, sayfaya bakıp çıkan kişiyi bulmakta çok başarılı
+    olur.
+  </p>
+
+  <p>Kampanya açılmadan önce hesapta üç dönüşüm işlemi kurulu ve çalışır olmalı:</p>
+
+  <ul class="checklist">
+    <li>Form ya da randevu talebi, kendi adresi olan bir teşekkür sayfasıyla</li>
+    <li>Reklamdaki arama düğmesinden gelen telefon araması</li>
+    <li>Sitenizdeki numaraya tıklayarak yapılan arama</li>
+  </ul>
+
+  <p>
+    Bunlara gelişmiş dönüşümler eklenir. Birincil hedef yalnız gerçek talep işlemleridir.
+  </p>
+
+  <p>
+    Kaydırma, sayfa görüntüleme ya da
+    bir düğmenin üstüne gelme hiçbir zaman birincil hedef olmaz. Dönüşüm kaydı görülmeden yeni kampanya yayına girmez,
+    duraklatılmış bekler.
+  </p>
+
+  <h2 id="butce">Google Ads bütçesi nasıl hesaplanır?</h2>
+
+  <p>
+    İki rakamla başlıyoruz: bir müşterinin size ortalama değeri ve gelen 10 talepten kaçının müşteriye dönüştüğü. Bu
+    ikisinin çarpımı, bir talep için ödeyebileceğiniz en yüksek tutardır. Müşteri değeri 5.000 TL ve kapanma oranı beşte bir
+    ise bir talep size en fazla 1.000 TL kazandırır.
+  </p>
+
+  <p>
+    Sonra Anahtar Kelime Planlayıcı’da tutacağımız her kelimenin sayfa üstü teklif aralığına bakarız. Günlük bütçe en az 10
+    tıklamayı karşılamalı. Sağlıklı bir başlangıç günde 10 ile 30 tıklama arasıdır, çünkü daha azıyla kampanya hangi kelimenin
+    işe yaradığını öğrenecek veriyi toplayamaz.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Bütçe yetmiyorsa ne yapıyoruz?</strong> Tek hizmete ve daha küçük bir bölgeye daraltıyoruz. Arama niyetini
+      gevşetmiyoruz: ucuz ama alakasız tıklamalarla dolu bir kampanya, az ama doğru tıklama alan kampanyadan daha pahalıya
+      gelir.
+    </p>
+  </div>
+
+  <h2 id="kelime">Hangi kelimelere reklam veriyorsunuz?</h2>
+
+  <p>
+    Yalnız şimdi hizmet almak isteyen kişinin yazdığı aramalara. Hizmet ile şehir ya da semt, “yakınımda”, “acil”, “fiyat”,
+    “teklif” bu grubun tipik örnekleri. “Nasıl yapılır”, iş ilanı ve tek kelimelik genel aramalar listeye girmez.
+  </p>
+
+  <p>
+    Bunu bize ders olan bir hatadan biliyoruz. Bir Google Ads kampanyasında niyet taşımayan bilgi aramalarına, farkında
+    olmadan yaklaşık 800 TL harcadık. Kıyısından döndük.
+  </p>
+
+  <p>
+    O günden beri ilk iş, arama terimleri raporunu açıp bilgi arayanları
+    ayıklamak.
+  </p>
+
+  <p>
+    Her kelime iki kez girer: tam eşleme ve sıralı eşleme. Başlangıçta geniş eşleme yok.
+  </p>
+
+  <p>
+    Kampanya yapısı da sade: her hizmet
+    kendi kampanyasında, her reklam grubu tek bir temada ve 4 ile 8 kelime arasında. Az ama veriyle dolu kampanya, veriyi
+    ona buna bölen çok kampanyadan iyi çalışır.
+  </p>
+
+  <h3>İlk günden bağlanan negatif liste</h3>
+
+  <p>
+    Kötü tıklamanın en ucuzu hiç ödenmeyenidir. Yayından önce hesaba tek bir ortak negatif liste bağlarız.
+  </p>
+
+  <p>
+    İçinde iş
+    arayanlar (iş ilanı, maaş, staj), kendi yapmak isteyenler (nasıl, kurs, eğitim), bütçesi olmayanlar (ücretsiz, kupon),
+    yanlış ürün ve hizmet bölgeniz dışındaki yerler bulunur. Liste her hafta arama terimleri raporundan büyür.
+  </p>
+
+  <h2 id="ayarlar">Google’ın varsayılan ayarlarında ne değiştiriyorsunuz?</h2>
+
+  <p>
+    Neredeyse hepsini elle kuruyoruz. Varsayılan ayarlar Google’ın reklam gösterimini artırmak için seçilmiştir, sizin talep
+    başı maliyetinizi düşürmek için değil. Yeni bir arama kampanyasında şunlara dokunuyoruz:
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Ayar</th>
+          <th>Google’ın varsayılanı</th>
+          <th>Bizim kurulumumuz</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Ağlar</strong></td>
+          <td>Arama ortakları ve Görüntülü Reklam Ağı açık</td>
+          <td>İkisi de kapalı, yalnız Google arama</td>
+        </tr>
+        <tr>
+          <td><strong>Konum seçeneği</strong></td>
+          <td>Bölgede bulunan ya da bölgeyle ilgilenen kişiler</td>
+          <td>Yalnız bölgede bulunan kişiler</td>
+        </tr>
+        <tr>
+          <td><strong>AI Max ve otomatik öğeler</strong></td>
+          <td>Bazı hesaplarda kendiliğinden açılıyor</td>
+          <td>Kampanya ve reklam grubu düzeyinde kapalı</td>
+        </tr>
+        <tr>
+          <td><strong>Önerileri otomatik uygulama</strong></td>
+          <td>Açık olabilir</td>
+          <td>Kapalı. Öneriler okunur, onaysız uygulanmaz.</td>
+        </tr>
+        <tr>
+          <td><strong>Teklif</strong></td>
+          <td>Dönüşümleri en üst düzeye çıkar</td>
+          <td>Başta tıklama teklifi ve TBM sınırı, veri biriktikçe dönüşüm teklifi</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Teklif stratejisini veri belirler. Son 30 günde 30 dönüşüme ulaşmayan kampanyayı dönüşüm teklifine almıyoruz. Verisi
+    olmayan kampanyaya hedef maliyet koymak harcamayı durdurur ya da rastgele dağıtır.
+  </p>
+
+  <h2 id="reklam">Reklam metni ve açılış sayfası nasıl hazırlanıyor?</h2>
+
+  <p>
+    Önce ana kelimeyi kendimiz arar, üstteki rakip reklamların ne vaat ettiğini not ederiz. Sonra yalnız sizin
+    söyleyebileceğiniz satırları yazarız. Her reklam grubunda 8 ile 10 başlık bulunur ve her biri farklı bir açıdan konuşur:
+    niyet, fark, teklif, güven, harekete geçirme ve marka.
+  </p>
+
+  <p>
+    Aranan kelimeyi ve şehri taşıyan niyet başlığı birinci sıraya sabitlenir. Telefon numarası reklam metnine yazılmaz,
+    arama öğesiyle gösterilir. Site bağlantıları, açıklama metinleri, “Hizmetler” snippet’i, arama ve konum öğeleri eksiksiz
+    doldurulur.
+  </p>
+
+  <p>
+    Reklamın gittiği adres o hizmetin kendi sayfasıdır, ana sayfa asla. Sayfa telefonda hızlı açılmalı, arama ve WhatsApp
+    düğmeleri ilk ekranda durmalı. Sayfa yoksa ya da zayıfsa <a href={p('services/content')}>içerik üretimi</a> tarafında
+    yazarız.
+  </p>
+
+  <h3>Sağlık ve hukuk gibi kurallı sektörler</h3>
+
+  <p>
+    Sağlık işletmelerinde reklam metninde garanti ya da “kesin sonuç” yazmayız. Google’ın sağlık politikası bir kelimeyi
+    işaretlerse kelimeyi silmeden önce politika istisnası talep ederiz.
+  </p>
+
+  <p>
+    Türkiye’deki avukatlar için Google Ads önermiyoruz,
+    çünkü Avukatlık Kanunu’nun 55. maddesi reklamı yasaklıyor. Hukuk bürolarıyla
+    <a href={p('industries/law')}>reklam yasağına uygun SEO</a> üzerinden çalışıyoruz.
+  </p>
+
+  <h2 id="yonetim">Kampanya yayına girdikten sonra ne yapıyorsunuz?</h2>
+
+  <p>
+    İlk 14 gün teklife, reklama ve yapıya dokunmuyoruz. Bir iki günde bir arama terimleri raporunu okuyup negatif ekliyoruz,
+    bütçenin harcandığını ve dönüşümlerin kaydedildiğini kontrol ediyoruz.
+  </p>
+
+  <ul class="checklist">
+    <li>
+      <strong>Her hafta:</strong> arama terimleri, reklam grubu başına tıklama fiyatı, tıklama oranı, dönüşüm oranı ve talep
+      başı maliyet. İşe yarayan yeni terim tam eşleme kelime olarak eklenir.
+    </li>
+    <li>
+      <strong>Her 30 gün:</strong> talep getirmeden harcayan kelimeler duraklatılır, yeni bir reklam varyantı denenir, gerçek
+      müşteriye dönen talepler kelimelerle eşleştirilir ve bütçe o kelimelere kaydırılır.
+    </li>
+    <li>
+      <strong>Büyük değişiklikler aralıklı:</strong> yeniden yapılandırma ile teklif değişikliği aynı hafta yapılmaz. Bir
+      değişikliğin etkisi 14 ve 28 günlük pencerelerde okunur.
+    </li>
+  </ul>
+
+  <p>
+    Haftalık raporda size bir soru da gelir: bu hafta gelen taleplerden hangileri gerçek müşteriydi? Bu cevap olmadan kampanya
+    yalnız form sayısına bakar. Form sayısı tek başına başarı göstermez.
+  </p>
+
+  <h3>Mevcut hesabınız varsa</h3>
+
+  <p>
+    Sıfırdan başlamıyoruz. Önce dönüşüm işlemlerini kurup doğruluyoruz. Sonra geniş eşlemeli kampanyanın son 90 günlük arama
+    terimlerinden iyi olanları tam ve sıralı kelimeye çeviriyor, kötü olanları negatif listeye alıyoruz.
+  </p>
+
+  <p>
+    Eski kampanyayı
+    silmiyoruz, duraklatıyoruz: geçmiş raporu hesabınızda kalsın.
+  </p>
+
+  <h2 id="seo">Google Ads mı, SEO mu?</h2>
+
+  <p>
+    İkisi farklı işler yapar. Reklam ilk haftadan trafik getirir ama bütçe bittiği gün durur. <a href={p('services/seo')}>SEO</a>
+    ve <a href={p('services/local-seo')}>local SEO</a> geç başlar, iyi sıralanan sayfa ve profil ise ay ay müşteri getirmeye
+    devam eder.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Google Ads</th>
+          <th>SEO ve local SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>İlk trafik</strong></td>
+          <td>Yayına girdiği gün</td>
+          <td>Haritada ilk hareket çoğu işletmede 4 ile 8 hafta, aramada 3 ile 6 ay</td>
+        </tr>
+        <tr>
+          <td><strong>Maliyet yapısı</strong></td>
+          <td>Her tıklama için ödeme</td>
+          <td>Tıklama ücretsiz, emek ve içerik maliyeti</td>
+        </tr>
+        <tr>
+          <td><strong>Durunca</strong></td>
+          <td>Görünürlük hemen biter</td>
+          <td>Sıra yavaş geriler</td>
+        </tr>
+        <tr>
+          <td><strong>En iyi kullanım</strong></td>
+          <td>Hemen talep, sezon, yeni hizmet</td>
+          <td>Kalıcı görünürlük, talep başı maliyeti zamanla düşürmek</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Çoğu yerel işletme için doğru sıra ikisini birlikte yürütmek. Reklam, aramada henüz görünmediğiniz kelimelerde talep
+    getirir. Arama terimleri raporu da hangi kelimenin gerçekten müşteri getirdiğini gösterir, SEO tarafında hangi sayfayı
+    önce yazacağımıza bu veriyle karar veririz.
+  </p>
+
+  <p>
+    Aynı şehirde, aynı sektörde tek işletmeyle çalışıyoruz. İki rakibin reklamını aynı açık artırmada yönetmek, ikisinin de
+    tıklama fiyatını yükseltir.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Reklam bütçeniz <span class="highlight">nereye</span> gidiyor?</h2>
+    <p>
+      Ücretsiz reklam analizinde hesabınızın ayarlarını, arama terimlerini ve dönüşüm takibini okur, ilk düzeltilecek
+      kalemleri çıkarırız. Hesabınız yoksa bütçe hesabını sizin rakamlarınızla yaparız. Sonuç 24 saat içinde
+      <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

@@ -1,0 +1,321 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { routePath } from '../../i18n/routes';
+
+const locale = 'tr' as const;
+const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
+
+const features = [
+  { label: 'KAPSAM', title: 'Hangi iş?', text: 'Haritada görünmek, aramada sıralanmak, yapay zeka yanıtlarında anılmak. Her biri ayrı iş, ayrı emek.' },
+  { label: 'SİTE', title: 'Sitenin bugünkü hali', text: 'Taranamayan sayfalar, eksik hizmet sayfaları, kopya içerik. Teknik borç ne kadar büyükse ilk aylar o kadar yoğun geçer.' },
+  { label: 'REKABET', title: 'Şehir ve sektör', text: 'İstanbul’da diş hekimi ile ilçede oto ekspertiz aynı emeği istemez. Rakibin ne yaptığını ölçmeden fiyat söylemeyiz.' },
+  { label: 'ÖLÇEK', title: 'Şube, dil, sayfa', text: 'Her şube ayrı profil, her dil ayrı sayfa seti demek. Ölçek büyüdükçe iş de büyür.' },
+];
+
+const toc = [
+  { id: 'neden', label: 'Neden sabit fiyat listesi yok?' },
+  { id: 'etkenler', label: 'Fiyatı belirleyen etkenler' },
+  { id: 'paketler', label: 'Paketler nasıl kuruluyor?' },
+  { id: 'ucretin-icinde', label: 'Ücretin içinde ne var?' },
+  { id: 'ucuz', label: 'Ucuz SEO’nun bedeli' },
+  { id: 'sorular', label: 'Teklif almadan önce sorun' },
+  { id: 'surec', label: 'Teklif nasıl hazırlanıyor?' },
+];
+
+const faq = [
+  {
+    q: 'SEO fiyatları neden sitenizde yazmıyor?',
+    a: 'Çünkü aynı fiyat iki farklı işletmeye uymuyor. Teknik hatası olmayan, tek şubeli bir sitenin ihtiyacı ile her şeyi baştan kurulacak, üç şubeli bir sitenin ihtiyacı aynı değil. Fiyatı ücretsiz analizden sonra, sizin sitenize ve rakiplerinize bakarak yazılı olarak veriyoruz.',
+  },
+  {
+    q: 'Ödeme aylık mı, tek seferlik mi?',
+    a: 'SEO ve local SEO aylık yürüyen işler, ücret de aylık. Sözleşme yok: memnun kalmazsanız bir sonraki ay devam etmezsiniz.',
+  },
+  {
+    q: 'Google Ads bütçesi SEO fiyatına dahil mi?',
+    a: 'Dahil değil. Google Ads ayrı bir hizmet ve tıklamaların parası doğrudan Google’a gider. Yönetim ücreti ile reklam bütçesi iki ayrı kalemdir.',
+  },
+  {
+    q: 'Sıralama garantisi veriyor musunuz?',
+    a: 'Vermiyoruz, çünkü sıralamayı kimse garanti edemez. Garanti ettiğimiz şey yapacağımız iş ve ölçüm: her hafta ne yaptığımızı ve sıranızın nasıl değiştiğini raporda görürsünüz.',
+  },
+  {
+    q: 'Sitemi başka bir firma yönetiyor, yine de çalışır mısınız?',
+    a: 'Siteyi komple bizim yönetmemiz gerekiyor. Yapılacakları başkasına iletip uygulanmasını beklediğimiz bir işte aylarca aynı hatayı düzelttik. Bu yüzden siteyi yönetemeyeceğimiz işe başlamıyoruz.',
+  },
+];
+---
+
+<ContentLayout
+  locale={locale}
+  route="pricing/seo"
+  title="SEO Fiyatları: Ücreti Neler Belirler? | Wiserrise"
+  description="SEO fiyatları neye göre değişir? Kapsam, sitenin teknik durumu, rekabet ve ölçek. Paketlerin nasıl kurulduğunu, ücretin içinde ne olduğunu açıkça anlattık."
+  eyebrow="FİYATLANDIRMA · SEO"
+  h1="SEO fiyatları: ücreti neler belirler?"
+  crumb="SEO fiyatları"
+  lede="SEO fiyatları dört şeye göre değişir: hangi işi istediğiniz, sitenizin bugünkü hali, şehrinizdeki ve sektörünüzdeki rekabet, şube ve dil sayısı. Bu yüzden sitemizde sabit bir fiyat listesi yok. Fiyatı ücretsiz analizden sonra, sizin verinize bakarak yazılı veriyoruz. Aşağıda bu dört etkeni ve paketlerimizin nasıl kurulduğunu tek tek anlattık."
+  serviceName="SEO Hizmeti"
+  breadcrumb={[
+    { label: 'Ana Sayfa', href: '/tr' },
+    { label: 'Hizmetler', href: p('services') },
+  ]}
+  features={features}
+  toc={toc}
+  faq={faq}
+  related={[
+    { label: 'SEO', href: p('services/seo'), text: 'Teknik altyapı, sayfa düzeni, içerik ve backlink ile aramada sıralanmak.' },
+    { label: 'Local SEO', href: p('services/local-seo'), text: 'Google Haritalar’da çevrenizdeki müşteriye görünmek için profil ve site birlikte.' },
+    { label: 'Google Ads', href: p('services/google-ads'), text: 'Aramada henüz görünmediğiniz kelimelerde ilk haftadan talep almak için.' },
+    { label: 'GEO', href: p('services/geo'), text: 'ChatGPT, Gemini ve Google’ın yapay zeka yanıtlarında anılmak için.' },
+  ]}
+  relatedHeading="Hizmetler"
+  ctaLabel="Ücretsiz analiz al"
+  ctaHref="/tr#contact"
+>
+  <h2 id="neden">Neden sabit bir SEO fiyat listesi yok?</h2>
+
+  <p>
+    Çünkü SEO, bir sitenin eksiklerini kapatma işi. Eksikler her sitede farklı. Teknik açıdan temiz, hizmet
+    sayfaları yazılmış bir siteyle sayfaları Google’da hiç görünmeyen bir site aynı ayda aynı emeği istemez.
+  </p>
+
+  <p>
+    Tek fiyatlı paket satan biri iki şeyden birini yapar.
+  </p>
+
+  <p>
+    Ya herkese en ağır işin fiyatını söyler, ya da her siteye aynı
+    sınırlı işi yapar ve geri kalanı yapılmadan kalır. İkisini de istemiyoruz. Bu yüzden önce bakıyor, sonra fiyat
+    söylüyoruz.
+  </p>
+
+  <p>
+    Ücretsiz analizde sitenizi tarar, Google profilinize ve rakiplerinize bakarız. Sonuç 24 saat içinde e-postanızda olur.
+    Teklif o analizin üstüne kurulur ve neyin neden yapılacağını yazar.
+  </p>
+
+  <h2 id="etkenler">SEO fiyatlarını hangi etkenler belirler?</h2>
+
+  <p>Dört etken var. Bir teklifi okurken hangisinin fiyatı yukarı ittiğini bilirseniz karşılaştırma yapmanız kolaylaşır.</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Etken</th>
+          <th>Fiyatı düşüren durum</th>
+          <th>Fiyatı yükselten durum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Kapsam</strong></td>
+          <td>Tek hizmet, tek kanal (yalnız harita ya da yalnız arama)</td>
+          <td>Harita, arama ve yapay zeka yanıtları birlikte</td>
+        </tr>
+        <tr>
+          <td><strong>Sitenin durumu</strong></td>
+          <td>Taranıyor, hızlı, hizmet sayfaları var</td>
+          <td>İndeks hataları, kopya sayfalar, eksik hizmet sayfaları</td>
+        </tr>
+        <tr>
+          <td><strong>Rekabet</strong></td>
+          <td>Küçük şehir ya da az rakipli sektör</td>
+          <td>Büyük şehir merkezi, çok sayıda güçlü rakip</td>
+        </tr>
+        <tr>
+          <td><strong>Ölçek</strong></td>
+          <td>Tek şube, tek dil</td>
+          <td>Birden fazla şube, birden fazla dil</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>1. Kapsam: hangi işi istiyorsunuz?</h3>
+
+  <p>
+    Müşterisi çevreden gelen bir işletmenin asıl yarışı haritada. <a href={p('services/local-seo')}>Local SEO</a> burada
+    Google İşletme Profilini ve siteyi birlikte düzeltir.
+  </p>
+
+  <p>
+    Türkiye’nin her yerine satan bir işletmenin yarışı ise normal arama
+    sonuçlarında ve orada <a href={p('services/seo')}>SEO</a> çalışır. ChatGPT ve Gemini yanıtlarında anılmak isteyen
+    işletme için <a href={p('services/geo')}>GEO</a> ayrı bir iştir.
+  </p>
+
+  <p>
+    Bu işlerin hepsine aynı anda ihtiyacınız olmayabilir. Hangisinden başlamanız gerektiğini analizde söyleriz ve teklife
+    yalnız onu yazarız.
+  </p>
+
+  <h3>2. Sitenizin bugünkü hali</h3>
+
+  <p>
+    İlk ayların emeğini en çok bu belirler. Google’ın taramadığı sayfalar, yanlış yönlendirmeler, aynı aramaya oturan iki
+    sayfa, hiç yazılmamış hizmet sayfaları: hepsi <a href={p('services/technical-seo')}>teknik SEO</a> ve
+    <a href={p('services/content')}>içerik üretimi</a> tarafında iş çıkarır.
+  </p>
+
+  <p>
+    Bu teknik borç kapandıktan sonra iş hafifler ve aylık çalışma bakım, ölçüm ve yeni içerik ağırlıklı devam eder.
+  </p>
+
+  <h3>3. Şehrinizde ve sektörünüzdeki rekabet</h3>
+
+  <p>
+    Aynı hizmet iki şehirde çok farklı emek ister. Büyük şehir merkezinde haritada ilk üçe girmek için rakiplerin yorum,
+    kategori ve içerik farkını kapatmak gerekir. Küçük bir ilçede aynı iş daha kısa sürer.
+  </p>
+
+  <p>
+    Rekabeti tahminle değil ölçümle okuyoruz: bölgenizin farklı noktalarından kaçıncı çıktığınızı ve en güçlü rakiplerinizle
+    aranızdaki farkı çıkarırız. Fiyat bu farka göre belirlenir.
+  </p>
+
+  <h3>4. Şube, dil ve sayfa sayısı</h3>
+
+  <p>
+    Her şube Google için ayrı bir işletmedir: kendi profili, sitede kendi sayfası olur. Türkçe, İngilizce ve Almanca hizmet
+    verdiğimiz için çok dilli sitelerde her dil ayrı bir sayfa seti demektir. Şube ve dil arttıkça iş de artar.
+  </p>
+
+  <h2 id="paketler">SEO paketleri nasıl kuruluyor?</h2>
+
+  <p>
+    Paketlerimiz yapılacak işin sırasını tarif eder. Her işte aynı ilke geçerli: ölçmeden hiçbir şeye
+    dokunmuyoruz.
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Paket</th>
+          <th>Kimin için</th>
+          <th>Nasıl ilerler</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Local SEO</strong></td>
+          <td>Müşterisi çevreden gelen işletmeler: klinik, büro, servis, mağaza</td>
+          <td>90 günlük başlangıç programı, sonra aylık devam</td>
+        </tr>
+        <tr>
+          <td><strong>SEO</strong></td>
+          <td>Şehirden bağımsız aranan işler ve internetten satış yapanlar</td>
+          <td>Başlangıç denetimi, ilk düzeltmeler, sonra aylık içerik ve ölçüm</td>
+        </tr>
+        <tr>
+          <td><strong>GEO</strong></td>
+          <td>Yapay zeka asistanlarında önerilmek isteyen işletmeler</td>
+          <td>Hangi soruda anıldığınızın ölçümü, sonra eksik sorulara çalışma</td>
+        </tr>
+        <tr>
+          <td><strong>Google Ads yönetimi</strong></td>
+          <td>Hemen talep isteyenler, sezonluk işler, yeni hizmetler</td>
+          <td>Ölçüm kurulumu, arama kampanyası, haftalık yönetim. Reklam bütçesi ayrı.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Local SEO’da ilk 90 gün</h3>
+
+  <ol>
+    <li><strong>1-2. hafta, ölçüm.</strong> Bölgenizden başlangıç ölçümü, profil ve rakip karşılaştırması, sitenin teknik durumu.</li>
+    <li><strong>3-4. hafta, kök düzeltmeler.</strong> Kategori ve hizmet yapısı, sitenin Google’a açılması, dizinlerdeki tutarsız yazımlar.</li>
+    <li><strong>5-8. hafta, üretim.</strong> Eksik hizmet sayfaları, profil gönderileri ve yorum akışı.</li>
+    <li><strong>9-12. hafta, sıkılaştırma.</strong> Ölçümde geride kalan bölgelere yüklenmek, site içi bağlantılar.</li>
+  </ol>
+
+  <p>
+    90 gün bitince iş bitmez, çünkü rakipleriniz de çalışıyor. Başlangıç dönemi ile sonraki aylarda yapılacak işleri
+    teklifte ayrı ayrı yazarız.
+  </p>
+
+  <h2 id="ucretin-icinde">SEO ücretinin içinde ne var?</h2>
+
+  <p>Bir teklifi karşılaştırırken fiyattan önce bu listeye bakın. Bizim aylık ücretimizin içinde şunlar bulunur:</p>
+
+  <ul class="checklist">
+    <li>Sitenin ve Google profilinin yönetimi: değişiklikleri biz yaparız, size iş listesi göndermeyiz</li>
+    <li>Bölgenizden düzenli sıralama ölçümü (<a href={p('services/rank-tracking')}>harita sıralama takibi</a>)</li>
+    <li>Search Console ve profil etkileşimlerinin takibi</li>
+    <li>Her hafta yapılan işlerin raporu ve müşteri portalı</li>
+    <li>Yeni sayfa ve içerik, ihtiyaç sırasına göre</li>
+  </ul>
+
+  <p>
+    Ücretin içinde olmayanlar da teklifte açıkça yazar. Google Ads tıklama bütçesi gibi üçüncü taraflara ödenen tutarlar
+    bunların başında gelir.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Aynı şehirde, aynı sektörde tek işletme.</strong> Bir şehirde bir sektörden yalnız bir işletmeyle çalışıyoruz, çünkü
+      iki rakibi aynı haritada aynı anda yukarı taşımaya çalışmak ikisine de haksızlık olur. Bu yüzden bazen teklif yerine
+      “bu şehirde bu sektörde doluyuz” cevabı veririz.
+    </p>
+  </div>
+
+  <h2 id="ucuz">Ucuz SEO neden pahalıya gelir?</h2>
+
+  <p>
+    Çok düşük fiyatın arkasında çoğunlukla sitenize zarar veren kısayollar durur. Teklifte bunlardan birini görürseniz dikkat
+    edin:
+  </p>
+
+  <ul>
+    <li><strong>Sıralama garantisi.</strong> Google’ın kendisi bile sıralama garantisi verilemeyeceğini söylüyor.</li>
+    <li><strong>“Ayda 1.000 backlink”.</strong> Sayıyla satılan bağlantıların büyük kısmı değersiz ya da zararlı sitelerden gelir.</li>
+    <li><strong>Şehir adı değiştirilmiş kopya sayfalar.</strong> Google bunları “doorway” sayar ve siteye zarar verir.</li>
+    <li><strong>Ek profil ya da sahte adres.</strong> Hizmet verdiğiniz her şehre profil açmak Google’ın kurallarına aykırı ve profilin askıya alınmasına yol açabilir.</li>
+    <li><strong>Raporsuz çalışma.</strong> Ne yapıldığını göremediğiniz işin karşılığını da ölçemezsiniz.</li>
+  </ul>
+
+  <p>
+    Kendi sitemizde de bunu gördük: yüzlerce sitenin bağlantı verdiği bir alan adının neredeyse hiç otoritesi olmayabiliyor,
+    çünkü bağlantıların çoğu değersiz kaynaklardan geliyor. Bağlantıda önemli olan kaynağı.
+  </p>
+
+  <h2 id="sorular">SEO teklifi almadan önce sorulacak sorular</h2>
+
+  <p>Hangi firmadan teklif alırsanız alın, şu sorulara net cevap isteyin:</p>
+
+  <ol>
+    <li>İlk üç ayda tam olarak hangi işler yapılacak?</li>
+    <li>Sitedeki değişiklikleri kim yapacak, ben mi siz mi?</li>
+    <li>İlerlemeyi hangi veriyle ölçeceksiniz, rapor ne sıklıkta gelecek?</li>
+    <li>Sözleşme süresi var mı, ayrılmak istersem ne olur?</li>
+    <li>Aynı şehirde rakibimle de çalışıyor musunuz?</li>
+  </ol>
+
+  <p>
+    Bizim cevaplarımız bu sayfada: işi biz yaparız, her hafta raporlarız, sözleşme yok, aynı şehirde rakibinizle
+    çalışmayız.
+  </p>
+
+  <h2 id="surec">Teklif nasıl hazırlanıyor?</h2>
+
+  <ol>
+    <li><strong>Ücretsiz analiz.</strong> Sitenizi, Google profilinizi ve rakiplerinizi inceleriz. Sonuç 24 saat içinde e-postanızda.</li>
+    <li><strong>Kısa görüşme.</strong> Hangi hizmetten müşteri istediğinizi, hangi bölgeye hizmet verdiğinizi konuşuruz.</li>
+    <li><strong>Yazılı teklif.</strong> Yapılacak işleri sırasıyla, aylık ücreti ve ücrete dahil olmayan kalemleri yazarız.</li>
+  </ol>
+
+  <p>
+    Analizden sonra bizimle çalışmak zorunda değilsiniz. Raporu kendi ekibinizle de uygulayabilirsiniz.
+  </p>
+
+  <Fragment slot="cta">
+    <h2>Sizin siteniz için SEO fiyatı <span class="highlight">ne kadar</span>?</h2>
+    <p>
+      Ücretsiz analizde sitenizi ve rakiplerinizi inceler, hangi işin gerektiğini ve bunun neden gerektiğini yazarız.
+      Sonuç 24 saat içinde <span style="white-space: nowrap;">e-postanızda</span>.
+    </p>
+  </Fragment>
+</ContentLayout>

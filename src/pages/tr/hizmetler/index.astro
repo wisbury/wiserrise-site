@@ -24,12 +24,11 @@ const services = [
     cta: 'Hizmeti incele',
   },
   {
-    href: '#analiz-formu',
-    analiz: 'gads',
+    href: p('services/google-ads'),
     label: 'REKLAM',
     title: 'Google Ads',
     text: 'Bütçenizi arayan, soran ve satın almaya hazır kişilere harcayan arama reklamları.',
-    cta: 'Reklam analizi iste',
+    cta: 'Hizmeti incele',
   },
   {
     href: '#analiz-formu',
@@ -93,6 +92,7 @@ const faq = [
     { label: 'Sektörlere göre yerel SEO', href: p('industries'), text: 'Avukat, diş hekimi, klinik ve oto ekspertizde işin nasıl değiştiğini anlattık.' },
     { label: 'Rehberler', href: p('guides'), text: 'Profil açmaktan yorum artırmaya, kendiniz uygulayabileceğiniz adımlar.' },
     { label: 'Ücretsiz profil denetimi', href: p('tools/gbp-audit'), text: '10 soruda Google profilinizin nerede zayıf olduğunu hemen görün.' },
+    { label: 'SEO fiyatları', href: p('pricing/seo'), text: 'Ücreti neyin belirlediğini ve paketlerin nasıl kurulduğunu anlattık.' },
   ]}
   relatedHeading="İlgili sayfalar"
   ctaLabel="Ücretsiz analiz al"
@@ -127,7 +127,7 @@ const faq = [
         <tr>
           <td><strong>Google’ın reklam alanı</strong></td>
           <td>Sonuçların üstündeki “Sponsorlu” satırlar</td>
-          <td>Google Ads</td>
+          <td><a href={p('services/google-ads')}>Google Ads</a></td>
         </tr>
         <tr>
           <td><strong>Instagram ve Facebook</strong></td>

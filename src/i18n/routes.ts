@@ -50,6 +50,14 @@ export const ROUTES = {
   'services/geo': { en: '/services/geo', tr: '/hizmetler/geo', de: '/leistungen/geo' },
   // Parent of technical SEO, on-page SEO and content (their breadcrumbs run through it).
   'services/seo': { en: '/services/seo', tr: '/hizmetler/seo', de: '/leistungen/seo' },
+  'services/google-ads': {
+    en: '/services/google-ads',
+    tr: '/hizmetler/google-ads',
+    de: '/leistungen/google-ads',
+  },
+
+  // Pricing explainer for the "seo fiyatları" query. Turkish market only, so no en/de hreflang.
+  'pricing/seo': { tr: '/seo-fiyatlari' },
 
   // Industries. These target queries with no proximity signal ("avukatlar için
   // SEO"), which is the only layer that can rank nationwide.

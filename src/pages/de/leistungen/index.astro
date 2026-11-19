@@ -24,12 +24,11 @@ const services = [
     cta: 'Leistung ansehen',
   },
   {
-    href: '#analiz-formu',
-    analiz: 'gads',
+    href: p('services/google-ads'),
     label: 'ANZEIGEN',
     title: 'Google Ads',
     text: 'Suchanzeigen, die Ihr Budget nur für Menschen ausgeben, die suchen, fragen und kaufbereit sind.',
-    cta: 'Anzeigen-Analyse anfordern',
+    cta: 'Leistung ansehen',
   },
   {
     href: '#analiz-formu',
@@ -127,7 +126,7 @@ const faq = [
         <tr>
           <td><strong>Googles Anzeigenplätze</strong></td>
           <td>Die „Gesponsert“-Zeilen über den Ergebnissen</td>
-          <td>Google Ads</td>
+          <td><a href={p('services/google-ads')}>Google Ads</a></td>
         </tr>
         <tr>
           <td><strong>Instagram und Facebook</strong></td>

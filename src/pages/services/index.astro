@@ -24,12 +24,11 @@ const services = [
     cta: 'View service',
   },
   {
-    href: '#analiz-formu',
-    analiz: 'gads',
+    href: p('services/google-ads'),
     label: 'ADS',
     title: 'Google Ads',
     text: 'Search ads that spend your budget on people who are searching, asking and ready to buy.',
-    cta: 'Request an ads analysis',
+    cta: 'View service',
   },
   {
     href: '#analiz-formu',
@@ -127,7 +126,7 @@ const faq = [
         <tr>
           <td><strong>Google’s ad slots</strong></td>
           <td>The “Sponsored” lines above the results</td>
-          <td>Google Ads</td>
+          <td><a href={p('services/google-ads')}>Google Ads</a></td>
         </tr>
         <tr>
           <td><strong>Instagram and Facebook</strong></td>
