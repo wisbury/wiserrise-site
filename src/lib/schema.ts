@@ -23,7 +23,12 @@ export const GBP_CID = '509407866757143129';
 export const GBP_URL = `https://www.google.com/maps?cid=${GBP_CID}`;
 
 /** Profiles that prove this is the same entity as the Google Business Profile. */
-const SAME_AS = [GBP_URL];
+const SAME_AS = [
+  GBP_URL,
+  'https://www.linkedin.com/company/wiserrise',
+  'https://www.crunchbase.com/organization/wiserrise',
+  'https://www.trustpilot.com/review/wiserrise.com',
+];
 
 /** Must stay byte-identical to the number on the Google Business Profile. */
 const PHONE = '+90 545 505 23 86';
