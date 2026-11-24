@@ -7,7 +7,7 @@ import type { Locale } from './config';
 export const v2ui = {
   tr: {
     audit: { points: 'puan', score: 'Profil puanınız', note: 'Hesaplama tarayıcınızda yapılır, yanıtlar kaydedilmez.', reset: 'Baştan başla', result: 'Sonuç ↓', priority: 'Öncelik sırası' },
-    topbar: { label: 'ÜCRETSİZ ANALİZ', text: 'İşletmenizi tüm kanallarda inceleyelim, yol haritanız 24 saat içinde gelsin →' },
+    topbar: { label: 'ÜCRETSİZ ANALİZ', text: 'İşletmenize özel bir video analiz kaydedelim, 24 saat içinde e-postanızda olsun →' },
     homeAria: 'Wiserrise ana sayfa',
     tagline: 'Dijital pazarlama ajansı',
     nav: { aria: 'Ana menü', services: 'Hizmetler', industries: 'Sektörler', guides: 'Rehberler' },
@@ -30,7 +30,7 @@ export const v2ui = {
       close: 'Kapat',
       eyebrow: 'ÜCRETSİZ ANALİZ',
       title: 'İşletmenize birlikte bakalım.',
-      lead: 'İlgilendiğiniz hizmeti seçin, işletmenize bakıp nereden başlamanız gerektiğini söyleyelim. Cevabımız 24 saat içinde e-postanızda. Ücret yok, taahhüt yok.',
+      lead: 'İlgilendiğiniz hizmeti seçin. Ücretsiz analiz, işletmenize özel kaydettiğimiz bir video analizdir: bugün nerede durduğunuzu ve önce neyle başlamanız gerektiğini anlatırız. Cevabımız 24 saat içinde e-postanızda. Ücret yok, taahhüt yok.',
       services: 'Hangi hizmetlerle ilgileniyorsunuz?',
       servicesHint: 'Birden fazla seçebilirsiniz.',
       serviceOptions: [
@@ -91,7 +91,7 @@ export const v2ui = {
   },
   en: {
     audit: { points: 'points', score: 'Your profile score', note: 'The score is calculated in your browser; your answers are not stored.', reset: 'Start over', result: 'Result ↓', priority: 'Priority order' },
-    topbar: { label: 'FREE ANALYSIS', text: 'Let’s review your business across every channel. Your roadmap in 24 hours →' },
+    topbar: { label: 'FREE ANALYSIS', text: 'A video for your business: where you stand today and what to start with first. In 24 hours →' },
     homeAria: 'Wiserrise home',
     tagline: 'Digital marketing agency',
     nav: { aria: 'Main menu', services: 'Services', industries: 'Industries', guides: 'Guides' },
@@ -114,7 +114,7 @@ export const v2ui = {
       close: 'Close',
       eyebrow: 'FREE ANALYSIS',
       title: 'Let’s take a look at your business.',
-      lead: 'Pick the services you’re interested in and we’ll tell you where to start. Our reply lands in your inbox within 24 hours. No fee, no commitment.',
+      lead: 'The free analysis is a video we record for your business: where you stand today and what to start with first. It lands in your inbox within 24 hours. No fee, no commitment.',
       services: 'Which services are you interested in?',
       servicesHint: 'Pick as many as you like.',
       serviceOptions: [
@@ -175,7 +175,7 @@ export const v2ui = {
   },
   de: {
     audit: { points: 'Punkte', score: 'Ihr Profil-Score', note: 'Die Berechnung läuft in Ihrem Browser, Ihre Antworten werden nicht gespeichert.', reset: 'Neu beginnen', result: 'Ergebnis ↓', priority: 'Reihenfolge' },
-    topbar: { label: 'KOSTENLOSE ANALYSE', text: 'Wir prüfen Ihr Unternehmen auf allen Kanälen. Ihr Fahrplan in 24 Stunden →' },
+    topbar: { label: 'KOSTENLOSE ANALYSE', text: 'Ein Video für Ihr Unternehmen: wo Sie heute stehen und womit Sie zuerst anfangen sollten. In 24 Stunden →' },
     homeAria: 'Wiserrise Startseite',
     tagline: 'Agentur für digitales Marketing',
     nav: { aria: 'Hauptmenü', services: 'Leistungen', industries: 'Branchen', guides: 'Ratgeber' },
@@ -198,7 +198,7 @@ export const v2ui = {
       close: 'Schließen',
       eyebrow: 'KOSTENLOSE ANALYSE',
       title: 'Wir schauen uns Ihr Unternehmen an.',
-      lead: 'Wählen Sie die Leistungen, die Sie interessieren, und wir sagen Ihnen, wo Sie anfangen sollten. Unsere Antwort ist innerhalb von 24 Stunden in Ihrem Postfach. Keine Kosten, keine Verpflichtung.',
+      lead: 'Wählen Sie die Leistungen, die Sie interessieren. Die kostenlose Analyse ist ein Video, das wir für Ihr Unternehmen aufnehmen: wo Sie heute stehen und womit Sie zuerst anfangen sollten. Unsere Antwort ist innerhalb von 24 Stunden in Ihrem Postfach. Keine Kosten, keine Verpflichtung.',
       services: 'Welche Leistungen interessieren Sie?',
       servicesHint: 'Mehrfachauswahl möglich.',
       serviceOptions: [

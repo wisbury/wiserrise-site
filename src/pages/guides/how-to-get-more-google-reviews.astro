@@ -7,7 +7,7 @@ const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
   { label: 'TARGET', title: 'A number set by competitors', text: 'There’s no review count that applies to everyone. Your benchmark is the volume of the businesses in the top three on the map for your target search.' },
-  { label: 'MOMENT', title: 'The moment the job is done', text: 'Ask when you hand over the work, while satisfaction is fresh. Few customers respond to a reminder sent days later.' },
+  { label: 'MOMENT', title: 'The moment the job is done', text: 'Ask when you hand over the work, while the experience is fresh. Few customers respond to a reminder sent days later.' },
   { label: 'LINK', title: 'A short review link', text: 'The link from your profile’s management screen takes the customer straight to the review screen. They don’t have to search for you on the map.' },
   { label: 'RULE', title: 'Incentives are banned', text: 'Asking for reviews in exchange for a discount, a gift or a prize draw breaks Google’s rules. Reviews that get caught are removed.' },
 ];
@@ -37,7 +37,7 @@ const faq = [
   },
   {
     q: 'Can I ask my past customers for reviews in bulk?',
-    a: 'You can, just not all on the same day. A pile of reviews arriving within a few days is the classic pattern the filter looks for. Spread the list over weeks.',
+    a: 'Not as a bulk send. Ask one customer at a time and spread it over weeks. A pile of reviews arriving within a few days is the classic pattern the filter looks for.',
   },
   {
     q: 'Can I get a fake negative review removed?',
@@ -54,7 +54,7 @@ const faq = [
   eyebrow="GUIDE · REVIEWS"
   h1="How do you get more Google reviews?"
   crumb="Getting more reviews"
-  lede="The way to get more Google reviews is to ask every satisfied customer the moment the job is done, with a link that opens in one tap. Buying reviews, collecting them in exchange for discounts and sending only happy customers to Google all break the rules. Set your target based on your competitors and spread the flow over weeks."
+  lede="The way to get more Google reviews is to ask your customers regularly, one at a time, the moment the job is done, with a link that opens in one tap. Buying reviews, collecting them in exchange for discounts and sending only satisfied customers to Google all break the rules. Set your target based on your competitors and spread the flow over weeks."
   schemaType="article"
   datePublished="2026-08-01"
   dateModified="2026-11-06"
@@ -103,7 +103,7 @@ const faq = [
   <h2 id="an">When should you ask for a review?</h2>
 
   <p>
-    While the customer’s satisfaction is at its freshest. Timing decides your review rate more than the wording does.
+    Right after the job is done, while the experience is fresh. Timing decides your review rate more than the wording does.
   </p>
 
   <p>
@@ -133,11 +133,11 @@ const faq = [
         </tr>
         <tr>
           <td>Physiotherapy</td>
-          <td>When the session program ends and the patient feels the improvement</td>
+          <td>When the session program ends</td>
         </tr>
         <tr>
           <td>Law</td>
-          <td>When the case is closed, but read the regulation note below first</td>
+          <td>Decide first whether to ask at all; read the regulation note below</td>
         </tr>
         <tr>
           <td>Hairdresser, repair service, retail</td>
@@ -148,7 +148,7 @@ const faq = [
   </div>
 
   <p>
-    Few customers respond to reminders sent days later. They remember being satisfied, but the moment has passed, so
+    Few customers respond to reminders sent days later. They remember the experience, but the moment has passed, so
     they don’t act.
   </p>
 
@@ -170,7 +170,7 @@ const faq = [
       handover desk.
     </li>
     <li>
-      <strong>Ask once.</strong> Persistent reminders spoil a happy customer’s mood.
+      <strong>Ask once.</strong> Persistent reminders spoil the customer’s mood.
     </li>
   </ol>
 
@@ -212,8 +212,9 @@ const faq = [
     <p>
       <strong>A note for lawyers and healthcare businesses:</strong> In law, the Turkish Bar Association’s advertising
       regulation (TBB Reklam Yasağı Yönetmeliği) makes it risky for a review request to turn into an incentive; in
-      healthcare, turning patient experience into a promotional tool is against the regulations too. In these fields, ask
-      for reviews without incentives and in a single sentence; the details are on our <a href={p('industries/law')}>lawyers</a>
+      healthcare, turning patient experience into a promotional tool is against the regulations too. In law, decide
+      first, based on your professional rules, whether to ask for reviews at all. Wherever you do ask, ask one person at a
+      time, without incentives, without picking and in a single sentence; the details are on our <a href={p('industries/law')}>lawyers</a>
       and <a href={p('industries/dental')}>dentists</a> pages.
     </p>
   </div>

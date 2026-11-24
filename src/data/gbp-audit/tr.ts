@@ -61,9 +61,9 @@ const questions = [
     question: 'Kaç değerlendirmeniz var?',
     options: [
       { label: '50 ve üzeri', points: 10 },
-      { label: '20–49', points: 7 },
-      { label: '5–19', points: 4 },
-      { label: '0–4', points: 0 },
+      { label: '20-49', points: 7 },
+      { label: '5-19', points: 4 },
+      { label: '0-4', points: 0 },
     ],
     advice:
       'Yorum sayısı, Google’ın bilinirlik dediği şeyin en kolay ölçülen parçası. Hedefinizi ilk üçteki rakiplerinizin ortalamasına göre koyun.',
@@ -161,7 +161,7 @@ const bands = [
   {
     min: 55,
     title: 'Belirgin boşluklar var',
-    text: 'Profil çalışıyor ama birkaç alanda rakiplerinizin gerisindesiniz. Aşağıdaki zayıf noktalardan başlayın. Haritada ilk hareketi çoğu işletmede 4 ile 8 hafta arasında görüyoruz.',
+    text: 'Profil çalışıyor ama birkaç alanda rakiplerinizin gerisindesiniz. Aşağıdaki zayıf noktalardan başlayın.',
   },
   {
     min: 0,

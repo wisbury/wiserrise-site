@@ -61,9 +61,9 @@ const questions = [
     question: 'Wie viele Bewertungen haben Sie?',
     options: [
       { label: '50 und mehr', points: 10 },
-      { label: '20–49', points: 7 },
-      { label: '5–19', points: 4 },
-      { label: '0–4', points: 0 },
+      { label: '20-49', points: 7 },
+      { label: '5-19', points: 4 },
+      { label: '0-4', points: 0 },
     ],
     advice:
       'Die Zahl der Bewertungen ist der am leichtesten messbare Teil dessen, was Google Bekanntheit nennt. Richten Sie Ihr Ziel am Durchschnitt der ersten drei Wettbewerber aus.',
@@ -161,7 +161,7 @@ const bands = [
   {
     min: 55,
     title: 'Es gibt deutliche Lücken',
-    text: 'Das Profil funktioniert, aber in einigen Bereichen liegen Sie hinter Ihren Wettbewerbern. Beginnen Sie mit den Schwachstellen unten. Die erste Bewegung auf der Karte sehen wir bei den meisten Unternehmen nach 4 bis 8 Wochen.',
+    text: 'Das Profil funktioniert, aber in einigen Bereichen liegen Sie hinter Ihren Wettbewerbern. Beginnen Sie mit den Schwachstellen unten.',
   },
   {
     min: 0,

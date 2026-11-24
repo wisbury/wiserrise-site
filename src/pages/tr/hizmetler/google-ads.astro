@@ -40,10 +40,6 @@ const faq = [
     q: 'Google’ın önerdiği bütçeyi kullanıyor musunuz?',
     a: 'Kullanmıyoruz. Günlük bütçeyi en az 10 tıklamayı karşılayacak şekilde, Anahtar Kelime Planlayıcı’daki gerçek tıklama fiyatlarından hesaplarız. Bu tutar size uymuyorsa hizmeti ya da bölgeyi daraltırız, arama niyetini daraltmayız.',
   },
-  {
-    q: 'Sözleşme var mı?',
-    a: 'Yok. Aylık çalışıyoruz. Memnun kalmazsanız bir sonraki ay devam etmezsiniz.',
-  },
 ];
 ---
 
@@ -51,7 +47,7 @@ const faq = [
   locale={locale}
   route="services/google-ads"
   title="Google Ads Ajansı: Reklam Yönetimi Hizmeti | Wiserrise"
-  description="Google Ads ajansı olarak arama kampanyanızı ölçümle başlatıyoruz: alım niyetli kelimeler, elle ayarlar, ortak negatif liste, haftalık yönetim. Sözleşme yok."
+  description="Google Ads ajansı olarak arama kampanyanızı ölçümle başlatıyoruz: alım niyetli kelimeler, elle ayarlar, ortak negatif liste, haftalık yönetim."
   eyebrow="HİZMET · GOOGLE ADS"
   h1="Google Ads ajansı: bütçeniz arayan müşteriye gitsin."
   crumb="Google Ads"
@@ -312,9 +308,12 @@ const faq = [
   <h2 id="seo">Google Ads mı, SEO mu?</h2>
 
   <p>
-    İkisi farklı işler yapar. Reklam ilk haftadan trafik getirir ama bütçe bittiği gün durur. <a href={p('services/seo')}>SEO</a>
-    ve <a href={p('services/local-seo')}>local SEO</a> geç başlar, iyi sıralanan sayfa ve profil ise ay ay müşteri getirmeye
-    devam eder.
+    İkisi farklı işler yapar. Reklam yayına girdiği gün tıklama başlar ama bütçe bittiği gün durur.
+  </p>
+
+  <p>
+    <a href={p('services/seo')}>SEO</a> ve <a href={p('services/local-seo')}>local SEO</a> sırayla ilerler: önce ölçüm, sonra düzeltme, sonra üretim. Sıralanan
+    sayfa ve profil ise bütçe bitince kapanmaz.
   </p>
 
   <div class="table-scroll">
@@ -330,7 +329,7 @@ const faq = [
         <tr>
           <td><strong>İlk trafik</strong></td>
           <td>Yayına girdiği gün</td>
-          <td>Haritada ilk hareket çoğu işletmede 4 ile 8 hafta, aramada 3 ile 6 ay</td>
+          <td>İşin sırası: ölçüm, düzeltme, üretim</td>
         </tr>
         <tr>
           <td><strong>Maliyet yapısı</strong></td>
@@ -365,8 +364,7 @@ const faq = [
   <Fragment slot="cta">
     <h2>Reklam bütçeniz <span class="highlight">nereye</span> gidiyor?</h2>
     <p>
-      Ücretsiz reklam analizinde hesabınızın ayarlarını, arama terimlerini ve dönüşüm takibini okur, ilk düzeltilecek
-      kalemleri çıkarırız. Hesabınız yoksa bütçe hesabını sizin rakamlarınızla yaparız. Sonuç 24 saat içinde
+      Ücretsiz analiz, işletmenize özel kaydettiğimiz bir video analizdir: bugün nerede durduğunuzu ve önce neyle başlamanız gerektiğini anlatırız. Sonuç 24 saat içinde
       <span style="white-space: nowrap;">e-postanızda</span>.
     </p>
   </Fragment>

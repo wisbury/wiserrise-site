@@ -61,9 +61,9 @@ const questions = [
     question: 'How many reviews do you have?',
     options: [
       { label: '50 or more', points: 10 },
-      { label: '20–49', points: 7 },
-      { label: '5–19', points: 4 },
-      { label: '0–4', points: 0 },
+      { label: '20-49', points: 7 },
+      { label: '5-19', points: 4 },
+      { label: '0-4', points: 0 },
     ],
     advice:
       'Your review count is the easiest part to measure of what Google calls prominence. Set your target by the average of your top three competitors.',
@@ -161,7 +161,7 @@ const bands = [
   {
     min: 55,
     title: 'There are clear gaps',
-    text: 'The profile works, but you’re behind your competitors in a few areas. Start with the weak points below. For most businesses, we see the first movement on the map within 4 to 8 weeks.',
+    text: 'The profile works, but you’re behind your competitors in a few areas. Start with the weak points below.',
   },
   {
     min: 0,

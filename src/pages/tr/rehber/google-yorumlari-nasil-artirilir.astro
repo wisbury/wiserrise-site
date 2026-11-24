@@ -7,7 +7,7 @@ const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
   { label: 'HEDEF', title: 'Rakibe göre sayı', text: 'Herkes için geçerli bir yorum sayısı yok. Ölçütünüz, hedef aramanızda haritada ilk üçe çıkan işletmelerin hacmi.' },
-  { label: 'AN', title: 'İşin bittiği an', text: 'İşi teslim ettiğiniz anda, memnuniyet tazeyken isteyin. Günler sonra gönderilen hatırlatmaya dönen müşteri az olur.' },
+  { label: 'AN', title: 'İşin bittiği an', text: 'İşi teslim ettiğiniz anda, deneyim tazeyken isteyin. Günler sonra gönderilen hatırlatmaya dönen müşteri az olur.' },
   { label: 'LİNK', title: 'Kısa yorum linki', text: 'Profilinizin yönetim ekranından alınan link müşteriyi doğrudan yorum ekranına götürür. Sizi haritada araması gerekmez.' },
   { label: 'KURAL', title: 'Teşvik yasak', text: 'İndirim, hediye ya da çekiliş karşılığında yorum istemek Google’ın kurallarına aykırı. Yakalanan yorum silinir.' },
 ];
@@ -54,7 +54,7 @@ const faq = [
   eyebrow="REHBER · YORUMLAR"
   h1="Google yorumları nasıl artırılır?"
   crumb="Yorumları artırma"
-  lede="Google yorumlarını artırmanın yolu, her memnun müşteriden işin bittiği anda ve tek tıkla açılan bir linkle yorum istemek. Yorum satın almak, indirim karşılığında yorum toplamak ve yalnız memnun müşteriyi Google’a yönlendirmek kurallara aykırı. Hedefinizi rakiplerinize göre koyun, akışı haftalara yayın."
+  lede="Google yorumlarını artırmanın yolu, seçmeden her müşteriden, işin bittiği anda ve tek tıkla açılan bir linkle yorum istemek. Yorum satın almak, indirim karşılığında yorum toplamak ve yalnız memnun müşteriyi seçip Google’a yönlendirmek kurallara aykırı. Hedefinizi rakiplerinize göre koyun, akışı haftalara yayın."
   schemaType="article"
   datePublished="2026-08-01"
   dateModified="2026-11-06"
@@ -102,12 +102,12 @@ const faq = [
   <h2 id="an">Yorumu ne zaman istemelisiniz?</h2>
 
   <p>
-    Müşterinin memnuniyeti en taze haldeyken. Yorum oranını metinden çok zamanlama belirler.
+    İş biter bitmez, deneyim tazeyken. Yorum oranını metinden çok zamanlama belirler.
   </p>
 
   <p>
-    Diyelim ki Bornova’da oto ekspertiz işletiyorsunuz. Müşteri raporu elinde tutuyor, almak üzere olduğu arabanın temiz
-    çıktığını yeni öğrendi ve rahatlamış. Yorumu isteyeceğiniz an tam bu an, o tesisten çıkmadan.
+    Diyelim ki Bornova’da oto ekspertiz işletiyorsunuz. Müşteri raporu elinde tutuyor ve henüz tesisten çıkmadı. Yorumu
+    isteyeceğiniz an tam bu an, rapor ne çıkmış olursa olsun.
   </p>
 
   <p>Doğru an sektöre göre değişir:</p>
@@ -131,11 +131,11 @@ const faq = [
         </tr>
         <tr>
           <td>Fizyoterapi</td>
-          <td>Seans programı bittiğinde, hasta iyileşmeyi hissettiğinde</td>
+          <td>Seans programı bittiğinde</td>
         </tr>
         <tr>
           <td>Avukatlık</td>
-          <td>Dosya kapandığında, ama önce aşağıdaki mevzuat notunu okuyun</td>
+          <td>İsteyip istememek meslek kurallarına bağlı, önce aşağıdaki mevzuat notunu okuyun</td>
         </tr>
         <tr>
           <td>Kuaför, servis, perakende</td>
@@ -146,7 +146,7 @@ const faq = [
   </div>
 
   <p>
-    Günler sonra gönderilen hatırlatmalara dönen müşteri az olur. Memnuniyetini hatırlıyor, ama o an geçtiği için
+    Günler sonra gönderilen hatırlatmalara dönen müşteri az olur. Deneyimini hatırlıyor, ama o an geçtiği için
     harekete geçmiyor.
   </p>
 
@@ -167,7 +167,7 @@ const faq = [
       <strong>Tesiste QR kod bulundurun.</strong> Kasada, bekleme salonunda ya da teslim masasında linkin QR kodu dursun.
     </li>
     <li>
-      <strong>Bir kez isteyin.</strong> Israrlı hatırlatma, memnun müşterinin keyfini kaçırır.
+      <strong>Bir kez isteyin.</strong> Israrlı hatırlatma müşterinin keyfini kaçırır.
     </li>
   </ol>
 
@@ -208,7 +208,10 @@ const faq = [
     <p>
       <strong>Avukatlar ve sağlık işletmeleri için not:</strong> Avukatlıkta TBB Reklam Yasağı Yönetmeliği, yorum
       isteğinin teşvike dönüşmesini riskli kılar; sağlıkta da hasta deneyimini tanıtım aracına çevirmek mevzuata aykırı.
-      Bu alanlarda yorumu teşviksiz ve tek cümleyle isteyin, ayrıntısı <a href={p('industries/law')}>avukatlar</a> ve
+    </p>
+    <p>
+      Avukatlıkta yorum isteyip istemeyeceğinize meslek kurallarınıza bakarak karar verin. İstenirse kural her alanda
+      aynı: düzenli, tek tek, teşviksiz ve seçmeden. Ayrıntısı <a href={p('industries/law')}>avukatlar</a> ve
       <a href={p('industries/dental')}>diş hekimleri</a> sayfalarımızda.
     </p>
   </div>

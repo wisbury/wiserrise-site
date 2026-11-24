@@ -8,7 +8,7 @@ const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 const features = [
   { label: 'KATEGORIE', title: 'Die richtige Hauptkategorie', text: 'Das erste Feld, das Google sagt, was Sie tun. Wir sehen uns die Kategorien der Wettbewerber an und richten Ihre danach aus.' },
   { label: 'LEISTUNGEN', title: 'Leistungsliste', text: 'Jede Leistung tragen wir unter dem Namen ein, nach dem Kunden suchen. Wir verwenden dieselben Namen wie auf den Leistungsseiten Ihrer Website.' },
-  { label: 'BEWERTUNGEN', title: 'Laufende Bewertungen', text: 'Wir bitten jeden Kunden nach abgeschlossener Arbeit um eine Bewertung und beantworten jede, die eingeht. Gekaufte Bewertungen rühren wir nicht an.' },
+  { label: 'BEWERTUNGEN', title: 'Laufende Bewertungen', text: 'Ein fester Ablauf für Bewertungsanfragen: regelmäßig, einzeln, ohne Anreiz und ohne Auswahl. Jede Bewertung, die eingeht, beantworten wir. Gekaufte Bewertungen rühren wir nicht an.' },
   { label: 'BEITRÄGE', title: 'Beiträge und Fotos', text: 'Neue Leistungen, Aktionen, Team und Räume. Mit aktuellen Beiträgen und echten Fotos halten wir das Profil lebendig.' },
 ];
 
@@ -153,8 +153,10 @@ const faq = [
   <h2 id="yorumlar">Wie sammeln und beantworten wir Bewertungen?</h2>
 
   <p>
-    Wir bitten jeden Kunden nach abgeschlossener Arbeit im richtigen Moment um eine Bewertung und beantworten jede, die
-    eingeht. Neben Anzahl und Sternen zählt auch der Inhalt: Die Leistung und der Stadtteil, die ein Kunde in der
+    Wir richten einen festen Ablauf zum Einholen von Bewertungen ein: regelmäßig, jeden Kunden einzeln (kein
+    Massenversand) und ohne Anreize wie Geschenke oder Rabatte. Nur Kunden zu fragen, von denen Sie annehmen, dass sie
+    zufrieden sind, verstößt gegen Googles Richtlinien; wir wählen nicht aus. Jede Bewertung, die eingeht, beantworten
+    wir. Neben Anzahl und Sternen zählt auch der Inhalt: Die Leistung und der Stadtteil, die ein Kunde in der
     Bewertung nennt, sind für Google ein zusätzliches Signal.
   </p>
 
@@ -224,8 +226,8 @@ const faq = [
   <p>
     Bewertungen gegen Geld, Rabatt oder Geschenk erbitten, Mitarbeiter und Bekannte Bewertungen schreiben lassen,
     Bewertungen kaufen: All das verstößt gegen Googles Richtlinien. Auch nur Kunden um eine Bewertung zu bitten, von denen
-    Sie wissen, dass sie zufrieden sind, ist verboten. Wir schicken jedem Kunden dieselbe Bitte und beantworten auch die
-    schlechten Bewertungen.
+    Sie wissen, dass sie zufrieden sind, ist verboten. Wir wählen nicht aus und beantworten auch die schlechten
+    Bewertungen.
   </p>
 
   <h3>Unnötige zusätzliche Profile</h3>
@@ -275,16 +277,15 @@ const faq = [
   </ol>
 
   <p>
-    Die erste Bewegung auf der Karte sehen wir bei den meisten Unternehmen nach 4 bis 8 Wochen; in umkämpften
-    Großstadtzentren dauert es länger. Was wir getan haben, sehen Sie jede Woche im Bericht. Es gibt keinen Vertrag, und
-    wenn Sie nicht zufrieden sind, machen Sie im nächsten Monat einfach nicht weiter.
+    Einen Zeitraum nennen wir nicht; er hängt vom Ausgangspunkt Ihres Unternehmens, vom Wettbewerb und vom Kanal ab. Was
+    wir getan haben und wie sich die Messung verändert hat, sehen Sie jede Woche im Bericht.
   </p>
 
   <Fragment slot="cta">
     <h2>Wo ist Ihr Profil <span class="highlight">schwach</span>?</h2>
     <p>
-      In der kostenlosen Analyse prüfen wir Ihre Kategorie, Ihre Leistungsliste und den Abstand zu Ihren Wettbewerbern
-      bei den Bewertungen. Das Ergebnis liegt innerhalb von 24 Stunden in Ihrem
+      Die kostenlose Analyse ist ein Video, das wir für Ihr Unternehmen aufnehmen: wo Sie heute stehen und womit Sie
+      zuerst anfangen sollten. Das Ergebnis liegt innerhalb von 24 Stunden in Ihrem
       <span style="white-space: nowrap;">E-Mail-Postfach</span>.
     </p>
   </Fragment>
