@@ -6,15 +6,15 @@ const locale = 'de' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
-  { label: 'KATEGORIE', title: 'Die richtige Hauptkategorie', text: 'Die Hauptkategorie im Profil ist Rechtsanwalt. Mediation und Rechtsgebiete bleiben Nebenkategorien, sonst fallen Sie bei der Hauptsuche zurück.' },
-  { label: 'SEITE', title: 'Seiten pro Rechtsgebiet', text: 'Für jedes Gebiet, auf das Sie sich konzentrieren, eine eigene Seite: Ablauf, Dauer, Unterlagen. Eine Gebietsliste mit drei Absätzen erscheint in keiner Suche.' },
-  { label: 'INHALT', title: 'Informative Beiträge', text: 'Klare Antworten auf Fragen wie „Wie lange dauert eine Scheidung?“. Die Richtlinie erlaubt das, die meisten Wettbewerber lassen diese Fläche leer.' },
-  { label: 'SPRACHE', title: 'Sprache im Rahmen des Verbots', text: 'Überlegenheitsbehauptungen, Erfolgsquoten, Gewinnversprechen und Aktionen schreiben wir nicht. Jeden Satz formulieren wir innerhalb der Grenzen der Richtlinie.' },
+  { label: 'KATEGORIE', title: 'Die richtige Hauptkategorie', text: 'Die Hauptkategorie im Profil ist Rechtsanwalt. Mediation und einzelne Rechtsgebiete kommen als Nebenkategorien dazu, sonst fallen Sie bei der Hauptsuche zurück.' },
+  { label: 'SEITE', title: 'Seiten pro Rechtsgebiet', text: 'Für jedes Gebiet, auf das Sie sich konzentrieren, eine eigene Seite: Ablauf, typische Fragen, Unterlagen. Eine Gebietsliste mit drei Absätzen erscheint in keiner Suche.' },
+  { label: 'INHALT', title: 'Informative Beiträge', text: 'Klare Antworten auf Fragen wie „Wie lange dauert eine Scheidung?“. Sachliche Information ist genau das, was § 43b BRAO zulässt, und viele Kanzleien lassen diese Fläche leer.' },
+  { label: 'SPRACHE', title: 'Sachlich statt werbend', text: 'Superlative, Erfolgsquoten, Gewinnversprechen und Aktionen schreiben wir nicht. Jeden Text legen wir Ihnen vor der Veröffentlichung zur Freigabe vor.' },
 ];
 
 const toc = [
-  { id: 'yasak', label: 'Werbeverbot und SEO' },
-  { id: 'brao', label: 'Kanzleien in Deutschland' },
+  { id: 'yasak', label: 'Was Anwaltswerbung darf' },
+  { id: 'brao', label: 'Drei Punkte aus der BORA' },
   { id: 'kategori', label: 'Kategorie im Profil' },
   { id: 'arama', label: 'Wie suchen Mandanten?' },
   { id: 'sayfa', label: 'Welche Seiten auf der Website?' },
@@ -25,16 +25,16 @@ const toc = [
 
 const faq = [
   {
-    q: 'Verstößt SEO gegen das Werbeverbot?',
-    a: 'Für sich genommen nicht. In Deutschland erlaubt § 43b BRAO Werbung, soweit sie über die berufliche Tätigkeit sachlich unterrichtet; in der Türkei erfasst das Verbot Werbung und Anreize zur Mandatsgewinnung. Informative Inhalte über Ihre Kanzlei und Ihre Tätigkeitsgebiete sind in beiden Fällen zulässig. Das Risiko entsteht durch die gewählten Formulierungen, und diese Formulierungen verwenden wir nie.',
+    q: 'Ist SEO für eine Kanzlei überhaupt zulässig?',
+    a: 'In der Regel ja. § 43b BRAO erlaubt Werbung, soweit sie sachlich über die berufliche Tätigkeit informiert und nicht auf die Erteilung eines Auftrags im Einzelfall gerichtet ist. Informative Inhalte über Ihre Kanzlei und Ihre Tätigkeitsgebiete sind genau das. Das Risiko liegt in einzelnen Formulierungen, deshalb schreiben wir sachlich und ohne Superlative. Maßgeblich bleibt die Auslegung durch Ihre Rechtsanwaltskammer.',
   },
   {
     q: 'Sollte ich Mandanten um eine Google-Bewertung bitten?',
-    a: 'Ob Sie um Bewertungen bitten, entscheiden wir gemeinsam anhand Ihrer Berufsregeln. Wenn ja, gilt dieselbe Regel wie überall: regelmäßig, jeden Mandanten einzeln, ohne Anreiz wie Geschenk oder Rabatt und ohne Auswahl. Auf Bewertungen, die eingehen, schreiben wir eine kurze Antwort ohne Details zum Fall.',
+    a: 'Ob Sie um Bewertungen bitten, entscheiden wir mit Ihnen anhand Ihres Berufsrechts. Wenn ja, gilt dieselbe Regel: regelmäßig, einzeln, ohne Anreiz, ohne Auswahl. Auf Bewertungen, die eingehen, schreiben wir eine kurze Antwort ohne Details zum Mandat.',
   },
   {
     q: 'Darf ich meine Tätigkeitsgebiete auf der Website nennen?',
-    a: 'Ja, eine Liste Ihrer Gebiete gilt als Information. Vorsicht ist bei Wörtern geboten, die ein Gebiet wie einen Titel wirken lassen oder Überlegenheit andeuten. Wir benennen die Gebiete schlicht und ohne Behauptung.',
+    a: 'Ja, wenn Sie entsprechende Kenntnisse nachweisen können; das verlangt § 7 BORA. Vorsicht ist bei Bezeichnungen geboten, die mit einem Fachanwaltstitel verwechselt werden können. „Fachanwalt“ und „Spezialist“ schreiben wir nur, wenn Sie den Titel tatsächlich führen bzw. die Angabe belegen können.',
   },
   {
     q: 'Wann sehe ich Ergebnisse?',
@@ -46,12 +46,12 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="industries/law"
-  title="SEO für Anwälte: Kanzlei-SEO im Rahmen des Berufsrechts | Wiserrise"
-  description="SEO für Anwälte im Rahmen von § 43b BRAO und BORA: richtige Profilkategorie, Seiten pro Rechtsgebiet, sachliche Inhalte. Wöchentlicher Bericht."
+  title="SEO für Anwälte: Kanzlei-SEO nach BRAO und BORA | Wiserrise"
+  description="SEO für Kanzleien im Rahmen von § 43b BRAO und BORA: richtige Profilkategorie, Seiten pro Rechtsgebiet, sachliche Inhalte. Wöchentlicher Bericht."
   eyebrow="BRANCHE · ANWÄLTE"
-  h1="SEO für Anwälte: sichtbar werden, ohne zu werben."
+  h1="SEO für Anwälte: sachlich informieren, gefunden werden."
   crumb="Anwälte"
-  lede="SEO für Anwälte heißt, Ihr Profil und Ihre Website mit informativen Inhalten so aufzubauen, dass Ihre Kanzlei bei Suchen wie „Fachanwalt Arbeitsrecht Köln“ oder „Scheidungsanwalt Mersin“ auf der Karte und in den Ergebnissen erscheint. Ob § 43b BRAO in Deutschland oder das Werbeverbot in der Türkei: Sachliche Information ist erlaubt, Überlegenheitsbehauptungen und Versprechen sind es nicht. Wir erledigen die ganze Arbeit innerhalb dieser Grenze."
+  lede="SEO für Anwälte heißt, Ihr Profil und Ihre Website mit sachlichen Inhalten so aufzubauen, dass Ihre Kanzlei bei Suchen wie „Fachanwalt Arbeitsrecht Köln“ oder „Anwalt Familienrecht Hamburg“ auf der Karte und in den Ergebnissen erscheint. Anwaltswerbung ist in Deutschland erlaubt, solange sie sachlich informiert. Genau in diesem Rahmen arbeiten wir."
   serviceName="SEO für Anwälte"
   breadcrumb={[
     { label: 'Startseite', href: '/de' },
@@ -61,28 +61,33 @@ const faq = [
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Betreuung des Google-Unternehmensprofils', href: p('services/gbp'), text: 'Kategorien und Leistungsstruktur formulieren wir im Einklang mit der Richtlinie.' },
+    { label: 'Betreuung des Google-Unternehmensprofils', href: p('services/gbp'), text: 'Kategorien und Leistungen formulieren wir sachlich und passend zu Ihren Tätigkeitsgebieten.' },
     { label: 'Content-Erstellung', href: p('services/content'), text: 'Seiten zu Rechtsgebieten und informative Beiträge schreiben wir passend zu den Gebieten Ihrer Kanzlei.' },
     { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Profil und Website bringen wir gemeinsam für den Wettbewerb auf der Karte in Ordnung.' },
   ]}
   ctaLabel="Kostenlose Analyse anfordern"
   ctaHref="/de#contact"
 >
-  <h2 id="yasak">Ist SEO trotz Werbeverbot möglich?</h2>
+  <h2 id="yasak">Was darf Anwaltswerbung, und wo steht SEO?</h2>
 
   <p>
-    Ja. Artikel 55 des türkischen Rechtsanwaltsgesetzes (Avukatlık Kanunu, Gesetz Nr. 1136) verbietet Anwälten jeden
-    Versuch, der als Werbung zur Mandatsgewinnung gelten kann. Die Einzelheiten regelt die Werbeverbotsrichtlinie der
-    Vereinigung der türkischen Anwaltskammern (TBB Reklam Yasağı Yönetmeliği).
+    Anwaltswerbung ist in Deutschland erlaubt, soweit sie sachlich über die berufliche Tätigkeit informiert und nicht auf
+    die Erteilung eines Auftrags im Einzelfall gerichtet ist (§ 43b BRAO). Die Berufsordnung (BORA) konkretisiert das,
+    etwa bei Angaben zu Teilbereichen der Berufstätigkeit und bei Fachanwaltsbezeichnungen. Wir schreiben deshalb sachlich
+    und ohne Superlative wie ‚bester Anwalt‘. Das ist eine allgemeine Information und keine Rechtsberatung; maßgeblich sind
+    BRAO, BORA und die Auslegung durch Ihre Rechtsanwaltskammer.
   </p>
 
   <p>
-    Verboten sind Lob und Anreize. Zu beschreiben, wer Ihre Kanzlei ist und in welchen Gebieten sie tätig ist, gilt als
-    Information, und SEO sorgt dafür, dass diese Information bei Google gefunden wird. Das Risiko entsteht in den Sätzen,
-    die auf der Seite stehen.
+    Für SEO ist das eine gute Ausgangslage. Zu beschreiben, wer Ihre Kanzlei ist, in welchen Gebieten sie tätig ist und
+    wie ein Verfahren abläuft, ist sachliche Information, und SEO sorgt dafür, dass diese Information bei Google gefunden
+    wird. Heikel sind einzelne Sätze, nicht die Arbeit an sich.
   </p>
 
-  <p>So ziehen wir die Grenze:</p>
+  <p>
+    So ziehen wir in unseren Texten die Linie. Manches in der linken Spalte kann im Einzelfall zulässig sein; wir lassen es
+    trotzdem weg, weil die Grenze dort schnell überschritten ist:
+  </p>
 
   <div class="table-scroll">
     <table>
@@ -94,19 +99,19 @@ const faq = [
       </thead>
       <tbody>
         <tr>
-          <td>„90 % Erfolgsquote“, Zahl gewonnener Verfahren</td>
-          <td>Wie ein Verfahren abläuft und wie lange es dauert</td>
+          <td>Erfolgsquoten, Zahl gewonnener Verfahren</td>
+          <td>Wie ein Verfahren abläuft und welche Schritte anstehen</td>
         </tr>
         <tr>
           <td>„Der beste Strafverteidiger der Stadt“</td>
           <td>Eine schlichte Liste Ihrer Tätigkeitsgebiete</td>
         </tr>
         <tr>
-          <td>Mandantenbewertungen, Dankesbriefe</td>
-          <td>Anwaltskammer, Registernummer und beruflicher Werdegang</td>
+          <td>Mandantenstimmen, Dankesschreiben, Fallbeispiele</td>
+          <td>Zuständige Rechtsanwaltskammer, Berufsbezeichnung und beruflicher Werdegang</td>
         </tr>
         <tr>
-          <td>Rabatte, Aktionen, Angebot einer kostenlosen Beratung</td>
+          <td>Rabatte, Aktionen, Lockangebote</td>
           <td>Kontaktdaten und Bürozeiten</td>
         </tr>
         <tr>
@@ -118,56 +123,46 @@ const faq = [
   </div>
 
   <p>
-    Unter den <a href={p('industries')}>Branchen, mit denen wir arbeiten</a>, ist das Recht die mit den meisten
-    Einschränkungen. Wenn Sie uns fragen, spielt diese Einschränkung der Kanzlei in die Hände, die ihre Arbeit ordentlich
-    macht. Ein Teil der Wettbewerber schreibt riskante Texte, ohne die Richtlinie je gelesen zu haben, ein anderer Teil
-    schreibt aus Angst gar nichts.
+    Unter den <a href={p('industries')}>Branchen, zu denen wir eigene Seiten haben</a>, ist das Recht die mit den meisten
+    Vorgaben. Aus unserer Sicht hilft das der Kanzlei, die ihre Arbeit ordentlich macht: Ein Teil der Wettbewerber schreibt
+    werbliche Texte, ohne die BORA je gelesen zu haben, ein anderer Teil schreibt aus Vorsicht gar nichts.
   </p>
 
   <p>
     Seiten, die sich an die Regeln halten und wirklich informieren, sind in dieser Branche selten. Diese Lücke steht der
-    Kanzlei offen, die nach den Regeln arbeiten will.
+    Kanzlei offen, die sachlich arbeiten will.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Was auf dieser Seite steht, ist keine Rechtsberatung.</strong> Das letzte Wort bei der Auslegung der
-      Richtlinie hat Ihre Anwaltskammer. Fragen Sie dort nach, bevor Sie eine Formulierung veröffentlichen, bei der Sie
-      unsicher sind.
+      <strong>Im Zweifel fragen Sie Ihre Kammer.</strong> Jeden Text legen wir Ihnen vor der Veröffentlichung zur Freigabe
+      vor. Bei einer Formulierung, bei der Sie unsicher sind, klären Sie die Frage vorher mit Ihrer Rechtsanwaltskammer.
     </p>
   </div>
 
-  <h2 id="brao">Was gilt für Kanzleien in Deutschland?</h2>
+  <h2 id="brao">Welche Punkte aus der BORA prägen unsere Texte?</h2>
 
   <p>
-    In Deutschland ist Anwaltswerbung grundsätzlich erlaubt, aber an eine Bedingung geknüpft. § 43b der
-    Bundesrechtsanwaltsordnung lautet: „Werbung ist dem Rechtsanwalt nur erlaubt, soweit sie über die berufliche Tätigkeit
-    in Form und Inhalt sachlich unterrichtet und nicht auf die Erteilung eines Auftrags im Einzelfall gerichtet ist.“ Die
-    Einzelheiten regelt die Berufsordnung für Rechtsanwälte (BORA) in ihren §§ 6 bis 10.
+    Suchmaschinenoptimierung ist im Kern sachliche Information: wer Ihre Kanzlei ist, in welchen Gebieten sie tätig ist,
+    wie ein Verfahren abläuft. Genau diese Inhalte bewertet Google gut. Drei Punkte beachten wir bei Texten für Kanzleien
+    besonders:
   </p>
-
-  <p>
-    Für SEO ist das eine gute Nachricht. Suchmaschinenoptimierung ist im Kern sachliche Unterrichtung: Wer Ihre Kanzlei ist,
-    in welchen Gebieten sie tätig ist, wie ein Verfahren abläuft. Genau diese Inhalte bewertet Google gut, und genau diese
-    Inhalte deckt das Berufsrecht.
-  </p>
-
-  <p>Drei Regeln prägen unsere Texte für deutsche Kanzleien besonders:</p>
 
   <ul class="checklist">
     <li>
       <strong>Tätigkeitsgebiete nur mit Nachweis.</strong> Nach § 7 BORA darf Teilbereiche der Berufstätigkeit nur benennen,
       wer entsprechende Kenntnisse nachweisen kann. Bezeichnungen, die mit einer Fachanwaltschaft verwechselt werden
-      können, schreiben wir nicht. „Fachanwalt“ steht nur dort, wo der Titel verliehen ist.
+      können, schreiben wir nicht. „Fachanwalt“ steht nur dort, wo der Titel verliehen ist, „Spezialist“ nur, wo Sie die
+      Angabe belegen können.
     </li>
     <li>
-      <strong>Mandate nur mit Einwilligung.</strong> § 6 BORA erlaubt Hinweise auf Mandate und Mandanten nur mit
-      ausdrücklicher Einwilligung. Fallbeispiele, Mandantennamen und Bewertungszitate gehören deshalb nicht auf die Website,
-      solange diese Einwilligung nicht schriftlich vorliegt.
+      <strong>Mandate nur mit Einwilligung.</strong> Hinweise auf Mandate und Mandanten knüpft die BORA (§ 6) an die
+      ausdrückliche Einwilligung des Mandanten. Wir verzichten deshalb auf der Website ganz auf Fallbeispiele,
+      Mandantennamen und Bewertungszitate.
     </li>
     <li>
-      <strong>Keine Werbung durch Dritte, die Ihnen selbst verboten wäre.</strong> Was wir als Agentur für Sie schreiben,
-      muss denselben Maßstäben genügen wie Ihre eigenen Texte. Eine Agentur ist kein Umweg um das Berufsrecht.
+      <strong>Was wir schreiben, ist Ihre Werbung.</strong> Texte, die wir als Agentur für Sie verfassen, müssen denselben
+      Maßstäben genügen wie Ihre eigenen. Eine Agentur ist kein Umweg um das Berufsrecht.
     </li>
   </ul>
 
@@ -192,8 +187,9 @@ const faq = [
 
   <p>
     Der zweite häufige Fehler: alle Rechtsgebiete als Nebenkategorien einzutragen. Googles Liste enthält eigene
-    Anwaltskategorien für Gebiete wie Strafrecht und Scheidung, aber alle hinzuzufügen macht das Profil unscharf. Wir
-    beschränken uns auf die zwei oder drei Gebiete, auf die Sie sich wirklich konzentrieren; Details stehen auf der Seite
+    Anwaltskategorien für Gebiete wie Strafrecht oder Familienrecht, aber alle hinzuzufügen macht das Profil unscharf. Wir
+    beschränken uns auf die zwei oder drei Gebiete, auf die Sie sich wirklich konzentrieren, und wählen keine Kategorie,
+    die einen Fachanwaltstitel nahelegt, den Sie nicht führen. Details stehen auf der Seite
     zur <a href={p('services/gbp')}>Betreuung des Google-Unternehmensprofils</a>.
   </p>
 
@@ -203,12 +199,12 @@ const faq = [
 
   <ul>
     <li>
-      <strong>Wer Informationen sucht.</strong> „Wie lange dauert eine Scheidung“, „Wie wird eine Abfindung berechnet“.
+      <strong>Wer Informationen sucht.</strong> „Wie lange dauert eine Scheidung“, „Wie hoch ist eine Abfindung“.
       Diese Person sucht noch keinen Anwalt, sie versucht ihre Lage zu verstehen. Diese Suchen ranken unabhängig von der
       Stadt.
     </li>
     <li>
-      <strong>Wer einen Anwalt sucht.</strong> „Scheidungsanwalt Mersin“, „Strafverteidiger in der Nähe“. Diese Person
+      <strong>Wer einen Anwalt sucht.</strong> „Anwalt Familienrecht Hamburg-Eimsbüttel“, „Strafverteidiger in der Nähe“. Diese Person
       steht kurz vor ihrer Entscheidung. Bei diesen Suchen erscheint zuerst die Karte, und die Nähe zur suchenden Person ist
       entscheidend.
     </li>
@@ -231,45 +227,46 @@ const faq = [
   <p>Diese Struktur bauen wir auf:</p>
 
   <ul class="checklist">
-    <li>Eine eigene Seite für jedes Haupttätigkeitsgebiet: Ablauf, Dauer, nötige Unterlagen, häufige Fragen</li>
+    <li>Eine eigene Seite für jedes Haupttätigkeitsgebiet: Ablauf, typische Schritte, nötige Unterlagen, häufige Fragen</li>
     <li>Eine Übersichtsseite der Tätigkeitsgebiete, die diese Seiten zusammenführt</li>
     <li>Informative Beiträge, die auf die passende Gebietsseite verlinken</li>
-    <li>Berufsangaben des Anwalts: Anwaltskammer, Registernummer, beruflicher Werdegang</li>
+    <li>Berufsangaben der Anwälte: zuständige Rechtsanwaltskammer, Berufsbezeichnung, beruflicher Werdegang</li>
     <li>Strukturierte Daten vom Typ LegalService, die exakt mit den Angaben in Ihrem Google-Profil übereinstimmen</li>
   </ul>
 
   <p>
-    Die Seite mit den Berufsangaben erfüllt zwei Aufgaben. Sie bündelt die Angaben, die die Richtlinie erlaubt, an einem
-    Ort und zeigt Google, dass hinter dieser Website ein eingetragener, echter Anwalt steht. Diese Seiten schreiben wir im
+    Die Seite mit den Berufsangaben erfüllt zwei Aufgaben. Sie bündelt die sachlichen Angaben zu Ihrer Person an einem
+    Ort und zeigt Google, dass hinter dieser Website ein zugelassener, echter Anwalt steht. Diese Seiten schreiben wir im
     Rahmen der <a href={p('services/content')}>Content-Erstellung</a> passend zu den Gebieten Ihrer Kanzlei.
   </p>
 
   <h2 id="yorum">Was ist mit Google-Bewertungen?</h2>
 
   <p>
-    Für den Platz auf der Karte sind Bewertungen ein starkes Signal. Im Recht ist das zugleich das Thema, das am stärksten
-    mit den Vorschriften kollidiert.
+    Für den Platz auf der Karte sind Bewertungen ein starkes Signal. In der Anwaltschaft ist das Thema trotzdem heikler
+    als in anderen Branchen.
   </p>
 
   <p>
-    Es gibt zwei Probleme. Um Bewertungen zu bitten, erst recht mit einem Geschenk oder einem vorformulierten Text, liegt
-    sehr nah an einem Anreiz zur Mandatsgewinnung. Im Straf- und Familienrecht möchte ein Mandant die erhaltene Leistung
-    ohnehin nicht öffentlich machen, und diese Grenze verdient Respekt.
+    Dafür gibt es zwei Gründe. Ihre Verschwiegenheitspflicht gilt auch bei Google, und im Straf- oder Familienrecht
+    möchte ein Mandant ohnehin nicht öffentlich machen, dass er anwaltliche Hilfe gebraucht hat. Diese Grenze verdient
+    Respekt.
   </p>
 
   <p>
-    Deshalb veröffentlichen wir auf der Website keine Mandantenbewertungen. Ob Sie Mandanten um eine Bewertung bitten,
-    entscheiden wir gemeinsam anhand Ihrer Berufsregeln. Wenn ja, gilt dieselbe Regel wie überall: regelmäßig, jeden
-    Mandanten einzeln, ohne Anreiz und ohne Auswahl. Unabhängig davon arbeiten wir mit einem vollständigen Profil und
-    gründlichen Gebietsseiten. Auf Bewertungen, die eingehen, schreiben wir eine kurze Antwort, ohne auf den Fall
-    einzugehen.
+    Deshalb veröffentlichen wir auf der Website keine Mandantenstimmen, und im Schema der Website steht keine
+    Sternebewertung. Ob Sie um Bewertungen bitten, entscheiden wir mit Ihnen anhand Ihres Berufsrechts; wenn ja, gilt
+    dieselbe Regel: regelmäßig, einzeln, ohne Anreiz, ohne Auswahl. Eine Bewertungsanfrage per E-Mail, SMS oder WhatsApp
+    gilt in Deutschland als Werbung und braucht in der Regel die vorherige Einwilligung des Mandanten (§ 7 UWG).
+    Unabhängig davon arbeiten wir mit einem vollständigen Profil und gründlichen Gebietsseiten. Auf Bewertungen, die
+    eingehen, schreiben wir eine kurze Antwort, ohne auf das Mandat einzugehen.
   </p>
 
   <div class="callout">
     <p>
       <strong>Mandanteninformationen sind kein Inhalt.</strong> In keinem Text verwenden wir Aktendetails, Angaben zu
       Parteien oder ein Detail, das einen Mandanten erkennbar macht. Selbst bei der Antwort auf eine negative Bewertung
-      erwähnen wir die Akte nicht.
+      bestätigen wir nicht einmal, dass ein Mandat bestand.
     </p>
   </div>
 
@@ -297,7 +294,7 @@ const faq = [
 
   <p>
     Bei Stadtseiten sind wir vorsichtig. Eine Seite für eine Stadt, in der Sie tatsächlich keine Mandate übernehmen,
-    verstößt gegen Googles Regel zu kopierten Seiten und ist auch mit Blick auf die Richtlinie riskant. Deshalb legen wir
+    verstößt gegen Googles Regeln zu Brückenseiten und wäre auch keine sachliche Information mehr. Deshalb legen wir
     sie nur für Orte an, an denen Sie wirklich tätig sind, und mit Inhalten, die zu diesem Ort passen.
   </p>
 

@@ -6,34 +6,34 @@ const locale = 'de' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
-  { label: 'NOTFALL', title: 'Patienten mit Schmerzen', text: 'Wer nachts pochende Zahnschmerzen hat, schaut auf die Karte und ruft direkt an. Ihre Öffnungszeiten und Ihre Telefonnummer müssen in diesem Moment stimmen.' },
-  { label: 'BEHANDLUNG', title: 'Behandlungsseiten', text: 'Wer über ein Implantat oder eine unsichtbare Zahnschiene nachdenkt, liest wochenlang. Für jede Schwerpunktbehandlung schreiben wir eine Seite, die genau seine Fragen beantwortet.' },
-  { label: 'BEWERTUNG', title: 'Bewertungen mit Diskretion', text: 'Wir bitten um Bewertungen, geben dafür aber nichts. In Antworten nennen wir nie, welche Behandlung der Patient bekommen hat.' },
-  { label: 'REGELN', title: 'Grenzen der Werbung', text: 'Vorher-nachher-Bilder, Aktionen und Behauptungen wie „der Beste“ schreiben wir nicht. Jeden Text legen wir Ihnen vor der Veröffentlichung zur Freigabe vor.' },
+  { label: 'NOTFALL', title: 'Patienten mit Schmerzen', text: 'Wer abends pochende Zahnschmerzen hat, schaut auf die Karte und ruft direkt an. Ihre Öffnungszeiten und Ihre Telefonnummer müssen in diesem Moment stimmen.' },
+  { label: 'BEHANDLUNG', title: 'Behandlungsseiten', text: 'Wer über ein Implantat oder eine durchsichtige Zahnschiene nachdenkt, liest wochenlang. Für jede Schwerpunktbehandlung schreiben wir eine Seite, die genau diese Fragen beantwortet.' },
+  { label: 'BEWERTUNG', title: 'Bewertungen mit Diskretion', text: 'Bewertungsanfragen ohne Gegenleistung und ohne Auswahl. In Antworten nennen wir nie, welche Behandlung der Patient bekommen hat.' },
+  { label: 'REGELN', title: 'Grenzen der Werbung', text: 'Wir schreiben im Rahmen von HWG und Berufsrecht: keine Heilversprechen, keine Superlative wie „der Beste“. Jeden Text legen wir Ihnen vor der Veröffentlichung zur Freigabe vor.' },
 ];
 
 const toc = [
   { id: 'acil', label: 'Suchen bei akuten Zahnschmerzen' },
   { id: 'tedavi', label: 'Patienten, die zu Behandlungen recherchieren' },
-  { id: 'kurallar', label: 'Werberegeln im Gesundheitswesen' },
+  { id: 'kurallar', label: 'HWG und Berufsrecht' },
   { id: 'kategori', label: 'Kategorie und Profilname' },
   { id: 'yorum', label: 'Bewertungen und Privatsphäre' },
-  { id: 'sube', label: 'Filialen und Gesundheitstourismus' },
+  { id: 'sube', label: 'Mehrere Standorte, Patienten aus dem Ausland' },
   { id: 'olcum', label: 'Was wir messen' },
 ];
 
 const faq = [
   {
     q: 'Wie überzeugen wir Patienten, wenn wir keine Vorher-nachher-Fotos zeigen dürfen?',
-    a: 'Mit Seiten, die die Behandlung ehrlich erklären. Bevor Patienten entscheiden, suchen sie Antworten auf Fragen wie „Wie viele Sitzungen dauert das?“ oder „Wann kann ich wieder arbeiten?“. Eine Seite, die diese Fragen offen beantwortet, hält sich auch an die Regeln.',
+    a: 'Mit Seiten, die die Behandlung ehrlich erklären. Bevor Patienten entscheiden, suchen sie Antworten auf Fragen wie „Wie viele Termine brauche ich?“ oder „Wann kann ich wieder arbeiten?“. Eine Seite, die diese Fragen sachlich beantwortet, braucht keine Vorher-nachher-Bilder.',
   },
   {
     q: 'Dürfen wir auf der Website Preisangaben machen?',
-    a: 'Eine Preisliste veröffentlichen wir nicht, weil Werbung über Preis und Rabatte im Gesundheitswesen eingeschränkt ist. Stattdessen erklären wir, wovon der Preis abhängt, etwa von der Zahl der Implantate oder vom Zustand des Knochens. Den genauen Betrag erfährt der Patient nach der Untersuchung in Ihrer Praxis.',
+    a: 'Ob und wie Sie Preise nennen, entscheiden Sie mit Blick auf Ihr Berufsrecht; im Zweifel fragen Sie Ihre Zahnärztekammer. Rabatte und Aktionen schreiben wir nicht. Stattdessen erklären wir, wovon die Kosten abhängen, etwa von der Zahl der Implantate oder vom Zustand des Knochens. Den genauen Betrag erfährt der Patient nach der Untersuchung, in der Regel über einen Heil- und Kostenplan.',
   },
   {
-    q: 'Wir behandeln nachts nicht. Müssen wir bei Notfallsuchen sichtbar sein?',
-    a: 'Nein, es reicht, wenn Ihre Öffnungszeiten stimmen. Das Profil sollte klar zeigen, wann Sie geschlossen haben, und genau darauf achtet der Patient, der am nächsten Morgen anrufen will. Verwenden Sie das Wort „Notfall“ nur, wenn Sie tatsächlich Notfallpatienten annehmen.',
+    q: 'Wir behandeln außerhalb der Sprechzeiten nicht. Müssen wir bei Notfallsuchen sichtbar sein?',
+    a: 'Nein, es reicht, wenn Ihre Öffnungszeiten stimmen. Das Profil sollte klar zeigen, wann Sie geschlossen haben, und genau darauf achtet der Patient, der am nächsten Morgen anrufen will. Verwenden Sie die Wörter „Notfall“ und „Notdienst“ nur, wenn Sie tatsächlich Notfallpatienten annehmen.',
   },
   {
     q: 'Wann sehen wir Ergebnisse?',
@@ -46,11 +46,11 @@ const faq = [
   locale={locale}
   route="industries/dental"
   title="SEO für Zahnärzte und Zahnarztpraxen | Wiserrise"
-  description="Lokale SEO für Zahnarztpraxen im Rahmen der Werberegeln: Notfallsuchen, Behandlungsseiten, Bewertungen, Filialen. Messung im Umkreis, wöchentlicher Bericht."
+  description="Lokale SEO für Zahnarztpraxen im Rahmen von HWG und Berufsrecht: Schmerzsuchen, Behandlungsseiten, Bewertungen. Wöchentlicher Bericht."
   eyebrow="BRANCHE · ZAHNÄRZTE"
   h1="SEO für Zahnärzte: da sein, wenn Patienten suchen."
   crumb="Zahnärzte"
-  lede="SEO für Zahnärzte heißt, zwei Patienten gleichzeitig zu erreichen: den, der nachts mit Schmerzen „Zahnarzt geöffnet“ tippt, und den, der seit Wochen zu Implantaten recherchiert. Der erste schaut auf die Karte und zum Telefon, der zweite liest Ihre Behandlungsseiten. Wir bauen beides auf und halten uns dabei an die türkischen Werberegeln für Gesundheitsleistungen."
+  lede="SEO für Zahnärzte heißt, zwei Patienten gleichzeitig zu erreichen: den, der abends mit Schmerzen „Zahnarzt geöffnet“ tippt, und den, der seit Wochen zu Implantaten recherchiert. Der erste schaut auf die Karte und greift zum Telefon, der zweite liest Ihre Behandlungsseiten. Wir bauen beides auf, im Rahmen des Heilmittelwerbegesetzes und des Berufsrechts Ihrer Kammer."
   serviceName="Lokale SEO für Zahnarztpraxen"
   breadcrumb={[
     { label: 'Startseite', href: '/de' },
@@ -62,7 +62,7 @@ const faq = [
   related={[
     { label: 'Betreuung des Google-Unternehmensprofils', href: p('services/gbp'), text: 'Öffnungszeiten, Kategorie, Leistungsliste und Antworten auf Bewertungen betreuen wir zusammen.' },
     { label: 'Content-Erstellung', href: p('services/content'), text: 'Behandlungsseiten schreiben wir entlang der Fragen, die Patienten wirklich stellen.' },
-    { label: 'SEO für Ästhetik-Kliniken', href: p('industries/aesthetics'), text: 'Wie wir in einem Bereich arbeiten, in dem die Entscheidung lange dauert und häufig nach dem Preis gefragt wird.' },
+    { label: 'SEO für Ästhetik-Kliniken', href: p('industries/aesthetics'), text: 'Wie wir in einem Bereich arbeiten, in dem die Entscheidung lange dauert und häufig nach den Kosten gefragt wird.' },
     { label: 'SEO für Physiotherapeuten', href: p('industries/physio'), text: 'Suchen, die von der Nähe im Stadtteil und wiederkehrenden Sitzungen bestimmt werden.' },
   ]}
   relatedHeading="Verwandte Seiten"
@@ -72,32 +72,32 @@ const faq = [
   <h2 id="acil">Wie findet Sie ein Patient mit Zahnschmerzen?</h2>
 
   <p>
-    Über die Karte, und er ruft an, ohne die Website zu öffnen. Wer um 23 Uhr pochende Zahnschmerzen hat, tippt „Zahnarzt
-    geöffnet“ oder „zahnärztlicher Notdienst“, schaut sich die ersten Praxen auf der Karte an und drückt auf Anrufen. Die
-    Entscheidung fällt in Sekunden.
+    Über die Karte, und oft ruft er an, ohne die Website zu öffnen. Wer abends pochende Zahnschmerzen hat, tippt „Zahnarzt
+    geöffnet“ oder „Zahnarzt Kreuzberg“, schaut sich die ersten Praxen auf der Karte an und tippt auf Anrufen. Die
+    Entscheidung fällt schnell.
   </p>
 
   <p>
-    Bei dieser Suche zählen zuerst Ihre Öffnungszeiten. Fehlen sie im Profil oder sind für Feiertage keine Sonderzeiten
-    eingetragen, sieht Sie niemand, der die Karte nach geöffneten Praxen filtert.
+    Bei dieser Suche zählen zuerst Ihre Öffnungszeiten. Fehlen sie im Profil oder sind für Feiertage und Brückentage keine
+    Sonderzeiten eingetragen, sieht Sie niemand, der die Karte nach geöffneten Praxen filtert.
   </p>
 
   <p>
-    Dazu kommt die Falle beim Profilnamen. Namen wie „Notfall-Zahnklinik Kadıköy Implantate“ scheinen kurzfristig zu
+    Dazu kommt die Falle beim Profilnamen. Namen wie „Zahnarzt Notdienst Kreuzberg Implantate“ scheinen kurzfristig zu
     wirken, verstoßen aber gegen Googles Richtlinien und können bis zur Sperrung des Profils führen. Ihr Profilname muss
     mit dem Namen auf Ihrem Praxisschild übereinstimmen.
   </p>
 
   <p>
-    Wenn Sie nachts tatsächlich keine Patienten annehmen, verwenden Sie das Wort „Notfall“ nirgends. Ein Patient, der
-    nachts anruft und Sie nicht erreicht, vertraut Ihrem Profil mit „Notfall“ kein zweites Mal.
+    Wenn Sie außerhalb der Sprechzeiten tatsächlich keine Patienten annehmen, verwenden Sie die Wörter „Notfall“ und
+    „Notdienst“ nirgends. Ein Patient, der abends anruft und Sie nicht erreicht, vertraut diesem Profil kein zweites Mal.
   </p>
 
   <p>
     Wenn Sie Patienten annehmen, kommt es darauf an, ans Telefon zu gehen. Den Preis für eine späte Reaktion haben wir
-    selbst bezahlt: Als wir noch neu waren, bemerkten wir den einzigen Lead aus einer Meta-Anzeige erst nach 5 Tagen, für
-    die Weitergabe an den Kunden war es zu spät, und Tausende Lira waren verbrannt. Ein Patient mit Schmerzen wartet keine
-    5 Tage, nicht einmal 5 Minuten.
+    selbst bezahlt: Als wir noch neu waren, bemerkten wir die einzige Anfrage aus einer Meta-Anzeige erst nach 5 Tagen,
+    für die Weitergabe an den Kunden war es zu spät, und das Werbebudget war verbrannt. Ein Patient mit Schmerzen wartet
+    keine 5 Tage, nicht einmal 5 Minuten.
   </p>
 
   <p>
@@ -132,7 +132,8 @@ const faq = [
 
   <p>
     Die Behandlungsnamen auf der Seite halten wir exakt gleich mit der Leistungsliste im Profil. Wenn Patienten
-    „Weisheitszahn ziehen“ tippen, steht genau das an beiden Stellen.
+    „Weisheitszahn ziehen“ tippen, steht genau das an beiden Stellen. Heilversprechen wie „schmerzfrei“ oder „hält ein
+    Leben lang“ schreiben wir dabei nicht.
   </p>
 
   <p>
@@ -142,37 +143,37 @@ const faq = [
     Zahnarztes, der den Inhalt prüft, auf die Seite zu schreiben.
   </p>
 
-  <h2 id="kurallar">Was verbieten die Werberegeln im Gesundheitswesen?</h2>
+  <h2 id="kurallar">Welche Regeln gelten für die Werbung einer Zahnarztpraxis?</h2>
 
   <p>
-    Die Werbung für Gesundheitsleistungen ist in der Türkei durch Vorschriften des Gesundheitsministeriums (Sağlık
-    Bakanlığı) begrenzt. Viele Schritte, die in anderen Branchen alltäglich sind, bringen einer Zahnarztpraxis Ärger. In
-    keinem unserer Texte steht:
+    Werbung für Behandlungen unterliegt in Deutschland dem Heilmittelwerbegesetz (HWG) und dem Berufsrecht Ihrer Kammer. Wir schreiben deshalb sachlich: keine Heilversprechen, keine Garantie für einen Behandlungserfolg, keine irreführenden Vorher-nachher-Vergleiche und keine Werbung für verschreibungspflichtige Arzneimittel gegenüber Patienten. Das ist eine allgemeine Information und keine Rechtsberatung; im Einzelfall entscheiden Ihre Kammer oder Ihre Rechtsberatung.
   </p>
 
+  <p>Konkret steht in keinem unserer Texte:</p>
+
   <ul>
-    <li>Ein Ergebnisversprechen, „garantierter Erfolg“ oder eine Behandlungsgarantie</li>
-    <li>Werbung mit Vorher-nachher-Fotos</li>
-    <li>Ankündigungen von Rabatten, Aktionen und Paketangeboten</li>
-    <li>Patientenbewertungen als Lobesmaterial auf der Website oder in Anzeigen</li>
-    <li>Vergleichende Überlegenheitsbehauptungen wie „der Beste“ oder „der Günstigste“</li>
+    <li>Ein Heilversprechen, „garantierter Erfolg“ oder eine Behandlungsgarantie</li>
+    <li>Irreführende Vorher-nachher-Vergleiche</li>
+    <li>Rabatte, Aktionen und Paketangebote</li>
+    <li>Patientenstimmen als Werbung auf der Website oder in Anzeigen</li>
+    <li>Superlative wie „der Beste“ oder „der Günstigste“</li>
   </ul>
 
   <p>
-    Erlaubt ist Information: was die Behandlung ist, wie sie abläuft, wie lange sie dauert und was den Patienten erwartet.
-    Genau das sucht der Patient. Die Regeln lenken Sie ohnehin zu den Inhalten, die Patienten lesen wollen.
+    Sachliche Information ist möglich: was die Behandlung ist, wie sie abläuft, wie lange sie dauert und was den
+    Patienten erwartet. Genau das sucht der Patient. Die Regeln lenken Sie ohnehin zu den Inhalten, die Patienten lesen
+    wollen.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Diese Seite ist keine Rechtsberatung.</strong> Maßgeblich für die aktuelle Auslegung der Regeln sind die
-      Gesundheitsdirektion Ihrer Provinz und Ihre Berufskammer. Jeden Text, den wir schreiben, legen wir Ihnen vor der
-      Veröffentlichung zur Freigabe vor.
+      <strong>Sie geben jeden Text frei.</strong> Jeden Text, den wir schreiben, legen wir Ihnen vor der Veröffentlichung
+      zur Freigabe vor. Bei einer Formulierung, bei der Sie unsicher sind, fragen Sie vorher Ihre Zahnärztekammer.
     </p>
   </div>
 
   <p>
-    Dieselben Regeln gelten für <a href={p('industries/aesthetics')}>Ästhetik-Kliniken</a> und
+    Derselbe Rahmen gilt für <a href={p('industries/aesthetics')}>Ästhetik-Kliniken</a> und
     <a href={p('industries/physio')}>Physiotherapeuten</a>. Deren Suchverhalten ist anders, deshalb haben wir sie auf
     eigenen Seiten beschrieben.
   </p>
@@ -180,7 +181,7 @@ const faq = [
   <h2 id="kategori">Welche Kategorie sollten Sie wählen?</h2>
 
   <p>
-    Geben Sie die Hauptkategorie der Hauptsuche: „Zahnarzt“ oder „Zahnklinik“. Bereiche, auf die Sie sich wirklich
+    Geben Sie die Hauptkategorie der Hauptsuche: in der Regel „Zahnarzt“, bei größeren Einrichtungen auch „Zahnklinik“. Bereiche, auf die Sie sich wirklich
     konzentrieren, fügen Sie als zusätzliche Kategorien hinzu. Jede Kategorie entspricht einer anderen Gruppe von Suchen.
   </p>
 
@@ -200,10 +201,8 @@ const faq = [
   <h2 id="yorum">Ist es ein Problem, Patienten um eine Bewertung zu bitten?</h2>
 
   <p>
-    Bitten dürfen Sie. Wir richten einen festen Ablauf zum Einholen von Bewertungen ein: regelmäßig, jeden Patienten
-    einzeln (kein Massenversand) und ohne Anreize wie Geschenke oder Rabatte. Nur Patienten zu fragen, von denen Sie
-    annehmen, dass sie zufrieden sind, verstößt gegen Googles Richtlinien; wir wählen nicht aus. Im Gesundheitswesen
-    kommen noch die Werberegeln hinzu. Dem Patienten vorzugeben, was er schreiben soll, birgt ebenfalls ein Risiko.
+    Nicht, wenn die Anfrage sauber abläuft. Wir richten eine Routine für Bewertungsanfragen ein: regelmäßig, einzeln statt per Massenversand, ohne Gutschein oder Rabatt und ohne nur zufriedene Patienten auszuwählen. Am einfachsten fragen Sie persönlich am Ende des Termins oder mit einer Karte bzw. einem QR-Code. Eine Bewertungsanfrage per E-Mail, SMS oder WhatsApp gilt in Deutschland als Werbung und braucht in der Regel die vorherige Einwilligung des Patienten (§ 7 UWG). Dem Patienten vorzugeben, was er schreiben soll, birgt
+    ebenfalls ein Risiko.
   </p>
 
   <p>
@@ -214,28 +213,28 @@ const faq = [
 
   <p>
     Bei einer negativen Bewertung wird der Patient zuerst telefonisch kontaktiert, dann folgt eine kurze Antwort, die nicht
-    in die Verteidigung geht. Stellen Sie eingegangene Bewertungen auf der Website nicht wie Werbung unter der Überschrift
-    „Das sagen unsere Patienten“ aus. Den Ablauf zum Einholen von Bewertungen beschreiben wir Schritt für Schritt im
+    in die Verteidigung geht. Patientenstimmen auf der Website unter der Überschrift „Das sagen unsere Patienten“ empfehlen
+    wir nicht; die Bewertungen bleiben in Ihrem Google-Profil. Den Ablauf zum Einholen von Bewertungen beschreiben wir Schritt für Schritt im
     <a href={p('guides/more-reviews')}>Ratgeber für mehr Google-Bewertungen</a>.
   </p>
 
-  <h2 id="sube">Was, wenn Sie mehrere Filialen oder Patienten aus dem Ausland haben?</h2>
+  <h2 id="sube">Was, wenn Sie mehrere Standorte oder Patienten aus dem Ausland haben?</h2>
 
   <p>
-    Jede physische Filiale braucht ein eigenes Profil und eine eigene Seite auf der Website. Filialseiten, die einander
-    kopieren, gehören zu den teuersten Fehlern, weil sich die Filialen bei derselben Suche gegenseitig verdrängen. Auf jede
-    Seite schreiben wir das Team dieser Filiale und die Behandlungen, die dort angeboten werden.
+    Jeder Standort mit eigener Adresse braucht ein eigenes Profil und eine eigene Seite auf der Website. Standortseiten,
+    die einander kopieren, gehören zu den teuersten Fehlern, weil sich die Standorte bei derselben Suche gegenseitig
+    verdrängen. Auf jede Seite schreiben wir das Team dieses Standorts und die Behandlungen, die dort angeboten werden.
   </p>
 
   <p>
-    Wenn Sie Patienten aus dem Ausland annehmen, geht die Arbeit in eine ganz andere Richtung. Dieser Bereich setzt eine
-    Genehmigung für Gesundheitstourismus vom Gesundheitsministerium voraus, und auch die Werberegeln funktionieren anders.
-    Gesucht wird in einer anderen Sprache und landesweit, die Nähe spielt keine Rolle mehr.
+    Wenn Sie gezielt Patienten aus dem Ausland ansprechen wollen, geht die Arbeit in eine ganz andere Richtung. Gesucht
+    wird in einer anderen Sprache und aus einem anderen Land, die Nähe spielt keine Rolle mehr. Welche Regeln für diese
+    Ansprache gelten, klären Sie vorab mit Ihrer Kammer.
   </p>
 
   <p>
-    Wir arbeiten auf Türkisch, Englisch und Deutsch, packen den Gesundheitstourismus aber nicht in das lokale Programm.
-    Wenn wir ihn gemeinsam planen, bauen wir ihn von Anfang an getrennt auf.
+    Wir arbeiten auf Deutsch, Englisch und Türkisch, packen diese Arbeit aber nicht in das lokale Programm. Wenn wir sie
+    gemeinsam planen, bauen wir sie von Anfang an getrennt auf.
   </p>
 
   <h2 id="olcum">Was messen wir?</h2>

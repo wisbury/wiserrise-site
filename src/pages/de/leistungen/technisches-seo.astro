@@ -6,10 +6,10 @@ const locale = 'de' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
-  { label: 'INDEX', title: 'Crawling und Index', text: 'Findet Google Ihre Seiten, nimmt es sie in den Index auf? Wir prüfen Ihre Leistungs- und Stadtteilseiten einzeln.' },
-  { label: 'TEMPO', title: 'Tempo auf dem Handy', text: 'Wer von der Karte kommt, öffnet Ihre Website auf dem Handy. Wir achten darauf, dass der erste Bildschirm schnell lädt und beim Laden nicht verrutscht.' },
+  { label: 'INDEX', title: 'Crawling und Index', text: 'Findet Google Ihre Seiten, und nimmt es sie in den Index auf? Wir prüfen Ihre Leistungs- und Stadtteilseiten einzeln.' },
+  { label: 'TEMPO', title: 'Tempo auf dem Handy', text: 'Wer über die Karte kommt, öffnet Ihre Website auf dem Handy. Wir sorgen dafür, dass der erste Bildschirm schnell lädt und beim Laden nicht verrutscht.' },
   { label: 'SCHEMA', title: 'Strukturierte Daten', text: 'Wir hinterlegen Ihre Unternehmensdaten so auf der Seite, dass Google sie lesen kann. Name, Adresse und Telefon stimmen mit Ihrem Profil überein.' },
-  { label: 'PROFIL', title: 'Verknüpfung mit dem Profil', text: 'Führt der Website-Link in Ihrem Profil auf die richtige Seite? Bei Unternehmen mit Filialen verweist jedes Profil auf die eigene Filialseite.' },
+  { label: 'PROFIL', title: 'Verknüpfung mit dem Profil', text: 'Führt der Website-Link in Ihrem Profil auf die richtige Seite? Bei mehreren Standorten verweist jedes Profil auf die eigene Standortseite.' },
 ];
 
 const toc = [
@@ -25,19 +25,19 @@ const toc = [
 const faq = [
   {
     q: 'Meine Website läuft mit WordPress. Geht technisches SEO da?',
-    a: 'Ja. Bei WordPress sehen wir zwei Probleme am häufigsten: Seiten, die durch Plugins schwer werden, und überflüssige Tag- und Archivseiten im Index. Beides lässt sich beheben, ohne die Website neu zu bauen.',
+    a: 'Ja. Bei WordPress sehen wir zwei Probleme am häufigsten: Seiten, die durch Plugins langsam werden, und überflüssige Schlagwort- und Archivseiten im Index. Beides lässt sich beheben, ohne die Website neu zu bauen.',
   },
   {
     q: 'Verbessern strukturierte Daten mein Ranking?',
-    a: 'Nicht direkt. Sie sorgen dafür, dass Google Seite und Unternehmen richtig versteht, und ermöglichen bei manchen Suchen eine erweiterte Darstellung. Wir setzen sie vor allem ein, um die Verbindung zwischen Profil und Website eindeutig zu machen.',
+    a: 'Nicht direkt. Sie helfen Google, Seite und Unternehmen richtig zu verstehen, und ermöglichen bei manchen Suchen eine erweiterte Darstellung. Wir setzen sie vor allem ein, um die Verbindung zwischen Profil und Website eindeutig zu machen.',
   },
   {
     q: 'Ist technisches SEO einmal erledigt und dann fertig?',
-    a: 'Die großen Korrekturen passieren einmal. Bei jeder Änderung an der Website können neue Fehler entstehen, ein Theme-Update oder ein neues Plugin genügt. Deshalb wiederholen wir das Crawling regelmäßig.',
+    a: 'Die großen Korrekturen sind einmalig. Bei jeder Änderung an der Website können aber neue Fehler entstehen; ein Theme-Update oder ein neues Plugin genügt. Deshalb wiederholen wir das Crawling regelmäßig.',
   },
   {
     q: 'Muss ich Ihnen die Betreuung meiner Website übergeben?',
-    a: 'Ja. Wenn wir die Website nicht komplett betreuen können, fangen wir nicht an. Die Korrekturen machen wir selbst, und was wir getan haben, sehen Sie jede Woche im Bericht und im Kundenportal.',
+    a: 'Ja. Wenn wir die Website nicht vollständig betreuen können, fangen wir nicht an. Die Korrekturen setzen wir selbst um, und was wir getan haben, sehen Sie jede Woche im Bericht und im Kundenportal.',
   },
 ];
 ---
@@ -45,12 +45,12 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="services/technical-seo"
-  title="Technisches SEO als Dienstleistung | Wiserrise"
-  description="Kann Google Ihre Website crawlen, sind Ihre Seiten im Index? Für Websites lokaler Unternehmen beheben wir Indexierung, Ladezeit, Schema und Profilverknüpfung."
+  title="Technisches SEO für lokale Unternehmen | Wiserrise"
+  description="Kann Google Ihre Website crawlen, sind Ihre Seiten im Index? Wir beheben Indexierungsfehler, Ladezeit, strukturierte Daten und die Verknüpfung zum Profil."
   eyebrow="LEISTUNG · TECHNISCHES SEO"
-  h1="Mit technischem SEO öffnet sich Ihre Website sauber für Google."
+  h1="Technisches SEO: damit Google Ihre Website vollständig erfasst."
   crumb="Technisches SEO"
-  lede="Technisches SEO ist die Arbeit, mit der wir dafür sorgen, dass Google Ihre Website crawlen und Ihre Seiten in den Index aufnehmen kann. Für ein lokales Unternehmen heißt das: Ihre Leistungs- und Stadtteilseiten wirken in der Suche und auf der Karte. Zuerst crawlen wir die Website, dann beheben wir die gefundenen Fehler der Reihe nach, sortiert nach ihrer Wirkung."
+  lede="Beim technischen SEO sorgen wir dafür, dass Google Ihre Website crawlen und Ihre Seiten in den Index aufnehmen kann. Für ein lokales Unternehmen heißt das: Ihre Leistungs- und Stadtteilseiten können in der Suche und auf der Karte überhaupt erst mitspielen. Zuerst crawlen wir die Website, dann beheben wir die gefundenen Fehler der Reihe nach, sortiert nach ihrer Bedeutung."
   serviceName="Technisches SEO"
   breadcrumb={[
     { label: 'Startseite', href: '/de' },
@@ -62,8 +62,8 @@ const faq = [
   faq={faq}
   related={[
     { label: 'SEO', href: p('services/seo'), text: 'Grundlage, Seitenaufbau, Inhalte und Links: die Hauptleistung, zu der diese gehört.' },
-    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Wir bringen Profil und Website zusammen in Ordnung, damit Sie auf der Karte nach vorne kommen.' },
-    { label: 'Onpage-SEO', href: p('services/on-page-seo'), text: 'Wir richten jede Seite auf eine einzige Suche aus und korrigieren Title und interne Links.' },
+    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Wir bringen Unternehmensprofil und Website gemeinsam in Ordnung, damit Sie auf der Karte besser gefunden werden.' },
+    { label: 'Onpage-SEO', href: p('services/on-page-seo'), text: 'Wir richten jede Seite auf eine Suchanfrage aus und korrigieren Title und interne Links.' },
     { label: 'Content-Erstellung', href: p('services/content'), text: 'Wir schreiben die Leistungs- und Stadtteilseiten, die auf Ihrer Website fehlen.' },
   ]}
   ctaLabel="Kostenlose Analyse anfordern"
@@ -72,29 +72,29 @@ const faq = [
   <h2 id="nedir">Wozu dient technisches SEO?</h2>
 
   <p>
-    Es sorgt dafür, dass Ihre Seiten bei Google ankommen. Google crawlt eine Seite zuerst und entscheidet dann, ob sie in
-    den Index kommt. Eine Seite, die an einem dieser zwei Schritte hängen bleibt, erscheint nicht in der Suche, egal wie
-    gut sie geschrieben ist.
+    Technisches SEO sorgt dafür, dass Ihre Seiten bei Google ankommen. Google crawlt eine Seite zuerst und entscheidet
+    dann, ob sie in den Index kommt. Eine Seite, die an einem dieser zwei Schritte hängen bleibt, erscheint nicht in der
+    Suche, egal wie gut sie geschrieben ist.
   </p>
 
   <p>
-    Bei einem lokalen Unternehmen kommt die Karte dazu. Ihr Google-Unternehmensprofil ist mit Ihrer Website verknüpft,
+    Bei einem lokalen Unternehmen kommt die Karte dazu. Ihr Google Unternehmensprofil ist mit Ihrer Website verknüpft,
     und Google liest auch dort ab, welche Leistung Sie in welchem Stadtteil anbieten. Eine Leistungsseite, die Google
     nicht sieht, nützt auch auf der Karte nichts; diese Verbindung erklären wir ausführlich auf der Seite zur
     <a href={p('services/local-seo')}>lokalen SEO</a>.
   </p>
 
   <p>
-    Deshalb beginnen wir jede Arbeit mit einer technischen Prüfung. Für eine Website, die nicht indexiert wird, schreiben
-    wir keine einzige Zeile Content.
+    Deshalb beginnen wir jede Zusammenarbeit mit einer technischen Prüfung. Für eine Website, die nicht indexiert wird,
+    schreiben wir keine einzige Zeile Content.
   </p>
 
   <h2 id="indeks">Sind Ihre Seiten wirklich bei Google?</h2>
 
   <p>
-    Am schnellsten sagt es Ihnen die Search Console. Der Bericht „Seiten“ zeigt, welche Adresse im Index ist und welche
-    aus welchem Grund draußen bleibt. Dort beginnen wir mit der Diagnose, danach crawlen wir die Website von vorne bis
-    hinten.
+    Am schnellsten zeigt es Ihnen die Google Search Console. Der Bericht „Seiten“ zeigt, welche Adresse im Index ist und
+    welche aus welchem Grund draußen bleibt. Dort beginnen wir mit der Diagnose, danach crawlen wir die Website
+    vollständig.
   </p>
 
   <p>Worauf wir beim Crawling schauen:</p>
@@ -102,7 +102,7 @@ const faq = [
   <ul class="checklist">
     <li>
       <strong>robots.txt und noindex.</strong> Versehentlich gesperrte Bereiche oder Danke- und Filterseiten, die nicht
-      in den Index gehören. Ein noindex-Tag auf einer Seite, die per robots.txt blockiert ist, kann Google nicht sehen,
+      in den Index gehören. Ein noindex-Tag auf einer Seite, die per robots.txt blockiert ist, kann Google nicht sehen;
       deshalb darf man die beiden nicht verwechseln.
     </li>
     <li>
@@ -114,16 +114,16 @@ const faq = [
       Search Console eingereicht?
     </li>
     <li>
-      <strong>Weiterleitungen und defekte Links.</strong> Weiterleitungsketten, interne Links mit 404-Fehler und
-      verlorene Adressen von der alten Website.
+      <strong>Weiterleitungen und defekte Links.</strong> Weiterleitungsketten, interne Links auf 404-Seiten und
+      verlorene Adressen der alten Website.
     </li>
   </ul>
 
   <div class="callout">
     <p>
-      <strong>Erstellen Sie vor einem Relaunch zuerst die Liste der Weiterleitungen.</strong> Wird nicht jede alte Adresse
-      per 301 mit ihrer neuen Entsprechung verbunden, geht das Ranking verloren, das sich auf diesen Adressen angesammelt
-      hat. Das ist der Traffic-Verlust, den wir bei Unternehmen mit neuem Webdesigner am häufigsten sehen.
+      <strong>Erstellen Sie vor einem Relaunch zuerst die Liste der Weiterleitungen.</strong> Wird nicht jede alte
+      Adresse per 301 auf ihre neue Entsprechung weitergeleitet, geht das Ranking verloren, das diese Adressen aufgebaut
+      haben. Das ist der Traffic-Verlust, den wir nach einem Wechsel der Webagentur am häufigsten sehen.
     </p>
   </div>
 
@@ -137,8 +137,8 @@ const faq = [
   <ul class="checklist">
     <li>
       <strong>Der Website-Link im Profil.</strong> Führt er auf eine Weiterleitung, eine alte Adresse oder eine Seite, die
-      nicht im Index ist, korrigieren wir ihn. Bei Unternehmen mit Filialen verweist jedes Profil auf die eigene
-      Filialseite.
+      nicht im Index ist, korrigieren wir ihn. Bei mehreren Standorten verweist jedes Profil auf die eigene
+      Standortseite.
     </li>
     <li>
       <strong>Name, Adresse und Telefon.</strong> Sie stehen als Text auf der Seite und stimmen exakt mit der
@@ -146,7 +146,7 @@ const faq = [
     </li>
     <li>
       <strong>Leistungs- und Stadtteilseiten.</strong> Bekommen sie Links aus dem Menü oder von anderen Seiten? Eine
-      Seite ohne einen einzigen Link findet Google spät, manchmal gar nicht.
+      Seite, auf die kein einziger Link zeigt, findet Google spät oder gar nicht.
     </li>
     <li>
       <strong>Die mobile Version.</strong> Google bewertet die Website anhand der mobilen Version. Inhalte, die auf dem
@@ -155,36 +155,36 @@ const faq = [
   </ul>
 
   <p>
-    Das ist der Teil der Arbeit, der die Website betrifft. Den Teil des Profils übernehmen wir bei der
-    <a href={p('services/gbp')}>Betreuung des Google-Unternehmensprofils</a>, beides läuft im selben Plan.
+    Das ist der Teil der Arbeit, der die Website betrifft. Den Teil im Profil übernehmen wir bei der
+    <a href={p('services/gbp')}>Betreuung des Google Unternehmensprofils</a>; beides läuft im selben Plan.
   </p>
 
   <h2 id="hiz">Beeinflusst die Ladezeit Ihr Ranking?</h2>
 
   <p>
-    Ja, aber weniger als man denkt. Die Messwerte, die Google Core Web Vitals nennt, prüfen, wie schnell der Hauptinhalt
-    erscheint (LCP), wie schnell die Seite auf eine Eingabe reagiert (INP) und wie stark sie beim Laden verrutscht (CLS).
+    Ja, aber weniger, als viele denken. Die Messwerte, die Google Core Web Vitals nennt, prüfen, wie schnell der
+    Hauptinhalt erscheint (LCP), wie schnell die Seite auf eine Eingabe reagiert (INP) und wie stark sie beim Laden
+    verrutscht (CLS).
   </p>
 
   <p>
-    Die eigentliche Wirkung der Ladezeit zeigt sich beim Kunden. Wer von der Karte kommt, hat sich schon entschieden und
-    will Sie anrufen oder sich die Route anzeigen lassen. Lädt die Seite zu langsam, geht er zurück und nimmt das nächste
-    Unternehmen in der Liste.
+    Die eigentliche Wirkung der Ladezeit zeigt sich beim Kunden. Wer über die Karte kommt, hat sich oft schon fast
+    entschieden und will anrufen oder sich die Route anzeigen lassen. Lädt die Seite zu langsam, geht er zurück und
+    nimmt das nächste Unternehmen in der Liste.
   </p>
 
   <p>
-    Unser Ziel: Wer über das Handy kommt, sieht den ersten Bildschirm sofort. Der Großteil der Arbeit besteht darin,
-    Bilder in der richtigen Größe auszuliefern, Skripte zu verzögern, die die Seite aufhalten, ungenutztes CSS und
-    JavaScript zu entfernen und Schriften leichter zu machen. Den PageSpeed-Wert beobachten wir als Nebenprodukt dieser
-    Arbeit.
+    Unser Ziel: Wer mit dem Handy kommt, sieht den ersten Bildschirm sofort. Der größte Teil der Arbeit besteht darin,
+    Bilder in der richtigen Größe auszuliefern, bremsende Skripte später zu laden, ungenutztes CSS und JavaScript zu
+    entfernen und Schriften schlanker zu machen. Den PageSpeed-Wert betrachten wir als Nebenprodukt dieser Arbeit.
   </p>
 
   <h2 id="schema">Wozu dienen strukturierte Daten?</h2>
 
   <p>
-    Sie schreiben Ihre Unternehmensdaten so in die Seite, dass Google sie maschinell lesen kann. In der gemeinsamen
-    Sprache Schema.org sagen Sie damit: „Das ist eine Zahnklinik, die Adresse ist diese, sie bietet diese Leistungen
-    an.“ Die Typen, die wir bei lokalen Unternehmen verwenden:
+    Sie hinterlegen Ihre Unternehmensdaten so auf der Seite, dass Google sie maschinell lesen kann. Im gemeinsamen
+    Vokabular Schema.org sagen Sie damit: „Das ist eine Zahnarztpraxis, das ist ihre Adresse, und diese Leistungen
+    bietet sie an.“ Die Typen, die wir bei lokalen Unternehmen verwenden:
   </p>
 
   <div class="table-scroll">
@@ -206,7 +206,7 @@ const faq = [
         </tr>
         <tr>
           <td><strong>sameAs</strong></td>
-          <td>Verbindet Website, Google-Profil und Social-Media-Konten mit demselben Unternehmen</td>
+          <td>Verbindet Website, Google Unternehmensprofil und Social-Media-Konten mit demselben Unternehmen</td>
         </tr>
         <tr>
           <td><strong>BreadcrumbList</strong></td>
@@ -221,53 +221,54 @@ const faq = [
   </div>
 
   <p>
-    Beim Einrichten achten wir auf eines: Die Schemas aller Seiten werden über eine feste @id mit demselben Unternehmen
-    verbunden. Schreibt man Seite für Seite ein unverbundenes Schema, hält Google dasselbe Unternehmen womöglich für
-    mehrere getrennte Einheiten.
+    Beim Einrichten achten wir auf eines: Die strukturierten Daten aller Seiten verweisen über eine feste @id auf
+    dasselbe Unternehmen. Schreibt man Seite für Seite unverbundene Angaben, hält Google dasselbe Unternehmen womöglich
+    für mehrere getrennte Einheiten.
   </p>
 
   <p>
-    Name, Adresse und Telefon im Schema müssen mit Ihrem Profil übereinstimmen. Im Profil „Mavi Çınar Fizyoterapi“ und im
-    Schema noch die alte Firmierung stehen zu lassen, heißt, Google zwei verschiedene Unternehmen zu zeigen.
+    Name, Adresse und Telefon im Schema müssen mit Ihrem Profil übereinstimmen. Steht im Profil „Physio Blaue Platane“
+    und im Schema noch die alte Firmierung, zeigen Sie Google zwei verschiedene Unternehmen.
   </p>
 
   <h2 id="dil">Ihre Website hat mehrere Sprachen?</h2>
 
   <p>
-    Dann wird hreflang eingerichtet. Dieses Tag sagt Google „Die englische Fassung dieser Seite ist diese, die deutsche
-    diese“ und zeigt Suchenden die richtige Sprache.
+    Dann richten wir hreflang ein. Diese Angabe sagt Google „Die englische Fassung dieser Seite ist diese, die deutsche
+    jene“, damit Suchende die richtige Sprache sehen.
   </p>
 
   <p>
-    Angenommen, Sie sind eine Zahnklinik in Antalya, die auch ausländische Patienten behandelt, und Ihre Website ist
-    dreisprachig. Der Fehler, den wir am häufigsten sehen: Jede Seite verweist per hreflang auf jede Sprache, auch Seiten
-    ohne Übersetzung. Google ignoriert hreflang-Angaben ohne Gegenstück oder ohne Rückverweis.
+    Angenommen, Sie führen eine Zahnarztpraxis in Frankfurt, die auch viele internationale Patienten behandelt, und
+    Ihre Website gibt es auf Deutsch, Englisch und Polnisch. Der Fehler, den wir am häufigsten sehen: Jede Seite verweist
+    per hreflang auf jede Sprache, auch Seiten ohne Übersetzung. Google ignoriert hreflang-Angaben ohne Gegenstück oder
+    ohne Rückverweis.
   </p>
 
   <p>
     Richtig eingerichtet steht hreflang nur zwischen Seiten, die tatsächlich eine Übersetzung haben, jede Seite nennt
-    auch sich selbst, und es gibt ein x-default. Stadtteilseiten, die nur für türkischsprachige Suchende geschrieben sind,
-    bleiben außerhalb dieser Gruppe.
+    auch sich selbst, und es gibt ein x-default. Stadtteilseiten, die es nur auf Deutsch gibt, bleiben außerhalb dieser
+    Gruppe.
   </p>
 
   <h2 id="sonra">Was passiert nach der Prüfung?</h2>
 
   <p>
-    Wir sortieren die Ergebnisse nach ihrer Wirkung. Zuerst beheben wir die Fehler, die Seiten vom Index fernhalten,
-    Ladezeit und Schema kommen danach. Alles in derselben Woche zu korrigieren macht es schwer zu erkennen, was gewirkt
-    hat.
+    Wir sortieren die Ergebnisse nach ihrer Bedeutung. Zuerst beheben wir die Fehler, die Seiten vom Index fernhalten;
+    Ladezeit und strukturierte Daten kommen danach. Wer alles in derselben Woche korrigiert, kann später kaum erkennen,
+    was gewirkt hat.
   </p>
 
   <p>
-    Die Korrekturen machen wir selbst, denn wenn wir die Website nicht komplett betreuen können, fangen wir nicht an.
-    Woher diese Regel kommt, erzählen wir auf der
+    Die Korrekturen setzen wir selbst um, denn wenn wir die Website nicht vollständig betreuen können, fangen wir nicht
+    an. Woher diese Regel kommt, erzählen wir auf der
     <a href={`${p('services/local-seo')}#site`}>Seite zur lokalen SEO</a>.
   </p>
 
   <p>
-    Wenn das Fundament steht, kommen die Seiten selbst an die Reihe. Mit
+    Steht das Fundament, kommen die Seiten selbst an die Reihe. Mit
     <a href={p('services/on-page-seo')} style="white-space: nowrap;">Onpage-SEO</a> richten wir jede Seite auf eine
-    einzige Suche aus, die fehlenden Leistungs- und Stadtteilseiten schreiben wir im Rahmen der
+    Suchanfrage aus, die fehlenden Leistungs- und Stadtteilseiten schreiben wir im Rahmen der
     <a href={p('services/content')}>Content-Erstellung</a>.
   </p>
 

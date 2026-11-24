@@ -6,17 +6,17 @@ const locale = 'de' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
-  { label: 'LEISTUNG', title: 'Leistungsseiten', text: 'Eine eigene Seite für jede Leistung, die Sie anbieten. Sie beantwortet die Fragen der Suchenden und führt sie zum Anruf und zum Termin.' },
-  { label: 'STADTTEIL', title: 'Stadtteil und Stadt', text: 'Nur, wenn es über die Gegend wirklich etwas zu sagen gibt. Kopien mit ausgetauschtem Stadtnamen schreiben wir nicht.' },
-  { label: 'RATGEBER', title: 'Ratgeberartikel', text: 'Sie erreichen Menschen mit einer Informationsfrage früh und schicken sie zur Leistungsseite. Ratgeber kommen erst, wenn die Leistungsseiten fertig sind.' },
-  { label: 'FREIGABE', title: 'Fachliche Freigabe', text: 'Der Entwurf kommt von uns, die fachliche Freigabe von Ihnen. Bei Anwälten und im Gesundheitsbereich schreiben wir nach den Werberegeln des jeweiligen Berufs.' },
+  { label: 'LEISTUNG', title: 'Leistungsseiten', text: 'Eine eigene Seite für jede Leistung, die Sie anbieten. Sie beantwortet die Fragen der Suchenden und führt zu Anruf und Termin.' },
+  { label: 'STADTTEIL', title: 'Stadtteil und Stadt', text: 'Nur, wenn es über die Gegend wirklich etwas zu sagen gibt. Kopien mit ausgetauschtem Ortsnamen schreiben wir nicht.' },
+  { label: 'RATGEBER', title: 'Ratgeberartikel', text: 'Sie erreichen Menschen mit einer Informationsfrage früh und führen sie zur Leistungsseite. Ratgeber kommen erst, wenn die Leistungsseiten stehen.' },
+  { label: 'FREIGABE', title: 'Fachliche Freigabe', text: 'Der Entwurf kommt von uns, die fachliche Freigabe von Ihnen. Für Kanzleien und Praxen schreiben wir sachlich und mit Blick auf das jeweilige Berufsrecht.' },
 ];
 
 const toc = [
   { id: 'nedir', label: 'Was Content-Erstellung umfasst' },
   { id: 'sira', label: 'Warum zuerst Leistungsseiten?' },
   { id: 'sehir', label: 'Stadtteil- und Stadtseiten' },
-  { id: 'kurallar', label: 'Anwälte und Gesundheit' },
+  { id: 'kurallar', label: 'Kanzleien und Gesundheit' },
   { id: 'surec', label: 'Wie eine Seite entsteht' },
   { id: 'yapay-zeka', label: 'Einsatz von KI' },
 ];
@@ -24,19 +24,19 @@ const toc = [
 const faq = [
   {
     q: 'Wer schreibt die Inhalte?',
-    a: 'Recherche und Entwurf übernehmen wir, die fachliche Richtigkeit geben Sie frei. Bei Kanzleien und im Gesundheitsbereich geht keine Seite ohne fachliche Freigabe online.',
+    a: 'Recherche und Entwurf übernehmen wir, die fachliche Richtigkeit geben Sie frei. Bei Kanzleien und Praxen geht keine Seite ohne Ihre fachliche Freigabe online.',
   },
   {
     q: 'Wie viele Inhalte braucht es pro Monat?',
-    a: 'Eine feste Zahl nennen wir nicht. Zuerst werden die fehlenden Leistungsseiten fertiggestellt, und die Liste der Lücken bestimmt die Zahl. Danach wählen wir jede weitere Seite nach der echten Nachfrage in den Suchen aus.',
+    a: 'Eine feste Zahl nennen wir nicht. Zuerst stellen wir die fehlenden Leistungsseiten fertig; wie viele das sind, ergibt sich aus der Liste der Lücken. Danach wählen wir jede weitere Seite nach der tatsächlichen Suchnachfrage aus.',
   },
   {
     q: 'Beeinflusst ein Blog meinen Platz auf der Karte?',
-    a: 'Direkt nur begrenzt. Ein Blog bringt Menschen mit Informationsfragen auf die Website und führt sie per Link zu Ihrer Leistungsseite. Für den Platz auf der Karte sind Ihr Google-Unternehmensprofil und Ihre Leistungsseiten entscheidender.',
+    a: 'Direkt nur wenig. Ein Blog bringt Menschen mit Informationsfragen auf die Website und führt sie per Link zu Ihrer Leistungsseite. Für den Platz auf der Karte zählen Ihr Google Unternehmensprofil und Ihre Leistungsseiten deutlich mehr.',
   },
   {
     q: 'Was passiert mit meinen bestehenden Artikeln?',
-    a: 'Die prüfen wir zuerst. Artikel mit Impressionen, aber ohne Klicks, oder Artikel, die mit einer anderen Ihrer Seiten um dieselbe Suche konkurrieren, schreiben wir neu oder führen sie zusammen. Artikel ohne jede Impression und mit schwachem Bezug zu Ihrem Geschäft empfehlen wir zu entfernen.',
+    a: 'Die prüfen wir zuerst. Artikel mit Impressionen, aber ohne Klicks, und Artikel, die mit einer anderen Ihrer Seiten um dieselbe Suche konkurrieren, schreiben wir neu oder führen sie zusammen. Artikel ohne jede Impression und mit schwachem Bezug zu Ihrem Angebot empfehlen wir zu entfernen.',
   },
 ];
 ---
@@ -44,12 +44,12 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="services/content"
-  title="SEO-Content-Erstellung | Wiserrise"
-  description="SEO-Content für lokale Unternehmen: zuerst Leistungsseiten, dann Stadtteilseiten und Ratgeber mit echten Informationen. Online erst nach fachlicher Freigabe."
+  title="SEO-Texte schreiben lassen: Content-Erstellung | Wiserrise"
+  description="SEO-Texte für Praxen, Kanzleien und Betriebe: erst Leistungsseiten, dann Stadtteilseiten und Ratgeber. Online geht nur, was Sie fachlich freigegeben haben."
   eyebrow="LEISTUNG · CONTENT-ERSTELLUNG"
   h1="Mit SEO-Content die fehlenden Seiten Ihrer Website ergänzen."
   crumb="Content-Erstellung"
-  lede="Bei der Content-Erstellung schreiben wir die Seiten, die auf Ihrer Website fehlen. Zuerst stellen wir die Leistungsseiten fertig, die Kunden zum Telefon bringen, der Blog kommt zuletzt. Welche Seite fehlt, ermitteln wir aus Suchdaten und aus den Leistungen in Ihrem Google-Profil."
+  lede="Bei der Content-Erstellung schreiben wir die Seiten, die auf Ihrer Website fehlen. Zuerst kommen die Leistungsseiten, über die Kunden anrufen oder einen Termin anfragen, der Blog kommt zuletzt. Welche Seiten fehlen, ermitteln wir aus Suchdaten und aus den Leistungen in Ihrem Google Unternehmensprofil."
   serviceName="SEO-Content-Erstellung"
   breadcrumb={[
     { label: 'Startseite', href: '/de' },
@@ -61,8 +61,8 @@ const faq = [
   faq={faq}
   related={[
     { label: 'SEO', href: p('services/seo'), text: 'Grundlage, Seitenaufbau, Inhalte und Links: die Hauptleistung, zu der diese gehört.' },
-    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Wir bringen Profil und Website zusammen in Ordnung, damit Sie auf der Karte nach vorne kommen.' },
-    { label: 'Onpage-SEO', href: p('services/on-page-seo'), text: 'Wir richten jede Seite auf eine einzige Suche aus und korrigieren Title und interne Links.' },
+    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Wir bringen Unternehmensprofil und Website gemeinsam in Ordnung, damit Sie auf der Karte besser gefunden werden.' },
+    { label: 'Onpage-SEO', href: p('services/on-page-seo'), text: 'Wir richten jede Seite auf eine Suchanfrage aus und korrigieren Title und interne Links.' },
     { label: 'Technisches SEO', href: p('services/technical-seo'), text: 'Wir beheben Crawling- und Indexierungsfehler, damit die Seiten, die wir schreiben, bei Google ankommen.' },
   ]}
   ctaLabel="Kostenlose Analyse anfordern"
@@ -71,13 +71,13 @@ const faq = [
   <h2 id="nedir">Was umfasst Content-Erstellung?</h2>
 
   <p>
-    Jede Seite, die auf Ihrer Website sein müsste und fehlt. Bei einem lokalen Unternehmen stehen Leistungsseiten oben
+    Jede Seite, die auf Ihre Website gehört, dort aber fehlt. Bei einem lokalen Unternehmen stehen Leistungsseiten oben
     auf der Liste, Blogartikel kommen zuletzt.
   </p>
 
   <p>
-    Wenn jemand in Izmir nach „Kfz-Gutachter Bornova“ sucht, sucht Google eine Seite, die genau diese Leistung in dieser
-    Gegend beschreibt. Besteht Ihre Website nur aus Startseite und Kontaktseite, hat Google nichts zu zeigen.
+    Wer in Köln nach „Kfz-Gutachter Ehrenfeld“ sucht, für den sucht Google eine Seite, die genau diese Leistung in genau
+    dieser Gegend beschreibt. Besteht Ihre Website nur aus Startseite und Kontaktseite, hat Google nichts zu zeigen.
   </p>
 
   <div class="table-scroll">
@@ -92,17 +92,17 @@ const faq = [
       <tbody>
         <tr>
           <td><strong>Leistungsseite</strong></td>
-          <td>„Wurzelbehandlung“, „Scheidungsanwalt“</td>
-          <td>Empfängt Menschen, die bereit sind, die Leistung zu buchen. Die Seite, die dem Anruf am nächsten ist.</td>
+          <td>„Wurzelbehandlung“, „Anwalt Familienrecht“</td>
+          <td>Empfängt Menschen, die die Leistung jetzt brauchen. Die Seite, die dem Anruf am nächsten ist.</td>
         </tr>
         <tr>
           <td><strong>Stadtteil- oder Stadtseite</strong></td>
-          <td>„Kfz-Gutachter Bornova“</td>
-          <td>Macht Sie in der Gegend sichtbar, die Sie bedienen. Echte lokale Informationen sind Pflicht.</td>
+          <td>„Kfz-Gutachter Ehrenfeld“</td>
+          <td>Zeigt, dass Sie in dieser Gegend arbeiten. Echte lokale Informationen sind Pflicht.</td>
         </tr>
         <tr>
           <td><strong>Ratgeberartikel</strong></td>
-          <td>„wie viele Sitzungen braucht eine Wurzelbehandlung“</td>
+          <td>„wie lange dauert eine Wurzelbehandlung“</td>
           <td>Erreicht Menschen mit Informationsfragen früh und führt sie per Link zur Leistungsseite.</td>
         </tr>
       </tbody>
@@ -112,69 +112,74 @@ const faq = [
   <h2 id="sira">Warum zuerst Leistungsseiten?</h2>
 
   <p>
-    Weil sie die Kunden bringen. Wenn Sie mit Ratgeberartikeln Besucher auf eine Website ohne Leistungsseiten holen,
-    finden die Besucher keinen Ort, an dem sie weitermachen können, und gehen wieder.
+    Weil über sie die Anfragen kommen. Holen Sie mit Ratgeberartikeln Besucher auf eine Website ohne Leistungsseiten,
+    finden diese keine Stelle, an der es weitergeht, und gehen wieder.
   </p>
 
   <p>
-    Deshalb schreiben wir keinen Blog, bevor die Leistungsseiten fertig sind. Einem Unternehmen, das einen Blog möchte,
-    zeigen wir zuerst die Liste der fehlenden Leistungsseiten.
+    Deshalb schreiben wir keinen Blog, bevor die Leistungsseiten stehen. Wer einen Blog möchte, bekommt von uns zuerst
+    die Liste der fehlenden Leistungsseiten.
   </p>
 
   <p>
-    Diese Liste ermitteln wir aus Suchen, die in der Search Console Impressionen bekommen, aber keine passende Seite haben,
-    und aus Seiten, die Ihre Wettbewerber haben und Sie nicht. Die schnellste Quelle ist Ihr
-    <a href={p('services/gbp')}>Google-Unternehmensprofil</a>: Jede Leistung, die im Profil steht, aber auf der Website
+    Diese Liste ermitteln wir aus Suchanfragen, die in der Search Console Impressionen bekommen, aber keine passende
+    Seite haben, und aus Seiten, die Ihre Wettbewerber haben und Sie nicht. Die schnellste Quelle ist Ihr
+    <a href={p('services/gbp')}>Google Unternehmensprofil</a>: Jede Leistung, die im Profil steht, aber auf der Website
     keine Seite hat, kommt auf die Liste.
   </p>
 
   <h2 id="sehir">Wann legt man eine Stadtteil- oder Stadtseite an?</h2>
 
   <p>
-    Wenn Sie über diese Gegend wirklich etwas zu sagen haben. Kopierte Seiten mit ausgetauschtem Stadtnamen wertet Google
-    als „Doorway“-Seiten, und sie schaden der ganzen Website. Die Regeln für Filialen und bediente Städte erklären wir auf
-    der <a href={`${p('services/local-seo')}#coklu`}>Seite zur lokalen SEO</a>.
+    Wenn Sie über diese Gegend wirklich etwas zu sagen haben. Kopierte Seiten mit ausgetauschtem Ortsnamen wertet Google
+    als „Doorway“-Seiten, und sie schaden der ganzen Website. Was für mehrere Standorte und Einsatzgebiete gilt, erklären
+    wir auf der <a href={`${p('services/local-seo')}#coklu`}>Seite zur lokalen SEO</a>.
   </p>
 
   <p>
-    Was heißt „wirklich etwas“? Angenommen, Sie haben ein Physiotherapiezentrum in Kadıköy und machen auch Hausbesuche in
-    Ataşehir. Die Seite für Ataşehir kann Folgendes erklären:
+    Was heißt „wirklich etwas“? Angenommen, Sie haben eine Physiotherapiepraxis in Frankfurt-Bornheim und machen auch
+    Hausbesuche in Seckbach. Die Seite für Seckbach kann Folgendes erklären:
   </p>
 
   <ul class="checklist">
-    <li>In welche Viertel von Ataşehir Sie fahren</li>
+    <li>In welche Straßen und Wohngebiete von Seckbach Sie fahren</li>
     <li>Welche Behandlungen beim Hausbesuch möglich sind</li>
-    <li>Wie ein Hausbesuch geplant wird und wie man ins Zentrum kommt, wenn man lieber vorbeikommt</li>
+    <li>Wie ein Hausbesuch geplant wird und wie man in die Praxis kommt, wenn man lieber vorbeikommt</li>
     <li>Die Fragen, die Patienten aus dieser Gegend am Telefon am häufigsten stellen</li>
   </ul>
 
   <p>
     Ohne diese Informationen legen wir die Seite nicht an. Eine Vorlage mit eingesetztem Stadtteilnamen zu vervielfältigen
-    wirkt schnell, schwächt die Website aber in Googles Augen.
+    geht schnell, schwächt die Website aber in Googles Augen.
   </p>
 
   <p>
     Für welchen Stadtteil wir zuerst eine Seite anlegen, entscheidet die
-    <a href={p('services/rank-tracking')}>Messung</a> in Ihrem Umkreis. Stadtteile, aus denen Sie wirklich Aufträge
-    bekommen, in der Suche aber zurückliegen, kommen an den Anfang der Liste.
+    <a href={p('services/rank-tracking')}>Messung</a> in Ihrem Umkreis. Stadtteile, aus denen Sie tatsächlich Aufträge
+    bekommen, in denen Sie in der Suche aber zurückliegen, stehen oben auf der Liste.
   </p>
 
-  <h2 id="kurallar">Worauf achten wir bei Anwalts- und Gesundheitswebsites?</h2>
+  <h2 id="kurallar">Worauf achten wir bei Websites von Kanzleien und Praxen?</h2>
 
   <p>
-    Auf die Berufsregeln. Für Anwaltswebsites gilt das Werbeverbot des Dachverbands der türkischen Anwaltskammern (TBB
-    Reklam Yasağı Yönetmeliği). Erfolgsversprechen, Erfolgsquoten, Überlegenheitsbehauptungen wie „der beste“ und
-    Bewertungen von Mandanten haben dort keinen Platz.
-  </p>
-
-  <p>
-    Im Gesundheitsbereich gelten ähnliche Grenzen. Behandlungsgarantien oder Vorher-nachher-Versprechen schreiben wir
-    nicht. Jeder Text geht vor der Veröffentlichung durch diesen Filter und braucht die Freigabe des Anwalts oder des
-    Arztes.
+    Auf das Berufsrecht. Anwaltswerbung ist in Deutschland erlaubt, soweit sie sachlich über die berufliche Tätigkeit
+    informiert und nicht auf die Erteilung eines Auftrags im Einzelfall gerichtet ist (§ 43b BRAO). Die Berufsordnung
+    (BORA) konkretisiert das, etwa bei Angaben zu Teilbereichen der Berufstätigkeit und bei Fachanwaltsbezeichnungen.
+    Wir schreiben deshalb sachlich und ohne Superlative wie „bester Anwalt“; Erfolgsversprechen, Erfolgsquoten und
+    Mandantenstimmen setzen wir nicht ein. Begriffe wie „Spezialist“ oder „Fachanwalt“ verwenden wir nur, wenn Sie sie
+    tatsächlich führen dürfen.
   </p>
 
   <p>
-    Ein informativer Text ohne große Behauptungen wirkt in diesen Branchen auch auf Leser glaubwürdiger. Details für die
+    Werbung für Behandlungen unterliegt in Deutschland dem Heilmittelwerbegesetz (HWG) und dem Berufsrecht Ihrer Kammer.
+    Wir schreiben deshalb sachlich: keine Heilversprechen, keine Garantie für einen Behandlungserfolg, keine
+    irreführenden Vorher-nachher-Vergleiche und keine Werbung für verschreibungspflichtige Arzneimittel gegenüber
+    Patienten. Jeder Text geht vor der Veröffentlichung durch diesen Filter und braucht Ihre Freigabe. Das ist eine
+    allgemeine Information und keine Rechtsberatung; maßgeblich sind die Vorgaben und die Auslegung durch Ihre Kammer.
+  </p>
+
+  <p>
+    Ein informativer Text ohne große Behauptungen wirkt in diesen Branchen auch auf Leser glaubwürdiger. Mehr zu den
     einzelnen Branchen finden Sie auf den Seiten <a href={p('industries/law')}>SEO für Anwälte</a> und
     <a href={p('industries/dental')}>SEO für Zahnärzte</a>.
   </p>
@@ -189,30 +194,31 @@ const faq = [
       fehlen.
     </li>
     <li>
-      <strong>Reihenfolge.</strong> Die Seite, die dem Anruf am nächsten ist, kommt zuerst, Ratgeberartikel zuletzt.
+      <strong>Reihenfolge.</strong> Die Seite, die dem Anruf am nächsten ist, kommt zuerst, Ratgeberartikel kommen
+      zuletzt.
     </li>
     <li>
-      <strong>Plan.</strong> Für jede Seite legen wir die Zielsuche, die zu beantwortenden Fragen, die internen Links und
-      den Schema-Typ fest. Dieser Teil gehört zum
+      <strong>Plan.</strong> Für jede Seite legen wir die Suchanfrage, die zu beantwortenden Fragen, die internen Links
+      und den Schema-Typ fest. Dieser Teil gehört zum
       <a href={p('services/on-page-seo')} style="white-space: nowrap;">Onpage-SEO</a>.
     </li>
     <li>
-      <strong>Schreiben und Freigabe.</strong> Den Entwurf schreiben wir, die Richtigkeit der Angaben zu Ihrem Geschäft
-      geben Sie frei.
+      <strong>Schreiben und Freigabe.</strong> Den Entwurf schreiben wir, die Angaben zu Ihrem Unternehmen und Ihrer
+      Arbeit geben Sie frei.
     </li>
     <li>
       <strong>Veröffentlichung.</strong> Wir stellen die Seite online, binden sie in die internen Links ein und nehmen sie
-      in die Sitemap auf. Wenn wir die Website nicht komplett betreuen können, fangen wir nicht an, deshalb liegt auch die
+      in die Sitemap auf. Wir arbeiten nur an Websites, die wir vollständig betreuen; deshalb liegt auch die
       Veröffentlichung bei uns.
     </li>
     <li>
-      <strong>Beobachtung.</strong> Bei welchen Suchen die Seite erscheint, verfolgen wir in der Search Console und
+      <strong>Beobachtung.</strong> Bei welchen Suchanfragen die Seite erscheint, verfolgen wir in der Search Console und
       ergänzen fehlende Fragen.
     </li>
   </ol>
 
   <p>
-    Was wir getan haben, sehen Sie jede Woche im Bericht. Einen Zeitraum für die erste Bewegung in der Suche nennen wir
+    Was wir getan haben, sehen Sie jede Woche im Bericht. Einen Zeitraum für erste Bewegungen in der Suche nennen wir
     nicht; damit eine Seite bei Google ankommt, muss zuerst das
     <a href={p('services/technical-seo')}>technische SEO</a> sauber sein.
   </p>
@@ -224,14 +230,14 @@ const faq = [
   </p>
 
   <p>
-    Die KI kennt Ihr Geschäft nicht. Ein Text, der ohne Wissen darüber entsteht, in welche Stadtteile Sie fahren und was
-    Kunden am Telefon fragen, hebt sich nicht von ähnlichen Seiten ab, die dieselbe Suche anpeilen. Und eine Seite, die
-    sich nicht abhebt, rankt nicht.
+    Die KI kennt Ihr Unternehmen nicht. Ein Text, der ohne Wissen darüber entsteht, in welche Stadtteile Sie fahren und
+    was Kunden am Telefon fragen, hebt sich nicht von ähnlichen Seiten ab, die auf dieselbe Suche zielen. Und eine Seite,
+    die sich nicht abhebt, hat es schwer, zu ranken.
   </p>
 
   <p>
-    Ob KI-Antworten Sie nennen, hängt vom Gleichen ab. ChatGPT und Gemini stützen sich auf Quellen, die die Frage klar
-    beantworten und das Unternehmen überall einheitlich beschreiben; diesen Teil messen wir in der Leistung
+    Ob KI-Antworten Sie nennen, hängt von denselben Dingen ab. ChatGPT und Gemini stützen sich auf Quellen, die die Frage
+    klar beantworten und das Unternehmen überall einheitlich beschreiben; diesen Teil messen wir in der Leistung
     <a href={p('services/geo')}>GEO</a>.
   </p>
 

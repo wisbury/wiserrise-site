@@ -6,10 +6,10 @@ const locale = 'de' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
-  { label: 'PROFIL', title: 'Google-Unternehmensprofil', text: 'Kategorie, Leistungen, Fotos, Beiträge und Bewertungen. Hier wird der Wettbewerb auf der Karte vor allem ausgetragen.' },
-  { label: 'WEBSITE', title: 'Ihre Website', text: 'Google schaut auch auf die Website, mit der Ihr Profil verknüpft ist. Dort beschreiben wir klar, welche Leistung Sie in welchem Stadtteil anbieten.' },
-  { label: 'KONSISTENZ', title: 'Name, Adresse, Telefon', text: 'In jedem Verzeichnis, in dem Ihr Name steht, dieselbe Schreibweise. Widersprüchliche Angaben senken Googles Vertrauen in Sie.' },
-  { label: 'MESSUNG', title: 'Messung in Ihrem Umkreis', text: 'Wir messen, auf welchem Platz Sie in verschiedenen Ecken Ihrer Umgebung stehen, denn zwei Straßen weiter ändert sich die Reihenfolge.' },
+  { label: 'PROFIL', title: 'Google-Unternehmensprofil', text: 'Kategorie, Leistungen, Fotos, Beiträge und Rezensionen. Hier wird der Wettbewerb auf der Karte vor allem entschieden.' },
+  { label: 'WEBSITE', title: 'Ihre Website', text: 'Google berücksichtigt auch die Website, die mit Ihrem Profil verknüpft ist. Dort beschreiben wir klar, welche Leistung Sie in welchem Stadtteil anbieten.' },
+  { label: 'KONSISTENZ', title: 'Name, Adresse, Telefon', text: 'In jedem Verzeichnis, in dem Ihr Unternehmen steht, dieselbe Schreibweise. Widersprüchliche Angaben kosten Vertrauen bei Google.' },
+  { label: 'MESSUNG', title: 'Messung in Ihrem Umkreis', text: 'Wir messen, auf welchem Platz Sie an verschiedenen Punkten Ihrer Umgebung stehen, denn schon zwei Straßen weiter kann die Reihenfolge anders aussehen.' },
 ];
 
 const toc = [
@@ -25,7 +25,7 @@ const toc = [
 const faq = [
   {
     q: 'Was ist der Unterschied zwischen lokaler und normaler SEO?',
-    a: 'Normale SEO arbeitet für eine einzige Ergebnisliste. Bei lokaler SEO gibt es zwei Wettbewerbe: oben die Karte mit drei Unternehmen, darunter die normalen Ergebnisse. Auf der Karte entscheiden Ihr Unternehmensprofil und Ihre Nähe zur suchenden Person.',
+    a: 'Normale SEO zielt auf eine einzige Ergebnisliste. Bei lokaler SEO gibt es zwei: oben die Karte mit drei Unternehmen (das Local Pack), darunter die normalen Ergebnisse. Auf der Karte zählen vor allem Ihr Unternehmensprofil und Ihre Entfernung zur suchenden Person.',
   },
   {
     q: 'Wann sehe ich Ergebnisse?',
@@ -33,11 +33,11 @@ const faq = [
   },
   {
     q: 'Garantieren Sie Rankings?',
-    a: 'Nein, denn Rankings kann niemand garantieren. Wir legen unsere Arbeit und die Messung offen: Was wir getan haben und wie sich Ihr Platz verändert hat, sehen Sie im Bericht.',
+    a: 'Nein. Rankings kann niemand seriös garantieren. Wir legen dafür unsere Arbeit und die Messung offen: Was wir getan haben und wie sich Ihre Positionen verändert haben, sehen Sie im Bericht.',
   },
   {
     q: 'Kann ich das selbst machen?',
-    a: 'Die grundlegenden Korrekturen im Profil können Sie selbst vornehmen. Schwierig ist es, laufend neue Bewertungen zu bekommen und regelmäßig zu messen, was sich in Ihrem Umkreis verändert; diesen Rhythmus halten die meisten Unternehmen nicht durch. Wenn Sie anfangen möchten, zeigt Ihnen das kostenlose Analysetool für Profile auf unserer Website, was fehlt.',
+    a: 'Die grundlegenden Korrekturen am Profil können Sie selbst vornehmen. Schwieriger ist es, dauerhaft neue Rezensionen zu bekommen und regelmäßig zu messen, was sich in Ihrem Umkreis verändert; diesen Rhythmus halten viele Unternehmen im Alltag nicht durch. Für den Anfang zeigt Ihnen unsere kostenlose Profilprüfung, was in Ihrem Profil fehlt.',
   },
 ];
 ---
@@ -45,12 +45,12 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="services/local-seo"
-  title="Lokale SEO (Local SEO) als Dienstleistung | Wiserrise"
-  description="Damit Kunden in Ihrer Nähe Sie auf Google Maps finden, verbessern wir Profil und Website zusammen. Messung im Umkreis, wöchentlicher Bericht."
+  title="Local SEO Agentur für lokale Unternehmen | Wiserrise"
+  description="Lokale SEO für Praxen, Kanzleien und Betriebe: Google Unternehmensprofil und Website gemeinsam, Messung in Ihrem Umkreis, wöchentlicher Bericht."
   eyebrow="LEISTUNG · LOKALE SEO"
-  h1="Mit lokaler SEO auf der Karte nach vorne kommen."
+  h1="Mit lokaler SEO auf der Karte nach vorn."
   crumb="Lokale SEO"
-  lede="Wenn jemand auf dem Handy „Physiotherapeut in der Nähe“ eintippt, zeigt Google zuerst die Karte mit drei Unternehmen. Lokale SEO ist die Arbeit, bei der wir Ihr Google-Unternehmensprofil und Ihre Website zusammen in Ordnung bringen, damit Sie unter diese drei kommen. Zuerst messen wir in Ihrem Umkreis, dann schließen wir die Lücken der Reihe nach."
+  lede="Wer auf dem Handy „Physiotherapie in der Nähe“ eintippt, sieht zuerst eine Karte mit drei Unternehmen. Bei lokaler SEO bringen wir Ihr Google Unternehmensprofil und Ihre Website gemeinsam in Ordnung, mit dem Ziel, dass Sie in diesen drei Plätzen auftauchen. Zuerst messen wir in Ihrem Umkreis, dann schließen wir die Lücken der Reihe nach."
   serviceName="Lokale SEO"
   breadcrumb={[
     { label: 'Startseite', href: '/de' },
@@ -60,10 +60,10 @@ const faq = [
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Google-Unternehmensprofil', href: p('services/gbp'), text: 'Kategorie, Leistungsstruktur, Bewertungen und Beiträge betreuen wir zusammen.' },
+    { label: 'Google Unternehmensprofil', href: p('services/gbp'), text: 'Kategorie, Leistungen, Rezensionen und Beiträge betreuen wir in einem Zug.' },
     { label: 'Maps-Ranking-Tracking', href: p('services/rank-tracking'), text: 'Wir messen, auf welchem Platz Sie an verschiedenen Punkten in Ihrem Umkreis stehen.' },
-    { label: 'Technisches SEO', href: p('services/technical-seo'), text: 'Wir beheben Crawling- und Indexierungsfehler, damit sich Ihre Website für Google sauber öffnet.' },
-    { label: 'GEO', href: p('services/geo'), text: 'Wir arbeiten daran, dass ChatGPT, Gemini und Googles KI-Antworten Sie nennen.' },
+    { label: 'Technisches SEO', href: p('services/technical-seo'), text: 'Wir beheben Crawling- und Indexierungsfehler, damit Google Ihre Website vollständig erfassen kann.' },
+    { label: 'GEO', href: p('services/geo'), text: 'Wir arbeiten daran, dass ChatGPT, Gemini und die KI-Übersichten von Google Sie nennen.' },
   ]}
   ctaLabel="Kostenlose Analyse anfordern"
   ctaHref="/de#contact"
@@ -71,22 +71,22 @@ const faq = [
   <h2 id="nedir">Wozu dient lokale SEO?</h2>
 
   <p>
-    Sie bringt Ihnen Kunden aus der Umgebung. Wenn jemand in Kadıköy nach „Zahnarzt“ sucht, zeigt Google zwei Listen:
-    oben die Karte mit drei Unternehmen, darunter die normalen Suchergebnisse. Der Großteil der Klicks geht an die drei
+    Lokale SEO zielt auf Kunden aus Ihrer Umgebung. Wer in Berlin-Kreuzberg nach „Zahnarzt“ sucht, sieht zwei Listen:
+    oben die Karte mit drei Praxen, darunter die normalen Suchergebnisse. Ein großer Teil der Klicks geht an die drei
     oben.
   </p>
 
   <p>
-    Diese beiden Listen werden nach unterschiedlichen Regeln sortiert. Auf der Karte entscheidet Ihr
-    <a href={p('services/gbp')}>Google-Unternehmensprofil</a>, in der Liste darunter Ihre Website. Wir führen beides als
-    eine Arbeit, denn Google schaut in beiden Listen auf dasselbe Unternehmen, und das eine stärkt das andere.
+    Beide Listen folgen unterschiedlichen Regeln. Auf der Karte zählt vor allem Ihr
+    <a href={p('services/gbp')}>Google Unternehmensprofil</a>, in der Liste darunter Ihre Website. Wir behandeln beides
+    als eine Aufgabe, denn Google bewertet in beiden Listen dasselbe Unternehmen, und das eine stärkt das andere.
   </p>
 
   <h2 id="fark">Was ist der Unterschied zu normaler SEO?</h2>
 
   <p>
-    Bei normaler SEO kämpfen Sie um eine einzige Liste. Bei lokaler SEO gibt es zwei Listen, und der Standort der
-    suchenden Person verändert die Reihenfolge.
+    Bei normaler SEO geht es um eine einzige Liste. Bei lokaler SEO gibt es zwei, und der Standort der suchenden Person
+    verändert die Reihenfolge.
   </p>
 
   <div class="table-scroll">
@@ -107,7 +107,7 @@ const faq = [
         <tr>
           <td><strong>Einfluss des Standorts</strong></td>
           <td>Gering</td>
-          <td>Entscheidend. Zwei Straßen weiter ändert sich die Reihenfolge.</td>
+          <td>Entscheidend. Zwei Straßen weiter kann die Reihenfolge anders sein.</td>
         </tr>
         <tr>
           <td><strong>Wichtigstes Element</strong></td>
@@ -122,136 +122,137 @@ const faq = [
         <tr>
           <td><strong>Wie Kunden kommen</strong></td>
           <td>Besuchen die Website</td>
-          <td>Rufen an, lassen sich die Route anzeigen, schreiben eine Nachricht. Die Website besuchen sie vielleicht nie.</td>
+          <td>Rufen an, lassen sich die Route anzeigen oder schreiben eine Nachricht. Die Website besuchen sie oft gar nicht.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <p>
-    Überspringen Sie die letzte Zeile nicht. Ein Teil der Kunden von der Karte ruft Sie an, ohne Ihre Website je zu
-    öffnen. Wer nur auf die Website-Statistik schaut, sieht weniger Aufträge von der Karte, als tatsächlich kommen.
+    Die letzte Zeile ist wichtig. Ein Teil der Kunden von der Karte ruft direkt an, ohne Ihre Website je zu öffnen. Wer
+    nur die Website-Statistik betrachtet, unterschätzt, wie viele Anfragen tatsächlich über die Karte kommen.
   </p>
 
   <h2 id="nap">Warum müssen Name, Adresse und Telefonnummer überall gleich sein?</h2>
 
   <p>
-    Google will Sie überall, wo es Sie sieht, als dasselbe Unternehmen erkennen. Wir nennen das NAP: Name, Address,
-    Phone, also Name, Adresse, Telefon.
+    Google will Sie überall, wo Ihr Unternehmen auftaucht, als dasselbe Unternehmen erkennen. In der Branche heißt das
+    NAP: Name, Address, Phone, also Name, Adresse, Telefonnummer.
   </p>
 
   <p>
-    Steht in einem Verzeichnis „Mavi Çınar Fizyoterapi“, in einem anderen „Mavi Cinar Fizik Tedavi“ und in einem dritten
-    noch Ihre alte Nummer, sinkt Googles Vertrauen. Wir suchen jede Stelle heraus, an der Ihr Name steht, und legen eine
-    einzige Schreibweise fest. Dazu gehören Branchenverzeichnisse, Kartendienste, Social-Media-Profile und, falls
-    vorhanden, Ihre alte Website.
+    Steht in einem Verzeichnis „Physio Blaue Platane“, in einem anderen „Physiotherapie Blaue Platane GbR“ und in einem
+    dritten noch Ihre alte Nummer, sinkt das Vertrauen. Wir suchen jede Stelle heraus, an der Ihr Unternehmen steht, und
+    legen eine einzige Schreibweise fest. Dazu gehören Branchenverzeichnisse wie Das Örtliche oder Gelbe Seiten,
+    Kartendienste, Social-Media-Profile und, falls vorhanden, Ihre alte Website.
   </p>
 
   <p>
-    Bei Unternehmen, die ohne sichtbare Adresse arbeiten, bleibt das Adressfeld leer. Dann ist es umso wichtiger, dass
-    Name und Telefonnummer überall exakt gleich sind.
+    Arbeiten Sie ohne Kundenadresse, etwa als Handwerksbetrieb mit Einsatzgebiet, bleibt die Adresse im Profil
+    ausgeblendet. Dann ist es umso wichtiger, dass Name und Telefonnummer überall exakt gleich sind.
   </p>
 
   <h2 id="site">Beeinflusst Ihre Website Ihren Platz auf der Karte?</h2>
 
   <p>
-    Ja. Google schaut auch auf die Website, mit der Ihr Profil verknüpft ist: welche Leistungen Sie beschreiben und
-    welche Stadtteile genannt werden. Bei einer Leistung ohne eigene Seite tun Sie sich auch auf der Karte schwer.
+    Ja. Google berücksichtigt auch die Website, die mit Ihrem Profil verknüpft ist: welche Leistungen Sie beschreiben
+    und welche Stadtteile Sie nennen. Für eine Leistung ohne eigene Seite haben Sie es auch auf der Karte schwerer.
   </p>
 
   <p>
-    Wo die Konkurrenz stark ist, reicht das Profil allein nicht. Zuerst stellen wir mit
-    <a href={p('services/technical-seo')}>technischem SEO</a> sicher, dass sich Ihre Website für Google sauber öffnet.
-    Dann richten wir jede Seite auf eine einzige Suche aus
+    Wo der Wettbewerb stark ist, reicht das Profil allein nicht. Zuerst stellen wir mit
+    <a href={p('services/technical-seo')}>technischem SEO</a> sicher, dass Google Ihre Website vollständig erfassen kann.
+    Dann richten wir jede Seite auf eine Suchanfrage aus
     (<a href={p('services/on-page-seo')} style="white-space: nowrap;">Onpage-SEO</a>) und schreiben die fehlenden
     Leistungsseiten (<a href={p('services/content')}>Content-Erstellung</a>).
   </p>
 
   <p>
     Das haben wir auf die harte Tour gelernt. Ein Kunde wollte uns seine Website nicht übergeben. Wir schickten die
-    Aufgaben als .md-Datei an seinen Entwickler, und der gab sie an sein eigenes KI-Tool weiter.
+    Aufgaben als Textdatei an seinen Entwickler, und der gab sie an sein eigenes KI-Tool weiter.
   </p>
 
   <p>
-    Die Seiten, die dabei herauskamen, waren miserabel, und wir haben monatelang dieselbe Arbeit immer wieder gemacht.
-    Am Ende haben wir die Website komplett übernommen, und die Reparatur dauerte mindestens einen Monat. Seitdem gilt bei
-    uns eine klare Regel: Wenn wir die Website nicht komplett betreuen können, fangen wir nicht an.
+    Die Seiten, die dabei herauskamen, waren unbrauchbar, und wir haben monatelang dieselbe Arbeit wiederholt. Am Ende
+    haben wir die Website ganz übernommen, und allein die Reparatur dauerte mindestens einen Monat. Seitdem gilt bei uns
+    eine klare Regel: Wenn wir die Website nicht vollständig betreuen können, fangen wir nicht an.
   </p>
 
   <h2 id="coklu">Sie haben mehrere Filialen oder Städte?</h2>
 
   <p>
-    Jede Filiale zählt als eigenes Unternehmen. Jede Filiale bekommt ein eigenes Profil und auf der Website eine eigene
-    Seite. Dass diese Seiten Kopien voneinander sind, ist der Fehler, den wir am häufigsten sehen und der am teuersten
-    wird.
+    Jeder Standort zählt als eigenes Unternehmen. Jeder Standort bekommt ein eigenes Profil und auf der Website eine
+    eigene Seite. Dass diese Seiten bloße Kopien voneinander sind, ist der Fehler, den wir am häufigsten sehen, und der
+    teuerste.
   </p>
 
   <p>
-    Wenn Sie keine Filialen haben, aber mehrere Städte bedienen, legen Sie keine zusätzlichen Profile an, das verstößt
-    gegen Googles Richtlinien. In diesem Fall bauen wir die Sichtbarkeit in den Städten über die Website auf. Kopierte
-    Seiten, in denen nur der Stadtname ausgetauscht ist, wertet Google als „Doorway“-Seiten, und sie schaden der Website.
+    Haben Sie keine weiteren Standorte, arbeiten aber in mehreren Städten, legen Sie keine zusätzlichen Profile an; das
+    verstößt gegen die Richtlinien von Google. In diesem Fall bauen wir die Sichtbarkeit in den Städten über die Website
+    auf. Kopierte Seiten, in denen nur der Stadtname ausgetauscht ist, wertet Google als „Doorway“-Seiten, und sie
+    schaden der ganzen Website.
   </p>
 
   <div class="callout">
     <p>
       <strong>Fragen Sie sich, bevor Sie eine Stadtseite anlegen:</strong> Habe ich über diese Stadt wirklich etwas zu
-      sagen? Wenn es von dort keinen Auftrag und keine Information speziell für diese Gegend gibt, legen Sie die Seite
-      nicht an. Zehn gute Stadtseiten bringen mehr als fünfzig kopierte.
+      sagen? Wenn Sie dort keine Aufträge haben und nichts Eigenes über die Gegend schreiben können, lassen Sie die Seite
+      weg. Zehn gute Stadtseiten sind mehr wert als fünfzig kopierte.
     </p>
   </div>
 
   <h2 id="program">Was tun wir im 12-Wochen-Programm?</h2>
 
-  <p>Wir gehen bei jedem Unternehmen in derselben Reihenfolge vor. Ohne Messung fassen wir nichts an.</p>
+  <p>Wir gehen bei jedem Unternehmen in derselben Reihenfolge vor. Bevor wir gemessen haben, ändern wir nichts.</p>
 
   <ol>
     <li>
       <strong>Woche 1-2, Messung.</strong> Wir nehmen die Ausgangsmessung in Ihrem Umkreis auf. Wir erfassen Ihr Profil,
-      den Abstand zu Ihren Wettbewerbern bei Kategorien und Bewertungen, den technischen Zustand Ihrer Website und die
-      Verzeichnisse, in denen Ihr Name steht.
+      den Abstand zu Ihren Wettbewerbern bei Kategorien und Rezensionen, den technischen Zustand Ihrer Website und die
+      Verzeichnisse, in denen Ihr Unternehmen steht.
     </li>
     <li>
-      <strong>Woche 3-4, Korrekturen an der Wurzel.</strong> Wir korrigieren die Kategorie- und Leistungsstruktur und
+      <strong>Woche 3-4, Grundprobleme beheben.</strong> Wir korrigieren Kategorien und Leistungen im Profil und
       beseitigen Fehler, die Google den Zugang zur Website versperren, sowie uneinheitliche Schreibweisen in
       Verzeichnissen. In diesen zwei Wochen fällt die meiste Arbeit an.
     </li>
     <li>
-      <strong>Woche 5-8, Produktion.</strong> Wir schreiben die fehlenden Leistungsseiten. Der Beitragsplan für das Profil
-      und der Ablauf für Bewertungsanfragen laufen an.
+      <strong>Woche 5-8, Inhalte.</strong> Wir schreiben die fehlenden Leistungsseiten. Der Beitragsplan für das Profil
+      und die Routine für Bewertungsanfragen laufen an.
     </li>
     <li>
-      <strong>Woche 9-12, Nachschärfen.</strong> Wir konzentrieren uns auf die Gegenden, die in der Messung zurückliegen.
-      Wir ordnen die internen Links und reagieren auf die Schritte der Wettbewerber.
+      <strong>Woche 9-12, Nachschärfen.</strong> Wir konzentrieren uns auf die Gegenden, in denen die Messung noch schwach
+      ist, ordnen die internen Links und reagieren auf das, was Ihre Wettbewerber tun.
     </li>
   </ol>
 
   <p>
-    Nach den 12 Wochen ist die Arbeit nicht vorbei. Ihre Wettbewerber arbeiten auch, und wenn keine neuen Bewertungen und
-    Beiträge mehr kommen, rutschen Sie wieder ab.
+    Nach den 12 Wochen ist die Arbeit nicht vorbei. Ihre Wettbewerber bleiben auch nicht stehen, und wenn keine neuen
+    Rezensionen und Beiträge mehr dazukommen, rutschen Sie wieder ab.
   </p>
 
   <h2 id="olcum">Was messen wir, worüber berichten wir?</h2>
 
   <p>
     Ein einzelner Ranking-Screenshot reicht uns nicht. Der Platz auf der Karte hängt davon ab, wo die suchende Person
-    steht, und eine Messung von einem einzigen Punkt aus zeigt Ihnen nicht die Wirklichkeit.
+    gerade steht, und eine Messung von nur einem Punkt aus zeigt nicht, wie es wirklich aussieht.
   </p>
 
-  <p>Deshalb lesen wir vier Quellen zusammen:</p>
+  <p>Deshalb werten wir vier Quellen zusammen aus:</p>
 
   <ul class="checklist">
     <li>
       <a href={p('services/rank-tracking')}>Messung in Ihrem Umkreis</a>: auf welchem Platz Sie an verschiedenen Punkten
       in der Umgebung stehen und wie sich das mit der Zeit verändert
     </li>
-    <li>Profilinteraktionen: wie viele Menschen Sie finden, sich die Route anzeigen lassen, anrufen oder eine Nachricht schreiben</li>
-    <li>Search Console: bei welchen Suchen Ihre Website erscheint und wie viele Klicks sie bekommt</li>
+    <li>Profilinteraktionen: wie viele Menschen Ihr Profil sehen, sich die Route anzeigen lassen, anrufen oder eine Nachricht schreiben</li>
+    <li>Google Search Console: bei welchen Suchanfragen Ihre Website erscheint und wie viele Klicks sie bekommt</li>
     <li>Unsere Arbeit: was wir im Profil, auf der Website und in den Verzeichnissen geändert haben</li>
   </ul>
 
   <p>
-    Was wir getan haben, sehen Sie jede Woche im Bericht. Wenn wir alle vier zusammen lesen, erkennen wir Situationen wie
-    „Ranking gestiegen, aber das Telefon klingelt nicht“ früh und passen den Plan entsprechend an.
+    Was wir getan haben, sehen Sie jede Woche im Bericht. Weil wir alle vier zusammen auswerten, fallen Situationen wie
+    „Ranking gestiegen, aber das Telefon klingelt nicht“ früh auf, und wir passen den Plan an.
   </p>
 
   <Fragment slot="cta">

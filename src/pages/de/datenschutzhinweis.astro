@@ -5,8 +5,10 @@ import { COMPANY_LEGAL_NAME } from '../../i18n/ui';
 import { COMPANY_ADDRESS_INTL, KVKK_EMAIL } from '../../data/legal';
 
 /**
- * Deutsche Übersetzung des KVKK-Informationstexts (Art. 10 KVKK): Website-Besuch, Analyseformular, Newsletter, Korrespondenz.
- * Quelle ist /tr/kvkk-aydinlatma-metni; ändert sich der türkische Text, wird dieser hier nachgezogen.
+ * Datenschutzerklärung nach Art. 13 DSGVO für die deutschsprachigen Seiten (Stand 2026-11-24).
+ * Inhaltliche Grundlage (Daten, Empfänger, Speicherfristen) ist /tr/kvkk-aydinlatma-metni; Rechtsgrundlagen und Rechte
+ * sind hier nach der DSGVO formuliert. Ändert sich der türkische Text oder kommt ein Dienst hinzu, wird diese Seite
+ * nachgezogen. Bewusst nicht genannt: EU-Vertreter (Art. 27) und Datenschutzbeauftragter, solange beides nicht geklärt ist.
  */
 const mail = `mailto:${KVKK_EMAIL}`;
 ---
@@ -14,88 +16,130 @@ const mail = `mailto:${KVKK_EMAIL}`;
 <LegalPage
   locale="de"
   route="legal/kvkk"
-  title="Datenschutzhinweis nach KVKK | Wiserrise"
-  description="Welche personenbezogenen Daten wir über wiserrise.com zu welchem Zweck verarbeiten, an wen wir sie weitergeben und welche Rechte Sie nach dem KVKK haben."
-  heading="Datenschutzhinweis"
+  title="Datenschutzerklärung | Wiserrise"
+  description="Welche personenbezogenen Daten wir über wiserrise.com verarbeiten, auf welcher Rechtsgrundlage nach der DSGVO, an wen wir sie weitergeben und welche Rechte Sie haben."
+  heading="Datenschutzerklärung"
+  updatedIso="2026-11-24"
 >
   <p class="v2-legal-lead">
-    Dieser Hinweis erläutert gemäß Artikel 10 des türkischen Gesetzes Nr. 6698 zum Schutz personenbezogener Daten
-    (Kişisel Verilerin Korunması Kanunu, KVKK), wie Ihre personenbezogenen Daten verarbeitet werden, wenn Sie die Website
-    wiserrise.com besuchen, das Formular für die kostenlose Analyse ausfüllen, den Newsletter abonnieren oder uns schreiben.
-    Für das Kundenportal gilt der <a href="https://app.wiserrise.com/gizlilik">Datenschutzhinweis des Portals</a>.
+    Diese Datenschutzerklärung informiert Sie nach Art. 13 der Datenschutz-Grundverordnung (DSGVO) darüber, wie wir
+    personenbezogene Daten verarbeiten, wenn Sie die Website wiserrise.com besuchen, das Formular für die kostenlose
+    Analyse ausfüllen, den Newsletter abonnieren oder uns kontaktieren. Für das Kundenportal gilt die
+    <a href="https://app.wiserrise.com/gizlilik">Datenschutzerklärung des Portals</a>.
   </p>
 
   <h2>1. Verantwortlicher</h2>
   <p>
-    Verantwortlicher ist die {COMPANY_LEGAL_NAME}, Inhaberin der Marke Wiserrise. Adresse: {COMPANY_ADDRESS_INTL}.
-    Für Fragen und Anträge zum KVKK: <a href={mail}>{KVKK_EMAIL}</a>.
+    Verantwortlicher im Sinne von Art. 4 Nr. 7 DSGVO ist die {COMPANY_LEGAL_NAME}, Inhaberin der Marke Wiserrise.
+  </p>
+  <p>
+    {COMPANY_LEGAL_NAME}<br />
+    {COMPANY_ADDRESS_INTL}<br />
+    E-Mail für Datenschutzanfragen: <a href={mail}>{KVKK_EMAIL}</a>
+  </p>
+  <p>
+    Weitere Angaben zum Anbieter finden Sie im <a href={routePath('de', 'legal/impressum')}>Impressum</a>.
   </p>
 
-  <h2>2. Welche Daten wir zu welchem Zweck verarbeiten</h2>
-  <div class="v2-legal-table" tabindex="0" role="region" aria-label="Verarbeitete Daten, Zwecke und Rechtsgrundlagen">
-    <table>
-      <thead>
-        <tr><th>Wann</th><th>Welche Daten</th><th>Zweck</th><th>Rechtsgrundlage (Art. 5 KVKK)</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Wenn Sie das Formular für die kostenlose Analyse ausfüllen</td>
-          <td>Vor- und Nachname, Name des Unternehmens, E-Mail, Telefon, Website, Google-Maps- oder Instagram-Link, gewünschte Leistungen, gewünschter Starttermin</td>
-          <td>Ihre Anfrage prüfen, die Analyse erstellen und Ihnen zusenden, über die Leistung sprechen</td>
-          <td>Unmittelbarer Zusammenhang mit dem Abschluss eines Vertrags (Art. 5 Abs. 2 lit. c); berechtigtes Interesse an der Speicherung der Anfrage (Art. 5 Abs. 2 lit. f)</td>
-        </tr>
-        <tr>
-          <td>Wenn Sie den Newsletter abonnieren</td>
-          <td>E-Mail-Adresse, Bestätigung des Abonnements</td>
-          <td>Tipps und Ankündigungen per E-Mail senden</td>
-          <td>Ausdrückliche Einwilligung (Art. 5 Abs. 1)</td>
-        </tr>
-        <tr>
-          <td>Wenn Sie uns schreiben oder anrufen</td>
-          <td>Ihre Kontaktdaten, Inhalt der Korrespondenz</td>
-          <td>Ihre Frage beantworten, Ihr Anliegen weiterverfolgen</td>
-          <td>Unmittelbarer Zusammenhang mit dem Abschluss eines Vertrags (Art. 5 Abs. 2 lit. c); berechtigtes Interesse (Art. 5 Abs. 2 lit. f)</td>
-        </tr>
-        <tr>
-          <td>Wenn Sie die Website besuchen</td>
-          <td>IP-Adresse, Browser- und Geräteinformationen, aufgerufene Seite, Zeitpunkt der Anfrage</td>
-          <td>Die Website bereitstellen, ihre Sicherheit gewährleisten, Statistiken über Seitenaufrufe führen</td>
-          <td>Berechtigtes Interesse (Art. 5 Abs. 2 lit. f)</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <h2>2. Zwecke der Verarbeitung und Rechtsgrundlagen</h2>
+
+  <h3>2.1 Bereitstellung der Website und Server-Protokolle</h3>
+  <p>
+    Die Website wird über Cloudflare bereitgestellt. Bei jedem Aufruf verarbeitet Cloudflare technisch notwendige Daten:
+    Ihre IP-Adresse, Browser- und Geräteinformationen, die aufgerufene Seite und den Zeitpunkt der Anfrage. Diese Daten
+    benötigen wir, um Ihnen die Website auszuliefern, ihre Sicherheit zu gewährleisten und Angriffe abzuwehren.
+    Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO; unser berechtigtes Interesse liegt in einer funktionsfähigen und
+    sicheren Website.
+  </p>
+
+  <h3>2.2 Cloudflare Web Analytics</h3>
+  <p>
+    Um zu sehen, wie oft einzelne Seiten aufgerufen werden und wie schnell sie laden, nutzen wir Cloudflare Web Analytics.
+    Dabei werden Angaben wie die aufgerufene Seite, die verweisende Seite, Browser und Ladezeiten an Cloudflare übermittelt
+    und von Cloudflare zu Statistiken zusammengefasst. Der Dienst setzt keine Cookies und speichert nichts in Ihrem Browser;
+    wir erstellen damit keine Profile einzelner Besucher. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO; unser
+    berechtigtes Interesse liegt darin, die Nutzung und Leistung der Website zu verstehen und zu verbessern.
+  </p>
+
+  <h3>2.3 Formular für die kostenlose Analyse</h3>
+  <p>
+    Wenn Sie das Analyseformular ausfüllen, verarbeiten wir Vor- und Nachname, Name des Unternehmens, E-Mail-Adresse,
+    Telefonnummer, auf Wunsch die Website oder einen Google-Maps- oder Instagram-Link, die gewünschten Leistungen und den
+    gewünschten Starttermin. Das Formular wird über den Dienst Formspree an uns übermittelt. Wir verwenden die Angaben, um
+    Ihre Anfrage zu prüfen, die Analyse zu erstellen und Ihnen zuzusenden und mit Ihnen über eine mögliche Zusammenarbeit zu
+    sprechen. Dafür sehen wir uns auch öffentlich zugängliche Informationen über Ihr Unternehmen an, etwa das
+    Google-Unternehmensprofil, die Website und Suchergebnisse.
+  </p>
+  <p>
+    Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, weil die Verarbeitung auf Ihre Anfrage hin vorvertraglichen Maßnahmen
+    dient. Soweit wir die Anfrage nach der Analyse aufbewahren, um auf sie zurückkommen zu können, stützen wir uns auf
+    Art. 6 Abs. 1 lit. f DSGVO.
+  </p>
+
+  <h3>2.4 Newsletter</h3>
+  <p>
+    Wenn Sie den Newsletter abonnieren, verarbeiten wir Ihre E-Mail-Adresse und die Bestätigung Ihres Abonnements, um
+    Ihnen Tipps und Ankündigungen per E-Mail zu senden. Für die Verwaltung der Abonnentenliste und den Versand nutzen wir
+    den Dienst Kit. Rechtsgrundlage ist Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO, die Sie bei der Anmeldung
+    erteilen. Sie können sie jederzeit widerrufen, über den Abmeldelink am Ende jeder E-Mail oder mit einer Nachricht an
+    <a href={mail}>{KVKK_EMAIL}</a>.
+  </p>
+
+  <h3>2.5 Kontakt per E-Mail, Telefon oder WhatsApp</h3>
+  <p>
+    Wenn Sie uns per E-Mail, telefonisch oder über WhatsApp kontaktieren, verarbeiten wir Ihre Kontaktdaten und den Inhalt
+    der Kommunikation, um Ihre Frage zu beantworten und Ihr Anliegen weiterzuverfolgen. Über WhatsApp schreiben wir Ihnen
+    nur, wenn Sie uns Ihre Telefonnummer gegeben haben. Betrifft Ihr Anliegen einen Vertrag mit uns oder dessen Anbahnung,
+    ist Rechtsgrundlage Art. 6 Abs. 1 lit. b DSGVO, in allen anderen Fällen Art. 6 Abs. 1 lit. f DSGVO; unser
+    berechtigtes Interesse liegt darin, Anfragen zu beantworten.
+  </p>
+
+  <h3>2.6 Interne Ablage</h3>
+  <p>
+    Anfragen, Korrespondenz und Arbeitsunterlagen speichern wir in unserem E-Mail-Postfach und unseren Arbeitsdateien bei
+    Google Workspace. Daten zu Interessenten und Kunden führen wir in einer Datenbank bei Supabase. Diese Ablage dient den
+    oben genannten Zwecken und stützt sich auf dieselbe Rechtsgrundlage wie die jeweilige Verarbeitung.
+  </p>
+
+  <h3>2.7 Tool Google-Profilanalyse</h3>
   <p>
     Ihre Antworten im Tool <a href={routePath('de', 'tools/gbp-audit')}>Google-Profilanalyse</a> werden in Ihrem Browser
-    berechnet und weder an uns noch an einen anderen Dienst gesendet. In den Formularen fragen wir keine besonderen
-    Kategorien personenbezogener Daten wie Gesundheit oder Religion ab; bitte geben Sie solche Angaben nicht ein.
+    berechnet und weder an uns noch an einen anderen Dienst gesendet.
   </p>
-
-  <h2>3. Wie wir die Daten erheben</h2>
   <p>
-    Über die Formulare auf der Website, über E-Mails und Telefonate sowie über die technischen Protokolle der
-    Website-Infrastruktur, automatisiert oder teilweise automatisiert. Bei der Erstellung einer Analyse sehen wir uns
-    außerdem öffentlich zugängliche Informationen über Ihr Unternehmen an, etwa das Google-Unternehmensprofil, die Website
-    und Suchergebnisse.
+    In unseren Formularen fragen wir keine besonderen Kategorien personenbezogener Daten nach Art. 9 DSGVO ab, etwa
+    Angaben zur Gesundheit oder Religion. Bitte geben Sie solche Angaben nicht ein.
   </p>
 
-  <h2>4. An wen wir Daten weitergeben</h2>
-  <p>Wir verkaufen Ihre Daten nicht und geben sie nicht zu Werbezwecken weiter. Um diese Aufgaben zu erledigen, geben wir sie an folgende Stellen weiter:</p>
+  <h2>3. Empfänger und Auftragsverarbeiter</h2>
+  <p>
+    Wir verkaufen Ihre Daten nicht und geben sie nicht zu Werbezwecken weiter. Für die oben genannten Zwecke setzen wir
+    folgende Dienstleister ein, die Daten in unserem Auftrag verarbeiten oder für die Übermittlung nötig sind:
+  </p>
   <ul>
-    <li><b>Formspree (USA):</b> Übermittlung des Analyseformulars an uns.</li>
-    <li><b>Kit (USA):</b> Abonnentenliste des Newsletters und E-Mail-Versand.</li>
-    <li><b>Google LLC (USA):</b> unser E-Mail-Postfach (Google Workspace) und unsere Arbeitsdateien.</li>
-    <li><b>Supabase, Inc. (USA):</b> Datenbank, in der unsere Daten zu Interessenten und Kunden gespeichert sind.</li>
-    <li><b>Meta Platforms (WhatsApp):</b> Korrespondenz mit Ihnen, wenn Sie uns Ihre Telefonnummer gegeben haben.</li>
-    <li><b>Cloudflare, Inc. (USA):</b> Hosting und Sicherheit der Website sowie Statistik der Seitenaufrufe.</li>
-    <li>Bei gesetzlicher Verpflichtung zuständige Behörden, öffentliche Stellen und Gerichte.</li>
+    <li>Cloudflare, Inc. (USA): Hosting und Sicherheit der Website, Web Analytics.</li>
+    <li>Formspree (USA): Übermittlung des Analyseformulars an uns.</li>
+    <li>Kit (USA): Abonnentenliste des Newsletters und E-Mail-Versand.</li>
+    <li>Google LLC (USA): E-Mail-Postfach (Google Workspace) und Arbeitsdateien.</li>
+    <li>Supabase, Inc. (USA): Datenbank mit unseren Daten zu Interessenten und Kunden.</li>
+    <li>WhatsApp (Meta): Korrespondenz mit Ihnen, wenn Sie uns Ihre Telefonnummer gegeben haben.</li>
   </ul>
   <p>
-    Da sich der Verantwortliche und die meisten dieser Anbieter außerhalb der Türkei befinden, werden Ihre Daten ins
-    Ausland übermittelt. Diese Übermittlungen unterliegen den Regeln von Artikel 9 KVKK.
+    Darüber hinaus geben wir Daten an Behörden, öffentliche Stellen oder Gerichte weiter, wenn wir gesetzlich dazu
+    verpflichtet sind.
   </p>
 
-  <h2>5. Wie lange wir Daten speichern</h2>
+  <h2>4. Übermittlung in Drittländer</h2>
+  <p>
+    Der Verantwortliche hat seinen Sitz in den USA, und die meisten der genannten Dienstleister verarbeiten Daten ebenfalls
+    in den USA. Ihre Daten werden daher in ein Land außerhalb der Europäischen Union übermittelt. Soweit der jeweilige
+    Anbieter unter dem EU-US Data Privacy Framework zertifiziert ist, erfolgt die Übermittlung auf Grundlage des
+    Angemessenheitsbeschlusses der Europäischen Kommission nach Art. 45 DSGVO. Andernfalls erfolgt sie auf Grundlage von
+    Standardvertragsklauseln der Europäischen Kommission nach Art. 46 Abs. 2 lit. c DSGVO. Auf Anfrage teilen wir Ihnen
+    mit, welche Garantie für welchen Anbieter gilt.
+  </p>
+
+  <h2>5. Speicherdauer</h2>
   <div class="v2-legal-table" tabindex="0" role="region" aria-label="Speicherfristen">
     <table>
       <thead>
@@ -103,46 +147,71 @@ const mail = `mailto:${KVKK_EMAIL}`;
       </thead>
       <tbody>
         <tr><td>Analyseanfrage, wenn Sie nicht Kunde geworden sind</td><td>Höchstens 2 Jahre ab dem letzten Gespräch</td></tr>
-        <tr><td>Vertrags- und Rechnungsunterlagen, wenn Sie Kunde geworden sind</td><td>Für die Dauer der Geschäftsbeziehung; danach für die gesetzlichen Fristen, höchstens 10 Jahre</td></tr>
+        <tr><td>Vertrags- und Rechnungsunterlagen, wenn Sie Kunde geworden sind</td><td>Für die Dauer der Geschäftsbeziehung; danach für die gesetzlichen Aufbewahrungsfristen, höchstens 10 Jahre</td></tr>
         <tr><td>Ihre E-Mail-Adresse für den Newsletter</td><td>Solange Ihr Abonnement besteht; nach der Abmeldung wird sie gelöscht oder nur aufbewahrt, damit wir Ihnen keine E-Mails mehr senden</td></tr>
-        <tr><td>Serverprotokolle (IP, Browser)</td><td>Begrenzt durch die übliche, kurze Speicherfrist des Anbieters</td></tr>
+        <tr><td>Server-Protokolle (IP-Adresse, Browser)</td><td>Begrenzt durch die übliche, kurze Speicherfrist des Anbieters</td></tr>
       </tbody>
     </table>
   </div>
   <p>Nach Ablauf der Frist werden die Daten gelöscht oder anonymisiert.</p>
 
   <h2>6. Ihre Rechte</h2>
-  <p>Nach Artikel 11 KVKK haben Sie das Recht,</p>
+  <p>Sie haben gegenüber uns nach der DSGVO folgende Rechte:</p>
   <ul>
-    <li>zu erfahren, ob Ihre personenbezogenen Daten verarbeitet werden, und, falls ja, Auskunft darüber zu verlangen;</li>
-    <li>den Zweck der Verarbeitung zu erfahren und ob die Daten diesem Zweck entsprechend verwendet werden;</li>
-    <li>die Dritten in der Türkei oder im Ausland zu kennen, an die die Daten übermittelt wurden;</li>
-    <li>die Berichtigung unvollständig oder unrichtig verarbeiteter Daten zu verlangen;</li>
-    <li>die Löschung oder Vernichtung der Daten unter den Voraussetzungen von Artikel 7 KVKK zu verlangen;</li>
-    <li>zu verlangen, dass Berichtigungen und Löschungen den Dritten mitgeteilt werden, an die die Daten übermittelt wurden;</li>
-    <li>einem für Sie nachteiligen Ergebnis zu widersprechen, das ausschließlich durch die Auswertung mit automatisierten Systemen entsteht;</li>
-    <li>Ersatz des Schadens zu verlangen, wenn Ihnen durch eine rechtswidrige Verarbeitung ein Schaden entstanden ist.</li>
+    <li>Auskunft über die zu Ihnen gespeicherten Daten (Art. 15 DSGVO);</li>
+    <li>Berichtigung unrichtiger oder unvollständiger Daten (Art. 16 DSGVO);</li>
+    <li>Löschung Ihrer Daten (Art. 17 DSGVO);</li>
+    <li>Einschränkung der Verarbeitung (Art. 18 DSGVO);</li>
+    <li>Datenübertragbarkeit (Art. 20 DSGVO);</li>
+    <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO, siehe Abschnitt 7).</li>
   </ul>
-
-  <h2>7. Wie Sie einen Antrag stellen</h2>
   <p>
-    Sie können Ihren Antrag von der E-Mail-Adresse, die Sie uns bereits mitgeteilt haben, an <a href={mail}>{KVKK_EMAIL}</a>
-    senden oder schriftlich an die Adresse in Abschnitt 1 richten. Geben Sie Ihren Vor- und Nachnamen, Ihre Kontaktdaten und
-    Ihr Anliegen an; zur Bestätigung Ihrer Identität können wir zusätzliche Angaben verlangen. Wir bearbeiten Ihren Antrag
-    spätestens innerhalb von 30 Tagen und erheben keine Gebühr, sofern die Bearbeitung keine gesonderten Kosten verursacht;
-    wird Ihr Antrag abgelehnt oder bleibt er unbeantwortet, haben Sie das Recht, sich bei der türkischen
-    Datenschutzbehörde (Kişisel Verileri Koruma Kurulu) zu beschweren.
+    Haben Sie eine Einwilligung erteilt, können Sie diese nach Art. 7 Abs. 3 DSGVO jederzeit mit Wirkung für die Zukunft
+    widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt davon unberührt.
+  </p>
+  <p>
+    Ihre Anfrage können Sie an <a href={mail}>{KVKK_EMAIL}</a> oder schriftlich an die Adresse in Abschnitt 1 richten.
+    Zur Bestätigung Ihrer Identität können wir zusätzliche Angaben verlangen.
   </p>
 
-  <h2>8. Widerruf der Einwilligung zum Newsletter</h2>
+  <h2>7. Widerspruchsrecht nach Art. 21 DSGVO</h2>
   <p>
-    Sie können Ihre Einwilligung zum Newsletter jederzeit widerrufen: über den Abmeldelink am Ende jeder E-Mail oder mit
-    einer Nachricht an <a href={mail}>{KVKK_EMAIL}</a>.
+    Soweit wir Ihre Daten auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO verarbeiten, haben Sie das Recht, aus Gründen, die
+    sich aus Ihrer besonderen Situation ergeben, jederzeit Widerspruch gegen diese Verarbeitung einzulegen. Wir verarbeiten
+    die Daten dann nicht mehr, es sei denn, wir können zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die
+    Ihre Interessen, Rechte und Freiheiten überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder
+    Verteidigung von Rechtsansprüchen.
+  </p>
+  <p>
+    Verarbeiten wir Ihre Daten, um Direktwerbung zu betreiben, können Sie dieser Verarbeitung jederzeit ohne Angabe von
+    Gründen widersprechen. Wir verarbeiten Ihre Daten dann nicht mehr für diesen Zweck.
+  </p>
+  <p>Ihren Widerspruch können Sie formlos an <a href={mail}>{KVKK_EMAIL}</a> richten.</p>
+
+  <h2>8. Beschwerderecht bei einer Aufsichtsbehörde</h2>
+  <p>
+    Unbeschadet anderer Rechtsbehelfe haben Sie nach Art. 77 DSGVO das Recht, sich bei einer Datenschutz-Aufsichtsbehörde
+    zu beschweren, insbesondere in dem Mitgliedstaat Ihres gewöhnlichen Aufenthalts, Ihres Arbeitsplatzes oder des Orts
+    des mutmaßlichen Verstoßes.
   </p>
 
-  <h2>9. Änderungen</h2>
+  <h2>9. Pflicht zur Bereitstellung</h2>
   <p>
-    Wir aktualisieren diesen Hinweis bei Bedarf; die aktuelle Fassung wird mit Datum auf dieser Seite veröffentlicht. Was
-    in Ihrem Browser gespeichert wird, erfahren Sie in der <a href={routePath('de', 'legal/cookies')}>Cookie-Richtlinie</a>.
+    Sie sind gesetzlich oder vertraglich nicht verpflichtet, uns personenbezogene Daten bereitzustellen. Ohne Vor- und
+    Nachname, Name des Unternehmens, E-Mail-Adresse, Telefonnummer und gewünschten Starttermin können Sie das
+    Analyseformular nicht absenden, und ohne E-Mail-Adresse können wir Ihnen keinen Newsletter senden. Die übrigen
+    Angaben im Analyseformular sind freiwillig.
+  </p>
+
+  <h2>10. Keine automatisierte Entscheidungsfindung</h2>
+  <p>
+    Wir setzen keine automatisierte Entscheidungsfindung einschließlich Profiling im Sinne von Art. 22 DSGVO ein.
+  </p>
+
+  <h2>11. Änderungen</h2>
+  <p>
+    Wir passen diese Datenschutzerklärung bei Bedarf an; die aktuelle Fassung wird mit Datum auf dieser Seite
+    veröffentlicht. Was in Ihrem Browser gespeichert wird, erfahren Sie in der
+    <a href={routePath('de', 'legal/cookies')}>Cookie-Richtlinie</a>.
   </p>
 </LegalPage>

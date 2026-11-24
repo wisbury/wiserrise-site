@@ -7,7 +7,7 @@ const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
   { label: 'VIDEO', title: 'Eine Aufnahme, drei Nachweise', text: 'Zeigen Sie in einer ununterbrochenen Aufnahme den Standort, Ihre Tätigkeit und dass Sie das Unternehmen führen. Am häufigsten wird der Nachweis der Verwaltung vergessen.' },
-  { label: 'POSTKARTE', title: 'Einmal anfordern', text: 'Die Karte kommt innerhalb von 1-3 Wochen. Fordern Sie eine neue an, während die erste unterwegs ist, wird der Code der ersten ungültig, und es dauert länger.' },
+  { label: 'POSTKARTE', title: 'Einmal anfordern', text: 'Die Zustellung per Post braucht Zeit. Fordern Sie eine neue Karte an, während die erste unterwegs ist, wird der Code der ersten ungültig, und es dauert länger.' },
   { label: 'EINSPRUCH', title: 'Erst die Ursache beheben', text: 'Stellen Sie bei einem gesperrten Profil keinen Antrag auf erneute Prüfung, bevor die Ursache behoben ist. Schreiben Sie im Antrag, was Sie korrigiert haben, und fügen Sie Belege bei.' },
   { label: 'DUPLIKAT', title: 'Kein neues Profil', text: 'Ein zweiter Eintrag für dasselbe Unternehmen gilt als Duplikat und wird ebenfalls gesperrt. Arbeiten Sie in jedem Fall mit dem bestehenden Profil weiter.' },
 ];
@@ -24,7 +24,7 @@ const toc = [
 const faq = [
   {
     q: 'Wie lange dauert die Verifizierung?',
-    a: 'Die Video-Verifizierung ist innerhalb weniger Tage abgeschlossen, manchmal in wenigen Stunden. Die Postkarte kann in der Türkei 1-3 Wochen brauchen. Dauert die Prüfung des Videos länger als zwei Wochen, schreiben Sie dem Google-Support.',
+    a: 'Das hängt von der Methode ab, und eine feste Frist nennt Google nicht. Eine Video-Verifizierung ist oft nach wenigen Tagen geprüft, manchmal schneller. Bei der Postkarte kommt die Zustellung durch die Post hinzu. Dauert die Prüfung des Videos länger als zwei Wochen, wenden Sie sich an den Google-Support.',
   },
   {
     q: 'Ist mein Profil während der Verifizierung sichtbar?',
@@ -44,7 +44,7 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="guides/verification"
-  title="Google-Unternehmensprofil: Probleme bei der Verifizierung | Wiserrise"
+  title="Probleme bei der Google-Verifizierung lösen | Wiserrise"
   description="Video-Verifizierung abgelehnt, Postkarte nicht angekommen, Profil gesperrt oder in fremder Hand: was Sie in jedem Fall tun, der Reihe nach erklärt."
   eyebrow="RATGEBER · VERIFIZIERUNG"
   h1="Wie löst man Probleme bei der Verifizierung des Google-Unternehmensprofils?"
@@ -100,8 +100,8 @@ const faq = [
       Arbeitsbereich, Lager, Team.
     </li>
     <li>
-      <strong>Verwaltung.</strong> Zeigen Sie, dass das Unternehmen Ihnen gehört: Zugang zur Kasse, Steuerbescheinigung,
-      Rechnung, Schlüssel oder Geschäftsunterlagen.
+      <strong>Verwaltung.</strong> Zeigen Sie, dass Sie das Unternehmen führen: Zugang zur Kasse oder zum Praxissystem,
+      Gewerbeanmeldung, Rechnung, Schlüssel oder Geschäftsunterlagen.
     </li>
   </ol>
 
@@ -125,14 +125,14 @@ const faq = [
   <h2 id="kart">Was tun Sie, wenn die Postkarte nicht ankommt?</h2>
 
   <p>
-    Prüfen Sie zuerst Ihre Adresszeile, dann fordern Sie nur ein einziges Mal eine neue Karte an. In der Türkei kommt die
-    Karte innerhalb von 1-3 Wochen an.
+    Prüfen Sie zuerst Ihre Adresszeile, dann fordern Sie nur ein einziges Mal eine neue Karte an. Die Karte kommt mit der
+    normalen Post, rechnen Sie also mit einer gewissen Laufzeit.
   </p>
 
   <p>
-    Angenommen, Sie haben in Karşıyaka ein Buchhaltungsbüro im dritten Stock eines Wohnhauses. Fehlen in der Adresse
-    Wohnungsnummer und Stockwerk, hat das Gebäude keinen Briefkasten oder hat der Hausmeister oder ein Nachbar die Karte
-    angenommen, erreicht sie Sie womöglich nie.
+    Angenommen, Sie haben in Hamburg-Eimsbüttel ein Steuerbüro im Hinterhaus eines Altbaus. Fehlt in der Adresse der
+    Zusatz „Hinterhaus“, steht der Firmenname nicht am Briefkasten oder hat ein Nachbar die Karte angenommen, erreicht
+    sie Sie womöglich nie.
   </p>
 
   <p>
@@ -143,8 +143,8 @@ const faq = [
 
   <p>
     Kommt auch die zweite Karte nicht an, bitten Sie den Google-Support um eine andere Methode. Prüfen Sie auch das Format
-    Ihrer Adresse noch einmal: Passt die türkische Adressstruktur aus Viertel, Straße, Wohnanlage und Block nicht in das
-    Formular von Google, kann die Karte nicht zugestellt werden.
+    Ihrer Adresse noch einmal: Fehlt ein Zusatz wie Hinterhaus, Aufgang, Etage oder „c/o“, den der Zusteller braucht,
+    kann die Karte nicht zugestellt werden.
   </p>
 
   <h2 id="askiya">Was tun Sie, wenn Ihr Profil gesperrt wurde?</h2>
@@ -163,7 +163,7 @@ const faq = [
     </li>
     <li>
       <strong>Antrag auf erneute Prüfung stellen.</strong> Schreiben Sie klar, was Sie korrigiert haben, und fügen Sie
-      Ihre Belege bei: Steuerbescheinigung, Mietvertrag, Foto des Schildes.
+      Ihre Belege bei, zum Beispiel Gewerbeanmeldung, Mietvertrag oder ein Foto des Schildes.
     </li>
     <li>
       <strong>Warten.</strong> Die Prüfung dauert Tage bis Wochen. Ändern Sie in dieser Zeit nichts weiter am Profil.
@@ -190,8 +190,8 @@ const faq = [
   </p>
 
   <p>
-    Das kann Wochen dauern. Haben Sie eine Steuerbescheinigung oder einen Handelsregisterauszug, fügen Sie ihn gleich zu
-    Beginn bei, das beschleunigt die Sache. Versuchen Sie nicht, das Problem mit einem neuen Profil zu umgehen, auch hier
+    Das kann Wochen dauern. Haben Sie eine Gewerbeanmeldung oder einen Handelsregisterauszug, legen Sie ihn gleich zu
+    Beginn bei, das erleichtert die Prüfung. Versuchen Sie nicht, das Problem mit einem neuen Profil zu umgehen, auch hier
     bringt das nichts.
   </p>
 

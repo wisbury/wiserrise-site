@@ -10,15 +10,15 @@ const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 const faq = [
   {
     q: 'Kann ich die Arbeit mit diesen Ratgebern selbst erledigen?',
-    a: 'Ja, dafür haben wir sie geschrieben. Schwierig wird es bei der Ausdauer: den Fluss an Bewertungen am Laufen halten und regelmäßig sehen, was sich in Ihrer Gegend verändert. Wenn Sie irgendwo hängen bleiben, können Sie eine kostenlose Analyse anfordern.',
+    a: 'Ja, dafür haben wir sie geschrieben. Schwierig ist das Dranbleiben: regelmäßig um Bewertungen bitten und immer wieder prüfen, was sich in Ihrem Umkreis verändert. Wenn Sie irgendwo nicht weiterkommen, können Sie eine kostenlose Analyse anfordern.',
   },
   {
     q: 'Wann werden die Ratgeber aktualisiert?',
-    a: 'Sobald Google seine Oberfläche oder seine Regeln ändert. Das Datum der letzten Aktualisierung steht am Anfang jedes Ratgebers. Wenn Sie einen veralteten Schritt entdecken, schreiben Sie uns, wir korrigieren ihn.',
+    a: 'Wenn Google seine Oberfläche oder seine Richtlinien ändert. Das Datum der letzten Aktualisierung steht am Anfang jedes Ratgebers. Wenn Ihnen ein veralteter Schritt auffällt, schreiben Sie uns, dann korrigieren wir ihn.',
   },
   {
-    q: 'Warum beziehen sich die Ratgeber auf die Türkei?',
-    a: 'Wir haben sie für die Situationen geschrieben, mit denen Unternehmen in der Türkei zu tun haben. Verifizierungsschritte, Kategorienamen und der Ablauf beim Support ändern sich von Land zu Land. Eine Anleitung, die das übergeht, würde falsche Angaben machen.',
+    q: 'Gelten die Ratgeber auch für Unternehmen in Deutschland?',
+    a: 'Ja, die deutschen Ratgeber sind für Unternehmen in Deutschland geschrieben und verwenden die Begriffe der deutschen Google-Oberfläche. Verifizierungsschritte, Kategorienamen und der Ablauf beim Support unterscheiden sich aber je nach Land und Profil und ändern sich mit der Zeit. Sieht ein Schritt bei Ihnen anders aus, gilt das, was Google Ihnen im Profil anzeigt.',
   },
 ];
 ---
@@ -27,11 +27,11 @@ const faq = [
   locale={locale}
   route="guides"
   title="Lokale SEO: Ratgeber Schritt für Schritt | Wiserrise"
-  description="Ratgeber zum Selbermachen: Google-Unternehmensprofil erstellen, Verifizierungsprobleme lösen, mehr Bewertungen bekommen, auf der Karte höher ranken."
+  description="Ratgeber zum Selbermachen: Google Unternehmensprofil erstellen, Verifizierung lösen, mehr Rezensionen bekommen, in Google Maps höher ranken."
   eyebrow="RATGEBER"
   h1="Ratgeber für lokale SEO, Schritt für Schritt."
   crumb="Ratgeber"
-  lede="Vom Erstellen Ihres Google-Unternehmensprofils bis zu einem besseren Platz auf der Karte: Ratgeber, die Sie selbst umsetzen können. Wir halten keinen Schritt zurück. Das eigentlich Schwierige an lokaler SEO ist, diese Schritte monatelang ohne Pause durchzuhalten."
+  lede="Vom Erstellen Ihres Google Unternehmensprofils bis zu einem besseren Platz in Google Maps: Ratgeber, die Sie selbst umsetzen können. Wir lassen keinen Schritt weg. Das eigentlich Schwierige an lokaler SEO ist, diese Schritte dauerhaft und ohne Pause umzusetzen."
   schemaType="article"
   datePublished="2026-08-01"
   dateModified="2026-11-06"
@@ -55,9 +55,9 @@ const faq = [
   </p>
 
   <p>
-    Woran Unternehmen scheitern, ist der Rhythmus. Den Fluss an Bewertungen wochenlang am Leben zu halten und zu sehen, in
-    welchem Teil Ihrer Gegend Sie zurückliegen, erledigt sich nicht mit einmal Lesen. Wenn Sie Zeit haben, setzen Sie die
-    Ratgeber selbst um, wenn nicht, übernehmen wir diese Arbeit.
+    Woran Unternehmen scheitern, ist die Regelmäßigkeit. Woche für Woche um Bewertungen zu bitten und zu sehen, in
+    welchem Teil Ihres Umkreises Sie zurückliegen, erledigt sich nicht durch einmaliges Lesen. Wenn Sie Zeit haben,
+    setzen Sie die Ratgeber selbst um; wenn nicht, übernehmen wir diese Arbeit.
   </p>
 
   <div class="callout">
@@ -78,7 +78,7 @@ const faq = [
 
   <p>
     Erscheint Ihr Profil, liegt auf der Karte aber hinten, ist der <a href={p('guides/rank-higher')}>Ratgeber für bessere
-    Plätze</a> der richtige. Haben Sie weniger Bewertungen als Ihre Wettbewerber, starten Sie mit dem
+    Plätze</a> der richtige. Haben Sie weniger Rezensionen als Ihre Wettbewerber, starten Sie mit dem
     <a href={p('guides/more-reviews')}>Ratgeber zu Bewertungen</a>, denn bei den Profilen, die wir uns ansehen, liegt der
     Unterschied am häufigsten dort.
   </p>
@@ -104,7 +104,7 @@ const faq = [
     <h2>Sie wollen das <span class="highlight">nicht selbst</span> erledigen?</h2>
     <p>
       Die kostenlose Analyse ist ein Video, das wir für Ihr Unternehmen aufnehmen: wo Sie heute stehen und womit Sie
-      zuerst anfangen sollten. Das Ergebnis ist innerhalb von 24 Stunden in Ihrem
+      zuerst anfangen sollten. Das Ergebnis liegt innerhalb von 24 Stunden in Ihrem
       <span style="white-space: nowrap;">E-Mail-Postfach</span>.
     </p>
   </Fragment>

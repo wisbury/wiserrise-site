@@ -9,7 +9,7 @@ const features = [
   { label: 'TEST', title: 'Erst den eigenen Namen suchen', text: 'Suchen Sie Ihren Namen in Anführungszeichen. Erscheint rechts keine Profilkarte, ist Ihr Profil nicht online, und für die Frage nach dem Ranking ist es zu früh.' },
   { label: 'VERIFIZIERUNG', title: 'Unverifiziert heißt unsichtbar', text: 'Steht im Dashboard „Verifizierung erforderlich“ oder „Wird überprüft“, erscheint das Profil nicht in der Suche, egal wie vollständig es ist.' },
   { label: 'KATEGORIE', title: 'Erster Verdacht: die Kategorie', text: 'Finden Sie sich unter Ihrem Namen, aber nicht bei der Suche nach Ihrer Leistung, prüfen Sie die Hauptkategorie. Vergleichen Sie sie mit der Ihrer Wettbewerber unter den ersten drei.' },
-  { label: 'ENTFERNUNG', title: 'Der Standort der Suchenden', text: 'Die Reihenfolge auf der Karte hängt davon ab, wo die suchende Person steht. Wer im eigenen Geschäft mit dem eigenen Handy nachsieht, bekommt ein falsches Bild.' },
+  { label: 'ENTFERNUNG', title: 'Der Standort der Suchenden', text: 'Die Reihenfolge auf der Karte hängt davon ab, wo die suchende Person steht. Wer in der eigenen Praxis oder im eigenen Büro mit dem eigenen Handy nachsieht, bekommt ein falsches Bild.' },
 ];
 
 const toc = [
@@ -29,7 +29,7 @@ const faq = [
   },
   {
     q: 'Ich habe das Profil gerade erstellt, wie lange muss ich warten?',
-    a: 'Nach der Verifizierung dauert es einige Tage bis einige Wochen, bis sich das Profil einpendelt, und in dieser Zeit schwankt der Platz. Lassen Sie Namen, Adresse und Kategorie in den ersten Wochen unverändert. Wer ein Profil stört, das sich gerade einpendelt, verzögert die Besserung.',
+    a: 'Einen festen Zeitraum nennt Google nicht. Nach der Verifizierung braucht das Profil eine Weile, bis es sich einpendelt, und in dieser Zeit schwankt der Platz. Lassen Sie Namen, Adresse und Kategorie in dieser Phase unverändert; jede Änderung verzögert das Einpendeln.',
   },
   {
     q: 'Erscheine ich in einem größeren Gebiet, wenn ich meine Adresse ausblende?',
@@ -37,7 +37,7 @@ const faq = [
   },
   {
     q: 'Erscheine ich, wenn ich Keywords in meinen Firmennamen schreibe?',
-    a: 'Kurzfristig ja, aber es verstößt gegen die Regeln von Google: Der Name muss der sein, den Sie auch in der realen Welt verwenden. Meldet ein Wettbewerber das, wird der Name korrigiert, im Wiederholungsfall kann das Profil gesperrt werden. Wir machen das bei den Profilen unserer Kunden nicht.',
+    a: 'Vielleicht kurzfristig, aber es verstößt gegen die Richtlinien von Google: Der Name muss der sein, den Sie auch in der realen Welt verwenden. Meldet ein Wettbewerber das, wird der Name korrigiert, im Wiederholungsfall kann das Profil gesperrt werden. Wir machen das bei den Profilen unserer Kunden nicht.',
   },
 ];
 ---
@@ -45,7 +45,7 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="guides/not-showing"
-  title="Unternehmen nicht bei Google sichtbar: 8 Ursachen und Lösungen | Wiserrise"
+  title="Firma nicht bei Google sichtbar: 8 Ursachen | Wiserrise"
   description="Erscheint Ihr Unternehmen nicht in Google Maps oder in der Suche, liegt es an einer von acht Ursachen. Welche Prüfung Sie in welcher Reihenfolge machen."
   eyebrow="RATGEBER · SICHTBARKEIT"
   h1="Warum erscheint Ihr Unternehmen nicht bei Google?"
@@ -79,9 +79,9 @@ const faq = [
   </p>
 
   <p>
-    Angenommen, Sie haben in Bornova ein Unternehmen namens Ege Yıldız Oto Ekspertiz. Bei der Suche nach „Ege Yıldız
-    Oto Ekspertiz“ erscheint Ihr Profil rechts, bei „Kfz-Gutachter Bornova“ sind Sie nicht unter den drei Unternehmen auf
-    der Karte.
+    Angenommen, Sie betreiben in Düsseldorf-Bilk das Sachverständigenbüro Rheinblick. Bei der Suche nach
+    „Sachverständigenbüro Rheinblick“ erscheint Ihr Profil rechts, bei „Kfz-Gutachter Bilk“ sind Sie nicht unter den drei
+    Unternehmen auf der Karte.
   </p>
 
   <p>
@@ -137,11 +137,11 @@ const faq = [
   <p>Die häufigsten Gründe für eine Sperrung:</p>
 
   <ul class="checklist">
-    <li>Keywords im Firmennamen (etwa „Ege Yıldız Oto Ekspertiz Bornova Schadensgutachten“)</li>
+    <li>Keywords im Firmennamen (etwa „Sachverständigenbüro Rheinblick Düsseldorf Unfallgutachten“)</li>
     <li>Die Adresse eines virtuellen Büros oder eines Postfachs</li>
     <li>Name, Adresse und Kategorie kurz hintereinander mehrmals ändern</li>
     <li>Mehrere Profile an derselben Adresse</li>
-    <li>Eine Tätigkeit in einem Bereich oder mit einer Leistungsbeschreibung, die gegen die Regeln von Google verstößt</li>
+    <li>Eine Tätigkeit in einem Bereich oder mit einer Leistungsbeschreibung, die gegen die Richtlinien von Google verstößt</li>
   </ul>
 
   <p>

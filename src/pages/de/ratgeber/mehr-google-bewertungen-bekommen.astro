@@ -7,9 +7,9 @@ const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
   { label: 'ZIEL', title: 'Die Zahl hängt vom Wettbewerb ab', text: 'Eine Bewertungszahl, die für alle gilt, gibt es nicht. Ihr Maßstab ist die Menge bei den Unternehmen, die bei Ihrem Zielbegriff auf der Karte unter den ersten drei stehen.' },
-  { label: 'MOMENT', title: 'Wenn die Arbeit fertig ist', text: 'Bitten Sie im Moment der Übergabe, solange die Zufriedenheit frisch ist. Auf eine Erinnerung Tage später reagieren nur wenige Kunden.' },
+  { label: 'MOMENT', title: 'Wenn die Arbeit fertig ist', text: 'Bitten Sie im Moment der Übergabe, solange die Erfahrung frisch ist, und zwar jeden Kunden, nicht nur die, die Sie für zufrieden halten. Auf eine Bitte Tage später reagieren nur wenige.' },
   { label: 'LINK', title: 'Kurzer Bewertungslink', text: 'Der Link aus der Verwaltung Ihres Profils führt Kunden direkt zum Bewertungsfenster. Niemand muss Sie erst auf der Karte suchen.' },
-  { label: 'REGEL', title: 'Anreize sind verboten', text: 'Bewertungen gegen Rabatt, Geschenk oder Gewinnspiel zu erbitten, verstößt gegen die Regeln von Google. Erkannte Bewertungen werden gelöscht.' },
+  { label: 'REGEL', title: 'Keine Anreize', text: 'Bewertungen gegen Rabatt, Geschenk oder Gewinnspiel zu erbitten, verstößt gegen die Richtlinien von Google. Erkannte Bewertungen werden gelöscht.' },
 ];
 
 const toc = [
@@ -25,11 +25,11 @@ const toc = [
 const faq = [
   {
     q: 'Darf ich für eine Bewertung einen Rabatt geben?',
-    a: 'Nein. Rabatt, Geschenk oder Gewinnspiel als Gegenleistung für eine Bewertung verstoßen gegen die Regeln von Google. Erkannte Bewertungen werden gelöscht, im Wiederholungsfall kann das Profil gesperrt werden.',
+    a: 'Nein. Rabatt, Geschenk oder Gewinnspiel als Gegenleistung für eine Bewertung verstoßen gegen die Richtlinien von Google. Erkannte Bewertungen werden gelöscht, im Wiederholungsfall kann das Profil gesperrt werden. Auch wettbewerbsrechtlich gelten gekaufte oder belohnte Bewertungen in Deutschland in der Regel als problematisch.',
   },
   {
     q: 'Lohnt es sich, Bewertungen zu kaufen?',
-    a: 'Nein, Sie setzen damit Ihr Profil aufs Spiel. Eine gekaufte Bewertung ist für Google eine gefälschte Bewertung und wird gelöscht, sobald der Filter sie erkennt. Stecken Sie dasselbe Geld und dieselbe Mühe in einen Ablauf, mit dem Sie Ihre eigenen Kunden um Bewertungen bitten.',
+    a: 'Nein, Sie setzen damit Ihr Profil aufs Spiel. Eine gekaufte Bewertung ist für Google eine gefälschte Bewertung und wird gelöscht, sobald der Filter sie erkennt. Stecken Sie dasselbe Geld und dieselbe Mühe in eine Routine, mit der Sie Ihre eigenen Kunden um Bewertungen bitten.',
   },
   {
     q: 'Darf ich Kunden sagen, was sie schreiben sollen?',
@@ -37,7 +37,7 @@ const faq = [
   },
   {
     q: 'Darf ich frühere Kunden gesammelt um Bewertungen bitten?',
-    a: 'Ja, aber einzeln und nicht alle am selben Tag. Ein Stapel Bewertungen innerhalb weniger Tage ist genau das typische Muster, auf das der Filter achtet. Verteilen Sie die Liste über Wochen.',
+    a: 'Eine Rundmail oder Rundnachricht an die alte Kundenliste empfehlen wir nicht. Eine Bewertungsanfrage per E-Mail, SMS oder WhatsApp gilt in Deutschland als Werbung und braucht in der Regel die vorherige Einwilligung (§ 7 UWG). Außerdem ist ein Stapel Bewertungen innerhalb weniger Tage genau das Muster, auf das der Filter achtet. Fragen Sie frühere Kunden lieber persönlich beim nächsten Kontakt.',
   },
   {
     q: 'Kann ich eine gefälschte negative Bewertung löschen lassen?',
@@ -50,11 +50,11 @@ const faq = [
   locale={locale}
   route="guides/more-reviews"
   title="Mehr Google-Bewertungen bekommen: So geht es | Wiserrise"
-  description="Regelkonform mehr Google-Bewertungen: der richtige Moment, der kurze Link, die passende Antwort. Und warum Kauf und Anreize verboten sind."
+  description="Mehr Google-Bewertungen ohne Regelverstoß: der richtige Moment, Karte oder QR-Code, die passende Antwort. Und was in Deutschland zu beachten ist."
   eyebrow="RATGEBER · BEWERTUNGEN"
   h1="Wie bekommt man mehr Google-Bewertungen?"
   crumb="Mehr Bewertungen"
-  lede="Mehr Google-Bewertungen bekommen Sie, wenn Sie jeden Kunden in dem Moment, in dem die Arbeit fertig ist, um eine Bewertung bitten, mit einem Link, der sich mit einem Tipp öffnet. Bewertungen kaufen, Bewertungen gegen Rabatt sammeln und nur zufriedene Kunden zu Google schicken verstößt gegen die Regeln. Setzen Sie Ihr Ziel anhand Ihrer Wettbewerber und verteilen Sie die Anfragen über Wochen."
+  lede="Mehr Google-Bewertungen bekommen Sie, wenn Sie jeden Kunden in dem Moment, in dem die Arbeit fertig ist, persönlich um eine Bewertung bitten und ihm eine Karte oder einen QR-Code mitgeben, der direkt zum Bewertungsfenster führt. Bewertungen kaufen, Bewertungen gegen Rabatt sammeln und nur zufriedene Kunden zu Google schicken verstößt gegen die Richtlinien von Google. Setzen Sie Ihr Ziel anhand Ihrer Wettbewerber und bitten Sie laufend statt auf einmal."
   schemaType="article"
   datePublished="2026-08-01"
   dateModified="2026-11-06"
@@ -69,7 +69,7 @@ const faq = [
     { label: 'Bei Google Maps höher ranken', href: p('guides/rank-higher'), text: 'Welche Rolle Bewertungen im Ranking spielen und in welcher Reihenfolge Sie arbeiten sollten.' },
     { label: 'Unternehmen nicht bei Google sichtbar', href: p('guides/not-showing'), text: 'Genug Bewertungen, aber nicht auf der Karte? Schließen Sie die Ursachen nacheinander aus.' },
     { label: 'Google-Unternehmensprofil-Betreuung', href: p('services/gbp'), text: 'Kategorie, Leistungsstruktur, Bewertungen und Beiträge betreuen wir als Ganzes.' },
-    { label: 'SEO für Anwälte', href: p('industries/law'), text: 'Was unter dem Werbeverbot bei Profil und Bewertungen möglich ist.' },
+    { label: 'SEO für Anwälte', href: p('industries/law'), text: 'Wie wir Profil und Bewertungen bei Kanzleien sachlich und im Rahmen von BRAO und BORA angehen.' },
   ]}
   relatedHeading="Verwandte Seiten"
   ctaLabel="Profil kostenlos prüfen"
@@ -109,9 +109,9 @@ const faq = [
   </p>
 
   <p>
-    Angenommen, Sie betreiben in Bornova einen Kfz-Gutachter-Betrieb. Der Kunde hält den Bericht in der Hand, hat gerade
-    erfahren, dass das Auto, das er kaufen will, in Ordnung ist, und ist erleichtert. Genau jetzt bitten Sie um die
-    Bewertung, bevor er Ihren Betrieb verlässt.
+    Angenommen, Sie betreiben das Gutachterbüro Elstermühle in Leipzig-Plagwitz. Nach einem Unfall hat Ihre Kundin das
+    Gutachten für die Versicherung in der Hand, und der Termin ist erledigt. Genau jetzt bitten Sie um die Bewertung,
+    bevor sie Ihr Büro verlässt.
   </p>
 
   <p>Der richtige Moment hängt von der Branche ab:</p>
@@ -127,10 +127,10 @@ const faq = [
       <tbody>
         <tr>
           <td>Kfz-Gutachter</td>
-          <td>Bei der Übergabe des Berichts, solange der Kunde noch vor Ort ist</td>
+          <td>Bei der Übergabe des Gutachtens, solange der Kunde noch vor Ort ist</td>
         </tr>
         <tr>
-          <td>Zahnklinik</td>
+          <td>Zahnarztpraxis</td>
           <td>Wenn die Behandlung abgeschlossen und auch der Kontrolltermin vorbei ist</td>
         </tr>
         <tr>
@@ -139,11 +139,11 @@ const faq = [
         </tr>
         <tr>
           <td>Anwaltskanzlei</td>
-          <td>Ob Sie überhaupt um Bewertungen bitten, klären Sie anhand Ihrer Berufsregeln; lesen Sie dazu den Hinweis weiter unten</td>
+          <td>Ob Sie überhaupt um Bewertungen bitten, entscheiden wir mit Ihnen anhand Ihres Berufsrechts; lesen Sie dazu den Hinweis weiter unten</td>
         </tr>
         <tr>
           <td>Friseur, Service, Einzelhandel</td>
-          <td>In den ersten Stunden nach der Leistung oder Lieferung</td>
+          <td>Direkt nach der Leistung, solange der Kunde noch da ist</td>
         </tr>
       </tbody>
     </table>
@@ -157,8 +157,9 @@ const faq = [
   <h2 id="nasil">Wie bitten Sie um eine Bewertung?</h2>
 
   <p>
-    Machen Sie es Kunden so leicht wie möglich, eine Bewertung zu schreiben. Bitten Sie regelmäßig, jeden Kunden einzeln
-    (kein Massenversand), ohne Anreiz und ohne vorher auszuwählen. Wir richten diese Reihenfolge ein:
+    Machen Sie es Kunden so leicht wie möglich, eine Bewertung zu schreiben. Wir richten dafür eine Routine für
+    Bewertungsanfragen ein: regelmäßig, einzeln statt per Massenversand, ohne Gutschein oder Rabatt und ohne nur
+    zufriedene Kunden auszuwählen. Die Reihenfolge:
   </p>
 
   <ol>
@@ -167,12 +168,15 @@ const faq = [
       Link zum Bewerten. Er führt Kunden direkt zum Bewertungsfenster, sie müssen Sie nicht erst auf der Karte suchen.
     </li>
     <li>
-      <strong>Bitten Sie persönlich und schicken Sie den Link sofort.</strong> Sagen Sie es bei der Übergabe in einem
-      Satz und schicken Sie den Link im selben Moment per WhatsApp. Eine Nachricht allein bringt weniger Rückmeldungen.
+      <strong>Bitten Sie persönlich.</strong> Sagen Sie es am Ende des Termins oder bei der Übergabe in einem Satz und
+      geben Sie eine kleine Karte mit dem Link oder QR-Code mit. Eine Bewertungsanfrage per E-Mail, SMS oder WhatsApp
+      gilt in Deutschland als Werbung und braucht in der Regel die vorherige Einwilligung des Kunden (§ 7 UWG). Ohne
+      diese Einwilligung bleiben Sie beim persönlichen Gespräch, bei Karte und QR-Code. Allgemeine Information, keine
+      Rechtsberatung.
     </li>
     <li>
-      <strong>Halten Sie vor Ort einen QR-Code bereit.</strong> An der Kasse, im Wartezimmer oder am Übergabetisch sollte
-      der QR-Code des Links liegen.
+      <strong>Halten Sie vor Ort einen QR-Code bereit.</strong> An der Kasse, am Empfang oder im Wartezimmer sollte der
+      QR-Code des Links gut sichtbar sein.
     </li>
     <li>
       <strong>Bitten Sie einmal.</strong> Hartnäckige Erinnerungen verderben Kunden die Laune.
@@ -180,7 +184,7 @@ const faq = [
   </ol>
 
   <p>
-    Zwischen einer Richtung vorgeben und einen Text vorgeben verläuft eine klare Grenze. „Wir würden uns freuen, wenn Sie
+    Zwischen einer Anregung und einem vorgegebenen Text verläuft eine klare Grenze. „Wir würden uns freuen, wenn Sie
     schreiben, welche Leistung Sie bekommen haben und aus welchem Stadtteil Sie kommen“ ist unproblematisch, die Sätze
     formuliert der Kunde selbst. Sobald Sie einen fertigen Text vorgeben, ähneln sich die Bewertungen und bleiben im
     Filter hängen.
@@ -189,14 +193,14 @@ const faq = [
   <h2 id="kurallar">Welche Bewertungstaktiken verbietet Google?</h2>
 
   <p>
-    Hier sagen wir es klar: Machen Sie nichts von dem Folgenden, auch wenn Ihr Wettbewerber es tut. Kurzfristig steigt
+    Hier sind wir deutlich: Machen Sie nichts von dem Folgenden, auch wenn Ihr Wettbewerber es tut. Kurzfristig steigt
     die Zahl, danach gefährden Sie Ihr Profil.
   </p>
 
   <ul>
     <li>
       <strong>Bewertungen kaufen.</strong> Eine bezahlte Bewertung ist eine gefälschte Bewertung und verstößt gegen die
-      Regeln von Google. Erkennt der Filter sie, werden die Bewertungen gelöscht, und das Profil riskiert eine Sperrung.
+      Richtlinien von Google. Erkennt der Filter sie, werden die Bewertungen gelöscht, und das Profil riskiert eine Sperrung.
     </li>
     <li>
       <strong>Bewertungen mit Anreizen sammeln.</strong> Rabatt, Geschenk, Gewinnspiel oder „Kaffee aufs Haus für jede
@@ -205,24 +209,25 @@ const faq = [
     </li>
     <li>
       <strong>Den Link nur an zufriedene Kunden schicken.</strong> Erst „Sind Sie zufrieden?“ zu fragen und nur die, die
-      Ja sagen, zu Google zu schicken, ist ausdrücklich verboten. Auf Englisch heißt das review gating.
+      Ja sagen, zu Google zu schicken, schließen die Richtlinien von Google ausdrücklich aus. Auf Englisch heißt das
+      review gating.
     </li>
   </ul>
 
   <p>
-    Liegt Ihr Wettbewerber mit gekauften Bewertungen vorn, melden Sie den Regelverstoß an Google und bauen Sie Ihren
-    eigenen echten Fluss auf. Seine Bewertungen können jederzeit gelöscht werden, Ihre echten Bewertungen sammeln sich
-    weiter an.
+    Liegt Ihr Wettbewerber mit gekauften Bewertungen vorn, melden Sie den Regelverstoß an Google und bitten Sie selbst
+    weiter regelmäßig um echte Bewertungen. Seine Bewertungen können jederzeit gelöscht werden, Ihre echten bleiben.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Hinweis für Anwälte und Gesundheitsbetriebe:</strong> In der Anwaltschaft macht die Werbeverbotsverordnung
-      der türkischen Anwaltskammer (TBB Reklam Yasağı Yönetmeliği) es riskant, wenn eine Bitte um Bewertung zum Anreiz
-      wird; im Gesundheitswesen verbieten die türkischen Vorschriften, Erfahrungen von Patienten zum Werbemittel zu
-      machen. Ob Sie in diesen Bereichen um Bewertungen bitten, klären Sie anhand Ihrer Berufsregeln; wenn ja, dann ohne
-      Anreiz, ohne Auswahl und mit einem einzigen Satz. Details stehen auf
-      unseren Seiten für <a href={p('industries/law')}>Anwälte</a> und <a href={p('industries/dental')}>Zahnärzte</a>.
+      <strong>Hinweis für Kanzleien und Praxen:</strong> Für Anwälte gelten § 43b BRAO und die Berufsordnung (BORA), für
+      Heilberufe das Heilmittelwerbegesetz (HWG) und das Berufsrecht Ihrer Kammer. Ob Sie um Bewertungen bitten,
+      entscheiden wir mit Ihnen anhand Ihres Berufsrechts; wenn ja, gilt dieselbe Regel: regelmäßig, einzeln, ohne
+      Anreiz, ohne Auswahl. Bewertungen als Werbezitat auf Ihrer Website empfehlen wir in diesen Bereichen nicht.
+      Im Einzelfall entscheiden Ihre Kammer oder Ihre Rechtsberatung.
+      Details stehen auf unseren Seiten für <a href={p('industries/law')}>Anwälte</a> und
+      <a href={p('industries/dental')}>Zahnärzte</a>.
     </p>
   </div>
 
@@ -241,12 +246,13 @@ const faq = [
   </ul>
 
   <p>
-    Die bekannteste Falle ist die Sammelanfrage. Der alten Kundenliste am selben Tag eine Nachricht zu schicken, ist
-    technisch erlaubt, aber ein Stapel Bewertungen innerhalb weniger Tage ist genau das Muster, nach dem der Filter sucht.
+    Die bekannteste Falle ist die Sammelanfrage. Eine Nachricht an die ganze alte Kundenliste braucht in Deutschland in
+    der Regel die vorherige Einwilligung der Empfänger (§ 7 UWG), und auch mit Einwilligung ist ein Stapel Bewertungen
+    innerhalb weniger Tage genau das Muster, nach dem der Filter sucht.
   </p>
 
   <p>
-    Verteilen Sie die Liste über Wochen. Zwei, drei echte Bewertungen pro Woche sind ein sichererer Fluss als zwanzig
+    Bitten Sie deshalb laufend statt auf einmal. Ein paar echte Bewertungen jede Woche sind sicherer als zwanzig
     Bewertungen in einer einzigen Woche.
   </p>
 
@@ -266,14 +272,13 @@ const faq = [
 
   <p>
     Nennen Sie schlicht die Leistung, die der Kunde bekommen hat, und bedanken Sie sich, mehr braucht es nicht. Zwei
-    Zeilen wie „Danke, Frau Ayşe, schön, dass Sie mit dem Bericht zufrieden sind, und gute Fahrt mit dem neuen Auto“
-    genügen.
+    Zeilen wie „Danke, Frau Becker, schön, dass mit dem Gutachten alles geklappt hat. Gute Fahrt!“ genügen.
   </p>
 
   <p>
-    Im Gesundheitswesen und im Rechtsbereich gibt es eine Ausnahme: Nennen Sie in der Antwort nicht die Leistung. Die
-    Antwort „Schön, dass Sie mit Ihrer Implantatbehandlung zufrieden sind“ macht öffentlich, welche Behandlung diese
-    Person bekommen hat.
+    Bei Praxen und Kanzleien gibt es eine Ausnahme: Nennen Sie in der Antwort nicht die Leistung. Die Antwort „Schön,
+    dass Sie mit Ihrer Implantatbehandlung zufrieden sind“ bestätigt öffentlich, dass diese Person bei Ihnen in
+    Behandlung war und welche Behandlung sie bekommen hat. Das berührt Ihre Schweigepflicht.
   </p>
 
   <h2 id="olumsuz">Was tun Sie bei einer negativen Bewertung?</h2>

@@ -16,8 +16,10 @@ interface Props {
   title: string;
   description: string;
   heading: string;
+  /** Sayfa ortak tarihten sonra ayrıca güncellendiyse kendi tarihi (YYYY-AA-GG). */
+  updatedIso?: string;
 }
-const { locale, route, title, description, heading } = Astro.props;
+const { locale, route, title, description, heading, updatedIso = LEGAL_UPDATED_ISO } = Astro.props;
 const email = CONTACT_EMAIL[locale];
 const s = v2ui[locale].page;
 ---
@@ -30,7 +32,7 @@ const s = v2ui[locale].page;
   <article class="v2-legal">
     <span class="v2-eyebrow">{s.legalEyebrow}</span>
     <h1>{heading}</h1>
-    <p class="v2-legal-date">{s.updated} {formatDate(locale, LEGAL_UPDATED_ISO)}</p>
+    <p class="v2-legal-date">{s.updated} {formatDate(locale, updatedIso)}</p>
     <slot />
   </article>
 </main>

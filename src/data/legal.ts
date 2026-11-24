@@ -13,7 +13,7 @@ export const LEGAL_UPDATED = formatDate('tr', LEGAL_UPDATED_ISO);
 const LABELS: Record<Locale, [string, string]> = {
   tr: ['KVKK Aydınlatma Metni', 'Çerez Politikası'],
   en: ['Privacy Notice', 'Cookie Policy'],
-  de: ['Datenschutzhinweis', 'Cookie-Richtlinie'],
+  de: ['Datenschutzerklärung', 'Cookie-Richtlinie'],
 };
 
 /** Alt bilgilerdeki ve formlardaki yasal bağlantılar; ilk eleman aydınlatma metni. */

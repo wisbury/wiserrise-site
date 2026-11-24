@@ -75,11 +75,21 @@ const PERSON_KNOWS: Record<Locale, string[]> = {
   de: ['SEO', 'Lokale SEO', 'Google Ads', 'Meta Ads', 'Linkaufbau', 'GEO (Generative Engine Optimization)', 'Google Unternehmensprofil'],
 };
 
-/** Service-area business: no public street address, so we declare the areas served. */
-const AREA_SERVED = [
-  { '@type': 'Country', name: 'Türkiye' },
-  { '@type': 'City', name: 'Antalya' },
-];
+/**
+ * Service-area business: no public street address, so we declare the areas served.
+ * Per language: the German pages are written for businesses in Germany, so they declare Germany only.
+ */
+const AREA_SERVED: Record<Locale, Record<string, string>[]> = {
+  tr: [
+    { '@type': 'Country', name: 'Türkiye' },
+    { '@type': 'City', name: 'Antalya' },
+  ],
+  en: [
+    { '@type': 'Country', name: 'Türkiye' },
+    { '@type': 'City', name: 'Antalya' },
+  ],
+  de: [{ '@type': 'Country', name: 'Deutschland' }],
+};
 
 /**
  * Pages keep plain dates ("2026-11-04"); Google wants a time and a time zone
@@ -120,7 +130,7 @@ export function servicePageSchema(opts: {
       description: opts.description,
       serviceType: opts.name,
       provider: { '@id': ORG_ID },
-      areaServed: AREA_SERVED,
+      areaServed: AREA_SERVED[opts.locale],
       inLanguage: opts.locale,
     },
     {
@@ -284,7 +294,7 @@ export function organizationNode(locale: Locale) {
         },
       })),
     },
-    areaServed: AREA_SERVED,
+    areaServed: AREA_SERVED[locale],
     knowsLanguage: ['tr', 'en', 'de'],
     sameAs: SAME_AS,
     // Embedded on every page for the same reason as this node: an @id alone would resolve to nothing elsewhere.

@@ -6,37 +6,37 @@ const locale = 'de' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
-  { label: 'KATEGORIE', title: 'Die richtige Unternehmensart', text: 'Ein Zentrum für medizinische Ästhetik und ein Kosmetikstudio sind für Google verschiedene Unternehmen. Mit der falschen Kategorie findet Sie kaum, wer nach dem Eingriff sucht.' },
+  { label: 'KATEGORIE', title: 'Die richtige Unternehmensart', text: 'Eine Praxis für ästhetische Medizin und ein Kosmetikstudio sind für Google verschiedene Unternehmen. Mit der falschen Kategorie findet Sie kaum, wer nach der Behandlung sucht.' },
   { label: 'ENTSCHEIDUNG', title: 'Lange Recherche', text: 'Patienten lesen wochenlang, bevor sie entscheiden. Wir schreiben Seiten von der ersten Suche, mit der sie ihr Problem beschreiben, bis zur letzten, mit der sie eine Klinik wählen.' },
-  { label: 'PREIS', title: 'Fragen zum Preis', text: 'Werbung über den Preis ist eingeschränkt, doch eine Seite ohne Antwort schickt Patienten zur Konkurrenz. Wir erklären, wovon der Preis abhängt.' },
-  { label: 'REGELN', title: 'Grenzen der Werbung', text: 'Vorher-nachher-Bilder, Aktionen und Behauptungen wie „das natürlichste Ergebnis“ schreiben wir nicht. Jeden Text legen wir Ihnen vor der Veröffentlichung zur Freigabe vor.' },
+  { label: 'PREIS', title: 'Fragen zum Preis', text: 'Rabatte und Aktionen schreiben wir nicht, doch eine Seite ohne Antwort schickt Patienten zur Konkurrenz. Wir erklären, wovon die Kosten abhängen.' },
+  { label: 'REGELN', title: 'Grenzen der Werbung', text: 'Vorher-nachher-Bilder, Aktionen und Versprechen wie „das natürlichste Ergebnis“ schreiben wir nicht. Jeden Text legen wir Ihnen vor der Veröffentlichung zur Freigabe vor.' },
 ];
 
 const toc = [
-  { id: 'kategori', label: 'Medizinische Ästhetik oder Studio' },
+  { id: 'kategori', label: 'Ästhetische Medizin oder Studio' },
   { id: 'karar', label: 'Der lange Entscheidungsweg' },
-  { id: 'fiyat', label: 'Fragen zum Preis' },
-  { id: 'kurallar', label: 'Werberegeln' },
+  { id: 'fiyat', label: 'Fragen zu den Kosten' },
+  { id: 'kurallar', label: 'HWG und Berufsrecht' },
   { id: 'icerik', label: 'Überzeugen ohne Bilder' },
   { id: 'reklam', label: 'Anzeigen und organische Suche' },
 ];
 
 const faq = [
   {
-    q: 'Bin ich medizinische Ästhetik oder Kosmetikstudio, wie entscheide ich das?',
-    a: 'Schauen Sie auf Ihre Leistungen. Wenn Sie medizinische Eingriffe unter ärztlicher Verantwortung durchführen, sind medizinische Kategorien richtig, bei reinen Pflegeleistungen die Kategorien für Studios. Mit der falschen Kategorie wird es schwerer, bei Personen zu erscheinen, die nach dem Eingriff suchen.',
+    q: 'Bin ich ästhetische Medizin oder Kosmetikstudio, wie entscheide ich das?',
+    a: 'Schauen Sie auf Ihre Leistungen. Wenn Sie medizinische Behandlungen unter ärztlicher Verantwortung durchführen, sind medizinische Kategorien richtig, bei reinen Pflegeleistungen die Kategorien für Studios. Mit der falschen Kategorie wird es schwerer, bei Personen zu erscheinen, die nach der Behandlung suchen.',
   },
   {
     q: 'Wie trete ich ohne Vorher-nachher-Bilder gegen meine Konkurrenz auf Instagram an?',
-    a: 'Indem Sie in der Suche antreten. Wer sucht, will den Eingriff, sein Risiko und die Heilungsdauer kennen; eine Seite, die diese Fragen beantwortet, ist genau für diese Suche geschrieben. Lässt Ihre Konkurrenz, die mit Bildern arbeitet, diese Fragen offen, gehört die Suche Ihnen.',
+    a: 'Indem Sie in der Suche antreten. Wer sucht, will die Behandlung, ihre Risiken und die Heilungsdauer kennen; eine Seite, die diese Fragen beantwortet, ist genau für diese Suche geschrieben. Lässt Ihre Konkurrenz, die mit Bildern arbeitet, diese Fragen offen, haben Sie dort einen Vorsprung.',
   },
   {
     q: 'Dürfen wir Patientenbewertungen auf der Website verwenden?',
-    a: 'Verwenden Sie sie nicht als Lobesmaterial. Inhalte, die Patientenerfahrungen zu Werbung machen, sind mit Blick auf die Werberegeln für Gesundheitsleistungen riskant. Lassen Sie die Bewertungen in Ihrem Google-Profil, und nennen Sie in Antworten nicht, welchen Eingriff der Patient hatte.',
+    a: 'Das empfehlen wir nicht. Patientenstimmen als Werbung für eine Behandlung sind mit Blick auf das Heilmittelwerbegesetz riskant. Lassen Sie die Bewertungen in Ihrem Google-Profil, und nennen Sie in Antworten nicht, welche Behandlung der Patient hatte.',
   },
   {
     q: 'Ich möchte Patienten aus dem Ausland gewinnen. Reicht dieselbe Website?',
-    a: 'Nein. Gesundheitstourismus setzt eine Genehmigung des türkischen Gesundheitsministeriums (Sağlık Bakanlığı) voraus, und gesucht wird in einer anderen Sprache und landesweit. Wir arbeiten auf Türkisch, Englisch und Deutsch, planen diese Arbeit aber getrennt vom lokalen Programm und von Anfang an.',
+    a: 'Nein. Gesucht wird in einer anderen Sprache und aus einem anderen Land, die Nähe spielt keine Rolle mehr, und welche Regeln für diese Ansprache gelten, klären Sie vorab mit Ihrer Kammer. Wir arbeiten auf Deutsch, Englisch und Türkisch, planen diese Arbeit aber getrennt vom lokalen Programm und von Anfang an.',
   },
   {
     q: 'Wann sehen wir Ergebnisse?',
@@ -48,12 +48,12 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="industries/aesthetics"
-  title="SEO für Ästhetik-Kliniken und medizinische Ästhetik | Wiserrise"
-  description="SEO für Kliniken der medizinischen Ästhetik im Rahmen der Werberegeln: richtige Kategorie, Seiten zu Preis und Risiko, Sichtbarkeit bei langer Entscheidung."
+  title="SEO für Ästhetik-Kliniken und Praxen | Wiserrise"
+  description="SEO für Praxen und Kliniken der ästhetischen Medizin im Rahmen des HWG: richtige Kategorie, Seiten zu Kosten und Risiken, sachliche Inhalte."
   eyebrow="BRANCHE · ÄSTHETIK-KLINIKEN"
-  h1="SEO für Ästhetik-Kliniken: Geben Sie recherchierenden Patienten Antworten."
+  h1="SEO für Ästhetik-Kliniken: Antworten für Patienten, die recherchieren."
   crumb="Ästhetik-Kliniken"
-  lede="SEO für Ästhetik-Kliniken heißt, Patienten bei jedem Schritt ihrer wochenlangen Recherche zu begegnen. In einem Bereich, in dem Sie sich nicht auf Vorher-nachher-Fotos stützen können, bauen die richtige Kategorie und Seiten mit Antworten auf die Fragen der Patienten Ihre Sichtbarkeit auf. Wir setzen beides um und halten uns dabei an die türkischen Werberegeln für Gesundheitsleistungen."
+  lede="SEO für Ästhetik-Kliniken heißt, Patienten bei jedem Schritt ihrer wochenlangen Recherche zu begegnen. In einem Bereich, in dem Vorher-nachher-Fotos für Werbung kaum in Frage kommen, bauen die richtige Kategorie und Seiten mit Antworten auf die Fragen der Patienten Ihre Sichtbarkeit auf. Wir setzen beides um, im Rahmen des Heilmittelwerbegesetzes und des Berufsrechts Ihrer Kammer."
   serviceName="Lokale SEO für Ästhetik-Kliniken"
   breadcrumb={[
     { label: 'Startseite', href: '/de' },
@@ -63,7 +63,7 @@ const faq = [
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Content-Erstellung', href: p('services/content'), text: 'Seiten zu Eingriffen schreiben wir entlang der Fragen, die Patienten wirklich stellen.' },
+    { label: 'Content-Erstellung', href: p('services/content'), text: 'Seiten zu Behandlungen schreiben wir entlang der Fragen, die Patienten wirklich stellen.' },
     { label: 'GEO', href: p('services/geo'), text: 'Wir arbeiten daran, dass Ihre Klinik in KI-Antworten genannt wird.' },
     { label: 'SEO für Zahnärzte', href: p('industries/dental'), text: 'Wie wir bei Suchen nach akuten Zahnschmerzen und auf Behandlungsseiten arbeiten.' },
     { label: 'SEO für Physiotherapeuten', href: p('industries/physio'), text: 'Suchen, die von der Nähe im Stadtteil und wiederkehrenden Sitzungen bestimmt werden.' },
@@ -75,13 +75,13 @@ const faq = [
   <h2 id="kategori">Sind Sie medizinische Ästhetik oder Kosmetikstudio?</h2>
 
   <p>
-    Das entscheiden Ihre Leistungen. Ein Zentrum, das unter ärztlicher Verantwortung medizinische Eingriffe wie Botox oder
-    Filler durchführt, und ein Studio für Hautpflege sind für Google zwei verschiedene Unternehmensarten. Mit der falschen
-    Kategorie haben Sie es schwer, bei Personen zu erscheinen, die nach dem Eingriff suchen.
+    Das entscheiden Ihre Leistungen. Eine Praxis, die unter ärztlicher Verantwortung Faltenbehandlungen oder
+    Unterspritzungen durchführt, und ein Studio für Hautpflege sind für Google zwei verschiedene Unternehmensarten. Mit
+    der falschen Kategorie haben Sie es schwer, bei Personen zu erscheinen, die nach der Behandlung suchen.
   </p>
 
   <p>
-    Der teuerste Fehler, den wir in diesem Bereich sehen: Ein Zentrum mit medizinischen Eingriffen ordnet sich selbst der
+    Der teuerste Fehler, den wir in diesem Bereich sehen: Eine Praxis mit ärztlichen Behandlungen ordnet sich selbst der
     Kategorie „Kosmetikstudio“ zu. Auch das Gegenteil kommt vor: Ein Studio, das nur Hautpflege anbietet, wählt eine
     medizinische Kategorie, bekommt Probleme bei der Verifizierung und sammelt Besucher aus Suchen, die nicht passen.
   </p>
@@ -90,7 +90,7 @@ const faq = [
     Bevor wir die Kategorie wählen, ermitteln wir die Kategorien der Kliniken, die in Ihrer Gegend vorne stehen, und
     vergleichen, welche bei welcher Suche angezeigt wird. Die Methode beschreiben wir
     <a href={p('services/gbp')}>auf der Seite zur Profilbetreuung</a>. Auch Ihr Profilname bleibt derselbe wie auf Ihrem
-    Schild, „Botox“ oder „Filler“ an den Namen zu hängen verstößt gegen Googles Richtlinien.
+    Schild; Behandlungsnamen an den Namen zu hängen verstößt gegen Googles Richtlinien.
   </p>
 
   <h2 id="karar">Wonach sucht ein Patient, bis er sich entscheidet?</h2>
@@ -117,12 +117,12 @@ const faq = [
         </tr>
         <tr>
           <td><strong>Lösung recherchieren</strong></td>
-          <td>„Filler oder Laser“, „Wie lange hält Botox“</td>
-          <td>Seite zum Eingriff und Vergleichsbeitrag</td>
+          <td>„Unterspritzung oder Laser“, „Faltenbehandlung Ablauf“</td>
+          <td>Seite zur Behandlung und Vergleichsbeitrag</td>
         </tr>
         <tr>
           <td><strong>Klinik wählen</strong></td>
-          <td>„ästhetische Medizin Antalya“, „Botox in der Nähe“</td>
+          <td>„ästhetische Medizin München-Schwabing“, „Faltenbehandlung in der Nähe“</td>
           <td>Google-Unternehmensprofil und Standortseite</td>
         </tr>
       </tbody>
@@ -140,37 +140,44 @@ const faq = [
     wir <a href={p('services/geo')}>auf der GEO-Seite</a>.
   </p>
 
-  <h2 id="fiyat">Was antwortet man einem Patienten, der nach dem Preis fragt?</h2>
+  <h2 id="fiyat">Was antwortet man einem Patienten, der nach den Kosten fragt?</h2>
 
   <p>
-    Eine Antwort, die erklärt, wovon der Preis abhängt. Im Gesundheitswesen ist Werbung über Preis und Rabatte
-    eingeschränkt, deshalb veröffentlichen wir keine Preisliste auf der Website. Der Patient sucht aber nach „Botox Kosten“.
+    Eine Antwort, die erklärt, wovon die Kosten abhängen. Rabatte, Aktionen und Paketpreise schreiben wir nicht; ob und
+    wie Sie Preise nennen, entscheiden Sie mit Blick auf Ihr Berufsrecht. Der Patient sucht aber nach
+    „Faltenbehandlung Kosten“.
   </p>
 
   <p>
-    Auf jede Seite zu einem Eingriff schreiben wir, wovon der Preis abhängt, etwa von der Zahl der behandelten Zonen oder
-    davon, wie viele Sitzungen nötig sind. Wir sagen klar, dass der genaue Betrag nach der Untersuchung in Ihrer Klinik
-    feststeht. Der Patient ruft dann an und weiß, was ihn erwartet.
+    Auf jede Seite zu einer Behandlung schreiben wir, wovon die Kosten abhängen, etwa von der Zahl der behandelten Zonen
+    oder davon, wie viele Termine nötig sind. Wir sagen klar, dass der genaue Betrag nach dem Beratungsgespräch in Ihrer
+    Praxis feststeht. Der Patient ruft dann an und weiß, was ihn erwartet. Namen verschreibungspflichtiger Wirkstoffe
+    verwenden wir dabei weder im Text noch als Suchbegriff.
   </p>
 
   <p>
-    Eine Seite zu einem Eingriff, die die Preisfrage gar nicht berührt, ist eine halbe Seite. Der Patient verlässt die
+    Eine Seite zu einer Behandlung, die die Kostenfrage gar nicht berührt, ist eine halbe Seite. Der Patient verlässt die
     Seite, auf der er keine Antwort findet, und sucht dieselbe Frage auf der Website der nächsten Klinik.
   </p>
 
-  <h2 id="kurallar">Welche Werbung ist in der Ästhetik verboten?</h2>
+  <h2 id="kurallar">Welche Regeln gelten für Werbung in der Ästhetik?</h2>
 
   <p>
-    Die Werberegeln für Gesundheitsleistungen werden in der Ästhetik am strengsten angewendet. Viele Beiträge, die Sie in
-    sozialen Medien sehen, verstoßen gegen diese Regeln. Auf keiner unserer Seiten steht:
+    Werbung für Behandlungen unterliegt in Deutschland dem Heilmittelwerbegesetz (HWG) und dem Berufsrecht Ihrer Kammer. Wir schreiben deshalb sachlich: keine Heilversprechen, keine Garantie für einen Behandlungserfolg, keine irreführenden Vorher-nachher-Vergleiche und keine Werbung für verschreibungspflichtige Arzneimittel gegenüber Patienten. Das ist eine allgemeine Information und keine Rechtsberatung; im Einzelfall entscheiden Ihre Kammer oder Ihre Rechtsberatung.
+  </p>
+
+  <p>
+    In der Ästhetik ist dieser Rahmen besonders eng, und viele Beiträge, die Sie in sozialen Medien sehen, bewegen sich
+    hart an der Grenze. Auf keiner unserer Seiten steht:
   </p>
 
   <ul>
-    <li>Werbung mit Vorher-nachher-Fotos</li>
-    <li>Ein Ergebnisversprechen, „garantierter Erfolg“ oder eine Zufriedenheitsgarantie</li>
+    <li>Vorher-nachher-Bilder, gerade bei ästhetisch-chirurgischen Eingriffen</li>
+    <li>Ein Heilversprechen, „garantierter Erfolg“ oder eine Zufriedenheitsgarantie</li>
+    <li>Werbung mit Namen verschreibungspflichtiger Arzneimittel</li>
     <li>Ankündigungen von Aktionen, Paketangeboten und Rabatten</li>
-    <li>Patientenbewertungen oder Patientengeschichten als Lobesmaterial</li>
-    <li>Überlegenheitsbehauptungen wie „die Besten“ oder „das natürlichste Ergebnis“</li>
+    <li>Patientenstimmen oder Patientengeschichten als Werbung</li>
+    <li>Superlative wie „die Besten“ oder Versprechen wie „das natürlichste Ergebnis“</li>
   </ul>
 
   <p>
@@ -180,26 +187,25 @@ const faq = [
 
   <div class="callout">
     <p>
-      <strong>Diese Seite ist keine Rechtsberatung.</strong> Maßgeblich für die aktuelle Auslegung der Regeln ist die
-      Gesundheitsdirektion Ihrer Provinz. Formulierungen, bei denen wir unsicher sind, verwenden wir nicht, und jeden Text
-      legen wir Ihnen vor der Veröffentlichung zur Freigabe vor.
+      <strong>Sie geben jeden Text frei.</strong> Formulierungen, bei denen wir unsicher sind, verwenden wir nicht, und
+      jeden Text legen wir Ihnen vor der Veröffentlichung zur Freigabe vor. Im Zweifel fragen Sie Ihre Ärztekammer.
     </p>
   </div>
 
   <p>
-    Wie dieselben Regeln für <a href={p('industries/dental')}>Zahnarztpraxen</a> und
-    <a href={p('industries/physio')}>Physiotherapeuten</a> gelten, beschreiben wir auf eigenen Seiten.
+    Wie derselbe Rahmen für <a href={p('industries/dental')}>Zahnarztpraxen</a> und
+    <a href={p('industries/physio')}>Physiotherapeuten</a> gilt, beschreiben wir auf eigenen Seiten.
   </p>
 
   <h2 id="icerik">Wie überzeugen Sie ohne Vorher-nachher-Fotos?</h2>
 
   <p>
-    Indem Sie die Fragen der Patienten ehrlich beantworten. Wer sucht, will den Eingriff kennenlernen und sein Risiko
+    Indem Sie die Fragen der Patienten ehrlich beantworten. Wer sucht, will die Behandlung kennenlernen und ihre Risiken
     verstehen. Ein Patient in der Entscheidungsphase fragt:
   </p>
 
   <ul class="checklist">
-    <li>Wie wird der Eingriff durchgeführt, wie lange dauert er</li>
+    <li>Wie wird die Behandlung durchgeführt, wie lange dauert sie</li>
     <li>Tut es weh, ist eine Betäubung nötig</li>
     <li>Wann kann ich wieder arbeiten und unter Leute gehen</li>
     <li>Wie lange hält die Wirkung, ist eine Wiederholung nötig</li>
@@ -208,7 +214,7 @@ const faq = [
   </ul>
 
   <p>
-    Keine dieser Fragen braucht ein Bild. Wir schreiben keine Seite zu einem Eingriff ohne einen Abschnitt zu Risiken und
+    Keine dieser Fragen braucht ein Bild. Wir schreiben keine Seite zu einer Behandlung ohne einen Abschnitt zu Risiken und
     Nebenwirkungen. Ein Patient, dessen Erwartungen von Anfang an richtig gesetzt sind, kommt entschlossener zum Termin.
   </p>
 
@@ -232,9 +238,9 @@ const faq = [
   </p>
 
   <p>
-    Das haben wir bei Google Ads auf die harte Tour gelernt. Ohne dass wir es merkten, gingen rund 800 TL für
+    Das haben wir bei Google Ads auf die harte Tour gelernt. Ohne dass wir es merkten, ging in einer Kampagne Budget für
     Informationssuchen ohne Kaufabsicht drauf, und wir sind knapp davongekommen. Zahlen Sie nicht pro Klick für jemanden,
-    der „Was ist Botox“ tippt.
+    der „Was ist eine Faltenbehandlung“ tippt.
   </p>
 
   <p>

@@ -18,14 +18,14 @@ const questions = [
     id: 'q1',
     group: 'temel',
     question: 'Passt Ihre Hauptkategorie genau zu Ihrer Hauptleistung?',
-    help: 'Die Hauptkategorie ist das stärkste Relevanzsignal im lokalen Ranking. Sie gehört zu der Hauptleistung mit dem höchsten Suchvolumen.',
+    help: 'Nach unserer Erfahrung ist die Hauptkategorie das stärkste Relevanzsignal im lokalen Ranking. Sie sollte zu der Leistung passen, nach der am meisten gesucht wird.',
     options: [
       { label: 'Ja, sie passt genau', points: 10 },
       { label: 'Nah dran, aber nicht genau', points: 5 },
       { label: 'Weiß ich nicht / nicht geprüft', points: 0 },
     ],
     advice:
-      'Mit keinem anderen einzelnen Feld verändern Sie Ihr Ranking so stark wie mit der Kategorie. Ermitteln Sie die Hauptkategorien der ersten drei Wettbewerber und vergleichen Sie, bevor Sie irgendetwas anderes angehen.',
+      'Kein anderes einzelnes Feld wirkt so stark auf Ihr Ranking wie die Kategorie. Sehen Sie nach, welche Hauptkategorie die ersten drei Wettbewerber haben, und vergleichen Sie, bevor Sie irgendetwas anderes angehen.',
     link: 'services/gbp' as const,
   },
   {
@@ -53,7 +53,7 @@ const questions = [
       { label: 'Etwas fehlt oder ist veraltet', points: 0 },
     ],
     advice:
-      'Diese Felder wirken stärker auf Anfragen als auf das Ranking. Wer an Feiertagen Sonderöffnungszeiten einträgt, erscheint nicht als „geschlossen“ und verliert keine Kunden.',
+      'Diese Felder wirken stärker auf Anfragen als auf das Ranking. Tragen Sie für Feiertage und Brückentage Sonderöffnungszeiten ein, damit Kunden nicht vor verschlossener Tür stehen oder Sie fälschlich als „geschlossen“ sehen.',
   },
   {
     id: 'q4',
@@ -66,7 +66,7 @@ const questions = [
       { label: '0-4', points: 0 },
     ],
     advice:
-      'Die Zahl der Bewertungen ist der am leichtesten messbare Teil dessen, was Google Bekanntheit nennt. Richten Sie Ihr Ziel am Durchschnitt der ersten drei Wettbewerber aus.',
+      'Die Zahl der Bewertungen ist der am leichtesten messbare Teil dessen, was Google Bekanntheit nennt. Eine Zahl, die für alle gilt, gibt es nicht: Richten Sie Ihr Ziel an den ersten drei Wettbewerbern aus und bitten Sie regelmäßig, einzeln und ohne Anreiz um Bewertungen.',
     link: 'services/gbp' as const,
   },
   {
@@ -126,14 +126,15 @@ const questions = [
   {
     id: 'q9',
     group: 'site',
-    question: 'Mit welcher Seite Ihrer Website ist Ihr Profil verknüpft?',
+    question: 'Ist Ihre Website im Profil verlinkt und hat jede Leistung dort eine eigene Seite?',
+    help: 'Das Profil hat ein einziges Website-Feld. Die Verbindung zu den einzelnen Leistungen entsteht über die Seiten auf Ihrer Website.',
     options: [
-      { label: 'Startseite plus jede Leistung einzeln', points: 10 },
-      { label: 'Nur die Startseite', points: 6 },
+      { label: 'Website verlinkt, jede Leistung hat eine eigene Seite', points: 10 },
+      { label: 'Website verlinkt, Leistungen nur auf einer Sammelseite', points: 6 },
       { label: 'Keine Website verknüpft', points: 0 },
     ],
     advice:
-      'Wenn Sie jede Leistung im Profil mit der passenden Seite Ihrer Website verknüpfen, erkennt Google beide leichter als dasselbe Unternehmen.',
+      'Verlinken Sie im Website-Feld Ihre Website und geben Sie jeder Hauptleistung eine eigene Seite, die genauso heißt wie die Leistung im Profil. Beiträge im Profil können Sie zusätzlich auf diese Seiten verlinken. So ordnet Google Profil und Website leichter demselben Unternehmen zu.',
     link: 'services/on-page-seo' as const,
   },
   {
@@ -147,7 +148,7 @@ const questions = [
       { label: 'Nicht geprüft', points: 0 },
     ],
     advice:
-      'Sind Name und Telefonnummer in jeder Quelle exakt gleich, stärkt das direkt das Vertrauen, das Google in die Echtheit des Unternehmens aufbaut. Bei Profilen ohne Adresse ist das noch wichtiger.',
+      'Sind Name und Telefonnummer in jeder Quelle exakt gleich, kann Google die Angaben leichter demselben Unternehmen zuordnen. Bei Profilen ohne sichtbare Adresse ist das noch wichtiger.',
     link: 'services/local-seo' as const,
   },
 ];
@@ -156,7 +157,7 @@ const bands = [
   {
     min: 80,
     title: 'Ihr Fundament steht',
-    text: 'Am Profil sehen wir keinen grundlegenden Fehler. Der nächste Schritt: mit einer Messung in Ihrem Umkreis herausfinden, in welchen Stadtteilen Sie zurückliegen. Auf diesem Niveau wird der Wettbewerb in den umkämpften Ecken der Karte entschieden.',
+    text: 'Nach Ihren Antworten hat das Profil keinen grundlegenden Fehler. Der nächste Schritt: mit einer Messung in Ihrem Umkreis herausfinden, in welchen Stadtteilen Sie zurückliegen. Diese Punktzahl sagt nichts über Ihren tatsächlichen Platz auf der Karte.',
   },
   {
     min: 55,
@@ -166,7 +167,7 @@ const bands = [
   {
     min: 0,
     title: 'Es gibt kritische Lücken',
-    text: 'Im Profil fehlt etwas, das Ihr Ranking direkt bremst. Die gute Nachricht: Die meisten Punkte unten können Sie selbst beheben, und die Mehrheit Ihrer Wettbewerber kümmert sich nicht um diese Bereiche.',
+    text: 'Im Profil fehlen Grundlagen, die Ihr Ranking bremsen können. Die gute Nachricht: Die meisten Punkte unten können Sie selbst beheben. Beginnen Sie mit dem ersten Punkt der Liste.',
   },
 ];
 

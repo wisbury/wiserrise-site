@@ -20,14 +20,14 @@ const services = [
     href: p('services/local-seo'),
     label: 'KARTE',
     title: 'Lokale SEO',
-    text: 'Profil und Website zusammen. Unsere Arbeit, damit Sie unter die ersten drei Unternehmen kommen, die Kunden in Ihrer Nähe zuerst sehen.',
+    text: 'Unternehmensprofil und Website zusammen. Wir arbeiten auf die drei Plätze auf der Karte hin, die Kunden in Ihrer Nähe zuerst sehen.',
     cta: 'Leistung ansehen',
   },
   {
     href: p('services/google-ads'),
     label: 'ANZEIGEN',
     title: 'Google Ads',
-    text: 'Suchanzeigen, die Ihr Budget nur für Menschen ausgeben, die suchen, fragen und kaufbereit sind.',
+    text: 'Suchanzeigen für Menschen, die gerade nach Ihrer Leistung suchen. Wir steuern, für welche Suchanfragen Ihr Budget ausgegeben wird.',
     cta: 'Leistung ansehen',
   },
   {
@@ -50,7 +50,7 @@ const services = [
     href: p('services/geo'),
     label: 'KI',
     title: 'GEO',
-    text: 'Wir messen, bei welchen Fragen ChatGPT, Gemini und Googles KI-Antworten Sie nennen, und arbeiten an den Fragen, bei denen Sie fehlen.',
+    text: 'Wir messen, bei welchen Fragen ChatGPT, Gemini und die KI-Übersichten von Google Sie nennen, und arbeiten an den Fragen, bei denen Sie fehlen.',
     cta: 'Leistung ansehen',
   },
 ];
@@ -58,19 +58,19 @@ const services = [
 const faq = [
   {
     q: 'Kann ich die Leistungen einzeln buchen?',
-    a: 'Ja, aber den meisten Unternehmen reicht eine einzelne Leistung nicht. Liegt das Problem an einer Stelle, etwa weil Ihre Website bei Google gar nicht erscheint, fangen wir nur mit SEO an. Was Sie brauchen, sagen wir Ihnen in der kostenlosen Analyse.',
+    a: 'Ja. Oft reicht eine einzelne Leistung allerdings nicht aus. Liegt das Problem an genau einer Stelle, etwa weil Ihre Website bei Google gar nicht auftaucht, beginnen wir nur mit SEO. Was Sie brauchen, sagen wir Ihnen in der kostenlosen Analyse.',
   },
   {
-    q: 'Arbeiten Sie mit Unternehmen in der ganzen Türkei?',
-    a: 'Ja. Die gesamte Arbeit läuft aus der Ferne, wir müssen nicht in Ihre Stadt kommen. Unser Sitz ist Antalya, und wir arbeiten auf Türkisch, Englisch und Deutsch.',
+    q: 'Müssen Sie für die Arbeit zu uns vor Ort kommen?',
+    a: 'Nein. Wir arbeiten vollständig aus der Ferne. Website, Unternehmensprofil und Anzeigenkonto betreuen wir über die Zugänge, die Sie uns freigeben; ob Ihre Praxis in Hamburg oder Ihr Betrieb in Stuttgart liegt, spielt dafür keine Rolle.',
   },
   {
     q: 'Arbeiten Sie auch mit meinem Konkurrenten in derselben Stadt?',
-    a: 'Nein. Pro Stadt und Branche arbeiten wir mit einem einzigen Unternehmen. Zwei Konkurrenten gleichzeitig auf derselben Karte nach oben bringen zu wollen, wäre beiden gegenüber unfair.',
+    a: 'Nein. Pro Stadt und Branche arbeiten wir mit genau einem Unternehmen. Zwei Wettbewerber gleichzeitig auf derselben Karte nach vorn bringen zu wollen, wäre keinem von beiden gegenüber fair.',
   },
   {
     q: 'Wie messen Sie SEO-Ergebnisse?',
-    a: 'Wir lesen die Messung in Ihrem Umkreis, die Interaktionen mit Ihrem Profil und die Daten aus der Search Console zusammen. Einen einzelnen Ranking-Screenshot schicken wir nicht, denn der Platz auf der Karte hängt davon ab, wo die suchende Person steht. Unsere Arbeit sehen Sie jede Woche im Bericht.',
+    a: 'Wir werten drei Quellen gemeinsam aus: die Messung in Ihrem Umkreis, die Interaktionen mit Ihrem Unternehmensprofil und die Daten aus der Google Search Console. Einen einzelnen Ranking-Screenshot schicken wir nicht, denn Ihr Platz auf der Karte hängt davon ab, wo die suchende Person gerade steht. Was wir getan haben, sehen Sie jede Woche im Bericht.',
   },
 ];
 ---
@@ -78,20 +78,20 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="services"
-  title="Digitale Marketing-Leistungen | Wiserrise"
-  description="SEO, lokale SEO, Google Ads, Meta Ads, Linkaufbau und GEO. Was Sie brauchen, zeigt die kostenlose Analyse."
+  title="Online-Marketing-Leistungen für Unternehmen | Wiserrise"
+  description="SEO, lokale SEO, Google Ads, Meta Ads, Linkaufbau und GEO für Praxen, Kanzleien und Betriebe. Womit Sie anfangen sollten, zeigt die kostenlose Analyse."
   eyebrow="LEISTUNGEN"
-  h1="Digitale Marketing-Leistungen: Welche brauchen Sie?"
+  h1="Online-Marketing-Leistungen: Welche brauchen Sie?"
   crumb="Leistungen"
-  lede="Ihre Kunden finden Sie vielleicht bei Google, auf der Karte, auf Instagram oder in ChatGPT. Jeder Kanal ist eine eigene Aufgabe, aber Sie brauchen nicht alle gleichzeitig. Unten steht, welche Leistung auf welchen Kanal zielt."
-  serviceName="Digitale Marketing-Leistungen"
+  lede="Ihre Kunden finden Sie über die Google-Suche, über Google Maps, auf Instagram oder in ChatGPT. Jeder Kanal ist eine eigene Aufgabe, und Sie brauchen nicht alle auf einmal. Die Übersicht unten zeigt, welche Leistung zu welchem Kanal gehört."
+  serviceName="Online-Marketing-Leistungen"
   breadcrumb={[{ label: 'Startseite', href: '/de' }]}
   faq={faq}
   wideFirst
   related={[
-    { label: 'Lokale SEO nach Branche', href: p('industries'), text: 'Wie sich die Arbeit bei Anwälten, Zahnärzten, Kliniken und Kfz-Gutachtern unterscheidet.' },
-    { label: 'Ratgeber', href: p('guides'), text: 'Vom Anlegen des Profils bis zu mehr Bewertungen: Schritte, die Sie selbst umsetzen können.' },
-    { label: 'Kostenlose Profilprüfung', href: p('tools/gbp-audit'), text: 'In 10 Fragen sehen Sie sofort, wo Ihr Google-Profil schwach ist.' },
+    { label: 'Lokale SEO nach Branche', href: p('industries'), text: 'Was bei Kanzleien, Zahnarztpraxen, Kliniken und Kfz-Gutachtern jeweils anders läuft.' },
+    { label: 'Ratgeber', href: p('guides'), text: 'Vom Anlegen des Unternehmensprofils bis zu mehr Rezensionen: Schritte, die Sie selbst umsetzen können.' },
+    { label: 'Kostenlose Profilprüfung', href: p('tools/gbp-audit'), text: 'Zehn Fragen zeigen Ihnen, wo Ihr Google Unternehmensprofil Lücken hat.' },
   ]}
   relatedHeading="Verwandte Seiten"
   ctaLabel="Kostenlose Analyse anfordern"
@@ -150,28 +150,28 @@ const faq = [
   <h2 id="reklam-seo">Anzeigen oder SEO?</h2>
 
   <p>
-    Anzeigen starten sofort und hören an dem Tag auf, an dem das Budget aufgebraucht ist. SEO und lokale SEO starten
-    langsamer, erlöschen aber nicht an dem Tag, an dem Sie aufhören.
+    Anzeigen laufen, sobald sie freigeschaltet sind, und stoppen, wenn das Budget aufgebraucht ist. SEO und lokale SEO
+    brauchen einen längeren Anlauf, verschwinden aber nicht an dem Tag, an dem Sie aufhören.
   </p>
 
   <p>
-    Google Ads erreicht Menschen, die suchen, Meta Ads Menschen, die nicht suchen. Wer Ihre Anzeige auf Instagram sieht,
-    hat in dem Moment keinen Physiotherapeuten gesucht. Die Anzeige ist dafür da, dass er sich an Ihren Namen erinnert,
-    wenn der Rücken schmerzt.
+    Google Ads erreicht Menschen, die gerade suchen, Meta Ads Menschen, die gerade nicht suchen. Wer Ihre Anzeige auf
+    Instagram sieht, sucht in diesem Moment keine Physiotherapie. Die Anzeige soll dafür sorgen, dass er sich an Ihre
+    Praxis erinnert, wenn der Rücken schmerzt.
   </p>
 
   <h2 id="baslangic">Womit sollten Sie anfangen?</h2>
 
   <p>
-    Kommen Ihre Kunden aus der Umgebung, mit der Karte, also mit lokaler SEO. Verkaufen Sie an die ganze Stadt oder das
-    ganze Land, mit SEO. Wenn Sie nicht warten können, starten Sie mit Anzeigen, und wir bauen die dauerhafte Seite
-    dahinter auf.
+    Kommen Ihre Kunden aus der direkten Umgebung, beginnen Sie mit der Karte, also mit lokaler SEO. Arbeiten Sie für die
+    ganze Stadt oder bundesweit, beginnen Sie mit SEO. Wenn Sie nicht warten können, starten Sie mit Anzeigen; parallel
+    bauen wir die dauerhafte Grundlage auf.
   </p>
 
   <p>
     Fangen Sie nicht mit einer Vermutung an. Die kostenlose Analyse ist ein Video, das wir für Ihr Unternehmen aufnehmen:
-    wo Sie heute stehen und womit Sie zuerst anfangen sollten. Aufträge, bei denen wir die Website nicht komplett betreuen können,
-    nehmen wir nicht an: Auf einer halb betreuten Website hält SEO nicht, und die Besucher aus den Anzeigen gehen
+    wo Sie heute stehen und womit Sie zuerst anfangen sollten. Aufträge, bei denen wir die Website nicht vollständig betreuen können,
+    nehmen wir nicht an: Auf einer nur halb betreuten Website hält SEO nicht, und die Besucher aus den Anzeigen gehen
     verloren.
   </p>
 
@@ -186,7 +186,7 @@ const faq = [
       id="hizmet-listesi"
       eyebrow="LEISTUNGEN"
       heading="Wir arbeiten dort, wo Ihre Kunden suchen."
-      sub="SEO und lokale SEO verschaffen Ihnen einen dauerhaften Platz in der Suche und auf der Karte. Google Ads und Meta Ads machen Sie sichtbar, solange die Anzeigen laufen. GEO überträgt dieselbe Grundlage auf KI-Antworten."
+      sub="SEO und lokale SEO arbeiten an Ihrer dauerhaften Sichtbarkeit in der Suche und auf der Karte. Google Ads und Meta Ads machen Sie sichtbar, solange die Anzeigen laufen. GEO überträgt dieselbe Grundlage auf KI-Antworten."
       items={services}
       son={{
         label: 'NOCH UNSICHER?',

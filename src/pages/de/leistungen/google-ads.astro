@@ -6,10 +6,10 @@ const locale = 'de' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
-  { label: 'MESSUNG', title: 'Zuerst das Conversion-Tracking', text: 'Formularanfragen, Anrufe aus der Anzeige und Anrufe über die Website werden getrennt gezählt. Vorher fließt kein Cent.' },
-  { label: 'KEYWORDS', title: 'Nur Kaufabsicht', text: 'Leistung plus Stadt, „in der Nähe“, Preis, Notdienst. „Wie macht man“ und Jobsuchen stehen ab dem ersten Tag auf der Ausschlussliste.' },
+  { label: 'MESSUNG', title: 'Zuerst das Conversion-Tracking', text: 'Formularanfragen, Anrufe aus der Anzeige und Anrufe über die Website zählen wir getrennt. Vorher fließt kein Cent.' },
+  { label: 'KEYWORDS', title: 'Nur Kaufabsicht', text: 'Leistung plus Stadt, „in der Nähe“, Preis, Notdienst. „Selber machen“ und Jobsuchen stehen ab dem ersten Tag auf der Ausschlussliste.' },
   { label: 'EINSTELLUNGEN', title: 'Von Hand eingerichtet', text: 'Displaynetzwerk und Suchnetzwerk-Partner aus, Standortoption „Präsenz“, automatisch angewendete Empfehlungen aus.' },
-  { label: 'BERICHT', title: 'Anfragen statt Klicks', text: 'Im Wochenbericht stehen zuerst die Kosten pro Anfrage und welche Anfragen zu Kunden wurden, danach die Klicks.' },
+  { label: 'BERICHT', title: 'Anfragen statt Klicks', text: 'Im wöchentlichen Bericht stehen zuerst die Kosten pro Anfrage und welche Anfragen zu Aufträgen wurden, danach die Klicks.' },
 ];
 
 const toc = [
@@ -26,19 +26,19 @@ const toc = [
 const faq = [
   {
     q: 'Sind Werbebudget und Ihr Honorar dasselbe?',
-    a: 'Nein, das sind zwei getrennte Posten. Das Geld für die Klicks geht an Google. Unser Honorar deckt Einrichtung und Betreuung der Kampagne. Das Budget berechnen wir gemeinsam mit Ihnen aus Ihrem Kundenwert und Ihrer Abschlussquote.',
+    a: 'Nein, das sind zwei getrennte Posten. Das Geld für die Klicks zahlen Sie direkt an Google. Unser Honorar deckt Einrichtung und Betreuung der Kampagne. Das Budget berechnen wir gemeinsam mit Ihnen aus dem Wert eines Kunden und Ihrer Abschlussquote.',
   },
   {
     q: 'Wem gehört das Werbekonto?',
-    a: 'Ihnen. Sie verknüpfen Ihr eigenes Google-Ads-Konto mit unserem Verwaltungskonto, und wir arbeiten über diese Verknüpfung. Wenn Sie die Zusammenarbeit beenden, heben Sie die Verknüpfung auf; Kampagnen und Verlaufsdaten bleiben in Ihrem Konto.',
+    a: 'Ihnen. Sie verknüpfen Ihr eigenes Google-Ads-Konto mit unserem Verwaltungskonto, und wir arbeiten über diese Verknüpfung. Endet die Zusammenarbeit, heben Sie die Verknüpfung auf; Kampagnen und alle bisherigen Daten bleiben in Ihrem Konto.',
   },
   {
     q: 'Wann sehe ich erste Ergebnisse?',
-    a: 'Klicks kommen am Tag der Freischaltung. Die eigentliche Frage ist, was eine Anfrage kostet, und das braucht Zeit. In den ersten 14 Tagen bereinigen wir nur die Suchbegriffe; die ersten 60 bis 90 Tage sind eine Lernphase.',
+    a: 'Klicks kommen ab dem Tag der Freischaltung. Die eigentliche Frage ist, was eine Anfrage kostet, und das lässt sich erst mit Daten beantworten. In den ersten 14 Tagen bereinigen wir nur die Suchbegriffe; die ersten 60 bis 90 Tage sind eine Lernphase.',
   },
   {
     q: 'Nutzen Sie das von Google empfohlene Budget?',
-    a: 'Nein. Das Tagesbudget muss mindestens 10 Klicks abdecken und wird aus den echten Gebotsspannen im Keyword-Planer berechnet. Ist Ihnen das zu viel, beschränken wir die Leistung oder das Gebiet. Die Suchabsicht weichen wir nie auf.',
+    a: 'Nein. Das Tagesbudget muss mindestens 10 Klicks abdecken und wird aus den tatsächlichen Gebotsspannen im Keyword-Planer berechnet. Ist Ihnen das zu viel, beschränken wir uns auf weniger Leistungen oder ein kleineres Gebiet. Die Suchabsicht weichen wir nie auf.',
   },
 ];
 ---
@@ -47,11 +47,11 @@ const faq = [
   locale={locale}
   route="services/google-ads"
   title="Google Ads Agentur: Betreuung von Suchkampagnen | Wiserrise"
-  description="Google Ads Agentur, die mit dem Conversion-Tracking beginnt: Keywords mit Kaufabsicht, manuelle Einstellungen, gemeinsame Ausschlussliste, wöchentliche Betreuung."
+  description="Google Ads Betreuung, die mit dem Conversion-Tracking beginnt: Keywords mit Kaufabsicht, geprüfte Einstellungen, Ausschlussliste, wöchentlicher Bericht."
   eyebrow="LEISTUNG · GOOGLE ADS"
-  h1="Google Ads Agentur: Ihr Budget für Menschen, die kaufen wollen."
+  h1="Google Ads Agentur: Ihr Budget für Menschen, die jetzt suchen."
   crumb="Google Ads"
-  lede="Google-Ads-Betreuung heißt, Ihr Werbebudget für Menschen auszugeben, die genau jetzt nach Ihrer Leistung suchen. Als Google Ads Agentur bringen wir zuerst die Messung der Anfragen in Ordnung und bauen dann eine Suchkampagne nur aus Suchanfragen mit Kaufabsicht. Die Kampagne überlassen wir nicht Googles Standardeinstellungen: Wir lesen jede Woche die Suchbegriffe und steuern nach."
+  lede="Google-Ads-Betreuung heißt, Ihr Werbebudget für Menschen auszugeben, die genau jetzt nach Ihrer Leistung suchen. Wir bringen zuerst die Messung der Anfragen in Ordnung und bauen dann eine Suchkampagne nur aus Suchanfragen mit Kaufabsicht. Googles Standardeinstellungen übernehmen wir nicht ungeprüft: Wir lesen jede Woche die Suchbegriffe und steuern nach."
   serviceName="Google Ads Betreuung"
   breadcrumb={[
     { label: 'Startseite', href: '/de' },
@@ -62,8 +62,8 @@ const faq = [
   faq={faq}
   related={[
     { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Profil und Website gemeinsam, damit Sie auf der Karte sichtbar bleiben, wenn die Anzeigen pausieren.' },
-    { label: 'SEO', href: p('services/seo'), text: 'Suchanfragen, für die Sie heute bezahlen, mit der Zeit auch in den organischen Ergebnissen gewinnen.' },
-    { label: 'Google-Unternehmensprofil', href: p('services/gbp'), text: 'Die Standort-Erweiterung Ihrer Anzeige kommt aus Ihrem Profil. Ein schwaches Profil macht eine schwache Anzeige.' },
+    { label: 'SEO', href: p('services/seo'), text: 'An den Suchanfragen, für die Sie heute bezahlen, auch in den organischen Ergebnissen arbeiten.' },
+    { label: 'Google Unternehmensprofil', href: p('services/gbp'), text: 'Das Standort-Asset Ihrer Anzeige kommt aus Ihrem Profil. Ein schwaches Profil schwächt auch die Anzeige.' },
   ]}
   ctaLabel="Kostenlose Anzeigenanalyse anfordern"
   ctaHref="/de#contact"
@@ -71,15 +71,15 @@ const faq = [
   <h2 id="aufgabe">Was macht eine Google Ads Agentur?</h2>
 
   <p>
-    Eine gute Google Ads Agentur liefert Anfragen; Klicks sind nur das Mittel dazu. Wer „Schlüsseldienst Köln“ eingibt,
-    klickt auf eine der „Gesponsert“-Zeilen über den Ergebnissen. Diesen Klick bezahlen Sie, und die Aufgabe der Agentur ist
-    dafür zu sorgen, dass das Geld bei Menschen mit echter Kaufabsicht landet.
+    Eine gute Google Ads Agentur arbeitet auf Anfragen hin; Klicks sind nur das Mittel dazu. Wer „Schlüsseldienst Köln“
+    eingibt, klickt oft auf eine der „Gesponsert“-Zeilen über den Ergebnissen. Diesen Klick bezahlen Sie, und die Aufgabe
+    der Agentur ist es, dafür zu sorgen, dass das Geld bei Menschen mit echtem Bedarf landet.
   </p>
 
   <p>
-    Wir betreuen <strong>Suchkampagnen</strong>, die lokalen Dienstleistern Anrufe, Formularanfragen und Termine bringen.
-    Mit Shopping, Video oder Performance Max fangen wir nicht an. Zuerst bringt die Suche Nachfrage, andere Kampagnentypen
-    kommen später und erst dann, wenn genug Conversion-Daten vorliegen.
+    Wir betreuen <strong>Suchkampagnen</strong> für lokale Dienstleister, Praxen und Kanzleien, die auf Anrufe,
+    Formularanfragen und Termine ausgerichtet sind. Mit Shopping, Video oder Performance Max fangen wir nicht an. Zuerst
+    kommt die Suche; andere Kampagnentypen folgen später und erst dann, wenn genug Conversion-Daten vorliegen.
   </p>
 
   <p>Jede Kampagne bauen wir nach sieben Regeln auf:</p>
@@ -97,9 +97,9 @@ const faq = [
   <h2 id="messung">Warum beginnen Sie mit der Messung?</h2>
 
   <p>
-    Weil bei falscher Messung jede automatische Gebotsfunktion von Google gegen Sie arbeitet. Das System vervielfacht, was
-    Sie als Erfolg zählen. Ein Konto, das Seitenaufrufe als Conversion zählt, findet sehr zuverlässig Menschen, die sich eine
-    Seite ansehen und wieder gehen.
+    Weil bei falscher Messung jede automatische Gebotsstrategie von Google gegen Sie arbeitet. Das System sucht mehr von
+    dem, was Sie als Erfolg zählen. Ein Konto, das Seitenaufrufe als Conversion zählt, findet sehr zuverlässig Menschen,
+    die sich eine Seite ansehen und wieder gehen.
   </p>
 
   <p>Bevor eine Kampagne startet, müssen drei Conversion-Aktionen eingerichtet sein und funktionieren:</p>
@@ -111,66 +111,68 @@ const faq = [
   </ul>
 
   <p>
-    Dazu kommen erweiterte Conversions. Primäre Ziele sind ausschließlich echte Anfragen. Scrollen, Seitenaufrufe oder das
-    Überfahren einer Schaltfläche sind es nie. Eine neue Kampagne geht erst online, wenn eine Conversion erfasst wurde; bis
-    dahin bleibt sie pausiert.
+    Dazu kommen erweiterte Conversions. Primäre Ziele sind ausschließlich echte Anfragen; Scrollen, Seitenaufrufe oder
+    das Überfahren einer Schaltfläche zählen nie dazu. Eine neue Kampagne geht erst online, wenn jede Conversion-Aktion mit
+    einer Testanfrage geprüft ist; bis dahin bleibt sie pausiert.
   </p>
 
   <h2 id="budget">Wie wird ein Google-Ads-Budget berechnet?</h2>
 
   <p>
-    Wir beginnen mit zwei Zahlen: Was ist Ihnen ein durchschnittlicher Kunde wert, und wie viele von 10 Anfragen werden zu
-    Kunden? Das Produkt beider Zahlen ist der Höchstbetrag, den eine einzelne Anfrage kosten darf. Ist ein Kunde 5.000 Euro
-    wert und wird jede fünfte Anfrage zum Auftrag, ist Ihnen eine Anfrage höchstens 1.000 Euro wert.
+    Wir beginnen mit zwei Zahlen: Was ist Ihnen ein durchschnittlicher Kunde wert, und wie viele von 10 Anfragen werden
+    zu Aufträgen? Multipliziert ergeben beide Zahlen den Höchstbetrag, den eine einzelne Anfrage kosten darf. Ist ein
+    Auftrag 5.000 Euro wert und wird jede fünfte Anfrage zum Auftrag, ist Ihnen eine Anfrage höchstens 1.000 Euro wert.
   </p>
 
   <p>
-    Danach prüfen wir im Keyword-Planer für jedes Keyword die Gebotsspanne für den oberen Seitenbereich. Das Tagesbudget muss
-    mindestens 10 Klicks abdecken. Ein gesunder Start liegt bei 10 bis 30 Klicks pro Tag, denn mit weniger sammelt die
-    Kampagne nicht genug Daten, um zu lernen, welche Keywords funktionieren.
+    Danach prüfen wir im Keyword-Planer für jedes Keyword die Gebotsspanne für den oberen Seitenbereich. Das Tagesbudget
+    muss mindestens 10 Klicks abdecken. Ein solider Start liegt bei 10 bis 30 Klicks pro Tag, denn mit weniger sammelt
+    die Kampagne nicht genug Daten, um zu erkennen, welche Keywords funktionieren.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Und wenn das Budget nicht reicht?</strong> Dann beschränken wir uns auf eine Leistung und ein kleineres Gebiet.
-      Die Suchabsicht weichen wir nicht auf: Eine Kampagne voller billiger, unpassender Klicks kostet am Ende mehr als eine
-      mit wenigen, aber richtigen Klicks. Googles Budgetempfehlung spielt bei der Berechnung keine Rolle.
+      <strong>Und wenn das Budget nicht reicht?</strong> Dann beschränken wir uns auf eine Leistung und ein kleineres
+      Gebiet. Die Suchabsicht weichen wir nicht auf: Eine Kampagne voller billiger, unpassender Klicks kostet am Ende mehr
+      als eine mit wenigen, aber passenden Klicks. Googles Budgetempfehlung spielt bei der Berechnung keine Rolle.
     </p>
   </div>
 
   <h2 id="keywords">Auf welche Keywords bieten Sie?</h2>
 
   <p>
-    Nur auf Suchanfragen von Menschen, die die Leistung jetzt wollen. Typisch sind Leistung plus Stadt oder Stadtteil, „in
-    der Nähe“, „Notdienst“, „Preis“ und „Angebot“. „Wie macht man“, Jobsuchen und allgemeine Ein-Wort-Suchen bleiben draußen.
+    Nur auf Suchanfragen von Menschen, die die Leistung jetzt brauchen. Typisch sind Leistung plus Stadt oder Stadtteil,
+    „in der Nähe“, „Notdienst“, „Preis“ und „Angebot“. Anleitungen zum Selbermachen, Jobsuchen und allgemeine
+    Ein-Wort-Suchen bleiben draußen.
   </p>
 
   <p>
-    Das haben wir aus einem eigenen Fehler gelernt. In einer Google-Ads-Kampagne haben wir, ohne es zu merken, rund 800 TL
-    für reine Informationssuchen ohne Kaufabsicht ausgegeben. Seitdem öffnen wir als Erstes den Suchbegriffbericht und
-    sortieren Informationssuchende aus.
+    Das haben wir aus einem eigenen Fehler gelernt. In einer Google-Ads-Kampagne ist, ohne dass wir es gleich bemerkt
+    haben, Budget in reine Informationssuchen ohne Kaufabsicht geflossen. Seitdem öffnen wir als Erstes den
+    Suchbegriffbericht und sortieren Informationssuchen aus.
   </p>
 
   <p>
-    Jedes Keyword wird zweimal angelegt: als genau passend und als passende Wortgruppe. Weitgehend passend gibt es am Anfang
-    nicht. Die Struktur bleibt schlicht: jede Leistung in einer eigenen Kampagne, jede Anzeigengruppe mit einem einzigen
-    Thema und 4 bis 8 Keywords. Wenige Kampagnen voller Daten schlagen viele Kampagnen, die die Daten zerstückeln.
+    Jedes Keyword legen wir zweimal an: als genau passend und als passende Wortgruppe. Weitgehend passend gibt es am
+    Anfang nicht. Die Struktur bleibt schlicht: jede Leistung in einer eigenen Kampagne, jede Anzeigengruppe mit einem
+    einzigen Thema und 4 bis 8 Keywords. Wenige Kampagnen mit vielen Daten sind besser als viele Kampagnen, die die Daten
+    zerstückeln.
   </p>
 
   <h3>Eine Ausschlussliste ab dem ersten Tag</h3>
 
   <p>
     Der günstigste schlechte Klick ist der, den Sie nie bezahlen. Vor dem Start verknüpfen wir eine gemeinsame
-    Ausschlussliste mit dem Konto. Sie enthält Jobsuchende (Stellenangebot, Gehalt, Praktikum), Selbermacher (Anleitung,
-    Kurs, Ausbildung), Menschen ohne Budget (kostenlos, Gutschein), falsche Produkte und jeden Ort außerhalb Ihres
+    Ausschlussliste mit dem Konto. Sie enthält Jobsuchen (Stellenangebot, Gehalt, Ausbildung), Selbermacher (Anleitung,
+    Kurs, selber machen), Schnäppchensuchen (kostenlos, Gutschein), falsche Produkte und jeden Ort außerhalb Ihres
     Einzugsgebiets. Die Liste wächst jede Woche aus dem Suchbegriffbericht.
   </p>
 
   <h2 id="einstellungen">Was ändern Sie an Googles Standardeinstellungen?</h2>
 
   <p>
-    Fast alles, und zwar von Hand. Die Standardeinstellungen sind darauf ausgelegt, mehr Anzeigen auszuliefern. Ihre Kosten
-    pro Anfrage zu senken, ist nicht ihr Ziel. In einer neuen Suchkampagne ändern wir Folgendes:
+    Fast alles, und zwar von Hand. Die Standardeinstellungen sind darauf ausgelegt, mehr Anzeigen auszuliefern; Ihre
+    Kosten pro Anfrage zu senken, ist nicht ihr Ziel. In einer neuen Suchkampagne ändern wir Folgendes:
   </p>
 
   <div class="table-scroll">
@@ -214,81 +216,87 @@ const faq = [
 
   <p>
     Über die Gebotsstrategie entscheiden die Daten. Eine Kampagne mit weniger als 30 Conversions in den letzten 30 Tagen
-    wechselt nicht zu Conversion-Geboten. Ein Ziel-CPA ohne Daten stoppt die Ausgaben oder verteilt sie zufällig.
+    wechselt nicht zu Conversion-Geboten. Ein Ziel-CPA ohne Datengrundlage bremst die Auslieferung oder verteilt das
+    Budget nach dem Zufallsprinzip.
   </p>
 
   <h2 id="anzeigen">Wie entstehen Anzeigen und Zielseite?</h2>
 
   <p>
-    Zuerst suchen wir das Haupt-Keyword selbst und notieren, was die Anzeigen der Wettbewerber versprechen. Dann schreiben
-    wir nur Zeilen, die Sie ehrlich sagen können. Jede Anzeigengruppe bekommt 8 bis 10 Anzeigentitel, jeder aus einem
-    anderen Blickwinkel: Suchabsicht, Unterschied, Angebot, Vertrauen, Handlungsaufforderung und Marke.
+    Zuerst suchen wir das Haupt-Keyword selbst und notieren, was die Anzeigen der Wettbewerber versprechen. Dann
+    schreiben wir nur Zeilen, die Sie ehrlich vertreten können. Jede Anzeigengruppe bekommt 8 bis 10 Anzeigentitel, jeder
+    aus einem anderen Blickwinkel: Suchabsicht, Unterschied, Angebot, Vertrauen, Handlungsaufforderung und Marke.
   </p>
 
   <p>
-    Der Titel mit Keyword und Stadt wird auf Position eins fixiert. Telefonnummern stehen nie im Anzeigentext, dafür gibt es
-    die Anruferweiterung. Sitelinks, Zusatzinformationen, ein Snippet „Leistungen“, Anruf- und Standorterweiterung werden
-    vollständig ausgefüllt.
+    Der Titel mit Keyword und Stadt wird auf Position eins fixiert. Telefonnummern stehen nie im Anzeigentext, dafür gibt
+    es das Anruf-Asset. Sitelinks, Zusatzinformationen, ein Snippet „Leistungen“, Anruf- und Standort-Asset füllen wir
+    vollständig aus.
   </p>
 
   <p>
     Die Anzeige führt auf die Seite der jeweiligen Leistung, nie auf die Startseite. Die Seite muss auf dem Smartphone
-    schnell laden, Anruf- und WhatsApp-Schaltfläche gehören auf den ersten Bildschirm. Fehlt die Seite oder ist sie schwach,
-    schreiben wir sie im Rahmen der <a href={p('services/content')}>Content-Erstellung</a>.
+    schnell laden, die Schaltflächen für Anruf und Terminanfrage gehören auf den ersten Bildschirm. Fehlt die Seite oder
+    ist sie schwach, schreiben wir sie im Rahmen der <a href={p('services/content')}>Content-Erstellung</a>.
   </p>
 
   <h3>Regulierte Branchen: Gesundheit und Recht</h3>
 
   <p>
-    Bei Gesundheitsanbietern schreiben wir keine Garantien und keine „sicheren Ergebnisse“ in die Anzeige. Markiert Googles
-    Gesundheitsrichtlinie ein Keyword, beantragen wir zuerst eine Ausnahme, bevor wir es löschen. Für Kanzleien in
-    Deutschland gilt § 43b BRAO: Werbung ist erlaubt, soweit sie über die berufliche Tätigkeit in Form und Inhalt sachlich
-    unterrichtet. Anzeigentexte für Kanzleien formulieren wir deshalb sachlich, ohne Erfolgsversprechen und ohne
-    Überlegenheitsbehauptungen. Mehr dazu auf unserer Seite <a href={p('industries/law')}>SEO für Anwälte</a>.
+    Werbung für Behandlungen unterliegt in Deutschland dem Heilmittelwerbegesetz (HWG) und dem Berufsrecht Ihrer Kammer.
+    Anzeigen für Praxen und Kliniken schreiben wir deshalb sachlich: keine Heilversprechen, keine Garantie für einen
+    Behandlungserfolg und keine Werbung für verschreibungspflichtige Arzneimittel. Markiert die Gesundheitsrichtlinie von
+    Google ein Keyword, beantragen wir zuerst eine Überprüfung, bevor wir es löschen. Anwaltswerbung ist in Deutschland
+    erlaubt, soweit sie sachlich über die berufliche Tätigkeit informiert und nicht auf die Erteilung eines Auftrags im
+    Einzelfall gerichtet ist (§ 43b BRAO). Anzeigentexte für Kanzleien formulieren wir deshalb sachlich, ohne
+    Erfolgsversprechen und ohne Superlative. Allgemeine Information, keine Rechtsberatung. Mehr dazu auf unserer Seite
+    <a href={p('industries/law')}>SEO für Anwälte</a>.
   </p>
 
   <h2 id="betreuung">Was passiert, wenn die Kampagne läuft?</h2>
 
   <p>
-    In den ersten 14 Tagen rühren wir Gebote, Anzeigen und Struktur nicht an. Alle ein bis zwei Tage lesen wir den
-    Suchbegriffbericht, ergänzen Ausschlüsse und prüfen, ob das Budget ausgegeben und Conversions erfasst werden.
+    In den ersten 14 Tagen ändern wir Gebote, Anzeigen und Struktur nicht. Alle ein bis zwei Tage lesen wir den
+    Suchbegriffbericht, ergänzen Ausschlüsse und prüfen, ob das Budget ausgegeben wird und Conversions erfasst werden.
   </p>
 
   <ul class="checklist">
     <li>
       <strong>Jede Woche:</strong> Suchbegriffe, Klickpreis, Klickrate, Conversion-Rate und Kosten pro Anfrage je
-      Anzeigengruppe. Ein neuer Suchbegriff, der funktioniert, kommt als genau passendes Keyword hinzu.
+      Anzeigengruppe. Ein neuer Suchbegriff, der Anfragen bringt, kommt als genau passendes Keyword hinzu.
     </li>
     <li>
-      <strong>Alle 30 Tage:</strong> Keywords, die ohne Anfragen Geld kosten, werden pausiert, eine neue Anzeigenvariante wird
-      getestet, Anfragen, aus denen Kunden wurden, werden den Keywords zugeordnet, und das Budget wandert zu diesen Keywords.
+      <strong>Alle 30 Tage:</strong> Keywords, die ohne Anfragen Geld kosten, pausieren wir, testen eine neue
+      Anzeigenvariante, ordnen Anfragen, aus denen Aufträge wurden, den Keywords zu und verschieben das Budget zu diesen
+      Keywords.
     </li>
     <li>
-      <strong>Große Änderungen mit Abstand:</strong> Umbau und Änderung der Gebotsstrategie nie in derselben Woche. Jede
-      Änderung wird über Zeitfenster von 14 und 28 Tagen bewertet.
+      <strong>Große Änderungen mit Abstand:</strong> Umbau und Wechsel der Gebotsstrategie nie in derselben Woche. Jede
+      Änderung bewerten wir über Zeitfenster von 14 und 28 Tagen.
     </li>
   </ul>
 
   <p>
-    Mit dem Wochenbericht kommt auch eine Frage an Sie: Welche Anfragen dieser Woche waren echte Kunden? Ohne diese Antwort
-    sieht die Kampagne nur die Zahl der Formulare, und die Zahl allein beweist nichts.
+    Mit dem wöchentlichen Bericht kommt auch eine Frage an Sie: Welche Anfragen dieser Woche wurden zu echten Aufträgen?
+    Ohne diese Antwort sieht die Kampagne nur die Zahl der Formulare, und die Zahl allein sagt wenig.
   </p>
 
   <h3>Wenn Sie schon ein Konto haben</h3>
 
   <p>
-    Wir fangen nicht bei null an. Zuerst richten wir die Conversion-Aktionen ein und prüfen sie. Dann übernehmen wir die
-    guten Suchbegriffe der letzten 90 Tage aus weitgehend passenden Kampagnen als genau passende Keywords und Wortgruppen
-    und setzen die schlechten auf die Ausschlussliste. Die alte Kampagne pausieren wir, statt sie zu löschen, damit ihr
-    Verlauf in Ihrem Konto bleibt.
+    Dann fangen wir nicht bei null an. Zuerst richten wir die Conversion-Aktionen ein und prüfen sie. Dann übernehmen wir
+    die guten Suchbegriffe der letzten 90 Tage aus weitgehend passenden Kampagnen als genau passende Keywords und
+    Wortgruppen und setzen die schlechten auf die Ausschlussliste. Die alte Kampagne pausieren wir, statt sie zu löschen,
+    damit ihre Daten in Ihrem Konto bleiben.
   </p>
 
   <h2 id="seo">Google Ads oder SEO?</h2>
 
   <p>
-    Beides erfüllt unterschiedliche Aufgaben. Klicks auf Anzeigen beginnen am Tag der Freischaltung und enden an dem Tag, an
-    dem das Budget aufgebraucht ist. <a href={p('services/seo')}>SEO</a> und <a href={p('services/local-seo')}>lokale SEO</a> starten
-    langsamer, aber eine gut platzierte Seite oder ein gut platziertes Profil bringt Monat für Monat weiter Kunden.
+    Beides erfüllt unterschiedliche Aufgaben. Klicks auf Anzeigen kommen ab dem Tag der Freischaltung und enden an dem
+    Tag, an dem das Budget aufgebraucht ist. <a href={p('services/seo')}>SEO</a> und <a href={p('services/local-seo')}>lokale SEO</a> brauchen
+    einen längeren Anlauf, aber eine gut platzierte Seite oder ein gut platziertes Profil wird Monat für Monat weiter
+    gefunden.
   </p>
 
   <div class="table-scroll">
@@ -326,14 +334,14 @@ const faq = [
   </div>
 
   <p>
-    Für die meisten lokalen Unternehmen ist die richtige Antwort beides. Anzeigen bringen Anfragen bei Keywords, für die Sie
-    noch nicht ranken. Der Suchbegriffbericht zeigt, welche Keywords wirklich Kunden bringen, und mit diesen Daten
-    entscheiden wir, welche Seite wir auf der SEO-Seite zuerst schreiben.
+    Für viele lokale Unternehmen ist die Antwort beides. Anzeigen machen Sie bei Keywords sichtbar, für die Sie noch
+    nicht ranken. Der Suchbegriffbericht zeigt, welche Keywords tatsächlich zu Aufträgen führen, und mit diesen Daten
+    entscheiden wir, welche Seite wir für SEO zuerst schreiben.
   </p>
 
   <p>
-    Wir arbeiten pro Stadt und Branche mit nur einem Unternehmen. Die Anzeigen zweier Wettbewerber in derselben Auktion zu
-    betreuen, würde nur den Klickpreis für beide treiben.
+    Wir arbeiten pro Stadt und Branche mit nur einem Unternehmen. Würden wir die Anzeigen zweier Wettbewerber in derselben
+    Auktion betreuen, trieben wir nur den Klickpreis für beide nach oben.
   </p>
 
   <Fragment slot="cta">

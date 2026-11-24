@@ -6,9 +6,9 @@ const locale = 'de' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
-  { label: 'TECHNIK', title: 'Technisches SEO', text: 'Ihre Website muss sich für Google sauber öffnen. Eine Seite, die nicht gecrawlt wird, rankt nicht, egal wie gut der Text ist.' },
-  { label: 'SEITE', title: 'Onpage-SEO', text: 'Eine Seite für eine Suche. Titel, Text und interne Links richten sich nach dieser Suche.' },
-  { label: 'INHALT', title: 'Content-Erstellung', text: 'Fehlende Seiten für Leistungen, Stadtteile und Fragen. Texte, die die Frage der Suchenden im ersten Absatz beantworten.' },
+  { label: 'TECHNIK', title: 'Technisches SEO', text: 'Google muss Ihre Website fehlerfrei crawlen können. Eine Seite, die nicht gecrawlt wird, rankt nicht, egal wie gut der Text ist.' },
+  { label: 'SEITE', title: 'Onpage-SEO', text: 'Eine Seite pro Suchanfrage. Titel, Text und interne Links richten sich nach genau dieser Suche.' },
+  { label: 'INHALT', title: 'Content-Erstellung', text: 'Fehlende Seiten für Leistungen, Stadtteile und häufige Fragen. Texte, die die Frage schon im ersten Absatz beantworten.' },
   { label: 'AUTORITÄT', title: 'Linkaufbau', text: 'Links von themennahen Websites. Google achtet auch darauf, wie sehr andere Websites Ihnen vertrauen.' },
 ];
 
@@ -28,11 +28,11 @@ const faq = [
   },
   {
     q: 'Garantieren Sie Rankings?',
-    a: 'Nein, denn Rankings kann niemand garantieren. Wir legen unsere Arbeit und die Messung offen: Im Bericht sehen Sie, was wir getan haben und wie sich Ihr Platz verändert hat.',
+    a: 'Nein. Rankings kann niemand seriös garantieren, Google entscheidet allein. Wir legen dafür unsere Arbeit und die Messung offen: Im Bericht sehen Sie, was wir getan haben und wie sich Ihre Positionen verändert haben.',
   },
   {
     q: 'Können Sie mit meiner bestehenden Website arbeiten?',
-    a: 'Ja, aber wir müssen die Website komplett betreuen. Bei Aufträgen, in denen wir Aufgaben an andere weitergegeben und auf die Umsetzung gewartet haben, haben wir monatelang dieselben Fehler korrigiert.',
+    a: 'Ja, vorausgesetzt, wir betreuen die Website vollständig. Wenn wir Aufgaben an Dritte weitergeben und auf deren Umsetzung warten mussten, haben wir monatelang dieselben Fehler korrigiert.',
   },
 ];
 ---
@@ -40,12 +40,12 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="services/seo"
-  title="SEO-Leistungen | Wiserrise"
-  description="Wir richten Ihre Website auf die Fragen aus, die Ihre Kunden bei Google suchen: technische Grundlage, Seitenaufbau, Inhalte und Links. Wöchentlicher Bericht."
+  title="SEO-Agentur für Praxen, Kanzleien und Betriebe | Wiserrise"
+  description="SEO in fester Reihenfolge: technische Grundlage, Seitenaufbau, Inhalte und Links. Was wir an Ihrer Website tun, sehen Sie jede Woche im Bericht."
   eyebrow="LEISTUNG · SEO"
   h1="Mit SEO in der Suche nach vorn."
   crumb="SEO"
-  lede="Wenn jemand bei Google „was umfasst ein Kfz-Gutachten“ eingibt, bestimmt SEO die Reihenfolge der Seiten, die er sieht. Wir bereiten Ihre Website an vier Stellen auf diese Suchen vor: Grundlage, Seitenaufbau, Inhalte und Links von anderen Websites. Zuerst crawlen wir Ihre Website, dann schließen wir die Lücken der Reihe nach."
+  lede="Wer bei Google „was kostet ein Unfallgutachten“ eingibt, sieht eine Reihenfolge von Seiten. SEO ist die Arbeit daran, in dieser Reihenfolge mit Ihrer Website vorzukommen. Wir setzen an vier Stellen an: technische Grundlage, Seitenaufbau, Inhalte und Links von anderen Websites. Zuerst crawlen wir Ihre Website, dann schließen wir die Lücken der Reihe nach."
   serviceName="SEO"
   breadcrumb={[
     { label: 'Startseite', href: '/de' },
@@ -55,10 +55,10 @@ const faq = [
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Technisches SEO', href: p('services/technical-seo'), text: 'Wir beheben Crawling- und Indexierungsfehler, damit sich Ihre Website für Google sauber öffnet.' },
-    { label: 'Onpage-SEO', href: p('services/on-page-seo'), text: 'Wir richten jede Seite auf eine einzige Suche aus und korrigieren Titel und interne Links.' },
-    { label: 'Content-Erstellung', href: p('services/content'), text: 'Wir schreiben die Seiten für Leistungen, Stadtteile und Fragen, die Ihrer Website fehlen.' },
-    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Wir bringen Profil und Website gemeinsam in Ordnung, damit Sie auf der Karte vorn stehen.' },
+    { label: 'Technisches SEO', href: p('services/technical-seo'), text: 'Wir beheben Crawling- und Indexierungsfehler, damit Google Ihre Website vollständig erfassen kann.' },
+    { label: 'Onpage-SEO', href: p('services/on-page-seo'), text: 'Wir richten jede Seite auf eine Suchanfrage aus und korrigieren Titel und interne Links.' },
+    { label: 'Content-Erstellung', href: p('services/content'), text: 'Wir schreiben die Seiten für Leistungen, Stadtteile und häufige Fragen, die Ihrer Website fehlen.' },
+    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Wir bringen Unternehmensprofil und Website gemeinsam in Ordnung, damit Sie auf der Karte besser gefunden werden.' },
   ]}
   ctaLabel="Kostenlose Analyse anfordern"
   ctaHref="/de#contact"
@@ -66,14 +66,14 @@ const faq = [
   <h2 id="nedir">Was bringt SEO?</h2>
 
   <p>
-    Es bringt Kunden auf Ihre Website, die Sie noch nicht kennen. Man gibt bei Google ein, was man braucht, und Google
-    sortiert die Seiten, die seiner Meinung nach am besten antworten. Eine Website unterhalb der ersten Seite klickt kaum
-    jemand an.
+    SEO bringt Menschen auf Ihre Website, die Sie noch nicht kennen. Sie geben bei Google ein, was sie brauchen, und
+    Google ordnet die Seiten danach, welche aus seiner Sicht am besten antworten. Ergebnisse jenseits der ersten Seite
+    klickt kaum jemand an.
   </p>
 
   <p>
-    Der Unterschied zu Anzeigen: SEO bleibt. <a href={p('services/google-ads')}>Google-Ads-Anzeigen</a> hören auf, wenn das Budget aufgebraucht ist, eine gut rankende Seite
-    bringt Monat für Monat weiter Besucher. Dafür startet SEO langsamer.
+    Der Unterschied zu Anzeigen: SEO bleibt. <a href={p('services/google-ads')}>Google-Ads-Anzeigen</a> stoppen, wenn das Budget aufgebraucht ist; eine gut rankende Seite
+    wird Monat für Monat weiter gefunden. Dafür braucht SEO einen längeren Anlauf.
   </p>
 
   <h2 id="local">Was ist der Unterschied zu lokaler SEO?</h2>
@@ -84,14 +84,14 @@ const faq = [
   </p>
 
   <p>
-    Kommen Ihre Kunden aus der Umgebung, kommt lokale SEO zuerst. Verkaufen Sie an die ganze Stadt oder das ganze Land,
-    oder lesen Ihre Kunden lange, bevor sie sich entscheiden, wiegt SEO schwerer. Beides speist dieselbe Website, deshalb
-    betreiben wir es gemeinsam.
+    Kommen Ihre Kunden aus der direkten Umgebung, steht lokale SEO an erster Stelle. Arbeiten Sie für die ganze Stadt
+    oder bundesweit, oder informieren sich Ihre Kunden lange, bevor sie sich entscheiden, wiegt SEO schwerer. Beides
+    hängt an derselben Website, deshalb betreuen wir es gemeinsam.
   </p>
 
   <h2 id="parcalar">Aus welchen Bausteinen besteht SEO?</h2>
 
-  <p>Aus vier, und die Reihenfolge zählt. Ist die Grundlage kaputt, rankt selbst der beste Text nicht.</p>
+  <p>Aus vier, und die Reihenfolge zählt. Ist die technische Grundlage fehlerhaft, rankt selbst der beste Text nicht.</p>
 
   <div class="table-scroll">
     <table>
@@ -110,12 +110,12 @@ const faq = [
         </tr>
         <tr>
           <td><strong>Seite</strong></td>
-          <td>Jede Seite beantwortet eine einzige Suche, Überschriften und interne Links</td>
+          <td>Eine Seite pro Suchanfrage, Überschriften und interne Links</td>
           <td><a href={p('services/on-page-seo')} style="white-space: nowrap;">Onpage-SEO</a></td>
         </tr>
         <tr>
           <td><strong>Inhalt</strong></td>
-          <td>Seiten für Leistungen, Stadtteile und Fragen, nach denen gesucht wird, die Ihre Website aber nicht hat</td>
+          <td>Seiten für Leistungen, Stadtteile und Fragen, nach denen gesucht wird, die auf Ihrer Website aber fehlen</td>
           <td><a href={p('services/content')}>Content-Erstellung</a></td>
         </tr>
         <tr>
@@ -128,47 +128,47 @@ const faq = [
   </div>
 
   <p>
-    In dieser Reihenfolge arbeiten wir. Texte für eine Seite zu schreiben, die nicht gecrawlt wird, oder Links auf eine
-    schwache Seite zu setzen, ist verlorenes Geld.
+    In dieser Reihenfolge arbeiten wir. Texte für eine Seite, die Google nicht crawlt, oder Links auf eine schwache Seite
+    sind verlorenes Geld.
   </p>
 
   <h2 id="backlink">Warum braucht man Backlinks?</h2>
 
   <p>
-    Wie sehr Google einer Seite vertraut, entscheidet es auch danach, ob andere Websites auf sie verlinken. Sind die
-    Seiten Ihrer Wettbewerber so gut wie Ihre, machen die Links von außen den Unterschied.
+    Wie sehr Google einer Seite vertraut, hängt auch davon ab, ob andere Websites auf sie verlinken. Sind die Seiten
+    Ihrer Wettbewerber ähnlich gut wie Ihre, können Links von außen den Unterschied machen.
   </p>
 
   <p>
-    Links, die massenhaft von themenfremden Websites kommen, bringen nichts, und Google kann sie als Spam werten. Wir
-    holen Links nur von themennahen Websites mit echtem Traffic.
+    Massenhaft gekaufte Links von themenfremden Websites bringen nichts, und Google kann sie als Spam werten. Wir holen
+    Links nur von themennahen Websites mit echtem Traffic.
   </p>
 
   <h2 id="sira">In welcher Reihenfolge arbeiten wir?</h2>
 
-  <p>Bei jeder Website in derselben. Bevor wir messen, fassen wir nichts an.</p>
+  <p>Bei jeder Website in derselben. Bevor wir gemessen haben, ändern wir nichts.</p>
 
   <ol>
     <li>
-      <strong>Crawling und Messung.</strong> Wir crawlen Ihre gesamte Website. Wir ermitteln, welche Seiten im Index sind,
-      bei welchen Suchen Sie erscheinen und wo Ihre Wettbewerber vorn liegen.
+      <strong>Crawling und Messung.</strong> Wir crawlen Ihre gesamte Website und ermitteln, welche Seiten im Index sind,
+      bei welchen Suchanfragen Sie erscheinen und wo Ihre Wettbewerber vor Ihnen liegen.
     </li>
     <li>
       <strong>Grundlage.</strong> Wir beheben die Fehler, die Crawling und Indexierung verhindern.
     </li>
     <li>
-      <strong>Seitenaufbau.</strong> Wir richten jede Seite auf eine einzige Suche aus und bauen Überschriften und interne
+      <strong>Seitenaufbau.</strong> Wir richten jede Seite auf eine Suchanfrage aus und bauen Überschriften und interne
       Links danach auf.
     </li>
     <li>
-      <strong>Fehlende Seiten und Links.</strong> Wir schreiben die Themen, nach denen gesucht wird, die Ihre Website aber
-      nicht abdeckt, und holen bei Bedarf Links von themennahen Websites.
+      <strong>Fehlende Seiten und Links.</strong> Wir schreiben Seiten zu Themen, nach denen gesucht wird, die Ihre Website
+      aber nicht abdeckt, und holen bei Bedarf Links von themennahen Websites.
     </li>
   </ol>
 
   <p>
     Das haben wir bei einem Kunden auf die harte Tour gelernt. Wir haben die Aufgaben an seinen Entwickler geschickt, die
-    Seiten, die zurückkamen, waren furchtbar, und wir haben monatelang dieselbe Arbeit wiederholt.
+    umgesetzten Seiten waren unbrauchbar, und wir haben monatelang dieselbe Arbeit wiederholt.
   </p>
 
   <p>Seitdem gilt bei uns: Wenn wir die Website nicht komplett betreuen können, nehmen wir den Auftrag nicht an.</p>
@@ -176,14 +176,14 @@ const faq = [
   <h2 id="olcum">Was messen und berichten wir?</h2>
 
   <p>
-    Ein erster Platz, auf den niemand klickt, bringt Ihnen nichts. Deshalb sehen wir uns den Platz immer zusammen mit den
-    Klicks an.
+    Ein erster Platz, auf den niemand klickt, bringt Ihnen nichts. Deshalb betrachten wir die Position immer zusammen mit
+    den Klicks.
   </p>
 
   <p>
-    Aus der Search Console lesen wir, bei welchen Suchen Ihre Website erscheint, wie viele Klicks sie bekommt und welchen
-    durchschnittlichen Platz sie hat. Daneben legen wir das Ergebnis des technischen Crawls. Unsere Arbeit sehen Sie jede
-    Woche im Bericht.
+    Aus der Google Search Console lesen wir ab, bei welchen Suchanfragen Ihre Website erscheint, wie viele Klicks sie
+    bekommt und welche durchschnittliche Position sie hat. Daneben legen wir das Ergebnis des technischen Crawls. Was wir
+    getan haben, sehen Sie jede Woche im Bericht.
   </p>
 
   <Fragment slot="cta">

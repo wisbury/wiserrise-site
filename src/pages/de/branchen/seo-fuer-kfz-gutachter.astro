@@ -6,14 +6,14 @@ const locale = 'de' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
-  { label: 'NÄHE', title: 'Enges Einzugsgebiet', text: 'Für einen Gebrauchtwagen-Check fährt der Kunde nicht weiter als ein paar Kilometer. Wir stecken die Arbeit in das Umfeld, aus dem er wirklich kommen kann.' },
-  { label: 'TELEFON', title: 'Anruf mit einem Tippen', text: 'Die Entscheidung fällt in Minuten. Stimmen Ihre Öffnungszeiten oder Ihre Nummer nicht, hält auch ein guter Platz den Kunden nicht.' },
-  { label: 'BEWERTUNG', title: 'Stetiger Strom an Bewertungen', text: 'Die Angebote ähneln sich, den Unterschied machen die Bewertungen. Der natürlichste Moment für die Bitte ist die Übergabe des Berichts.' },
-  { label: 'FOTO', title: 'Echte Fotos vom Betrieb', text: 'Der Kunde will sehen, wem er sein Auto anvertraut. Schild, Hebebühne, Geräte und Wartebereich gehören ins Profil.' },
+  { label: 'NÄHE', title: 'Einzugsgebiet nach dem Unfall', text: 'Nach einem Unfall sucht der Geschädigte einen Sachverständigen in der Nähe des Fahrzeugs, meist dort, wo es steht. Wir richten die Arbeit auf das Gebiet aus, aus dem Ihre Aufträge wirklich kommen.' },
+  { label: 'TELEFON', title: 'Erreichbar, wenn es passiert ist', text: 'Die Wahl fällt oft am selben Tag. Stimmen Ihre Erreichbarkeit oder Ihre Nummer nicht, hält auch ein guter Platz den Anrufer nicht.' },
+  { label: 'BEWERTUNG', title: 'Stetiger Strom an Bewertungen', text: 'Für Geschädigte sehen viele Gutachterbüros gleich aus, den Unterschied machen die Bewertungen. Ein natürlicher Moment für die Bitte ist die Besichtigung.' },
+  { label: 'FOTO', title: 'Echte Fotos aus dem Büro', text: 'Der Geschädigte will sehen, wer sein Fahrzeug begutachtet. Büro, Team und die Besichtigung vor Ort gehören ins Profil.' },
 ];
 
 const toc = [
-  { id: 'yakinlik', label: 'Wie weit fährt der Kunde?' },
+  { id: 'yakinlik', label: 'Wo sucht der Geschädigte?' },
   { id: 'olcum', label: 'Wie messen wir Ihren Platz?' },
   { id: 'arama', label: 'Was tippt der Kunde?' },
   { id: 'profil', label: 'Was gehört ins Profil?' },
@@ -23,16 +23,16 @@ const toc = [
 
 const faq = [
   {
-    q: 'Ich biete dasselbe wie meine Konkurrenz. Wie hebe ich mich ab?',
-    a: 'Bei der Leistung ist das schwer, beim Vertrauen leicht. Ein Betrieb, der einen Beispielbericht und echte Fotos zeigt, gibt dem Kunden auf den ersten Blick Vertrauen. Die Bewertungen sind der sichtbarste Teil dieses Vertrauens.',
+    q: 'Viele Gutachterbüros bieten dasselbe. Wie hebe ich mich ab?',
+    a: 'Bei der Leistung ist das schwer, beim Vertrauen leichter. Ein Büro, das ein anonymisiertes Beispielgutachten, seine Qualifikationen und echte Fotos zeigt, wirkt auf den ersten Blick greifbar. Die Bewertungen sind der sichtbarste Teil dieses Vertrauens.',
   },
   {
     q: 'Wie viele Bewertungen brauche ich?',
-    a: 'Eine feste Zahl gibt es nicht. Maßstab ist die Zahl der Bewertungen Ihrer Konkurrenten, die auf der Karte unter den ersten drei erscheinen; liegen Sie deutlich darunter, ist die erste Aufgabe, diesen Abstand zu schließen. In der kostenlosen Analyse sagen wir Ihnen, womit Sie zuerst anfangen sollten.',
+    a: 'Eine feste Zahl gibt es nicht. Maßstab ist die Zahl der Bewertungen der Büros, die auf der Karte unter den ersten drei erscheinen; liegen Sie deutlich darunter, ist die erste Aufgabe, diesen Abstand zu schließen. In der kostenlosen Analyse sagen wir Ihnen, womit Sie zuerst anfangen sollten.',
   },
   {
     q: 'Reicht das Profil nicht, brauche ich auch eine Website?',
-    a: 'Der größte Teil der Anfragen kommt über das Profil, Google schaut sich aber auch die verknüpfte Website an. In einem umkämpften Bezirk reicht das Profil allein nicht. Die Website betreuen wir ebenfalls; wenn wir sie nicht komplett verwalten können, fangen wir nicht an.',
+    a: 'Viele Anfragen kommen über das Profil, Google schaut sich aber auch die verknüpfte Website an. Wer nach Ablauf oder Kosten eines Unfallgutachtens sucht, landet ohnehin auf Websites. In einer Stadt mit viel Wettbewerb reicht das Profil allein nicht. Die Website betreuen wir ebenfalls; wenn wir sie nicht komplett verwalten können, fangen wir nicht an.',
   },
   {
     q: 'Wann sehe ich Ergebnisse?',
@@ -44,12 +44,12 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="industries/vehicle-inspection"
-  title="SEO für Kfz-Gutachter und Google Maps | Wiserrise"
-  description="Lokale SEO für Kfz-Gutachter und Gebrauchtwagen-Checks: sichtbar auf der Karte im engen Umkreis, Anrufe, Bewertungen, Fotos vom Betrieb. Wöchentlicher Bericht."
+  title="SEO für Kfz-Gutachter und Sachverständige | Wiserrise"
+  description="Lokale SEO für Kfz-Sachverständige: Unfallgutachten und Wertgutachten sichtbar machen, auf der Karte und mit klaren Seiten. Wöchentlicher Bericht."
   eyebrow="BRANCHE · KFZ-GUTACHTER"
-  h1="SEO für Kfz-Gutachter: Der Wettbewerb spielt sich auf wenigen Kilometern ab."
+  h1="SEO für Kfz-Gutachter: gefunden werden, wenn es gekracht hat."
   crumb="Kfz-Gutachter"
-  lede="SEO für Kfz-Gutachter heißt, auf der Karte unter den ersten Betrieben in der Nähe des Autos oder des Käufers zu erscheinen. Der Kunde fährt nicht ans andere Ende der Stadt und entscheidet in wenigen Minuten. Deshalb liegt das Gewicht der Arbeit auf Ihrem Google-Unternehmensprofil, über das man Sie anruft, und auf Ihren Bewertungen."
+  lede="SEO für Kfz-Gutachter heißt, nach einem Verkehrsunfall unter den ersten Sachverständigen in der Nähe des Fahrzeugs zu erscheinen und für Fragen rund um Unfallgutachten und Wertgutachten eine klare Antwort parat zu haben. Der Geschädigte entscheidet oft am selben Tag. Deshalb liegt das Gewicht der Arbeit auf Ihrem Google-Unternehmensprofil, über das man Sie anruft, auf Ihren Bewertungen und auf wenigen guten Seiten."
   serviceName="SEO für Kfz-Gutachter"
   breadcrumb={[
     { label: 'Startseite', href: '/de' },
@@ -59,51 +59,54 @@ const faq = [
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Betreuung des Google-Unternehmensprofils', href: p('services/gbp'), text: 'Öffnungszeiten, Fotos, Beiträge und Antworten auf Bewertungen betreuen wir zusammen.' },
-    { label: 'Maps-Ranking-Tracking', href: p('services/rank-tracking'), text: 'Wir messen, auf welchem Platz Sie an verschiedenen Punkten rund um Ihren Betrieb stehen.' },
+    { label: 'Betreuung des Google-Unternehmensprofils', href: p('services/gbp'), text: 'Erreichbarkeit, Fotos, Beiträge und Antworten auf Bewertungen betreuen wir zusammen.' },
+    { label: 'Maps-Ranking-Tracking', href: p('services/rank-tracking'), text: 'Wir messen, auf welchem Platz Sie an verschiedenen Punkten in Ihrem Einzugsgebiet stehen.' },
     { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Profil und Website bringen wir gemeinsam für den Wettbewerb auf der Karte in Ordnung.' },
-    { label: 'Content-Erstellung', href: p('services/content'), text: 'Seiten mit Beispielbericht und Ablauf schreiben wir passend zu den Abläufen in Ihrem Betrieb.' },
+    { label: 'Content-Erstellung', href: p('services/content'), text: 'Seiten zu Ablauf, Kosten und Gutachtenarten schreiben wir passend zu den Abläufen in Ihrem Büro.' },
   ]}
   ctaLabel="Kostenlose Analyse anfordern"
   ctaHref="/de#contact"
 >
-  <h2 id="yakinlik">Wie weit fährt ein Kunde für einen Gebrauchtwagen-Check?</h2>
+  <h2 id="yakinlik">Wo sucht ein Geschädigter nach einem Unfall?</h2>
 
   <p>
-    Nicht weit. Wer einen Gebrauchtwagen kaufen will, fährt für die Prüfung nicht ans andere Ende der Stadt; er wählt einen
-    der Betriebe, die dem Standort des Autos oder seinem eigenen am nächsten liegen.
+    In der Nähe seines Fahrzeugs. Nach einem Verkehrsunfall steht das Auto in der Werkstatt, auf dem Hof eines
+    Abschleppdienstes oder vor der Haustür, und der Geschädigte sucht einen Sachverständigen, der es dort begutachten kann.
+    Er tippt „Kfz-Gutachter in der Nähe“ oder „Unfallgutachter“ mit seinem Stadtteil.
   </p>
 
   <p>
-    Das heißt, Ihr Platz ändert sich innerhalb weniger Kilometer komplett. Nehmen wir an, vor Ihrem Betrieb erscheinen Sie
-    auf Platz 1; auf dem Handy eines Käufers 4 km weiter sind Sie womöglich nicht einmal unter den ersten zwanzig.
+    Das heißt, Ihr Platz auf der Karte ändert sich innerhalb weniger Kilometer komplett. Nehmen wir an, vor Ihrem Büro
+    erscheinen Sie auf Platz 1; auf dem Handy eines Geschädigten ein paar Kilometer weiter sind Sie womöglich nicht einmal
+    unter den ersten zwanzig.
   </p>
 
   <p>
-    Unter den <a href={p('industries')}>Branchen, mit denen wir arbeiten</a>, gehören Kfz-Gutachter zu denen, in denen die
-    Nähe am stärksten zählt. Deshalb stecken wir die Arbeit in die paar Kilometer, aus denen Kunden tatsächlich kommen
-    können. Am anderen Ende der Stadt auf Platz 1 zu stehen, bringt Ihnen nichts.
+    Unter den <a href={p('industries')}>Branchen, zu denen wir eigene Seiten haben</a>, gehören Kfz-Gutachter zu denen, in
+    denen die Nähe am stärksten zählt. Deshalb stecken wir die Arbeit in das Gebiet, in dem Sie tatsächlich besichtigen. Am
+    anderen Ende der Stadt auf Platz 1 zu stehen, bringt Ihnen wenig, wenn Sie dort nicht hinfahren.
   </p>
 
   <h2 id="olcum">Wie messen wir Ihren Platz?</h2>
 
   <p>
-    Von verschiedenen Punkten rund um Ihren Betrieb aus: Wir schauen, auf welchem Platz Sie auf dem Handy einer Person
+    Von verschiedenen Punkten in Ihrem Einzugsgebiet aus: Wir schauen, auf welchem Platz Sie auf dem Handy einer Person
     erscheinen, die an diesem Punkt sucht. Ein Platz, der an einem einzigen Punkt gemessen wird, zeigt Ihnen nicht die
     Wirklichkeit, denn zwei Straßen weiter ändert sich die Reihenfolge.
   </p>
 
   <p>
-    Bei Kfz-Gutachtern halten wir diese Punkte nahe an Ihrem Betrieb. Eine Messung, die sich über die ganze Stadt verteilt,
-    sammelt Daten von Orten, aus denen nie ein Kunde kommt, und verwischt das Bild. Wie die Messung funktioniert,
-    beschreiben wir auf der Seite zum <a href={p('services/rank-tracking')}>Maps-Ranking-Tracking</a>.
+    Bei Kfz-Gutachtern legen wir diese Punkte in das Gebiet, das Sie für Besichtigungen abdecken. Eine Messung, die sich
+    über Orte verteilt, an denen Sie nie arbeiten, verwischt das Bild. Wie die Messung funktioniert, beschreiben wir auf
+    der Seite zum <a href={p('services/rank-tracking')}>Maps-Ranking-Tracking</a>.
   </p>
 
   <h2 id="arama">Was tippt der Kunde bei Google ein?</h2>
 
   <p>
-    Eine Recherchephase gibt es praktisch nicht. Der Kunde nimmt sein Handy auf dem Weg zur Besichtigung oder während der
-    Preisverhandlung in die Hand und entscheidet in wenigen Minuten. Seine Suchen fallen in vier Gruppen:
+    Nach einem Unfall gibt es kaum eine Recherchephase. Der Geschädigte nimmt sein Handy oft noch am Unfalltag in die Hand,
+    manchmal auf Empfehlung der Werkstatt, und entscheidet schnell. Bei Wertgutachten, etwa für einen Oldtimer oder vor
+    einem Verkauf, ist mehr Zeit. Die Suchen fallen in vier Gruppen:
   </p>
 
   <div class="table-scroll">
@@ -118,79 +121,90 @@ const faq = [
       <tbody>
         <tr>
           <td><strong>Nähe</strong></td>
-          <td>„Gebrauchtwagen-Check in der Nähe“</td>
+          <td>„Kfz-Gutachter in der Nähe“</td>
           <td>Ihr Standort und Ihr Profil</td>
         </tr>
         <tr>
-          <td><strong>Bezirk</strong></td>
-          <td>„Kfz-Gutachter Nilüfer“</td>
-          <td>Ihr Profil und die Bezirksseite auf der Website</td>
+          <td><strong>Stadtteil</strong></td>
+          <td>„Unfallgutachter Köln-Ehrenfeld“</td>
+          <td>Ihr Profil und eine echte Stadtteilseite auf der Website</td>
         </tr>
         <tr>
-          <td><strong>Preis</strong></td>
-          <td>„Gebrauchtwagen-Check Kosten“</td>
-          <td>Preisangaben auf der Website</td>
+          <td><strong>Kosten</strong></td>
+          <td>„Kfz-Gutachten Kosten“, „Gutachter nach Unfall wer zahlt“</td>
+          <td>Eine sachliche Seite zu Kosten und Ablauf</td>
         </tr>
         <tr>
-          <td><strong>Ablauf</strong></td>
-          <td>„Wie lange dauert ein Gebrauchtwagen-Check“</td>
-          <td>Informative Seite auf der Website</td>
+          <td><strong>Gutachtenart</strong></td>
+          <td>„Wertgutachten Oldtimer“, „Schadensgutachten oder Kostenvoranschlag“</td>
+          <td>Informative Seite pro Gutachtenart</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <p>
-    Die ersten beiden gewinnen Sie auf der Karte, die letzten beiden auf der Website. Suchen zum Ablauf ranken unabhängig
-    von der Stadt, in dieser Branche bringt Ihnen aber die Karte die Kunden vor die Tür.
+    Die ersten beiden gewinnen Sie auf der Karte, die letzten beiden auf der Website. Fragen zu Kosten und Gutachtenarten
+    ranken eher unabhängig vom Ort, die Aufträge nach einem Unfall bringt Ihnen in dieser Branche aber vor allem die Karte.
   </p>
 
-  <h2 id="profil">Was muss ins Profil, wenn die Entscheidung in Minuten fällt?</h2>
+  <div class="callout">
+    <p>
+      <strong>Informieren, nicht rechtlich beraten.</strong> Fragen wie „Wer zahlt den Gutachter?“ beantworten wir
+      allgemein und sachlich. Wo für Sachverständige die Grenze zur Rechtsberatung liegt, klären Sie im Zweifel mit Ihrem
+      Verband oder Ihrer Rechtsberatung; jeden Text legen wir Ihnen vor der Veröffentlichung zur Freigabe vor. Allgemeine
+      Information, keine Rechtsberatung.
+    </p>
+  </div>
+
+  <h2 id="profil">Was muss ins Profil, wenn die Entscheidung schnell fällt?</h2>
 
   <p>
-    Vor allem muss man Sie mit einem Tippen anrufen können. In dieser Branche besucht der Kunde die Website nicht, er ruft
-    über das Profil an oder lässt sich die Route anzeigen.
+    Vor allem muss man Sie mit einem Tippen anrufen können. Viele Geschädigte öffnen die Website gar nicht erst, sie rufen
+    über das Profil an oder schreiben eine Nachricht.
   </p>
 
   <ul class="checklist">
-    <li>Korrekte Öffnungszeiten, auch an Sondertagen</li>
+    <li>Korrekte Öffnungs- und Erreichbarkeitszeiten, auch an Feiertagen</li>
     <li>Eine korrekt eingetragene Telefonnummer, die sich mit einem Tippen anrufen lässt</li>
-    <li>Ein korrekter Standort und eine Route, die den Kunden direkt vor Ihr Schild führt</li>
-    <li>Im Bereich Leistungen Ihre Pakete und die geprüften Punkte</li>
-    <li>Echte Fotos vom Betrieb: Fassade und Schild, Hebebühne, Geräte, Wartebereich</li>
+    <li>Ein korrekter Standort und, wenn Sie vor Ort besichtigen, das Gebiet, das Sie abdecken</li>
+    <li>Im Bereich Leistungen Ihre Gutachtenarten: Unfallgutachten, Wertgutachten, Kurzgutachten, je nach Angebot</li>
+    <li>Echte Fotos: Büro und Schild, Team, Besichtigung am Fahrzeug</li>
   </ul>
 
   <p>
-    Ein Profil, das geschlossen wirkt oder eine falsche Nummer zeigt, verliert diesen Kunden, auch wenn der Platz gut ist.
-    Wenn Sie die Lücken in Ihrem eigenen Profil sehen möchten, erstellt Ihnen unsere
+    Bezeichnungen wie „öffentlich bestellt und vereidigt“ oder „zertifiziert“ schreiben wir nur, wenn sie auf Sie
+    zutreffen. Ein Profil, das geschlossen wirkt oder eine falsche Nummer zeigt, verliert den Anrufer, auch wenn der Platz
+    gut ist. Wenn Sie die Lücken in Ihrem eigenen Profil sehen möchten, erstellt Ihnen unsere
     <a href={p('tools/gbp-audit')}>kostenlose Profilprüfung</a> die Liste.
   </p>
 
   <p>
-    Fotos leisten in dieser Branche mehr als anderswo. Der Kunde will sehen, wem er sein Auto anvertraut, und erkennt den
-    Unterschied zwischen Stockfotos und einem echten Betrieb sofort. Laden Sie nicht dreißig Fotos auf einmal hoch, um es
-    dann dabei zu belassen, fügen Sie regelmäßig neue hinzu.
+    Fotos leisten in dieser Branche mehr, als man denkt. Der Geschädigte will sehen, wer sein Fahrzeug begutachtet, und
+    erkennt den Unterschied zwischen Stockfotos und einem echten Büro sofort. Laden Sie nicht dreißig Fotos auf einmal
+    hoch, um es dann dabei zu belassen, fügen Sie regelmäßig neue hinzu.
   </p>
 
   <h2 id="yorum">Wann und wie sollten Sie Bewertungen sammeln?</h2>
 
   <p>
-    Bei der Übergabe des Berichts, solange der Kunde noch im Betrieb ist. Die Angebote ähneln sich stark: dieselben
-    Prüfpunkte, ähnliche Preise. Dem Kunden fehlt das technische Wissen zur Unterscheidung, es bleibt nur, wie viele
-    Leute dort waren und was sie sagen.
+    Bei der Besichtigung oder bei der Übergabe des Gutachtens. Für Geschädigte sehen viele Büros gleich aus: ähnliche
+    Leistungen, ähnliche Abläufe. Ihnen fehlt das Fachwissen zur Unterscheidung, es bleibt, wie viele Leute dort waren und
+    was sie sagen.
   </p>
 
   <p>
-    Das Gute: In dieser Branche ist es leicht, Bewertungen zu sammeln. Die Leistung dauert nicht lange, und wenn sie
-    erledigt ist, steht der Kunde vor Ihnen. Diesen Ablauf richten wir ein:
+    Wir richten eine Routine für Bewertungsanfragen ein: regelmäßig, einzeln statt per Massenversand, ohne Gutschein oder
+    Rabatt und ohne nur zufriedene Kunden auszuwählen. Am einfachsten fragen Sie persönlich am Ende des Termins oder mit
+    einer Karte bzw. einem QR-Code. Eine Bewertungsanfrage per E-Mail, SMS oder WhatsApp gilt in Deutschland als Werbung
+    und braucht in der Regel die vorherige Einwilligung des Kunden (§ 7 UWG). Dazu gehört:
   </p>
 
   <ul class="checklist">
-    <li>Bei der Übergabe des Berichts ein QR-Code am Tresen, der zum Bewertungslink führt</li>
-    <li>Jeden Kunden einzeln bitten (kein Massenversand), ohne Anreiz und ohne Auswahl: Nur Kunden zu fragen, von denen Sie annehmen, dass sie zufrieden sind, verstößt gegen Googles Richtlinien</li>
+    <li>Bei der Besichtigung eine Karte mit QR-Code, der zum Bewertungslink führt</li>
     <li>Den Kunden bitten, in eigenen Worten zu schreiben, ohne ihm einen Text vorzugeben</li>
-    <li>Auf jede Bewertung eine kurze, persönliche Antwort, die keine Vorlage ist</li>
-    <li>Bei einer negativen Bewertung zuerst den Kunden anrufen und das Problem lösen, danach eine ruhige öffentliche Antwort schreiben</li>
+    <li>Auf jede Bewertung eine kurze, persönliche Antwort, die keine Vorlage ist und keine Details zum Schaden nennt</li>
+    <li>Bei einer negativen Bewertung zuerst den Kunden anrufen und das Problem klären, danach eine ruhige öffentliche Antwort schreiben</li>
   </ul>
 
   <div class="callout">
@@ -204,36 +218,37 @@ const faq = [
   <h2 id="site">Welche Seiten bringen auf der Website etwas?</h2>
 
   <p>
-    Ein paar Seiten genügen. Der größte Teil der Anfragen kommt über das Profil, Google schaut sich aber auch die
-    verknüpfte Website an. Kunden, die nach Preis oder Ablauf suchen, landen ebenfalls auf der Website.
+    Ein paar Seiten genügen. Viele Anfragen kommen über das Profil, Google schaut sich aber auch die verknüpfte Website
+    an. Wer nach Kosten, Ablauf oder einer bestimmten Gutachtenart sucht, landet ebenfalls auf der Website.
   </p>
 
   <ul class="checklist">
     <li>
-      <strong>Seite mit Beispielbericht.</strong> Die Liste der Prüfpunkte und ein Beispielbericht, aus dem persönliche
-      Daten entfernt sind. Diese Seite schafft am meisten Vertrauen.
+      <strong>Seite pro Gutachtenart.</strong> Unfallgutachten, Wertgutachten und was Sie sonst anbieten, jeweils mit
+      Anlass, Inhalt und einem anonymisierten Beispielgutachten ohne persönliche Daten und Kennzeichen.
     </li>
     <li>
-      <strong>Ablaufseite.</strong> Termin, Dauer der Prüfung und Übergabe des Berichts. Hier steht die Antwort auf die
-      Suche „Wie lange dauert das“.
+      <strong>Ablaufseite.</strong> Von der ersten Kontaktaufnahme über die Besichtigung bis zur Übergabe des Gutachtens.
+      Hier steht die Antwort auf die Frage „Wie läuft das ab?“.
     </li>
     <li>
-      <strong>Preisseite.</strong> Auch wenn Sie keinen festen Betrag nennen, erklären Sie, wovon der Preis abhängt.
+      <strong>Kostenseite.</strong> Auch wenn Sie keinen festen Betrag nennen, erklären Sie sachlich, wovon die Kosten
+      abhängen und welche Fragen der Geschädigte klären sollte.
     </li>
     <li>
-      <strong>Bezirksseite.</strong> Nur für Bezirke, in denen Sie wirklich tätig sind und etwas zu sagen haben.
+      <strong>Stadtteilseite.</strong> Nur für Gebiete, in denen Sie wirklich besichtigen und etwas zu sagen haben.
     </li>
   </ul>
 
   <p>
-    Bei Bezirksseiten ist unsere Grenze klar: Wir legen keine Vorlagenseite für jeden Bezirk der Stadt an. Kopierte Seiten,
-    bei denen nur der Bezirksname getauscht ist, wertet Google als „Doorway“-Seiten, und sie schaden der Website. Echte
-    Bezirksseiten schreiben wir im Rahmen der <a href={p('services/content')}>Content-Erstellung</a> passend zu Ihrem
-    Betrieb.
+    Bei Stadtteilseiten ist unsere Grenze klar: Wir legen keine Vorlagenseite für jeden Ort im Umkreis an. Kopierte
+    Seiten, bei denen nur der Ortsname getauscht ist, wertet Google als „Doorway“-Seiten, und sie schaden der Website.
+    Echte Stadtteilseiten schreiben wir im Rahmen der <a href={p('services/content')}>Content-Erstellung</a> passend zu
+    Ihrem Büro.
   </p>
 
   <Fragment slot="cta">
-    <h2>Sucht der Kunde Sie oder den Betrieb <span class="highlight">nebenan</span>?</h2>
+    <h2>Findet der Geschädigte Sie oder das Büro <span class="highlight">nebenan</span>?</h2>
     <p>
       Die kostenlose Analyse ist ein Video, das wir für Ihr Unternehmen aufnehmen: wo Sie heute stehen und womit Sie
       zuerst anfangen sollten. Das Ergebnis liegt innerhalb von 24 Stunden in

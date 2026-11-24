@@ -6,17 +6,17 @@ const locale = 'de' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
-  { label: 'KATEGORIE', title: 'Die richtige Hauptkategorie', text: 'Das erste Feld, das Google sagt, was Sie tun. Wir sehen uns die Kategorien der Wettbewerber an und richten Ihre danach aus.' },
-  { label: 'LEISTUNGEN', title: 'Leistungsliste', text: 'Jede Leistung tragen wir unter dem Namen ein, nach dem Kunden suchen. Wir verwenden dieselben Namen wie auf den Leistungsseiten Ihrer Website.' },
-  { label: 'BEWERTUNGEN', title: 'Laufende Bewertungen', text: 'Ein fester Ablauf für Bewertungsanfragen: regelmäßig, einzeln, ohne Anreiz und ohne Auswahl. Jede Bewertung, die eingeht, beantworten wir. Gekaufte Bewertungen rühren wir nicht an.' },
-  { label: 'BEITRÄGE', title: 'Beiträge und Fotos', text: 'Neue Leistungen, Aktionen, Team und Räume. Mit aktuellen Beiträgen und echten Fotos halten wir das Profil lebendig.' },
+  { label: 'KATEGORIE', title: 'Die richtige Hauptkategorie', text: 'Das wichtigste Feld, an dem Google erkennt, was Sie tun. Wir sehen uns die Kategorien der Wettbewerber an und richten Ihre danach aus.' },
+  { label: 'LEISTUNGEN', title: 'Leistungsliste', text: 'Jede Leistung tragen wir unter dem Begriff ein, nach dem Kunden suchen, und zwar mit denselben Namen wie auf den Leistungsseiten Ihrer Website.' },
+  { label: 'REZENSIONEN', title: 'Regelmäßige Rezensionen', text: 'Eine feste Routine für Bewertungsanfragen: regelmäßig, einzeln, ohne Anreiz und ohne Auswahl. Jede Rezension, die eingeht, beantworten wir. Gekaufte Bewertungen rühren wir nicht an.' },
+  { label: 'BEITRÄGE', title: 'Beiträge und Fotos', text: 'Neue Leistungen, Neuigkeiten, Team und Räume. Mit aktuellen Beiträgen und echten Fotos halten wir das Profil lebendig.' },
 ];
 
 const toc = [
   { id: 'nedir', label: 'Was heißt Profilbetreuung?' },
   { id: 'kategori', label: 'Welche Kategorie?' },
   { id: 'hizmetler', label: 'Leistungen und Beschreibung' },
-  { id: 'yorumlar', label: 'Bewertungen' },
+  { id: 'yorumlar', label: 'Rezensionen' },
   { id: 'gonderi', label: 'Beiträge und Fotos' },
   { id: 'kurallar', label: 'Abkürzungen, die wir meiden' },
   { id: 'surec', label: 'Wie wir arbeiten' },
@@ -25,19 +25,19 @@ const toc = [
 const faq = [
   {
     q: 'Ist die Profilbetreuung eine einmalige Sache?',
-    a: 'Nein. Die Kategorie- und Leistungsstruktur wird einmal richtig aufgesetzt. Wenn keine neuen Bewertungen, Beiträge und Fotos mehr kommen, fällt das Profil hinter die Wettbewerber zurück, deshalb läuft die Arbeit weiter.',
+    a: 'Nein. Kategorien und Leistungen werden einmal sauber aufgesetzt. Kommen danach keine neuen Rezensionen, Beiträge und Fotos mehr dazu, fällt das Profil hinter die Wettbewerber zurück; deshalb läuft die Arbeit weiter.',
   },
   {
     q: 'Wie häufig sollte ich die Kategorie ändern?',
-    a: 'Wenn Sie die richtige Kategorie gefunden haben, ändern Sie sie nur, wenn es nötig ist. Nach jeder Änderung braucht das Ranking Zeit, um sich einzupendeln, und Änderungen zum Ausprobieren machen es schwer zu erkennen, was gewirkt hat.',
+    a: 'Haben Sie die richtige Kategorie gefunden, ändern Sie sie nur, wenn es wirklich nötig ist. Nach jeder Änderung braucht das Ranking Zeit, um sich einzupendeln, und wer zum Ausprobieren ständig wechselt, erkennt später nicht mehr, was gewirkt hat.',
   },
   {
     q: 'Können Sie gefälschte negative Bewertungen löschen lassen?',
-    a: 'Wenn eine Bewertung gegen die Richtlinien verstößt, melden wir sie an Google, aber ob sie gelöscht wird, entscheidet Google, und das kann Wochen dauern. Die dauerhafte Lösung: mehr echte Bewertungen, damit eine einzelne weniger Gewicht hat.',
+    a: 'Verstößt eine Bewertung gegen die Richtlinien, melden wir sie an Google. Ob sie gelöscht wird, entscheidet aber Google, und das kann dauern. Auf Dauer hilft vor allem eines: mehr echte Rezensionen, damit eine einzelne weniger Gewicht hat.',
   },
   {
     q: 'Muss ich Ihnen Zugriff auf mein Profil geben?',
-    a: 'Ja, Sie fügen uns als Administrator hinzu. Inhaber des Profils bleiben Sie, wir bitten Sie nicht, die Inhaberschaft zu übertragen. Wenn Sie die Zusammenarbeit beenden, entfernen Sie unseren Zugriff.',
+    a: 'Ja, Sie fügen uns als Verwalter hinzu. Inhaber des Profils bleiben Sie; die Inhaberschaft müssen Sie nicht übertragen. Endet die Zusammenarbeit, entfernen Sie unseren Zugriff.',
   },
 ];
 ---
@@ -45,13 +45,13 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="services/gbp"
-  title="Google-Unternehmensprofil betreuen lassen | Wiserrise"
-  description="Kategorie, Leistungen, Bewertungen, Beiträge und Fotos. Wir betreuen Ihr Google-Unternehmensprofil regelkonform und berichten jede Woche über unsere Arbeit."
+  title="Google Unternehmensprofil betreuen lassen | Wiserrise"
+  description="Kategorie, Leistungen, Rezensionen, Beiträge und Fotos: Wir betreuen Ihr Google Unternehmensprofil nach Googles Richtlinien. Wöchentlicher Bericht."
   eyebrow="LEISTUNG · UNTERNEHMENSPROFIL"
-  h1="Wir betreuen Ihr Google-Unternehmensprofil regelkonform."
-  crumb="Google-Unternehmensprofil"
-  lede="Betreuung des Google-Unternehmensprofils heißt, das Profil, das Sie auf der Karte vertritt, richtig aufzusetzen und lebendig zu halten: Kategorie, Leistungen, Bewertungen, Beiträge und Fotos. Dieses Profil bestimmt Ihren Platz auf der Karte am stärksten. Wir arbeiten dabei nach Googles Richtlinien und nehmen keine Abkürzungen, die die Regeln dehnen."
-  serviceName="Betreuung des Google-Unternehmensprofils"
+  h1="Wir betreuen Ihr Google Unternehmensprofil nach den Regeln."
+  crumb="Google Unternehmensprofil"
+  lede="Profilbetreuung heißt, das Profil, mit dem Sie auf Google Maps erscheinen, richtig aufzusetzen und aktuell zu halten: Kategorie, Leistungen, Rezensionen, Beiträge und Fotos. Kein anderes Element beeinflusst Ihren Platz auf der Karte so stark. Wir arbeiten dabei nach Googles Richtlinien und nehmen keine Abkürzungen, die die Regeln dehnen."
+  serviceName="Betreuung des Google Unternehmensprofils"
   breadcrumb={[
     { label: 'Startseite', href: '/de' },
     { label: 'Leistungen', href: p('services') },
@@ -61,66 +61,67 @@ const faq = [
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Wir bringen Profil und Website zusammen in Ordnung, damit Kunden in Ihrer Nähe Sie sehen.' },
+    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Wir bringen Unternehmensprofil und Website gemeinsam in Ordnung, damit Kunden in Ihrer Nähe Sie finden.' },
     { label: 'Maps-Ranking-Tracking', href: p('services/rank-tracking'), text: 'Wir messen, auf welchem Platz Sie an verschiedenen Punkten in Ihrem Umkreis stehen.' },
     { label: 'Content-Erstellung', href: p('services/content'), text: 'Für jede Leistung im Profil schreiben wir die passende Seite auf Ihrer Website.' },
-    { label: 'GEO', href: p('services/geo'), text: 'Wir arbeiten daran, dass ChatGPT, Gemini und Googles KI-Antworten Sie nennen.' },
+    { label: 'GEO', href: p('services/geo'), text: 'Wir arbeiten daran, dass ChatGPT, Gemini und die KI-Übersichten von Google Sie nennen.' },
   ]}
   ctaLabel="Kostenlose Analyse anfordern"
   ctaHref="/de#contact"
 >
-  <h2 id="nedir">Was heißt Betreuung des Google-Unternehmensprofils?</h2>
+  <h2 id="nedir">Was heißt Betreuung des Google Unternehmensprofils?</h2>
 
   <p>
-    Das Profil, das Sie auf der Karte vertritt, richtig aufzusetzen und lebendig zu halten. Wenn jemand in Kadıköy nach
-    „Zahnarzt“ sucht, zeigt Google auf der Karte drei Unternehmen; jeder dieser drei Einträge ist ein Unternehmensprofil.
+    Das Profil, mit dem Sie auf der Karte erscheinen, richtig aufzusetzen und aktuell zu halten. Wer in
+    Hamburg-Eimsbüttel nach „Zahnarzt“ sucht, sieht auf der Karte drei Praxen; jeder dieser drei Einträge ist ein
+    Unternehmensprofil.
   </p>
 
   <p>
-    Google legt die Reihenfolge auf der Karte nach drei Dingen fest: ob Sie die gesuchte Leistung anbieten, wie nah Sie
-    der suchenden Person sind und wie bekannt Sie sind. Die Nähe können Sie nicht ändern. Den Großteil der anderen beiden
-    liest Google aus Ihrem Profil.
+    Google legt die Reihenfolge auf der Karte nach drei Faktoren fest: ob Sie die gesuchte Leistung anbieten
+    (Relevanz), wie nah Sie der suchenden Person sind (Entfernung) und wie bekannt Sie sind (Bekanntheit). Die
+    Entfernung können Sie nicht ändern. Einen großen Teil der beiden anderen liest Google aus Ihrem Profil.
   </p>
 
   <p>
-    Wir sehen viele Unternehmen, die das Profil einmal anlegen und dann liegen lassen. Die Einrichtung passiert einmal,
-    aber wenn keine Bewertungen, Beiträge und Fotos nachkommen, tritt das Profil auf der Stelle und die Wettbewerber
+    Viele Unternehmen legen das Profil einmal an und kümmern sich dann nicht mehr darum. Die Einrichtung ist einmalig,
+    aber wenn keine Rezensionen, Beiträge und Fotos nachkommen, tritt das Profil auf der Stelle, und die Wettbewerber
     ziehen vorbei.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Wenn Sie zuerst selbst nachsehen möchten:</strong> Unser <a href={p('tools/gbp-audit')}>kostenloses Tool
-      zur Profilprüfung</a> zeigt Ihnen in 10 Fragen die Schwachstellen Ihres Profils. Es verlangt keine Registrierung
-      und keine E-Mail-Adresse, die Auswertung läuft in Ihrem Browser.
+      <strong>Wenn Sie zuerst selbst nachsehen möchten:</strong> Unsere <a href={p('tools/gbp-audit')}>kostenlose
+      Profilprüfung</a> zeigt Ihnen mit 10 Fragen die Schwachstellen Ihres Profils. Sie brauchen weder eine
+      Registrierung noch eine E-Mail-Adresse; die Auswertung läuft in Ihrem Browser.
     </p>
   </div>
 
   <h2 id="kategori">Welche Kategorie sollten Sie wählen?</h2>
 
   <p>
-    Die Kategorie, die Ihre Arbeit am engsten und genauesten beschreibt. Die Hauptkategorie ist das stärkste Feld, das
-    Google sagt, was Sie tun. Von allen Feldern, die Sie im Profil ändern können, wirkt sie am stärksten auf das Ranking.
+    Die Kategorie, die Ihre Arbeit am genauesten beschreibt. An der Hauptkategorie erkennt Google vor allem, was Sie
+    tun. Von allen Feldern, die Sie im Profil selbst ändern können, wirkt sie am stärksten auf das Ranking.
   </p>
 
   <p>
-    In der türkischen Kategorienliste liegen viele Namen sehr nah beieinander, und Unternehmen greifen immer wieder zur
-    benachbarten, aber falschen Kategorie. Angenommen, Sie sind Anwalt und arbeiten auch als Mediator. Wählen Sie
-    „Mediator“ als Hauptkategorie, fallen Sie bei Suchen nach „Anwalt“ zurück; richtig ist „Rechtsanwalt“ als
-    Hauptkategorie und Mediation als zusätzliche Kategorie.
+    In der Kategorienliste von Google liegen viele Namen sehr nah beieinander, und Unternehmen greifen immer wieder zur
+    benachbarten, aber falschen Kategorie. Angenommen, Sie sind Rechtsanwältin und arbeiten auch als Mediatorin. Wählen
+    Sie „Mediator“ als Hauptkategorie, fallen Sie bei Suchen nach „Anwalt“ zurück; richtig ist „Rechtsanwalt“ als
+    Hauptkategorie und „Mediator“ als zusätzliche Kategorie.
   </p>
 
   <p>
-    Bei zusätzlichen Kategorien funktioniert „je mehr, desto besser“ nicht. Auch Google bittet darum, so wenige
-    Kategorien zu wählen, wie zur Beschreibung Ihrer Arbeit nötig sind. Jede unpassende Zusatzkategorie macht für Google
-    unschärfer, bei welchen Suchen es Sie zeigen soll.
+    Bei zusätzlichen Kategorien gilt nicht „je mehr, desto besser“. Auch Google empfiehlt, nur so viele Kategorien zu
+    wählen, wie zur Beschreibung Ihrer Arbeit nötig sind. Jede unpassende Zusatzkategorie macht für Google unschärfer,
+    bei welchen Suchen es Sie zeigen soll.
   </p>
 
   <p>Was wir bei der Arbeit an den Kategorien tun:</p>
 
   <ul class="checklist">
-    <li>Wir erfassen die Haupt- und Zusatzkategorien der Wettbewerber unter den ersten drei</li>
-    <li>Wir gleichen die Kategorien mit den Zielsuchen ab</li>
+    <li>Wir erfassen die Haupt- und Zusatzkategorien der drei Wettbewerber, die auf der Karte vorn stehen</li>
+    <li>Wir gleichen die Kategorien mit den Suchanfragen ab, bei denen Sie gefunden werden wollen</li>
     <li>Wir legen die Hauptkategorie auf die Leistung fest, die die meisten Aufträge bringt</li>
     <li>Wir beschränken die Zusatzkategorien auf Leistungen, die Sie tatsächlich anbieten</li>
   </ul>
@@ -128,124 +129,124 @@ const faq = [
   <h2 id="hizmetler">Was schreiben wir in die Leistungsliste und die Beschreibung?</h2>
 
   <p>
-    Jede Leistung, die Sie anbieten, unter dem Namen, nach dem Kunden suchen, und mit einer kurzen Beschreibung. In den
-    meisten Profilen ist dieses Feld leer oder voller allgemeiner Namen, die Google vorschlägt, also exakt dieselben wie
-    bei Ihren Wettbewerbern.
+    Jede Leistung, die Sie anbieten, unter dem Begriff, nach dem Kunden suchen, und mit einer kurzen Beschreibung. In
+    vielen Profilen ist dieses Feld leer oder voller allgemeiner Vorschläge von Google, also genau derselben wie bei
+    Ihren Wettbewerbern.
   </p>
 
   <p>
-    Die Namen der Leistungen halten wir gleich mit den Seiten auf Ihrer Website. Steht im Profil „Physiotherapie bei
-    Knieschmerzen“, gibt es auf der Website eine Seite mit diesem Namen, und Google sieht an zwei Stellen dasselbe
+    Die Namen der Leistungen stimmen wir mit den Seiten auf Ihrer Website ab. Steht im Profil „Physiotherapie bei
+    Knieschmerzen“, gibt es auf der Website eine Seite mit diesem Titel, und Google sieht an zwei Stellen dasselbe
     Unternehmen mit derselben Leistung. Fehlt die Seite, schreiben wir sie im Rahmen der
     <a href={p('services/content')}>Content-Erstellung</a>.
   </p>
 
   <p>
-    In der Unternehmensbeschreibung erklären wir in klaren Worten, was Sie tun und wo Sie sind. Links und Rabattaktionen
-    will Google in diesem Feld nicht sehen, und wir stopfen auch keine Keywords hinein.
+    In der Unternehmensbeschreibung erklären wir in klaren Worten, was Sie tun und wo Sie zu finden sind. Links und
+    Rabattaktionen will Google in diesem Feld nicht sehen, und wir stopfen auch keine Keywords hinein.
   </p>
 
   <p>
-    Öffnungszeiten und Merkmale gehören ebenfalls dazu. Wer an einem Feiertag geschlossen hat, im Profil aber als
+    Öffnungszeiten und Merkmale gehören ebenfalls dazu. Wer an Pfingstmontag geschlossen hat, im Profil aber als
     geöffnet erscheint, lässt Kunden vor verschlossener Tür stehen und bekommt die schlechte Bewertung gleich dazu.
   </p>
 
-  <h2 id="yorumlar">Wie sammeln und beantworten wir Bewertungen?</h2>
+  <h2 id="yorumlar">Wie kommen Sie zu Rezensionen, und wie beantworten wir sie?</h2>
 
   <p>
-    Wir richten einen festen Ablauf zum Einholen von Bewertungen ein: regelmäßig, jeden Kunden einzeln (kein
-    Massenversand) und ohne Anreize wie Geschenke oder Rabatte. Nur Kunden zu fragen, von denen Sie annehmen, dass sie
-    zufrieden sind, verstößt gegen Googles Richtlinien; wir wählen nicht aus. Jede Bewertung, die eingeht, beantworten
-    wir. Neben Anzahl und Sternen zählt auch der Inhalt: Die Leistung und der Stadtteil, die ein Kunde in der
-    Bewertung nennt, sind für Google ein zusätzliches Signal.
+    Wir richten eine Routine für Bewertungsanfragen ein: regelmäßig, einzeln statt per Massenversand, ohne Gutschein
+    oder Rabatt und ohne nur zufriedene Kunden auszuwählen. Am einfachsten fragen Sie persönlich am Ende des Termins
+    oder mit einer Karte bzw. einem QR-Code. Eine Bewertungsanfrage per E-Mail, SMS oder WhatsApp gilt in Deutschland als
+    Werbung und braucht in der Regel die vorherige Einwilligung des Kunden (§ 7 UWG). Allgemeine Information, keine
+    Rechtsberatung. Jede Rezension, die eingeht, beantworten wir. Neben Anzahl und Sternen zählt auch der Inhalt: Die
+    Leistung und der Stadtteil, die ein Kunde in seiner Rezension nennt, sind für Google ein zusätzliches Signal.
   </p>
 
   <p>
-    Deshalb schicken wir keine Nachrichten wie „Geben Sie uns 5 Sterne“. Wir geben dem Kunden einen kurzen Link oder
-    einen QR-Code und bitten ihn, die Leistung in eigenen Worten zu beschreiben. Vorgefertigte Texte geben wir nicht
-    heraus; Bewertungen, in die alle denselben Satz kopieren, wirken auf Leser gefälscht und bleiben in Googles Filter
-    hängen.
+    Deshalb bitten wir nie um „5 Sterne“. Der Kunde bekommt einen kurzen Link oder einen QR-Code und die Bitte, die
+    Leistung in eigenen Worten zu beschreiben. Vorgefertigte Texte geben wir nicht heraus; Rezensionen, in die alle
+    denselben Satz kopieren, wirken auf Leser gefälscht und bleiben in Googles Filter hängen.
   </p>
 
   <ul class="checklist">
-    <li>Bitte um eine Bewertung direkt nach Abschluss der Arbeit</li>
-    <li>Bewertung in einem Schritt über einen kurzen Link und einen QR-Code an der Theke</li>
-    <li>Auf jede Bewertung eine natürliche Antwort, die die erhaltene Leistung nennt</li>
-    <li>Bei negativen Bewertungen zuerst das Gespräch mit dem Kunden, dann eine ruhige öffentliche Antwort</li>
+    <li>Persönliche Bitte um eine Rezension am Ende des Termins oder nach Abschluss des Auftrags</li>
+    <li>Rezension in einem Schritt über einen kurzen Link oder einen QR-Code am Empfang</li>
+    <li>Auf jede Rezension eine persönliche Antwort, die die erhaltene Leistung nennt</li>
+    <li>Bei negativen Bewertungen zuerst das Gespräch mit dem Kunden, dann eine sachliche öffentliche Antwort</li>
     <li>Beleidigende oder erkennbar von der Konkurrenz stammende gefälschte Bewertungen an Google melden</li>
   </ul>
 
   <p>
-    Nicht jede gemeldete Bewertung wird gelöscht, die letzte Entscheidung liegt bei Google. Die Wirkung einer schlechten
-    Bewertung schwächen am stärksten die echten Bewertungen, die danach kommen. Die Schritte zum Sammeln von Bewertungen
+    Nicht jede gemeldete Bewertung wird gelöscht; die letzte Entscheidung liegt bei Google. Am stärksten relativieren
+    die echten Rezensionen, die danach kommen, eine schlechte Bewertung. Wie Sie selbst zu mehr Rezensionen kommen,
     beschreiben wir in unserem <a href={p('guides/more-reviews')}>Ratgeber zu Bewertungen</a>.
   </p>
 
   <h2 id="gonderi">Bringen Beiträge und Fotos etwas?</h2>
 
   <p>
-    Ja, aber allein bringen sie Sie nicht nach oben. Google unterscheidet ein gepflegtes Profil von einem verlassenen, und
-    regelmäßige Beiträge und neue Fotos sind das sichtbarste Zeichen dafür. Bei sonst gleichen Voraussetzungen zieht ein
-    lebendiges Profil an einem schlafenden vorbei.
+    Ja, aber allein bringen sie Sie nicht nach oben. Google unterscheidet ein gepflegtes Profil von einem verwaisten,
+    und regelmäßige Beiträge und neue Fotos sind das sichtbarste Zeichen dafür. Bei sonst gleichen Voraussetzungen hat
+    ein gepflegtes Profil die besseren Karten.
   </p>
 
   <p>
-    In Beiträgen teilen wir neue Leistungen, Aktionen, Veranstaltungen oder die Antwort auf eine häufige Frage. Jeden
+    In Beiträgen zeigen wir neue Leistungen, Neuigkeiten, Veranstaltungen oder die Antwort auf eine häufige Frage. Jeden
     Beitrag verlinken wir mit der passenden Seite auf der Website und versehen den Link mit UTM-Parametern. So sehen wir
     Besuche aus dem Profil auf der Website getrennt.
   </p>
 
   <p>
-    Bei Fotos haben wir nur eine Regel: Sie müssen echt sein. Fassade, Eingang, Innenraum, Team und erledigte Arbeit.
-    Stockfotos verwenden wir nicht, denn wer vor Ihrer Tür steht, soll den Ort wiedererkennen, den er im Profil gesehen
-    hat.
+    Bei Fotos gilt eine Regel: Sie müssen echt sein. Fassade, Eingang, Räume, Team und erledigte Arbeit. Stockfotos
+    verwenden wir nicht, denn wer vor Ihrer Tür steht, soll den Ort wiedererkennen, den er im Profil gesehen hat.
   </p>
 
   <h2 id="kurallar">Welche Abkürzungen nehmen wir nicht?</h2>
 
   <p>
-    Wir tun nichts, was gegen Googles Richtlinien verstößt, auch wenn ein Kunde es verlangt. Diese Wege scheinen eine
-    Zeit lang zu funktionieren, dann wird das Profil gesperrt und die Arbeit ist an einem Tag verloren.
+    Wir tun nichts, was gegen Googles Richtlinien verstößt, auch wenn ein Kunde es verlangt. Solche Wege scheinen eine
+    Zeit lang zu funktionieren; dann wird das Profil gesperrt, und die Arbeit ist an einem Tag verloren.
   </p>
 
   <h3>Keywords im Unternehmensnamen</h3>
 
   <p>
-    Der Name im Profil muss dem Namen auf Ihrem Schild entsprechen. „Mavi Çınar Fizyoterapi Kadıköy
-    Bandscheibenvorfall-Behandlung“ statt „Mavi Çınar Fizyoterapi“ einzutragen, verstößt gegen Googles Richtlinien. Wir
+    Der Name im Profil muss dem Namen auf Ihrem Praxisschild entsprechen. „Physio Blaue Platane Kreuzberg
+    Bandscheibenvorfall Behandlung“ statt „Physio Blaue Platane“ einzutragen, verstößt gegen Googles Richtlinien. Wir
     wissen, dass das kurzfristig das Ranking heben kann, und machen es trotzdem nicht.
   </p>
 
   <p>
-    Wenn ein Konkurrent das tut, können Sie es Google über die Option „Änderung vorschlagen“ in Google Maps melden.
-    Sobald der Name regelkonform ist, verliert das Profil den Schub durch das Keyword.
+    Macht ein Wettbewerber das, können Sie es Google über „Änderung vorschlagen“ in Google Maps melden. Sobald der Name
+    korrigiert ist, verliert das Profil den Schub durch das Keyword.
   </p>
 
   <h3>Gefälschte oder gekaufte Bewertungen</h3>
 
   <p>
     Bewertungen gegen Geld, Rabatt oder Geschenk erbitten, Mitarbeiter und Bekannte Bewertungen schreiben lassen,
-    Bewertungen kaufen: All das verstößt gegen Googles Richtlinien. Auch nur Kunden um eine Bewertung zu bitten, von denen
-    Sie wissen, dass sie zufrieden sind, ist verboten. Wir wählen nicht aus und beantworten auch die schlechten
+    Bewertungen kaufen: All das verstößt gegen Googles Richtlinien. Auch wer gezielt nur zufriedene Kunden um eine
+    Bewertung bittet, verstößt gegen diese Richtlinien. Wir wählen nicht aus und beantworten auch die schlechten
     Bewertungen.
   </p>
 
   <h3>Unnötige zusätzliche Profile</h3>
 
   <p>
-    Für jede echte Filiale wird ein Profil angelegt. Wenn Sie keine Filialen haben, verstößt ein eigenes Profil für jeden
-    Bezirk oder jede Leistung gegen die Richtlinien. Eine virtuelle Büroadresse, an der während der Öffnungszeiten
-    niemand anwesend ist, gilt für ein Profil ebenfalls nicht.
+    Für jeden echten Standort gibt es ein Profil. Haben Sie keine weiteren Standorte, verstößt ein eigenes Profil für
+    jeden Stadtteil oder jede Leistung gegen die Richtlinien. Eine virtuelle Büroadresse, an der während der
+    Öffnungszeiten niemand anwesend ist, reicht für ein Profil ebenfalls nicht.
   </p>
 
   <p>
-    Wenn Sie ohne sichtbare Adresse arbeiten, legen wir das Profil mit einem Einzugsgebiet an. Dabei gibt es einen
-    verbreiteten Irrtum: 20 Bezirke im Einzugsgebiet bedeuten nicht, dass Sie in diesen Bezirken auf der Karte
-    erscheinen. Google berechnet die Reihenfolge weiterhin nach der Nähe zum Standort Ihres Unternehmens.
+    Empfangen Sie keine Kunden an Ihrer Adresse, etwa als Handwerksbetrieb, legen wir das Profil mit einem
+    Einzugsgebiet an. Dabei gibt es einen verbreiteten Irrtum: 20 Stadtteile im Einzugsgebiet bedeuten nicht, dass Sie
+    in diesen Stadtteilen auf der Karte erscheinen. Google berechnet die Reihenfolge weiterhin nach der Entfernung zum
+    Standort Ihres Unternehmens.
   </p>
 
   <p>
-    Der Weg zur Sichtbarkeit in umliegenden Bezirken führt über Ihre Website, und den bauen wir bei der Arbeit an der
+    Der Weg zur Sichtbarkeit in umliegenden Stadtteilen führt über Ihre Website, und den bauen wir bei der Arbeit an der
     <a href={p('services/local-seo')}>lokalen SEO</a> auf. Wenn Sie noch kein Profil haben, beschreiben wir die Schritte
     im <a href={p('guides/create-profile')}>Ratgeber zum Anlegen des Profils</a>; wenn es bei der Verifizierung hakt, im
     <a href={p('guides/verification')}>Ratgeber zur Verifizierung</a>.
@@ -253,26 +254,26 @@ const faq = [
 
   <h2 id="surec">Wie arbeiten wir?</h2>
 
-  <p>Zuerst messen wir, dann fassen wir das Profil an.</p>
+  <p>Zuerst messen wir, dann ändern wir das Profil.</p>
 
   <ol>
     <li>
-      <strong>Prüfung.</strong> Wir erfassen den aktuellen Zustand Ihres Profils, die Kategorie- und Leistungsstruktur
-      der Wettbewerber unter den ersten drei und den Abstand bei den Bewertungen. Mit einer
+      <strong>Prüfung.</strong> Wir erfassen den aktuellen Zustand Ihres Profils, Kategorien und Leistungen der drei
+      Wettbewerber, die auf der Karte vorn stehen, und den Abstand bei den Rezensionen. Mit einer
       <a href={p('services/rank-tracking')}>Messung in Ihrem Umkreis</a> sehen wir, auf welchem Platz Sie an
       verschiedenen Punkten in der Umgebung stehen.
     </li>
     <li>
-      <strong>Einrichtung.</strong> Kategorie, Leistungsliste, Beschreibung, Öffnungszeiten, Merkmale und Fotos werden
-      korrigiert. In dieser Phase fällt die meiste Arbeit an.
+      <strong>Einrichtung.</strong> Wir korrigieren Kategorie, Leistungsliste, Beschreibung, Öffnungszeiten, Merkmale
+      und Fotos. In dieser Phase fällt die meiste Arbeit an.
     </li>
     <li>
-      <strong>Laufender Betrieb.</strong> Beitragsplan und Ablauf für Bewertungsanfragen laufen an, jede eingehende
-      Bewertung wird beantwortet.
+      <strong>Laufende Betreuung.</strong> Beitragsplan und Routine für Bewertungsanfragen laufen an; jede eingehende
+      Rezension beantworten wir.
     </li>
     <li>
-      <strong>Messung.</strong> Wie sich Ihr Ranking verändert, lesen wir zusammen mit den Profilinteraktionen, also der
-      Zahl der Anrufe, Routenanfragen und Nachrichten.
+      <strong>Messung.</strong> Wie sich Ihr Ranking verändert, werten wir zusammen mit den Profilinteraktionen aus, also
+      der Zahl der Anrufe, Routenanfragen und Nachrichten.
     </li>
   </ol>
 

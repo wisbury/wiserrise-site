@@ -23,20 +23,20 @@ const toc = [
 
 const faq = [
   {
-    q: 'Ich habe keine Firmeneintragung, kann ich trotzdem ein Profil erstellen?',
-    a: 'Ja, Google verlangt keine offizielle Firmeneintragung. Google will prüfen, ob das Unternehmen wirklich existiert, deshalb kann bei der Verifizierung eine Rechnung, ein Foto des Schildes oder eine Steuerbescheinigung verlangt werden. Bei einer nicht angemeldeten Tätigkeit wird die Verifizierung schwieriger.',
+    q: 'Ich habe keinen Handelsregistereintrag, kann ich trotzdem ein Profil erstellen?',
+    a: 'Ja, ein Handelsregistereintrag ist keine Voraussetzung. Google will prüfen, ob das Unternehmen wirklich existiert und an der angegebenen Adresse arbeitet. Deshalb können bei der Verifizierung Nachweise verlangt werden, etwa eine Rechnung auf den Firmennamen, ein Foto des Schildes oder eine Gewerbeanmeldung. Ohne solche Unterlagen wird die Verifizierung schwieriger.',
   },
   {
     q: 'Kann ich meine Privatadresse verwenden?',
-    a: 'Wenn Sie von zu Hause arbeiten und keine Kunden empfangen, ja, aber blenden Sie die Adresse aus und legen Sie ein Einzugsgebiet fest. Ihre Privatadresse öffentlich zu zeigen, ist unnötig. Eine spätere Änderung kann außerdem eine neue Verifizierung auslösen.',
+    a: 'Wenn Sie von zu Hause arbeiten und keine Kunden empfangen, ja. Blenden Sie die Adresse dann aus und legen Sie ein Einzugsgebiet fest; Ihre Privatadresse öffentlich zu zeigen, ist unnötig. Eine spätere Änderung der Adresse kann eine neue Verifizierung auslösen.',
   },
   {
     q: 'Wie viele Kategorien kann ich hinzufügen?',
-    a: 'Eine Hauptkategorie und bis zu neun zusätzliche Kategorien. Wir empfehlen, bei zwei bis drei zusätzlichen Kategorien zu bleiben, auf die Sie wirklich Gewicht legen, weil unpassende Kategorien Ihre Stärke bei der Hauptsuche verringern.',
+    a: 'Eine Hauptkategorie und bis zu neun zusätzliche Kategorien. Wir empfehlen zwei bis drei zusätzliche Kategorien für Leistungen, die Ihnen wirklich wichtig sind, weil unpassende Kategorien Sie bei der wichtigsten Suche schwächen.',
   },
   {
     q: 'Ich habe das Profil erstellt, wann werde ich sichtbar?',
-    a: 'Nach der Verifizierung erscheint das Profil innerhalb weniger Tage, bis sich der Platz einpendelt, vergehen einige Wochen. Ändern Sie in dieser Zeit weder Namen noch Adresse noch Kategorie.',
+    a: 'Einen festen Zeitraum nennt Google nicht. Erst nach der Verifizierung kann das Profil in der Suche erscheinen, und danach schwankt der Platz eine Weile, bis er sich einpendelt. Ändern Sie in dieser Zeit weder Namen noch Adresse noch Kategorie.',
   },
 ];
 ---
@@ -44,12 +44,12 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="guides/create-profile"
-  title="Google-Unternehmensprofil erstellen: Schritt für Schritt | Wiserrise"
-  description="So erstellen Sie ein Google-Unternehmensprofil: Entscheidung über die Adresse, Wahl der Hauptkategorie, Verifizierung und was am ersten Tag zu tun ist."
+  title="Google Unternehmensprofil erstellen: Anleitung | Wiserrise"
+  description="So erstellen Sie ein Google Unternehmensprofil: Adresse anzeigen oder nicht, Hauptkategorie wählen, Verifizierung und was am ersten Tag zu tun ist."
   eyebrow="RATGEBER · PROFIL ERSTELLEN"
   h1="Wie erstellt man ein Google-Unternehmensprofil?"
   crumb="Profil erstellen"
-  lede="Ein Google-Unternehmensprofil erstellen Sie unter google.com/business: Sie geben Namen, Kategorie, Adresse und Kontaktdaten des Unternehmens ein und verifizieren es mit der Methode, die Google anbietet. Das Formular selbst dauert zehn Minuten. Zwei Entscheidungen lassen sich später nur schwer korrigieren: ob Sie die Adresse anzeigen und welche Hauptkategorie Sie wählen."
+  lede="Ein Google Unternehmensprofil erstellen Sie unter google.com/business: Sie geben Namen, Kategorie, Adresse und Kontaktdaten des Unternehmens ein und verifizieren es mit der Methode, die Google anbietet. Das Formular selbst dauert zehn Minuten. Zwei Entscheidungen lassen sich später nur schwer korrigieren: ob Sie die Adresse anzeigen und welche Hauptkategorie Sie wählen."
   schemaType="article"
   datePublished="2026-08-01"
   dateModified="2026-11-06"
@@ -89,9 +89,10 @@ const faq = [
 
   <div class="callout">
     <p>
-      <strong>Schreiben Sie keine Keywords in den Firmennamen.</strong> Ein Name wie „Defne Diş Kliniği Antalya
-      Implantate“ funktioniert kurze Zeit, verstößt aber gegen die Regeln von Google: Meldet ein Wettbewerber ihn, wird der
-      Name korrigiert, im Wiederholungsfall wird das Profil gesperrt. Wir machen das bei den Profilen unserer Kunden nicht.
+      <strong>Schreiben Sie keine Keywords in den Firmennamen.</strong> Ein Name wie „Zahnarztpraxis Lindenhof Hamburg
+      Implantate“ funktioniert vielleicht kurze Zeit, verstößt aber gegen die Richtlinien von Google: Meldet ein
+      Wettbewerber ihn, wird der Name korrigiert, im Wiederholungsfall kann das Profil gesperrt werden. Wir machen das bei
+      den Profilen unserer Kunden nicht.
     </p>
   </div>
 
@@ -137,15 +138,15 @@ const faq = [
   </div>
 
   <p>
-    Über die letzte Zeile wissen die meisten falsch Bescheid. Wer die Adresse ausblendet und zwanzig Provinzen einträgt,
-    kommt dadurch nicht auf die Karte dieser zwanzig Provinzen. Google berechnet den Platz weiterhin nach der Nähe zu
-    Ihrer ausgeblendeten Adresse.
+    Die letzte Zeile wird am häufigsten missverstanden. Wer die Adresse ausblendet und zwanzig Städte als Einzugsgebiet
+    einträgt, erscheint dadurch nicht in allen zwanzig Städten auf der Karte. Google berechnet den Platz weiterhin nach
+    der Nähe zu Ihrer ausgeblendeten Adresse.
   </p>
 
   <p>
-    Angenommen, Sie sind Physiotherapeut mit einer Praxis in Çankaya und haben die Adresse ausgeblendet. Patienten, die
-    in die Praxis kommen wollen, sehen keinen Pin auf der Karte und bekommen keine Route, und bei der Suche nach
-    „Physiotherapeut in meiner Nähe“ fallen Sie zurück.
+    Angenommen, Sie haben eine Physiotherapiepraxis in Köln-Ehrenfeld und die Adresse ausgeblendet. Patienten, die in
+    die Praxis kommen wollen, sehen keinen Pin auf der Karte und bekommen keine Route, und bei der Suche nach
+    „Physiotherapie in der Nähe“ fallen Sie zurück.
   </p>
 
   <p>
@@ -178,8 +179,8 @@ const faq = [
       Sie Ihre Einzugsgebiete fest.
     </li>
     <li>
-      <strong>Fügen Sie Telefonnummer und Website hinzu.</strong> In das Website-Feld gehört Ihre Startseite. Die Links
-      zu den Leistungsseiten tragen Sie später bei den einzelnen Leistungen ein.
+      <strong>Fügen Sie Telefonnummer und Website hinzu.</strong> Das Profil hat ein einziges Website-Feld; dort gehört
+      Ihre Website hinein. Ihre Leistungsseiten verbinden Sie später über gleiche Leistungsnamen und über Beiträge.
     </li>
     <li>
       <strong>Wählen Sie die Verifizierungsmethode.</strong> Am häufigsten werden Video oder Postkarte angeboten. Video
@@ -213,7 +214,7 @@ const faq = [
   </p>
 
   <p>
-    Ein häufiger Fehler ist, eine enge Spezialisierung zur Hauptkategorie zu machen. Eine Zahnklinik mit Schwerpunkt
+    Ein häufiger Fehler ist, eine enge Spezialisierung zur Hauptkategorie zu machen. Eine Zahnarztpraxis mit Schwerpunkt
     Implantate, die „Ästhetische Zahnheilkunde“ als Hauptkategorie wählt, gewinnt in der Nische an Stärke und verliert
     das große Volumen der Suche nach „Zahnarzt“. Die Hauptkategorie bringt Volumen, die zusätzlichen Kategorien bringen
     Spezialisierung.

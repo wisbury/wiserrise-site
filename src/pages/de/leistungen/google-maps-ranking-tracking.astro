@@ -6,10 +6,10 @@ const locale = 'de' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
-  { label: 'STANDORT', title: 'Messung in Ihrem Umkreis', text: 'Wir messen Ihren Platz von verschiedenen Punkten um Sie herum. Wo der Kunde steht, dort wird auch Ihr Platz abgelesen.' },
-  { label: 'MUSTER', title: 'Die Karte lesen', text: 'Stark in der Mitte, schwach am Rand? Dieses Muster zeigt, ob das Problem im Profil oder auf der Website liegt.' },
-  { label: 'WETTBEWERB', title: 'Neben den Wettbewerbern', text: 'Dieselbe Messung machen wir für Ihre Wettbewerber unter den ersten drei. In den Daten sehen wir, wo und warum sie vorne liegen.' },
-  { label: 'WIRKUNG', title: 'Der Platz reicht nicht', text: 'Wir lesen den Platz zusammen mit Anrufen, Routenanfragen und Nachrichten. Wenn das Telefon nicht klingelt, bringt ein hoher Platz nichts.' },
+  { label: 'STANDORT', title: 'Messung in Ihrem Umkreis', text: 'Wir messen Ihren Platz an verschiedenen Punkten rund um Ihr Unternehmen, also dort, wo Ihre Kunden tatsächlich suchen.' },
+  { label: 'MUSTER', title: 'Die Karte lesen', text: 'Stark in der Mitte, schwach am Rand? Solche Muster zeigen, ob das Problem im Profil oder auf der Website liegt.' },
+  { label: 'WETTBEWERB', title: 'Neben den Wettbewerbern', text: 'Dieselbe Messung machen wir für die drei Wettbewerber, die vorn stehen. In den Daten sehen wir, wo und warum sie vorn liegen.' },
+  { label: 'WIRKUNG', title: 'Der Platz reicht nicht', text: 'Wir werten den Platz zusammen mit Anrufen, Routenanfragen und Nachrichten aus. Wenn das Telefon nicht klingelt, bringt ein guter Platz nichts.' },
 ];
 
 const toc = [
@@ -25,19 +25,19 @@ const toc = [
 const faq = [
   {
     q: 'Reicht es nicht, wenn ich auf meinem eigenen Handy nachsehe?',
-    a: 'Nein. Das Ergebnis, das Sie sehen, gilt nur für den Punkt, an dem Sie stehen, und Google personalisiert es nach Ihrem Suchverlauf. Um zu wissen, was Ihr Kunde zwei Stadtteile weiter sieht, braucht es eine Messung in Ihrem Umkreis.',
+    a: 'Nein. Das Ergebnis, das Sie sehen, gilt nur für den Punkt, an dem Sie gerade stehen, und Google passt es zusätzlich an Ihren Suchverlauf an. Was Ihr Kunde zwei Stadtteile weiter sieht, zeigt nur eine Messung in Ihrem Umkreis.',
   },
   {
     q: 'Wie viele Suchen verfolgen Sie?',
-    a: 'Eine feste Zahl gibt es nicht. Wir wählen die Suchen aus, die Ihnen Aufträge bringen; wenige richtige Suchen zu beobachten sagt mehr als der Durchschnitt einer langen Liste.',
+    a: 'Eine feste Zahl gibt es nicht. Wir wählen die Suchanfragen aus, über die Aufträge kommen; wenige richtige Suchanfragen sagen mehr als der Durchschnitt einer langen Liste.',
   },
   {
     q: 'Bekomme ich mehr Kunden, wenn mein Platz steigt?',
-    a: 'Nicht von selbst. Ein Platz ganz oben bei einer Suche ohne Nachfrage lässt das Telefon nicht klingeln; deshalb lesen wir den Platz zusammen mit der Zahl der Anrufe, Routenanfragen und Nachrichten.',
+    a: 'Nicht automatisch. Ein Platz ganz oben bei einer Suche, nach der kaum jemand sucht, lässt das Telefon nicht klingeln; deshalb werten wir den Platz zusammen mit der Zahl der Anrufe, Routenanfragen und Nachrichten aus.',
   },
   {
     q: 'Kann ich auch die Plätze meiner Wettbewerber sehen?',
-    a: 'Ja. Dieselbe Messung machen wir auch für Ihre Wettbewerber unter den ersten drei. Sie sehen nebeneinander, wer in welchem Stadtteil vorne liegt.',
+    a: 'Ja. Dieselbe Messung machen wir auch für die drei Wettbewerber, die vorn stehen. Sie sehen nebeneinander, wer in welchem Stadtteil vorn liegt.',
   },
 ];
 ---
@@ -45,12 +45,12 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="services/rank-tracking"
-  title="Google-Maps-Ranking-Tracking | Wiserrise"
-  description="Ihr Platz auf der Karte hängt vom Standort der Suchenden ab. Wir messen ihn an verschiedenen Punkten in Ihrem Umkreis und lesen ihn neben Ihren Wettbewerbern."
+  title="Google Maps Ranking prüfen: Messung im Umkreis | Wiserrise"
+  description="Ihr Platz auf Google Maps hängt vom Standort der Suchenden ab. Wir messen ihn an vielen Punkten in Ihrem Umkreis und vergleichen ihn mit dem Wettbewerb."
   eyebrow="LEISTUNG · MAPS-RANKING"
-  h1="Wir messen Ihren Platz auf der Karte in jeder Ecke Ihrer Umgebung."
+  h1="Wir messen Ihren Platz auf der Karte überall in Ihrer Umgebung."
   crumb="Maps-Ranking-Tracking"
-  lede="Maps-Ranking-Tracking heißt, von verschiedenen Punkten in Ihrer Umgebung aus zu messen, auf welchem Platz Sie bei Google Maps erscheinen. Einen einzigen Platz auf der Karte haben Sie nicht; bei derselben Suche können Sie in einem Stadtteil Zweiter und im gegenüberliegenden Zwanzigster sein. Wir zeigen auf der Karte, wo Sie stark und wo Sie schwach sind, und lesen das Ergebnis neben Ihren Wettbewerbern."
+  lede="Beim Maps-Ranking-Tracking messen wir von verschiedenen Punkten in Ihrer Umgebung aus, auf welchem Platz Sie bei Google Maps erscheinen. Den einen Platz auf der Karte gibt es nicht: Bei derselben Suche können Sie in Leipzig-Plagwitz Zweiter und in Leipzig-Connewitz Zwanzigster sein. Wir zeigen auf der Karte, wo Sie stark und wo Sie schwach sind, und stellen das Ergebnis neben das Ihrer Wettbewerber."
   serviceName="Google-Maps-Ranking-Tracking"
   breadcrumb={[
     { label: 'Startseite', href: '/de' },
@@ -62,8 +62,8 @@ const faq = [
   faq={faq}
   related={[
     { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Die Lücken aus der Messung schließen wir in Ihrem Profil und auf Ihrer Website.' },
-    { label: 'Google-Unternehmensprofil', href: p('services/gbp'), text: 'Kategorie, Leistungen, Bewertungen und Beiträge betreuen wir regelkonform.' },
-    { label: 'GEO', href: p('services/geo'), text: 'Wir messen, ob ChatGPT, Gemini und Googles KI-Antworten Sie nennen.' },
+    { label: 'Google Unternehmensprofil', href: p('services/gbp'), text: 'Kategorie, Leistungen, Rezensionen und Beiträge betreuen wir nach Googles Richtlinien.' },
+    { label: 'GEO', href: p('services/geo'), text: 'Wir messen, ob ChatGPT, Gemini und die KI-Übersichten von Google Sie nennen.' },
   ]}
   ctaLabel="Kostenlose Analyse anfordern"
   ctaHref="/de#contact"
@@ -71,61 +71,60 @@ const faq = [
   <h2 id="tek-nokta">Warum täuscht der Platz, den Sie auf Ihrem eigenen Handy sehen?</h2>
 
   <p>
-    Weil er nur den Platz an dem Punkt zeigt, an dem Sie stehen. Google sortiert die Ergebnisse auf der Karte nach dem
-    Standort der suchenden Person; dass Sie vor Ihrem Laden Erster sind, heißt nicht, dass ein Kunde zwei Stadtteile
-    weiter Sie auch als Ersten sieht.
+    Weil er nur den Platz an dem Punkt zeigt, an dem Sie gerade stehen. Google ordnet die Ergebnisse auf der Karte nach
+    dem Standort der suchenden Person; dass Sie vor Ihrer eigenen Tür auf Platz eins stehen, heißt nicht, dass ein Kunde
+    zwei Stadtteile weiter Sie dort auch sieht.
   </p>
 
   <p>
-    Dazu kommt eine Falle. Der Inhaber sucht vom eigenen Büro aus, und der Punkt am nächsten am Büro ist der Punkt, an dem
-    das Unternehmen am stärksten ist. Wenn uns jemand sagt „Wir sind doch Erster, aber das Telefon klingelt nicht“,
-    schauen wir zuerst hierhin.
+    Dazu kommt eine Falle. Inhaber suchen meist vom eigenen Büro aus, und genau dort ist das Unternehmen am stärksten.
+    Wenn uns jemand sagt „Wir sind doch auf Platz eins, aber das Telefon klingelt nicht“, schauen wir zuerst hierhin.
   </p>
 
   <div class="callout">
     <p>
-      <strong>Ihre eigene Suche ist keine Messung.</strong> Google personalisiert das Ergebnis nach Ihrem Standort und
-      Ihrem Suchverlauf. Der Platz auf Ihrem Handy ist nicht unbedingt der, den Ihr Kunde sieht.
+      <strong>Ihre eigene Suche ist keine Messung.</strong> Google passt das Ergebnis an Ihren Standort und Ihren
+      Suchverlauf an. Der Platz auf Ihrem Handy ist nicht unbedingt der, den Ihr Kunde sieht.
     </p>
   </div>
 
   <p>
-    Aus demselben Grund trauen wir keinem „Wir sind Erster“-Bericht, der mit einem einzigen Screenshot kommt. Dieses
-    Bild zeigt eine kleine Ecke der Karte.
+    Aus demselben Grund trauen wir keinem „Wir sind auf Platz eins“-Bericht, der aus einem einzigen Screenshot besteht.
+    So ein Bild zeigt nur einen kleinen Ausschnitt der Karte.
   </p>
 
   <h2 id="nasil">Wie funktioniert die Messung in Ihrem Umkreis?</h2>
 
   <p>
-    Wir messen an verschiedenen Punkten, die rund um Ihr Unternehmen verteilt sind. An jedem Punkt fragen wir die Karte
-    ab, die jemand dort auf dem Handy sehen würde, und halten fest, auf welchem Platz Sie erscheinen.
+    Wir messen an vielen Punkten, die rund um Ihr Unternehmen verteilt sind. An jedem Punkt rufen wir die Karte ab, die
+    jemand dort auf dem Handy sehen würde, und halten fest, auf welchem Platz Sie erscheinen.
   </p>
 
   <p>
-    Am Ende haben Sie eine Sichtbarkeitskarte Ihrer Umgebung. Grün zeigt die oberen Plätze, Rot die Stellen, an denen Sie
-    weit hinten liegen oder gar nicht erscheinen. Auch ohne auf die Zahlen zu schauen, sehen Sie, in welchem Stadtteil
-    Sie schwach sind.
+    Am Ende steht eine Sichtbarkeitskarte Ihrer Umgebung. Grün zeigt die vorderen Plätze, Rot die Stellen, an denen Sie
+    weit hinten liegen oder gar nicht erscheinen. Auch ohne Zahlen sehen Sie auf einen Blick, in welchem Stadtteil Sie
+    schwach sind.
   </p>
 
   <h2 id="alan">Wie legen wir das Messgebiet fest?</h2>
 
   <p>
-    Nach der Entfernung, aus der Ihr Geschäft Kunden anzieht. Für einen Kfz-Gutachter, dessen Kunden aus den umliegenden
-    Stadtteilen kommen, messen wir ein kleines Gebiet; bei einer Kanzlei mit Mandanten aus der ganzen Stadt erweitern wir
-    das Gebiet.
+    Nach der Entfernung, aus der Ihre Kunden tatsächlich kommen. Für einen Kfz-Gutachter, dessen Kunden aus den
+    umliegenden Stadtteilen kommen, messen wir ein kleines Gebiet; bei einer Kanzlei mit Mandanten aus der ganzen Stadt
+    erweitern wir es.
   </p>
 
   <p>
-    Ein falsch gewähltes Gebiet macht die Messung wertlos. Ist es zu klein, sieht alles grün aus und Sie wiegen sich in
-    Sicherheit. Ist es zu groß, ist alles rot und Sie lernen nichts.
+    Ein falsch gewähltes Gebiet macht die Messung wertlos. Ist es zu klein, sieht alles grün aus, und Sie wiegen sich in
+    Sicherheit. Ist es zu groß, ist alles rot, und Sie erfahren nichts.
   </p>
 
-  <p>Wenn Sie mehrere Filialen haben, messen wir jede Filiale getrennt in ihrer eigenen Umgebung.</p>
+  <p>Haben Sie mehrere Standorte, messen wir jeden Standort getrennt in seiner eigenen Umgebung.</p>
 
   <h2 id="okuma">Wie lesen wir das Ergebnis?</h2>
 
   <p>
-    Die eigentliche Information steckt im Muster. Zwei Messungen mit demselben Durchschnitt können auf ganz
+    Die eigentliche Aussage steckt im Muster. Zwei Messungen mit demselben Durchschnitt können auf ganz
     unterschiedliche Probleme hinweisen:
   </p>
 
@@ -142,7 +141,7 @@ const faq = [
         <tr>
           <td>Stark in der Mitte, fällt zum Rand hin schnell ab</td>
           <td>Außer der Nähe haben Sie kein starkes Signal. Profil und Bekanntheit sind schwach.</td>
-          <td>Anzahl der Bewertungen, Aktualität des Profils, Quellen, die Sie erwähnen</td>
+          <td>Anzahl der Rezensionen, Aktualität des Profils, Quellen, die Sie erwähnen</td>
         </tr>
         <tr>
           <td>Überall im Mittelfeld, nirgends unter den ersten drei</td>
@@ -157,49 +156,49 @@ const faq = [
         <tr>
           <td>Große Unterschiede zwischen benachbarten Punkten</td>
           <td>Das Ranking hat sich noch nicht eingependelt. Das Profil ist neu oder wurde kürzlich geändert.</td>
-          <td>Wir warten, bis es sich einpendelt, und machen in der Zwischenzeit keine großen Änderungen.</td>
+          <td>Wir warten, bis es sich einpendelt, und nehmen in der Zwischenzeit keine großen Änderungen vor.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <p>
-    Das Muster sagt uns, wo wir anfangen. Eine Bewertungskampagne für ein Profil mit Kategorieproblem heißt, die Mühe an
-    der falschen Tür zu verschwenden.
+    Das Muster sagt uns, wo wir anfangen. Wer bei einem Profil mit falscher Kategorie Rezensionen sammelt, setzt seine
+    Mühe an der falschen Stelle ein.
   </p>
 
   <h2 id="rakip">Wie vergleichen wir Sie mit Ihren Wettbewerbern?</h2>
 
   <p>
-    Dieselbe Messung machen wir auch für Ihre Wettbewerber unter den ersten drei. So suchen wir die Antwort auf „Warum
-    liegen die vorne?“ in den Daten und legen ihre Profile neben Ihres:
+    Dieselbe Messung machen wir auch für die drei Wettbewerber, die vorn stehen. So suchen wir die Antwort auf „Warum
+    liegen die vorn?“ in den Daten und legen ihre Profile neben Ihres:
   </p>
 
   <ul class="checklist">
     <li>Haupt- und Zusatzkategorien</li>
-    <li>Anzahl, Durchschnitt und Aktualität der Bewertungen</li>
+    <li>Anzahl, Durchschnitt und Aktualität der Rezensionen</li>
     <li>Leistungsliste und Unternehmensbeschreibung</li>
     <li>Häufigkeit von Fotos und Beiträgen</li>
     <li>Bei welchen Suchen ihre Websites erscheinen</li>
   </ul>
 
   <p>
-    Wenn der Unterschied sichtbar ist, wird auch klar, wohin das Budget geht. Hat der Wettbewerber ein Vielfaches Ihrer
-    Bewertungen, konzentrieren wir uns zuerst auf neue Bewertungen; ist seine Kategorie treffender, zuerst auf das
+    Ist der Unterschied sichtbar, wird auch klar, wohin die Arbeit zuerst fließt. Hat der Wettbewerber ein Vielfaches
+    Ihrer Rezensionen, konzentrieren wir uns zuerst auf neue Rezensionen; ist seine Kategorie treffender, zuerst auf das
     <a href={p('services/gbp')}>Profil</a>.
   </p>
 
   <h2 id="aramalar">Welche Suchen verfolgen wir?</h2>
 
   <p>
-    Die Suchen, die Ihnen wirklich Aufträge bringen. Der Durchschnitt einer langen Keyword-Liste sieht im Bericht gut
-    aus, sagt Ihnen aber nichts.
+    Die Suchanfragen, über die tatsächlich Aufträge kommen. Der Durchschnitt einer langen Keyword-Liste sieht im Bericht
+    gut aus, sagt Ihnen aber nichts.
   </p>
 
   <p>
-    Die Liste bauen wir danach auf, wie Kunden nach Ihnen suchen: „Zahnarzt“, „Implantat“, „Zahnarzt in der Nähe“ und
-    ähnliche. Die Daten Ihres Unternehmensprofils, die zeigen, über welche Suchen Sie gefunden werden, und die
-    Search-Console-Daten Ihrer Website bestimmen diese Liste.
+    Die Liste bauen wir danach auf, wie Kunden nach Ihnen suchen, bei einer Zahnarztpraxis etwa „Zahnarzt“,
+    „Zahnarzt Notdienst“ oder „Zahnarzt in der Nähe“. Grundlage sind die Daten Ihres Unternehmensprofils, die zeigen,
+    über welche Suchanfragen Sie gefunden werden, und die Search-Console-Daten Ihrer Website.
   </p>
 
   <h2 id="sinirlar">Was zeigt diese Messung nicht?</h2>
@@ -208,24 +207,24 @@ const faq = [
 
   <ul>
     <li>
-      <strong>Ein Platz ist kein Umsatz.</strong> Überall Erster bei einer Suche ohne Nachfrage zu sein, lässt das
-      Telefon nicht klingeln. Deshalb lesen wir den Platz zusammen mit den Profilinteraktionen, also der Zahl der Anrufe,
-      Routenanfragen und Nachrichten.
+      <strong>Ein Platz ist kein Umsatz.</strong> Überall auf Platz eins bei einer Suche zu stehen, nach der kaum jemand
+      sucht, lässt das Telefon nicht klingeln. Deshalb werten wir den Platz zusammen mit den Profilinteraktionen aus, also
+      der Zahl der Anrufe, Routenanfragen und Nachrichten.
     </li>
     <li>
       <strong>Die Messung ist eine Momentaufnahme.</strong> Google verschiebt lokale Ergebnisse auch im Laufe eines
-      Tages. Schwankungen um zwei, drei Plätze gelten als Rauschen; aussagekräftig ist die Richtung zwischen Messungen
-      unter gleichen Bedingungen.
+      Tages. Schwankungen um zwei, drei Plätze sind Rauschen; aussagekräftig ist die Richtung zwischen Messungen unter
+      gleichen Bedingungen.
     </li>
     <li>
-      <strong>Den Grund für einen Rückgang nennt sie nicht von allein.</strong> Wenn Sie in einem Stadtteil
-      zurückgefallen sind, kann eine Änderung von uns dahinterstecken oder ein Wettbewerber, der dort stärker geworden
-      ist. Um das zu unterscheiden, schauen wir auf die Messung der Wettbewerber.
+      <strong>Den Grund für einen Rückgang liefert sie nicht mit.</strong> Sind Sie in einem Stadtteil zurückgefallen,
+      kann eine Änderung von uns dahinterstecken oder ein Wettbewerber, der dort stärker geworden ist. Um das zu
+      unterscheiden, schauen wir auf die Messung der Wettbewerber.
     </li>
     <li>
       <strong>Bei einem neuen Profil täuscht eine frühe Messung.</strong> In den ersten Wochen nach dem Anlegen hat sich
       das Ranking noch nicht eingependelt. Wer in dieser Zeit auf die Messung schaut und hastig etwas ändert, stört ein
-      Bild, das sich gerade bessert.
+      Bild, das sich gerade erst formt.
     </li>
   </ul>
 

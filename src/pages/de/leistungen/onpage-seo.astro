@@ -6,10 +6,10 @@ const locale = 'de' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
-  { label: 'INTENTION', title: 'Suchintention', text: 'Jede Seite beantwortet eine einzige Suche. Wir ermitteln einzeln, welche Ihrer Seiten welche Suche bedient.' },
-  { label: 'TITEL', title: 'Title und Beschreibung', text: 'Die ersten zwei Zeilen im Suchergebnis. Leistung und Stadtteil stehen weit vorne, und wir sagen ehrlich, was die Seite bietet.' },
+  { label: 'INTENTION', title: 'Suchintention', text: 'Jede Seite beantwortet eine Suchanfrage. Wir ermitteln Seite für Seite, welche Suche sie bedienen soll.' },
+  { label: 'TITEL', title: 'Title und Beschreibung', text: 'Die ersten zwei Zeilen im Suchergebnis. Leistung und Stadtteil stehen weit vorn, und wir sagen ehrlich, was die Seite bietet.' },
   { label: 'LINKS', title: 'Interne Links', text: 'Wir verbinden Leistungsseiten miteinander und mit den Stadtteilseiten. Eine Seite, auf die nirgends verlinkt wird, wirkt für Google unwichtig.' },
-  { label: 'KONFLIKT', title: 'Seiten in Konkurrenz', text: 'Zielen zwei Ihrer Seiten auf dieselbe Suche, bleiben beide zurück. Wir führen die Seiten zusammen oder trennen ihre Ziele.' },
+  { label: 'KONFLIKT', title: 'Seiten in Konkurrenz', text: 'Zielen zwei Ihrer Seiten auf dieselbe Suche, bremsen sie sich gegenseitig aus. Wir führen die Seiten zusammen oder trennen ihre Ziele.' },
 ];
 
 const toc = [
@@ -25,19 +25,19 @@ const toc = [
 const faq = [
   {
     q: 'Wie häufig sollte das Keyword auf der Seite vorkommen?',
-    a: 'Zählen Sie nicht mit. Ein Text, der die Leistung gründlich beschreibt, enthält die Begriffe rund um diese Leistung von selbst. Einen Text, der einer Keyword-Dichte hinterherläuft, bemerken Leser und Google gleichermaßen.',
+    a: 'Zählen Sie nicht mit. Ein Text, der die Leistung gründlich beschreibt, enthält die passenden Begriffe von selbst. Einen Text, der einer Keyword-Dichte hinterherläuft, erkennen Leser und Google gleichermaßen.',
   },
   {
     q: 'Google ändert meinen Title. Lohnt es sich, ihn zu schreiben?',
-    a: 'Ja. Google ändert den Titel vor allem dann, wenn der Title fehlt, zu lang ist oder nicht zur Seite passt. Wir schreiben den Title so, dass er dasselbe sagt wie H1 und Inhalt.',
+    a: 'Ja. Google ersetzt den Titel vor allem dann, wenn der Title fehlt, zu lang ist oder nicht zur Seite passt. Wir schreiben den Title so, dass er dasselbe sagt wie H1 und Inhalt.',
   },
   {
     q: 'Rankt eine lange Seite besser?',
-    a: 'Nein. Eine Seite, die die Frage kurz und vollständig beantwortet, kann eine Seite überholen, die dasselbe in die Länge zieht. Wir schauen darauf, ob jede Frage der Leser auf der Seite eine Antwort hat.',
+    a: 'Nicht automatisch. Eine Seite, die die Frage kurz und vollständig beantwortet, kann eine Seite überholen, die dasselbe in die Länge zieht. Wir achten darauf, ob jede Frage der Leser auf der Seite eine Antwort findet.',
   },
   {
     q: 'Bestehende Seiten verbessern oder neue schreiben?',
-    a: 'Zuerst verbessern wir die bestehenden. Seiten mit Impressionen, aber ohne Klicks, oder Seiten, die auf Seite zwei festhängen, bewegen sich am schnellsten. Neue Seiten kommen, wenn diese Lücken geschlossen sind.',
+    a: 'Zuerst verbessern wir die bestehenden. Seiten mit Impressionen, aber ohne Klicks, und Seiten, die auf Seite zwei festhängen, sind meist der naheliegendste Ansatzpunkt. Neue Seiten kommen, wenn diese Lücken geschlossen sind.',
   },
 ];
 ---
@@ -45,12 +45,12 @@ const faq = [
 <ContentLayout
   locale={locale}
   route="services/on-page-seo"
-  title="Onpage-SEO als Dienstleistung | Wiserrise"
-  description="Wir klären, welche Suche jede Seite beantwortet: Title, Überschriften, interne Links, konkurrierende Seiten. Onpage-SEO für Websites lokaler Unternehmen."
+  title="Onpage-SEO für Websites lokaler Unternehmen | Wiserrise"
+  description="Onpage-SEO für Praxen, Kanzleien und Betriebe: Wir klären, welche Suche jede Seite beantwortet, und korrigieren Title, Überschriften und interne Links."
   eyebrow="LEISTUNG · ONPAGE-SEO"
   h1="Mit Onpage-SEO jede Seite auf die richtige Suche ausrichten."
   crumb="Onpage-SEO"
-  lede="Onpage-SEO ist die Arbeit, Google klar zu zeigen, welche Suche jede Seite Ihrer Website beantwortet. Wir verbessern die Seite selbst, vom Title über die Überschriften und den Text bis zu den internen Links. Bei einem lokalen Unternehmen ist das Ziel, dass jemand, der „Physiotherapie Kadıköy“ sucht, direkt die Seite findet, die genau diese Leistung in Kadıköy beschreibt."
+  lede="Bei Onpage-SEO zeigen wir Google klar, welche Suche jede Seite Ihrer Website beantwortet. Wir verbessern die Seite selbst, vom Title über Überschriften und Text bis zu den internen Links. Bei einem lokalen Unternehmen ist das Ziel, dass jemand, der „Physiotherapie Stuttgart-West“ sucht, direkt auf der Seite landet, die genau diese Leistung in Stuttgart-West beschreibt."
   serviceName="Onpage-SEO"
   breadcrumb={[
     { label: 'Startseite', href: '/de' },
@@ -62,9 +62,9 @@ const faq = [
   faq={faq}
   related={[
     { label: 'SEO', href: p('services/seo'), text: 'Grundlage, Seitenaufbau, Inhalte und Links: die Hauptleistung, zu der diese gehört.' },
-    { label: 'Technisches SEO', href: p('services/technical-seo'), text: 'Wir beheben Crawling- und Indexierungsfehler, damit sich Ihre Website für Google sauber öffnet.' },
+    { label: 'Technisches SEO', href: p('services/technical-seo'), text: 'Wir beheben Crawling- und Indexierungsfehler, damit Google Ihre Website vollständig erfassen kann.' },
     { label: 'Content-Erstellung', href: p('services/content'), text: 'Wir schreiben fehlende Leistungs- und Stadtteilseiten und binden sie in die interne Verlinkung ein.' },
-    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Wir bringen Profil und Website zusammen in Ordnung, damit Sie auf der Karte nach vorne kommen.' },
+    { label: 'Lokale SEO', href: p('services/local-seo'), text: 'Wir bringen Unternehmensprofil und Website gemeinsam in Ordnung, damit Sie auf der Karte besser gefunden werden.' },
   ]}
   ctaLabel="Kostenlose Analyse anfordern"
   ctaHref="/de#contact"
@@ -73,61 +73,61 @@ const faq = [
 
   <p>
     SEO-Arbeit an der Seite selbst. Title, Beschreibung, Überschriften, Text und interne Links sind das Material. Das Ziel
-    ist eines: Google soll beim Blick auf die Seite ohne Zögern erkennen, welche Suche sie beantwortet.
+    ist eindeutig: Google soll auf einen Blick erkennen, welche Suche die Seite beantwortet.
   </p>
 
   <p>
     <a href={p('services/technical-seo')}>Technisches SEO</a> sorgt dafür, dass die Seite bei Google ankommt, Onpage-SEO
-    bestimmt, was sie dort sagt. Das eine bleibt ohne das andere halb, deshalb führen wir beides im selben Plan.
+    bestimmt, was sie dort sagt. Das eine ist ohne das andere nur die halbe Arbeit, deshalb führen wir beides im selben
+    Plan.
   </p>
 
   <h2 id="niyet">Wie viele Suchen beantwortet eine Seite?</h2>
 
   <p>
-    Eine. Angenommen, Sie sind Anwalt in Mersin und übernehmen Scheidungsverfahren. Wer „Wie lange dauert eine Scheidung“
-    eintippt, will Informationen, wer „Scheidungsanwalt Mersin“ eintippt, sucht einen Anwalt.
+    Eine. Angenommen, Sie sind Anwältin in Düsseldorf und vertreten in Scheidungsverfahren. Wer „Wie lange dauert eine
+    Scheidung“ eintippt, will Informationen; wer „Anwalt Scheidung Düsseldorf“ eintippt, sucht eine Kanzlei.
   </p>
 
   <p>
-    Eine Website, die beides auf einer Seite bedienen will, bleibt bei beiden zurück. Packen Sie deshalb keine zwei
-    Leistungen oder zwei Absichten auf eine Seite. Die Leistungsseite beschreibt die Leistung, für Menschen mit einer
+    Eine Seite, die beides bedienen will, bleibt bei beiden zurück. Packen Sie deshalb keine zwei Leistungen oder zwei
+    Absichten auf eine Seite. Die Leistungsseite beschreibt die Leistung, für Menschen mit einer
     Informationsfrage gibt es einen eigenen Ratgeberartikel, und beide verlinken aufeinander.
   </p>
 
   <p>
-    Den Unterschied in der Suchintention haben wir bei Google Ads mit Geld gelernt. Ohne es zu merken, haben wir für
-    Suchen von Leuten bezahlt, die nur Informationen wollten und nichts buchen wollten; rund 800 TL waren weg, und wir
-    haben gerade noch rechtzeitig gebremst. Seitdem fragen wir bei jeder Seite zuerst: Was will die Person, die diese
-    Suche eingibt?
+    Den Unterschied in der Suchintention haben wir bei Google Ads mit Lehrgeld gelernt. Ohne es gleich zu merken, haben
+    wir für Suchen von Menschen bezahlt, die nur Informationen wollten und nichts buchen wollten; wir haben gerade noch
+    rechtzeitig gebremst. Seitdem fragen wir bei jeder Seite zuerst: Was will die Person, die diese Suche eingibt?
   </p>
 
   <h2 id="title">Wie schreibt man Title und Beschreibung?</h2>
 
   <p>
-    Der Title ist das stärkste Signal auf der Seite, das Google sagt, worum es geht. Er ist auch die blaue Zeile, die im
+    Der Title ist das stärkste Signal auf der Seite dafür, worum es geht. Er ist auch die blaue Zeile, die im
     Suchergebnis angeklickt wird. Worauf wir beim Schreiben achten:
   </p>
 
   <ul class="checklist">
-    <li>Der gesuchte Begriff steht ohne Zwang weit vorne</li>
+    <li>Der gesuchte Begriff steht ungezwungen weit vorn</li>
     <li>Bei einer lokalen Leistung kommt der Stadtteil oder die Stadt vor</li>
     <li>Der Markenname steht am Ende und ist kurz</li>
-    <li>Die Länge bleibt so, dass die Ergebnisseite nichts abschneidet</li>
+    <li>Die Länge bleibt so, dass Google in der Ergebnisliste nichts abschneidet</li>
     <li>Jede Seite der Website hat ihren eigenen Title, zwei Seiten tragen nie denselben</li>
   </ul>
 
   <p>
-    Die Meta-Description ist der kurze Text unter dem Title auf der Ergebnisseite. Danach entscheidet die suchende
-    Person, ob sie klickt, und wir schreiben sie als ehrliche Zusammenfassung dessen, was wirklich auf der Seite steht.
-    Eine Beschreibung, die etwas verspricht, was die Seite nicht hält, schickt Besucher in wenigen Sekunden zurück zur
-    Ergebnisseite.
+    Die Meta-Description ist der kurze Text unter dem Title in der Ergebnisliste. Danach entscheidet die suchende
+    Person, ob sie klickt; wir schreiben sie als ehrliche Zusammenfassung dessen, was wirklich auf der Seite steht. Eine
+    Beschreibung, die etwas verspricht, was die Seite nicht hält, schickt Besucher nach wenigen Sekunden zurück zu
+    Google.
   </p>
 
   <h2 id="yapi">Was gehört auf die Seite?</h2>
 
   <p>
     Eine einzige H1 und darunter die Fragen, die Leser stellen würden. Die H1 sagt für sich allein, worum es auf der Seite
-    geht, die H2 teilen das Thema nach den Fragen der Leser auf.
+    geht; die H2 gliedern das Thema nach den Fragen der Leser.
   </p>
 
   <p>Die Abschnitte, die wir auf einer lokalen Leistungsseite erwarten:</p>
@@ -135,23 +135,23 @@ const faq = [
   <ul class="checklist">
     <li>Was die Leistung ist und für wen sie passt</li>
     <li>Wie sie abläuft und wie lange sie dauert</li>
-    <li>Welche Stadtteile Sie bedienen oder wie man Sie erreicht</li>
+    <li>In welchen Stadtteilen Sie arbeiten oder wie man zu Ihnen kommt</li>
     <li>Die Fragen, die Kunden am Telefon am häufigsten stellen</li>
-    <li>Telefon, Adresse und Weg zum Termin, schon vom ersten Bildschirm aus erreichbar</li>
+    <li>Telefon, Adresse und Weg zum Termin, schon auf dem ersten Bildschirm erreichbar</li>
   </ul>
 
   <p>
-    Diese Abschnitte wählen wir nicht nach Gefühl. Wir schauen auf die Suchen, bei denen die Seite in der Search Console
-    erscheint, und auf die Fragen, die Sie am Telefon hören. Jede Frage, die dort auftaucht und auf der Seite keine
-    Antwort hat, gilt als Lücke.
+    Diese Abschnitte wählen wir nicht nach Gefühl. Wir schauen auf die Suchanfragen, bei denen die Seite in der Search
+    Console erscheint, und auf die Fragen, die Sie am Telefon hören. Jede Frage, die dort auftaucht und auf der Seite
+    keine Antwort hat, ist eine Lücke.
   </p>
 
   <h2 id="link">Warum sind interne Links wichtig?</h2>
 
   <p>
-    Interne Links zeichnen Google eine Karte der Website und zeigen die wichtigen Seiten. Die Lücke, die wir auf Websites
-    lokaler Unternehmen am häufigsten finden: Die Leistungsseiten sind gar nicht miteinander verlinkt. Jede Seite steht
-    für sich allein wie eine Insel.
+    Interne Links zeichnen Google einen Plan der Website und zeigen, welche Seiten wichtig sind. Die Lücke, die wir auf
+    Websites lokaler Unternehmen am häufigsten finden: Die Leistungsseiten sind gar nicht miteinander verlinkt. Jede
+    Seite steht für sich allein wie eine Insel.
   </p>
 
   <p>
@@ -169,45 +169,44 @@ const faq = [
 
   <p>
     Dann kann Google nicht entscheiden, welche es zeigen soll, und hält beide zurück. Das nennt man
-    Keyword-Kannibalisierung, auf Englisch cannibalization. Auf Websites, die seit Jahren bloggen, stoßen wir regelmäßig
-    darauf.
+    Keyword-Kannibalisierung. Auf Websites, die seit Jahren bloggen, stoßen wir regelmäßig darauf.
   </p>
 
   <p>
-    Angenommen, Ihre Website hat eine eigene Seite für „Krankengymnastik Kadıköy“ und eine für „Physiotherapie Kadıköy“.
-    Beide beschreiben derselben Person dieselbe Leistung. Sehen Sie in der Search Console, dass bei derselben Suche an
+    Angenommen, Ihre Website hat eine eigene Seite für „Krankengymnastik Stuttgart-West“ und eine für „Physiotherapie
+    Stuttgart-West“. Beide beschreiben derselben Person dieselbe Leistung. Sehen Sie in der Search Console, dass bei derselben Suche an
     einem Tag die eine und am nächsten Tag die andere erscheint, ist die Diagnose klar.
   </p>
 
   <p>
-    Die Lösung ist einer von zwei Wegen. Wir führen die schwächere Seite mit der stärkeren zusammen und leiten sie per 301
-    weiter, oder wir trennen die Ziele der beiden Seiten wirklich.
+    Es gibt zwei Lösungen. Entweder führen wir die schwächere Seite mit der stärkeren zusammen und leiten sie per 301
+    weiter, oder wir trennen die Ziele der beiden Seiten klar voneinander.
   </p>
 
   <div class="callout">
     <p>
       <strong>Fragen Sie, bevor Sie eine neue Seite anlegen:</strong> Habe ich schon eine Seite, die diese Suche
-      beantwortet? Wenn ja, legen Sie keine neue an und bauen Sie die vorhandene aus.
+      beantwortet? Wenn ja, legen Sie keine neue an, sondern bauen Sie die vorhandene aus.
     </p>
   </div>
 
   <h2 id="yerel">Wie kommt der Stadtteilname auf die Seite?</h2>
 
   <p>
-    An den natürlichen Stellen. Er steht einmal im Title, in der H1 oder in der Einleitung, danach geht der Text mit
-    Informationen weiter, die wirklich mit diesem Stadtteil zu tun haben. Den Namen über den Text zu streuen bringt
-    nichts, und Leser merken es auch.
+    An den natürlichen Stellen. Er steht einmal im Title, in der H1 oder in der Einleitung; danach geht der Text mit
+    Informationen weiter, die wirklich mit diesem Stadtteil zu tun haben. Den Namen über den ganzen Text zu streuen
+    bringt nichts, und Leser merken es.
   </p>
 
   <p>
-    Die Seiten müssen auch zu Ihrem Google-Unternehmensprofil passen. Für die Leistungen im Profil gibt es auf der Website
-    eine Seite mit demselben Namen. Name, Adresse und Telefon stehen exakt wie im Profil und sind per Schema mit demselben
+    Die Seiten müssen auch zu Ihrem Google Unternehmensprofil passen. Für die Leistungen im Profil gibt es auf der
+    Website eine Seite mit demselben Namen. Name, Adresse und Telefon stehen exakt wie im Profil und sind per Schema mit demselben
     Unternehmen verbunden; diesen Teil erledigen wir beim
     <a href={`${p('services/technical-seo')}#schema`}>technischen SEO</a>.
   </p>
 
   <p>
-    Für jeden Stadtteil eine eigene Seite anzulegen, ist eine eigene Entscheidung. Wir legen solche Seiten nur an, wenn es
+    Ob jeder Stadtteil eine eigene Seite bekommt, ist eine eigene Entscheidung. Wir legen solche Seiten nur an, wenn es
     über die Gegend wirklich etwas zu sagen gibt; worauf wir achten, steht auf der Seite zur
     <a href={`${p('services/content')}#sehir`}>Content-Erstellung</a>. Wie Profil und Website zusammenspielen, lesen Sie
     auf der Seite zur <a href={p('services/local-seo')}>lokalen SEO</a>.
