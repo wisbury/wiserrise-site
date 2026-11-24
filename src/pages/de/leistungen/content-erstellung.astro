@@ -9,7 +9,7 @@ const features = [
   { label: 'LEISTUNG', title: 'Leistungsseiten', text: 'Eine eigene Seite für jede Leistung, die Sie anbieten. Sie beantwortet die Fragen der Suchenden und führt zu Anruf und Termin.' },
   { label: 'STADTTEIL', title: 'Stadtteil und Stadt', text: 'Nur, wenn es über die Gegend wirklich etwas zu sagen gibt. Kopien mit ausgetauschtem Ortsnamen schreiben wir nicht.' },
   { label: 'RATGEBER', title: 'Ratgeberartikel', text: 'Sie erreichen Menschen mit einer Informationsfrage früh und führen sie zur Leistungsseite. Ratgeber kommen erst, wenn die Leistungsseiten stehen.' },
-  { label: 'FREIGABE', title: 'Fachliche Freigabe', text: 'Der Entwurf kommt von uns, die fachliche Freigabe von Ihnen. Für Kanzleien und Praxen schreiben wir sachlich und mit Blick auf das jeweilige Berufsrecht.' },
+  { label: 'PRÜFUNG', title: 'Geprüfte Formulierungen', text: 'Die Angaben zu Ihrem Unternehmen kommen von Ihnen, Text und Prüfung von uns. Für Kanzleien und Praxen schreiben wir sachlich und prüfen am jeweiligen Berufsrecht.' },
 ];
 
 const toc = [
@@ -24,7 +24,7 @@ const toc = [
 const faq = [
   {
     q: 'Wer schreibt die Inhalte?',
-    a: 'Recherche und Entwurf übernehmen wir, die fachliche Richtigkeit geben Sie frei. Bei Kanzleien und Praxen geht keine Seite ohne Ihre fachliche Freigabe online.',
+    a: 'Die Texte schreiben wir; die Angaben zu Ihrem Unternehmen, etwa Leistungen, Schwerpunkte und Öffnungszeiten, bekommen wir von Ihnen. Die Formulierungen prüfen wir an offiziellen Quellen (Gesetze, Berufsrecht) und mit Semrush und veröffentlichen sie. Formulierungen, bei denen wir unsicher sind, verwenden wir nicht.',
   },
   {
     q: 'Wie viele Inhalte braucht es pro Monat?',
@@ -45,7 +45,7 @@ const faq = [
   locale={locale}
   route="services/content"
   title="SEO-Texte schreiben lassen: Content-Erstellung | Wiserrise"
-  description="SEO-Texte für Praxen, Kanzleien und Betriebe: erst Leistungsseiten, dann Stadtteilseiten und Ratgeber. Online geht nur, was Sie fachlich freigegeben haben."
+  description="SEO-Texte für Praxen, Kanzleien und Betriebe: erst Leistungsseiten, dann Stadtteilseiten und Ratgeber. Geprüft an Berufsrecht und offiziellen Quellen."
   eyebrow="LEISTUNG · CONTENT-ERSTELLUNG"
   h1="Mit SEO-Content die fehlenden Seiten Ihrer Website ergänzen."
   crumb="Content-Erstellung"
@@ -174,7 +174,7 @@ const faq = [
     Werbung für Behandlungen unterliegt in Deutschland dem Heilmittelwerbegesetz (HWG) und dem Berufsrecht Ihrer Kammer.
     Wir schreiben deshalb sachlich: keine Heilversprechen, keine Garantie für einen Behandlungserfolg, keine
     irreführenden Vorher-nachher-Vergleiche und keine Werbung für verschreibungspflichtige Arzneimittel gegenüber
-    Patienten. Jeder Text geht vor der Veröffentlichung durch diesen Filter und braucht Ihre Freigabe. Das ist eine
+    Patienten. Jeder Text geht vor der Veröffentlichung durch diesen Filter. Das ist eine
     allgemeine Information und keine Rechtsberatung; maßgeblich sind die Vorgaben und die Auslegung durch Ihre Kammer.
   </p>
 
@@ -203,8 +203,9 @@ const faq = [
       <a href={p('services/on-page-seo')} style="white-space: nowrap;">Onpage-SEO</a>.
     </li>
     <li>
-      <strong>Schreiben und Freigabe.</strong> Den Entwurf schreiben wir, die Angaben zu Ihrem Unternehmen und Ihrer
-      Arbeit geben Sie frei.
+      <strong>Schreiben und Prüfung.</strong> Die Angaben zu Ihrem Unternehmen und Ihrer Arbeit bekommen wir von Ihnen,
+      den Text schreiben wir. Die Formulierungen prüfen wir an offiziellen Quellen und mit Semrush; was uns unsicher
+      erscheint, verwenden wir nicht.
     </li>
     <li>
       <strong>Veröffentlichung.</strong> Wir stellen die Seite online, binden sie in die internen Links ein und nehmen sie

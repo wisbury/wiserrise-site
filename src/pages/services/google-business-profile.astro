@@ -8,7 +8,7 @@ const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 const features = [
   { label: 'CATEGORY', title: 'The right primary category', text: 'The first field that tells Google what you do. We look at your competitors’ categories and set yours accordingly.' },
   { label: 'SERVICES', title: 'Service list', text: 'We list every service you offer under the name customers search for. We use the same names as the service pages on your site.' },
-  { label: 'REVIEWS', title: 'Review flow', text: 'We set up a routine for asking for reviews: regularly, one customer at a time, no incentives, no picking. We reply to every review that comes in.' },
+  { label: 'REVIEWS', title: 'Review flow', text: 'We set up a routine for asking for reviews: regularly, one customer at a time, no incentives, no picking. We reply to every review that comes in; replies to 1- and 2-star reviews go to you for approval first.' },
   { label: 'POSTS', title: 'Posts and photos', text: 'New services, offers, the team and the premises. We keep the profile alive with recent posts and real photos.' },
 ];
 
@@ -152,7 +152,7 @@ const faq = [
   <p>
     We set up a routine for asking for reviews: regularly, one customer at a time (no bulk sends), with no incentives like
     gifts or discounts. Picking only the customers you think are satisfied breaks Google’s rules, so we don’t pick. We
-    reply to every review that comes in. The content of a review matters as much as the count and the rating: the service and district a customer mentions
+    reply to every review that comes in; replies to 1- and 2-star reviews come to you for approval before they go live. The content of a review matters as much as the count and the rating: the service and district a customer mentions
     are an extra signal for Google.
   </p>
 

@@ -9,7 +9,7 @@ const features = [
   { label: 'SERVICE', title: 'Service pages', text: 'A separate page for every service you offer. It answers the searcher’s questions and leads them to a call or a booking.' },
   { label: 'DISTRICT', title: 'District and city', text: 'Opened only when there’s something real to say about that area. We don’t write copies with the city name swapped.' },
   { label: 'GUIDE', title: 'Guide articles', text: 'They catch people looking for information early and send them to the service page. We don’t move on to guides before the service pages are done.' },
-  { label: 'APPROVAL', title: 'Expert approval', text: 'The draft comes from us, the sign-off on accuracy from you. On legal and health sites we write to that profession’s advertising rules.' },
+  { label: 'ACCURACY', title: 'Checked wording', text: 'The facts come from you, the copy from us. We check the wording against official sources and Semrush; on legal and health sites we write to that profession’s advertising rules.' },
 ];
 
 const toc = [
@@ -24,7 +24,7 @@ const toc = [
 const faq = [
   {
     q: 'Who writes the content?',
-    a: 'We do the research and the draft, and you approve the accuracy of the professional information. On legal and health sites no page goes live without expert approval.',
+    a: 'We do. We take the facts about your business from you, do the research, write the copy, check the wording against official sources (regulations, professional rules) and Semrush, and publish it. We don’t use wording we’re unsure about. Replies to 1- and 2-star reviews are the exception: they come to you for approval before they go live.',
   },
   {
     q: 'How many pieces of content do I need per month?',
@@ -45,7 +45,7 @@ const faq = [
   locale={locale}
   route="services/content"
   title="SEO Content Production | Wiserrise"
-  description="SEO content for local business sites: service pages first, then district pages and guides built on real information. Published with expert approval."
+  description="SEO content for local business sites: service pages first, then district pages and guides built on real information. Wording checked against official sources."
   eyebrow="SERVICE · CONTENT PRODUCTION"
   h1="Complete your missing pages with SEO content production."
   crumb="Content production"
@@ -167,7 +167,7 @@ const faq = [
 
   <p>
     Health has similar limits. We don’t write treatment guarantees or before-and-after promises. Every text goes through
-    this filter before publication and gets the lawyer’s or the doctor’s approval.
+    this filter before publication, and we don’t use wording we’re unsure about.
   </p>
 
   <p>
@@ -193,8 +193,8 @@ const faq = [
       <a href={p('services/on-page-seo')} style="white-space: nowrap;">on-page SEO</a> work.
     </li>
     <li>
-      <strong>Writing and approval.</strong> We write the draft, and you approve the accuracy of the details about your
-      business.
+      <strong>Writing and checking.</strong> We take the details about your business from you, write the copy and check
+      the wording against official sources and Semrush.
     </li>
     <li>
       <strong>Publishing.</strong> We put the page on the site, link it in and add it to the sitemap. If we can’t manage the

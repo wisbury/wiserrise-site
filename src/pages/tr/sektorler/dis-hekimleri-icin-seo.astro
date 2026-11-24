@@ -9,7 +9,7 @@ const features = [
   { label: 'ACİL', title: 'Ağrıyla arayan hasta', text: 'Gece dişi zonklayan hasta haritaya bakar ve doğrudan arar. Saatleriniz ve telefonunuz o anda doğru olmalı.' },
   { label: 'TEDAVİ', title: 'Tedavi sayfaları', text: 'İmplant ya da şeffaf plak düşünen hasta haftalarca okur. Her ağırlıklı tedaviye onun sorularını cevaplayan sayfa yazarız.' },
   { label: 'YORUM', title: 'Mahremiyete uygun yorum', text: 'Yorum isteriz ama karşılığında hiçbir şey vermeyiz. Yanıtlarda hastanın hangi tedaviyi aldığını hiç anmayız.' },
-  { label: 'KURAL', title: 'Tanıtım sınırları', text: 'Önce/sonra görseli, kampanya ve “en iyi” iddiası yazmayız. Yazdığımız her metni yayından önce size onaylatırız.' },
+  { label: 'KURAL', title: 'Tanıtım sınırları', text: 'Önce/sonra görseli, kampanya ve “en iyi” iddiası yazmayız. Her ifadeyi yayından önce resmî kaynaklarla kontrol ederiz.' },
 ];
 
 const toc = [
@@ -161,7 +161,8 @@ const faq = [
   <div class="callout">
     <p>
       <strong>Bu sayfa hukuki görüş değildir.</strong> Kuralların güncel yorumu için bağlı olduğunuz il sağlık müdürlüğü
-      ve meslek odanız esastır. Yazdığımız her metni yayına almadan önce onayınıza sunarız.
+      ve meslek odanız esastır. Metni biz yazarız; kliniğinize dair bilgileri sizden alır, ifadeleri bu kaynaklarla ve
+      Semrush’la kontrol edip yayına alırız, tereddüt ettiğimiz ifadeyi kullanmayız.
     </p>
   </div>
 
@@ -203,7 +204,8 @@ const faq = [
   </p>
 
   <p>
-    Olumsuz yorumda önce hastaya telefonla ulaşılır, sonra savunmaya geçmeyen kısa bir yanıt yazılır. Gelen yorumları
+    Olumsuz yorumda önce hastaya telefonla ulaşılır, sonra savunmaya geçmeyen kısa bir yanıt yazılır; 1-2 yıldızlı
+    yorumlara yazdığımız yanıtlar yayından önce onayınıza gelir. Gelen yorumları
     sitede “hastalarımız ne diyor” başlığıyla reklam gibi sergilemeyin. Yorum isteme akışını
     <a href={p('guides/more-reviews')}>Google yorumlarını artırma rehberinde</a> adım adım anlattık.
   </p>

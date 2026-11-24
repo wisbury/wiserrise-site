@@ -9,7 +9,7 @@ const features = [
   { label: 'HİZMET', title: 'Hizmet sayfaları', text: 'Verdiğiniz her hizmete ayrı bir sayfa. Arayanın sorularını cevaplar, onu telefona ve randevuya götürür.' },
   { label: 'SEMT', title: 'Semt ve şehir', text: 'Yalnız o bölge için söyleyecek gerçek bir şey varsa açılır. Şehir adı değişmiş kopya sayfa yazmayız.' },
   { label: 'REHBER', title: 'Rehber yazılar', text: 'Bilgi arayan kişiyi erken yakalar ve hizmet sayfasına yollar. Hizmet sayfaları bitmeden rehbere geçmeyiz.' },
-  { label: 'ONAY', title: 'Uzman onayı', text: 'Taslak bizden, doğruluk onayı sizden. Avukat ve sağlık sitelerinde metni o mesleğin reklam kurallarına göre yazarız.' },
+  { label: 'KONTROL', title: 'Kaynak kontrolü', text: 'Bilgi sizden, metin bizden. Avukat ve sağlık sitelerinde metni o mesleğin reklam kurallarına göre yazar, resmî kaynaklarla kontrol ederiz.' },
 ];
 
 const toc = [
@@ -24,7 +24,7 @@ const toc = [
 const faq = [
   {
     q: 'İçerikleri kim yazıyor?',
-    a: 'Araştırmayı ve taslağı biz yapıyoruz, meslek bilgisinin doğruluğunu siz onaylıyorsunuz. Hukuk ve sağlık sitelerinde uzman onayı olmadan hiçbir sayfa yayına çıkmıyor.',
+    a: 'Biz yazıyoruz. İşinize dair bilgileri sizden alırız: hangi hizmeti verdiğiniz, uzmanlık alanınız, çalışma saatleriniz. Metni yazar, ifadeleri resmî kaynaklarla (mevzuat, meslek kuralları) ve Semrush’la kontrol edip yayına alırız. Tereddüt ettiğimiz ifadeyi kullanmayız.',
   },
   {
     q: 'Ayda kaç içerik gerekiyor?',
@@ -45,7 +45,7 @@ const faq = [
   locale={locale}
   route="services/content"
   title="SEO İçerik Üretimi | Wiserrise"
-  description="Yerel işletme siteleri için SEO içerik üretimi: önce hizmet sayfaları, sonra gerçek bilgiye dayanan semt sayfaları ve rehberler. Uzman onayıyla yayın."
+  description="Yerel işletme siteleri için SEO içerik üretimi: önce hizmet sayfaları, sonra gerçek bilgiye dayanan semt sayfaları ve rehberler. Resmî kaynak kontrolüyle yayın."
   eyebrow="HİZMET · İÇERİK ÜRETİMİ"
   h1="SEO içerik üretimi ile eksik sayfalarınızı tamamlayın."
   crumb="İçerik üretimi"
@@ -165,7 +165,8 @@ const faq = [
 
   <p>
     Sağlıkta da benzer sınırlar var. Tedavi garantisi ya da önce/sonra vaadi yazmıyoruz. Her metin yayından
-    önce bu süzgeçten geçer ve avukatın ya da hekimin onayını alır.
+    önce bu süzgeçten geçer: ifadeleri mevzuatla, meslek kurallarıyla ve ilgili kurumların sayfalarıyla karşılaştırırız,
+    tereddüt ettiğimiz ifadeyi metne almayız.
   </p>
 
   <p>
@@ -190,7 +191,8 @@ const faq = [
       Bu kısım <a href={p('services/on-page-seo')} style="white-space: nowrap;">on-page SEO</a> işinin parçası.
     </li>
     <li>
-      <strong>Yazım ve onay.</strong> Taslağı biz yazarız, işinize dair bilgilerin doğruluğunu siz onaylarsınız.
+      <strong>Yazım ve kontrol.</strong> İşinize dair bilgileri sizden alır, metni biz yazarız. İfadeleri resmî kaynaklarla ve
+      Semrush’la kontrol ederiz.
     </li>
     <li>
       <strong>Yayın.</strong> Sayfayı siteye biz koyarız, iç linklere bağlar ve sitemap’e ekleriz. Siteyi komple
