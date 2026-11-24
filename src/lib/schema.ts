@@ -82,9 +82,11 @@ const AREA_SERVED: Record<Locale, Record<string, string>[]> = {
     { '@type': 'Country', name: 'Türkiye' },
     { '@type': 'City', name: 'Antalya' },
   ],
+  // The English site is global: United Kingdom, United States, Australia.
   en: [
-    { '@type': 'Country', name: 'Türkiye' },
-    { '@type': 'City', name: 'Antalya' },
+    { '@type': 'Country', name: 'United Kingdom', identifier: 'GB' },
+    { '@type': 'Country', name: 'United States', identifier: 'US' },
+    { '@type': 'Country', name: 'Australia', identifier: 'AU' },
   ],
   de: [{ '@type': 'Country', name: 'Deutschland' }],
 };
@@ -276,7 +278,8 @@ export function organizationNode(locale: Locale) {
     },
     image: `${SITE}${locale === 'tr' ? '/images/og-image-tr.png' : '/images/og-image.png'}`,
     email: CONTACT_EMAIL[locale],
-    telephone: PHONE,
+    // The +90 line is for the Turkish market only; the global English and the German pages carry no phone.
+    ...(locale === 'tr' ? { telephone: PHONE } : {}),
     description: DESCRIPTION[locale],
     // serviceType belongs to Service, not to an organisation; the services are listed here instead.
     hasOfferCatalog: {

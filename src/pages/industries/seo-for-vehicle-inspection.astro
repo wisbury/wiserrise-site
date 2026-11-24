@@ -6,10 +6,10 @@ const locale = 'en' as const;
 const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
-  { label: 'PROXIMITY', title: 'Tight service area', text: 'Customers won’t travel more than a few kilometers for an inspection. So we spend the effort on the area they can really come from.' },
+  { label: 'PROXIMITY', title: 'Tight service area', text: 'Customers won’t travel more than a few miles for an inspection. So we spend the effort on the area they can really come from.' },
   { label: 'PHONE', title: 'Call in one tap', text: 'The decision takes minutes. If your opening hours or your number are wrong, even a good ranking won’t keep the customer.' },
   { label: 'REVIEWS', title: 'A steady flow of reviews', text: 'The services look alike, and reviews are what set you apart. The most natural moment to ask for a review is when you hand over the report.' },
-  { label: 'PHOTOS', title: 'Real photos of your premises', text: 'Customers want to see where they’re leaving their car. Your sign, lift, equipment and waiting area should be visible on the profile.' },
+  { label: 'PHOTOS', title: 'Real photos of your premises', text: 'Customers want to see where they’re leaving their car. Your sign, vehicle lift, equipment and waiting area should be visible on the profile.' },
 ];
 
 const toc = [
@@ -32,7 +32,7 @@ const faq = [
   },
   {
     q: 'Isn’t the profile enough? Do I need a website too?',
-    a: 'Most of the demand comes from the profile, and Google also looks at the website the profile links to. In a district with heavy competition, the profile alone isn’t enough. We manage the website too; if we can’t manage the site completely, we don’t take on the work.',
+    a: 'Most of the demand comes from the profile, and Google also looks at the website the profile links to. In an area with heavy competition, the profile alone isn’t enough. We manage the website too; if we can’t manage the site completely, we don’t take on the work.',
   },
   {
     q: 'When will I see results?',
@@ -45,11 +45,11 @@ const faq = [
   locale={locale}
   route="industries/vehicle-inspection"
   title="SEO for Vehicle Inspection and Google Maps | Wiserrise"
-  description="Local SEO for vehicle inspection firms: showing up on the map in a tight service area, customers who call, reviews and premises photos."
+  description="Local SEO for independent vehicle inspection and pre-purchase inspection firms: showing up on the map in a tight service area, customers who call, reviews and premises photos."
   eyebrow="INDUSTRY · VEHICLE INSPECTION"
-  h1="SEO for vehicle inspection: the race is decided within a few kilometers."
+  h1="SEO for vehicle inspection: the race is decided within a few miles."
   crumb="Vehicle inspection"
-  lede="SEO for vehicle inspection means showing up on the map among the first few firms near the car or the buyer. Customers won’t cross the city, and they decide within a few minutes. That’s why the weight of the work sits on your Google Business Profile, where customers call you from, and on your reviews."
+  lede="SEO for independent vehicle inspection means showing up on the map among the first few firms near the car or the buyer when someone wants a pre-purchase inspection. Customers won’t cross the city, and they decide within a few minutes. That’s why the weight of the work sits on your Google Business Profile, where customers call you from, and on your reviews."
   serviceName="SEO for Vehicle Inspection"
   breadcrumb={[
     { label: 'Home', href: '/' },
@@ -75,13 +75,13 @@ const faq = [
   </p>
 
   <p>
-    This means your ranking can change completely within a few kilometers. Say you rank first right outside your premises;
-    on the phone of a buyer 4 km away you might not even be in the top twenty.
+    This means your ranking can change completely within a few miles. Say you rank first right outside your premises;
+    on the phone of a buyer a couple of miles away you might not even be in the top twenty.
   </p>
 
   <p>
     Vehicle inspection is one of the <a href={p('industries')}>industries we work in</a> where proximity matters most. So
-    we spend the effort on the few kilometers around you that customers can really come from. Ranking first on the other
+    we spend the effort on the few miles around you that customers can really come from. Ranking first on the other
     side of the city does nothing for you.
   </p>
 
@@ -122,9 +122,9 @@ const faq = [
           <td>Your location and profile</td>
         </tr>
         <tr>
-          <td><strong>District</strong></td>
-          <td>“car inspection Nilüfer”</td>
-          <td>Your profile and the district page on your website</td>
+          <td><strong>Area</strong></td>
+          <td>“pre-purchase inspection Parramatta”</td>
+          <td>Your profile and the area page on your website</td>
         </tr>
         <tr>
           <td><strong>Price</strong></td>
@@ -157,7 +157,7 @@ const faq = [
     <li>A correctly written phone number that calls in one tap</li>
     <li>The right location and directions that bring customers to your sign</li>
     <li>Your packages and the items you check, in the services section</li>
-    <li>Real photos of your premises: exterior and sign, lift, equipment, waiting area</li>
+    <li>Real photos of your premises: exterior and sign, vehicle lift, equipment, waiting area</li>
   </ul>
 
   <p>
@@ -218,13 +218,13 @@ const faq = [
       <strong>Price page.</strong> Even if you don’t write an exact figure, explain what determines the price.
     </li>
     <li>
-      <strong>District page.</strong> Only for districts you really serve and have something to say about.
+      <strong>Area page.</strong> Only for areas you really serve and have something to say about.
     </li>
   </ul>
 
   <p>
-    Our line on district pages is clear: we don’t open template pages for every district in the city. Google counts copies
-    with only the district name changed as “doorway” pages, and they harm the site. We write real district pages around
+    Our line on area pages is clear: we don’t open template pages for every neighborhood in the city. Google counts copies
+    with only the area name changed as “doorway” pages, and they harm the site. We write real area pages around
     your premises as part of <a href={p('services/content')}>content production</a>.
   </p>
 

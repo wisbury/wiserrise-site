@@ -5,8 +5,9 @@ import { COMPANY_LEGAL_NAME } from '../i18n/ui';
 import { COMPANY_ADDRESS_INTL, KVKK_EMAIL } from '../data/legal';
 
 /**
- * English translation of the KVKK Art. 10 privacy notice (/kvkk-aydinlatma-metni): site visits, the analysis form,
- * the newsletter and correspondence. The client portal has its own notice: app.wiserrise.com/gizlilik.
+ * Jurisdiction-neutral English privacy notice for the global (UK/US/AU) site. Same facts as the Turkish KVKK notice
+ * (/kvkk-aydinlatma-metni): site visits, the analysis form, the newsletter and correspondence. The client portal has its
+ * own notice: app.wiserrise.com/gizlilik.
  *
  * The text depends on the site: if a form field, service or tracking code is added, update the tables here,
  * the Turkish source and the cookie policy pages too.
@@ -18,52 +19,51 @@ const mail = `mailto:${KVKK_EMAIL}`;
   locale="en"
   route="legal/kvkk"
   title="Privacy Notice | Wiserrise"
-  description="Which personal data we process through wiserrise.com and why, who we share it with, and your rights under Turkey’s data protection law (KVKK)."
+  description="Which personal data we process through wiserrise.com and why, who we share it with, how long we keep it and what rights you have."
   heading="Privacy Notice"
 >
   <p class="v2-legal-lead">
     This notice explains how your personal data is processed when you visit wiserrise.com, fill in the free analysis form,
-    subscribe to the newsletter or write to us, in accordance with Article 10 of Turkey’s Personal Data Protection Law
-    No. 6698 (Kişisel Verilerin Korunması Kanunu, “KVKK”). For the client portal, the
+    subscribe to the newsletter or write to us. For the client portal, the
     <a href="https://app.wiserrise.com/gizlilik">portal privacy notice</a> applies.
   </p>
 
   <h2>1. Data controller</h2>
   <p>
     The data controller is {COMPANY_LEGAL_NAME}, the owner of the Wiserrise brand. Address: {COMPANY_ADDRESS_INTL}.
-    For questions and applications concerning the KVKK: <a href={mail}>{KVKK_EMAIL}</a>.
+    For questions and requests about your personal data: <a href={mail}>{KVKK_EMAIL}</a>.
   </p>
 
   <h2>2. What data we process and why</h2>
   <div class="v2-legal-table" tabindex="0" role="region" aria-label="Data processed, purposes and legal grounds">
     <table>
       <thead>
-        <tr><th>When</th><th>What data</th><th>Purpose</th><th>Legal ground (KVKK Art. 5)</th></tr>
+        <tr><th>When</th><th>What data</th><th>Purpose</th><th>Legal basis</th></tr>
       </thead>
       <tbody>
         <tr>
           <td>When you fill in the free analysis form</td>
           <td>Full name, business name, email, phone, website, Google Maps or Instagram link, the services you are interested in, when you would like to start</td>
           <td>To assess your request, prepare the analysis and send it to you, and discuss the service with you</td>
-          <td>Processing is directly related to the formation of a contract (Art. 5/2-c); legitimate interest in keeping a record of the request (Art. 5/2-f)</td>
+          <td>Steps taken at your request before entering into a contract; our legitimate interest in keeping a record of the request</td>
         </tr>
         <tr>
           <td>When you subscribe to the newsletter</td>
           <td>Email address, subscription consent</td>
           <td>To send tips and announcement emails</td>
-          <td>Explicit consent (Art. 5/1)</td>
+          <td>Your consent</td>
         </tr>
         <tr>
           <td>When you write to us or call us</td>
           <td>Your contact details, the content of the correspondence</td>
           <td>To answer your question and follow up on your request</td>
-          <td>Processing is directly related to the formation of a contract (Art. 5/2-c); legitimate interest (Art. 5/2-f)</td>
+          <td>Steps taken at your request before entering into a contract; our legitimate interest in answering you</td>
         </tr>
         <tr>
           <td>When you visit the site</td>
           <td>IP address, browser and device information, page opened, time of the request</td>
           <td>To serve the site, keep it secure and keep page view statistics</td>
-          <td>Legitimate interest (Art. 5/2-f)</td>
+          <td>Our legitimate interest in running a secure site</td>
         </tr>
       </tbody>
     </table>
@@ -93,8 +93,8 @@ const mail = `mailto:${KVKK_EMAIL}`;
     <li>Competent public authorities and institutions, and courts, where required by law.</li>
   </ul>
   <p>
-    Because the data controller and most of these providers are located outside Turkey, your data is transferred abroad.
-    These transfers are subject to the rules in Article 9 of the KVKK.
+    The data controller and most of these providers are located in the United States, so your data is transferred to
+    and processed in the United States, wherever you are when you use the site.
   </p>
 
   <h2>5. How long we keep it</h2>
@@ -114,25 +114,31 @@ const mail = `mailto:${KVKK_EMAIL}`;
   <p>When the period ends, the data is deleted or anonymized.</p>
 
   <h2>6. Your rights</h2>
-  <p>Under Article 11 of the KVKK, you have the right to:</p>
+  <p>
+    The scope of your rights depends on the law of the country where you live (for example the UK GDPR, certain US state
+    privacy laws or the Australian Privacy Act 1988), so some of the rights below may not apply to you. Depending on that
+    law, you may have the right to:
+  </p>
   <ul>
-    <li>find out whether your personal data is processed and, if it is, request information about it;</li>
-    <li>find out the purpose of the processing and whether the data is used in line with that purpose;</li>
-    <li>know the third parties in Turkey or abroad to whom it is transferred;</li>
+    <li>find out whether we process your personal data and get access to it, including the purpose of the processing and who we share it with;</li>
     <li>ask for it to be corrected if it is incomplete or inaccurate;</li>
-    <li>ask for it to be deleted or destroyed under the conditions set out in Article 7 of the KVKK;</li>
-    <li>ask for these corrections and deletions to be notified to the third parties to whom the data was transferred;</li>
-    <li>object to an outcome against you that results solely from analysis by automated systems;</li>
-    <li>claim compensation for damage you suffered because of unlawful processing.</li>
+    <li>ask for it to be deleted;</li>
+    <li>object to the processing or ask us to restrict it;</li>
+    <li>receive the data you gave us in a commonly used format and have it sent to another provider (portability);</li>
+    <li>ask for corrections and deletions to be passed on to the parties we shared the data with;</li>
+    <li>object to a decision against you that results solely from automated processing;</li>
+    <li>withdraw your consent where processing is based on it (see section 8);</li>
+    <li>complain to a data protection authority and, where the law allows, claim compensation for damage caused by unlawful processing.</li>
   </ul>
 
-  <h2>7. How to apply</h2>
+  <h2>7. How to make a request</h2>
   <p>
-    You can send your application to <a href={mail}>{KVKK_EMAIL}</a> from the email address you previously gave us, or in
+    You can send your request to <a href={mail}>{KVKK_EMAIL}</a> from the email address you previously gave us, or in
     writing to the address in section 1. State your full name, contact details and request; we may ask for additional
-    information to verify your identity. We conclude your application within 30 days at the latest and charge no fee
-    unless the process involves a separate cost; if your application is rejected or left unanswered, you retain the right
-    to file a complaint with the Personal Data Protection Board (Kişisel Verileri Koruma Kurulu).
+    information to verify your identity. We respond within 30 days at the latest and charge no fee unless the process
+    involves a separate cost and the law that applies to you allows a fee. If your request is rejected or left
+    unanswered, you can complain to the data protection authority in your country (for example the ICO in the UK or the
+    OAIC in Australia).
   </p>
 
   <h2>8. Withdrawing newsletter consent</h2>

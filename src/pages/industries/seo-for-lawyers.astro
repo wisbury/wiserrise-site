@@ -8,12 +8,12 @@ const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 const features = [
   { label: 'CATEGORY', title: 'The right primary category', text: 'Your primary profile category is Lawyer. Mediation and case types stay secondary, otherwise you drop back in the main search.' },
   { label: 'PAGES', title: 'Case type pages', text: 'A separate page for every area you focus on: process, duration, documents. A three-paragraph list of areas doesn’t show up in search.' },
-  { label: 'CONTENT', title: 'Informative articles', text: 'Clear answers to questions like “How long does a divorce case take?”. The regulation allows this, and most competitors leave it empty.' },
-  { label: 'LANGUAGE', title: 'Language that respects the ban', text: 'We don’t write superiority claims, success rates, promises of winning or special offers. We build every sentence to the limits of the regulation.' },
+  { label: 'CONTENT', title: 'Informative articles', text: 'Clear answers to questions like “How long does a divorce case take?”. Professional rules generally treat this as information, and most competitors leave it empty.' },
+  { label: 'LANGUAGE', title: 'Language that respects the rules', text: 'We don’t write superiority claims, success rates, promises of winning or special offers. We build every sentence to the limits of the professional rules.' },
 ];
 
 const toc = [
-  { id: 'yasak', label: 'The advertising ban and SEO' },
+  { id: 'yasak', label: 'Advertising rules and SEO' },
   { id: 'kategori', label: 'Choosing the profile category' },
   { id: 'arama', label: 'How do clients search?' },
   { id: 'sayfa', label: 'Which pages on the website?' },
@@ -24,16 +24,16 @@ const toc = [
 
 const faq = [
   {
-    q: 'Does SEO work violate the advertising ban?',
-    a: 'On its own, it doesn’t. The ban covers advertising and solicitation aimed at getting work; informative content that describes your firm and your practice areas falls outside it. The risk comes from the wording, and we never use that wording.',
+    q: 'Does SEO work break the advertising rules for lawyers?',
+    a: 'On its own, it doesn’t. The rules mainly target misleading claims and improper solicitation; informative content that describes your firm and your practice areas is a different thing. The risk comes from the wording, and we never use risky wording. The rules differ by country and state, so check anything you’re unsure about with your own regulator or bar.',
   },
   {
     q: 'Should I ask clients for Google reviews?',
-    a: 'Yes, we do ask clients for reviews: when each matter is closed, one client at a time. No bulk sends, no incentives such as gifts or discounts, and no ready-made review text; we leave out anything that comes close to an inducement. We don’t quote client reviews on your site and don’t use star-rating markup. When a review comes in, we write a short reply without going into the case.',
+    a: 'Yes, we do ask clients for reviews: when each matter is closed, one client at a time. No bulk sends, no incentives such as gifts or discounts, and no ready-made review text; we leave out anything that comes close to an inducement. We don’t quote client reviews on your site and don’t use star-rating markup. When a review comes in, we write a short reply without going into the case. Some US states and other jurisdictions have their own rules on asking clients for reviews, so check yours with your bar or law society.',
   },
   {
     q: 'Can I list my practice areas on the website?',
-    a: 'You can, listing your areas counts as information. Watch out for words that present an area like a title or imply superiority. We write the area names in plain language that makes no claims.',
+    a: 'You can, listing your areas counts as information. Watch out for words that present an area like a title (such as “specialist” where you hold no formal certification) or imply superiority. We write the area names in plain language that makes no claims.',
   },
   {
     q: 'When will I see results?',
@@ -46,11 +46,11 @@ const faq = [
   locale={locale}
   route="industries/law"
   title="SEO for Lawyers and Google Maps | Wiserrise"
-  description="SEO for law firms that respects Turkey’s advertising ban: the right profile category, case type pages and informative content. Weekly report."
+  description="SEO for law firms that respects the advertising rules for lawyers: the right profile category, case type pages and informative content. Weekly report."
   eyebrow="INDUSTRY · LAWYERS"
-  h1="SEO for lawyers: become visible without advertising."
+  h1="SEO for lawyers: become visible by informing, not advertising."
   crumb="Lawyers"
-  lede="SEO for lawyers means building your profile and website with informative content so your firm shows up on the map and in the results for searches like “divorce lawyer Mersin”. Turkey’s advertising ban for lawyers rules out superiority claims and promises, and it allows information. We run the whole job inside that line."
+  lede="SEO for lawyers means building your profile and website with informative content so your firm shows up on the map and in the results for searches like “divorce lawyer Manchester”. The advertising rules for lawyers, which differ by country and state, are wary of superiority claims and promises and leave room for information. We run the whole job inside that line."
   serviceName="SEO for Lawyers"
   breadcrumb={[
     { label: 'Home', href: '/' },
@@ -60,23 +60,23 @@ const faq = [
   toc={toc}
   faq={faq}
   related={[
-    { label: 'Google Business Profile Management', href: p('services/gbp'), text: 'We set up the category and service structure in language that fits the regulation.' },
+    { label: 'Google Business Profile Management', href: p('services/gbp'), text: 'We set up the category and service structure in language that fits your professional rules.' },
     { label: 'Content Production', href: p('services/content'), text: 'We write case type pages and informative articles around your firm’s practice areas.' },
     { label: 'Local SEO', href: p('services/local-seo'), text: 'We fix your profile and your website together for the race on the map.' },
   ]}
   ctaLabel="Get a free analysis"
   ctaHref="/#contact"
 >
-  <h2 id="yasak">Can you do SEO under an advertising ban?</h2>
+  <h2 id="yasak">Can you do SEO within the advertising rules for lawyers?</h2>
 
   <p>
-    Yes. Article 55 of Turkey’s Attorneys’ Act (Avukatlık Kanunu, Law No. 1136) bans any attempt by a lawyer to get work
-    that could count as advertising, and the details are set by the Turkish Bar Association’s advertising regulation (TBB
-    Reklam Yasağı Yönetmeliği).
+    Yes. Lawyer advertising is regulated almost everywhere, and the rules differ by country and state. In England and
+    Wales the SRA sets them, in the US each state has its own rules, many based on the ABA Model Rules 7.1-7.3, and in
+    Australia they come from state law and the Legal Profession Uniform Law where it applies.
   </p>
 
   <p>
-    What’s banned is praise and solicitation. Describing who your firm is and which areas it works in counts as
+    What these rules are wary of is misleading claims, praise and solicitation. Describing who your firm is and which areas it works in counts as
     information, and the work we call SEO makes sure that information can be found on Google. The risk comes from the
     sentences written on the page.
   </p>
@@ -102,7 +102,7 @@ const faq = [
         </tr>
         <tr>
           <td>Client reviews, thank-you letters</td>
-          <td>Bar association, registration number and professional background</td>
+          <td>Where you’re admitted, your registration or license number and professional background</td>
         </tr>
         <tr>
           <td>Discounts, special offers, free consultation offers</td>
@@ -119,7 +119,7 @@ const faq = [
   <p>
     Law is the most restricted of the <a href={p('industries')}>industries we work in</a>. If you ask us, this restriction
     works in favor of the firm that does its job properly. Some rival firms write risky copy without ever reading the
-    regulation, and others write nothing at all out of fear.
+    rules, and others write nothing at all out of fear.
   </p>
 
   <p>
@@ -129,8 +129,8 @@ const faq = [
 
   <div class="callout">
     <p>
-      <strong>Nothing on this page is legal advice.</strong> Your bar association has the final word on interpreting the
-      regulation. Ask your bar before publishing any wording you’re unsure about.
+      <strong>Nothing on this page is legal advice.</strong> Your own regulator, bar or law society has the final word on
+      interpreting the rules. Ask them before publishing any wording you’re unsure about.
     </p>
   </div>
 
@@ -159,12 +159,12 @@ const faq = [
 
   <ul>
     <li>
-      <strong>Looking for information.</strong> “How long does a divorce case take”, “how is severance pay calculated”.
+      <strong>Looking for information.</strong> “How long does a divorce take”, “how is severance pay calculated”.
       They’re trying to understand their situation and haven’t started looking for a lawyer yet. These searches rank
       independently of the city.
     </li>
     <li>
-      <strong>Looking for a lawyer.</strong> “Divorce lawyer Mersin”, “criminal lawyer near me”. They’re about to decide.
+      <strong>Looking for a lawyer.</strong> “Divorce lawyer Denver”, “criminal lawyer near me”. They’re about to decide.
       In these searches the map comes first, and proximity to the searcher decides.
     </li>
   </ul>
@@ -189,12 +189,12 @@ const faq = [
     <li>A separate page for each main practice area: process, duration, required documents, frequently asked questions</li>
     <li>A practice areas page that brings these pages together</li>
     <li>Informative articles that link to the relevant area page</li>
-    <li>Lawyer credentials: bar association, registration number, professional background</li>
+    <li>Lawyer credentials: where you’re admitted, registration or license number, professional background</li>
     <li>LegalService structured data that matches the details on your Google profile exactly</li>
   </ul>
 
   <p>
-    The credentials page does two jobs. It gathers the information the regulation allows in one place, and it shows Google
+    The credentials page does two jobs. It gathers plain factual information about you in one place, and it shows Google
     that a real, registered lawyer stands behind the site. We write these pages around your firm’s areas as part of
     <a href={p('services/content')}>content production</a>.
   </p>
@@ -207,7 +207,8 @@ const faq = [
 
   <p>
     There are two problems. Asking for reviews with a gift or a ready-made text comes very close to an inducement aimed
-    at getting work. In criminal and family law, clients don’t want to write about the service they
+    at getting work, and some US states and other jurisdictions have specific rules on asking clients for reviews. In
+    criminal and family law, clients don’t want to write about the service they
     received where everyone can see it, and that’s a line to respect.
   </p>
 
@@ -216,7 +217,8 @@ const faq = [
     incentives such as gifts or discounts, and no ready-made review text. We don’t quote client reviews on your site and
     don’t use star-rating markup. A complete profile and in-depth area pages carry the rest. When a review arrives, we
     write a short reply without going into the case at all. Replies to 1- and 2-star reviews come to you for approval
-    before they go live.
+    before they go live. Before we start, check the rules on review requests with your own bar or law society; if they
+    rule something out, we leave it out.
   </p>
 
   <div class="callout">
@@ -250,7 +252,7 @@ const faq = [
 
   <p>
     We’re careful with city pages. Opening a page for a city where you don’t actually take cases runs into Google’s rule on
-    duplicate pages, and it’s risky under the regulation too. So we open them only for places you really work in, with
+    duplicate pages, and it can be risky under professional rules too. So we open them only for places you really work in, with
     content specific to that place.
   </p>
 

@@ -7,7 +7,7 @@ const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 
 const features = [
   { label: 'VIDEO', title: 'One take, three proofs', text: 'In a single uninterrupted take, show the location, that you do the work and that you run the business. Proof of management is the one people forget most.' },
-  { label: 'POSTCARD', title: 'Request it once', text: 'The postcard arrives within 1-3 weeks. If you request a new one while the first is on its way, the first card’s code becomes invalid and the wait gets longer.' },
+  { label: 'POSTCARD', title: 'Request it once', text: 'Postcards take time to arrive, and delivery times vary by country. If you request a new one while the first is on its way, the first card’s code becomes invalid and the wait gets longer.' },
   { label: 'APPEAL', title: 'Fix the cause first', text: 'Don’t submit a review request for a suspended profile before fixing the cause. In the request, write what you fixed and attach documents.' },
   { label: 'DUPLICATE', title: 'Don’t open a new profile', text: 'A second listing for the same business counts as a duplicate and gets suspended too. In every case, work through the existing profile.' },
 ];
@@ -24,7 +24,7 @@ const toc = [
 const faq = [
   {
     q: 'How long does verification take?',
-    a: 'Video verification is decided within a few days, sometimes within a few hours. A postcard can take 1-3 weeks in Turkey. If a video review has gone past two weeks, write to Google support.',
+    a: 'Video verification is decided within a few days, sometimes within a few hours. A postcard takes longer, and delivery times vary by country. If a video review has gone past two weeks, write to Google support.',
   },
   {
     q: 'Is my profile visible while verification is in progress?',
@@ -98,8 +98,8 @@ const faq = [
       <strong>Operations.</strong> Go inside and show that you really do the work: equipment, workspace, stock, team.
     </li>
     <li>
-      <strong>Management.</strong> Show that the business belongs to you: access to the cash register, your tax
-      certificate, an invoice, keys or business documents.
+      <strong>Management.</strong> Show that the business belongs to you: access to the cash register, your business
+      license or registration, a utility bill, keys or business documents.
     </li>
   </ol>
 
@@ -123,13 +123,14 @@ const faq = [
   <h2 id="kart">What should you do if the postcard doesn’t arrive?</h2>
 
   <p>
-    Check your address line first, then request a new one only once. In Turkey, the postcard arrives within 1-3 weeks.
+    Check your address line first, then request a new one only once. Delivery times vary by country, so wait out the
+    period Google shows you.
   </p>
 
   <p>
-    Say your accounting office is on the third floor of an apartment building in Karşıyaka. If the address lacks the
-    apartment and floor number, if the building has no mailbox, or if the doorman or a neighbor took the postcard, it may
-    never reach you.
+    Say your accounting office is on the third floor of an office building in Adelaide. If the address lacks the suite
+    and floor number, if the building has no mailbox, or if reception or a neighbor took the postcard, it may never reach
+    you.
   </p>
 
   <p>
@@ -140,8 +141,8 @@ const faq = [
 
   <p>
     If the second postcard doesn’t arrive either, ask Google support for a different method. Look at your address format
-    again too: when the Turkish address structure (neighborhood, street, housing complex, block) doesn’t fit Google’s
-    form, the postcard can’t be delivered.
+    again too: when parts like the suite, unit or floor number don’t fit Google’s form and get left out, the postcard
+    can’t be delivered.
   </p>
 
   <h2 id="askiya">What should you do if your profile is suspended?</h2>
@@ -158,8 +159,8 @@ const faq = [
       the same address. Appealing without fixing only drags the process out.
     </li>
     <li>
-      <strong>Submit a review request.</strong> Write clearly what you fixed and attach the documents you have: tax
-      certificate, lease agreement, a photo of the sign.
+      <strong>Submit a review request.</strong> Write clearly what you fixed and attach the documents you have: business
+      license or registration, lease agreement, a utility bill, a photo of the sign.
     </li>
     <li>
       <strong>Wait.</strong> The review takes anywhere from days to weeks. Don’t make any other changes to the profile
@@ -185,7 +186,7 @@ const faq = [
   </p>
 
   <p>
-    This process can take weeks. If you have a tax certificate or a trade registry record, attach it from the start; it
+    This process can take weeks. If you have a business license or a company registration record, attach it from the start; it
     speeds things up. Don’t try to get around the problem by opening a new profile, because that doesn’t work here either.
   </p>
 

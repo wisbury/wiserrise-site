@@ -8,7 +8,7 @@ const p = (key: Parameters<typeof routePath>[1]) => routePath(locale, key);
 const features = [
   { label: 'CATEGORY', title: 'The right business type', text: 'To Google, a medical aesthetics center and a beauty salon are separate businesses. With the wrong category, people searching for the procedure struggle to find you.' },
   { label: 'DECISION', title: 'Long research', text: 'Patients read for weeks before deciding. We write pages for every step, from the first search where they describe their problem to the last one where they choose a clinic.' },
-  { label: 'PRICE', title: 'Price questions', text: 'Promotion through price is restricted, yet a page that leaves the question unanswered sends the patient to a competitor. We explain what determines the price.' },
+  { label: 'PRICE', title: 'Price questions', text: 'Price advertising is a sensitive area in health, yet a page that leaves the question unanswered sends the patient to a competitor. We explain what determines the price.' },
   { label: 'RULES', title: 'Promotion limits', text: 'We don’t use before/after images, special offers or claims like “the most natural result”. We never use wording we’re unsure about.' },
 ];
 
@@ -27,16 +27,16 @@ const faq = [
     a: 'Look at the service you provide. If you perform medical procedures under a physician’s responsibility, the medical categories are right; if you only provide care services, the salon categories are. With the wrong category, it gets harder to appear in front of people searching for the procedure.',
   },
   {
-    q: 'If I can’t share before/afters, how do I compete with my rivals on Instagram?',
+    q: 'If we don’t use before/afters, how do I compete with my rivals on Instagram?',
     a: 'By competing in search. The person searching wants to learn about the procedure, its risks and the recovery time; a page that answers these questions is written for exactly that search. If your rival who competes with images leaves these questions unanswered, search is yours.',
   },
   {
     q: 'Can we use patient reviews on our website?',
-    a: 'Don’t use them as praise material. Content that turns patient experience into a promotional tool is risky under Turkey’s health advertising rules. Leave reviews on your Google profile, and don’t mention which procedure the patient had in your replies.',
+    a: 'Don’t use them as praise material. Content that turns patient experience into a promotional tool is risky under health advertising rules; in Australia, for example, AHPRA restricts testimonials in health advertising. Check with your own regulator how the rules where you practice treat this. Leave reviews on your Google profile, and don’t mention which procedure the patient had in your replies.',
   },
   {
     q: 'I want patients from abroad. Is the same website enough?',
-    a: 'No. Health tourism requires an authorization certificate from Turkey’s Ministry of Health, and the searches happen in other languages and across whole countries. We work in Turkish, English and German, and we plan this work from the start, separately from the local program.',
+    a: 'No. Treating patients from abroad has its own rules, which differ from country to country, and the searches happen in other languages and across whole countries. We plan this work from the start, separately from the local program.',
   },
   {
     q: 'When will we see results?',
@@ -49,11 +49,11 @@ const faq = [
   locale={locale}
   route="industries/aesthetics"
   title="SEO for Aesthetic and Medical Aesthetic Clinics | Wiserrise"
-  description="SEO for medical aesthetic clinics within Turkey’s promotion rules: the right category and pages that answer price and risk questions during a long decision."
+  description="SEO for medical aesthetic clinics within health advertising rules: the right category and pages that answer price and risk questions during a long decision."
   eyebrow="INDUSTRY · AESTHETIC CLINICS"
   h1="SEO for aesthetic clinics: answer the patient who is researching."
   crumb="Aesthetic Clinics"
-  lede="SEO for aesthetic clinics means showing up at every step of a patient’s research, which lasts for weeks. In a field where you can’t lean on before/after photos, visibility comes from the right category and pages that answer patients’ questions. We do both while staying inside Turkey’s health advertising rules."
+  lede="SEO for aesthetic clinics means showing up at every step of a patient’s research, which lasts for weeks. In a field where we don’t lean on before/after photos, visibility comes from the right category and pages that answer patients’ questions. We do both while staying inside the health advertising rules where you practice."
   serviceName="Local SEO for Aesthetic Clinics"
   breadcrumb={[
     { label: 'Home', href: '/' },
@@ -122,7 +122,7 @@ const faq = [
         </tr>
         <tr>
           <td><strong>Choosing a clinic</strong></td>
-          <td>“medical aesthetics antalya”, “botox near me”</td>
+          <td>“medical aesthetics brisbane”, “botox near me”</td>
           <td>Google Business Profile and location page</td>
         </tr>
       </tbody>
@@ -143,8 +143,8 @@ const faq = [
   <h2 id="fiyat">What do you tell a patient who asks about price?</h2>
 
   <p>
-    An answer that explains the factors behind the price. Promotion through prices and discounts is restricted in
-    healthcare, so we don’t publish price lists on the website. Patients, meanwhile, search for “botox prices”.
+    An answer that explains the factors behind the price. Health advertising rules in several countries are strict about
+    offers and price claims, so we don’t publish price lists or discounts on the website. Patients, meanwhile, search for “botox prices”.
   </p>
 
   <p>
@@ -158,10 +158,12 @@ const faq = [
     for it on the next clinic’s website.
   </p>
 
-  <h2 id="kurallar">Which kinds of promotion are banned in aesthetics?</h2>
+  <h2 id="kurallar">Which kinds of promotion do we avoid in aesthetics?</h2>
 
   <p>
-    Turkey’s rules on promoting health services are applied at their strictest in aesthetics. Many posts you see on social
+    Health advertising rules are applied at their strictest in aesthetics, and they differ by country and state: in the
+    UK the ASA applies the CAP Code, in the US the FTC and state medical boards play a part, and in Australia AHPRA’s
+    advertising guidelines apply and the TGA has its own rules on advertising medicines. Many posts you see on social
     media run into these rules. None of the pages we write contain the following:
   </p>
 
@@ -180,8 +182,8 @@ const faq = [
 
   <div class="callout">
     <p>
-      <strong>This page is not legal advice.</strong> For the current interpretation of the rules, your provincial health
-      directorate has the final say. We write the copy, check the wording against these rules and Semrush, and publish it;
+      <strong>This page is not legal advice.</strong> For the current interpretation of the rules, your own regulator and
+      professional body have the final say, so check with them when you’re unsure. We write the copy, check the wording against these rules and Semrush, and publish it;
       we don’t use any wording we’re unsure about. The only thing that comes to you for approval before it goes live is
       our replies to 1- and 2-star reviews.
     </p>
@@ -201,7 +203,7 @@ const faq = [
 
   <ul class="checklist">
     <li>How is the procedure done, and how long does it take</li>
-    <li>Does it hurt, is anaesthesia needed</li>
+    <li>Does it hurt, is anesthesia needed</li>
     <li>When can I go back to work and to my social life</li>
     <li>How long does the effect last, does it need repeating</li>
     <li>What are the risks and side effects, who is it unsuitable for</li>
@@ -233,7 +235,7 @@ const faq = [
   </p>
 
   <p>
-    We learned this the hard way in Google Ads. Around 800 TL went on information searches with no intent before we
+    We learned this the hard way in Google Ads. Part of a budget went on information searches with no intent before we
     noticed, and it was a close call. Don’t pay per click for someone typing “what is botox”.
   </p>
 
