@@ -31,22 +31,6 @@ const services = [
     cta: 'Hizmeti incele',
   },
   {
-    href: '#analiz-formu',
-    analiz: 'meta',
-    label: 'SOSYAL',
-    title: 'Meta Ads',
-    text: 'Instagram ve Facebook’ta bölgenizdeki insanların karşısına çıkan reklamlar. Sizi aramadan önce tanırlar.',
-    cta: 'Reklam analizi iste',
-  },
-  {
-    href: '#analiz-formu',
-    analiz: 'backlink',
-    label: 'OTORİTE',
-    title: 'Backlink inşası',
-    text: 'Konunuzla ilgili, gerçek trafiği olan sitelerden bağlantılar. Ajanslar için white-label.',
-    cta: 'Paketleri gör',
-  },
-  {
     href: p('services/geo'),
     label: 'YAPAY ZEKA',
     title: 'GEO',
@@ -79,11 +63,11 @@ const faq = [
   locale={locale}
   route="services"
   title="Dijital Pazarlama Hizmetleri | Wiserrise"
-  description="SEO, Local SEO, Google Ads, Meta Ads, backlink inşası ve GEO. Hangisinin size lazım olduğunu ücretsiz analizde söyleriz."
+  description="SEO, Local SEO, Google Ads ve GEO. Hangisinin size lazım olduğunu ücretsiz analizde söyleriz."
   eyebrow="HİZMETLER"
   h1="Dijital pazarlama hizmetleri: hangisi size lazım?"
   crumb="Hizmetler"
-  lede="Müşteriniz sizi Google’da, haritada, Instagram’da ya da ChatGPT’de bulabilir. Her kanal ayrı bir iş, ama hepsine aynı anda ihtiyacınız yok. Aşağıda hangi hizmetin hangi kanala çalıştığını anlattık."
+  lede="Müşteriniz sizi Google’da, haritada ya da ChatGPT’de bulabilir. Her kanal ayrı bir iş, ama hepsine aynı anda ihtiyacınız yok. Aşağıda hangi hizmetin hangi kanala çalıştığını anlattık."
   serviceName="Dijital Pazarlama Hizmetleri"
   breadcrumb={[{ label: 'Ana Sayfa', href: '/tr' }]}
   faq={faq}
@@ -101,7 +85,7 @@ const faq = [
   <h2 id="kanallar">Müşteriniz sizi nerede buluyor?</h2>
 
   <p>
-    Altı hizmetin beşi bir kanala çalışıyor. Altıncısı, backlink inşası, aramadaki gücünüzü artırır.
+    Dört ana hizmetin her biri bir kanala çalışıyor.
   </p>
 
   <div class="table-scroll">
@@ -130,19 +114,9 @@ const faq = [
           <td><a href={p('services/google-ads')}>Google Ads</a></td>
         </tr>
         <tr>
-          <td><strong>Instagram ve Facebook</strong></td>
-          <td>Akışta karşısına çıkan reklam</td>
-          <td>Meta Ads</td>
-        </tr>
-        <tr>
           <td><strong>ChatGPT, Gemini</strong></td>
           <td>Asistanın önerdiği işletmeler</td>
           <td><a href={p('services/geo')}>GEO</a></td>
-        </tr>
-        <tr>
-          <td><strong>Başka siteler</strong></td>
-          <td>Sizden bahseden, size link veren sayfalar</td>
-          <td>Backlink inşası</td>
         </tr>
       </tbody>
     </table>
@@ -153,11 +127,6 @@ const faq = [
   <p>
     Reklam hemen başlar ve bütçe bittiği gün durur. SEO ile Local SEO geç başlar, ama çalışmayı bıraktığınız gün
     sönmez.
-  </p>
-
-  <p>
-    Google Ads arayana çıkar, Meta Ads aramayana. Instagram’da reklamınızı gören kişi o an fizyoterapist aramıyordu.
-    Reklam, beli ağrıdığı gün adınızı hatırlasın diye orada.
   </p>
 
   <h2 id="baslangic">Nereden başlamalısınız?</h2>
@@ -183,7 +152,7 @@ const faq = [
       id="hizmet-listesi"
       eyebrow="HİZMETLER"
       heading="Müşteriniz nerede arıyorsa orada çalışıyoruz."
-      sub="SEO ve Local SEO aramada ve haritada yer edinmeniz için çalışır. Google Ads ve Meta Ads reklam yayındayken görünür kılar. GEO aynı temeli yapay zeka yanıtlarına taşır."
+      sub="SEO ve Local SEO aramada ve haritada yer edinmeniz için çalışır. Google Ads reklam yayındayken görünür kılar. GEO aynı temeli yapay zeka yanıtlarına taşır."
       items={services}
       son={{
         label: 'KARARSIZ MISINIZ?',

@@ -80,9 +80,9 @@ export function t(locale: Locale) {
  */
 export const COMPANY_LEGAL_NAME = 'Wisbury LLC';
 
-/** Contact address differs per locale on the live site. */
+/** One contact address for every locale. */
 export const CONTACT_EMAIL: Record<Locale, string> = {
-  en: 'audit@wiserrise.com',
+  en: 'melih@wiserrise.com',
   tr: 'melih@wiserrise.com',
   de: 'melih@wiserrise.com',
 };

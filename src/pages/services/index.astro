@@ -31,22 +31,6 @@ const services = [
     cta: 'View service',
   },
   {
-    href: '#analiz-formu',
-    analiz: 'meta',
-    label: 'SOCIAL',
-    title: 'Meta Ads',
-    text: 'Ads that reach people in your area on Instagram and Facebook. They get to know you before they ever search.',
-    cta: 'Request an ads analysis',
-  },
-  {
-    href: '#analiz-formu',
-    analiz: 'backlink',
-    label: 'AUTHORITY',
-    title: 'Link building',
-    text: 'Links from relevant sites with real traffic. White-label for agencies.',
-    cta: 'See packages',
-  },
-  {
     href: p('services/geo'),
     label: 'AI',
     title: 'GEO',
@@ -79,11 +63,11 @@ const faq = [
   locale={locale}
   route="services"
   title="Digital Marketing Services | Wiserrise"
-  description="SEO, local SEO, Google Ads, Meta Ads, link building and GEO. The free analysis shows which one you need."
+  description="SEO, local SEO, Google Ads and GEO. The free analysis shows which one you need."
   eyebrow="SERVICES"
   h1="Digital marketing services: which one do you need?"
   crumb="Services"
-  lede="Your customers might find you on Google, on the map, on Instagram or in ChatGPT. Each channel is its own job, but you don’t need all of them at once. Below we explain which service works on which channel."
+  lede="Your customers might find you on Google, on the map or in ChatGPT. Each channel is its own job, but you don’t need all of them at once. Below we explain which service works on which channel."
   serviceName="Digital Marketing Services"
   breadcrumb={[{ label: 'Home', href: '/' }]}
   faq={faq}
@@ -100,7 +84,7 @@ const faq = [
   <h2 id="kanallar">Where do your customers find you?</h2>
 
   <p>
-    Five of the six services each work on one channel. The sixth, link building, makes you stronger in search.
+    Each of the four main services works on one channel.
   </p>
 
   <div class="table-scroll">
@@ -129,19 +113,9 @@ const faq = [
           <td><a href={p('services/google-ads')}>Google Ads</a></td>
         </tr>
         <tr>
-          <td><strong>Instagram and Facebook</strong></td>
-          <td>An ad in their feed</td>
-          <td>Meta Ads</td>
-        </tr>
-        <tr>
           <td><strong>ChatGPT, Gemini</strong></td>
           <td>The businesses the assistant recommends</td>
           <td><a href={p('services/geo')}>GEO</a></td>
-        </tr>
-        <tr>
-          <td><strong>Other websites</strong></td>
-          <td>Pages that mention you or link to you</td>
-          <td>Link building</td>
         </tr>
       </tbody>
     </table>
@@ -152,11 +126,6 @@ const faq = [
   <p>
     Ads start right away and stop the day the budget runs out. SEO and local SEO start slower, but they don’t switch off
     the day you stop working on them.
-  </p>
-
-  <p>
-    Google Ads reaches people who are searching, Meta Ads people who aren’t. Someone who sees your ad on Instagram wasn’t
-    looking for a physio at that moment. The ad is there so they remember your name on the day their back hurts.
   </p>
 
   <h2 id="baslangic">Where should you start?</h2>
@@ -182,7 +151,7 @@ const faq = [
       id="hizmet-listesi"
       eyebrow="SERVICES"
       heading="We work wherever your customers are looking."
-      sub="SEO and local SEO earn you a lasting place in search and on the map. Google Ads and Meta Ads make you visible while the ads run. GEO carries the same foundation into AI answers."
+      sub="SEO and local SEO work on your place in search and on the map. Google Ads makes you visible while the ads run. GEO carries the same foundation into AI answers."
       items={services}
       son={{
         label: 'NOT SURE?',

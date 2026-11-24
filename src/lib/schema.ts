@@ -35,18 +35,16 @@ const PHONE = '+90 545 505 23 86';
 
 // Sonuç vaadi yok: ne yaptığımızı söyler, ne olacağını söylemez.
 const DESCRIPTION: Record<Locale, string> = {
-  en: 'Wiserrise is a digital marketing agency offering SEO, local SEO, Google Ads, Meta Ads, link building and GEO to local businesses and brands.',
-  tr: 'Wiserrise, yerel işletmeler ve markalar için SEO, Local SEO, Google Ads, Meta Ads, backlink inşası ve GEO hizmeti veren bir dijital pazarlama ajansı.',
-  de: 'Wiserrise ist eine Digitalmarketing-Agentur für lokale Unternehmen und Marken: SEO, lokale SEO, Google Ads, Meta Ads, Linkaufbau und GEO.',
+  en: 'Wiserrise is a digital marketing agency offering SEO, local SEO, Google Ads and GEO to local businesses and brands.',
+  tr: 'Wiserrise, yerel işletmeler ve markalar için SEO, Local SEO, Google Ads ve GEO hizmeti veren bir dijital pazarlama ajansı.',
+  de: 'Wiserrise ist eine Digitalmarketing-Agentur für lokale Unternehmen und Marken: SEO, lokale SEO, Google Ads und GEO.',
 };
 
-/** The six main services, in the order the services page lists them. Only those with a page carry a URL. */
+/** The main services, in the order the services page lists them. Only those with a page carry a URL. */
 const SERVICES: { name: Record<Locale, string>; route?: Parameters<typeof routePath>[1] }[] = [
   { name: { en: 'SEO', tr: 'SEO', de: 'SEO' }, route: 'services/seo' },
   { name: { en: 'Local SEO', tr: 'Local SEO', de: 'Lokale SEO' }, route: 'services/local-seo' },
-  { name: { en: 'Google Ads', tr: 'Google Ads', de: 'Google Ads' } },
-  { name: { en: 'Meta Ads', tr: 'Meta Ads', de: 'Meta Ads' } },
-  { name: { en: 'Link building', tr: 'Backlink inşası', de: 'Linkaufbau' } },
+  { name: { en: 'Google Ads', tr: 'Google Ads', de: 'Google Ads' }, route: 'services/google-ads' },
   { name: { en: 'GEO (Generative Engine Optimization)', tr: 'GEO (Generative Engine Optimization)', de: 'GEO (Generative Engine Optimization)' }, route: 'services/geo' },
 ];
 

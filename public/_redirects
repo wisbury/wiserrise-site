@@ -7,3 +7,10 @@
 /tr/turkiyenin-en-basarili-seo-uzmani /tr/turkiyenin-en-iyi-seo-uzmani 301
 /turkeys-most-successful-seo-expert /turkeys-best-seo-expert 301
 /de/erfolgreichster-seo-experte-der-tuerkei /de/bester-seo-experte-der-tuerkei 301
+# Eski statik başvuru sayfaları (2026-10-04) güncel ücretsiz analiz formuna gider (2026-11-24).
+/apply /#analiz-formu 301
+/apply/ /#analiz-formu 301
+/tr/apply /tr#analiz-formu 301
+/tr/apply/ /tr#analiz-formu 301
+/de/apply /de#analiz-formu 301
+/de/apply/ /de#analiz-formu 301

@@ -31,22 +31,6 @@ const services = [
     cta: 'Leistung ansehen',
   },
   {
-    href: '#analiz-formu',
-    analiz: 'meta',
-    label: 'SOCIAL',
-    title: 'Meta Ads',
-    text: 'Anzeigen auf Instagram und Facebook für Menschen in Ihrer Umgebung. Sie lernen Sie kennen, bevor sie suchen.',
-    cta: 'Anzeigen-Analyse anfordern',
-  },
-  {
-    href: '#analiz-formu',
-    analiz: 'backlink',
-    label: 'AUTORITÄT',
-    title: 'Linkaufbau',
-    text: 'Links von themennahen Websites mit echtem Traffic. White-Label für Agenturen.',
-    cta: 'Pakete ansehen',
-  },
-  {
     href: p('services/geo'),
     label: 'KI',
     title: 'GEO',
@@ -79,11 +63,11 @@ const faq = [
   locale={locale}
   route="services"
   title="Online-Marketing-Leistungen für Unternehmen | Wiserrise"
-  description="SEO, lokale SEO, Google Ads, Meta Ads, Linkaufbau und GEO für Praxen, Kanzleien und Betriebe. Womit Sie anfangen sollten, zeigt die kostenlose Analyse."
+  description="SEO, lokale SEO, Google Ads und GEO für Praxen, Kanzleien und Betriebe. Womit Sie anfangen sollten, zeigt die kostenlose Analyse."
   eyebrow="LEISTUNGEN"
   h1="Online-Marketing-Leistungen: Welche brauchen Sie?"
   crumb="Leistungen"
-  lede="Ihre Kunden finden Sie über die Google-Suche, über Google Maps, auf Instagram oder in ChatGPT. Jeder Kanal ist eine eigene Aufgabe, und Sie brauchen nicht alle auf einmal. Die Übersicht unten zeigt, welche Leistung zu welchem Kanal gehört."
+  lede="Ihre Kunden finden Sie über die Google-Suche, über Google Maps oder in ChatGPT. Jeder Kanal ist eine eigene Aufgabe, und Sie brauchen nicht alle auf einmal. Die Übersicht unten zeigt, welche Leistung zu welchem Kanal gehört."
   serviceName="Online-Marketing-Leistungen"
   breadcrumb={[{ label: 'Startseite', href: '/de' }]}
   faq={faq}
@@ -100,7 +84,7 @@ const faq = [
   <h2 id="kanallar">Wo finden Ihre Kunden Sie?</h2>
 
   <p>
-    Fünf der sechs Leistungen zielen auf je einen Kanal. Die sechste, der Linkaufbau, stärkt Sie in der Suche.
+    Jede der vier Hauptleistungen zielt auf einen Kanal.
   </p>
 
   <div class="table-scroll">
@@ -129,19 +113,9 @@ const faq = [
           <td><a href={p('services/google-ads')}>Google Ads</a></td>
         </tr>
         <tr>
-          <td><strong>Instagram und Facebook</strong></td>
-          <td>Eine Anzeige im Feed</td>
-          <td>Meta Ads</td>
-        </tr>
-        <tr>
           <td><strong>ChatGPT, Gemini</strong></td>
           <td>Die Unternehmen, die der Assistent empfiehlt</td>
           <td><a href={p('services/geo')}>GEO</a></td>
-        </tr>
-        <tr>
-          <td><strong>Andere Websites</strong></td>
-          <td>Seiten, die Sie erwähnen oder auf Sie verlinken</td>
-          <td>Linkaufbau</td>
         </tr>
       </tbody>
     </table>
@@ -152,12 +126,6 @@ const faq = [
   <p>
     Anzeigen laufen, sobald sie freigeschaltet sind, und stoppen, wenn das Budget aufgebraucht ist. SEO und lokale SEO
     brauchen einen längeren Anlauf, verschwinden aber nicht an dem Tag, an dem Sie aufhören.
-  </p>
-
-  <p>
-    Google Ads erreicht Menschen, die gerade suchen, Meta Ads Menschen, die gerade nicht suchen. Wer Ihre Anzeige auf
-    Instagram sieht, sucht in diesem Moment keine Physiotherapie. Die Anzeige soll dafür sorgen, dass er sich an Ihre
-    Praxis erinnert, wenn der Rücken schmerzt.
   </p>
 
   <h2 id="baslangic">Womit sollten Sie anfangen?</h2>
@@ -186,7 +154,7 @@ const faq = [
       id="hizmet-listesi"
       eyebrow="LEISTUNGEN"
       heading="Wir arbeiten dort, wo Ihre Kunden suchen."
-      sub="SEO und lokale SEO arbeiten an Ihrer dauerhaften Sichtbarkeit in der Suche und auf der Karte. Google Ads und Meta Ads machen Sie sichtbar, solange die Anzeigen laufen. GEO überträgt dieselbe Grundlage auf KI-Antworten."
+      sub="SEO und lokale SEO arbeiten an Ihrer dauerhaften Sichtbarkeit in der Suche und auf der Karte. Google Ads macht Sie sichtbar, solange die Anzeigen laufen. GEO überträgt dieselbe Grundlage auf KI-Antworten."
       items={services}
       son={{
         label: 'NOCH UNSICHER?',
