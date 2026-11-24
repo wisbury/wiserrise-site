@@ -4,10 +4,15 @@ import { formatDate } from '../i18n/v2';
 
 /** KVKK ve çerez sayfalarının ortak bilgileri. Adres ve e-posta, portaldaki gizlilik metniyle aynıdır. */
 export const KVKK_EMAIL = 'kvkk@wiserrise.com';
-export const COMPANY_ADDRESS = '1209 Mountain Road Pl, Ste N, Albuquerque, New Mexico 87110, ABD';
+export const COMPANY_ADDRESS = '1209 Mountain Road Pl NE, Ste N, Albuquerque, NM 87110, ABD';
 /** Adresin İngilizce ve Almanca sayfalardaki yazımı. */
-export const COMPANY_ADDRESS_INTL = '1209 Mountain Road Pl, Ste N, Albuquerque, New Mexico 87110, USA';
-export const LEGAL_UPDATED_ISO = '2026-11-06';
+export const COMPANY_ADDRESS_INTL = '1209 Mountain Road Pl NE, Ste N, Albuquerque, NM 87110, USA';
+/** Şirket kaydı ve temsil; künye ve gizlilik metinleri bunu kullanır (2026-11-24, Padişah). USt-IdNr. ve EIN yazılmaz. */
+export const COMPANY_REGISTER = { name: 'New Mexico Secretary of State', id: '0008117782' };
+export const COMPANY_REPRESENTATIVE = { name: 'Melih Us', role: 'Managing Member' };
+/** Künyedeki tek hat. */
+export const COMPANY_PHONE = { display: '+90 545 505 23 86', href: '+905455052386' };
+export const LEGAL_UPDATED_ISO = '2026-11-24';
 export const LEGAL_UPDATED = formatDate('tr', LEGAL_UPDATED_ISO);
 
 const LABELS: Record<Locale, [string, string]> = {

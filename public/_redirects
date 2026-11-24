@@ -6,7 +6,10 @@
 # Kurucu sayfası 2026-11-07'de "en başarılı" yerine "en iyi" aramasına taşındı.
 /tr/turkiyenin-en-basarili-seo-uzmani /tr/turkiyenin-en-iyi-seo-uzmani 301
 /turkeys-most-successful-seo-expert /turkeys-best-seo-expert 301
-/de/erfolgreichster-seo-experte-der-tuerkei /de/bester-seo-experte-der-tuerkei 301
+/de/erfolgreichster-seo-experte-der-tuerkei /turkeys-best-seo-expert 301
+# Almanca kurucu sayfası 2026-11-24'te kaldırıldı; İngilizce kurucu sayfasına gider.
+/de/bester-seo-experte-der-tuerkei /turkeys-best-seo-expert 301
+/de/bester-seo-experte-der-tuerkei/ /turkeys-best-seo-expert 301
 # Eski statik başvuru sayfaları (2026-10-04) güncel ücretsiz analiz formuna gider (2026-11-24).
 /apply /#analiz-formu 301
 /apply/ /#analiz-formu 301

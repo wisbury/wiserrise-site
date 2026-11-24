@@ -1,12 +1,11 @@
 ---
 import LegalPage from '../../components/v2/LegalPage.astro';
 import { COMPANY_LEGAL_NAME, CONTACT_EMAIL } from '../../i18n/ui';
-import { COMPANY_ADDRESS_INTL } from '../../data/legal';
+import { COMPANY_ADDRESS_INTL, COMPANY_REGISTER, COMPANY_REPRESENTATIVE, COMPANY_PHONE } from '../../data/legal';
 
 /**
  * Anbieterkennzeichnung nach § 5 DDG für die deutschsprachigen Seiten. Nur auf Deutsch: Die Pflicht folgt aus dem
- * deutschen Recht. Noch offen (nicht erfinden, erst nach Klärung ergänzen): Telefonnummer, Registernummer beim
- * New Mexico Secretary of State, gegebenenfalls USt-IdNr.
+ * deutschen Recht. Firmendaten aus src/data/legal.ts (Stand 2026-11-24). Keine USt-IdNr. und keine EIN angeben.
  */
 const email = CONTACT_EMAIL.de;
 ---
@@ -15,30 +14,33 @@ const email = CONTACT_EMAIL.de;
   locale="de"
   route="legal/impressum"
   title="Impressum | Wiserrise"
-  description="Anbieterkennzeichnung von wiserrise.com: Wisbury LLC, Anschrift, Vertretung und Kontakt."
+  description="Anbieterkennzeichnung von wiserrise.com: Wisbury LLC, Anschrift, Register, Vertretung und Kontakt."
   heading="Impressum"
 >
   <h2>Angaben gemäß § 5 DDG</h2>
   <p>
-    {COMPANY_LEGAL_NAME}<br />
+    Anbieter: {COMPANY_LEGAL_NAME} (New Mexico, USA limited liability company)<br />
     {COMPANY_ADDRESS_INTL}
   </p>
   <p>Wiserrise ist eine Marke der {COMPANY_LEGAL_NAME}.</p>
 
-  <h2>Rechtsform</h2>
-  <p>Limited Liability Company (LLC) nach dem Recht des US-Bundesstaates New Mexico.</p>
+  <h2>Rechtsform und Register</h2>
+  <p>
+    Limited Liability Company (LLC) nach dem Recht des US-Bundesstaates New Mexico.<br />
+    Register: {COMPANY_REGISTER.name}, Entity ID {COMPANY_REGISTER.id}
+  </p>
 
   <h2>Vertreten durch</h2>
-  <p>Melih Us</p>
+  <p>{COMPANY_REPRESENTATIVE.name} ({COMPANY_REPRESENTATIVE.role})</p>
 
   <h2>Kontakt</h2>
   <p>
-    E-Mail: <a href={`mailto:${email}`}>{email}</a><br />
-    Außerdem erreichen Sie uns über das Formular „Kostenlose Analyse“ auf dieser Website.
+    Telefon: <a href={`tel:${COMPANY_PHONE.href}`}>{COMPANY_PHONE.display}</a><br />
+    E-Mail: <a href={`mailto:${email}`}>{email}</a>
   </p>
 
   <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-  <p>Melih Us, Anschrift wie oben.</p>
+  <p>{COMPANY_REPRESENTATIVE.name}, Anschrift wie oben.</p>
 
   <h2>Verbraucherstreitbeilegung</h2>
   <p>

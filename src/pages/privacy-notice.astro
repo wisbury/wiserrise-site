@@ -2,7 +2,7 @@
 import LegalPage from '../components/v2/LegalPage.astro';
 import { routePath } from '../i18n/routes';
 import { COMPANY_LEGAL_NAME } from '../i18n/ui';
-import { COMPANY_ADDRESS_INTL, KVKK_EMAIL } from '../data/legal';
+import { COMPANY_ADDRESS_INTL, COMPANY_REGISTER, COMPANY_REPRESENTATIVE, KVKK_EMAIL } from '../data/legal';
 
 /**
  * Jurisdiction-neutral English privacy notice for the global (UK/US/AU) site. Same facts as the Turkish KVKK notice
@@ -31,6 +31,8 @@ const mail = `mailto:${KVKK_EMAIL}`;
   <h2>1. Data controller</h2>
   <p>
     The data controller is {COMPANY_LEGAL_NAME}, the owner of the Wiserrise brand. Address: {COMPANY_ADDRESS_INTL}.
+    Register: {COMPANY_REGISTER.name}, Entity ID {COMPANY_REGISTER.id}. Represented by {COMPANY_REPRESENTATIVE.name}
+    ({COMPANY_REPRESENTATIVE.role}).
     For questions and requests about your personal data: <a href={mail}>{KVKK_EMAIL}</a>.
   </p>
 

@@ -2,7 +2,7 @@
 import LegalPage from '../../components/v2/LegalPage.astro';
 import { routePath } from '../../i18n/routes';
 import { COMPANY_LEGAL_NAME } from '../../i18n/ui';
-import { COMPANY_ADDRESS, KVKK_EMAIL } from '../../data/legal';
+import { COMPANY_ADDRESS, COMPANY_REGISTER, COMPANY_REPRESENTATIVE, KVKK_EMAIL } from '../../data/legal';
 
 /**
  * KVKK m.10 aydınlatma metni: site ziyareti, analiz formu, bülten ve yazışmalar.
@@ -30,6 +30,8 @@ const mail = `mailto:${KVKK_EMAIL}`;
   <h2>1. Veri sorumlusu</h2>
   <p>
     Veri sorumlusu, Wiserrise markasının sahibi {COMPANY_LEGAL_NAME}’dir. Adres: {COMPANY_ADDRESS}.
+    Sicil: {COMPANY_REGISTER.name}, Entity ID {COMPANY_REGISTER.id}. Temsilci: {COMPANY_REPRESENTATIVE.name}
+    ({COMPANY_REPRESENTATIVE.role}).
     KVKK ile ilgili soru ve başvurularınız için: <a href={mail}>{KVKK_EMAIL}</a>.
   </p>
 
