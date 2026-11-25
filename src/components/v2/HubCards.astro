@@ -3,6 +3,8 @@
  * Liste sayfalarındaki kart ızgarası (hizmetler, sektörler, rehberler). Ana sayfadaki hizmet kartlarının sade hali:
  * üstte etiket ve ok, altında başlık ve kısa açıklama. İstenirse sona koyu bir yönlendirme kartı eklenir; kavis yalnız onda.
  */
+import IzIsaret from './IzIsaret.astro';
+
 interface Kart {
   href: string;
   label: string;
@@ -12,6 +14,8 @@ interface Kart {
   cta: string;
   /** Sayfası henüz olmayan hizmet: kart analiz penceresini bu hizmet seçili açar (gads, meta, backlink…). */
   analiz?: string;
+  /** İç içe üçgen işaretinin konumu (Padişah 25.11): arama → sag, görünürlük/profil → kose, reklam → alt. */
+  iz?: 'sag' | 'kose' | 'alt';
 }
 
 interface Props {
@@ -40,13 +44,14 @@ const bosluk = (k: number) => k - (items.length % k);
   </div>
   <div class="v2-hub-grid">
     {items.map((k) => (
-      <a class="card v2-hub-card" href={k.href} data-analiz={k.analiz ? true : undefined} data-hizmet={k.analiz}>
+      <a class:list={['card v2-hub-card', k.iz && `iz-k iz-k--${k.iz}`]} href={k.href} data-analiz={k.analiz ? true : undefined} data-hizmet={k.analiz}>
         <span class="v2-hub-top">
           <span class="v2-eyebrow">{k.label}</span>
           <span class="v2-arrow" aria-hidden="true"><span class="v2-arrow-t">{k.cta}</span><i></i></span>
         </span>
         <span class="v2-hub-t">{k.title}</span>
         <span class="v2-hub-p">{k.text}</span>
+        {k.iz && <IzIsaret tip={k.iz} />}
       </a>
     ))}
     {son && (

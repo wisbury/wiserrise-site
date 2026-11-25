@@ -1,0 +1,40 @@
+---
+/**
+ * İç içe üçgen işareti, hizmet kartının içine (son çocuk olarak) konur. Tip hizmete göre:
+ * arama → sag (Local SEO, SEO), görünürlük/profil → kose (GEO, Google İşletme Profili), reklam → alt (Google Ads, Meta Ads).
+ * Karta `iz-k iz-k--{tip}` sınıfı verilir; kart işareti kırpar ve içeriği işaretten uzak tutar. Dekoratif, animasyonsuz.
+ * Kaynak ve kurallar: .superpowers/imza-padisah/KURALLAR.md
+ */
+import { SAG, KOSE, altBant } from '../../lib/iz-isaret';
+
+interface Props {
+  tip: 'sag' | 'kose' | 'alt';
+}
+const { tip } = Astro.props;
+const g = globalThis as { __izSayac?: number };
+g.__izSayac = (g.__izSayac ?? 0) + 1;
+const html = tip === 'sag' ? SAG : tip === 'kose' ? KOSE : altBant(`iz-bant-${g.__izSayac}`);
+---
+
+<Fragment set:html={html} />
+
+<style is:global>
+  /* Kart: kırpma kutusu ve ölçü kabı. Öndeki renk ve knockout zemini açık kartta lacivert/beyaz, koyu kartta nane/lacivert. */
+  .iz-k { position: relative; overflow: hidden; container-type: inline-size; --iz-on: #16244d; --iz-zemin: #ffffff; }
+  .iz-k.iz-koyu { --iz-on: #7ff0e3; --iz-zemin: #16244d; }
+  .iz-k > .iz-isaret { position: absolute; display: block; pointer-events: none; }
+
+  /* 1 · Sağ kenar: görünen derinlik kart genişliğinin %34'ü, en fazla kart yüksekliğinin %92'si; içerik ucuna 40 px kala biter. */
+  .iz-k--sag > .iz-isaret { right: 0; top: 50%; transform: translateY(-50%); width: 34cqw; height: auto; max-height: 92%; aspect-ratio: 0.734; stroke-width: clamp(1.2px, calc(1.1px + 0.0797cqw), 1.8px); }
+  .iz-k--sag > :not(.iz-isaret) { margin-right: calc(34cqw + 40px - 32px); }
+
+  /* 2 · Köşe rozeti: kutu kenarı 0,297 · kısa kenar (kısa kenar en fazla 340 px kabul edilir); başlık satırları rozetin soluna, metin altına. */
+  .iz-k--kose { --iz-s: min(29.7cqw, 101px); }
+  .iz-k--kose > .iz-isaret { top: 0; right: 0; width: var(--iz-s); height: var(--iz-s); stroke-width: clamp(1.2px, calc(1.1px + min(0.0986cqw, 0.335px)), 1.8px); }
+  .iz-k--kose > :nth-child(1), .iz-k--kose > :nth-child(2) { margin-right: calc(var(--iz-s) + 40px - 32px); }
+  .iz-k--kose > :nth-child(3) { margin-top: max(0px, calc(var(--iz-s) - 82px)); }
+
+  /* 3 · Alt bant: bant 47 px; içerik dişlerin tepesine 40 px kala biter. */
+  .iz-k--alt { padding-bottom: 87px !important; }
+  .iz-k--alt > .iz-isaret { left: 0; right: 0; bottom: 0; }
+</style>
