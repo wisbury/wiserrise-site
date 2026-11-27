@@ -1,7 +1,7 @@
 ---
 /**
  * Liste sayfalarındaki kart ızgarası (hizmetler, sektörler, rehberler). Ana sayfadaki hizmet kartlarının sade hali:
- * üstte etiket ve ok, altında başlık ve kısa açıklama. İstenirse sona koyu bir yönlendirme kartı eklenir; kavis yalnız onda.
+ * üstte etiket ve ok, altında başlık ve kısa açıklama. İstenirse sona koyu bir yönlendirme kartı eklenir; imza (C · İZ) yalnız onda.
  */
 import IzIsaret from './IzIsaret.astro';
 
@@ -24,7 +24,7 @@ interface Props {
   heading: string;
   sub?: string;
   items: Kart[];
-  /** Koyu kart; href verilmezse analiz penceresini açar. `alt` kartın altındaki eylem satırı, kavis onun sağına çizilir. */
+  /** Koyu kart; href verilmezse analiz penceresini açar. `alt` kartın altındaki eylem satırı, imza onun sağına çizilir. */
   son?: Omit<Kart, 'href'> & { href?: string; alt: string };
 }
 
@@ -55,7 +55,7 @@ const bosluk = (k: number) => k - (items.length % k);
       </a>
     ))}
     {son && (
-      <a class="card v2-hub-card v2-hub-son" data-kavis="liste" style={`--s3: ${bosluk(3)}; --s2: ${bosluk(2)};`} {...sonLink}>
+      <a class="card v2-hub-card v2-hub-son" data-iz="liste" style={`--s3: ${bosluk(3)}; --s2: ${bosluk(2)};`} {...sonLink}>
         <span class="v2-hub-top">
           <span class="v2-eyebrow">{son.label}</span>
           <span class="v2-arrow v2-arrow--accent" aria-hidden="true"><span class="v2-arrow-t">{son.cta}</span><i></i></span>

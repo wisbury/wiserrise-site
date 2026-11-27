@@ -2,7 +2,7 @@
 /**
  * İçerik sayfası iskeleti (hizmet, sektör, rehber ve liste sayfaları), üç dilde. ContentLayout bunu çizer.
  * Sıra: yumuşak renkli, ortalı ilk ekran (başlık, kısa cevap, analiz düğmesi, istenirse özet kartları), solda içindekiler ile metin,
- * geniş blok, SSS, ilgili sayfalar, siyah vurgu ekranı (ana sayfadakinden kısa), alt bilgi. Kavis yalnız vurgu ekranında ve alt bilgide.
+ * geniş blok, SSS, ilgili sayfalar, siyah vurgu ekranı (ana sayfadakinden kısa), alt bilgi. İmza (C · İZ) yalnız vurgu ekranında ve alt bilgide.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnalizDialog from '../AnalizDialog.astro';
@@ -150,7 +150,7 @@ const heroCta = heroCtaProp ?? !/^(services|industries)(\/|$)/.test(route);
   )}
 
   <section class="v2-closing" style="padding-top: clamp(72px, 10vw, 120px);">
-    <div class="cam cam--kisa" data-kavis="kapanis">
+    <div class="cam cam--kisa" data-iz="kapanis">
       <div class="cam-in v2-page-cta">
         <div class="v2-page-cta-in">
           <slot name="cta" />
